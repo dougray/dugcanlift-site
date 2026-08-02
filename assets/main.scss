@@ -32,7 +32,11 @@ a:hover { color: var(--dcl-accent); }
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--dcl-text) !important;
+  color: var(--dcl-accent) !important;
+  transition: color 0.15s ease;
+}
+.site-title:hover {
+  color: #F0B429 !important;
 }
 
 .site-nav .page-link { color: var(--dcl-muted) !important; }

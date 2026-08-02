@@ -18,12 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Dug Can Lift
-email: your-email@example.com
+title: DUGCANLIFT
+email: dugcanlift@gmail.com
 description: >-
   Fitness, lifting, and whatever else I'm building.
 baseurl: ""
 url: "https://www.dugcanlift.com"
+instagram_username: dugcanlift
+tiktok_username: dugcanlift
+youtube_username: dugcanlift
 
 # Build settings
 theme: minima
