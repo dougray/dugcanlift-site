@@ -13,6 +13,36 @@
   --dcl-rule: #3a3733;
 }
 
+.wrapper {
+  max-width: 800px;
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper {
+    max-width: 1100px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    max-width: 1400px;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 6vw, 6.5rem);
+  }
+
+  .plate-stats {
+    max-width: 560px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .wrapper {
+    max-width: 1600px;
+  }
+}
+
 body {
   background: var(--dcl-bg);
   color: var(--dcl-text);
