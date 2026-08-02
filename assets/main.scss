@@ -171,3 +171,31 @@ a:hover { color: var(--dcl-accent); }
 
 .post-title { flex: 1; font-size: 1.05rem; }
 .post-arrow { color: var(--dcl-muted); }
+
+// Code blocks — override minima's light syntax theme
+.highlight, pre, code {
+  background: var(--dcl-surface) !important;
+  color: var(--dcl-text) !important;
+  border: 1px solid var(--dcl-rule);
+  border-radius: 4px;
+}
+
+pre.highlight {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+}
+
+pre code {
+  padding: 0;
+  border: none;
+  background: transparent !important;
+}
+
+// Keep some syntax color distinction, just muted for dark bg
+.highlight .nt, .highlight .k { color: var(--dcl-accent-2); }
+.highlight .s, .highlight .s1, .highlight .s2 { color: #b8a97a; }
