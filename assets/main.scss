@@ -292,3 +292,28 @@ pre code {
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+@media screen and (max-width: 600px) {
+  .hero { padding: 2.5rem 0 2rem; }
+  .latest { padding-bottom: 1.5rem; }
+  .post-row:last-child { border-bottom: none; }
+  .site-footer { padding-top: 1.5rem; }
+}
+
+.site-nav label[for="nav-trigger"] {
+  background: var(--dcl-accent) !important;
+  border-radius: 4px;
+}
+
+.site-nav .menu-icon svg path {
+  fill: var(--dcl-bg) !important;
+}
+
+.site-nav .trigger {
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-rule);
+}
+
+.site-nav .trigger .page-link {
+  color: var(--dcl-text) !important;
+}
