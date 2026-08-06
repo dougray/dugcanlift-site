@@ -50,6 +50,36 @@ def scrape_product(product):
     except Exception as e:
         return {**product, "price": None, "error": str(e)}
 
+def scrape_shopify_variant(product):
+    """For multi-variant Shopify products: fetch the .json endpoint and
+    pick a specific variant by matching text in its title."""
+    try:
+        json_url = product["url"].rstrip("/") + ".json"
+        resp = requests.get(json_url, headers=HEADERS, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        variants = data["product"]["variants"]
+
+        target = product.get("variant_match", "").lower()
+        chosen = None
+        for v in variants:
+            if target in v["title"].lower():
+                chosen = v
+                break
+        if chosen is None:
+            chosen = variants[0]  # fallback to first variant
+
+        price = float(chosen["price"])
+        cost_per_serving = round(price / product["servings"], 3) if product.get("servings") else None
+        return {
+            **{k: v for k, v in product.items() if k != "variant_match"},
+            "price": price,
+            "cost_per_serving": cost_per_serving,
+            "error": None,
+        }
+    except Exception as e:
+        return {**product, "price": None, "error": str(e)}
+
 def main():
     with open("scripts/products.yml") as f:
         products = yaml.safe_load(f)
@@ -72,3 +102,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def main():
+    with open("scripts/products.yml") as f:
+        products = yaml.safe_load(f)
+
+    results = []
+    for p in products:
+        print(f"Scraping: {p['name']} ({p['brand']})")
+        if p.get("platform") == "shopify_variant":
+            results.append(scrape_shopify_variant(p))
+        else:
+            results.append(scrape_product(p))
+        time.sleep(2)
+    ...

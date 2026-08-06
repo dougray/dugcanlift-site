@@ -82,6 +82,22 @@
   url: "https://nutrithority.com/products/isothority"
   servings: 30
 
+- name: "Micronized Creatine Monohydrate (500g)"
+  brand: "BulkSupplements"
+  category: "Creatine"
+  url: "https://www.bulksupplements.com/products/creatine-monohydrate"
+  platform: "shopify_variant"
+  variant_match: "500g"
+  servings: 100
+
+- name: "Hydrolyzed Whey Protein Isolate"
+  brand: "BulkSupplements"
+  category: "Protein"
+  url: "https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE"
+  platform: "shopify_variant"
+  variant_match: "1kg"
+  servings: 33
+
 - name: "100% Pure Micronized Creatine (300g, via Suppz)"
   brand: "Suppz"
   category: "Creatine"

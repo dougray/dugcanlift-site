@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T21:58:02.469365+00:00",
+  "last_updated": "2026-08-06T22:19:15.252473+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -137,6 +137,29 @@
       "servings": 30,
       "price": null,
       "error": "price not found (no meta tag, no selector match)"
+    },
+    {
+      "name": "Micronized Creatine Monohydrate (500g)",
+      "brand": "BulkSupplements",
+      "category": "Creatine",
+      "url": "https://www.bulksupplements.com/products/creatine-monohydrate",
+      "platform": "shopify_variant",
+      "variant_match": "500g",
+      "servings": 100,
+      "price": 22.97,
+      "cost_per_serving": 0.23,
+      "error": null
+    },
+    {
+      "name": "Hydrolyzed Whey Protein Isolate",
+      "brand": "BulkSupplements",
+      "category": "Protein",
+      "url": "https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE",
+      "platform": "shopify_variant",
+      "variant_match": "1kg",
+      "servings": 33,
+      "price": null,
+      "error": "404 Client Error: Not Found for url: https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE"
     },
     {
       "name": "100% Pure Micronized Creatine (300g, via Suppz)",
