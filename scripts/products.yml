@@ -10,6 +10,24 @@
   url: "https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs"
   servings: 38
 
+- name: "Gold Standard 100% Whey - Cookies & Cream (5lb, GNC)"
+  brand: "GNC (Optimum Nutrition)"
+  category: "Protein"
+  url: "https://www.gnc.com/whey-protein/350254.html"
+  servings: 68
+
+- name: "Gold Standard 100% Whey - Cookies & Cream (5lb, via GNC)"
+  brand: "GNC (Optimum Nutrition)"
+  category: "Protein"
+  url: "https://www.gnc.com/whey-protein/350254.html"
+  servings: 68
+
+- name: "100% Pure Micronized Creatine (300g, via Suppz)"
+  brand: "Suppz"
+  category: "Creatine"
+  url: "https://suppz.com/products/suppz-com-100-pure-micronized-creatine-300g"
+  servings: 60
+
 - name: "Micronized Creatine Powder (0.66lb)"
   brand: "Optimum Nutrition"
   category: "Creatine"
