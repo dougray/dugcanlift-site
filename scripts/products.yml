@@ -1,0 +1,11 @@
+- name: "Gold Standard 100% Whey (2lb)"
+  brand: "Optimum Nutrition"
+  category: "Protein"
+  url: "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder"
+  servings: 29
+
+- name: "Micronized Creatine Powder (0.66lb)"
+  brand: "Optimum Nutrition"
+  category: "Creatine"
+  url: "https://www.optimumnutrition.com/en-us/products/creatine-monohydrate-micronized-powder"
+  servings: 60

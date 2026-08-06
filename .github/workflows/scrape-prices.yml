@@ -1,0 +1,30 @@
+name: Scrape Supplement Prices
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # daily at 8am Central (13:00 UTC)
+  workflow_dispatch:        # lets you trigger it manually from the Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run scraper
+        run: python scripts/scrape_prices.py
+
+      - name: Commit updated prices
+        run: |
+          git config user.name "price-tracker-bot"
+          git config user.email "actions@github.com"
+          git add _data/supplement_prices.json
+          git diff --staged --quiet || git commit -m "Update supplement prices [automated]"
+          git push
