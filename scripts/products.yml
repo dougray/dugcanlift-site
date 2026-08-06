@@ -33,3 +33,15 @@
   category: "Creatine"
   url: "https://nakednutrition.com/products/creatine-monohydrate-powder-500g"
   servings: 100
+
+- name: "Creatine Monohydrate (30 servings)"
+  brand: "Jacked Factory"
+  category: "Creatine"
+  url: "https://www.jackedfactory.com/products/creatine-monohydrate"
+  servings: 30
+
+- name: "Creatine Monohydrate (100 servings)"
+  brand: "Gorilla Mind"
+  category: "Creatine"
+  url: "https://gorillamind.com/products/creatine"
+  servings: 100
