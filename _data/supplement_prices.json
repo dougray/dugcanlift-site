@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T19:55:19.200803+00:00",
+  "last_updated": "2026-08-06T21:34:56.995006+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -9,6 +9,16 @@
       "servings": 29,
       "price": 74.49,
       "cost_per_serving": 2.569,
+      "error": null
+    },
+    {
+      "name": "Whey Protein Concentrate (5lb)",
+      "brand": "Nutricost",
+      "category": "Protein",
+      "url": "https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs",
+      "servings": 38,
+      "price": 51.97,
+      "cost_per_serving": 1.368,
       "error": null
     },
     {

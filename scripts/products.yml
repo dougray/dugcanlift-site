@@ -4,6 +4,12 @@
   url: "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder"
   servings: 29
 
+- name: "Whey Protein Concentrate (5lb)"
+  brand: "Nutricost"
+  category: "Protein"
+  url: "https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs"
+  servings: 38
+
 - name: "Micronized Creatine Powder (0.66lb)"
   brand: "Optimum Nutrition"
   category: "Creatine"
