@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T18:16:21.605552+00:00",
+  "last_updated": "2026-08-06T19:55:19.200803+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -59,6 +59,26 @@
       "servings": 100,
       "price": 21.99,
       "cost_per_serving": 0.22,
+      "error": null
+    },
+    {
+      "name": "Creatine Monohydrate (30 servings)",
+      "brand": "Jacked Factory",
+      "category": "Creatine",
+      "url": "https://www.jackedfactory.com/products/creatine-monohydrate",
+      "servings": 30,
+      "price": 14.99,
+      "cost_per_serving": 0.5,
+      "error": null
+    },
+    {
+      "name": "Creatine Monohydrate (100 servings)",
+      "brand": "Gorilla Mind",
+      "category": "Creatine",
+      "url": "https://gorillamind.com/products/creatine",
+      "servings": 100,
+      "price": 39.99,
+      "cost_per_serving": 0.4,
       "error": null
     }
   ]
