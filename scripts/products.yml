@@ -22,6 +22,18 @@
   url: "https://www.gnc.com/whey-protein/350254.html"
   servings: 68
 
+- name: "MRE Lite Whole Food Protein (2lb)"
+  brand: "Redcon1"
+  category: "Protein"
+  url: "https://redcon1.com/products/mre-lite-meal-replacement"
+  servings: 30
+
+- name: "Farm Fed Whey Isolate"
+  brand: "Axe & Sledge"
+  category: "Protein"
+  url: "https://axeandsledge.com/products/farm-fed-25g-protein"
+  servings: 25
+
 - name: "100% Pure Micronized Creatine (300g, via Suppz)"
   brand: "Suppz"
   category: "Creatine"

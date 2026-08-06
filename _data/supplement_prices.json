@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T21:36:56.243538+00:00",
+  "last_updated": "2026-08-06T21:51:32.070066+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -38,6 +38,26 @@
       "servings": 68,
       "price": null,
       "error": "price not found (no meta tag, no selector match)"
+    },
+    {
+      "name": "MRE Lite Whole Food Protein (2lb)",
+      "brand": "Redcon1",
+      "category": "Protein",
+      "url": "https://redcon1.com/products/mre-lite-meal-replacement",
+      "servings": 30,
+      "price": 46.99,
+      "cost_per_serving": 1.566,
+      "error": null
+    },
+    {
+      "name": "Farm Fed Whey Isolate",
+      "brand": "Axe & Sledge",
+      "category": "Protein",
+      "url": "https://axeandsledge.com/products/farm-fed-25g-protein",
+      "servings": 25,
+      "price": 64.99,
+      "cost_per_serving": 2.6,
+      "error": null
     },
     {
       "name": "100% Pure Micronized Creatine (300g, via Suppz)",
