@@ -436,3 +436,55 @@ input:focus, select:focus {
   font-style: italic;
   max-width: 60ch;
 }
+
+.tools-callout { margin: 2.5rem 0; }
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-rule);
+  border-radius: 6px;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.tool-card:hover {
+  border-color: var(--dcl-accent);
+}
+
+.tool-card:hover .tool-title {
+  color: var(--dcl-accent);
+}
+
+.tool-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--dcl-text);
+  font-size: 1.1rem;
+}
+
+.tool-desc {
+  color: var(--dcl-muted);
+  font-size: 0.9rem;
+}
+
+.tool-card .post-arrow {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}

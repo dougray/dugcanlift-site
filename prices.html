@@ -1,0 +1,43 @@
+---
+layout: page
+title: Supplement Price Tracker
+permalink: /prices/
+---
+
+<div class="calc">
+  <p class="hero-eyebrow">updated daily</p>
+  <h1 class="calc-title">Supplement Price Tracker</h1>
+  <p class="calc-sub">Prices pulled directly from brand sites, refreshed automatically. Cost-per-serving lets you compare apples to apples across different container sizes.</p>
+
+  {% assign last_updated = site.data.supplement_prices.last_updated %}
+  <p class="calc-note">Last updated: {{ last_updated | date: "%B %-d, %Y %-I:%M %p" }} UTC</p>
+
+  {% assign categories = site.data.supplement_prices.products | map: "category" | uniq %}
+  {% for category in categories %}
+    <h2 class="section-label">{{ category }}</h2>
+    <hr class="chalk-rule">
+    <ul class="post-list">
+      {% assign items = site.data.supplement_prices.products | where: "category", category %}
+      {% for item in items %}
+        <li class="post-row">
+          <a class="post-link" href="{{ item.url }}" target="_blank" rel="noopener">
+            <span class="post-title">
+              {{ item.brand }} — {{ item.name }}
+              {% if item.price %}
+                <span class="plate-value">${{ item.price }}</span>
+                {% if item.cost_per_serving %}
+                  <span class="calc-note">(${{ item.cost_per_serving }}/serving)</span>
+                {% endif %}
+              {% else %}
+                <span class="calc-note">price unavailable</span>
+              {% endif %}
+            </span>
+            <span class="post-arrow">&rarr;</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+  <p class="calc-note">Links go directly to the brand's own site — no affiliate links, no markup.</p>
+</div>

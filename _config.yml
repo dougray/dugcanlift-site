@@ -32,6 +32,7 @@ facebook_username: dugcanlift
 header_pages:
   - about.markdown
   - calculator.html
+  - prices.html
 
 # Build settings
 theme: minima

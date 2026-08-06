@@ -1,0 +1,25 @@
+{
+  "last_updated": "2026-08-06T17:52:59.613541+00:00",
+  "products": [
+    {
+      "name": "Gold Standard 100% Whey (2lb)",
+      "brand": "Optimum Nutrition",
+      "category": "Protein",
+      "url": "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder",
+      "servings": 29,
+      "price": 74.49,
+      "cost_per_serving": 2.569,
+      "error": null
+    },
+    {
+      "name": "Micronized Creatine Powder (0.66lb)",
+      "brand": "Optimum Nutrition",
+      "category": "Creatine",
+      "url": "https://www.optimumnutrition.com/en-us/products/creatine-monohydrate-micronized-powder",
+      "servings": 60,
+      "price": 20.49,
+      "cost_per_serving": 0.341,
+      "error": null
+    }
+  ]
+}
