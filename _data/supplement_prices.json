@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T21:34:56.995006+00:00",
+  "last_updated": "2026-08-06T21:36:56.243538+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -19,6 +19,34 @@
       "servings": 38,
       "price": 51.97,
       "cost_per_serving": 1.368,
+      "error": null
+    },
+    {
+      "name": "Gold Standard 100% Whey - Cookies & Cream (5lb, GNC)",
+      "brand": "GNC (Optimum Nutrition)",
+      "category": "Protein",
+      "url": "https://www.gnc.com/whey-protein/350254.html",
+      "servings": 68,
+      "price": null,
+      "error": "price not found (no meta tag, no selector match)"
+    },
+    {
+      "name": "Gold Standard 100% Whey - Cookies & Cream (5lb, via GNC)",
+      "brand": "GNC (Optimum Nutrition)",
+      "category": "Protein",
+      "url": "https://www.gnc.com/whey-protein/350254.html",
+      "servings": 68,
+      "price": null,
+      "error": "price not found (no meta tag, no selector match)"
+    },
+    {
+      "name": "100% Pure Micronized Creatine (300g, via Suppz)",
+      "brand": "Suppz",
+      "category": "Creatine",
+      "url": "https://suppz.com/products/suppz-com-100-pure-micronized-creatine-300g",
+      "servings": 60,
+      "price": 19.99,
+      "cost_per_serving": 0.333,
       "error": null
     },
     {
