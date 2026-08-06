@@ -317,3 +317,122 @@ pre code {
 .site-nav .trigger .page-link {
   color: var(--dcl-text) !important;
 }
+
+.calc { padding: 3rem 0; }
+
+.calc-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--dcl-text);
+  margin: 0 0 1rem;
+}
+
+.calc-sub {
+  color: var(--dcl-muted);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.calc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 420px;
+}
+
+.calc-row label {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--dcl-muted);
+  margin-bottom: 0.4rem;
+}
+
+input[type="number"], select {
+  width: 100%;
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-rule);
+  color: var(--dcl-text);
+  padding: 0.6rem 0.75rem;
+  border-radius: 4px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--dcl-accent);
+}
+
+.calc-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.calc-toggle { display: flex; gap: 0.5rem; }
+
+.calc-toggle input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.calc-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-rule);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Source Sans 3", sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  color: var(--dcl-muted);
+  margin: 0;
+}
+
+.calc-toggle input:checked + label {
+  background: var(--dcl-accent);
+  color: var(--dcl-bg);
+  border-color: var(--dcl-accent);
+}
+
+.btn, .calc-submit {
+  background: var(--dcl-accent);
+  color: var(--dcl-bg) !important;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.calc-submit:hover { background: #a8391f; }
+
+.calc-results {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--dcl-rule);
+}
+
+.calc-plate-stats { max-width: 480px; margin-bottom: 1.5rem; }
+
+.calc-note {
+  color: var(--dcl-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  max-width: 60ch;
+}
