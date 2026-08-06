@@ -34,6 +34,54 @@
   url: "https://axeandsledge.com/products/farm-fed-25g-protein"
   servings: 25
 
+- name: "100% Whey Protein Isolate"
+  brand: "Like A Pro Supplements"
+  category: "Protein"
+  url: "https://likeaprosupplements.com/products/whey-isolate"
+  servings: 30
+
+- name: "V1 Protein (Mint Cookie)"
+  brand: "V1 Nutra"
+  category: "Protein"
+  url: "https://v1nutra.com/products/v1-protein"
+  servings: 25
+
+- name: "50/50 Formula X Protein Blend (2lb)"
+  brand: "Apollon Nutrition"
+  category: "Protein"
+  url: "https://www.apollonnutrition.com/products/5050-formula-x-protein"
+  servings: 25
+
+- name: "Post Iso Whey Isolate"
+  brand: "Die Tryin Co."
+  category: "Protein"
+  url: "https://dietryin.co/products/post-iso"
+  servings: 25
+
+- name: "Ekko Protein Powder (60 servings)"
+  brand: "EkkoVision"
+  category: "Protein"
+  url: "https://ekkovision.com/products/ekko-protein-powder-3rd-party-tested-copy"
+  servings: 60
+
+- name: "Multi-Source Protein (2lb)"
+  brand: "Black Magic Supply"
+  category: "Protein"
+  url: "https://www.blackmagicsupps.com/products/black-magic-supply-handcrafted-multi-source-protein"
+  servings: 25
+
+- name: "Clear Protein (Fruit Punch)"
+  brand: "SEEQ"
+  category: "Protein"
+  url: "https://seeqsupply.com/products/fruit-punch-clear-protein"
+  servings: 22
+
+- name: "Isothority Whey Isolate"
+  brand: "Nutrithority"
+  category: "Protein"
+  url: "https://nutrithority.com/products/isothority"
+  servings: 30
+
 - name: "100% Pure Micronized Creatine (300g, via Suppz)"
   brand: "Suppz"
   category: "Creatine"

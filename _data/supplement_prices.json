@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T21:51:32.070066+00:00",
+  "last_updated": "2026-08-06T21:58:02.469365+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -58,6 +58,85 @@
       "price": 64.99,
       "cost_per_serving": 2.6,
       "error": null
+    },
+    {
+      "name": "100% Whey Protein Isolate",
+      "brand": "Like A Pro Supplements",
+      "category": "Protein",
+      "url": "https://likeaprosupplements.com/products/whey-isolate",
+      "servings": 30,
+      "price": 54.99,
+      "cost_per_serving": 1.833,
+      "error": null
+    },
+    {
+      "name": "V1 Protein (Mint Cookie)",
+      "brand": "V1 Nutra",
+      "category": "Protein",
+      "url": "https://v1nutra.com/products/v1-protein",
+      "servings": 25,
+      "price": 24.99,
+      "cost_per_serving": 1.0,
+      "error": null
+    },
+    {
+      "name": "50/50 Formula X Protein Blend (2lb)",
+      "brand": "Apollon Nutrition",
+      "category": "Protein",
+      "url": "https://www.apollonnutrition.com/products/5050-formula-x-protein",
+      "servings": 25,
+      "price": 59.99,
+      "cost_per_serving": 2.4,
+      "error": null
+    },
+    {
+      "name": "Post Iso Whey Isolate",
+      "brand": "Die Tryin Co.",
+      "category": "Protein",
+      "url": "https://dietryin.co/products/post-iso",
+      "servings": 25,
+      "price": 52.99,
+      "cost_per_serving": 2.12,
+      "error": null
+    },
+    {
+      "name": "Ekko Protein Powder (60 servings)",
+      "brand": "EkkoVision",
+      "category": "Protein",
+      "url": "https://ekkovision.com/products/ekko-protein-powder-3rd-party-tested-copy",
+      "servings": 60,
+      "price": 69.99,
+      "cost_per_serving": 1.166,
+      "error": null
+    },
+    {
+      "name": "Multi-Source Protein (2lb)",
+      "brand": "Black Magic Supply",
+      "category": "Protein",
+      "url": "https://www.blackmagicsupps.com/products/black-magic-supply-handcrafted-multi-source-protein",
+      "servings": 25,
+      "price": 49.99,
+      "cost_per_serving": 2.0,
+      "error": null
+    },
+    {
+      "name": "Clear Protein (Fruit Punch)",
+      "brand": "SEEQ",
+      "category": "Protein",
+      "url": "https://seeqsupply.com/products/fruit-punch-clear-protein",
+      "servings": 22,
+      "price": 54.0,
+      "cost_per_serving": 2.455,
+      "error": null
+    },
+    {
+      "name": "Isothority Whey Isolate",
+      "brand": "Nutrithority",
+      "category": "Protein",
+      "url": "https://nutrithority.com/products/isothority",
+      "servings": 30,
+      "price": null,
+      "error": "price not found (no meta tag, no selector match)"
     },
     {
       "name": "100% Pure Micronized Creatine (300g, via Suppz)",
