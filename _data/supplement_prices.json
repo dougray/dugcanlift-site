@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T18:09:49.849571+00:00",
+  "last_updated": "2026-08-06T18:13:20.584451+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -29,6 +29,26 @@
       "servings": 100,
       "price": 16.97,
       "cost_per_serving": 0.17,
+      "error": null
+    },
+    {
+      "name": "Platinum 100% Creatine",
+      "brand": "MuscleTech",
+      "category": "Creatine",
+      "url": "https://www.muscletech.com/products/platinum-100-creatine",
+      "servings": 80,
+      "price": 22.99,
+      "cost_per_serving": 0.287,
+      "error": null
+    },
+    {
+      "name": "Creatine HMB (30 servings)",
+      "brand": "Transparent Labs",
+      "category": "Creatine",
+      "url": "https://www.transparentlabs.com/products/creatine-hmb",
+      "servings": 30,
+      "price": 49.99,
+      "cost_per_serving": 1.666,
       "error": null
     }
   ]
