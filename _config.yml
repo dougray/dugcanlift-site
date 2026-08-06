@@ -29,6 +29,10 @@ tiktok_username: dugcanlift
 youtube_username: dugcanlift
 facebook_username: dugcanlift
 
+header_pages:
+  - about.markdown
+  - calculator.html
+
 # Build settings
 theme: minima
 plugins:
