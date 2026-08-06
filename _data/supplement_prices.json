@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T18:13:20.584451+00:00",
+  "last_updated": "2026-08-06T18:16:21.605552+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -49,6 +49,16 @@
       "servings": 30,
       "price": 49.99,
       "cost_per_serving": 1.666,
+      "error": null
+    },
+    {
+      "name": "Creatine Monohydrate Powder (1.1lb)",
+      "brand": "Naked Nutrition",
+      "category": "Creatine",
+      "url": "https://nakednutrition.com/products/creatine-monohydrate-powder-500g",
+      "servings": 100,
+      "price": 21.99,
+      "cost_per_serving": 0.22,
       "error": null
     }
   ]
