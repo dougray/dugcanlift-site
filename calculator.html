@@ -70,6 +70,16 @@ permalink: /calculator/
       </select>
     </div>
 
+    <div class="calc-row">
+      <label for="fat-target">Fat Target</label>
+      <select id="fat-target">
+        <option value="0.20">20% of calories</option>
+        <option value="0.25" selected>25% of calories</option>
+        <option value="0.30">30% of calories</option>
+        <option value="0.35">35% of calories</option>
+      </select>
+    </div>
+
     <button type="submit" class="btn calc-submit">Calculate</button>
   </form>
 
@@ -94,6 +104,10 @@ permalink: /calculator/
         <span class="plate-label">Carbs</span>
         <span class="plate-value" id="result-carbs">—</span>
       </div>
+      <div class="plate-row">
+        <span class="plate-label">Fiber</span>
+        <span class="plate-value" id="result-fiber">—</span>
+      </div>
     </div>
 
     <p class="calc-note">This is a starting estimate, not a prescription. Adjust up or down 100-200 calories based on real-world results.</p>
@@ -116,6 +130,7 @@ permalink: /calculator/
     var activity = parseFloat(document.getElementById('activity').value);
     var goalAdjust = parseFloat(document.getElementById('goal').value);
     var proteinPerLb = parseFloat(document.getElementById('protein-target').value);
+    var fatPercent = parseFloat(document.getElementById('fat-target').value);
 
     var weightKg = weightLb * 0.453592;
     var heightCm = ((heightFt * 12) + heightIn) * 2.54;
@@ -133,16 +148,19 @@ permalink: /calculator/
     var proteinG = Math.round(proteinPerLb * weightLb);
     var proteinCal = proteinG * 4;
 
-    var fatCal = targetCalories * 0.28;
+    var fatCal = targetCalories * fatPercent;
     var fatG = Math.round(fatCal / 9);
 
     var remainingCal = targetCalories - proteinCal - (fatG * 9);
     var carbsG = Math.round(Math.max(remainingCal, 0) / 4);
 
+    var fiberG = Math.round((targetCalories / 1000) * 14);
+
     document.getElementById('result-calories').textContent = targetCalories.toLocaleString() + ' kcal';
     document.getElementById('result-protein').textContent = proteinG + ' g';
     document.getElementById('result-fat').textContent = fatG + ' g';
     document.getElementById('result-carbs').textContent = carbsG + ' g';
+    document.getElementById('result-fiber').textContent = fiberG + ' g';
 
     results.hidden = false;
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
