@@ -15,3 +15,15 @@
   category: "Creatine"
   url: "https://nutricost.com/products/nutricost-creatine-monohydrate-powder-500-grams"
   servings: 100
+
+- name: "Platinum 100% Creatine"
+  brand: "MuscleTech"
+  category: "Creatine"
+  url: "https://www.muscletech.com/products/platinum-100-creatine"
+  servings: 80
+
+- name: "Creatine HMB (30 servings)"
+  brand: "Transparent Labs"
+  category: "Creatine"
+  url: "https://www.transparentlabs.com/products/creatine-hmb"
+  servings: 30
