@@ -22,11 +22,14 @@ def scrape_product(product):
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "lxml")
 
-        # Primary method: Shopify/Open Graph meta tag (stable across theme redesigns)
+        # Primary method: Shopify/Open Graph meta tags (stable across theme redesigns)
+        # Different stores use different property names for the same thing
         price = None
-        meta_tag = soup.find("meta", property="product:price:amount")
-        if meta_tag and meta_tag.get("content"):
-            price = float(meta_tag["content"])
+        for prop in ["product:price:amount", "og:price:amount"]:
+            meta_tag = soup.find("meta", property=prop)
+            if meta_tag and meta_tag.get("content"):
+                price = float(meta_tag["content"])
+                break
 
         # Fallback: try a CSS selector if provided and meta tag missing
         if price is None and product.get("price_selector"):
