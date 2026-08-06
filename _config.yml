@@ -30,6 +30,7 @@ youtube_username: dugcanlift
 facebook_username: dugcanlift
 
 header_pages:
+  - index.markdown
   - about.markdown
   - calculator.html
   - prices.html
