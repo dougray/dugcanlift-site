@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1c1b19">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LIFT">
@@ -117,7 +118,7 @@
 
   <div class="card hidden" id="food-search">
     <p class="muted">Searches Open Food Facts. Only your search term is sent.</p>
-    <input type="text" id="fs-query" placeholder="Food or brand">
+    <input type="text" id="fs-query" placeholder="Food, brand, or barcode number" inputmode="search">
     <div class="row">
       <button id="fs-go">Search</button>
       <button class="ghost" id="fs-cancel">Cancel</button>
