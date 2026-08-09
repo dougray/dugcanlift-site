@@ -33,6 +33,7 @@ header_pages:
   - index.markdown
   - about.markdown
   - calculator.html
+  - app.html
   - prices.html
 
 # Build settings
