@@ -637,15 +637,17 @@ $('#food-search-open').onclick = () => {
 };
 $('#fs-cancel').onclick = () => $('#food-search').classList.add('hidden');
 
-/* Open Food Facts has two hosts and they behave differently from a browser:
+/* Food lookups go through a small Cloudflare Worker rather than straight to
+ * Open Food Facts.
  *
- *   search.openfoodfacts.org  sends no CORS headers, so fetch is blocked
- *   world.openfoodfacts.org   allows browser requests
+ * Their two hosts each refuse one of the paths we need: search.openfoodfacts.org
+ * sends no CORS headers so browsers block it, and world.openfoodfacts.org's
+ * search endpoint returns 503 to datacentre traffic. The proxy calls them
+ * server-side, where CORS doesn't apply, and adds the header on the way back.
  *
- * The Android app uses the first because the second's search endpoint returns
- * 503 for it. From the browser it's the other way round, so this uses world.
+ * Source: worker.js in this repo.
  */
-const OFF_HOST = 'https://world.openfoodfacts.org';
+const PROXY = 'https://lift-proxy.dugcanlift.workers.dev';
 
 function showResults(items) {
   const box = $('#fs-results');
@@ -677,10 +679,9 @@ async function runSearch(query) {
 
   try {
     if (isBarcode) {
-      const res = await fetch(`${OFF_HOST}/api/v2/product/${query}.json` +
-        '?fields=code,product_name,brands,serving_size,nutriments');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const res = await fetch(`${PROXY}/barcode/${query}`);
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
       if (data.status !== 1 || !data.product) {
         box.innerHTML = '';
         box.appendChild(el('p', 'muted', 'No product found for that barcode.'));
@@ -691,13 +692,11 @@ async function runSearch(query) {
       return;
     }
 
-    const url = `${OFF_HOST}/cgi/search.pl?search_terms=${encodeURIComponent(query)}` +
-      '&search_simple=1&action=process&json=1&page_size=20' +
-      '&fields=code,product_name,brands,serving_size,nutriments';
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const res = await fetch(`${PROXY}/search?q=${encodeURIComponent(query)}`);
     const data = await res.json();
-    showResults((data.products || []).map(parseProduct).filter(Boolean));
+    if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
+    // Search-a-licious returns "hits"; the barcode endpoint returns a product.
+    showResults((data.hits || []).map(parseProduct).filter(Boolean));
   } catch (e) {
     box.innerHTML = '';
     box.appendChild(el('p', 'muted', `Could not reach Open Food Facts (${e.message}).`));
