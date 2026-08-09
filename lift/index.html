@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c1b19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LIFT">
+<title>LIFT</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>LIFT</h1>
+</header>
+
+<nav id="tabs">
+  <button data-tab="home" class="active">Home</button>
+  <button data-tab="food">Food</button>
+  <button data-tab="train">Train</button>
+</nav>
+
+<main>
+
+<!-- ---------------- HOME ---------------- -->
+<section id="home" class="tab active">
+  <div id="goal-summary"></div>
+
+  <h2>Training</h2>
+  <div class="card" id="today-training"></div>
+
+  <h2>Fuel so far today</h2>
+  <div class="card" id="today-fuel"></div>
+
+  <h2>Last 7 days workouts</h2>
+  <div class="card" id="week-training"></div>
+
+  <h2>Exercise progression</h2>
+  <div id="progress-chips" class="chips"></div>
+  <div class="card" id="progress-card"></div>
+
+  <h2>Last 7 days fueling</h2>
+  <div class="card">
+    <div id="week-fuel-stats"></div>
+    <p class="muted">Calories</p>
+    <canvas id="chart-calories" height="150"></canvas>
+    <div class="legend" id="legend-calories"></div>
+    <p class="muted" style="margin-top:20px">Macros (g)</p>
+    <canvas id="chart-macros" height="150"></canvas>
+    <div class="legend" id="legend-macros"></div>
+  </div>
+
+  <button class="wide ghost" id="open-calc">Set / recalculate my goal</button>
+</section>
+
+<!-- ---------------- CALCULATOR ---------------- -->
+<section id="calc" class="tab">
+  <h2>Macro calculator</h2>
+  <div class="card">
+    <label>Sex</label>
+    <div class="chips" id="calc-sex"></div>
+
+    <label for="c-age">Age</label>
+    <input type="number" id="c-age" inputmode="numeric">
+
+    <label for="c-weight">Weight (lb)</label>
+    <input type="number" id="c-weight" inputmode="decimal">
+
+    <div class="row">
+      <div>
+        <label for="c-ft">Height (ft)</label>
+        <input type="number" id="c-ft" inputmode="numeric">
+      </div>
+      <div>
+        <label for="c-in">Height (in)</label>
+        <input type="number" id="c-in" inputmode="numeric">
+      </div>
+    </div>
+
+    <label>Activity</label>
+    <div class="chips" id="calc-activity"></div>
+
+    <label>Goal</label>
+    <div class="chips" id="calc-goal"></div>
+
+    <label>Protein</label>
+    <div class="chips" id="calc-protein"></div>
+
+    <label>Fat</label>
+    <div class="chips" id="calc-fat"></div>
+
+    <div id="calc-result"></div>
+
+    <button class="wide" id="calc-save">Save as my goal</button>
+    <button class="wide ghost" id="calc-cancel">Cancel</button>
+  </div>
+</section>
+
+<!-- ---------------- FOOD ---------------- -->
+<section id="food" class="tab">
+  <div class="datenav">
+    <button id="food-prev">Previous</button>
+    <span id="food-date"></span>
+    <button id="food-next">Next</button>
+  </div>
+
+  <div class="card" id="food-summary"></div>
+
+  <div class="row">
+    <button id="food-add">Add food</button>
+    <button class="ghost" id="food-search-open">Search</button>
+  </div>
+
+  <div class="card hidden" id="food-search">
+    <p class="muted">Searches Open Food Facts. Only your search term is sent.</p>
+    <input type="text" id="fs-query" placeholder="Food or brand">
+    <div class="row">
+      <button id="fs-go">Search</button>
+      <button class="ghost" id="fs-cancel">Cancel</button>
+    </div>
+    <div id="fs-results"></div>
+  </div>
+
+  <div class="card hidden" id="food-form">
+    <label for="f-name">Name</label>
+    <input type="text" id="f-name">
+    <label>Meal</label>
+    <div class="chips" id="f-meal"></div>
+    <div class="row">
+      <div><label for="f-servings">Servings</label><input type="number" id="f-servings" value="1" inputmode="decimal"></div>
+      <div><label for="f-cal">Calories</label><input type="number" id="f-cal" inputmode="numeric"></div>
+    </div>
+    <div class="row">
+      <div><label for="f-p">Protein (g)</label><input type="number" id="f-p" inputmode="numeric"></div>
+      <div><label for="f-f">Fat (g)</label><input type="number" id="f-f" inputmode="numeric"></div>
+    </div>
+    <div class="row">
+      <div><label for="f-c">Carbs (g)</label><input type="number" id="f-c" inputmode="numeric"></div>
+      <div><label for="f-fib">Fiber (g)</label><input type="number" id="f-fib" inputmode="numeric"></div>
+    </div>
+    <div class="row">
+      <button id="f-save">Save</button>
+      <button class="ghost" id="f-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div id="recent-chips" class="chips"></div>
+  <div id="food-list"></div>
+</section>
+
+<!-- ---------------- TRAIN ---------------- -->
+<section id="train" class="tab">
+  <div class="datenav">
+    <button id="train-prev">Previous</button>
+    <span id="train-date"></span>
+    <button id="train-next">Next</button>
+  </div>
+
+  <h2>Focus</h2>
+  <div class="chips" id="focus-chips"></div>
+
+  <div id="routine-list"></div>
+  <div id="session-list"></div>
+
+  <button class="wide" id="train-start">Start workout</button>
+</section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
