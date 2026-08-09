@@ -1,0 +1,64 @@
+---
+layout: page
+title: LIFT
+permalink: /app/
+---
+
+<div class="calc">
+  <p class="hero-eyebrow">android app</p>
+  <h1 class="calc-title">LIFT</h1>
+  <p class="calc-sub">A nutrition and training tracker that works offline and keeps your data on your phone. No accounts, no ads, no analytics, no subscription. Free and open source.</p>
+
+  <p><strong>Pre-release.</strong> It works, but it's early — expect rough edges, and back up nothing you can't afford to lose yet.</p>
+
+  <h2>What it does</h2>
+
+  <h3>Your numbers, in one place</h3>
+  <p>Opens on today: calories and macros against your goal, what you've eaten, and what you trained. Below that, a week of stats — days logged, average calories, workouts, total volume — and charts showing how it's all trending.</p>
+  <p>Days you didn't log show as gaps rather than zeros, and the weekly average divides by days you actually tracked. Missing a day shouldn't look like eating less.</p>
+
+  <h3>The same calculator that's on this site</h3>
+  <p>Mifflin-St Jeor, five activity levels, lose/maintain/gain, and selectable protein and fat targets — identical to the <a href="{{ '/calculator/' | relative_url }}">web calculator</a>, so both give you the same answer. Save the result and everything else tracks against it.</p>
+
+  <h3>Food logging that isn't tedious</h3>
+  <ul>
+    <li>Scan a barcode and the nutrition comes straight off the packet</li>
+    <li>Search by name against Open Food Facts</li>
+    <li>One tap to re-log anything you've eaten before</li>
+    <li>Grouped by meal, with calories per meal</li>
+    <li>Manual entry for anything the database doesn't have</li>
+    <li>Scroll back through previous days</li>
+  </ul>
+
+  <h3>Training that adapts to how you train</h3>
+  <p>Every set can record weight, reps, RPE, time, and distance. Pick a focus — bodybuilding, powerlifting, CrossFit, Hyrox, or endurance — and you only see the fields that matter to you. Switching focus never loses anything.</p>
+  <ul>
+    <li>Equipment tracked separately, so cable and machine pulldowns keep separate histories</li>
+    <li>Shows what you lifted last time, right under the exercise</li>
+    <li>New sets prefill from your last one</li>
+    <li>Save any workout as a routine and start it again next week</li>
+    <li>Per-exercise progression charts with estimated 1RM</li>
+  </ul>
+
+  <h2>Your data is yours</h2>
+  <p>Everything you log stays on your device. There's no account to create, nothing syncs to a server, and there is no analytics or advertising code in the app at all.</p>
+  <p>The one exception is food lookup: searching or scanning sends that search term or barcode to Open Food Facts and nothing else. Your log, your weight, and your workouts are never transmitted. Enter foods by hand and the app never touches the network.</p>
+  <p><a href="{{ '/app/privacy/' | relative_url }}">Read the full privacy policy</a></p>
+
+  <h2>Get it</h2>
+  <p>Not on Google Play or F-Droid yet. For now you can install it directly:</p>
+  <p><a href="https://github.com/dougray/dugcanlift-macrocalc/releases">Download the latest release</a></p>
+  <p class="calc-sub">Android will warn you about installing from an unknown developer — that's expected for any app not distributed through a store. You'll need to allow installation from whichever app you download it with.</p>
+
+  <h2>Open source</h2>
+  <p>The full source is public under the AGPL-3.0 licence. Anyone can read it, build it, or check that the privacy claims above are true.</p>
+  <p><a href="https://github.com/dougray/dugcanlift-macrocalc">View the source on GitHub</a></p>
+
+  <h2>Coming</h2>
+  <ul>
+    <li>Editing a logged entry without deleting it first</li>
+    <li>A built-in exercise library</li>
+    <li>Ready-made splits — push/pull/legs, upper/lower, full body</li>
+    <li>Export, for sending a week to your coach</li>
+  </ul>
+</div>
