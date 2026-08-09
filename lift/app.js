@@ -637,53 +637,118 @@ $('#food-search-open').onclick = () => {
 };
 $('#fs-cancel').onclick = () => $('#food-search').classList.add('hidden');
 
-$('#fs-go').onclick = async () => {
-  const q = $('#fs-query').value.trim();
-  if (!q) return;
+/* Open Food Facts has two hosts and they behave differently from a browser:
+ *
+ *   search.openfoodfacts.org  sends no CORS headers, so fetch is blocked
+ *   world.openfoodfacts.org   allows browser requests
+ *
+ * The Android app uses the first because the second's search endpoint returns
+ * 503 for it. From the browser it's the other way round, so this uses world.
+ */
+const OFF_HOST = 'https://world.openfoodfacts.org';
+
+function showResults(items) {
+  const box = $('#fs-results');
+  box.innerHTML = '';
+  if (!items.length) {
+    box.appendChild(el('p', 'muted', 'Nothing found for that.'));
+    return;
+  }
+  items.forEach((h) => {
+    const row = el('div', 'entry');
+    const info = el('div');
+    info.appendChild(el('div', null, h.name));
+    info.appendChild(el('div', 'muted',
+      `${h.calories} kcal, ${h.basis} - P ${h.proteinG} - F ${h.fatG} - C ${h.carbsG}`));
+    row.appendChild(info);
+    row.onclick = () => { $('#food-search').classList.add('hidden'); openFoodForm(h); };
+    box.appendChild(row);
+  });
+}
+
+async function runSearch(query) {
   const box = $('#fs-results');
   box.innerHTML = '';
   box.appendChild(el('p', 'muted', 'Searching...'));
+
+  // A string of digits is almost certainly a barcode, so look it up directly
+  // rather than searching for the number as text.
+  const isBarcode = /^[0-9]{8,14}$/.test(query);
+
   try {
-    const url = 'https://search.openfoodfacts.org/search?q=' + encodeURIComponent(q) +
-      '&page_size=20&fields=code,product_name,brands,serving_size,nutriments';
+    if (isBarcode) {
+      const res = await fetch(`${OFF_HOST}/api/v2/product/${query}.json` +
+        '?fields=code,product_name,brands,serving_size,nutriments');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if (data.status !== 1 || !data.product) {
+        box.innerHTML = '';
+        box.appendChild(el('p', 'muted', 'No product found for that barcode.'));
+        return;
+      }
+      const one = parseProduct(data.product);
+      showResults(one ? [one] : []);
+      return;
+    }
+
+    const url = `${OFF_HOST}/cgi/search.pl?search_terms=${encodeURIComponent(query)}` +
+      '&search_simple=1&action=process&json=1&page_size=20' +
+      '&fields=code,product_name,brands,serving_size,nutriments';
     const res = await fetch(url);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    const hits = (data.hits || []).map(parseProduct).filter(Boolean);
-    box.innerHTML = '';
-    if (!hits.length) { box.appendChild(el('p', 'muted', 'Nothing found for that.')); return; }
-    hits.forEach((h) => {
-      const row = el('div', 'entry');
-      const info = el('div');
-      info.appendChild(el('div', null, h.name));
-      info.appendChild(el('div', 'muted',
-        `${h.calories} kcal, per 100 g - P ${h.proteinG} - F ${h.fatG} - C ${h.carbsG}`));
-      row.appendChild(info);
-      row.onclick = () => { $('#food-search').classList.add('hidden'); openFoodForm(h); };
-      box.appendChild(row);
-    });
+    showResults((data.products || []).map(parseProduct).filter(Boolean));
   } catch (e) {
     box.innerHTML = '';
-    box.appendChild(el('p', 'muted', 'Could not reach Open Food Facts.'));
+    box.appendChild(el('p', 'muted', `Could not reach Open Food Facts (${e.message}).`));
   }
+}
+
+$('#fs-go').onclick = () => {
+  const q = $('#fs-query').value.trim();
+  if (q) runSearch(q);
 };
+
+$('#fs-query').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); $('#fs-go').click(); }
+});
 
 function parseProduct(p) {
   const n = p.nutriments || {};
   const num = (v) => (typeof v === 'number' ? v : parseFloat(v));
-  const cal = num(n['energy-kcal_100g']);
-  // No calorie figure makes an entry useless for tracking — drop it rather
-  // than log a misleading zero.
-  if (!cal && cal !== 0) return null;
   if (!p.product_name) return null;
+
+  const read = (suffix) => {
+    const cal = num(n[`energy-kcal_${suffix}`]);
+    // No calorie figure makes an entry useless for tracking — better to skip
+    // the product than log a misleading zero.
+    if (isNaN(cal)) return null;
+    return {
+      calories: Math.round(cal),
+      proteinG: Math.round(num(n[`proteins_${suffix}`]) || 0),
+      fatG: Math.round(num(n[`fat_${suffix}`]) || 0),
+      carbsG: Math.round(num(n[`carbohydrates_${suffix}`]) || 0),
+      fiberG: Math.round(num(n[`fiber_${suffix}`]) || 0),
+    };
+  };
+
+  const perServing = read('serving');
+  const per100 = read('100g');
+  const values = perServing || per100;
+  if (!values) return null;
+
   const brand = Array.isArray(p.brands) ? p.brands[0] : p.brands;
+  const display = brand ? `${p.product_name} (${brand})` : p.product_name;
+  const serving = (p.serving_size || '').trim();
+
+  // Say which basis the numbers are on, so nobody logs a bowl of rice
+  // thinking it was a portion when it was 100 grams.
+  const basis = perServing ? (serving || 'per serving') : 'per 100 g';
+
   return {
-    name: (brand ? `${p.product_name} (${brand})` : p.product_name) + ', per 100 g',
-    calories: Math.round(cal),
-    proteinG: Math.round(num(n.proteins_100g) || 0),
-    fatG: Math.round(num(n.fat_100g) || 0),
-    carbsG: Math.round(num(n.carbohydrates_100g) || 0),
-    fiberG: Math.round(num(n.fiber_100g) || 0),
+    name: `${display}, ${basis}`,
+    basis,
+    ...values,
   };
 }
 
