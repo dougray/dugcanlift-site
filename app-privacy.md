@@ -8,7 +8,7 @@ permalink: /app/privacy/
 
 **LIFT** (`com.dugcanlift.macrocalc`)
 
-Last updated: 8 August 2026
+Last updated: 9 August 2026
 
 ## The short version
 
@@ -31,6 +31,11 @@ Other apps cannot read it. It is never uploaded.
 The figures you enter into the calculator — sex, age, weight, height, activity
 level — are used to compute your goal and are not retained beyond the resulting
 numbers.
+
+Your daily step goal is stored the same way as your training focus. Today's
+step count itself is **not** stored by the app — it's read live from Health
+Connect each time you open the dashboard and is never written anywhere,
+including back to Health Connect.
 
 ## What leaves your device
 
@@ -60,6 +65,9 @@ requests whatsoever.
 - **Camera** — used solely to read a barcode when you tap Scan. No image or
   video is stored or transmitted; the camera feed is decoded on the device and
   discarded.
+- **Health Connect (step count, read-only)** — used to show today's steps on
+  the dashboard. The app cannot write to Health Connect and never sends step
+  data anywhere; it stays between Health Connect and the app, on your device.
 
 ## Analytics, advertising, and tracking
 
