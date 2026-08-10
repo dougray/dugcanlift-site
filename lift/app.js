@@ -6,7 +6,7 @@
 
 /* ---------------- storage ---------------- */
 
-const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings' };
+const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps' };
 
 function load(key, fallback) {
   try {
@@ -31,6 +31,9 @@ let goal = load(KEY.goal, null);
 let food = load(KEY.food, []);
 let workouts = load(KEY.workouts, []);
 let settings = load(KEY.settings, { focus: 'BODYBUILDING' });
+// Keyed by date, e.g. { '2026-08-09': 4200 }. Entered by hand — see renderSteps
+// for why this can't read from Health Connect / HealthKit like the native apps.
+let steps = load(KEY.steps, {});
 
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
 
@@ -157,13 +160,13 @@ function statline(parent, label, value) {
   parent.appendChild(row);
 }
 
-function bar(parent, name, eaten, target) {
+function bar(parent, name, eaten, target, unit = 'g') {
   const wrap = el('div');
   wrap.style.margin = '10px 0';
   const top = el('div', 'statline');
   top.appendChild(el('span', null, name));
   const over = target > 0 && eaten > target;
-  const val = el('span', null, `${eaten} / ${target} g`);
+  const val = el('span', null, `${eaten} / ${target} ${unit}`);
   if (over) val.style.color = 'var(--accent)';
   top.appendChild(val);
   wrap.appendChild(top);
@@ -330,8 +333,54 @@ function renderHome() {
   statline(wt, 'Total volume', `${Math.round(weekSessions.reduce((t, s) => t + sessionVolume(s), 0))} lb`);
   statline(wt, 'Total sets', String(weekSessions.reduce((t, s) => t + sessionSets(s), 0)));
 
+  renderSteps();
   renderProgress();
   renderWeekFuel(week);
+}
+
+/* Manual entry only — there's no browser API for HealthKit or Health Connect,
+ * so this can't auto-read steps the way the native Android and iOS apps do.
+ * See the note rendered into the card below. */
+function renderSteps() {
+  const today = todayKey();
+  const goalSteps = settings.stepGoal || 10000;
+  const card = $('#today-steps');
+  card.innerHTML = '';
+
+  bar(card, 'Today', steps[today] || 0, goalSteps, 'steps');
+
+  const input = el('input');
+  input.type = 'number';
+  input.inputMode = 'numeric';
+  input.placeholder = 'Steps today';
+  input.style.marginTop = '12px';
+  input.value = steps[today] || '';
+  input.onchange = () => {
+    const v = parseInt(input.value, 10);
+    steps[today] = isNaN(v) || v < 0 ? 0 : v;
+    save(KEY.steps, steps);
+    renderSteps();
+  };
+  card.appendChild(input);
+
+  const row = el('div', 'row');
+  const editGoal = el('button', 'ghost', 'Edit goal');
+  editGoal.onclick = () => {
+    const v = prompt('Daily step goal', String(goalSteps));
+    if (v === null) return;
+    const n = parseInt(v, 10);
+    if (!isNaN(n) && n > 0) {
+      settings.stepGoal = n;
+      save(KEY.settings, settings);
+      renderSteps();
+    }
+  };
+  row.appendChild(editGoal);
+  card.appendChild(row);
+
+  card.appendChild(el('p', 'muted',
+    'Entered by hand — browsers can’t read Health Connect or HealthKit. ' +
+    'The Android and iOS apps track this automatically.'));
 }
 
 let selectedExercise = null;
