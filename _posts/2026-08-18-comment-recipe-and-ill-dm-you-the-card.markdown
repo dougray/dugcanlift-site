@@ -2,6 +2,7 @@
 layout: post
 title:  "Comment \"Recipe\" And I'll DM You The Card"
 date:   2026-08-18 09:00:00 -0500
+published: false
 ---
 
 Every recipe post gets the same comment eventually: "can you send me this recipe??" I used to screenshot the card, dig up the caption, and paste it into a DM by hand — fine for one comment, not fine for the fifteenth one on the same post. So I built the annoying part away.
