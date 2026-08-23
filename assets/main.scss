@@ -501,14 +501,24 @@ input:focus, select:focus {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  border: none;
+  color: var(--dcl-text);
+}
+
+// Minima's base table styles stripe even rows with a light-grey background
+// meant for a light theme — kill that explicitly, it's unreadable here.
+.feature-table tr:nth-child(even) {
+  background-color: transparent;
 }
 
 .feature-table th,
 .feature-table td {
   padding: 0.7rem 1rem;
   text-align: left;
+  border: none;
   border-bottom: 1px solid var(--dcl-rule);
   white-space: nowrap;
+  background: transparent;
 }
 
 .feature-table th {
@@ -517,6 +527,7 @@ input:focus, select:focus {
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   color: var(--dcl-muted);
+  background: var(--dcl-bg);
 }
 
 .feature-table td:first-child {
@@ -528,7 +539,7 @@ input:focus, select:focus {
   border-bottom: none;
 }
 
-.feature-table .yes { color: var(--dcl-accent-2); }
+.feature-table .yes { color: var(--dcl-accent-2); font-weight: 600; }
 .feature-table .no { color: var(--dcl-muted); }
 
 @media (max-width: 600px) {
