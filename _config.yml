@@ -35,6 +35,7 @@ header_pages:
   - calculator.html
   - app.html
   - prices.html
+  - lift-install.html
 
 # Build settings
 theme: minima
