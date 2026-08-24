@@ -6,7 +6,8 @@
 
 /* ---------------- storage ---------------- */
 
-const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps' };
+const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps',
+              coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights' };
 
 function load(key, fallback) {
   try {
@@ -34,6 +35,12 @@ let settings = load(KEY.settings, { focus: 'BODYBUILDING' });
 // Keyed by date, e.g. { '2026-08-09': 4200 }. Entered by hand — see renderSteps
 // for why this can't read from Health Connect / HealthKit like the native apps.
 let steps = load(KEY.steps, {});
+// Who to send logs to, and who they are from. See "send to coach" below.
+let coach = load(KEY.coach, { email: '', you: '', id: '', weeks: 8, itemised: false });
+// The calculator's inputs, kept so a coach gets more than a bare calorie
+// number, and so a saved weight becomes a real datapoint on a real date.
+let profile = load(KEY.profile, null);
+let weights = load(KEY.weights, {});
 
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
 
@@ -188,9 +195,15 @@ const CHART = {
 function drawChart(canvas, series, labels) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth;
-  const h = parseInt(canvas.getAttribute('height'), 10);
+  // Scaling for the display below overwrites the height attribute, so the
+  // height the markup asked for is remembered the first time through. Reading
+  // the attribute every time would multiply it by the pixel ratio on every
+  // redraw, and the chart would march off the bottom of its own canvas.
+  if (!canvas.dataset.h) canvas.dataset.h = canvas.getAttribute('height') || '150';
+  const h = parseInt(canvas.dataset.h, 10);
   canvas.width = w * dpr;
   canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
   const ctx = canvas.getContext('2d');
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, w, h);
@@ -280,6 +293,7 @@ document.querySelectorAll('#tabs button').forEach((b) => {
 /* ---------------- home ---------------- */
 
 function renderHome() {
+  renderCoach();
   const today = todayKey();
   const eaten = totals(entriesFor(today));
 
@@ -555,6 +569,21 @@ $('#calc-save').onclick = () => {
   if (!r) return;
   goal = r;
   save(KEY.goal, goal);
+
+  // The numbers that produced the goal are worth keeping: a coach reading a
+  // 2,400 kcal target wants to know it came from a 210 lb 34-year-old, and the
+  // weight is a genuine reading on a genuine day rather than a guess.
+  const inch = parseFloat($('#c-in').value) || 0;
+  profile = {
+    sex: calc.sex,
+    age: parseFloat($('#c-age').value),
+    weightLb: parseFloat($('#c-weight').value),
+    heightIn: parseFloat($('#c-ft').value) * 12 + inch,
+  };
+  save(KEY.profile, profile);
+  weights[todayKey()] = profile.weightLb;
+  save(KEY.weights, weights);
+
   showTab('home');
 };
 $('#calc-cancel').onclick = () => showTab('home');
@@ -959,6 +988,286 @@ $('#train-start').onclick = () => {
   save(KEY.workouts, workouts);
   render();
 };
+
+/* ---------------- send to coach ---------------- */
+
+/* Builds the link documented in /coach/SHARE-FORMAT.md and hands it to the
+ * phone's email app, already addressed and written. There is no upload: the
+ * whole log rides in the fragment, which browsers never send to a server.
+ *
+ * The Android and iOS versions of LIFT produce byte-identical links. Any
+ * change here is a change in three other places too. */
+
+const COACH_URL = 'https://www.dugcanlift.com/coach/';
+
+const WINDOWS = [
+  { label: '4 weeks', weeks: 4 },
+  { label: '8 weeks', weeks: 8 },
+  { label: '12 weeks', weeks: 12 },
+  { label: '6 months', weeks: 26 },
+];
+
+function clientId() {
+  if (!coach.id) {
+    coach.id = uid();
+    save(KEY.coach, coach);
+  }
+  return coach.id;
+}
+
+const toBase64Url = (bytes) => {
+  let binary = '';
+  // Chunked because a spread of 30,000 arguments blows the call stack.
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+};
+
+async function deflateRaw(text) {
+  const bytes = new TextEncoder().encode(text);
+  if (typeof CompressionStream === 'undefined') return null;   // caller sends plain
+  const stream = new Blob([bytes]).stream()
+    .pipeThrough(new CompressionStream('deflate-raw'));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+
+/** The compact payload. Keys are short because every byte is email body. */
+function buildPayload(weeks, itemised) {
+  const span = weeks * 7;
+  const start = shiftDate(todayKey(), -(span - 1));
+  const keys = lastNDays(span);
+
+  const exerciseDict = [];
+  const foodDict = [];
+  const indexIn = (dict, value) => {
+    const at = dict.indexOf(value);
+    return at >= 0 ? at : dict.push(value) - 1;
+  };
+
+  const days = [];
+  keys.forEach((key, offset) => {
+    const day = { k: offset };
+    let any = false;
+
+    const sessions = sessionsFor(key);
+    const exercises = sessions.flatMap((s) => s.exercises || []);
+    if (exercises.length) {
+      any = true;
+      const named = sessions.map((s) => s.name).filter(Boolean);
+      if (named.length) day.n = named[0];
+      day.fo = settings.focus;
+      day.w = exercises.map((ex) => {
+        const index = indexIn(exerciseDict, `${(ex.name || '').trim()}|${(ex.equipment || '').trim()}`);
+        const sets = (ex.sets || []).map((set) => {
+          const tuple = [
+            set.weightLb ?? null, set.reps ?? null, set.rpe ?? null,
+            set.durationSec ?? null, set.distanceMeters ?? null, 0,
+          ];
+          while (tuple.length && !tuple[tuple.length - 1]) tuple.pop();
+          return tuple;
+        });
+        return [index, sets];
+      });
+    }
+
+    const entries = entriesFor(key);
+    if (entries.length) {
+      any = true;
+      if (itemised) {
+        day.f = entries.map((e) => [
+          indexIn(foodDict, e.name || ''), e.servings || 1,
+          e.calories || 0, e.proteinG || 0, e.fatG || 0, e.carbsG || 0, e.fiberG || 0,
+          MEALS.indexOf(mealOf(e)),
+        ]);
+      } else {
+        const t = totals(entries);
+        day.ft = [t.calories, t.proteinG, t.fatG, t.carbsG, t.fiberG];
+      }
+    }
+
+    if (steps[key] != null) { day.st = steps[key]; any = true; }
+    if (weights[key] != null) { day.bw = weights[key]; any = true; }
+
+    if (any) days.push(day);
+  });
+
+  const payload = {
+    v: 1,
+    c: {
+      i: clientId(),
+      n: coach.you || 'A LIFT user',
+      u: 'lb',
+      p: 'web',
+    },
+    r: start,
+    t: todayKey(),
+    z: Math.floor(Date.now() / 1000),
+    x: exerciseDict,
+    d: days,
+  };
+  if (profile) {
+    if (profile.sex) payload.c.s = profile.sex;
+    if (profile.age) payload.c.a = profile.age;
+    if (profile.heightIn) payload.c.h = profile.heightIn;
+  }
+  if (goal) {
+    payload.g = { c: goal.calories, p: goal.proteinG, f: goal.fatG, cb: goal.carbsG, fb: goal.fiberG };
+  }
+  if (foodDict.length) payload.fd = foodDict;
+  return payload;
+}
+
+async function buildLink(weeks, itemised) {
+  const json = JSON.stringify(buildPayload(weeks, itemised));
+  const packed = await deflateRaw(json);
+  const fragment = packed
+    ? '1z' + toBase64Url(packed)
+    : '1u' + toBase64Url(new TextEncoder().encode(json));
+  return COACH_URL + '#' + fragment;
+}
+
+/** The part the coach reads without tapping anything. */
+function weekSummary() {
+  const week = lastNDays(7);
+  let sessions = 0, sets = 0, volume = 0, kcal = 0, protein = 0, logged = 0;
+
+  week.forEach((key) => {
+    const daySessions = sessionsFor(key);
+    if (daySessions.some((s) => (s.exercises || []).length)) sessions++;
+    daySessions.forEach((s) => { sets += sessionSets(s); volume += sessionVolume(s); });
+    const entries = entriesFor(key);
+    if (entries.length) {
+      const t = totals(entries);
+      kcal += t.calories;
+      protein += t.proteinG;
+      logged++;
+    }
+  });
+
+  const lines = [
+    'Last 7 days',
+    `Training   ${sessions} session${sessions === 1 ? '' : 's'} · ${sets} sets`
+      + (volume ? ` · ${Math.round(volume).toLocaleString()} lb` : ''),
+  ];
+  if (logged) {
+    const avgKcal = Math.round(kcal / logged);
+    const avgProtein = Math.round(protein / logged);
+    lines.push(`Fuel       ${avgKcal.toLocaleString()} kcal · ${avgProtein} g protein`
+      + (goal ? `  (goal ${goal.calories.toLocaleString()} · ${goal.proteinG})` : '')
+      + `  over ${logged} logged day${logged === 1 ? '' : 's'}`);
+  } else {
+    lines.push('Fuel       nothing logged this week');
+  }
+
+  const dates = Object.keys(weights).sort();
+  if (dates.length) {
+    const latest = dates[dates.length - 1];
+    lines.push(`Weight     ${weights[latest]} lb on ${shortLabel(latest)}`);
+  }
+  return lines.join('\n');
+}
+
+async function sendToCoach() {
+  const button = $('#coach-send');
+  button.disabled = true;
+  button.textContent = 'Preparing…';
+  try {
+    const link = await buildLink(coach.weeks, coach.itemised);
+    const name = coach.you || 'your client';
+    const subject = `LIFT log from ${name} — ${shortLabel(todayKey())}`;
+    const body = [
+      `Open the log:`,
+      link,
+      ``,
+      weekSummary(),
+      ``,
+      `Covers the last ${coach.weeks} weeks. Sent from LIFT.`,
+    ].join('\n');
+
+    // mailto is plain text by definition, so the link stands on its own line
+    // where every mail client on earth will turn it into something tappable.
+    location.href = `mailto:${encodeURIComponent(coach.email)}`
+      + `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  } catch (e) {
+    alert('Could not build the link: ' + e.message);
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Send to Coach';
+  }
+}
+
+let sizeTimer = null;
+
+function updateLinkSize() {
+  clearTimeout(sizeTimer);
+  sizeTimer = setTimeout(async () => {
+    const note = $('#coach-size');
+    if (!note) return;
+    try {
+      const link = await buildLink(coach.weeks, coach.itemised);
+      const kb = link.length / 1024;
+      note.textContent = `About ${kb.toFixed(1)} KB of email.`
+        + (kb > 16 ? ' That is long enough that some mail apps will break it — send a shorter window.' : '');
+      note.style.color = kb > 16 ? 'var(--accent)' : '';
+    } catch (e) {
+      note.textContent = '';
+    }
+  }, 60);
+}
+
+function renderCoach() {
+  const setup = $('#coach-setup');
+  const ready = $('#coach-ready');
+  const configured = !!coach.email;
+
+  setup.classList.toggle('hidden', configured);
+  ready.classList.toggle('hidden', !configured);
+  if (!configured) {
+    $('#coach-you').value = coach.you || '';
+    $('#coach-email').value = coach.email || '';
+    return;
+  }
+
+  const to = $('#coach-to');
+  to.innerHTML = '';
+  to.appendChild(el('p', 'muted',
+    `Goes to ${coach.email}${coach.you ? `, from ${coach.you}` : ''}. `
+    + 'Your email app opens with it all written — you just hit send.'));
+
+  chips($('#coach-window'), WINDOWS,
+    (i) => coach.weeks === i.weeks,
+    (i) => { coach.weeks = i.weeks; save(KEY.coach, coach); renderCoach(); });
+
+  chips($('#coach-detail'),
+    [{ label: 'Daily totals', v: false }, { label: 'Every food logged', v: true }],
+    (i) => coach.itemised === i.v,
+    (i) => { coach.itemised = i.v; save(KEY.coach, coach); renderCoach(); });
+
+  updateLinkSize();
+}
+
+$('#coach-save').onclick = () => {
+  const email = $('#coach-email').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("That doesn't look like an email address.");
+    return;
+  }
+  coach.email = email;
+  coach.you = $('#coach-you').value.trim();
+  clientId();
+  save(KEY.coach, coach);
+  renderCoach();
+};
+
+$('#coach-change').onclick = () => {
+  $('#coach-setup').classList.remove('hidden');
+  $('#coach-ready').classList.add('hidden');
+  $('#coach-you').value = coach.you || '';
+  $('#coach-email').value = coach.email || '';
+};
+
+$('#coach-send').onclick = sendToCoach;
 
 /* ---------------- boot ---------------- */
 

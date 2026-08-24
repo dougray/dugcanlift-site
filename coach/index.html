@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c1b19">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LIFT Coach">
+<meta name="robots" content="noindex">
+<title>LIFT Coach</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>LIFT <span>Coach</span></h1>
+</header>
+
+<nav id="tabs">
+  <button data-tab="roster" class="active">Roster</button>
+  <button data-tab="client" id="tab-client" disabled>Client</button>
+  <button data-tab="connect">Connect</button>
+</nav>
+
+<main>
+
+<!-- ---------------- INCOMING ---------------- -->
+<section id="incoming" class="banner hidden">
+  <div class="card">
+    <div id="incoming-body"></div>
+    <div class="row">
+      <button id="incoming-save">Add to roster</button>
+      <button class="ghost" id="incoming-cancel">Not now</button>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- ROSTER ---------------- -->
+<section id="roster" class="tab active">
+
+  <div id="roster-empty" class="card hidden">
+    <p class="big">No clients yet.</p>
+    <p class="muted">When a client taps <b>Send to Coach</b> in LIFT, you get an
+      email with a button. Tap it and they land here.</p>
+    <button class="wide ghost" id="empty-connect">How to connect a client</button>
+    <button class="wide ghost" id="empty-demo">Load a sample client</button>
+  </div>
+
+  <div id="roster-alerts"></div>
+
+  <div id="roster-list"></div>
+
+  <div id="roster-tools" class="hidden">
+    <h2>Paste a link</h2>
+    <div class="card">
+      <p class="muted">If tapping the button in the email didn't open the app,
+        paste the link from the bottom of the email here.</p>
+      <input type="text" id="paste-link" placeholder="https://www.dugcanlift.com/coach/#1z…">
+      <button class="wide" id="paste-go">Open it</button>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- CLIENT ---------------- -->
+<section id="client" class="tab">
+  <div id="client-head"></div>
+
+  <h2>Week by week</h2>
+  <div class="card scroll-x" id="client-weeks"></div>
+
+  <h2>Training volume</h2>
+  <div class="card">
+    <canvas id="chart-volume" height="150"></canvas>
+    <div class="legend" id="legend-volume"></div>
+  </div>
+
+  <h2>Fuel against goal</h2>
+  <div class="card">
+    <div id="client-fuel-stats"></div>
+    <canvas id="chart-fuel" height="150"></canvas>
+    <div class="legend" id="legend-fuel"></div>
+  </div>
+
+  <h2>Bodyweight</h2>
+  <div class="card" id="client-weight"></div>
+
+  <h2>Lift progression</h2>
+  <div id="lift-chips" class="chips"></div>
+  <div class="card" id="lift-card"></div>
+
+  <h2>Sessions</h2>
+  <div id="session-log"></div>
+
+  <button class="wide ghost" id="client-remove">Remove this client</button>
+</section>
+
+<!-- ---------------- CONNECT ---------------- -->
+<section id="connect" class="tab">
+  <h2>Your details</h2>
+  <div class="card">
+    <p class="muted">Only used to write the invite below. Stays on this device.</p>
+    <label for="coach-name">Your name</label>
+    <input type="text" id="coach-name" placeholder="Doug Copeland">
+    <label for="coach-email">The address clients send logs to</label>
+    <input type="text" id="coach-email" inputmode="email" placeholder="you@example.com">
+  </div>
+
+  <h2>Invite a client</h2>
+  <div class="card">
+    <p class="muted">Send this to a client once. After that it's one tap on
+      their end, every time.</p>
+    <pre id="invite-text"></pre>
+    <div class="row">
+      <button id="invite-copy">Copy invite</button>
+      <button class="ghost" id="invite-email">Email it</button>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>Your client taps <b>Send to Coach</b> in LIFT.</li>
+      <li>Their mail app opens already filled in — they just hit Send.</li>
+      <li>You get <b>“LIFT log from …”</b> with a button and a 7-day summary.</li>
+      <li>Tap the button. Their log opens here.</li>
+    </ol>
+    <p class="muted">The log travels inside the link itself, in the part after
+      the <code>#</code> that browsers never send to a server. Nothing is stored
+      online and there is no account — their numbers go from their phone, through
+      your inbox, to this device.</p>
+  </div>
+
+  <h2>This device</h2>
+  <div class="card">
+    <p class="muted" id="storage-note"></p>
+    <button class="wide ghost" id="backup-save">Save a backup file</button>
+    <button class="wide ghost" id="backup-load">Restore from a backup file</button>
+    <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
+  </div>
+</section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

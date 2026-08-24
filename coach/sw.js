@@ -1,19 +1,20 @@
-/* Service worker for LIFT.
+/* Service worker for LIFT Coach.
  *
  * Caches the app shell so it opens with no connection. Bump CACHE when any
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v3';
+const CACHE = 'coach-v1';
 
 const SHELL = [
-  '/lift/',
-  '/lift/index.html',
-  '/lift/style.css',
-  '/lift/app.js',
-  '/lift/manifest.webmanifest',
-  '/lift/icon-192.png',
-  '/lift/icon-512.png',
+  '/coach/',
+  '/coach/index.html',
+  '/coach/style.css',
+  '/coach/app.js',
+  '/coach/manifest.webmanifest',
+  '/coach/icon-180.png',
+  '/coach/icon-192.png',
+  '/coach/icon-512.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -37,17 +38,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Only ever handle our own shell. Open Food Facts requests must go straight
-  // to the network — caching food lookups would serve stale nutrition data,
-  // and a cached failure would look like the feature is broken.
-  if (url.origin !== self.location.origin || !url.pathname.startsWith('/lift/')) {
+  // Only ever handle our own shell.
+  if (url.origin !== self.location.origin || !url.pathname.startsWith('/coach/')) {
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then((hit) => {
       if (hit) return hit;
-      return fetch(event.request).catch(() => caches.match('/lift/index.html'));
+      return fetch(event.request).catch(() => caches.match('/coach/index.html'));
     })
   );
 });
