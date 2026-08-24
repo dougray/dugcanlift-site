@@ -36,6 +36,7 @@ header_pages:
   - app.html
   - prices.html
   - lift-install.html
+  - coach-install.html
 
 # Build settings
 theme: minima
