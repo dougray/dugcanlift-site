@@ -28,5 +28,14 @@ jobs:
           git config user.name "price-tracker-bot"
           git config user.email "actions@github.com"
           git add _data/supplement_prices.json
-          git diff --staged --quiet || git commit -m "Update supplement prices [automated]"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "Update supplement prices [automated]"
+          # A push by hand while this is mid-run would otherwise fail the job on
+          # a non-fast-forward. Rebase and retry rather than lose the scrape.
+          for attempt in 1 2 3; do
+            git push && exit 0
+            echo "push rejected, rebasing (attempt $attempt)"
+            git pull --rebase origin main
+          done
+          echo "could not push after three attempts" >&2
+          exit 1
