@@ -16,7 +16,7 @@ Log what you ate — scan a barcode, search by name, or type it in by hand — a
 
 Steps come from Health Connect automatically on Android — no manual entry, no separate app to check.
 
-And your data is yours. No account, no cloud sync, no ads, no analytics. The only thing that ever leaves your phone is a food search term, sent to Open Food Facts so it can tell you what's in the can. Your log, your weight, your workouts — none of it goes anywhere. It's all open source too, so that's not a claim you have to take my word for.
+And your data is yours. No account, no cloud sync, no ads, no analytics. The only thing that ever leaves your phone is a food search term, sent to Open Food Facts so it can tell you what's in the can. (On the web version that search term hops through a small relay I run first — browsers won't call Open Food Facts directly. It keeps nothing, and the [privacy policy](/app/privacy/) spells out exactly what it does.) Your log, your weight, your workouts — none of it goes anywhere. It's all open source too, so that's not a claim you have to take my word for.
 
 ## Where you can get it right now
 
