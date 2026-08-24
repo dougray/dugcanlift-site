@@ -1,0 +1,59 @@
+name: Bug report
+description: Something is broken or behaving oddly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. One thing first, and it matters:
+
+        **Never paste a "Send to Coach" link into an issue.** The whole log
+        travels inside that link, so posting one here publishes your training
+        and eating to anyone who reads this repo. Describe what happened
+        instead — and if a link really is the problem, say so and we'll find
+        another way to look at it.
+
+        The same goes for a backup file from Coach. It is your clients' data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part?
+      options:
+        - LIFT Coach (the trainer dashboard)
+        - LIFT web app
+        - Macro calculator
+        - Supplement price tracker
+        - The website itself
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      description: e.g. Safari on iPhone 15, Chrome on Windows, Firefox on a Pixel
+      placeholder: Safari 17 on iPhone 15
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+  - type: textarea
+    id: steps
+    attributes:
+      label: What did you do just before it happened?
+      description: Even rough steps help. "Opened a client, tapped the third lift chip, it went blank."
+  - type: checkboxes
+    id: installed
+    attributes:
+      label: Installed or in a browser tab?
+      options:
+        - label: I added it to my home screen / installed it
+        - label: I'm using it in a normal browser tab

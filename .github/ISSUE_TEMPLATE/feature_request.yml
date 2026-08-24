@@ -1,0 +1,34 @@
+name: Feature request
+description: Something missing, or an idea for what it should do
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part?
+      options:
+        - LIFT Coach (the trainer dashboard)
+        - LIFT web app
+        - Macro calculator
+        - Supplement price tracker
+        - The website itself
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The thing you're actually trying to get done, not the feature you think would do it. Both are welcome, but this one is more useful.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How do you picture it working?
+  - type: markdown
+    attributes:
+      value: |
+        Worth knowing before you write: LIFT keeps everything on your own
+        device and has no accounts and no server. Anything that needs data
+        held centrally is unlikely to happen — not because it's a bad idea,
+        but because it would break the one promise the app makes.
