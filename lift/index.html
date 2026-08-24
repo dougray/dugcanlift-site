@@ -82,6 +82,17 @@
       <button class="wide ghost" id="coach-change">Change these details</button>
     </div>
   </div>
+
+  <h2>Your data</h2>
+  <div class="card">
+    <p class="muted">Everything you log lives in this browser and nowhere else.
+      Clearing site data wipes it, and so does moving to a new phone. A backup
+      file is the only copy that survives either.</p>
+    <button class="wide ghost" id="backup-save">Save a backup file</button>
+    <button class="wide ghost" id="backup-load">Restore from a backup file</button>
+    <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
+    <p class="muted" id="backup-note"></p>
+  </div>
 </section>
 
 <!-- ---------------- CALCULATOR ---------------- -->

@@ -111,6 +111,26 @@ reporting service, and no third-party tracking of any kind.
 The app is not directed at children and collects nothing that would identify
 anyone.
 
+## Keeping your data
+
+There is no cloud backup, on purpose.
+
+On Android, the app sets `allowBackup="false"` and excludes its storage from
+Android's Auto Backup, so nothing is copied to Google Drive. The one exception
+is direct phone-to-phone transfer when you set up a new handset, which never
+leaves hardware you own. The web app has nothing equivalent to switch off — a
+browser does not sync it anywhere.
+
+The consequence is that **you are the backup**. Under **Your data** there is
+*Save a backup file*, which writes your whole log — food, training, weight,
+steps and goal — to a file you choose. It never leaves your device unless you
+send it somewhere. *Restore from a backup file* reads one back, and only adds
+what is missing, so restoring an old file cannot erase newer entries.
+
+Clearing site data, uninstalling, or losing the device takes everything with it
+otherwise. That is the cost of an app with no account, and the backup file is
+the answer to it.
+
 ## Deleting your data
 
 Uninstalling the app removes all of it. There is nothing held anywhere else,

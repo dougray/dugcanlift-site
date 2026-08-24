@@ -294,6 +294,7 @@ document.querySelectorAll('#tabs button').forEach((b) => {
 
 function renderHome() {
   renderCoach();
+  renderBackupNote();
   const today = todayKey();
   const eaten = totals(entriesFor(today));
 
@@ -1277,6 +1278,102 @@ function render() {
   else if (currentTab === 'food') renderFood();
   else if (currentTab === 'train') renderTrain();
 }
+
+/* ---------------- backup ---------------- */
+
+/* Everything lives in this browser, so a file the user keeps is the only thing
+ * between a cleared cache and a lost training history. It is also how a log
+ * moves to a new phone, which matters more here than in most apps: there is no
+ * account to log back into.
+ *
+ * Restoring is deliberately additive. It fills gaps and never overwrites
+ * something already on the device, so pulling last month's file onto a working
+ * phone cannot cost you today's session. The price is that a restore can't undo
+ * a deletion — which is the right way round.
+ *
+ * Keeping the client id means a coach sees the same person after a restore
+ * rather than a second one appearing in their roster. */
+
+const BACKUP_KEYS = ['goal', 'food', 'workouts', 'settings', 'steps', 'coach', 'profile', 'weights'];
+
+function saveBackup() {
+  const data = {};
+  BACKUP_KEYS.forEach((k) => { data[k] = load(KEY[k], null); });
+  const blob = new Blob([JSON.stringify({ v: 1, app: 'lift', saved: todayKey(), data }, null, 1)],
+    { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `lift-${todayKey()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  renderBackupNote();
+}
+
+function loadBackup(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      const incoming = parsed && parsed.data;
+      if (!incoming || parsed.app !== 'lift') throw new Error('not a LIFT backup');
+
+      const addMissing = (current, arriving) => {
+        const seen = new Set(current.map((r) => r && r.id));
+        let added = 0;
+        (arriving || []).forEach((r) => {
+          if (r && r.id && !seen.has(r.id)) { current.push(r); added += 1; }
+        });
+        return added;
+      };
+      const fillGaps = (current, arriving) => {
+        Object.entries(arriving || {}).forEach(([k, v]) => {
+          if (current[k] == null) current[k] = v;
+        });
+      };
+
+      const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts);
+      fillGaps(steps, incoming.steps);
+      fillGaps(weights, incoming.weights);
+      if (!goal && incoming.goal) goal = incoming.goal;
+      if (!profile && incoming.profile) profile = incoming.profile;
+      if (!coach.email && incoming.coach) coach = incoming.coach;
+      if (!settings.focus && incoming.settings) settings = incoming.settings;
+
+      save(KEY.food, food);
+      save(KEY.workouts, workouts);
+      save(KEY.steps, steps);
+      save(KEY.weights, weights);
+      save(KEY.goal, goal);
+      save(KEY.profile, profile);
+      save(KEY.coach, coach);
+      save(KEY.settings, settings);
+
+      render();
+      alert(added
+        ? `Restored. Added ${added} ${added === 1 ? 'entry' : 'entries'} this device didn't already have.`
+        : 'Restored. This device already had everything in that file.');
+    } catch (e) {
+      alert("That file isn't a LIFT backup.");
+    }
+  };
+  reader.onerror = () => alert('Could not read that file.');
+  reader.readAsText(file);
+}
+
+function renderBackupNote() {
+  const days = new Set([...food.map((e) => e.date), ...workouts.map((w) => w.date)]).size;
+  $('#backup-note').textContent = days
+    ? `${days} ${days === 1 ? 'day' : 'days'} logged on this device.`
+    : 'Nothing logged yet.';
+}
+
+$('#backup-save').onclick = saveBackup;
+$('#backup-load').onclick = () => $('#backup-file').click();
+$('#backup-file').onchange = (e) => {
+  if (e.target.files[0]) loadBackup(e.target.files[0]);
+  e.target.value = '';
+};
 
 render();
 
