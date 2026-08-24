@@ -59,6 +59,29 @@
   </div>
 
   <button class="wide ghost" id="open-calc">Set / recalculate my goal</button>
+
+  <h2>Coach</h2>
+  <div class="card" id="coach-card">
+    <div id="coach-setup">
+      <p class="muted">Working with a coach? Put their email in once and you can
+        send them your training and eating with one tap.</p>
+      <label for="coach-you">Your name</label>
+      <input type="text" id="coach-you" placeholder="How your coach knows you">
+      <label for="coach-email">Coach's email</label>
+      <input type="text" id="coach-email" inputmode="email" placeholder="coach@example.com">
+      <button class="wide" id="coach-save">Save</button>
+    </div>
+
+    <div id="coach-ready" class="hidden">
+      <div id="coach-to"></div>
+      <label>How much to send</label>
+      <div class="chips" id="coach-window"></div>
+      <div class="chips" id="coach-detail"></div>
+      <button class="wide" id="coach-send">Send to Coach</button>
+      <p class="muted" id="coach-size"></p>
+      <button class="wide ghost" id="coach-change">Change these details</button>
+    </div>
+  </div>
 </section>
 
 <!-- ---------------- CALCULATOR ---------------- -->
