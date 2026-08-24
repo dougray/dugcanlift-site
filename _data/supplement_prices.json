@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-06T22:19:15.252473+00:00",
+  "last_updated": "2026-08-24T16:46:35.524859+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -95,8 +95,8 @@
       "category": "Protein",
       "url": "https://dietryin.co/products/post-iso",
       "servings": 25,
-      "price": 52.99,
-      "cost_per_serving": 2.12,
+      "price": 55.99,
+      "cost_per_serving": 2.24,
       "error": null
     },
     {
@@ -146,8 +146,8 @@
       "platform": "shopify_variant",
       "variant_match": "500g",
       "servings": 100,
-      "price": 22.97,
-      "cost_per_serving": 0.23,
+      "price": 24.97,
+      "cost_per_serving": 0.25,
       "error": null
     },
     {
