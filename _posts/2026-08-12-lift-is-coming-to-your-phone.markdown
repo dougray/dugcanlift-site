@@ -22,7 +22,7 @@ And your data is yours. No account, no cloud sync, no ads, no analytics. The onl
 
 **iPhone: try it today.** There's a web version of LIFT running right on this site at [dugcanlift.com/lift](/lift/) — add it to your home screen from Safari and it behaves like a real app: full screen, works offline, no browser chrome. It's the sneak peek while the native iOS app finishes cooking. The one real gap is steps — browsers can't read HealthKit, so that part's manual entry for now on the web version.
 
-**Android: available now, direct.** The native Android app is out and working — I'm using it every day, which is the only QA process that's ever mattered to me. It's not on Google Play or F-Droid yet, so right now you install it the old-school way: grab the APK straight from [the GitHub releases page](https://github.com/dougray/dugcanlift-macrocalc/releases). Android will warn you about installing from outside the Play Store — that's normal, not a red flag, it's just what happens with any app that isn't distributed through a store yet.
+**Android: available now, direct.** The native Android app is out and working — I'm using it every day, which is the only QA process that's ever mattered to me. It's not on Google Play or F-Droid yet, so right now you install it the old-school way: grab the APK straight from [the install page](/lift/install/). Android will warn you about installing from outside the Play Store — that's normal, not a red flag, it's just what happens with any app that isn't distributed through a store yet.
 
 ## What's coming
 
@@ -40,6 +40,6 @@ I could've thrown LIFT on the Play Store the day it compiled. I didn't, because 
 
 It has. Now it's your turn.
 
-If you're on iPhone, [go try the web version](/lift/) — that link works right now, no waiting. If you're on Android, [grab the release](https://github.com/dougray/dugcanlift-macrocalc/releases). And if you want the full picture of what it does and doesn't do with your data, [the app page](/app/) and [privacy policy](/app/privacy/) lay all of it out.
+If you're on iPhone, [go try the web version](/lift/) — that link works right now, no waiting. If you're on Android, [grab the APK](/lift/install/). And if you want the full picture of what it does and doesn't do with your data, [the app page](/app/) and [privacy policy](/app/privacy/) lay all of it out.
 
 More soon — both on the training side of this blog and on LIFT itself.
