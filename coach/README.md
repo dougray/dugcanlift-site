@@ -23,7 +23,9 @@ That also means: **clearing site data deletes your roster.** Connect → *Save a
 backup file* exists for exactly that reason.
 
 The wire format is [SHARE-FORMAT.md](SHARE-FORMAT.md), shared by all four
-LIFT clients. Change it in one and you change it in four.
+LIFT clients. Change it in one and you change it in four. The backup file the
+apps write is a different thing again — that one is
+[BACKUP-FORMAT.md](BACKUP-FORMAT.md).
 
 ## What it shows
 
