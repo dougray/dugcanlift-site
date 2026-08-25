@@ -7,7 +7,8 @@
 /* ---------------- storage ---------------- */
 
 const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps',
-              coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights' };
+              coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights',
+              ext: 'lift.ext' };
 
 function load(key, fallback) {
   try {
@@ -1299,8 +1300,13 @@ const BACKUP_KEYS = ['goal', 'food', 'workouts', 'settings', 'steps', 'coach', '
 function saveBackup() {
   const data = {};
   BACKUP_KEYS.forEach((k) => { data[k] = load(KEY[k], null); });
-  const blob = new Blob([JSON.stringify({ v: 1, app: 'lift', saved: todayKey(), data }, null, 1)],
-    { type: 'application/json' });
+  const out = { v: 1, app: 'lift', saved: todayKey(), data };
+  // Hand back whatever another platform recorded that this one has no field
+  // for. Dropping it would mean a phone's backup came through here and lost
+  // its warmup flags on the way out. See coach/BACKUP-FORMAT.md.
+  const ext = load(KEY.ext, null);
+  if (ext && Object.keys(ext).length) out.ext = ext;
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -1331,6 +1337,10 @@ function loadBackup(file) {
           if (current[k] == null) current[k] = v;
         });
       };
+
+      // Keep the parts of the file this app cannot read, so saving again
+      // returns them intact rather than quietly dropping them.
+      if (parsed.ext && Object.keys(parsed.ext).length) save(KEY.ext, parsed.ext);
 
       const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts);
       fillGaps(steps, incoming.steps);
