@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "COOK Is Next, And It Starts In My DMs"
+title:  "COOK Is Next!"
 date:   2026-08-26 10:00:00 -0500
 ---
 
