@@ -9,7 +9,7 @@ permalink: /cook/
   <h1 class="calc-title">COOK</h1>
   <p class="calc-sub">Recipes go in. A meal plan and a shopping list come out. Cook it, and it logs itself with the macros already attached — because it knew the recipe before you ate it.</p>
 
-  <p><strong>Not released yet.</strong> COOK is built and working in the Android and iOS apps, but it hasn't shipped in a release. There's no date. It'll be there when it's there.</p>
+  <p><strong>You can use it right now.</strong> COOK is live in the <a href="{{ '/lift/' | relative_url }}">web version of LIFT</a> and in <a href="{{ '/coach/' | relative_url }}">Coach</a> — that's where the beta is, so that's where it landed first. It's built in the Android and iOS apps too, but those haven't shipped in a release yet.</p>
 
   <h2>The gap it fills</h2>
   <p><a href="{{ '/app/' | relative_url }}">LIFT</a> tells you what you ate. <a href="{{ '/coach/' | relative_url }}">Coach</a> shows your trainer what you ate. Neither one helps with the part that actually decides your week, which is standing in a kitchen on Sunday wondering what you're making.</p>
@@ -32,7 +32,7 @@ permalink: /cook/
   <p>The same tool, pointed the other way. A coach builds the week <em>for</em> a client — recipes, days, servings — and sends it over. It lands in their app as a plan they can shop from and cook from, not a PDF they'll open once and never find again.</p>
   <p>It travels the way a log already does: inside the link, after the <code>#</code>, the part browsers never send to a server. Nothing is uploaded going out and nothing is uploaded coming back. The plan is small enough to survive being an email because it doesn't carry the recipes — it points at them.</p>
   <p>And because LIFT stamps what it logs, the loop closes on its own: a coach can see which of the meals they planned actually got cooked. Not "did you hit your protein." Did you make the thing.</p>
-  <p class="calc-sub">The Coach side is the part still to be built. The client side is done in both apps.</p>
+  <p class="calc-sub">Both halves of this work today between the web versions. The Android and iOS apps can't open a plan link yet — they have no deep-link handling — so plans are web-to-web for now. That's deliberate: the format gets proven in the beta before four clients are wired to it.</p>
 
   <h2>What it looks like</h2>
 
@@ -41,7 +41,15 @@ permalink: /cook/
     <img src="{{ '/assets/images/cook/cook-plan.png' | relative_url }}" alt="The COOK meal plan, with recipes placed on breakfast, lunch and dinner across the week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
     <img src="{{ '/assets/images/cook/cook-shopping.png' | relative_url }}" alt="The COOK shopping list, with ingredients totalled across the planned week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
   </figure>
-  <p class="calc-sub" style="text-align:center;">iPhone. The Android build is the same three screens, the same numbers.</p>
+  <p class="calc-sub" style="text-align:center;">iPhone. Android and the web version are the same three screens, and they agree on every number — the same plan gives the same calories and the same shopping list on all four.</p>
+
+  <h2>Try it</h2>
+  <p>Nothing to install and no account to make.</p>
+  <ul>
+    <li><strong>If you're the one eating</strong> — open <a href="{{ '/lift/' | relative_url }}">LIFT</a>, go to the Cook tab, and write a recipe you already make.</li>
+    <li><strong>If you coach</strong> — open <a href="{{ '/coach/' | relative_url }}">Coach</a>, go to Cook, write a few recipes, build someone a week, and send the link.</li>
+  </ul>
+  <p>If something's wrong with it, that's exactly what I want to hear. It's early, and it's easier to change now than later.</p>
 
   <h2>Where recipes come from</h2>
   <p>Three places, and I want to be straight about all three.</p>
