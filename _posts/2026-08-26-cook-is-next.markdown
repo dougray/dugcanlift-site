@@ -42,7 +42,7 @@ Three places, and I want to be straight about all three.
 
 COOK does not exist yet…. YET!
 
-Right now it's a data model and a plan. Recipes, meal plans, shopping lists — the shapes are written and being built into both apps. The format this plan travels in is written down. That's genuinely all there is. No screens, no beta, no TestFlight. Yet! I am actively building it out right now. Testing will be available this weekend… maybe.
+Right now it's in both apps — recipes, the planner, the shopping list, and one tap to log a meal you planned. The format the plan travels in is written down. What there isn't is a release: nothing has shipped, so there's no beta and no TestFlight to hand you. Yet! I am actively building it out right now. Testing will be available this weekend… maybe.
 
 I'm telling you now because I'd rather show a thing being built than announce it finished.
 
