@@ -34,6 +34,7 @@ header_pages:
   - about.markdown
   - calculator.html
   - app.html
+  - cook.html
   - prices.html
   - lift-install.html
   - coach-install.html

@@ -1,0 +1,64 @@
+---
+layout: page
+title: COOK
+permalink: /cook/
+---
+
+<div class="calc">
+  <p class="hero-eyebrow">part of lift and coach</p>
+  <h1 class="calc-title">COOK</h1>
+  <p class="calc-sub">Recipes go in. A meal plan and a shopping list come out. Cook it, and it logs itself with the macros already attached — because it knew the recipe before you ate it.</p>
+
+  <p><strong>Not released yet.</strong> COOK is built and working in the Android and iOS apps, but it hasn't shipped in a release. There's no date. It'll be there when it's there.</p>
+
+  <h2>The gap it fills</h2>
+  <p><a href="{{ '/app/' | relative_url }}">LIFT</a> tells you what you ate. <a href="{{ '/coach/' | relative_url }}">Coach</a> shows your trainer what you ate. Neither one helps with the part that actually decides your week, which is standing in a kitchen on Sunday wondering what you're making.</p>
+  <p>COOK is that part. It isn't a separate app — it's a tab inside LIFT, and a page inside Coach. Same tool, two ends of the same relationship.</p>
+
+  <h2>For you, in LIFT</h2>
+
+  <h3>Recipes you only type once</h3>
+  <p>Write it down the way you'd say it — <em>2 tbsp olive oil</em>, <em>400 g chicken thigh</em>, <em>2 cloves garlic</em>. COOK reads the quantity and the unit off the front and keeps the line you actually typed, so you can always check what it understood. Anything it can't parse stays on the list word for word rather than quietly disappearing.</p>
+  <p>Enter it once. It's there next week, and the week after.</p>
+
+  <h3>A week you can actually shop for</h3>
+  <p>Put recipes on days. The shopping list builds itself from whatever you planned, adding up across every meal — and scaling properly, so planning two servings of a four-serving chilli buys half the ingredients, not all of them.</p>
+  <p>Things that can't be added together aren't. Two cloves of garlic and thirty grams of garlic stay as two separate amounts on one line, because pretending otherwise would send you to the shop with the wrong number.</p>
+
+  <h3>Logging that's already done</h3>
+  <p>When you cook a planned meal, one tap logs it — name, macros, the right meal slot, the right day. No searching, no re-typing, no guessing at portions you already decided on days ago.</p>
+
+  <h2>For your trainer, in Coach</h2>
+  <p>The same tool, pointed the other way. A coach builds the week <em>for</em> a client — recipes, days, servings — and sends it over. It lands in their app as a plan they can shop from and cook from, not a PDF they'll open once and never find again.</p>
+  <p>It travels the way a log already does: inside the link, after the <code>#</code>, the part browsers never send to a server. Nothing is uploaded going out and nothing is uploaded coming back. The plan is small enough to survive being an email because it doesn't carry the recipes — it points at them.</p>
+  <p>And because LIFT stamps what it logs, the loop closes on its own: a coach can see which of the meals they planned actually got cooked. Not "did you hit your protein." Did you make the thing.</p>
+  <p class="calc-sub">The Coach side is the part still to be built. The client side is done in both apps.</p>
+
+  <h2>What it looks like</h2>
+
+  <figure style="display:flex;gap:1rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
+    <img src="{{ '/assets/images/cook/cook-recipes.png' | relative_url }}" alt="The COOK recipe list, showing saved recipes with calories and macros per serving" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+    <img src="{{ '/assets/images/cook/cook-plan.png' | relative_url }}" alt="The COOK meal plan, with recipes placed on breakfast, lunch and dinner across the week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+    <img src="{{ '/assets/images/cook/cook-shopping.png' | relative_url }}" alt="The COOK shopping list, with ingredients totalled across the planned week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+  </figure>
+  <p class="calc-sub" style="text-align:center;">iPhone. The Android build is the same three screens, the same numbers.</p>
+
+  <h2>Where recipes come from</h2>
+  <p>Three places, and I want to be straight about all three.</p>
+  <ul>
+    <li><strong>Ones you write.</strong> Type your own in. Your grandmother's thing that isn't on the internet and shouldn't be.</li>
+    <li><strong>Ones I write.</strong> A recipe library on this site — free, open, no app required.</li>
+    <li><strong>Ones you already own.</strong> If you've got cookbooks as PDFs, getting them into your own kitchen app is a reasonable thing to want, and COOK will help you do it on your own machine. What it won't do is turn into a pipe for republishing other people's work.</li>
+  </ul>
+
+  <h2>Two things worth knowing up front</h2>
+  <p><strong>It won't rip recipes off Instagram for you.</strong> That would mean running a scraper against platforms whose terms say don't, on infrastructure someone has to pay for. That part stays personal.</p>
+  <p><strong>Macros are sometimes estimates, and it says so.</strong> A recipe with no nutrition attached shows as unknown rather than quietly logging zero calories into your day. Zero is a lie that adds up.</p>
+
+  <h2>Your data is yours</h2>
+  <p>Nothing changes. Recipes, plans and shopping lists live on your device with everything else you log. No account, no server, no sync. COOK adds no network access to either app.</p>
+
+  <h2>Open source</h2>
+  <p>Same as the rest of it — AGPL-3.0, readable by anyone.</p>
+  <p><a href="https://github.com/dougray/dugcanlift-lift">Android source</a> · <a href="https://github.com/dougray/dugcanlift-lift-ios">iOS source</a></p>
+</div>
