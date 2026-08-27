@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Parser tests — LIFT Coach</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding: 1.5rem; }
+  .case { padding: .4rem 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .95rem; }
+  .pass::before { content: 'PASS'; color: #7c8b7a; font-weight: 700; margin-right: .6rem; }
+  .fail::before { content: 'FAIL'; color: #c1442c; font-weight: 700; margin-right: .6rem; }
+  .detail { color: #a39c8e; font-size: .85rem; margin-left: 3.2rem; }
+  #summary { font-size: 1.3rem; font-weight: 700; margin: 1rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Parser tests</h1>
+<p class="muted">
+  Open this page to check the ingredient rules. No build step and no toolchain —
+  the same reason the rest of Coach has none.
+</p>
+<p class="muted">
+  These cases mirror <code>IngredientParserTests</code> in the iOS build and
+  <code>IngredientParserTest</code> in the Android one. All four
+  implementations must give the same answer for the same line: a recipe written
+  on one client reaches the others through the shared wire format, and a
+  quantity that reads differently on one of them is a bug nobody would think to
+  look for.
+</p>
+
+<div id="summary"></div>
+<div id="results"></div>
+
+<script src="parser.js"></script>
+<script>
+const results = [];
+
+function check(label, actual, expected) {
+  const ok = JSON.stringify(actual) === JSON.stringify(expected);
+  results.push({ label, ok, actual, expected });
+}
+
+/* parsing */
+const oil = parseIngredient('2 tbsp olive oil');
+check('reads quantity', oil.qty, 2);
+check('reads unit', oil.unit, 'tbsp');
+check('reads item', oil.item, 'olive oil');
+
+check('grams resolve to a mass', parseIngredient('400 g chicken thigh').grams, 400);
+check('only grams resolve to a mass', parseIngredient('2 tbsp olive oil').grams, null);
+
+/* the count sentinel */
+const eggs = parseIngredient('2 eggs');
+check('a count gets the sentinel, not a unit', eggs.unit, COUNT_UNIT);
+check('a count keeps its item', eggs.item, 'eggs');
+check('the sentinel cannot be typed', COUNT_UNIT.indexOf('\u0000') >= 0, true);
+
+const counts = {};
+counts[COUNT_UNIT] = 2;
+check('counts print bare', amountsLabel(counts), '2');
+check('units print with their unit', amountsLabel({ g: 400 }), '400 g');
+
+/* fractions */
+check('half', parseIngredient('1/2 cup rice').qty, 0.5);
+check('one and a half', parseIngredient('1 1/2 cups rice').qty, 1.5);
+check('decimal', parseIngredient('0.5 kg beef').qty, 0.5);
+
+/* giving up cleanly */
+const salt = parseIngredient('salt to taste');
+check('an unparsed line keeps its raw text', salt.rawText, 'salt to taste');
+check('an unparsed line invents no item', salt.item, undefined);
+check('an unparsed line invents no quantity', salt.qty, undefined);
+check('raw text is kept even on success', oil.rawText, '2 tbsp olive oil');
+
+/* aggregation */
+const garlic = {
+  id: 'g', name: 'Garlic test', servings: 1,
+  ingredients: [parseIngredient('2 cloves garlic'), parseIngredient('30 g garlic')],
+};
+const mixed = buildShoppingList([{ recipeId: 'g', servings: 1 }], () => garlic);
+check('same item name makes one line', mixed.length, 1);
+check('two cloves are not added to thirty grams', mixed[0].amounts['cloves'], 2);
+check('and the grams stay grams', mixed[0].amounts['g'], 30);
+
+const chilli = {
+  id: 'c', name: 'Chilli', servings: 4,
+  ingredients: [parseIngredient('500 g lean beef mince')],
+};
+const half = buildShoppingList([{ recipeId: 'c', servings: 2 }], () => chilli);
+check('half a four-serving recipe buys half', half[0].amounts['g'], 250);
+
+const unparsed = {
+  id: 'u', name: 'Loose', servings: 1,
+  ingredients: [parseIngredient('salt to taste')],
+};
+const loose = buildShoppingList([{ recipeId: 'u', servings: 1 }], () => unparsed);
+check('an unparsed line still reaches the list', loose[0].unparsed, ['salt to taste']);
+
+/* render */
+const failed = results.filter((r) => !r.ok).length;
+const summary = document.getElementById('summary');
+summary.textContent = failed
+  ? `${failed} of ${results.length} failing`
+  : `All ${results.length} passing`;
+summary.style.color = failed ? '#c1442c' : '#7c8b7a';
+
+const out = document.getElementById('results');
+results.forEach((r) => {
+  const row = document.createElement('div');
+  row.className = 'case ' + (r.ok ? 'pass' : 'fail');
+  row.textContent = r.label;
+  out.appendChild(row);
+  if (!r.ok) {
+    const detail = document.createElement('div');
+    detail.className = 'detail';
+    detail.textContent = `got ${JSON.stringify(r.actual)}, wanted ${JSON.stringify(r.expected)}`;
+    out.appendChild(detail);
+  }
+});
+</script>
+
+</body>
+</html>
