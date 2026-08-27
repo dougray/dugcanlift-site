@@ -4,3 +4,7 @@ _site
 .jekyll-metadata
 vendor
 .bundle/
+.DS_Store
+_site/
+.jekyll-cache/
+CLAUDE.md
