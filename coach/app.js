@@ -1288,151 +1288,7 @@ let plans = load(COOK_KEY.plans, []);
 
 const LIFT_URL = 'https://www.dugcanlift.com/lift/';
 
-/* Grouping key for an ingredient with no unit — "2 eggs", "1 banana".
- *
- * A sentinel, not a unit. It keeps counts in their own bucket during
- * aggregation, so two cloves of garlic are never added to two cups of
- * anything, and the shopping list drops it when printing, because
- * "2 x banana" is not how anyone writes a shopping list.
- *
- * Contains a null character so it can never collide with something typed. */
-const COUNT_UNIT = '\u0000count';
-
-const COOK_UNITS = new Set([
-  'g', 'kg', 'mg', 'ml', 'l',
-  'tsp', 'tbsp', 'cup', 'cups', 'oz', 'lb', 'lbs',
-  'clove', 'cloves', 'slice', 'slices', 'scoop', 'scoops',
-  'can', 'cans', 'pinch', 'handful',
-]);
-
-/* Pulls a quantity and unit off the front of a typed ingredient line.
- *
- * Deliberately small. It handles the shapes people actually type and gives up
- * cleanly on everything else, leaving `item` undefined so the shopping list
- * shows the raw line instead. A confident wrong quantity on a client's
- * shopping list is worse than a line they can read and check. */
-function parseIngredient(raw) {
-  let rest = raw.trimStart();
-
-  const takeNumber = () => {
-    const m = rest.match(/^[0-9.]+/);
-    if (!m) return null;
-    const value = parseFloat(m[0]);
-    if (isNaN(value)) return null;
-    rest = rest.slice(m[0].length);
-    return value;
-  };
-
-  let qty = takeNumber();
-  if (qty === null) return { rawText: raw };
-
-  if (rest.startsWith('/')) {
-    rest = rest.slice(1);
-    const denominator = takeNumber();
-    if (!denominator) return { rawText: raw };
-    qty /= denominator;
-  } else if (rest.startsWith(' ')) {
-    const saved = rest;
-    rest = rest.slice(1);
-    const whole = takeNumber();
-    if (whole !== null && rest.startsWith('/')) {
-      rest = rest.slice(1);
-      const denominator = takeNumber();
-      if (denominator) qty += whole / denominator;
-      else rest = saved;
-    } else {
-      rest = saved;
-    }
-  }
-
-  rest = rest.trimStart();
-  const firstWord = rest.split(' ')[0];
-  const candidate = firstWord.toLowerCase().replace(/[.,]+$/, '');
-
-  let unit = null;
-  let item;
-  if (COOK_UNITS.has(candidate)) {
-    unit = candidate;
-    item = rest.slice(firstWord.length).trim();
-  } else {
-    item = rest.trim();
-  }
-
-  if (!item) return { rawText: raw };
-
-  return {
-    rawText: raw,
-    item,
-    qty,
-    unit: unit || COUNT_UNIT,
-    grams: unit === 'g' ? qty : null,
-  };
-}
-
-const trimNum = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100));
-const servingsLabel = (v) => (v === 1 ? '1 serving' : `${trimNum(v)} servings`);
 const recipeById = (id) => recipes.find((r) => r.id === id);
-const cookUid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
-
-/* Counts print bare — "2", not "2 x banana". */
-function amountsLabel(amounts) {
-  return Object.keys(amounts).sort().map((unit) => {
-    const value = trimNum(amounts[unit]);
-    return unit === COUNT_UNIT ? value : `${value} ${unit}`;
-  }).join(' + ');
-}
-
-function dayLabel(key) {
-  if (key === todayKey()) return 'Today';
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  if (key === dateKey(tomorrow)) return 'Tomorrow';
-  return parseKey(key).toLocaleDateString(undefined, { weekday: 'long' });
-}
-
-function cookWeek() {
-  const out = [];
-  for (let i = 0; i < 7; i++) {
-    const d = new Date();
-    d.setDate(d.getDate() + i);
-    out.push(dateKey(d));
-  }
-  return out;
-}
-
-/* Amounts scale by each meal's servings against the recipe's own serving
- * count, so planning two servings of a four-serving recipe buys half. */
-function buildShoppingList(meals) {
-  const amounts = {}, names = {}, unparsed = {};
-
-  meals.forEach((meal) => {
-    const recipe = recipeById(meal.recipeId);
-    if (!recipe) return;
-    const factor = meal.servings / (recipe.servings > 0 ? recipe.servings : 1);
-
-    (recipe.ingredients || []).forEach((ing) => {
-      const name = (ing.item && ing.item.trim()) || ing.rawText;
-      const key = name.trim().toLowerCase();
-      if (!key) return;
-      if (!names[key]) names[key] = name;
-
-      if (ing.qty != null && ing.unit) {
-        amounts[key] = amounts[key] || {};
-        amounts[key][ing.unit] = (amounts[key][ing.unit] || 0) + ing.qty * factor;
-      } else {
-        unparsed[key] = unparsed[key] || [];
-        unparsed[key].push(ing.rawText);
-      }
-    });
-  });
-
-  return Object.keys(names).sort().map((key) => ({
-    key,
-    displayName: names[key],
-    amounts: amounts[key] || {},
-    unparsed: unparsed[key] || [],
-  }));
-}
 
 /* ---------------- plan link ---------------- */
 
@@ -1718,27 +1574,51 @@ function renderCookPlan() {
   updatePlanSize();
 }
 
+/* Two browser dialogs to place one dinner was the roughest edge in here, and
+ * it sat in the path a coach walks most. This is the same choice made in the
+ * page, where the servings you pick are reflected in the calories on every
+ * row before you commit to one. */
 function addPlannedMeal(day, meal) {
-  const servings = parseFloat(prompt('How many servings?', '1'));
-  if (!servings || servings <= 0) return;
-  const sorted = [...recipes].sort((a, b) => a.name.localeCompare(b.name));
-  const pick = prompt('Which recipe?\n\n'
-    + sorted.map((r, i) => `${i + 1}. ${r.name}`).join('\n'), '1');
-  const recipe = sorted[parseInt(pick, 10) - 1];
-  if (!recipe) return;
+  const panel = $('#picker');
+  $('#picker-title').textContent =
+    `${dayLabel(day)} · ${meal.charAt(0) + meal.slice(1).toLowerCase()}`;
+  $('#picker-servings').value = '1';
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
 
-  plans.push({
-    id: cookUid(),
-    clientId: planClientId,
-    recipeId: recipe.id,
-    recipeName: recipe.name,
-    date: day,
-    meal,
-    servings,
-  });
-  save(COOK_KEY.plans, plans);
-  renderCook();
+  const draw = () => {
+    const servings = parseFloat($('#picker-servings').value) || 1;
+    const list = $('#picker-list');
+    list.innerHTML = '';
+    [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
+      const row = cookEl('button', 'chip wide');
+      const n = r.nutritionPerServing;
+      row.textContent = n
+        ? `${r.name} — ${Math.round(n.calories * servings)} kcal`
+        : r.name;
+      row.onclick = () => {
+        plans.push({
+          id: cookUid(),
+          clientId: planClientId,
+          recipeId: r.id,
+          recipeName: r.name,
+          date: day,
+          meal,
+          servings,
+        });
+        save(COOK_KEY.plans, plans);
+        panel.classList.add('hidden');
+        renderCook();
+      };
+      list.appendChild(row);
+    });
+  };
+
+  $('#picker-servings').oninput = draw;
+  draw();
 }
+
+$('#picker-cancel').onclick = () => $('#picker').classList.add('hidden');
 
 /* Mail clients wrap and corrupt very long links. The same 16k ceiling the
  * outbound log format works to applies here. */
@@ -1800,7 +1680,7 @@ function renderCookShopping() {
     `What ${client ? client.name : 'this client'} needs for the week you planned. `
     + 'It goes with the plan link — you do not have to send this separately.'));
 
-  buildShoppingList(mine).forEach((line) => {
+  buildShoppingList(mine, recipeById).forEach((line) => {
     const card = cookEl('div', 'card');
     card.appendChild(cookEl('div', null, line.displayName));
     if (Object.keys(line.amounts).length) {
