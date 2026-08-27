@@ -1852,3 +1852,152 @@ function renderShopping() {
     wrap.appendChild(clear);
   }
 }
+
+/* ---------------- incoming plan ----------------
+ *
+ * A coach builds a week in Coach and sends it as a link. The plan rides in the
+ * fragment — the part after '#', which browsers never transmit — so it goes
+ * from their browser, through mail, to this one, and dugcanlift.com never sees
+ * it. Same trip a log makes, in the opposite direction.
+ *
+ * PLAN-FORMAT.md documents the shape.
+ */
+
+const planB64urlToBytes = (s) => {
+  const pad = s.length % 4 ? '='.repeat(4 - (s.length % 4)) : '';
+  const bin = atob(s.replace(/-/g, '+').replace(/_/g, '/') + pad);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+};
+
+async function planInflate(bytes) {
+  if (typeof DecompressionStream === 'undefined') {
+    throw new Error('This browser is too old to open plan links. Safari 16.4, '
+                  + 'Chrome 103 or anything newer will work.');
+  }
+  const stream = new Blob([bytes]).stream()
+    .pipeThrough(new DecompressionStream('deflate-raw'));
+  return new Response(stream).text();
+}
+
+async function decodeIncomingPlan(hash) {
+  const frag = String(hash || '').replace(/^#/, '').trim();
+  const match = frag.match(/^(\d+)([zu])([A-Za-z0-9_-]+)$/);
+  if (!match) return null;
+  if (Number(match[1]) !== 1) {
+    throw new Error('That plan was made by a newer version of Coach. Reload this page to update.');
+  }
+  const bytes = planB64urlToBytes(match[3]);
+  const json = match[2] === 'z' ? await planInflate(bytes) : new TextDecoder().decode(bytes);
+  const payload = JSON.parse(json);
+  return payload && payload.t === 'plan' ? payload : null;
+}
+
+/* Turns a decoded payload into recipes and planned meals.
+ *
+ * Recipes are matched by name so a coach sending next week's plan does not
+ * leave you with two copies of the same chilli. */
+function importPlan(payload) {
+  const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
+  const ids = [];
+
+  (payload.r || []).forEach((raw) => {
+    const name = raw.n || 'Untitled recipe';
+    const existing = recipes.find((r) => r.name.trim().toLowerCase() === name.trim().toLowerCase());
+    // u is [kcal, protein, carbs, fat, fibre] per serving, and is absent
+    // entirely when the coach did not know the macros. Absent stays unknown —
+    // it must not become a zero-calorie dinner in the day's total.
+    const nutrition = Array.isArray(raw.u) ? {
+      calories: raw.u[0] || 0, proteinG: raw.u[1] || 0,
+      carbsG: raw.u[2] || 0, fatG: raw.u[3] || 0, fiberG: raw.u[4] || 0,
+    } : null;
+
+    const body = {
+      name,
+      servings: raw.s > 0 ? raw.s : 1,
+      ingredients: (raw.i || []).map(parseIngredient),
+      steps: raw.t || [],
+      nutritionPerServing: nutrition,
+      fromCoach: payload.n || true,
+    };
+
+    if (existing) {
+      Object.assign(existing, body);
+      ids.push(existing.id);
+    } else {
+      const fresh = { id: uid(), importedAt: Date.now(), ...body };
+      recipes.push(fresh);
+      ids.push(fresh.id);
+    }
+  });
+
+  let added = 0;
+  (payload.m || []).forEach((m) => {
+    const recipeId = ids[m.x];
+    if (!recipeId) return;
+    const recipe = recipes.find((r) => r.id === recipeId);
+    const meal = MEALS[m.s] || 'DINNER';
+    // Replace whatever was in that slot rather than stacking a second dinner
+    // on top of it — a plan is the coach's answer for that meal.
+    plan = plan.filter((p) => !(p.date === m.d && p.meal === meal && !p.loggedFoodEntryId));
+    plan.push({
+      id: uid(),
+      recipeId,
+      recipeName: recipe ? recipe.name : 'Recipe',
+      date: m.d,
+      meal,
+      servings: m.q > 0 ? m.q : 1,
+      // Per serving, never pre-scaled. Same invariant as every other client.
+      snapshotNutrition: recipe ? recipe.nutritionPerServing : null,
+      loggedFoodEntryId: null,
+      fromCoach: payload.n || true,
+    });
+    added++;
+  });
+
+  save(KEY.recipes, recipes);
+  save(KEY.plan, plan);
+  return added;
+}
+
+async function checkForIncomingPlan() {
+  if (!location.hash || location.hash.length < 4) return;
+
+  let payload;
+  try {
+    payload = await decodeIncomingPlan(location.hash);
+  } catch (e) {
+    alert(e.message);
+    history.replaceState(null, '', location.pathname);
+    return;
+  }
+  if (!payload) return;
+
+  // A plan is addressed, not broadcast. Refusing one meant for someone else
+  // is the whole reason the id travels with it.
+  const mine = coach && coach.id;
+  if (payload.l && mine && payload.l !== mine) {
+    alert('That plan was sent to a different person, so it has not been opened. '
+        + 'Ask your coach to send one addressed to you.');
+    history.replaceState(null, '', location.pathname);
+    return;
+  }
+
+  const from = payload.n ? `from ${payload.n}` : 'from your coach';
+  const meals = (payload.m || []).length;
+  const recipeCount = (payload.r || []).length;
+  const ok = confirm(
+    `A meal plan ${from}.\n\n`
+    + `${meals} meal${meals === 1 ? '' : 's'} and ${recipeCount} recipe${recipeCount === 1 ? '' : 's'}.\n\n`
+    + 'Add it to Cook? Anything already planned for those meals is replaced.');
+
+  history.replaceState(null, '', location.pathname);
+  if (!ok) return;
+
+  const added = importPlan(payload);
+  alert(`Added ${added} meal${added === 1 ? '' : 's'} to your plan, with the recipes and a shopping list.`);
+  showTab('cook');
+}
+
+checkForIncomingPlan();
