@@ -1143,6 +1143,7 @@ function sampleClient() {
 function render() {
   if (currentTab === 'roster') renderRoster();
   else if (currentTab === 'client') renderClient();
+  else if (currentTab === 'cook') renderCook();
   else if (currentTab === 'connect') renderConnect();
 }
 
@@ -1263,4 +1264,549 @@ render();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+}
+
+/* ---------------- COOK ----------------
+ *
+ * The trainer half. A coach writes recipes, builds a week for one client, and
+ * sends it as a link — the same trip a log makes, in the opposite direction.
+ *
+ * Recipes and plans live in this browser like everything else here. The plan
+ * link carries no recipes of its own beyond what the client needs to cook
+ * them, and it rides in the fragment, so dugcanlift.com never sees it.
+ *
+ * PLAN-FORMAT.md documents the wire shape. The ingredient parser below is the
+ * same one in the Android, iOS and web builds of LIFT; all four must agree.
+ */
+
+const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans' };
+
+let recipes = load(COOK_KEY.recipes, []);
+/* Planned meals across every client, each tagged with the client id it is for.
+ * A plan is addressed, not broadcast. */
+let plans = load(COOK_KEY.plans, []);
+
+const LIFT_URL = 'https://www.dugcanlift.com/lift/';
+
+/* Grouping key for an ingredient with no unit — "2 eggs", "1 banana".
+ *
+ * A sentinel, not a unit. It keeps counts in their own bucket during
+ * aggregation, so two cloves of garlic are never added to two cups of
+ * anything, and the shopping list drops it when printing, because
+ * "2 x banana" is not how anyone writes a shopping list.
+ *
+ * Contains a null character so it can never collide with something typed. */
+const COUNT_UNIT = '\u0000count';
+
+const COOK_UNITS = new Set([
+  'g', 'kg', 'mg', 'ml', 'l',
+  'tsp', 'tbsp', 'cup', 'cups', 'oz', 'lb', 'lbs',
+  'clove', 'cloves', 'slice', 'slices', 'scoop', 'scoops',
+  'can', 'cans', 'pinch', 'handful',
+]);
+
+/* Pulls a quantity and unit off the front of a typed ingredient line.
+ *
+ * Deliberately small. It handles the shapes people actually type and gives up
+ * cleanly on everything else, leaving `item` undefined so the shopping list
+ * shows the raw line instead. A confident wrong quantity on a client's
+ * shopping list is worse than a line they can read and check. */
+function parseIngredient(raw) {
+  let rest = raw.trimStart();
+
+  const takeNumber = () => {
+    const m = rest.match(/^[0-9.]+/);
+    if (!m) return null;
+    const value = parseFloat(m[0]);
+    if (isNaN(value)) return null;
+    rest = rest.slice(m[0].length);
+    return value;
+  };
+
+  let qty = takeNumber();
+  if (qty === null) return { rawText: raw };
+
+  if (rest.startsWith('/')) {
+    rest = rest.slice(1);
+    const denominator = takeNumber();
+    if (!denominator) return { rawText: raw };
+    qty /= denominator;
+  } else if (rest.startsWith(' ')) {
+    const saved = rest;
+    rest = rest.slice(1);
+    const whole = takeNumber();
+    if (whole !== null && rest.startsWith('/')) {
+      rest = rest.slice(1);
+      const denominator = takeNumber();
+      if (denominator) qty += whole / denominator;
+      else rest = saved;
+    } else {
+      rest = saved;
+    }
+  }
+
+  rest = rest.trimStart();
+  const firstWord = rest.split(' ')[0];
+  const candidate = firstWord.toLowerCase().replace(/[.,]+$/, '');
+
+  let unit = null;
+  let item;
+  if (COOK_UNITS.has(candidate)) {
+    unit = candidate;
+    item = rest.slice(firstWord.length).trim();
+  } else {
+    item = rest.trim();
+  }
+
+  if (!item) return { rawText: raw };
+
+  return {
+    rawText: raw,
+    item,
+    qty,
+    unit: unit || COUNT_UNIT,
+    grams: unit === 'g' ? qty : null,
+  };
+}
+
+const trimNum = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100));
+const servingsLabel = (v) => (v === 1 ? '1 serving' : `${trimNum(v)} servings`);
+const recipeById = (id) => recipes.find((r) => r.id === id);
+const cookUid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
+
+/* Counts print bare — "2", not "2 x banana". */
+function amountsLabel(amounts) {
+  return Object.keys(amounts).sort().map((unit) => {
+    const value = trimNum(amounts[unit]);
+    return unit === COUNT_UNIT ? value : `${value} ${unit}`;
+  }).join(' + ');
+}
+
+function dayLabel(key) {
+  if (key === todayKey()) return 'Today';
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  if (key === dateKey(tomorrow)) return 'Tomorrow';
+  return parseKey(key).toLocaleDateString(undefined, { weekday: 'long' });
+}
+
+function cookWeek() {
+  const out = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    out.push(dateKey(d));
+  }
+  return out;
+}
+
+/* Amounts scale by each meal's servings against the recipe's own serving
+ * count, so planning two servings of a four-serving recipe buys half. */
+function buildShoppingList(meals) {
+  const amounts = {}, names = {}, unparsed = {};
+
+  meals.forEach((meal) => {
+    const recipe = recipeById(meal.recipeId);
+    if (!recipe) return;
+    const factor = meal.servings / (recipe.servings > 0 ? recipe.servings : 1);
+
+    (recipe.ingredients || []).forEach((ing) => {
+      const name = (ing.item && ing.item.trim()) || ing.rawText;
+      const key = name.trim().toLowerCase();
+      if (!key) return;
+      if (!names[key]) names[key] = name;
+
+      if (ing.qty != null && ing.unit) {
+        amounts[key] = amounts[key] || {};
+        amounts[key][ing.unit] = (amounts[key][ing.unit] || 0) + ing.qty * factor;
+      } else {
+        unparsed[key] = unparsed[key] || [];
+        unparsed[key].push(ing.rawText);
+      }
+    });
+  });
+
+  return Object.keys(names).sort().map((key) => ({
+    key,
+    displayName: names[key],
+    amounts: amounts[key] || {},
+    unparsed: unparsed[key] || [],
+  }));
+}
+
+/* ---------------- plan link ---------------- */
+
+const bytesToB64url = (bytes) => {
+  let bin = '';
+  bytes.forEach((b) => { bin += String.fromCharCode(b); });
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+};
+
+async function deflate(text) {
+  if (typeof CompressionStream === 'undefined') return null;
+  const stream = new Blob([text]).stream()
+    .pipeThrough(new CompressionStream('deflate-raw'));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+
+/* Builds the link for one client's week.
+ *
+ * Recipes ride inline, but only the ones this plan actually uses, and only the
+ * fields needed to cook and log them. That is what keeps a month of dinners
+ * inside a link an email client will not mangle.
+ */
+async function encodePlan(clientId) {
+  const client = clients.find((c) => c.id === clientId);
+  const mine = plans.filter((p) => p.clientId === clientId);
+  if (!client || !mine.length) return null;
+
+  const used = [...new Set(mine.map((m) => m.recipeId))];
+  const index = {};
+  const inline = [];
+  used.forEach((id) => {
+    const r = recipeById(id);
+    if (!r) return;
+    index[id] = inline.length;
+    const n = r.nutritionPerServing;
+    inline.push({
+      n: r.name,
+      s: r.servings,
+      // Per serving, omitted entirely when unknown — a zero here would become
+      // a zero-calorie dinner in the client's day total.
+      ...(n ? { u: [n.calories, n.proteinG, n.carbsG, n.fatG, n.fiberG || 0] } : {}),
+      i: (r.ingredients || []).map((g) => g.rawText),
+      t: r.steps || [],
+    });
+  });
+
+  const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
+  const payload = {
+    v: 1,
+    t: 'plan',
+    l: client.id,
+    n: settings.name || '',
+    r: inline,
+    m: mine
+      .filter((p) => index[p.recipeId] !== undefined)
+      .map((p) => ({ d: p.date, s: MEALS.indexOf(p.meal), x: index[p.recipeId], q: p.servings })),
+  };
+
+  const json = JSON.stringify(payload);
+  const packed = await deflate(json);
+  // 'u' is the uncompressed fallback the decoder already understands, for
+  // browsers without CompressionStream.
+  const body = packed
+    ? 'z' + bytesToB64url(packed)
+    : 'u' + bytesToB64url(new TextEncoder().encode(json));
+  return `${LIFT_URL}#1${body}`;
+}
+
+/* ---------------- COOK views ---------------- */
+
+let cookSection = 'recipes';
+let editingRecipeId = null;
+let planClientId = null;
+
+function renderCook() {
+  chipRow($('#cook-sections'),
+    [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' }, { label: 'Shopping', v: 'shopping' }],
+    (i) => i.v === cookSection,
+    (i) => { cookSection = i.v; $('#recipe-form').classList.add('hidden'); renderCook(); });
+
+  $('#cook-recipes').classList.toggle('hidden', cookSection !== 'recipes');
+  $('#cook-plan').classList.toggle('hidden', cookSection !== 'plan');
+  $('#cook-shopping').classList.toggle('hidden', cookSection !== 'shopping');
+
+  if (cookSection === 'recipes') renderCookRecipes();
+  if (cookSection === 'plan') renderCookPlan();
+  if (cookSection === 'shopping') renderCookShopping();
+}
+
+function chipRow(container, items, isOn, onPick) {
+  container.innerHTML = '';
+  items.forEach((item) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (isOn(item) ? ' on' : '');
+    b.textContent = item.label;
+    b.onclick = () => onPick(item);
+    container.appendChild(b);
+  });
+}
+
+function cookEl(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+
+function renderCookRecipes() {
+  const list = $('#recipe-list');
+  list.innerHTML = '';
+
+  if (!recipes.length) {
+    list.appendChild(cookEl('p', 'muted',
+      'No recipes yet. Write the ones you actually give clients — the plan and '
+      + 'their shopping list build themselves from here.'));
+    return;
+  }
+
+  [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
+    const card = cookEl('div', 'card');
+    card.appendChild(cookEl('strong', null, r.name));
+    card.appendChild(cookEl('p', 'muted', servingsLabel(r.servings)));
+
+    const n = r.nutritionPerServing;
+    card.appendChild(cookEl('p', 'muted', n
+      ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
+      : 'Macros not set'));
+
+    if ((r.ingredients || []).length) {
+      card.appendChild(cookEl('p', 'muted',
+        `${r.ingredients.length} ingredient${r.ingredients.length === 1 ? '' : 's'}`));
+    }
+
+    card.onclick = () => openRecipeForm(r.id);
+    list.appendChild(card);
+  });
+}
+
+function openRecipeForm(id) {
+  editingRecipeId = id;
+  const r = id ? recipeById(id) : null;
+  $('#r-name').value = r ? r.name : '';
+  $('#r-servings').value = r ? r.servings : 4;
+  $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
+  $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
+  const n = r && r.nutritionPerServing;
+  $('#r-cal').value = n ? n.calories : '';
+  $('#r-p').value = n ? n.proteinG : '';
+  $('#r-c').value = n ? n.carbsG : '';
+  $('#r-f').value = n ? n.fatG : '';
+  $('#r-delete').classList.toggle('hidden', !r);
+  $('#recipe-form').classList.remove('hidden');
+  $('#r-name').focus();
+}
+
+$('#recipe-new').onclick = () => openRecipeForm(null);
+$('#r-cancel').onclick = () => {
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+};
+
+$('#r-delete').onclick = () => {
+  if (!editingRecipeId) return;
+  recipes = recipes.filter((r) => r.id !== editingRecipeId);
+  plans = plans.filter((p) => p.recipeId !== editingRecipeId);
+  save(COOK_KEY.recipes, recipes);
+  save(COOK_KEY.plans, plans);
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+  renderCook();
+};
+
+$('#r-save').onclick = () => {
+  const name = $('#r-name').value.trim();
+  if (!name) return;
+
+  const num = (sel) => {
+    const raw = $(sel).value.trim();
+    return raw === '' ? null : parseFloat(raw);
+  };
+  const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f')];
+  // Null unless something was typed. An untouched form must not write zeros.
+  const nutrition = typed.every((v) => v === null) ? null : {
+    calories: typed[0] || 0,
+    proteinG: typed[1] || 0,
+    carbsG: typed[2] || 0,
+    fatG: typed[3] || 0,
+    fiberG: 0,
+  };
+
+  const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
+  const servings = parseFloat($('#r-servings').value) || 1;
+
+  const body = {
+    name,
+    servings: servings > 0 ? servings : 1,
+    ingredients: lines('#r-ingredients').map(parseIngredient),
+    steps: lines('#r-steps'),
+    nutritionPerServing: nutrition,
+  };
+
+  if (editingRecipeId) {
+    recipes = recipes.map((r) => (r.id === editingRecipeId ? { ...r, ...body } : r));
+  } else {
+    recipes.push({ id: cookUid(), ...body });
+  }
+
+  save(COOK_KEY.recipes, recipes);
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+  renderCook();
+};
+
+function renderCookPlan() {
+  const select = $('#plan-client');
+  select.innerHTML = '';
+
+  if (!clients.length) {
+    $('#plan-note').textContent =
+      'No clients yet. A plan is addressed to one person, so add a client first.';
+    $('#plan-days').innerHTML = '';
+    $('#plan-send-card').classList.add('hidden');
+    return;
+  }
+
+  clients.forEach((c) => {
+    const o = document.createElement('option');
+    o.value = c.id;
+    o.textContent = c.name;
+    select.appendChild(o);
+  });
+
+  if (!planClientId || !clients.some((c) => c.id === planClientId)) {
+    planClientId = clients[0].id;
+  }
+  select.value = planClientId;
+  select.onchange = () => { planClientId = select.value; renderCook(); };
+
+  $('#plan-note').textContent = recipes.length
+    ? 'Plans go to this client only. Their app refuses a plan addressed to anyone else.'
+    : 'Write a recipe first — the plan is built from them.';
+  $('#plan-send-card').classList.toggle('hidden', !recipes.length);
+
+  const wrap = $('#plan-days');
+  wrap.innerHTML = '';
+  if (!recipes.length) return;
+
+  const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
+  cookWeek().forEach((day) => {
+    const card = cookEl('div', 'card');
+    card.appendChild(cookEl('strong', null, dayLabel(day)));
+
+    MEALS.forEach((meal) => {
+      const forSlot = plans.filter(
+        (p) => p.clientId === planClientId && p.date === day && p.meal === meal);
+      const row = cookEl('div', 'row');
+      row.appendChild(cookEl('span', 'muted', meal.charAt(0) + meal.slice(1).toLowerCase()));
+
+      if (!forSlot.length) {
+        const add = cookEl('button', 'chip', 'Add');
+        add.onclick = () => addPlannedMeal(day, meal);
+        row.appendChild(add);
+      } else {
+        forSlot.forEach((p) => {
+          const label = cookEl('span', null,
+            `${p.recipeName} · ${servingsLabel(p.servings)}`);
+          row.appendChild(label);
+          const rm = cookEl('button', 'chip', 'Remove');
+          rm.onclick = () => {
+            plans = plans.filter((x) => x.id !== p.id);
+            save(COOK_KEY.plans, plans);
+            renderCook();
+          };
+          row.appendChild(rm);
+        });
+      }
+      card.appendChild(row);
+    });
+
+    wrap.appendChild(card);
+  });
+
+  updatePlanSize();
+}
+
+function addPlannedMeal(day, meal) {
+  const servings = parseFloat(prompt('How many servings?', '1'));
+  if (!servings || servings <= 0) return;
+  const sorted = [...recipes].sort((a, b) => a.name.localeCompare(b.name));
+  const pick = prompt('Which recipe?\n\n'
+    + sorted.map((r, i) => `${i + 1}. ${r.name}`).join('\n'), '1');
+  const recipe = sorted[parseInt(pick, 10) - 1];
+  if (!recipe) return;
+
+  plans.push({
+    id: cookUid(),
+    clientId: planClientId,
+    recipeId: recipe.id,
+    recipeName: recipe.name,
+    date: day,
+    meal,
+    servings,
+  });
+  save(COOK_KEY.plans, plans);
+  renderCook();
+}
+
+/* Mail clients wrap and corrupt very long links. The same 16k ceiling the
+ * outbound log format works to applies here. */
+const RISKY_LINK_LENGTH = 16000;
+
+async function updatePlanSize() {
+  const link = await encodePlan(planClientId);
+  const note = $('#plan-size');
+  if (!link) {
+    note.textContent = 'Nothing planned for this client yet.';
+    return;
+  }
+  const kb = (link.length / 1024).toFixed(1);
+  note.textContent = link.length > RISKY_LINK_LENGTH
+    ? `${kb} KB — long enough that some mail apps will break it. Send fewer days, or fewer recipes with long ingredient lists.`
+    : `${kb} KB — comfortably inside what an email will carry.`;
+}
+
+$('#plan-copy').onclick = async () => {
+  const link = await encodePlan(planClientId);
+  if (!link) return;
+  try {
+    await navigator.clipboard.writeText(link);
+    $('#plan-copy').textContent = 'Copied';
+    setTimeout(() => { $('#plan-copy').textContent = 'Copy plan link'; }, 1500);
+  } catch (e) {
+    alert('Copying was blocked by the browser. The link is:\n\n' + link);
+  }
+};
+
+$('#plan-mail').onclick = async () => {
+  const link = await encodePlan(planClientId);
+  if (!link) return;
+  const client = clients.find((c) => c.id === planClientId);
+  const who = settings.name || 'your coach';
+  const subject = encodeURIComponent(`Your week from ${who}`);
+  const body = encodeURIComponent(
+    `${client ? client.name : 'Hi'},\n\n`
+    + `Here's your week. Open this on your phone and LIFT will take it in — `
+    + `recipes, the plan, and a shopping list for the lot.\n\n${link}\n\n`
+    + `Nothing in that link goes to a server. It travels in the part of the `
+    + `address browsers never send.\n\n${who}\n`);
+  location.href = `mailto:?subject=${subject}&body=${body}`;
+};
+
+function renderCookShopping() {
+  const wrap = $('#cook-shopping');
+  wrap.innerHTML = '';
+
+  const mine = plans.filter((p) => p.clientId === planClientId);
+  if (!mine.length) {
+    wrap.appendChild(cookEl('p', 'muted',
+      'Nothing planned for this client, so there is nothing to buy yet.'));
+    return;
+  }
+
+  const client = clients.find((c) => c.id === planClientId);
+  wrap.appendChild(cookEl('p', 'muted',
+    `What ${client ? client.name : 'this client'} needs for the week you planned. `
+    + 'It goes with the plan link — you do not have to send this separately.'));
+
+  buildShoppingList(mine).forEach((line) => {
+    const card = cookEl('div', 'card');
+    card.appendChild(cookEl('div', null, line.displayName));
+    if (Object.keys(line.amounts).length) {
+      card.appendChild(cookEl('p', 'muted', amountsLabel(line.amounts)));
+    }
+    line.unparsed.forEach((raw) => card.appendChild(cookEl('p', 'muted', raw)));
+    wrap.appendChild(card);
+  });
 }

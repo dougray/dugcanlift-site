@@ -23,6 +23,7 @@
 <nav id="tabs">
   <button data-tab="roster" class="active">Roster</button>
   <button data-tab="client" id="tab-client" disabled>Client</button>
+  <button data-tab="cook">Cook</button>
   <button data-tab="connect">Connect</button>
 </nav>
 
@@ -96,6 +97,62 @@
   <div id="session-log"></div>
 
   <button class="wide ghost" id="client-remove">Remove this client</button>
+</section>
+
+<!-- ---------------- COOK ---------------- -->
+<section id="cook" class="tab">
+  <div class="chips" id="cook-sections"></div>
+
+  <div id="cook-recipes">
+    <button class="wide" id="recipe-new">New recipe</button>
+    <div id="recipe-list"></div>
+  </div>
+
+  <div id="recipe-form" class="card hidden">
+    <label for="r-name">Name</label>
+    <input type="text" id="r-name" placeholder="Beef chilli">
+
+    <label for="r-servings">Servings</label>
+    <input type="number" id="r-servings" inputmode="decimal" value="4">
+
+    <label for="r-ingredients">Ingredients, one per line</label>
+    <textarea id="r-ingredients" rows="6" placeholder="500 g lean beef mince"></textarea>
+
+    <label for="r-steps">Method, one step per line</label>
+    <textarea id="r-steps" rows="4"></textarea>
+
+    <label>Macros per serving</label>
+    <p class="muted">Leave blank if you don't know them. Blank stays unknown — it
+      will not log as zero on your client's phone.</p>
+    <div class="row">
+      <div><label for="r-cal">kcal</label><input type="number" id="r-cal" inputmode="decimal"></div>
+      <div><label for="r-p">Protein g</label><input type="number" id="r-p" inputmode="decimal"></div>
+    </div>
+    <div class="row">
+      <div><label for="r-c">Carbs g</label><input type="number" id="r-c" inputmode="decimal"></div>
+      <div><label for="r-f">Fat g</label><input type="number" id="r-f" inputmode="decimal"></div>
+    </div>
+
+    <button class="wide" id="r-save">Save</button>
+    <button class="ghost wide" id="r-cancel">Cancel</button>
+    <button class="ghost wide hidden" id="r-delete">Delete recipe</button>
+  </div>
+
+  <div id="cook-plan" class="hidden">
+    <div class="card">
+      <label for="plan-client">Planning for</label>
+      <select id="plan-client"></select>
+      <p class="muted" id="plan-note"></p>
+    </div>
+    <div id="plan-days"></div>
+    <div class="card" id="plan-send-card">
+      <button class="wide" id="plan-copy">Copy plan link</button>
+      <button class="ghost wide" id="plan-mail">Email it</button>
+      <p class="muted" id="plan-size"></p>
+    </div>
+  </div>
+
+  <div id="cook-shopping" class="hidden"></div>
 </section>
 
 <!-- ---------------- CONNECT ---------------- -->
