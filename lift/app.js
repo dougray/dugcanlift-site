@@ -1743,16 +1743,40 @@ function renderPlan() {
   });
 }
 
+/* Two browser dialogs to place one dinner was the roughest edge in here. This
+ * is the same choice made in the page, where the servings you pick are
+ * reflected in the calories on every row before you commit to one. */
 function pickRecipe(day, meal) {
-  const servings = parseFloat(prompt('How many servings?', '1'));
-  if (!servings || servings <= 0) return;
-  const names = [...recipes].sort((a, b) => a.name.localeCompare(b.name));
-  const choice = prompt(
-    'Which recipe?\n\n' + names.map((r, i) => `${i + 1}. ${r.name}`).join('\n'), '1');
-  const index = parseInt(choice, 10) - 1;
-  const recipe = names[index];
-  if (!recipe) return;
+  const panel = $('#picker');
+  $('#picker-title').textContent =
+    `${dateLabel(day)} · ${meal.charAt(0) + meal.slice(1).toLowerCase()}`;
+  $('#picker-servings').value = '1';
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
 
+  const draw = () => {
+    const servings = parseFloat($('#picker-servings').value) || 1;
+    const list = $('#picker-list');
+    list.innerHTML = '';
+    [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
+      const row = el('button', 'chip wide');
+      const n = r.nutritionPerServing;
+      row.textContent = n ? `${r.name} — ${Math.round(n.calories * servings)} kcal` : r.name;
+      row.onclick = () => {
+        panel.classList.add('hidden');
+        placeMeal(r, day, meal, servings);
+      };
+      list.appendChild(row);
+    });
+  };
+
+  $('#picker-servings').oninput = draw;
+  draw();
+}
+
+$('#picker-cancel').onclick = () => $('#picker').classList.add('hidden');
+
+function placeMeal(recipe, day, meal, servings) {
   plan.push({
     id: uid(),
     recipeId: recipe.id,
@@ -1760,7 +1784,7 @@ function pickRecipe(day, meal) {
     date: day,
     meal,
     servings,
-    // Per serving, never pre-scaled. Same invariant as both native builds.
+    // Per serving, never pre-scaled. Same invariant as every other client.
     snapshotNutrition: recipe.nutritionPerServing,
     loggedFoodEntryId: null,
   });
