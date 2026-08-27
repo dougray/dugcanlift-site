@@ -22,6 +22,7 @@
 <nav id="tabs">
   <button data-tab="home" class="active">Home</button>
   <button data-tab="food">Food</button>
+  <button data-tab="cook">Cook</button>
   <button data-tab="train">Train</button>
 </nav>
 
@@ -93,6 +94,54 @@
     <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
     <p class="muted" id="backup-note"></p>
   </div>
+</section>
+
+<!-- ---------------- COOK ---------------- -->
+<section id="cook" class="tab">
+  <div class="chips" id="cook-sections"></div>
+
+  <!-- recipes -->
+  <div id="cook-recipes">
+    <button class="wide" id="recipe-new">New recipe</button>
+    <div id="recipe-list"></div>
+  </div>
+
+  <!-- recipe editor -->
+  <div id="recipe-form" class="card hidden">
+    <label for="r-name">Name</label>
+    <input type="text" id="r-name" placeholder="Overnight oats">
+
+    <label for="r-servings">Servings</label>
+    <input type="number" id="r-servings" inputmode="decimal" value="1">
+
+    <label for="r-ingredients">Ingredients, one per line</label>
+    <textarea id="r-ingredients" rows="6" placeholder="2 tbsp olive oil"></textarea>
+
+    <label for="r-steps">Method, one step per line</label>
+    <textarea id="r-steps" rows="4"></textarea>
+
+    <label>Macros per serving</label>
+    <p class="muted">Leave blank if you don't know them. Blank stays unknown — it
+      will not log as zero.</p>
+    <div class="row">
+      <div><label for="r-cal">kcal</label><input type="number" id="r-cal" inputmode="decimal"></div>
+      <div><label for="r-p">Protein g</label><input type="number" id="r-p" inputmode="decimal"></div>
+    </div>
+    <div class="row">
+      <div><label for="r-c">Carbs g</label><input type="number" id="r-c" inputmode="decimal"></div>
+      <div><label for="r-f">Fat g</label><input type="number" id="r-f" inputmode="decimal"></div>
+    </div>
+
+    <button class="wide" id="r-save">Save</button>
+    <button class="wide ghost" id="r-cancel">Cancel</button>
+    <button class="wide ghost hidden" id="r-delete">Delete recipe</button>
+  </div>
+
+  <!-- plan -->
+  <div id="cook-plan" class="hidden"></div>
+
+  <!-- shopping -->
+  <div id="cook-shopping" class="hidden"></div>
 </section>
 
 <!-- ---------------- CALCULATOR ---------------- -->

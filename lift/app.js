@@ -8,7 +8,8 @@
 
 const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps',
               coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights',
-              ext: 'lift.ext' };
+              ext: 'lift.ext',
+              recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping' };
 
 function load(key, fallback) {
   try {
@@ -36,6 +37,11 @@ let settings = load(KEY.settings, { focus: 'BODYBUILDING' });
 // Keyed by date, e.g. { '2026-08-09': 4200 }. Entered by hand — see renderSteps
 // for why this can't read from Health Connect / HealthKit like the native apps.
 let steps = load(KEY.steps, {});
+// COOK. Recipes and the week's plan; the shopping list is derived from them
+// rather than stored, so only the tick-offs persist.
+let recipes = load(KEY.recipes, []);
+let plan = load(KEY.plan, []);
+let shoppingTicks = load(KEY.shopping, []);
 // Who to send logs to, and who they are from. See "send to coach" below.
 let coach = load(KEY.coach, { email: '', you: '', id: '', weeks: 8, itemised: false });
 // The calculator's inputs, kept so a coach gets more than a bare calorie
@@ -1277,6 +1283,7 @@ function render() {
   if (currentTab === 'home') renderHome();
   else if (currentTab === 'calc') renderCalc();
   else if (currentTab === 'food') renderFood();
+  else if (currentTab === 'cook') renderCook();
   else if (currentTab === 'train') renderTrain();
 }
 
@@ -1389,4 +1396,459 @@ render();
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+/* ---------------- COOK ----------------
+ *
+ * Recipes, the week's plan, and the shopping list that falls out of it.
+ *
+ * The client half. The trainer half is the COOK page in Coach, which authors
+ * the same planned-meal shapes and sends them here as a link.
+ *
+ * Shapes mirror the Android and iOS builds exactly — recipes store macros PER
+ * SERVING and scaling happens at the point of use, so a plan can move between
+ * the three clients without a conversion step.
+ */
+
+/* Grouping key for an ingredient with no unit — "2 eggs", "1 banana".
+ *
+ * A sentinel, not a unit. It keeps counts in their own bucket during
+ * aggregation, so two cloves of garlic are never added to two cups of
+ * anything, and the shopping list drops it when printing, because
+ * "2 x banana" is not how anyone writes a shopping list.
+ *
+ * Contains a null character so it can never collide with something typed. The
+ * same value exists in both native builds; all three must agree. */
+const COUNT_UNIT = '\u0000count';
+
+const COOK_UNITS = new Set([
+  'g', 'kg', 'mg', 'ml', 'l',
+  'tsp', 'tbsp', 'cup', 'cups', 'oz', 'lb', 'lbs',
+  'clove', 'cloves', 'slice', 'slices', 'scoop', 'scoops',
+  'can', 'cans', 'pinch', 'handful',
+]);
+
+/* Pulls a quantity and unit off the front of a typed ingredient line.
+ *
+ * Deliberately small. It handles the shapes people actually type and gives up
+ * cleanly on everything else, leaving `item` undefined so the shopping list
+ * shows the raw line instead. Guessing harder here would produce confident
+ * wrong quantities, which is worse than an unparsed line the reader can
+ * check. */
+function parseIngredient(raw) {
+  let rest = raw.trimStart();
+
+  const takeNumber = () => {
+    const m = rest.match(/^[0-9.]+/);
+    if (!m) return null;
+    const value = parseFloat(m[0]);
+    if (isNaN(value)) return null;
+    rest = rest.slice(m[0].length);
+    return value;
+  };
+
+  let qty = takeNumber();
+  if (qty === null) return { rawText: raw };
+
+  if (rest.startsWith('/')) {
+    rest = rest.slice(1);
+    const denominator = takeNumber();
+    if (!denominator) return { rawText: raw };
+    qty /= denominator;
+  } else if (rest.startsWith(' ')) {
+    // "1 1/2" — a whole number followed by a fraction.
+    const saved = rest;
+    rest = rest.slice(1);
+    const whole = takeNumber();
+    if (whole !== null && rest.startsWith('/')) {
+      rest = rest.slice(1);
+      const denominator = takeNumber();
+      if (denominator) qty += whole / denominator;
+      else rest = saved;
+    } else {
+      rest = saved;
+    }
+  }
+
+  rest = rest.trimStart();
+  const firstWord = rest.split(' ')[0];
+  const candidate = firstWord.toLowerCase().replace(/[.,]+$/, '');
+
+  let unit = null;
+  let item;
+  if (COOK_UNITS.has(candidate)) {
+    unit = candidate;
+    item = rest.slice(firstWord.length).trim();
+  } else {
+    item = rest.trim();
+  }
+
+  if (!item) return { rawText: raw };
+
+  return {
+    rawText: raw,
+    item,
+    qty,
+    unit: unit || COUNT_UNIT,
+    grams: unit === 'g' ? qty : null,
+  };
+}
+
+/* Counts print bare — "2", not "2 x banana". */
+function amountsLabel(amounts) {
+  return Object.keys(amounts).sort().map((unit) => {
+    const value = trimNum(amounts[unit]);
+    return unit === COUNT_UNIT ? value : `${value} ${unit}`;
+  }).join(' + ');
+}
+
+const trimNum = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100));
+const servingsLabel = (v) => (v === 1 ? '1 serving' : `${trimNum(v)} servings`);
+const recipeById = (id) => recipes.find((r) => r.id === id);
+
+/* Today plus six. A plan is a week you are shopping for, not a calendar. */
+function cookWeek() {
+  const out = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    out.push(dateKey(d));
+  }
+  return out;
+}
+
+/* Aggregates ingredients across planned meals.
+ *
+ * Amounts scale by each meal's servings against the recipe's own serving
+ * count, so planning two servings of a four-serving recipe buys half. */
+function buildShoppingList(meals) {
+  const amounts = {}, names = {}, unparsed = {};
+
+  meals.forEach((meal) => {
+    const recipe = recipeById(meal.recipeId);
+    if (!recipe) return;
+    const factor = meal.servings / (recipe.servings > 0 ? recipe.servings : 1);
+
+    (recipe.ingredients || []).forEach((ing) => {
+      const name = (ing.item && ing.item.trim()) || ing.rawText;
+      const key = name.trim().toLowerCase();
+      if (!key) return;
+      if (!names[key]) names[key] = name;
+
+      if (ing.qty != null && ing.unit) {
+        amounts[key] = amounts[key] || {};
+        amounts[key][ing.unit] = (amounts[key][ing.unit] || 0) + ing.qty * factor;
+      } else {
+        unparsed[key] = unparsed[key] || [];
+        unparsed[key].push(ing.rawText);
+      }
+    });
+  });
+
+  return Object.keys(names).sort().map((key) => ({
+    key,
+    displayName: names[key],
+    amounts: amounts[key] || {},
+    unparsed: unparsed[key] || [],
+  }));
+}
+
+/* ---------------- COOK views ---------------- */
+
+let cookSection = 'recipes';
+let editingRecipeId = null;
+
+function renderCook() {
+  chips($('#cook-sections'),
+    [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' }, { label: 'Shopping', v: 'shopping' }],
+    (i) => i.v === cookSection,
+    (i) => { cookSection = i.v; $('#recipe-form').classList.add('hidden'); render(); });
+
+  $('#cook-recipes').classList.toggle('hidden', cookSection !== 'recipes');
+  $('#cook-plan').classList.toggle('hidden', cookSection !== 'plan');
+  $('#cook-shopping').classList.toggle('hidden', cookSection !== 'shopping');
+
+  if (cookSection === 'recipes') renderRecipes();
+  if (cookSection === 'plan') renderPlan();
+  if (cookSection === 'shopping') renderShopping();
+}
+
+function renderRecipes() {
+  const list = $('#recipe-list');
+  list.innerHTML = '';
+
+  if (!recipes.length) {
+    list.appendChild(el('p', 'muted',
+      'No recipes yet. Add one you already cook — the plan and the shopping list build themselves from here.'));
+    return;
+  }
+
+  [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
+    const card = el('div', 'card');
+    const head = el('div', 'statline');
+    head.appendChild(el('strong', null, r.name));
+    head.appendChild(el('span', 'muted', servingsLabel(r.servings)));
+    card.appendChild(head);
+
+    // Deliberately not "0 kcal". An unknown that renders as zero becomes a
+    // zero-calorie dinner in someone's day total.
+    const n = r.nutritionPerServing;
+    card.appendChild(el('p', 'muted', n
+      ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
+      : 'Macros not set'));
+
+    if ((r.ingredients || []).length) {
+      card.appendChild(el('p', 'muted',
+        `${r.ingredients.length} ingredient${r.ingredients.length === 1 ? '' : 's'}`));
+    }
+
+    card.onclick = () => openRecipeForm(r.id);
+    list.appendChild(card);
+  });
+}
+
+function openRecipeForm(id) {
+  editingRecipeId = id;
+  const r = id ? recipeById(id) : null;
+  $('#r-name').value = r ? r.name : '';
+  $('#r-servings').value = r ? r.servings : 1;
+  $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
+  $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
+  const n = r && r.nutritionPerServing;
+  $('#r-cal').value = n ? n.calories : '';
+  $('#r-p').value = n ? n.proteinG : '';
+  $('#r-c').value = n ? n.carbsG : '';
+  $('#r-f').value = n ? n.fatG : '';
+  $('#r-delete').classList.toggle('hidden', !r);
+  $('#recipe-form').classList.remove('hidden');
+  $('#r-name').focus();
+}
+
+$('#recipe-new').onclick = () => openRecipeForm(null);
+$('#r-cancel').onclick = () => {
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+};
+
+$('#r-delete').onclick = () => {
+  if (!editingRecipeId) return;
+  recipes = recipes.filter((r) => r.id !== editingRecipeId);
+  // Unlogged plan entries for a deleted recipe go too. Logged ones stay: the
+  // food entry they produced carries its own copy of the numbers, and history
+  // must not change because a recipe was tidied up later.
+  plan = plan.filter((m) => m.recipeId !== editingRecipeId || m.loggedFoodEntryId);
+  save(KEY.recipes, recipes);
+  save(KEY.plan, plan);
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+  render();
+};
+
+$('#r-save').onclick = () => {
+  const name = $('#r-name').value.trim();
+  if (!name) return;
+
+  const num = (sel) => {
+    const raw = $(sel).value.trim();
+    return raw === '' ? null : parseFloat(raw);
+  };
+  const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f')];
+  // Null unless something was actually typed — an untouched form must not
+  // write zeros, which would later log as a zero-calorie meal.
+  const nutrition = typed.every((v) => v === null) ? null : {
+    calories: typed[0] || 0,
+    proteinG: typed[1] || 0,
+    carbsG: typed[2] || 0,
+    fatG: typed[3] || 0,
+    fiberG: 0,
+  };
+
+  const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
+  const servings = parseFloat($('#r-servings').value) || 1;
+
+  const body = {
+    name,
+    servings: servings > 0 ? servings : 1,
+    ingredients: lines('#r-ingredients').map(parseIngredient),
+    steps: lines('#r-steps'),
+    nutritionPerServing: nutrition,
+  };
+
+  if (editingRecipeId) {
+    recipes = recipes.map((r) => (r.id === editingRecipeId ? { ...r, ...body } : r));
+  } else {
+    recipes.push({ id: uid(), importedAt: Date.now(), ...body });
+  }
+
+  save(KEY.recipes, recipes);
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+  render();
+};
+
+function renderPlan() {
+  const wrap = $('#cook-plan');
+  wrap.innerHTML = '';
+
+  if (!recipes.length) {
+    wrap.appendChild(el('p', 'muted', 'Add a recipe first — the plan is built from them.'));
+    return;
+  }
+
+  cookWeek().forEach((day) => {
+    const card = el('div', 'card');
+    card.appendChild(el('strong', null, dateLabel(day)));
+
+    ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'].forEach((meal) => {
+      const forSlot = plan.filter((m) => m.date === day && m.meal === meal);
+      const row = el('div', 'statline');
+      row.appendChild(el('span', 'muted', meal.charAt(0) + meal.slice(1).toLowerCase()));
+
+      const right = el('div');
+      if (!forSlot.length) {
+        const add = el('button', 'chip', 'Add');
+        add.onclick = () => pickRecipe(day, meal);
+        right.appendChild(add);
+      } else {
+        forSlot.forEach((m) => {
+          const line = el('div');
+          line.appendChild(el('div', null, m.recipeName));
+          // snapshotNutrition is per serving; this row is a whole meal.
+          if (m.snapshotNutrition) {
+            line.appendChild(el('p', 'muted',
+              `${Math.round(m.snapshotNutrition.calories * m.servings)} kcal`));
+          }
+          if (m.loggedFoodEntryId) {
+            line.appendChild(el('span', 'muted', 'Logged'));
+          } else if (m.snapshotNutrition) {
+            const log = el('button', 'chip', 'Log it');
+            log.onclick = () => logPlannedMeal(m.id);
+            line.appendChild(log);
+          }
+          const rm = el('button', 'chip', 'Remove');
+          rm.onclick = () => {
+            plan = plan.filter((x) => x.id !== m.id);
+            save(KEY.plan, plan);
+            render();
+          };
+          line.appendChild(rm);
+          right.appendChild(line);
+        });
+      }
+      row.appendChild(right);
+      card.appendChild(row);
+    });
+
+    wrap.appendChild(card);
+  });
+}
+
+function pickRecipe(day, meal) {
+  const servings = parseFloat(prompt('How many servings?', '1'));
+  if (!servings || servings <= 0) return;
+  const names = [...recipes].sort((a, b) => a.name.localeCompare(b.name));
+  const choice = prompt(
+    'Which recipe?\n\n' + names.map((r, i) => `${i + 1}. ${r.name}`).join('\n'), '1');
+  const index = parseInt(choice, 10) - 1;
+  const recipe = names[index];
+  if (!recipe) return;
+
+  plan.push({
+    id: uid(),
+    recipeId: recipe.id,
+    recipeName: recipe.name,
+    date: day,
+    meal,
+    servings,
+    // Per serving, never pre-scaled. Same invariant as both native builds.
+    snapshotNutrition: recipe.nutritionPerServing,
+    loggedFoodEntryId: null,
+  });
+  save(KEY.plan, plan);
+  render();
+}
+
+/* Writes the log entry, then records that it happened.
+ *
+ * The order matters: loggedFoodEntryId is the only thing stopping a second tap
+ * logging the same dinner twice, so it is set from the entry that actually
+ * exists rather than optimistically beforehand. */
+function logPlannedMeal(id) {
+  const m = plan.find((x) => x.id === id);
+  if (!m || m.loggedFoodEntryId || !m.snapshotNutrition) return;
+
+  const n = m.snapshotNutrition;
+  const entry = {
+    id: uid(),
+    name: m.recipeName,
+    // Food entries store macros per serving and multiply by servings, so the
+    // per-serving snapshot passes through unscaled.
+    servings: m.servings,
+    calories: Math.round(n.calories),
+    proteinG: Math.round(n.proteinG),
+    fatG: Math.round(n.fatG),
+    carbsG: Math.round(n.carbsG),
+    fiberG: Math.round(n.fiberG || 0),
+    date: m.date,
+    loggedAt: Date.now(),
+    meal: m.meal,
+  };
+  food.push(entry);
+  save(KEY.food, food);
+
+  plan = plan.map((x) => (x.id === id ? { ...x, loggedFoodEntryId: entry.id } : x));
+  save(KEY.plan, plan);
+  render();
+}
+
+function renderShopping() {
+  const wrap = $('#cook-shopping');
+  wrap.innerHTML = '';
+
+  // Only what is still ahead. A list that keeps yesterday's shopping on it
+  // stops being a list you trust.
+  const today = todayKey();
+  const week = cookWeek();
+  const upcoming = plan.filter((m) => m.date >= today && m.date <= week[week.length - 1]);
+  const lines = buildShoppingList(upcoming);
+
+  if (!lines.length) {
+    wrap.appendChild(el('p', 'muted',
+      'Nothing planned for the next week, so there is nothing to buy yet.'));
+    return;
+  }
+
+  lines.forEach((line) => {
+    const ticked = shoppingTicks.includes(line.key);
+    const card = el('div', 'card');
+    const label = el('div', null, line.displayName);
+    if (ticked) label.style.textDecoration = 'line-through';
+    card.appendChild(label);
+
+    if (Object.keys(line.amounts).length) {
+      card.appendChild(el('p', 'muted', amountsLabel(line.amounts)));
+    }
+    // Ingredients that never parsed, verbatim, so nothing silently drops off
+    // the list you shop from.
+    line.unparsed.forEach((raw) => card.appendChild(el('p', 'muted', raw)));
+
+    card.onclick = () => {
+      shoppingTicks = ticked
+        ? shoppingTicks.filter((k) => k !== line.key)
+        : [...shoppingTicks, line.key];
+      save(KEY.shopping, shoppingTicks);
+      render();
+    };
+    wrap.appendChild(card);
+  });
+
+  if (shoppingTicks.length) {
+    const clear = el('button', 'wide ghost', 'Clear ticks');
+    clear.onclick = () => {
+      shoppingTicks = [];
+      save(KEY.shopping, shoppingTicks);
+      render();
+    };
+    wrap.appendChild(clear);
+  }
 }
