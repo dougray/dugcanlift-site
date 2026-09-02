@@ -1144,6 +1144,7 @@ function render() {
   if (currentTab === 'roster') renderRoster();
   else if (currentTab === 'client') renderClient();
   else if (currentTab === 'cook') renderCook();
+  else if (currentTab === 'train') renderTrain();
   else if (currentTab === 'connect') renderConnect();
 }
 
@@ -1314,7 +1315,10 @@ async function deflate(text) {
 async function encodePlan(clientId) {
   const client = clients.find((c) => c.id === clientId);
   const mine = plans.filter((p) => p.clientId === clientId);
-  if (!client || !mine.length) return null;
+  const myTraining = sessions.filter((k) => k.clientId === clientId);
+  // Meals and training are independent: a coach who only programmes training
+  // still has a plan to send.
+  if (!client || (!mine.length && !myTraining.length)) return null;
 
   const used = [...new Set(mine.map((m) => m.recipeId))];
   const index = {};
@@ -1335,6 +1339,26 @@ async function encodePlan(clientId) {
     });
   });
 
+  // Workout templates ride inline the same way recipes do, and for the same
+  // reason: only the ones this plan actually schedules.
+  const usedWorkouts = [...new Set(myTraining.map((k) => k.workoutId))];
+  const workoutIndex = {};
+  const inlineWorkouts = [];
+  usedWorkouts.forEach((id) => {
+    const w = workoutById(id);
+    if (!w) return;
+    workoutIndex[id] = inlineWorkouts.length;
+    inlineWorkouts.push({
+      n: w.name,
+      e: (w.exercises || []).map((exercise) => ({
+        n: exercise.name,
+        ...(exercise.equipment ? { q: exercise.equipment } : {}),
+        s: (exercise.sets || []).map(setTuple),
+        ...(exercise.note ? { c: exercise.note } : {}),
+      })),
+    });
+  });
+
   const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
   const payload = {
     v: 1,
@@ -1347,6 +1371,13 @@ async function encodePlan(clientId) {
       .map((p) => ({ d: p.date, s: MEALS.indexOf(p.meal), x: index[p.recipeId], q: p.servings })),
   };
 
+  if (inlineWorkouts.length) {
+    payload.w = inlineWorkouts;
+    payload.k = myTraining
+      .filter((k) => workoutIndex[k.workoutId] !== undefined)
+      .map((k) => ({ d: k.date, x: workoutIndex[k.workoutId] }));
+  }
+
   const json = JSON.stringify(payload);
   const packed = await deflate(json);
   // 'u' is the uncompressed fallback the decoder already understands, for
@@ -1356,6 +1387,112 @@ async function encodePlan(clientId) {
     : 'u' + bytesToB64url(new TextEncoder().encode(json));
   return `${LIFT_URL}#1${body}`;
 }
+
+/* Builds a link carrying a recipe or a workout on its own, with nothing
+ * booked into a day.
+ *
+ * Same envelope and same addressing as a week — the only difference is the
+ * absence of `m` and `k`, which the receiving app reads as "file this, don't
+ * schedule it". */
+async function encodeLibrary(clientId, { recipeIds = [], workoutIds = [] }) {
+  const client = clients.find((c) => c.id === clientId);
+  if (!client || (!recipeIds.length && !workoutIds.length)) return null;
+
+  const payload = {
+    v: 1,
+    t: 'plan',
+    l: client.id,
+    n: settings.name || '',
+  };
+
+  const inlineRecipes = recipeIds.map(recipeById).filter(Boolean).map((r) => {
+    const n = r.nutritionPerServing;
+    return {
+      n: r.name,
+      s: r.servings,
+      ...(n ? { u: [n.calories, n.proteinG, n.carbsG, n.fatG, n.fiberG || 0] } : {}),
+      i: (r.ingredients || []).map((g) => g.rawText),
+      t: r.steps || [],
+    };
+  });
+  if (inlineRecipes.length) payload.r = inlineRecipes;
+
+  const inlineWorkouts = workoutIds.map(workoutById).filter(Boolean).map((w) => ({
+    n: w.name,
+    e: (w.exercises || []).map((exercise) => ({
+      n: exercise.name,
+      ...(exercise.equipment ? { q: exercise.equipment } : {}),
+      s: (exercise.sets || []).map(setTuple),
+      ...(exercise.note ? { c: exercise.note } : {}),
+    })),
+  }));
+  if (inlineWorkouts.length) payload.w = inlineWorkouts;
+
+  const json = JSON.stringify(payload);
+  const packed = await deflate(json);
+  const body = packed
+    ? 'z' + bytesToB64url(packed)
+    : 'u' + bytesToB64url(new TextEncoder().encode(json));
+  return `${LIFT_URL}#1${body}`;
+}
+
+/* One panel for "send just this", used by both recipes and workouts. A coach
+ * with several clients has to say who it is for; a plan is addressed. */
+function openSendPanel(title, describe, build) {
+  const panel = $('#send-one');
+  $('#send-one-title').textContent = title;
+  $('#send-one-what').textContent = describe;
+
+  const select = $('#send-one-client');
+  select.innerHTML = '';
+  clients.forEach((client) => {
+    const option = document.createElement('option');
+    option.value = client.id;
+    option.textContent = client.name;
+    select.appendChild(option);
+  });
+
+  const note = $('#send-one-note');
+  if (!clients.length) {
+    note.textContent = 'No clients yet. A plan is addressed to one person, so add a client first.';
+    $('#send-one-copy').disabled = true;
+    $('#send-one-mail').disabled = true;
+  } else {
+    note.textContent = '';
+    $('#send-one-copy').disabled = false;
+    $('#send-one-mail').disabled = false;
+  }
+
+  $('#send-one-copy').onclick = async () => {
+    const link = await build(select.value);
+    if (!link) return;
+    try {
+      await navigator.clipboard.writeText(link);
+      $('#send-one-copy').textContent = 'Copied';
+      setTimeout(() => { $('#send-one-copy').textContent = 'Copy link'; }, 1500);
+    } catch (e) {
+      alert('Copying was blocked by the browser.');
+    }
+  };
+
+  $('#send-one-mail').onclick = async () => {
+    const link = await build(select.value);
+    if (!link) return;
+    const client = clients.find((c) => c.id === select.value);
+    const who = settings.name || 'your coach';
+    const subject = encodeURIComponent(`${title} from ${who}`);
+    const body = encodeURIComponent(
+      `${client ? client.name : 'Hi'},\n\n${describe}. Open this on your phone `
+      + `and LIFT will keep it for you.\n\n${link}\n\n`
+      + `Nothing in that link goes to a server.\n\n${who}\n`);
+    location.href = `mailto:?subject=${subject}&body=${body}`;
+  };
+
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
+}
+
+$('#send-one-cancel').onclick = () => $('#send-one').classList.add('hidden');
 
 /* ---------------- COOK views ---------------- */
 
@@ -1422,6 +1559,14 @@ function renderCookRecipes() {
         `${r.ingredients.length} ingredient${r.ingredients.length === 1 ? '' : 's'}`));
     }
 
+    const send = cookEl('button', 'chip', 'Send');
+    send.onclick = (event) => {
+      event.stopPropagation();
+      openSendPanel(r.name, `The recipe "${r.name}"`,
+        (clientId) => encodeLibrary(clientId, { recipeIds: [r.id] }));
+    };
+    card.appendChild(send);
+
     card.onclick = () => openRecipeForm(r.id);
     list.appendChild(card);
   });
@@ -1440,6 +1585,17 @@ function openRecipeForm(id) {
   $('#r-c').value = n ? n.carbsG : '';
   $('#r-f').value = n ? n.fatG : '';
   $('#r-delete').classList.toggle('hidden', !r);
+
+  // A recipe already carrying macros counts as typed: reopening it to add one
+  // more ingredient must not throw away numbers that were already right.
+  ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
+    $(selector).dataset.typed = n ? '1' : '';
+  });
+  ingredientTally = null;
+  $('#ing-query').value = '';
+  $('#ing-results').innerHTML = '';
+  $('#ing-tally').textContent = '';
+
   $('#recipe-form').classList.remove('hidden');
   $('#r-name').focus();
 }
@@ -1624,6 +1780,37 @@ $('#picker-cancel').onclick = () => $('#picker').classList.add('hidden');
  * outbound log format works to applies here. */
 const RISKY_LINK_LENGTH = 16000;
 
+/* What is actually in this client's plan, in words. The email says it and the
+ * import screen on the other end repeats it, which is what makes a client
+ * running an older LIFT — one that reads meals but not training — a visible
+ * mismatch rather than a silent loss. */
+function planContents(clientId) {
+  const meals = plans.filter((p) => p.clientId === clientId).length;
+  const trained = sessions.filter((k) => k.clientId === clientId).length;
+  const parts = [];
+  if (meals) parts.push(`${meals} meal${meals === 1 ? '' : 's'}`);
+  if (trained) parts.push(`${trained} session${trained === 1 ? '' : 's'}`);
+  return parts.join(' and ');
+}
+
+function mailPlan(clientId, link) {
+  const client = clients.find((c) => c.id === clientId);
+  const who = settings.name || 'your coach';
+  const contents = planContents(clientId);
+  const meals = plans.filter((p) => p.clientId === clientId).length;
+
+  const subject = encodeURIComponent(`Your week from ${who}`);
+  const body = encodeURIComponent(
+    `${client ? client.name : 'Hi'},\n\n`
+    + `Here's your week — ${contents}. Open this on your phone and LIFT will `
+    + `take it in`
+    + (meals ? `, shopping list and all` : '')
+    + `.\n\n${link}\n\n`
+    + `Nothing in that link goes to a server. It travels in the part of the `
+    + `address browsers never send.\n\n${who}\n`);
+  location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
 async function updatePlanSize() {
   const link = await encodePlan(planClientId);
   const note = $('#plan-size');
@@ -1632,9 +1819,9 @@ async function updatePlanSize() {
     return;
   }
   const kb = (link.length / 1024).toFixed(1);
-  note.textContent = link.length > RISKY_LINK_LENGTH
+  note.textContent = `${planContents(planClientId)} · ` + (link.length > RISKY_LINK_LENGTH
     ? `${kb} KB — long enough that some mail apps will break it. Send fewer days, or fewer recipes with long ingredient lists.`
-    : `${kb} KB — comfortably inside what an email will carry.`;
+    : `${kb} KB — comfortably inside what an email will carry.`);
 }
 
 $('#plan-copy').onclick = async () => {
@@ -1652,16 +1839,7 @@ $('#plan-copy').onclick = async () => {
 $('#plan-mail').onclick = async () => {
   const link = await encodePlan(planClientId);
   if (!link) return;
-  const client = clients.find((c) => c.id === planClientId);
-  const who = settings.name || 'your coach';
-  const subject = encodeURIComponent(`Your week from ${who}`);
-  const body = encodeURIComponent(
-    `${client ? client.name : 'Hi'},\n\n`
-    + `Here's your week. Open this on your phone and LIFT will take it in — `
-    + `recipes, the plan, and a shopping list for the lot.\n\n${link}\n\n`
-    + `Nothing in that link goes to a server. It travels in the part of the `
-    + `address browsers never send.\n\n${who}\n`);
-  location.href = `mailto:?subject=${subject}&body=${body}`;
+  mailPlan(planClientId, link);
 };
 
 function renderCookShopping() {
@@ -1690,3 +1868,824 @@ function renderCookShopping() {
     wrap.appendChild(card);
   });
 }
+
+/* ---------------- TRAIN ----------------
+ *
+ * The other half of the trainer's job. A coach writes workout templates,
+ * schedules them across a client's week, and sends them in the same link the
+ * meals ride in.
+ *
+ * Prescriptions use the same set shape as logged sets — see PLAN-FORMAT.md.
+ * A prescription and the log that answers it being the same shape is what
+ * lets "asked for" and "did" sit next to each other without transposing.
+ */
+
+const TRAIN_KEY = { workouts: 'coach.workouts', sessions: 'coach.sessions' };
+
+/** Templates, e.g. "Lower A". Written once and scheduled many times. */
+let workouts = load(TRAIN_KEY.workouts, []);
+/** Scheduled sessions, each tagged with the client it is for. */
+let sessions = load(TRAIN_KEY.sessions, []);
+
+const workoutById = (id) => workouts.find((w) => w.id === id);
+
+const newId = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
+
+/* ---------------- exercise library ---------------- */
+
+/* 873 exercises from free-exercise-db, the same library the iOS build picks
+ * from. Fetched on first use rather than at boot: a coach who only writes
+ * meal plans should never pay for it. */
+let exerciseLibrary = null;
+let libraryError = null;
+
+async function loadExerciseLibrary() {
+  if (exerciseLibrary || libraryError) return exerciseLibrary;
+  try {
+    const response = await fetch('exercises.json');
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const raw = await response.json();
+    exerciseLibrary = raw.exercises.map(([name, muscle, equipment, category, level]) => ({
+      name,
+      muscle: raw.muscles[muscle] || '',
+      equipment: raw.equipment[equipment] || '',
+      category: raw.categories[category] || '',
+      level: raw.levels[level] || '',
+    }));
+  } catch (e) {
+    libraryError = e.message;
+  }
+  return exerciseLibrary;
+}
+
+/** Equipment worth a filter chip. The long tail stays reachable by typing. */
+const EQUIPMENT_FILTERS = ['barbell', 'dumbbell', 'machine', 'cable', 'body only', 'kettlebells'];
+
+function searchExercises(query, equipment) {
+  if (!exerciseLibrary) return [];
+  const needle = query.trim().toLowerCase();
+  return exerciseLibrary
+    .filter((x) => !equipment || x.equipment === equipment)
+    .filter((x) => !needle
+      || x.name.toLowerCase().includes(needle)
+      || x.muscle.toLowerCase().includes(needle))
+    .slice(0, 40);
+}
+
+/** Title case, because the library stores equipment lowercase. */
+const titleCase = (text) => (text || '').replace(/\b[a-z]/g, (c) => c.toUpperCase());
+
+/* ---------------- prescriptions ---------------- */
+
+/** How a prescribed set reads back: "225 × 5 @8", "5 reps", "10:00 · 1600 m". */
+function prescriptionText(set) {
+  const bits = [];
+  if (set.weightLb != null && set.reps != null) bits.push(`${num(set.weightLb)} × ${set.reps}`);
+  else if (set.reps != null) bits.push(`${set.reps} reps`);
+  else if (set.weightLb != null) bits.push(`${num(set.weightLb)} lb`);
+  if (set.distanceM != null) bits.push(`${num(set.distanceM)} m`);
+  if (set.durationSec != null) {
+    const minutes = Math.floor(set.durationSec / 60);
+    bits.push(minutes ? `${minutes}:${pad2(set.durationSec % 60)}` : `${set.durationSec}s`);
+  }
+  if (set.rpe != null) bits.push(`@${set.rpe}`);
+  return bits.join(' · ') || 'as written';
+}
+
+/** "3 × 5 @ 225" when every set matches, otherwise each set spelled out. */
+function exerciseSummary(exercise) {
+  const sets = exercise.sets || [];
+  if (!sets.length) return 'no sets yet';
+  const first = JSON.stringify(sets[0]);
+  const uniform = sets.every((s) => JSON.stringify(s) === first);
+  return uniform && sets.length > 1
+    ? `${sets.length} × ${prescriptionText(sets[0])}`
+    : sets.map(prescriptionText).join(', ');
+}
+
+const setTuple = (set) => {
+  const values = [set.weightLb, set.reps, set.rpe, set.durationSec, set.distanceM];
+  while (values.length && values[values.length - 1] == null) values.pop();
+  return values.map((v) => (v == null ? null : v));
+};
+
+/* ---------------- TRAIN views ---------------- */
+
+let trainSection = 'workouts';
+let editingWorkoutId = null;
+/** The workout being edited, held apart from storage until Save. */
+let workoutDraft = null;
+let trainClientId = null;
+let exerciseFilter = '';
+
+function renderTrain() {
+  chipRow($('#train-sections'),
+    [{ label: 'Workouts', v: 'workouts' }, { label: 'Plan', v: 'plan' }],
+    (i) => i.v === trainSection,
+    (i) => {
+      trainSection = i.v;
+      $('#workout-form').classList.add('hidden');
+      $('#exercise-picker').classList.add('hidden');
+      renderTrain();
+    });
+
+  $('#train-workouts').classList.toggle('hidden', trainSection !== 'workouts');
+  $('#train-plan').classList.toggle('hidden', trainSection !== 'plan');
+
+  if (trainSection === 'workouts') renderWorkoutList();
+  if (trainSection === 'plan') renderTrainPlan();
+}
+
+function renderWorkoutList() {
+  const list = $('#workout-list');
+  list.innerHTML = '';
+
+  if (!workouts.length) {
+    list.appendChild(cookEl('p', 'muted',
+      'No workouts yet. Build one and you can schedule it across a client’s '
+      + 'week as often as you like.'));
+    return;
+  }
+
+  workouts.forEach((workout) => {
+    const card = cookEl('div', 'card');
+    card.appendChild(cookEl('strong', null, workout.name));
+    const count = (workout.exercises || []).length;
+    card.appendChild(cookEl('p', 'muted',
+      `${count} exercise${count === 1 ? '' : 's'} · `
+      + `${(workout.exercises || []).reduce((t, e) => t + (e.sets || []).length, 0)} sets`));
+
+    (workout.exercises || []).forEach((exercise) => {
+      const row = cookEl('div', 'setline');
+      row.appendChild(cookEl('b', null,
+        exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+      row.appendChild(document.createTextNode(' — ' + exerciseSummary(exercise)));
+      card.appendChild(row);
+    });
+
+    const edit = cookEl('button', 'chip', 'Edit');
+    edit.onclick = () => openWorkoutForm(workout.id);
+    card.appendChild(edit);
+
+    const send = cookEl('button', 'chip', 'Send');
+    send.onclick = () => openSendPanel(
+      workout.name,
+      `The workout "${workout.name}"`,
+      (clientId) => encodeLibrary(clientId, { workoutIds: [workout.id] }));
+    card.appendChild(send);
+
+    list.appendChild(card);
+  });
+}
+
+function openWorkoutForm(id) {
+  editingWorkoutId = id;
+  const existing = id ? workoutById(id) : null;
+  // Deep copy: abandoning an edit must leave the stored workout untouched, and
+  // the sets are nested deep enough that a shallow copy would not.
+  workoutDraft = existing
+    ? JSON.parse(JSON.stringify(existing))
+    : { id: newId(), name: '', exercises: [] };
+
+  $('#w-name').value = workoutDraft.name;
+  $('#w-delete').classList.toggle('hidden', !existing);
+  $('#workout-form').classList.remove('hidden');
+  $('#train-workouts').classList.add('hidden');
+  renderWorkoutEditor();
+  $('#workout-form').scrollIntoView({ block: 'nearest' });
+}
+
+function closeWorkoutForm() {
+  editingWorkoutId = null;
+  workoutDraft = null;
+  $('#workout-form').classList.add('hidden');
+  $('#exercise-picker').classList.add('hidden');
+  $('#train-workouts').classList.remove('hidden');
+  renderTrain();
+}
+
+/* The set editor.
+ *
+ * Every field is optional on purpose: "five reps, you pick the weight" is a
+ * real prescription, and so is a ten-minute row with no reps at all. Blank
+ * means unprescribed, never zero. */
+function renderWorkoutEditor() {
+  const wrap = $('#w-exercises');
+  wrap.innerHTML = '';
+  if (!workoutDraft) return;
+
+  workoutDraft.exercises.forEach((exercise, exerciseIndex) => {
+    const card = cookEl('div', 'card');
+
+    const head = cookEl('div', 'statline');
+    head.appendChild(cookEl('strong', null,
+      exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+    const remove = cookEl('button', 'chip', 'Remove');
+    remove.onclick = () => {
+      workoutDraft.exercises.splice(exerciseIndex, 1);
+      renderWorkoutEditor();
+    };
+    head.appendChild(remove);
+    card.appendChild(head);
+
+    const table = cookEl('table', 'grid');
+    const header = cookEl('tr');
+    ['Set', 'lb', 'Reps', 'RPE', ''].forEach((h) => header.appendChild(cookEl('th', null, h)));
+    table.appendChild(header);
+
+    exercise.sets.forEach((set, setIndex) => {
+      const row = cookEl('tr');
+      row.appendChild(cookEl('td', null, String(setIndex + 1)));
+
+      [['weightLb', 'any'], ['reps', '1'], ['rpe', '0.5']].forEach(([field, step]) => {
+        const cell = cookEl('td');
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.inputMode = 'decimal';
+        input.step = step;
+        input.className = 'cell';
+        input.value = set[field] == null ? '' : set[field];
+        input.oninput = () => {
+          const raw = input.value.trim();
+          set[field] = raw === '' ? null : parseFloat(raw);
+        };
+        cell.appendChild(input);
+        row.appendChild(cell);
+      });
+
+      const last = cookEl('td');
+      const drop = cookEl('button', 'chip', '×');
+      drop.onclick = () => { exercise.sets.splice(setIndex, 1); renderWorkoutEditor(); };
+      last.appendChild(drop);
+      row.appendChild(last);
+      table.appendChild(row);
+    });
+
+    const scroll = cookEl('div', 'scroll-x');
+    scroll.appendChild(table);
+    card.appendChild(scroll);
+
+    const addSet = cookEl('button', 'chip', 'Add set');
+    addSet.onclick = () => {
+      // A new set copies the one above it. Prescriptions repeat far more often
+      // than they vary, and a ramp is quicker to edit than to retype.
+      const previous = exercise.sets[exercise.sets.length - 1];
+      exercise.sets.push(previous ? { ...previous } : {
+        weightLb: null, reps: null, rpe: null, durationSec: null, distanceM: null,
+      });
+      renderWorkoutEditor();
+    };
+    card.appendChild(addSet);
+
+    const note = document.createElement('input');
+    note.type = 'text';
+    note.placeholder = 'Note for this exercise (optional)';
+    note.value = exercise.note || '';
+    note.oninput = () => { exercise.note = note.value; };
+    card.appendChild(note);
+
+    wrap.appendChild(card);
+  });
+}
+
+/* ---------------- exercise picker ---------------- */
+
+async function openExercisePicker() {
+  const panel = $('#exercise-picker');
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
+  $('#ex-query').value = '';
+  $('#ex-results').innerHTML = '';
+  $('#ex-results').appendChild(cookEl('p', 'muted', 'Loading the exercise library…'));
+
+  await loadExerciseLibrary();
+  renderExercisePicker();
+  $('#ex-query').focus();
+}
+
+function renderExercisePicker() {
+  const results = $('#ex-results');
+  results.innerHTML = '';
+
+  if (libraryError) {
+    results.appendChild(cookEl('p', 'muted',
+      `Could not load the exercise library (${libraryError}). You can still type `
+      + 'an exercise name by hand.'));
+    return;
+  }
+
+  chipRow($('#ex-filters'),
+    [{ label: 'All', v: '' }, ...EQUIPMENT_FILTERS.map((e) => ({ label: titleCase(e), v: e }))],
+    (i) => i.v === exerciseFilter,
+    (i) => { exerciseFilter = i.v; renderExercisePicker(); });
+
+  const hits = searchExercises($('#ex-query').value, exerciseFilter);
+  if (!hits.length) {
+    results.appendChild(cookEl('p', 'muted', 'Nothing matches that.'));
+    return;
+  }
+
+  hits.forEach((hit) => {
+    const row = cookEl('button', 'chip wide');
+    row.textContent = `${hit.name} — ${hit.muscle}`
+      + (hit.equipment ? `, ${hit.equipment}` : '');
+    row.onclick = () => {
+      workoutDraft.exercises.push({
+        name: hit.name,
+        equipment: titleCase(hit.equipment),
+        note: '',
+        // One set to start, so there is something to edit rather than an
+        // exercise with nothing under it.
+        sets: [{ weightLb: null, reps: null, rpe: null, durationSec: null, distanceM: null }],
+      });
+      $('#exercise-picker').classList.add('hidden');
+      renderWorkoutEditor();
+    };
+    results.appendChild(row);
+  });
+}
+
+/* ---------------- the training week ---------------- */
+
+function renderTrainPlan() {
+  const select = $('#tplan-client');
+  select.innerHTML = '';
+
+  if (!clients.length) {
+    $('#tplan-note').textContent =
+      'No clients yet. A plan is addressed to one person, so add a client first.';
+    $('#tplan-days').innerHTML = '';
+    $('#tplan-send-card').classList.add('hidden');
+    return;
+  }
+
+  clients.forEach((client) => {
+    const option = document.createElement('option');
+    option.value = client.id;
+    option.textContent = client.name;
+    select.appendChild(option);
+  });
+
+  if (!trainClientId || !clients.some((c) => c.id === trainClientId)) {
+    trainClientId = clients[0].id;
+  }
+  select.value = trainClientId;
+  select.onchange = () => { trainClientId = select.value; renderTrain(); };
+
+  $('#tplan-note').textContent = workouts.length
+    ? 'One link carries this client’s meals and training together — sending from '
+      + 'here or from Cook produces the same link.'
+    : 'Build a workout first — the week is scheduled from them.';
+  $('#tplan-send-card').classList.toggle('hidden', !workouts.length);
+
+  const wrap = $('#tplan-days');
+  wrap.innerHTML = '';
+  if (!workouts.length) return;
+
+  cookWeek().forEach((day) => {
+    const card = cookEl('div', 'card');
+    const head = cookEl('div', 'statline');
+    head.appendChild(cookEl('strong', null, dayLabel(day)));
+
+    const scheduled = sessions.filter(
+      (k) => k.clientId === trainClientId && k.date === day);
+
+    const add = cookEl('button', 'chip', scheduled.length ? 'Add another' : 'Add');
+    add.onclick = () => addScheduledSession(day);
+    head.appendChild(add);
+    card.appendChild(head);
+
+    if (!scheduled.length) {
+      card.appendChild(cookEl('p', 'muted', 'Rest.'));
+    } else {
+      scheduled.forEach((session) => {
+        const workout = workoutById(session.workoutId);
+        const row = cookEl('div', 'statline');
+        row.appendChild(cookEl('span', null, session.workoutName));
+        const remove = cookEl('button', 'chip', 'Remove');
+        remove.onclick = () => {
+          sessions = sessions.filter((k) => k.id !== session.id);
+          save(TRAIN_KEY.sessions, sessions);
+          renderTrain();
+        };
+        row.appendChild(remove);
+        card.appendChild(row);
+
+        // A template deleted after being scheduled leaves the session behind.
+        // Saying so beats sending a link with a session that carries nothing.
+        if (!workout) {
+          card.appendChild(cookEl('p', 'muted',
+            'This workout has been deleted — remove it or rebuild it before sending.'));
+        } else {
+          (workout.exercises || []).forEach((exercise) => {
+            const line = cookEl('div', 'setline');
+            line.appendChild(cookEl('b', null, exercise.name));
+            line.appendChild(document.createTextNode(' — ' + exerciseSummary(exercise)));
+            card.appendChild(line);
+          });
+        }
+      });
+    }
+
+    wrap.appendChild(card);
+  });
+
+  updateTrainPlanSize();
+}
+
+function addScheduledSession(day) {
+  const panel = $('#session-picker');
+  $('#session-picker-title').textContent = dayLabel(day);
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
+
+  const list = $('#session-picker-list');
+  list.innerHTML = '';
+  workouts.forEach((workout) => {
+    const row = cookEl('button', 'chip wide');
+    const setCount = (workout.exercises || []).reduce((t, e) => t + (e.sets || []).length, 0);
+    row.textContent = `${workout.name} — ${(workout.exercises || []).length} exercises, ${setCount} sets`;
+    row.onclick = () => {
+      sessions.push({
+        id: newId(),
+        clientId: trainClientId,
+        date: day,
+        workoutId: workout.id,
+        // Denormalised so the week still reads correctly after a rename.
+        workoutName: workout.name,
+      });
+      save(TRAIN_KEY.sessions, sessions);
+      panel.classList.add('hidden');
+      renderTrain();
+    };
+    list.appendChild(row);
+  });
+}
+
+async function updateTrainPlanSize() {
+  const note = $('#tplan-size');
+  const link = await encodePlan(trainClientId);
+  if (!link) {
+    note.textContent = 'Nothing planned for this client yet.';
+    return;
+  }
+  const kb = link.length / 1024;
+  note.textContent = `${planContents(trainClientId)} · about ${kb.toFixed(1)} KB of email.`
+    + (link.length > RISKY_LINK_LENGTH
+      ? ' That is long enough that some mail apps will break it — send fewer days.'
+      : '');
+}
+
+/* ---------------- train events ---------------- */
+
+$('#workout-new').onclick = () => openWorkoutForm(null);
+$('#w-cancel').onclick = closeWorkoutForm;
+$('#w-add-exercise').onclick = openExercisePicker;
+$('#ex-cancel').onclick = () => $('#exercise-picker').classList.add('hidden');
+$('#ex-query').oninput = renderExercisePicker;
+$('#session-picker-cancel').onclick = () => $('#session-picker').classList.add('hidden');
+
+$('#w-save').onclick = () => {
+  if (!workoutDraft) return;
+  const name = $('#w-name').value.trim();
+  if (!name) { alert('Give the workout a name so you can find it in the week.'); return; }
+  if (!workoutDraft.exercises.length) {
+    alert('Add at least one exercise.');
+    return;
+  }
+  workoutDraft.name = name;
+
+  const existing = workouts.findIndex((w) => w.id === workoutDraft.id);
+  if (existing >= 0) workouts[existing] = workoutDraft;
+  else workouts.push(workoutDraft);
+  save(TRAIN_KEY.workouts, workouts);
+
+  // Scheduled sessions carry the name for display, so a rename has to reach
+  // the weeks this workout is already sitting in.
+  sessions = sessions.map((k) =>
+    (k.workoutId === workoutDraft.id ? { ...k, workoutName: name } : k));
+  save(TRAIN_KEY.sessions, sessions);
+
+  closeWorkoutForm();
+};
+
+$('#w-delete').onclick = () => {
+  if (!workoutDraft) return;
+  const scheduled = sessions.filter((k) => k.workoutId === workoutDraft.id).length;
+  const warning = scheduled
+    ? `\n\nIt is scheduled ${scheduled} time${scheduled === 1 ? '' : 's'}; `
+      + 'those days will be emptied too.'
+    : '';
+  if (!confirm(`Delete "${workoutDraft.name}"?${warning}`)) return;
+
+  workouts = workouts.filter((w) => w.id !== workoutDraft.id);
+  sessions = sessions.filter((k) => k.workoutId !== workoutDraft.id);
+  save(TRAIN_KEY.workouts, workouts);
+  save(TRAIN_KEY.sessions, sessions);
+  closeWorkoutForm();
+};
+
+$('#tplan-copy').onclick = async () => {
+  const link = await encodePlan(trainClientId);
+  if (!link) { alert('Nothing planned for this client yet.'); return; }
+  try {
+    await navigator.clipboard.writeText(link);
+    $('#tplan-copy').textContent = 'Copied';
+    setTimeout(() => { $('#tplan-copy').textContent = 'Copy plan link'; }, 1500);
+  } catch (e) {
+    alert('Copying was blocked by the browser.');
+  }
+};
+
+$('#tplan-mail').onclick = async () => {
+  const link = await encodePlan(trainClientId);
+  if (!link) { alert('Nothing planned for this client yet.'); return; }
+  mailPlan(trainClientId, link);
+};
+
+/* ---------------- ingredient lookup ----------------
+ *
+ * The data layer is foods.js, shared with the web build of LIFT so a coach
+ * costing a recipe and a client logging one read identical numbers.
+ *
+ * Two sources: bundled USDA for ingredients, Open Food Facts for packaged
+ * goods and barcodes. Ingredients is the default because that is what recipes
+ * are written from.
+ */
+
+let ingredientSource = 'library';
+/** Macros accumulated from looked-up ingredients, for the recipe being edited. */
+let ingredientTally = null;
+
+const emptyTally = () => ({ calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0 });
+
+function renderIngredientSources() {
+  chipRow($('#ing-source'),
+    [{ label: 'Ingredients', v: 'library' }, { label: 'Packaged & barcodes', v: 'packaged' }],
+    (i) => i.v === ingredientSource,
+    (i) => {
+      ingredientSource = i.v;
+      renderIngredientSources();
+      const query = $('#ing-query').value.trim();
+      if (query) runIngredientSearch(query);
+    });
+
+  $('#ing-query').placeholder = ingredientSource === 'library'
+    ? 'Chicken breast, oats, olive oil…'
+    : 'Brand name, or a barcode';
+}
+
+async function runIngredientSearch(query) {
+  const box = $('#ing-results');
+  box.innerHTML = '';
+  box.appendChild(cookEl('p', 'muted', 'Searching…'));
+
+  if (ingredientSource === 'library') {
+    await loadFoodLibrary();
+    if (foodLibraryError) {
+      box.innerHTML = '';
+      box.appendChild(cookEl('p', 'muted',
+        `Could not load the ingredient database (${foodLibraryError}).`));
+      return;
+    }
+    showIngredientHits(searchFoodLibrary(query));
+    return;
+  }
+
+  try {
+    showIngredientHits(await searchPackagedFoods(query));
+  } catch (e) {
+    box.innerHTML = '';
+    box.appendChild(cookEl('p', 'muted', `Could not reach Open Food Facts (${e.message}).`));
+  }
+}
+
+function showIngredientHits(hits) {
+  const box = $('#ing-results');
+  box.innerHTML = '';
+  if (!hits.length) {
+    box.appendChild(cookEl('p', 'muted', 'Nothing found for that.'));
+    return;
+  }
+
+  hits.slice(0, 12).forEach((hit) => {
+    const card = cookEl('div', 'card');
+    card.appendChild(cookEl('strong', null, hit.name));
+    card.appendChild(cookEl('p', 'muted', hit.label));
+
+    const row = cookEl('div', 'row');
+    const amount = document.createElement('input');
+    amount.type = 'number';
+    amount.inputMode = 'decimal';
+    amount.min = '0';
+    amount.value = hit.per === 'g' ? '100' : '1';
+    amount.setAttribute('aria-label', hit.per === 'g' ? 'Grams' : 'Servings');
+    row.appendChild(amount);
+
+    const add = cookEl('button', null, hit.per === 'g' ? 'Add grams' : 'Add servings');
+    add.onclick = () => {
+      const quantity = parseFloat(amount.value);
+      if (!quantity || quantity <= 0) return;
+      addIngredient(hit, quantity);
+    };
+    row.appendChild(add);
+    card.appendChild(row);
+    box.appendChild(card);
+  });
+}
+
+function addIngredient(hit, quantity) {
+  const field = $('#r-ingredients');
+  const line = foodLine(hit, quantity);
+  field.value = field.value.trim() ? `${field.value.replace(/\s+$/, '')}\n${line}` : line;
+
+  if (!ingredientTally) ingredientTally = emptyTally();
+  const contribution = foodContribution(hit, quantity);
+  Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
+  ingredientTally.lines += 1;
+
+  applyTally();
+  $('#ing-results').innerHTML = '';
+  $('#ing-query').value = '';
+}
+
+/* Writes the running total into the per-serving fields.
+ *
+ * Only fields the coach has not typed into are touched — a looked-up figure
+ * should never quietly overwrite a number someone entered deliberately. */
+function applyTally() {
+  const note = $('#ing-tally');
+  if (!ingredientTally || !ingredientTally.lines) {
+    note.textContent = '';
+    return;
+  }
+
+  const servings = parseFloat($('#r-servings').value) || 1;
+  const perServing = {
+    '#r-cal': ingredientTally.calories / servings,
+    '#r-p': ingredientTally.proteinG / servings,
+    '#r-c': ingredientTally.carbsG / servings,
+    '#r-f': ingredientTally.fatG / servings,
+  };
+
+  Object.entries(perServing).forEach(([selector, value]) => {
+    const field = $(selector);
+    if (field.dataset.typed === '1') return;
+    field.value = Math.round(value);
+  });
+
+  note.textContent = `${ingredientTally.lines} looked-up `
+    + `ingredient${ingredientTally.lines === 1 ? '' : 's'} · `
+    + `${num(ingredientTally.calories)} kcal for the whole recipe, `
+    + `${num(ingredientTally.calories / servings)} a serving.`;
+}
+
+['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
+  // A field the coach edits stops being ours to fill in.
+  $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
+});
+
+$('#r-servings').addEventListener('input', applyTally);
+
+$('#ing-go').onclick = () => {
+  const query = $('#ing-query').value.trim();
+  if (query) runIngredientSearch(query);
+};
+
+$('#ing-query').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); $('#ing-go').click(); }
+});
+
+renderIngredientSources();
+
+/* ---------------- recipe import ----------------
+ *
+ * TheMealDB carries recipes — name, ingredients, method — and no nutrition at
+ * all. USDA carries nutrition and no recipes. So an import takes the shape of
+ * the dish from one and costs it from the other.
+ *
+ * Only ingredients that convert to a weight get costed. Volume and vague units
+ * are left alone and counted as unpriced, because pricing "2 tbsp olive oil"
+ * means inventing a density, and the coach can see and fix a gap far more
+ * easily than a plausible wrong number.
+ */
+
+const MEALDB = 'https://www.themealdb.com/api/json/v1/1';
+
+let importedHits = [];
+
+function mealToRecipe(meal) {
+  const ingredients = [];
+  for (let i = 1; i <= 20; i++) {
+    const name = (meal[`strIngredient${i}`] || '').trim();
+    if (!name) continue;
+    const measure = (meal[`strMeasure${i}`] || '').trim();
+    ingredients.push(measure ? `${measure} ${name}` : name);
+  }
+  const steps = (meal.strInstructions || '')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  return { name: meal.strMeal || 'Imported recipe', ingredients, steps };
+}
+
+async function searchMealDb(query) {
+  const box = $('#import-results');
+  box.innerHTML = '';
+  box.appendChild(cookEl('p', 'muted', 'Searching…'));
+
+  try {
+    const response = await fetch(`${MEALDB}/search.php?s=${encodeURIComponent(query)}`);
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data = await response.json();
+    importedHits = (data.meals || []).map(mealToRecipe);
+
+    box.innerHTML = '';
+    if (!importedHits.length) {
+      box.appendChild(cookEl('p', 'muted', 'Nothing found for that.'));
+      return;
+    }
+    importedHits.forEach((recipe, index) => {
+      const row = cookEl('button', 'chip wide',
+        `${recipe.name} — ${recipe.ingredients.length} ingredients`);
+      row.onclick = () => useImportedRecipe(index);
+      box.appendChild(row);
+    });
+  } catch (e) {
+    box.innerHTML = '';
+    box.appendChild(cookEl('p', 'muted', `Could not reach TheMealDB (${e.message}).`));
+  }
+}
+
+/* Fills the recipe form from an import, then costs what it can.
+ *
+ * Servings are left at whatever the form had: TheMealDB does not say how many
+ * a recipe feeds, and guessing four would silently divide every macro by a
+ * number nobody chose. */
+async function useImportedRecipe(index) {
+  const recipe = importedHits[index];
+  if (!recipe) return;
+
+  $('#r-name').value = recipe.name;
+  $('#r-ingredients').value = recipe.ingredients.join('\n');
+  $('#r-steps').value = recipe.steps.join('\n');
+  $('#import-panel').classList.add('hidden');
+
+  ingredientTally = null;
+  ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((s) => { $(s).dataset.typed = ''; $(s).value = ''; });
+
+  const note = $('#ing-tally');
+  note.textContent = 'Costing the ingredients…';
+
+  await loadFoodLibrary();
+  if (foodLibraryError) {
+    note.textContent = `Imported. Could not load the ingredient database (${foodLibraryError}),`
+      + ' so the macros are blank.';
+    return;
+  }
+
+  const unpriced = [];
+  ingredientTally = emptyTally();
+
+  recipe.ingredients.forEach((line) => {
+    const parsed = parseIngredient(line);
+    const grams = gramsFor(parsed);
+    if (!grams || !parsed.item) { unpriced.push(line); return; }
+
+    const hit = searchFoodLibrary(parsed.item, 1)[0];
+    if (!hit) { unpriced.push(line); return; }
+
+    const contribution = foodContribution(hit, grams);
+    Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
+    ingredientTally.lines += 1;
+  });
+
+  applyTally();
+
+  // Say plainly how much of the dish is actually costed. A macro figure built
+  // from three of seventeen ingredients is worse than useless if it looks whole.
+  if (unpriced.length) {
+    note.textContent = (ingredientTally.lines
+      ? `${note.textContent} `
+      : 'Imported. ')
+      + `${unpriced.length} of ${recipe.ingredients.length} ingredients could not be `
+      + 'weighed automatically, so the total is short. Look them up above, or type the macros in.';
+  } else if (!ingredientTally.lines) {
+    note.textContent = 'Imported. None of the ingredients could be weighed automatically — '
+      + 'look them up above, or type the macros in.';
+  }
+}
+
+$('#import-open').onclick = () => {
+  $('#import-panel').classList.remove('hidden');
+  $('#import-query').focus();
+};
+$('#import-cancel').onclick = () => $('#import-panel').classList.add('hidden');
+$('#import-go').onclick = () => {
+  const query = $('#import-query').value.trim();
+  if (query) searchMealDb(query);
+};
+$('#import-query').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); $('#import-go').click(); }
+});

@@ -24,6 +24,7 @@
   <button data-tab="roster" class="active">Roster</button>
   <button data-tab="client" id="tab-client" disabled>Client</button>
   <button data-tab="cook">Cook</button>
+  <button data-tab="train">Train</button>
   <button data-tab="connect">Connect</button>
 </nav>
 
@@ -105,6 +106,21 @@
 
   <div id="cook-recipes">
     <button class="wide" id="recipe-new">New recipe</button>
+    <button class="wide ghost" id="import-open">Import a recipe</button>
+
+    <div id="import-panel" class="card hidden">
+      <strong>Import a recipe</strong>
+      <p class="muted">Searches TheMealDB for the dish, then costs the ingredients
+        it can weigh against USDA. It carries no nutrition of its own, so check
+        what comes back.</p>
+      <div class="row">
+        <input type="text" id="import-query" inputmode="search" placeholder="Beef chilli, katsu curry…">
+        <button id="import-go">Search</button>
+      </div>
+      <div id="import-results"></div>
+      <button class="ghost wide" id="import-cancel">Cancel</button>
+    </div>
+
     <div id="recipe-list"></div>
   </div>
 
@@ -115,15 +131,29 @@
     <label for="r-servings">Servings</label>
     <input type="number" id="r-servings" inputmode="decimal" value="4">
 
+    <label for="ing-query">Look an ingredient up</label>
+    <p class="muted">Ingredients come from USDA FoodData Central, bundled and
+      searched offline. Packaged looks up brands and barcodes on Open Food Facts,
+      the same database LIFT uses. Adding one writes the line and totals the
+      macros for you.</p>
+    <div class="chips" id="ing-source"></div>
+    <div class="row">
+      <input type="text" id="ing-query" inputmode="search" placeholder="Chicken breast, oats, olive oil…">
+      <button class="ghost" id="ing-go">Search</button>
+    </div>
+    <div id="ing-results"></div>
+
     <label for="r-ingredients">Ingredients, one per line</label>
     <textarea id="r-ingredients" rows="6" placeholder="500 g lean beef mince"></textarea>
+    <p class="muted" id="ing-tally"></p>
 
     <label for="r-steps">Method, one step per line</label>
     <textarea id="r-steps" rows="4"></textarea>
 
     <label>Macros per serving</label>
     <p class="muted">Leave blank if you don't know them. Blank stays unknown — it
-      will not log as zero on your client's phone.</p>
+      will not log as zero on your client's phone. Looking ingredients up above
+      fills these in; typing over them wins.</p>
     <div class="row">
       <div><label for="r-cal">kcal</label><input type="number" id="r-cal" inputmode="decimal"></div>
       <div><label for="r-p">Protein g</label><input type="number" id="r-p" inputmode="decimal"></div>
@@ -162,6 +192,69 @@
   </div>
 
   <div id="cook-shopping" class="hidden"></div>
+</section>
+
+<div id="send-one" class="card hidden">
+  <strong id="send-one-title"></strong>
+  <p class="muted" id="send-one-what"></p>
+  <label for="send-one-client">Send to</label>
+  <select id="send-one-client"></select>
+  <p class="muted" id="send-one-note"></p>
+  <div class="row">
+    <button id="send-one-copy">Copy link</button>
+    <button class="ghost" id="send-one-mail">Email it</button>
+  </div>
+  <button class="ghost wide" id="send-one-cancel">Cancel</button>
+</div>
+
+<!-- ---------------- TRAIN ---------------- -->
+<section id="train" class="tab">
+  <div class="chips" id="train-sections"></div>
+
+  <div id="train-workouts">
+    <button class="wide" id="workout-new">New workout</button>
+    <div id="workout-list"></div>
+  </div>
+
+  <div id="workout-form" class="card hidden">
+    <label for="w-name">Name</label>
+    <input type="text" id="w-name" placeholder="Lower A">
+
+    <div id="w-exercises"></div>
+
+    <button class="ghost wide" id="w-add-exercise">Add an exercise</button>
+    <button class="wide" id="w-save">Save</button>
+    <button class="ghost wide" id="w-cancel">Cancel</button>
+    <button class="ghost wide hidden" id="w-delete">Delete workout</button>
+  </div>
+
+  <div id="exercise-picker" class="card hidden">
+    <strong>Add an exercise</strong>
+    <input type="text" id="ex-query" placeholder="Squat, bench, hamstrings…">
+    <div class="chips" id="ex-filters"></div>
+    <div id="ex-results"></div>
+    <button class="ghost wide" id="ex-cancel">Cancel</button>
+  </div>
+
+  <div id="train-plan" class="hidden">
+    <div class="card">
+      <label for="tplan-client">Client</label>
+      <select id="tplan-client"></select>
+      <p class="muted" id="tplan-note"></p>
+    </div>
+    <div id="tplan-days"></div>
+    <div class="card" id="tplan-send-card">
+      <button class="wide" id="tplan-copy">Copy plan link</button>
+      <button class="ghost wide" id="tplan-mail">Email it</button>
+      <p class="muted" id="tplan-size"></p>
+    </div>
+  </div>
+
+  <div id="session-picker" class="card hidden">
+    <strong id="session-picker-title"></strong>
+    <div id="session-picker-list"></div>
+    <button class="ghost wide" id="session-picker-cancel">Cancel</button>
+  </div>
 </section>
 
 <!-- ---------------- CONNECT ---------------- -->
@@ -212,6 +305,7 @@
 </main>
 
 <script src="parser.js"></script>
+<script src="foods.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
