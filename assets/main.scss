@@ -289,6 +289,18 @@ pre code {
   margin: 0;
 }
 
+.footer-credit {
+  font-size: 0.75rem;
+  color: var(--dcl-muted);
+  margin: 0.35rem 0 0;
+}
+
+.footer-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
 }
