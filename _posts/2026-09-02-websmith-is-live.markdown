@@ -78,6 +78,6 @@ Non-profits and ministries get non-profit rates. That's the whole reason the thi
 
 ## Go look
 
-[websmith](https://dougray.github.io/websmith/) — services, the work so far, and how to reach me. The sites on it are all live and all real: a rural Methodist church, a devotional podcast with a searchable archive of 1,400-plus episodes, a security engineer's résumé, and this one you're reading right now.
+[websmith](https://dougray.github.io/websmith/) — services, the work so far, and how to reach me. The sites on it are all live and all real: a rural Methodist church, a devotional podcast with a searchable archive of 1,400-plus episodes, and this one you're reading right now.
 
 If you know a small organization stuck in either ditch, send them the link. Or send them my email — **websmithtx@gmail.com** — and tell them a few sentences is plenty.
