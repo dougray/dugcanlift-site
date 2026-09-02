@@ -114,8 +114,20 @@
     <label for="r-servings">Servings</label>
     <input type="number" id="r-servings" inputmode="decimal" value="1">
 
+    <label for="ing-query">Look an ingredient up</label>
+    <p class="muted">Ingredients come from USDA FoodData Central, bundled and
+      searched offline. Packaged looks up brands and barcodes. Adding one writes
+      the line and totals the macros for you.</p>
+    <div class="chips" id="ing-source"></div>
+    <div class="row">
+      <input type="text" id="ing-query" inputmode="search" placeholder="Chicken breast, oats, olive oil…">
+      <button class="ghost" id="ing-go">Search</button>
+    </div>
+    <div id="ing-results"></div>
+
     <label for="r-ingredients">Ingredients, one per line</label>
     <textarea id="r-ingredients" rows="6" placeholder="2 tbsp olive oil"></textarea>
+    <p class="muted" id="ing-tally"></p>
 
     <label for="r-steps">Method, one step per line</label>
     <textarea id="r-steps" rows="4"></textarea>
@@ -261,6 +273,15 @@
   <h2>Focus</h2>
   <div class="chips" id="focus-chips"></div>
 
+  <div class="card hidden" id="exercise-picker">
+    <strong>Add an exercise</strong>
+    <input type="text" id="ex-query" inputmode="search" placeholder="Squat, bench, hamstrings…">
+    <div class="chips" id="ex-filters"></div>
+    <div id="ex-results"></div>
+    <button class="ghost wide" id="ex-cancel">Cancel</button>
+  </div>
+
+  <div id="prescribed"></div>
   <div id="routine-list"></div>
   <div id="session-list"></div>
 
@@ -269,6 +290,7 @@
 
 </main>
 
+<script src="foods.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
