@@ -4,13 +4,15 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v7';
+const CACHE = 'lift-v9';
 
 const SHELL = [
   '/lift/',
   '/lift/index.html',
   '/lift/style.css',
   '/lift/app.js',
+  '/lift/foods.js',
+  '/lift/exercises.json',
   '/lift/manifest.webmanifest',
   '/lift/icon-192.png',
   '/lift/icon-512.png',
@@ -41,6 +43,22 @@ self.addEventListener('fetch', (event) => {
   // to the network — caching food lookups would serve stale nutrition data,
   // and a cached failure would look like the feature is broken.
   if (url.origin !== self.location.origin || !url.pathname.startsWith('/lift/')) {
+    return;
+  }
+
+  // The ingredient database is 634 KB, so it is not in the install bundle —
+  // but it is cached the first time it is actually used, which is what makes
+  // the lookup work in a gym with no signal.
+  if (url.pathname === '/lift/foods.json') {
+    event.respondWith(
+      caches.match(event.request).then((hit) => hit || fetch(event.request).then((response) => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+        }
+        return response;
+      }))
+    );
     return;
   }
 

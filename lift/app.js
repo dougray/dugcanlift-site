@@ -9,7 +9,8 @@
 const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps',
               coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights',
               ext: 'lift.ext',
-              recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping' };
+              recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
+              training: 'lift.training', templates: 'lift.templates' };
 
 function load(key, fallback) {
   try {
@@ -41,6 +42,13 @@ let steps = load(KEY.steps, {});
 // rather than stored, so only the tick-offs persist.
 let recipes = load(KEY.recipes, []);
 let plan = load(KEY.plan, []);
+/* Sessions a coach has prescribed, by date. Kept apart from `workouts`, which
+ * is what actually happened — a plan and a log are different claims, and
+ * merging them would lose the ability to say whether the week was followed. */
+let training = load(KEY.training, []);
+/* Workout templates a coach has sent without booking a day for them. Yours to
+ * start whenever; a prescription in `training` is for a named date. */
+let templates = load(KEY.templates, []);
 let shoppingTicks = load(KEY.shopping, []);
 // Who to send logs to, and who they are from. See "send to coach" below.
 let coach = load(KEY.coach, { email: '', you: '', id: '', weeks: 8, itemised: false });
@@ -841,6 +849,216 @@ function parseProduct(p) {
 
 let trainDate = todayKey();
 
+/* ---------------- exercise library ----------------
+ *
+ * 873 exercises from free-exercise-db, the same file and the same picker the
+ * Coach app uses — a coach prescribing "Barbell Squat" and a client logging it
+ * are then naming the same lift, which is what makes history match up.
+ *
+ * Fetched on first use. Someone who only tracks food never pays for it.
+ */
+
+let exerciseLibrary = null;
+let libraryError = null;
+let pickerSession = null;
+let exerciseFilter = '';
+
+const EQUIPMENT_FILTERS = ['barbell', 'dumbbell', 'machine', 'cable', 'body only', 'kettlebells'];
+
+const titleCase = (text) => (text || '').replace(/\b[a-z]/g, (c) => c.toUpperCase());
+
+async function loadExerciseLibrary() {
+  if (exerciseLibrary || libraryError) return exerciseLibrary;
+  try {
+    const response = await fetch('exercises.json');
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const raw = await response.json();
+    exerciseLibrary = raw.exercises.map(([name, muscle, equipment, category, level]) => ({
+      name,
+      muscle: raw.muscles[muscle] || '',
+      equipment: raw.equipment[equipment] || '',
+      category: raw.categories[category] || '',
+      level: raw.levels[level] || '',
+    }));
+  } catch (e) {
+    libraryError = e.message;
+  }
+  return exerciseLibrary;
+}
+
+async function openExercisePicker(session) {
+  pickerSession = session;
+  const panel = $('#exercise-picker');
+  panel.classList.remove('hidden');
+  $('#ex-query').value = '';
+  $('#ex-results').innerHTML = '';
+  $('#ex-results').appendChild(el('p', 'muted', 'Loading the exercise library...'));
+  panel.scrollIntoView({ block: 'nearest' });
+
+  await loadExerciseLibrary();
+  renderExercisePicker();
+  $('#ex-query').focus();
+}
+
+function renderExercisePicker() {
+  const results = $('#ex-results');
+  results.innerHTML = '';
+
+  const query = $('#ex-query').value.trim();
+
+  // Typing a name nothing matches still has to work: the library is a
+  // convenience, not a gate on what you are allowed to have done.
+  const addByHand = (name, equipment) => {
+    pickerSession.exercises = pickerSession.exercises || [];
+    pickerSession.exercises.push({
+      id: uid(), name: name.trim(), equipment: (equipment || '').trim(), note: '', sets: [],
+    });
+    save(KEY.workouts, workouts);
+    $('#exercise-picker').classList.add('hidden');
+    render();
+  };
+
+  if (libraryError) {
+    results.appendChild(el('p', 'muted',
+      `Could not load the exercise library (${libraryError}).`));
+    if (query) {
+      const own = el('button', 'wide', `Add "${query}" anyway`);
+      own.onclick = () => addByHand(query, '');
+      results.appendChild(own);
+    }
+    return;
+  }
+
+  chips($('#ex-filters'),
+    [{ label: 'All', v: '' }, ...EQUIPMENT_FILTERS.map((e) => ({ label: titleCase(e), v: e }))],
+    (i) => i.v === exerciseFilter,
+    (i) => { exerciseFilter = i.v; renderExercisePicker(); });
+
+  const needle = query.toLowerCase();
+  const hits = (exerciseLibrary || [])
+    .filter((x) => !exerciseFilter || x.equipment === exerciseFilter)
+    .filter((x) => !needle
+      || x.name.toLowerCase().includes(needle)
+      || x.muscle.toLowerCase().includes(needle))
+    .slice(0, 40);
+
+  if (!hits.length) {
+    results.appendChild(el('p', 'muted', 'Nothing matches that.'));
+  }
+
+  hits.forEach((hit) => {
+    const row = el('button', 'chip wide',
+      `${hit.name} - ${hit.muscle}${hit.equipment ? `, ${hit.equipment}` : ''}`);
+    row.onclick = () => addByHand(hit.name, titleCase(hit.equipment));
+    results.appendChild(row);
+  });
+
+  if (query) {
+    const own = el('button', 'ghost wide', `Add "${query}" as typed`);
+    own.onclick = () => addByHand(query, '');
+    results.appendChild(own);
+  }
+}
+
+$('#ex-cancel').onclick = () => $('#exercise-picker').classList.add('hidden');
+$('#ex-query').addEventListener('input', () => {
+  if (pickerSession) renderExercisePicker();
+});
+
+/** What a prescribed set asks for: "225 x 5 @8", "5 reps", "10:00 - 1600 m". */
+function formatPrescription(set) {
+  const parts = [];
+  if (set.weightLb != null && set.reps != null) parts.push(`${set.weightLb} x ${set.reps}`);
+  else if (set.reps != null) parts.push(`${set.reps} reps`);
+  else if (set.weightLb != null) parts.push(`${set.weightLb} lb`);
+  if (set.distanceMeters != null) parts.push(`${set.distanceMeters} m`);
+  if (set.durationSec != null) {
+    parts.push(set.durationSec >= 60
+      ? `${Math.floor(set.durationSec / 60)}:${String(set.durationSec % 60).padStart(2, '0')}`
+      : `${set.durationSec}s`);
+  }
+  if (set.rpe != null) parts.push(`@${set.rpe}`);
+  return parts.join(' ') || 'as written';
+}
+
+/* The coach's session for this day, shown above your own log rather than
+ * inside it. Starting it copies the prescription into a real workout you can
+ * then correct — see startPrescribed. */
+function renderPrescribed() {
+  const wrap = $('#prescribed');
+  wrap.innerHTML = '';
+
+  renderTemplates(wrap);
+
+  prescribedFor(trainDate).forEach((prescription) => {
+    const card = el('div', 'card');
+    const from = typeof prescription.fromCoach === 'string'
+      ? `From ${prescription.fromCoach}` : 'From your coach';
+    card.appendChild(el('p', 'muted', from));
+    card.appendChild(el('p', 'big', prescription.name));
+
+    prescription.exercises.forEach((exercise) => {
+      const block = el('div', 'exercise');
+      block.appendChild(el('h3', null,
+        exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+      exercise.sets.forEach((set, i) => {
+        block.appendChild(el('div', 'muted', `${i + 1}.  ${formatPrescription(set)}`));
+      });
+      if (exercise.note) block.appendChild(el('p', 'muted', exercise.note));
+      card.appendChild(block);
+    });
+
+    const started = prescription.startedSessionId
+      && workouts.some((w) => w.id === prescription.startedSessionId);
+
+    if (started) {
+      card.appendChild(el('p', 'muted', 'Started - log what you actually did below.'));
+    } else {
+      const go = el('button', 'wide', 'Start this session');
+      go.onclick = () => startPrescribed(prescription);
+      card.appendChild(go);
+    }
+
+    wrap.appendChild(card);
+  });
+}
+
+/* Templates a coach sent without a date on them. Shown on whatever day you are
+ * looking at, because that is the point of them — you decide when. */
+function renderTemplates(wrap) {
+  if (!templates.length) return;
+
+  const card = el('div', 'card');
+  card.appendChild(el('p', 'muted', 'From your coach, to do when you like'));
+
+  templates.forEach((template) => {
+    const row = el('div', 'entry');
+    const info = el('div');
+    info.appendChild(el('div', null, template.name));
+    const sets = template.exercises.reduce((t, e) => t + e.sets.length, 0);
+    info.appendChild(el('div', 'muted',
+      `${template.exercises.length} exercises - ${sets} sets`));
+    row.appendChild(info);
+
+    const go = el('button', 'ghost', 'Start');
+    go.onclick = () => startPrescribed({ ...template, date: trainDate });
+    row.appendChild(go);
+
+    const drop = el('button', 'x', '\u00d7');
+    drop.onclick = () => {
+      if (!confirm(`Remove "${template.name}" from your templates?`)) return;
+      templates = templates.filter((t) => t.id !== template.id);
+      save(KEY.templates, templates);
+      render();
+    };
+    row.appendChild(drop);
+
+    card.appendChild(row);
+  });
+
+  wrap.appendChild(card);
+}
+
 function renderTrain() {
   $('#train-date').textContent = dateLabel(trainDate);
   $('#train-next').disabled = trainDate === todayKey();
@@ -848,6 +1066,8 @@ function renderTrain() {
   chips($('#focus-chips'), Object.keys(FOCUS).map((k) => ({ label: FOCUS[k].label, k })),
     (i) => i.k === settings.focus,
     (i) => { settings.focus = i.k; save(KEY.settings, settings); render(); });
+
+  renderPrescribed();
 
   const f = FOCUS[settings.focus] || FOCUS.BODYBUILDING;
   const out = $('#session-list');
@@ -895,15 +1115,7 @@ function renderTrain() {
     });
 
     const addEx = el('button', 'ghost wide', 'Add exercise');
-    addEx.onclick = () => {
-      const name = prompt('Exercise name');
-      if (!name) return;
-      const equipment = prompt('Equipment (optional)') || '';
-      session.exercises = session.exercises || [];
-      session.exercises.push({ id: uid(), name: name.trim(), equipment: equipment.trim(), note: '', sets: [] });
-      save(KEY.workouts, workouts);
-      render();
-    };
+    addEx.onclick = () => openExercisePicker(session);
     card.appendChild(addEx);
 
     const del = el('button', 'ghost wide', 'Delete workout');
@@ -1620,6 +1832,17 @@ function openRecipeForm(id) {
   $('#r-c').value = n ? n.carbsG : '';
   $('#r-f').value = n ? n.fatG : '';
   $('#r-delete').classList.toggle('hidden', !r);
+
+  // A recipe already carrying macros counts as typed: reopening it to add one
+  // more ingredient must not throw away numbers that were already right.
+  ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
+    $(selector).dataset.typed = n ? '1' : '';
+  });
+  ingredientTally = null;
+  $('#ing-query').value = '';
+  $('#ing-results').innerHTML = '';
+  $('#ing-tally').textContent = '';
+
   $('#recipe-form').classList.remove('hidden');
   $('#r-name').focus();
 }
@@ -1985,6 +2208,113 @@ function importPlan(payload) {
   return added;
 }
 
+/* Takes in the training half of a plan.
+ *
+ * A prescribed session replaces whatever the coach previously sent for that
+ * day, but never touches a workout already logged — the plan is the coach's
+ * answer for the day, and the log is yours. */
+function importTraining(payload) {
+  const incoming = payload.w || [];
+  if (!incoming.length) return 0;
+
+  const toTemplate = (raw) => ({
+    name: raw.n || 'Session',
+    exercises: (raw.e || []).map((exercise) => ({
+      name: exercise.n || 'Exercise',
+      equipment: exercise.q || '',
+      note: exercise.c || '',
+      // [weightLb, reps, rpe, durationSec, distanceMeters], trailing nulls
+      // trimmed by the sender. Missing is unprescribed, not zero.
+      sets: (exercise.s || []).map((tuple) => ({
+        weightLb: tuple[0] ?? null,
+        reps: tuple[1] ?? null,
+        rpe: tuple[2] ?? null,
+        durationSec: tuple[3] ?? null,
+        distanceMeters: tuple[4] ?? null,
+      })),
+    })),
+  });
+
+  // Workouts with no day booked for them are a library send: file them for
+  // later rather than inventing a date the coach did not choose.
+  if (!(payload.k || []).length) {
+    incoming.forEach((raw) => {
+      const body = toTemplate(raw);
+      const existing = templates.find(
+        (t) => t.name.trim().toLowerCase() === body.name.trim().toLowerCase());
+      if (existing) Object.assign(existing, body);
+      else templates.push({ id: uid(), fromCoach: payload.n || true, ...body });
+    });
+    save(KEY.templates, templates);
+    return incoming.length;
+  }
+
+  let added = 0;
+  (payload.k || []).forEach((slot) => {
+    const template = incoming[slot.x];
+    if (!template) return;
+
+    training = training.filter((t) => t.date !== slot.d);
+    training.push({
+      id: uid(),
+      date: slot.d,
+      fromCoach: payload.n || true,
+      startedSessionId: null,
+      ...toTemplate(template),
+    });
+    added++;
+  });
+
+  save(KEY.training, training);
+  return added;
+}
+
+const prescribedFor = (day) => training.filter((t) => t.date === day);
+
+/* Opens a logged workout pre-filled with what was asked for.
+ *
+ * The prescription is copied in as ordinary sets so they can be edited: what
+ * gets logged has to be what happened, and a session nobody can correct would
+ * either be a lie or go unlogged. */
+function startPrescribed(prescription) {
+  const session = {
+    id: uid(),
+    date: prescription.date,
+    name: prescription.name,
+    note: '',
+    startedAt: Date.now(),
+    exercises: prescription.exercises.map((exercise) => ({
+      id: uid(),
+      name: exercise.name,
+      equipment: exercise.equipment,
+      note: exercise.note || '',
+      sets: exercise.sets.map((set) => {
+        const copy = { id: uid() };
+        // Only fields the coach actually prescribed. An unprescribed weight
+        // must stay blank rather than arriving as a zero to be deleted.
+        if (set.weightLb != null) copy.weightLb = set.weightLb;
+        if (set.reps != null) copy.reps = set.reps;
+        if (set.rpe != null) copy.rpe = set.rpe;
+        if (set.durationSec != null) copy.durationSec = set.durationSec;
+        if (set.distanceMeters != null) copy.distanceMeters = set.distanceMeters;
+        return copy;
+      }),
+    })),
+  };
+
+  workouts.push(session);
+  save(KEY.workouts, workouts);
+
+  // Only a dated prescription gets marked as started. A template is reusable
+  // by definition, so starting it must not consume it.
+  if (training.some((t) => t.id === prescription.id)) {
+    training = training.map((t) =>
+      (t.id === prescription.id ? { ...t, startedSessionId: session.id } : t));
+    save(KEY.training, training);
+  }
+  render();
+}
+
 async function checkForIncomingPlan() {
   if (!location.hash || location.hash.length < 4) return;
 
@@ -2011,17 +2341,199 @@ async function checkForIncomingPlan() {
   const from = payload.n ? `from ${payload.n}` : 'from your coach';
   const meals = (payload.m || []).length;
   const recipeCount = (payload.r || []).length;
+  const sessionCount = (payload.k || []).length;
+
+  // Naming both halves is what makes a client running an older build notice
+  // that the training never arrived. See "Changing this" in PLAN-FORMAT.md.
+  const workoutCount = (payload.w || []).length;
+  const holds = [];
+  if (meals) {
+    holds.push(`${meals} meal${meals === 1 ? '' : 's'} and `
+             + `${recipeCount} recipe${recipeCount === 1 ? '' : 's'}`);
+  } else if (recipeCount) {
+    // A library send: recipes to keep, with nothing booked into a day.
+    holds.push(`${recipeCount} recipe${recipeCount === 1 ? '' : 's'} to keep`);
+  }
+  if (sessionCount) holds.push(`${sessionCount} session${sessionCount === 1 ? '' : 's'}`);
+  else if (workoutCount) {
+    holds.push(`${workoutCount} workout${workoutCount === 1 ? '' : 's'} to keep`);
+  }
+  if (!holds.length) return;
+
+  // Only a send that books days replaces anything. Saying otherwise about a
+  // recipe handed over on its own is a warning about a thing that cannot happen.
+  const schedules = meals || sessionCount;
   const ok = confirm(
-    `A meal plan ${from}.\n\n`
-    + `${meals} meal${meals === 1 ? '' : 's'} and ${recipeCount} recipe${recipeCount === 1 ? '' : 's'}.\n\n`
-    + 'Add it to Cook? Anything already planned for those meals is replaced.');
+    `A plan ${from}.\n\n${holds.join('\n')}\n\n`
+    + (schedules
+      ? 'Take it in? Anything already planned for those days is replaced.'
+      : 'Keep it?'));
 
   history.replaceState(null, '', location.pathname);
   if (!ok) return;
 
-  const added = importPlan(payload);
-  alert(`Added ${added} meal${added === 1 ? '' : 's'} to your plan, with the recipes and a shopping list.`);
-  showTab('cook');
+  const addedMeals = importPlan(payload);
+  const addedSessions = importTraining(payload);
+
+  const took = [];
+  if (addedMeals) took.push(`${addedMeals} meal${addedMeals === 1 ? '' : 's'}`);
+  else if (recipeCount) took.push(`${recipeCount} recipe${recipeCount === 1 ? '' : 's'}`);
+  if (addedSessions) {
+    took.push(sessionCount
+      ? `${addedSessions} session${addedSessions === 1 ? '' : 's'}`
+      : `${addedSessions} workout${addedSessions === 1 ? '' : 's'}`);
+  }
+  alert(`Added ${took.join(' and ')}.`);
+  showTab(addedMeals || (recipeCount && !workoutCount) ? 'cook' : 'train');
 }
 
 checkForIncomingPlan();
+
+/* ---------------- ingredient lookup ----------------
+ *
+ * Same data layer as the Coach app (foods.js) and the same two sources, so a
+ * recipe a coach costs and a recipe you write yourself carry comparable
+ * numbers rather than two different people's guesses.
+ */
+
+let ingredientSource = 'library';
+let ingredientTally = null;
+
+const emptyTally = () => ({ calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0 });
+
+function renderIngredientSources() {
+  chips($('#ing-source'),
+    [{ label: 'Ingredients', v: 'library' }, { label: 'Packaged & barcodes', v: 'packaged' }],
+    (i) => i.v === ingredientSource,
+    (i) => {
+      ingredientSource = i.v;
+      renderIngredientSources();
+      const query = $('#ing-query').value.trim();
+      if (query) runIngredientSearch(query);
+    });
+
+  $('#ing-query').placeholder = ingredientSource === 'library'
+    ? 'Chicken breast, oats, olive oil...'
+    : 'Brand name, or a barcode';
+}
+
+async function runIngredientSearch(query) {
+  const box = $('#ing-results');
+  box.innerHTML = '';
+  box.appendChild(el('p', 'muted', 'Searching...'));
+
+  if (ingredientSource === 'library') {
+    await loadFoodLibrary();
+    if (foodLibraryError) {
+      box.innerHTML = '';
+      box.appendChild(el('p', 'muted',
+        `Could not load the ingredient database (${foodLibraryError}).`));
+      return;
+    }
+    showIngredientHits(searchFoodLibrary(query));
+    return;
+  }
+
+  try {
+    showIngredientHits(await searchPackagedFoods(query));
+  } catch (e) {
+    box.innerHTML = '';
+    box.appendChild(el('p', 'muted', `Could not reach Open Food Facts (${e.message}).`));
+  }
+}
+
+function showIngredientHits(hits) {
+  const box = $('#ing-results');
+  box.innerHTML = '';
+  if (!hits.length) {
+    box.appendChild(el('p', 'muted', 'Nothing found for that.'));
+    return;
+  }
+
+  hits.slice(0, 12).forEach((hit) => {
+    const card = el('div', 'card');
+    card.appendChild(el('div', null, hit.name));
+    card.appendChild(el('p', 'muted', hit.label));
+
+    const row = el('div', 'row');
+    const amount = document.createElement('input');
+    amount.type = 'number';
+    amount.inputMode = 'decimal';
+    amount.min = '0';
+    amount.value = hit.per === 'g' ? '100' : '1';
+    amount.setAttribute('aria-label', hit.per === 'g' ? 'Grams' : 'Servings');
+    row.appendChild(amount);
+
+    const add = el('button', null, hit.per === 'g' ? 'Add grams' : 'Add servings');
+    add.onclick = () => {
+      const quantity = parseFloat(amount.value);
+      if (!quantity || quantity <= 0) return;
+      addIngredient(hit, quantity);
+    };
+    row.appendChild(add);
+    card.appendChild(row);
+    box.appendChild(card);
+  });
+}
+
+function addIngredient(hit, quantity) {
+  const field = $('#r-ingredients');
+  const line = foodLine(hit, quantity);
+  field.value = field.value.trim() ? `${field.value.replace(/\s+$/, '')}\n${line}` : line;
+
+  if (!ingredientTally) ingredientTally = emptyTally();
+  const contribution = foodContribution(hit, quantity);
+  Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
+  ingredientTally.lines += 1;
+
+  applyTally();
+  $('#ing-results').innerHTML = '';
+  $('#ing-query').value = '';
+}
+
+/* Only fields you have not typed into are filled in. A looked-up figure must
+ * never quietly overwrite a number entered deliberately. */
+function applyTally() {
+  const note = $('#ing-tally');
+  if (!ingredientTally || !ingredientTally.lines) {
+    note.textContent = '';
+    return;
+  }
+
+  const servings = parseFloat($('#r-servings').value) || 1;
+  const perServing = {
+    '#r-cal': ingredientTally.calories / servings,
+    '#r-p': ingredientTally.proteinG / servings,
+    '#r-c': ingredientTally.carbsG / servings,
+    '#r-f': ingredientTally.fatG / servings,
+  };
+
+  Object.entries(perServing).forEach(([selector, value]) => {
+    const field = $(selector);
+    if (field.dataset.typed === '1') return;
+    field.value = Math.round(value);
+  });
+
+  const round = (n) => Math.round(n).toLocaleString();
+  note.textContent = `${ingredientTally.lines} looked-up `
+    + `ingredient${ingredientTally.lines === 1 ? '' : 's'} - `
+    + `${round(ingredientTally.calories)} kcal for the whole recipe, `
+    + `${round(ingredientTally.calories / servings)} a serving.`;
+}
+
+['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
+  $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
+});
+
+$('#r-servings').addEventListener('input', applyTally);
+
+$('#ing-go').onclick = () => {
+  const query = $('#ing-query').value.trim();
+  if (query) runIngredientSearch(query);
+};
+
+$('#ing-query').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); $('#ing-go').click(); }
+});
+
+renderIngredientSources();
