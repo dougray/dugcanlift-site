@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-02T16:57:58.736717+00:00",
+  "last_updated": "2026-09-03T16:51:07.881647+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -146,8 +146,8 @@
       "platform": "shopify_variant",
       "variant_match": "500g",
       "servings": 100,
-      "price": 24.97,
-      "cost_per_serving": 0.25,
+      "price": 23.97,
+      "cost_per_serving": 0.24,
       "error": null
     },
     {
