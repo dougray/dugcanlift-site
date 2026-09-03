@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "LIFT 1.2 Is Out, And COOK Came With It"
+date:   2026-09-02 19:30:00 -0500
+---
+
+A week ago I wrote that COOK was built into both apps but hadn't shipped in a release, and that testing might turn up over the weekend. The weekend came and went while I was busy teaching Coach to write training.
+
+It's up now. **LIFT 1.2 for Android**, at [dugcanlift.com/lift/install](/lift/install/). It's the first Android build that has COOK in it.
+
+## What's in it
+
+Everything that landed after the 1.1 bump, which was the Send to Coach beta back in August:
+
+**COOK.** Recipes, a week plan, and a shopping list that builds itself from the week you planned. Cook something and it logs in one tap with the macros already attached, because it knew the recipe before you ate it.
+
+**Save and restore your log to a file.** A real backup you hold, not a cloud you rent. And a restore that carries through fields this version doesn't understand — so a backup made on a newer build doesn't get quietly stripped when an older one reads it.
+
+**Android stopped copying your log to Google Drive.** Auto-backup is on by default for every Android app and I had never turned it off, which meant your log had been going somewhere I spend a lot of words telling you it doesn't go. It doesn't anymore. That one was a bug in my own privacy claims, and it's the entry on this list I'm least pleased about.
+
+**Bug report and feature request forms**, in the app, so telling me something's broken doesn't require finding me first.
+
+## It installs over the top
+
+Same signing key as 1.1, so it goes on as an update. You do not have to uninstall, and your log stays where it is.
+
+I checked this rather than assumed it — pulled 1.2 back down off the site and compared its certificate against the copy that was live before it. Same key. If they hadn't matched, Android would have refused the install and the only way through would have been uninstalling, which deletes your log. Worth thirty seconds to verify.
+
+Back up anyway. It's one tap now, which is rather the point.
+
+## Why it isn't in a store
+
+Because the beta isn't finished, and a store is the wrong place to run one.
+
+Right now, when something's broken, I fix it and push, and the [web app](/lift/) has it that day. Put the same thing behind Play review and App Store review and that loop stretches to days, sometimes a week, with a queue in the middle that doesn't care that eleven people are hitting the same bug. There's a version of me that would rather have the badge on the page. That version ships slower.
+
+So the plan hasn't changed: **finish the beta through the PWA.** Get the moving parts actually working — the log, the backups, the plans travelling between Coach and the app, COOK's macros landing where they should — and then submit to Apple and Google once there's nothing left that I already know is wrong.
+
+Not before. And no date, because I've been wrong about dates in public twice now and I'd rather not go for three.
+
+If you're on iPhone, the [web version](/lift/) is where the beta is, and it isn't a consolation prize — it's the fastest-moving build there is. The native iOS app has the same COOK tab sitting in it and it stays unshipped for exactly the same reason.
+
+## What would help
+
+Install it, use COOK for one week of actual food, and tell me where it's stupid.
+
+COOK is the newest code in the app and the least tested by anyone but me. The place I'd expect it to fall over is imports with ingredients that aren't weights — a handful of this, two tablespoons of that — where it'll tell you the total is short rather than guess. If it's short in a way that makes the feature useless to you, that's worth knowing.
+
+The report form is in the app now. Or [the source is public](https://github.com/dougray/dugcanlift-lift) and issues are open.
