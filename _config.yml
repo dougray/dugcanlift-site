@@ -24,6 +24,10 @@ description: >-
   Fitness, lifting, and whatever else I'm building.
 baseurl: ""
 url: "https://www.dugcanlift.com"
+# Without this, GitHub Pages builds in UTC while local builds use the machine
+# clock. Any post written after 19:00 Central then lands on tomorrow's date
+# in its permalink once deployed, and the URL you tested locally 404s.
+timezone: America/Chicago
 instagram_username: dugcanlift
 tiktok_username: dugcanlift
 youtube_username: dugcanlift
