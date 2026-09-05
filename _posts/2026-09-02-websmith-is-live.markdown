@@ -6,7 +6,7 @@ date:   2026-09-02 10:00:00 -0500
 
 For a while now there's been a line in the footer of a few sites I've built that says *Built by Websmith*. It wasn't a link. It went nowhere, because there was nothing behind it. It was a name I'd given the thing I kept doing on weekends, mostly for people at church.
 
-There's a page behind it now: [websmith](https://dougray.github.io/websmith/). Presence and defense, for small business and non-profits.
+There's a page behind it now: [websmith](https://websmithtx.com). Presence and defense, for small business and non-profits.
 
 ## An old name, back in service
 
@@ -78,6 +78,6 @@ Non-profits and ministries get non-profit rates. That's the whole reason the thi
 
 ## Go look
 
-[websmith](https://dougray.github.io/websmith/) — services, the work so far, and how to reach me. The sites on it are all live and all real: a rural Methodist church, a devotional podcast with a searchable archive of 1,400-plus episodes, and this one you're reading right now.
+[websmith](https://websmithtx.com) — services, the work so far, and how to reach me. The sites on it are all live and all real: a rural Methodist church, a devotional podcast with a searchable archive of 1,400-plus episodes, and this one you're reading right now.
 
 If you know a small organization stuck in either ditch, send them the link. Or send them my email — **websmithtx@gmail.com** — and tell them a few sentences is plenty.
