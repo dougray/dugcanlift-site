@@ -94,7 +94,8 @@ reps, a plank has no weight.
 **Itemized food** — `[foodIndex, servings, kcal, protein, fat, carbs, fiber, meal]`,
 where the macro numbers are **per serving** (multiply by `servings`), matching
 how both apps already store them, and `meal` is 0 breakfast, 1 lunch, 2 dinner,
-3 snack.
+3 snack. The gram-based amount (`amountGrams` from LIFT iOS) is not included in
+this compact format; it appears only in the fuller BACKUP-FORMAT.
 
 ### Steps
 
