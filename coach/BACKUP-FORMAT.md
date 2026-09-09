@@ -30,7 +30,7 @@ Every client reads and writes these, and the field names match what each
 platform already stores, which is why a browser backup restores on a phone.
 
 **`food[]`** — `id`, `name`, `servings`, `calories`, `proteinG`, `fatG`,
-`carbsG`, `fiberG`, `date` (`YYYY-MM-DD`), `loggedAt` (epoch ms), `meal`
+`carbsG`, `fiberG`, `amountGrams`, `date` (`YYYY-MM-DD`), `loggedAt` (epoch ms), `meal`
 (`BREAKFAST` | `LUNCH` | `DINNER` | `SNACK`).
 
 **`workouts[]`** — `id`, `date`, `name`, `note`, `startedAt` (epoch ms), and
@@ -52,7 +52,7 @@ instead of a stranger joining their roster.
 Weights are **pounds** and distances **metres**, always, whatever the user sees
 on screen — same rule as the share format, and for the same reason: a file that
 mixed units would be unreadable the moment someone changed the setting. When a
-food entry has `amountGrams` (in `ext.ios`), it is the authoritative gram amount.
+food entry has `amountGrams`, it is the authoritative gram amount.
 Display-unit preference (grams vs. ounces) is a device-local setting never
 included in the exported record, so there is nothing to reconcile across devices
 for that preference.
@@ -67,7 +67,7 @@ The clients are not a superset and a subset of each other. They overlap, and
 each has fields the others have no home for. Those go under `ext.<platform>`,
 keyed by the record id they belong to.
 
-`ext.ios` currently carries, per food entry: `amountGrams`, `brand`, `servingUnit`,
+`ext.ios` currently carries, per food entry: `brand`, `servingUnit`,
 `servingGrams`, `sugarG`, `sodiumMg`, `foodRefID`, `healthKitUUID`. Per workout
 day: `focus`, `liveStartedAt`, `liveEndedAt`, `healthKitUUID`. Per exercise:
 `exerciseRefID`, `primaryMuscle`, `orderIndex`. Per set: `orderIndex`,
