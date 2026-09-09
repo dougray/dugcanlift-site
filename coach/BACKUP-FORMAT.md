@@ -31,7 +31,9 @@ platform already stores, which is why a browser backup restores on a phone.
 
 **`food[]`** — `id`, `name`, `servings`, `calories`, `proteinG`, `fatG`,
 `carbsG`, `fiberG`, `date` (`YYYY-MM-DD`), `loggedAt` (epoch ms), `meal`
-(`BREAKFAST` | `LUNCH` | `DINNER` | `SNACK`).
+(`BREAKFAST` | `LUNCH` | `DINNER` | `SNACK`), `amountGrams` (grams,
+optional — the authoritative gram amount when set, coexisting with `servings`
+for entries that still use the older serving-count fields).
 
 **`workouts[]`** — `id`, `date`, `name`, `note`, `startedAt` (epoch ms), and
 `exercises[]` of `id`, `name`, `equipment`, `note`, `sets[]` of `id`,
@@ -51,7 +53,11 @@ instead of a stranger joining their roster.
 
 Weights are **pounds** and distances **metres**, always, whatever the user sees
 on screen — same rule as the share format, and for the same reason: a file that
-mixed units would be unreadable the moment someone changed the setting.
+mixed units would be unreadable the moment someone changed the setting. When a
+food entry has `amountGrams`, it is the authoritative gram amount. Display-unit
+preference (grams vs. ounces) is a device-local setting never included in the
+exported record, so there is nothing to reconcile across devices for that
+preference.
 
 Steps are absent by design. The native apps read them from Health Connect and
 HealthKit when needed rather than storing them, so they have nothing of their
