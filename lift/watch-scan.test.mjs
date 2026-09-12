@@ -246,3 +246,15 @@ test('every scanned entry becomes exactly one record', () => {
   assert.equal(records.length, 3);
   assert.equal(new Set(records.map((r) => r.id)).size, 3);
 });
+
+test('stored macros are whole numbers, like every other write path', () => {
+  // The Food tab reads through mul() and would round anyway, but the
+  // itemised coach export reads these fields raw -- an unrounded value would
+  // show a coach "31.02 g protein" beside whole numbers everywhere else.
+  const [record] = WatchScan.toFoodRecords([scanned({
+    per100g: { calories: 165, proteinG: 31.02, fatG: 3.57, carbsG: 0, fiberG: 0 },
+  })], deps);
+  for (const field of ['calories', 'proteinG', 'fatG', 'carbsG', 'fiberG']) {
+    assert.equal(record[field], Math.round(record[field]), `${field} is not whole`);
+  }
+});

@@ -175,12 +175,19 @@
       // food would read 75 kcal instead of 149, and a 200g portion would
       // read double. It is wrong in both directions, which is what makes it
       // hard to notice.
+      //
+      // All five are rounded, as every other write path into this store does
+      // (app.js:714 parseInt, app.js:821 and app.js:2035 Math.round). The
+      // Food tab is shielded either way because it reads through mul(), which
+      // rounds the product -- but the itemised coach export reads these
+      // fields raw (app.js:1300), so an unrounded value would show a coach
+      // "31.02 g protein" where every other entry shows a whole number.
       servings: Number((entry.grams / 100).toFixed(2)),
       calories: Math.round(entry.per100g.calories),
-      proteinG: entry.per100g.proteinG,
-      fatG: entry.per100g.fatG,
-      carbsG: entry.per100g.carbsG,
-      fiberG: entry.per100g.fiberG,
+      proteinG: Math.round(entry.per100g.proteinG),
+      fatG: Math.round(entry.per100g.fatG),
+      carbsG: Math.round(entry.per100g.carbsG),
+      fiberG: Math.round(entry.per100g.fiberG),
       // The day the food was eaten, not the day it was scanned — a user
       // scanning Monday's log on Wednesday must not see it land on Wednesday.
       date: deps.dateKey(new Date(entry.loggedAt * 1000)),
