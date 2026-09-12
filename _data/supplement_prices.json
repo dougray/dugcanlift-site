@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-11T16:51:54.816795+00:00",
+  "last_updated": "2026-09-12T15:58:19.171347+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -105,9 +105,8 @@
       "category": "Protein",
       "url": "https://ekkovision.com/products/ekko-protein-powder-3rd-party-tested-copy",
       "servings": 60,
-      "price": 69.99,
-      "cost_per_serving": 1.166,
-      "error": null
+      "price": null,
+      "error": "price not found (no meta tag, no selector match)"
     },
     {
       "name": "Multi-Source Protein (2lb)",
