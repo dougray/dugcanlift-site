@@ -69,15 +69,30 @@
                     + 'Update this app and try again.');
     }
 
-    // Every entry must point at a real row of the food dictionary. Checking
-    // here, at the edge, rather than skipping bad rows later: a dropped row
-    // is a meal missing from someone's day with nothing to tell them, and a
-    // sequence would still have reported itself complete.
-    const strayIndex = payload.e.some((tuple) => !Array.isArray(tuple)
-      || !Number.isInteger(tuple[0])
-      || tuple[0] < 0
-      || tuple[0] >= payload.fd.length);
-    if (strayIndex) {
+    // Every `fd` row is [name, calories, proteinG, fatG, carbsG, fiberG]: a
+    // string followed by five finite numbers.
+    const rowIsValid = (row) => Array.isArray(row) && row.length === 6
+      && typeof row[0] === 'string'
+      && row.slice(1).every((n) => typeof n === 'number' && Number.isFinite(n));
+
+    // Every entry must point at a real row of the food dictionary, and its
+    // own fields must be usable: grams a non-negative finite number, meal an
+    // integer in range of the meal list, loggedAt a finite timestamp.
+    // Checking here, at the edge, rather than skipping or coercing bad rows
+    // later: a dropped row is a meal missing from someone's day with
+    // nothing to tell them, and a sequence would still have reported itself
+    // complete. Coercing (e.g. defaulting an out-of-range meal to SNACK) is
+    // just as bad the other direction -- it creates a record with no
+    // reliable date/meal that no date navigation can reach and the user can
+    // never delete, yet it still rides along in every backup and coach
+    // export.
+    const entryIsValid = (tuple) => Array.isArray(tuple)
+      && Number.isInteger(tuple[0]) && tuple[0] >= 0 && tuple[0] < payload.fd.length
+      && typeof tuple[1] === 'number' && Number.isFinite(tuple[1]) && tuple[1] >= 0
+      && Number.isInteger(tuple[2]) && tuple[2] >= 0 && tuple[2] < MEALS.length
+      && typeof tuple[3] === 'number' && Number.isFinite(tuple[3]);
+
+    if (!payload.fd.every(rowIsValid) || !payload.e.every(entryIsValid)) {
       throw new Error("That code is damaged — some of its entries don't line up "
                     + 'with the foods it lists. Show the code again and rescan it.');
     }
@@ -147,7 +162,12 @@
                 carbsG: food[4], fiberG: food[5],
               },
               grams: tuple[1],
-              meal: MEALS[tuple[2]] || 'SNACK',
+              // No `|| 'SNACK'` fallback: decodePayload now validates
+              // tuple[2] is an in-range meal index before this ever runs, so
+              // silently refiling an out-of-range meal is no longer
+              // possible to reach -- it would have masked exactly the kind
+              // of damaged entry decodePayload now rejects outright.
+              meal: MEALS[tuple[2]],
               loggedAt: tuple[3],
               z: exportedAt,
               indexInCode,

@@ -158,6 +158,54 @@ test('a negative food index is rejected too', async () => {
   await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
 });
 
+/* ---- Fix 4: only tuple[0] used to be checked. A code carrying
+ * [[0, 'lots', 0, 'whenever']] imported fine and created a record with
+ * date "NaN-NaN-NaN" and servings null -- unreachable by date navigation,
+ * undeletable, but still riding along in every backup and coach export. ---- */
+
+test('non-numeric grams are rejected, not coerced into NaN', async () => {
+  const broken = { ...payload(1, 1), e: [[0, 'lots', 0, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('negative grams are rejected', async () => {
+  const broken = { ...payload(1, 1), e: [[0, -5, 0, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('an out-of-range meal index is rejected, not refiled to SNACK', async () => {
+  const broken = { ...payload(1, 1), e: [[0, 140, 4, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('a negative meal index is rejected', async () => {
+  const broken = { ...payload(1, 1), e: [[0, 140, -1, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('a non-numeric loggedAt is rejected, not turned into an unreachable date', async () => {
+  const broken = { ...payload(1, 1), e: [[0, 140, 0, 'whenever']] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('an fd row missing a macro field is rejected', async () => {
+  const broken = { ...payload(1, 1), fd: [['Chicken breast, roasted', 165, 31, 3.6, 0]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('an fd row with a non-numeric macro is rejected', async () => {
+  const broken = {
+    ...payload(1, 1),
+    fd: [['Chicken breast, roasted', 165, 31, 3.6, 0, 'none']],
+  };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('an fd row with a non-string name is rejected', async () => {
+  const broken = { ...payload(1, 1), fd: [[42, 165, 31, 3.6, 0, 0]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
 test('the real fixtures still decode after the hardening', async () => {
   const code = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
   const seq = WatchScan.createSequence();
