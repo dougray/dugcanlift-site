@@ -231,8 +231,13 @@
       frame = requestAnimationFrame(() => tick(canvas, context));
       if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      // Assigning canvas.width/height clears the backing store even when
+      // the value is unchanged, so only touch them when the video's
+      // dimensions actually differ from the canvas's current ones.
+      if (canvas.width !== video.videoWidth || canvas.height !== video.videoHeight) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+      }
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       const image = context.getImageData(0, 0, canvas.width, canvas.height);
       const found = window.jsQR(image.data, image.width, image.height);
