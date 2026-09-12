@@ -171,7 +171,6 @@ const deps = {
     const p = (n) => String(n).padStart(2, '0');
     return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
   },
-  uid: (() => { let n = 0; return () => `id${n++}`; })(),
 };
 
 const scanned = (over = {}) => ({
@@ -180,6 +179,8 @@ const scanned = (over = {}) => ({
   grams: 200,
   meal: 'DINNER',
   loggedAt: 1757486400,
+  z: 1757500800,
+  indexInCode: 0,
   ...over,
 });
 
@@ -243,9 +244,51 @@ test('an awkward gram amount still totals correctly through the store', () => {
 });
 
 test('every scanned entry becomes exactly one record', () => {
-  const records = WatchScan.toFoodRecords([scanned(), scanned(), scanned()], deps);
+  const records = WatchScan.toFoodRecords([
+    scanned({ indexInCode: 0 }), scanned({ indexInCode: 1 }), scanned({ indexInCode: 2 }),
+  ], deps);
   assert.equal(records.length, 3);
   assert.equal(new Set(records.map((r) => r.id)).size, 3);
+});
+
+/* ---- Fix 2: deterministic ids, so a re-import of the same code can be
+ * told apart from a new one and skipped rather than doubling the day. ---- */
+
+test('the same scanned entry always produces the same id', () => {
+  // The watch only clears its on-screen log on a manual tap, so an
+  // accidental re-scan of the same code is expected, not exotic. Importing
+  // it again must be detectable by app.js's addFoodEntries against the
+  // live store, which means the id cannot be random.
+  const [first] = WatchScan.toFoodRecords([scanned()], deps);
+  const [second] = WatchScan.toFoodRecords([scanned()], deps);
+  assert.equal(first.id, second.id);
+});
+
+test('two entries at different positions in the same code get different ids', () => {
+  const [a, b] = WatchScan.toFoodRecords(
+    [scanned({ indexInCode: 0 }), scanned({ indexInCode: 1 })], deps,
+  );
+  assert.notEqual(a.id, b.id);
+});
+
+test('the same position in two different exports gets different ids', () => {
+  const [a] = WatchScan.toFoodRecords([scanned({ z: 1757500800 })], deps);
+  const [b] = WatchScan.toFoodRecords([scanned({ z: 1757600000 })], deps);
+  assert.notEqual(a.id, b.id);
+});
+
+test('importing a real fixture twice yields identical ids both times', async () => {
+  // End-to-end through decodePayload/createSequence/toFoodRecords, not just
+  // the pure id formula, since that is the path a real re-scan takes.
+  const code = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const once = async () => {
+    const seq = WatchScan.createSequence();
+    seq.add(await WatchScan.decodePayload(code));
+    return WatchScan.toFoodRecords(seq.entries, deps).map((r) => r.id);
+  };
+  const [firstRun, secondRun] = await Promise.all([once(), once()]);
+  assert.deepEqual(firstRun, secondRun);
+  assert.equal(new Set(firstRun).size, firstRun.length); // still distinct within one import
 });
 
 test('stored macros are whole numbers, like every other write path', () => {

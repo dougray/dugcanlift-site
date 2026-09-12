@@ -134,7 +134,10 @@
         const out = [];
         Array.from(byPosition.keys()).sort((a, b) => a - b).forEach((position) => {
           const payload = byPosition.get(position);
-          payload.e.forEach((tuple) => {
+          // `z` (the export timestamp) plus the entry's own index within
+          // this code's `e` array is what toFoodRecords uses to build a
+          // deterministic id -- see the comment there for why.
+          payload.e.forEach((tuple, indexInCode) => {
             const food = payload.fd[tuple[0]];
             if (!food) return;
             out.push({
@@ -146,6 +149,8 @@
               grams: tuple[1],
               meal: MEALS[tuple[2]] || 'SNACK',
               loggedAt: tuple[3],
+              z: exportedAt,
+              indexInCode,
             });
           });
         });
@@ -156,12 +161,22 @@
 
   /* Scanned entries into records the Food tab already understands.
    *
-   * `dateKey` and `uid` are injected rather than read off the global so this
-   * is testable outside a browser. Pass app.js's own — the date key must stay
+   * `dateKey` is injected rather than read off the global so this is
+   * testable outside a browser. Pass app.js's own — the date key must stay
    * local, matching every other entry in the store. */
   function toFoodRecords(entries, deps) {
     return entries.map((entry) => ({
-      id: deps.uid(),
+      // Deterministic, not deps.uid(): the watch only clears its on-screen
+      // log on a manual tap, so the same codes are still there to be
+      // rescanned -- by an accidental double-scan, or because a prior
+      // import looked like it failed (see the browser-too-old bug this same
+      // review found). A random id would import the whole day again every
+      // time, silently doubling it. `z` (the export timestamp) plus the
+      // entry's position within that export's `e` array is stable across
+      // rescans of the same code and unique within one export, so importing
+      // the same code twice produces the same id both times and the caller
+      // (app.js's addFoodEntries) can skip anything already in the store.
+      id: `watch-${entry.z}-${entry.loggedAt}-${entry.indexInCode}`,
       name: entry.name,
       // `servings` is grams/100, and macros stay PER SERVING — i.e. exactly
       // the per-100g figures, passed through unscaled.
@@ -345,7 +360,6 @@
     importButton.onclick = () => {
       const records = window.WatchScan.toFoodRecords(sequence.entries, {
         dateKey: window.dateKey,
-        uid: window.uid,
       });
       // Goes through app.js's addFoodEntries rather than touching
       // window.food/save/render directly: window.food is a snapshot taken
@@ -353,9 +367,11 @@
       // row) without window.food ever finding out. Pushing into that stale
       // array and saving it over storage is how a deletion, an import, and
       // whatever was logged in between all got silently destroyed together.
-      window.addFoodEntries(records);
+      const { imported, skipped } = window.addFoodEntries(records);
       close();
-      window.alert(`Imported ${records.length} item(s) from your watch.`);
+      const skippedNote = skipped > 0
+        ? ` Skipped ${skipped} already on this device.` : '';
+      window.alert(`Imported ${imported.length} item(s) from your watch.${skippedNote}`);
     };
 
     $('watch-scan-cancel').onclick = close;
