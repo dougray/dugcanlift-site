@@ -229,3 +229,9 @@ canvas { width: 100%; display: block; }
 
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
+
+#watch-scan-video {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}

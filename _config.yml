@@ -67,3 +67,13 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Test-only files. These are development artefacts, not part of the app, and
+# publishing them puts them on www.dugcanlift.com for no reason. The fixtures
+# in particular are sample food logs -- harmless, but nothing on the live site
+# should be fetching them, and shipping them invites something eventually
+# doing so.
+exclude:
+  - lift/watch-scan.test.mjs
+  - lift/fixtures/
+  - lift/README.md
