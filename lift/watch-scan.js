@@ -231,6 +231,33 @@
       importButton.disabled = true;
     }
 
+    // requestAnimationFrame pauses on its own when the tab is backgrounded,
+    // but the MediaStream does not -- the camera light stays on until the
+    // user comes back and finds Cancel. That is a privacy failure, so stop
+    // the stream itself, not just the read loop.
+    //
+    // On return, this deliberately does NOT re-acquire the camera on its
+    // own: silently turning the camera back on the moment a hidden tab
+    // becomes visible again is the same surprise this exists to prevent,
+    // and re-running getUserMedia here would need to redo all of the
+    // open.onclick error handling anyway (permission revoked while away,
+    // camera claimed by another app) for a path the user never asked to
+    // start. Telling them to tap "Scan from watch" again reuses that
+    // already-correct handler and only turns the camera on when a fresh tap
+    // asks for it.
+    function onHidden() {
+      if (!stream) return;   // no camera running, nothing to pause
+      stop();
+      say('Camera paused because the tab was hidden. Tap "Scan from watch" to resume.');
+    }
+
+    window.document.addEventListener('visibilitychange', () => {
+      if (window.document.visibilityState === 'hidden') onHidden();
+    });
+    // Belt and suspenders for the case a tab is discarded/closed without a
+    // visibilitychange first (some mobile browsers do this on swipe-away).
+    window.addEventListener('pagehide', () => { if (stream) stop(); });
+
     function tick(canvas, context) {
       frame = requestAnimationFrame(() => tick(canvas, context));
       if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
