@@ -182,9 +182,10 @@
         const out = [];
         Array.from(byPosition.keys()).sort((a, b) => a - b).forEach((position) => {
           const payload = byPosition.get(position);
-          // `z` (the export timestamp) plus the entry's own index within
-          // this code's `e` array is what toFoodRecords uses to build a
-          // deterministic id -- see the comment there for why.
+          // `z` plus this code's position plus the entry's index within it
+          // is what toFoodRecords uses to build a deterministic id. The
+          // position is part of it because the index alone restarts at 0 in
+          // every code -- see the comment there.
           payload.e.forEach((tuple, indexInCode) => {
             const food = payload.fd[tuple[0]];
             if (!food) return;
@@ -203,6 +204,7 @@
               meal: MEALS[tuple[2]],
               loggedAt: tuple[3],
               z: exportedAt,
+              position,
               indexInCode,
             });
           });
@@ -225,11 +227,18 @@
       // import looked like it failed (see the browser-too-old bug this same
       // review found). A random id would import the whole day again every
       // time, silently doubling it. `z` (the export timestamp) plus the
-      // entry's position within that export's `e` array is stable across
-      // rescans of the same code and unique within one export, so importing
+      // entry's address within it -- which code, and where in that code --
+      // is stable across rescans and unique within one export, so importing
       // the same code twice produces the same id both times and the caller
       // (app.js's addFoodEntries) can skip anything already in the store.
-      id: `watch-${entry.z}-${entry.loggedAt}-${entry.indexInCode}`,
+      //
+      // The code's position is part of the address on purpose. `indexInCode`
+      // restarts at 0 in every code of a multi-code export, so two different
+      // foods logged in the same second in different codes would otherwise
+      // collide on one id -- and since app.js deletes by matching the first
+      // record with that id, tapping the × on one of them would remove the
+      // other.
+      id: `watch-${entry.z}-${entry.position}-${entry.loggedAt}-${entry.indexInCode}`,
       name: entry.name,
       // `servings` is grams/100, and macros stay PER SERVING — i.e. exactly
       // the per-100g figures, passed through unscaled.

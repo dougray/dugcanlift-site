@@ -26,7 +26,7 @@ changes** — otherwise browsers keep serving the old cached copy and a fix
 never reaches anyone who already installed the app.
 
 `app.js` publishes a handful of things to `window` at the very end of the
-file (`Object.assign(window, { KEY, uid, dateKey, addFoodEntries })`)
+file (`Object.assign(window, { KEY, uid, dateKey, addFoodEntries, goToFoodDate })`)
 specifically for `watch-scan.js` to use. This is necessary because
 `watch-scan.js` loads as a separate `<script>` rather than more lines added
 to `app.js`, and top-level `const`/`let` declarations in a classic script
