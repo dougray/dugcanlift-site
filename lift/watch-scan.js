@@ -23,11 +23,14 @@
     return out;
   }
 
-  async function inflate(bytes) {
-    if (typeof DecompressionStream === 'undefined') {
-      throw new Error('This browser is too old to read watch codes. Safari 16.4, '
+  // Thrown by decodePayload, above the try that would otherwise swallow it --
+  // see the comment there.
+  function browserTooOldError() {
+    return new Error('This browser is too old to read watch codes. Safari 16.4, '
                     + 'Chrome 103 or anything newer will work.');
-    }
+  }
+
+  async function inflate(bytes) {
     const stream = new Blob([bytes]).stream()
       .pipeThrough(new DecompressionStream('deflate-raw'));
     return new Response(stream).text();
@@ -45,6 +48,17 @@
     if (Number(match[1]) !== 1) {
       throw new Error('That code came from a newer version of LIFT on the watch. '
                     + 'Update this app and try again.');
+    }
+
+    // Checked here, above the try below, rather than inside inflate(): the
+    // sibling decoder this mirrors, decodeIncomingPlan in app.js, does not
+    // wrap its own version of this check in a try, so its message reaches
+    // the user. Thrown from inside that try, this specific, actionable
+    // message ("Safari 16.4, Chrome 103...") got replaced by the generic
+    // "That code isn't a LIFT watch export." -- true, but useless to someone
+    // whose browser can never read any code until they update it.
+    if (match[2] === 'z' && typeof DecompressionStream === 'undefined') {
+      throw browserTooOldError();
     }
 
     let payload;

@@ -62,6 +62,37 @@ test('rejects an envelope version this app does not know', async () => {
     /newer version/i);
 });
 
+/* ---- Fix 5: this specific message used to be thrown inside the try that
+ * replaces every error with "That code isn't a LIFT watch export.", so a
+ * user on a browser that could never read any code got told the code
+ * itself was bad rather than that their browser needed updating. ---- */
+
+test('a missing DecompressionStream surfaces the browser-too-old message', async () => {
+  const real = globalThis.DecompressionStream;
+  delete globalThis.DecompressionStream;
+  try {
+    await assert.rejects(
+      () => WatchScan.decodePayload(encode(payload(1, 1))),
+      /too old to read watch codes.*Safari 16\.4.*Chrome 103/is,
+    );
+  } finally {
+    globalThis.DecompressionStream = real;
+  }
+});
+
+test('a missing DecompressionStream does not block the uncompressed codec', async () => {
+  // The `u` variant never touches DecompressionStream, so it must keep
+  // working even on a browser that lacks it entirely.
+  const real = globalThis.DecompressionStream;
+  delete globalThis.DecompressionStream;
+  try {
+    const decoded = await WatchScan.decodePayload(encodeUncompressed(payload(1, 1)));
+    assert.equal(decoded.v, 1);
+  } finally {
+    globalThis.DecompressionStream = real;
+  }
+});
+
 test('a single-code sequence completes immediately', async () => {
   const seq = WatchScan.createSequence();
   seq.add(await WatchScan.decodePayload(encode(payload(1, 1))));
