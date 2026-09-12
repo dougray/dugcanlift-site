@@ -164,3 +164,85 @@ test('the real fixtures still decode after the hardening', async () => {
   assert.equal(seq.complete, true);
   assert.equal(seq.entries.length, 3);
 });
+
+const deps = {
+  dateKey: (d) => {
+    const p = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  },
+  uid: (() => { let n = 0; return () => `id${n++}`; })(),
+};
+
+const scanned = (over = {}) => ({
+  name: 'Chicken breast, roasted',
+  per100g: { calories: 165, proteinG: 31, fatG: 3.6, carbsG: 0, fiberG: 0 },
+  grams: 200,
+  meal: 'DINNER',
+  loggedAt: 1757486400,
+  ...over,
+});
+
+// The store's own accounting, copied from app.js:131. Every assertion about
+// what a user actually sees must go through this, not the raw record fields.
+const mul = (e, field) => Math.round((e[field] || 0) * (e.servings || 1));
+
+test('the portion a user sees is the true portion, not double-scaled', () => {
+  // 200 g of a 165 kcal/100 g food is 330 kcal. This is THE test for this
+  // task: asserting record.calories === 330 directly would pass while the
+  // Food tab showed 660, because the store multiplies by servings again.
+  const [record] = WatchScan.toFoodRecords([scanned()], deps);
+  assert.equal(mul(record, 'calories'), 330);
+  assert.equal(mul(record, 'proteinG'), 62);
+});
+
+test('a sub-100g portion is not halved', () => {
+  // The same bug runs the other way under 100 g, which is why it survives
+  // a single spot-check. 50 g of 297 kcal/100 g is 149 kcal, never 75.
+  const [record] = WatchScan.toFoodRecords([scanned({
+    grams: 50,
+    per100g: { calories: 297, proteinG: 10, fatG: 5, carbsG: 30, fiberG: 2 },
+  })], deps);
+  assert.equal(mul(record, 'calories'), 149);
+});
+
+test('stored macros are per serving, matching logPlannedMeal', () => {
+  const [record] = WatchScan.toFoodRecords([scanned()], deps);
+  assert.equal(record.calories, 165);        // per 100 g, unscaled
+  assert.equal(record.servings, 2);
+});
+
+test('a record matches the shape the food store already uses', () => {
+  const [record] = WatchScan.toFoodRecords([scanned()], deps);
+  for (const key of ['id', 'name', 'servings', 'calories', 'proteinG', 'fatG',
+                     'carbsG', 'fiberG', 'date', 'loggedAt', 'meal']) {
+    assert.ok(key in record, `missing ${key}`);
+  }
+  assert.equal(record.name, 'Chicken breast, roasted');
+  assert.equal(record.meal, 'DINNER');
+});
+
+test('servings records the gram amount, matching gram-based logging', () => {
+  const [record] = WatchScan.toFoodRecords([scanned({ grams: 140 })], deps);
+  assert.equal(record.servings, 1.4);
+});
+
+test('the date comes from when it was logged, not when it was scanned', () => {
+  const [record] = WatchScan.toFoodRecords([scanned()], deps);
+  assert.equal(record.date, deps.dateKey(new Date(1757486400 * 1000)));
+});
+
+test('loggedAt is milliseconds, as the store stores it', () => {
+  const [record] = WatchScan.toFoodRecords([scanned()], deps);
+  assert.equal(record.loggedAt, 1757486400 * 1000);
+});
+
+test('an awkward gram amount still totals correctly through the store', () => {
+  const [record] = WatchScan.toFoodRecords([scanned({ grams: 37 })], deps);
+  assert.equal(mul(record, 'calories'), Math.round(165 * 0.37));
+});
+
+test('every scanned entry becomes exactly one record', () => {
+  const records = WatchScan.toFoodRecords([scanned(), scanned(), scanned()], deps);
+  assert.equal(records.length, 3);
+  assert.equal(new Set(records.map((r) => r.id)).size, 3);
+});

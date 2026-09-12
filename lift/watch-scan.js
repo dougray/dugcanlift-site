@@ -154,5 +154,41 @@
     };
   }
 
-  window.WatchScan = { b64urlToBytes, decodePayload, createSequence, MEALS };
+  /* Scanned entries into records the Food tab already understands.
+   *
+   * `dateKey` and `uid` are injected rather than read off the global so this
+   * is testable outside a browser. Pass app.js's own — the date key must stay
+   * local, matching every other entry in the store. */
+  function toFoodRecords(entries, deps) {
+    return entries.map((entry) => ({
+      id: deps.uid(),
+      name: entry.name,
+      // `servings` is grams/100, and macros stay PER SERVING — i.e. exactly
+      // the per-100g figures, passed through unscaled.
+      //
+      // Do NOT pre-multiply them by grams. This store's invariant is that
+      // `mul(e, field) = e[field] * e.servings` (app.js:131), applied by both
+      // totals() and the per-row display, and logPlannedMeal states it
+      // outright: "Food entries store macros per serving and multiply by
+      // servings, so the per-serving snapshot passes through unscaled."
+      // Scaling here as well double-scales: a 50g portion of a 297 kcal/100g
+      // food would read 75 kcal instead of 149, and a 200g portion would
+      // read double. It is wrong in both directions, which is what makes it
+      // hard to notice.
+      servings: Number((entry.grams / 100).toFixed(2)),
+      calories: Math.round(entry.per100g.calories),
+      proteinG: entry.per100g.proteinG,
+      fatG: entry.per100g.fatG,
+      carbsG: entry.per100g.carbsG,
+      fiberG: entry.per100g.fiberG,
+      // The day the food was eaten, not the day it was scanned — a user
+      // scanning Monday's log on Wednesday must not see it land on Wednesday.
+      date: deps.dateKey(new Date(entry.loggedAt * 1000)),
+      loggedAt: entry.loggedAt * 1000,
+      meal: entry.meal,
+      fromWatch: true,
+    }));
+  }
+
+  window.WatchScan = { b64urlToBytes, decodePayload, createSequence, toFoodRecords, MEALS };
 }(window));
