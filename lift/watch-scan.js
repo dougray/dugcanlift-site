@@ -300,9 +300,18 @@
       stop();
       open.disabled = true;
       panel.classList.remove('hidden');
-      sequence = window.WatchScan.createSequence();
-      importButton.disabled = true;
-      say('Starting the camera…');
+      // Keep any sequence still in progress. Backgrounding the tab stops the
+      // camera but does not end the scan, and a long export is several codes:
+      // starting fresh here would silently throw away the codes already
+      // scanned, so the user would rescan code 1, see "1 of 2" again, and
+      // never reach the end. `close()` is what ends a scan, and it nulls
+      // this.
+      const resuming = sequence !== null && !sequence.complete;
+      if (!resuming) sequence = window.WatchScan.createSequence();
+      importButton.disabled = !(sequence.complete);
+      say(resuming
+        ? `Resuming — ${sequence.scanned} of ${sequence.total} scanned.`
+        : 'Starting the camera…');
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         say('This browser cannot use the camera. Safari on iOS or Chrome will work.');
