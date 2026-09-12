@@ -137,6 +137,30 @@ test('codes from a different export are rejected', async () => {
   assert.throws(() => seq.add(other), /different export/i);
 });
 
+/* ---- Fix 6: `z` alone is not a strong enough cross-export guard. Both
+ * committed fixtures happen to carry z=1757500800, so a code from each used
+ * to combine into one "complete" 57-entry set -- two different logs merged
+ * and reported complete, with no signal anything was wrong. ---- */
+
+test('two exports sharing the same z are still told apart by their declared total', async () => {
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(encode(payload(1, 3))));
+  // Same z, different declared total -- a different export that merely
+  // happens to share a timestamp with the first.
+  const other = await WatchScan.decodePayload(encode(payload(1, 5)));
+  assert.throws(() => seq.add(other), /different export/i);
+});
+
+test('the two real fixtures, which share a z, are not silently combinable', async () => {
+  const single = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const [firstOfSequence] = readFileSync('lift/fixtures/watch-export-sequence.txt', 'utf8')
+    .split('\n').map((s) => s.trim()).filter(Boolean);
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(single));
+  const decodedOther = await WatchScan.decodePayload(firstOfSequence);
+  assert.throws(() => seq.add(decodedOther), /different export/i);
+});
+
 test('entries come back in scan-independent order', async () => {
   const seq = WatchScan.createSequence();
   seq.add(await WatchScan.decodePayload(encode(payload(2, 2, 2))));

@@ -131,6 +131,15 @@
         } else if (payload.z !== exportedAt) {
           throw new Error('That code is from a different export. Start again, or '
                         + 'scan the rest of the first set.');
+        } else if (declared !== total) {
+          // `z` alone is not a strong enough guard: two unrelated exports
+          // sharing the same export timestamp would otherwise pass the
+          // check above and merge into one "complete" set, silently
+          // combining two different logs. The declared total has to agree
+          // too, matching the same "different export" message -- from the
+          // user's side this is exactly that mistake.
+          throw new Error('That code is from a different export. Start again, or '
+                        + 'scan the rest of the first set.');
         }
 
         // Two different codes claiming the same slot means one of them was
