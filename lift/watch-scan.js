@@ -269,15 +269,20 @@
         stream = await navigator.mediaDevices.getUserMedia({
           video: { facingMode: 'environment' },
         });
+        video.srcObject = stream;
+        await video.play();
       } catch (e) {
+        // Covers both getUserMedia rejecting (denied/no camera) and
+        // video.play() rejecting (autoplay policy, element torn down
+        // mid-await). Either way, an already-acquired stream must not be
+        // left running with nothing watching it.
+        if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
         say(e && e.name === 'NotAllowedError'
           ? 'Camera access was refused. Allow it in your browser settings, then try again.'
           : 'No camera available on this device.');
         return;
       }
 
-      video.srcObject = stream;
-      await video.play();
       say('Point the camera at your watch.');
       const canvas = window.document.createElement('canvas');
       tick(canvas, canvas.getContext('2d', { willReadFrequently: true }));
