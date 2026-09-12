@@ -2537,3 +2537,7 @@ $('#ing-query').addEventListener('keydown', (e) => {
 });
 
 renderIngredientSources();
+
+/* Published for watch-scan.js, which is a separate script rather than more
+ * lines in this file. Top-level const/let never land on window by themselves. */
+Object.assign(window, { food, save, KEY, uid, dateKey, render });
