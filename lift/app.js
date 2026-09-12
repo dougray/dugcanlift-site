@@ -2563,5 +2563,22 @@ Object.assign(window, {
   dateKey,
   // Adds records to the live food array, persists, and re-renders -- the
   // only supported way for watch-scan.js to write an import.
-  addFoodEntries: (records) => { records.forEach((r) => food.push(r)); save(KEY.food, food); render(); },
+  //
+  // Skips any record whose id is already in the store. The watch only
+  // clears its on-screen log on a manual tap, so the same codes are still
+  // there to be rescanned by accident -- and watch-scan.js gives every
+  // imported record a deterministic id (export timestamp + logged time +
+  // position in the code) precisely so that a re-import of the same code
+  // produces the same ids and can be told apart from new ones here, against
+  // the live store, rather than by a random id that would just double the
+  // day silently every time. Returns the records actually written, so the
+  // caller can report what happened and, e.g., navigate to what landed.
+  addFoodEntries: (records) => {
+    const existingIds = new Set(food.map((f) => f.id));
+    const fresh = records.filter((r) => !existingIds.has(r.id));
+    fresh.forEach((r) => food.push(r));
+    save(KEY.food, food);
+    render();
+    return { imported: fresh, skipped: records.length - fresh.length };
+  },
 });
