@@ -663,7 +663,16 @@ function renderFood() {
         `${mul(e, 'calories')} kcal - P ${mul(e, 'proteinG')} - F ${mul(e, 'fatG')} - C ${mul(e, 'carbsG')} - Fib ${mul(e, 'fiberG')}`));
       row.appendChild(info);
       const x = el('button', 'x', '\u00d7');
-      x.onclick = () => { food = food.filter((f) => f.id !== e.id); save(KEY.food, food); render(); };
+      // Mutate the live array in place rather than rebinding `food` to a new
+      // one. `food` is `let`, and Object.assign publishes it to window.food
+      // for watch-scan.js -- rebinding here would leave that published
+      // reference pointing at a now-abandoned array forever, silently.
+      x.onclick = () => {
+        const i = food.findIndex((f) => f.id === e.id);
+        if (i !== -1) food.splice(i, 1);
+        save(KEY.food, food);
+        render();
+      };
       row.appendChild(x);
       out.appendChild(row);
     });
@@ -2539,5 +2548,20 @@ $('#ing-query').addEventListener('keydown', (e) => {
 renderIngredientSources();
 
 /* Published for watch-scan.js, which is a separate script rather than more
- * lines in this file. Top-level const/let never land on window by themselves. */
-Object.assign(window, { food, save, KEY, uid, dateKey, render });
+ * lines in this file. Top-level const/let never land on window by themselves.
+ *
+ * `food` is NOT published by value: it is a `let` that gets rebound (see the
+ * food-list `x` button, above -- well, used to; it now mutates in place, but
+ * the point stands for any future rebind), and a snapshot published once at
+ * load time would go stale forever the first time that happened, while
+ * watch-scan.js kept writing into the abandoned copy. Instead this publishes
+ * a function that closes over the live binding and does the whole write
+ * itself. */
+Object.assign(window, {
+  KEY,
+  uid,
+  dateKey,
+  // Adds records to the live food array, persists, and re-renders -- the
+  // only supported way for watch-scan.js to write an import.
+  addFoodEntries: (records) => { records.forEach((r) => food.push(r)); save(KEY.food, food); render(); },
+});
