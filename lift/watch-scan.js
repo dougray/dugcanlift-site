@@ -343,6 +343,13 @@
       if (!found) return;
 
       window.WatchScan.decodePayload(found.data).then((payload) => {
+        // A decode can still be in flight when Import is tapped: close()
+        // nulls `sequence`, but this .then was already scheduled and
+        // assumed sequence was non-null, writing "Cannot read properties of
+        // null (reading 'add')" straight into the status. The scan is over
+        // by the time this settles either way, so there is nothing useful
+        // left to do with the result.
+        if (!sequence) return;
         try {
           sequence.add(payload);
         } catch (e) {
