@@ -112,3 +112,55 @@ test('entries come back in scan-independent order', async () => {
   const times = seq.entries.map((entry) => entry.loggedAt);
   assert.deepEqual(times, [...times].sort((a, b) => a - b));
 });
+
+/* ---- hardening: gaps found reviewing the reference implementation ---- */
+
+test('a stray position cannot fake a complete set', async () => {
+  // `size >= total` was satisfiable by an out-of-range position while a real
+  // code was still missing, and importing that set drops a whole code's
+  // worth of the log.
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(encode(payload(1, 3))));
+  seq.add(await WatchScan.decodePayload(encode(payload(2, 3))));
+  seq.add(await WatchScan.decodePayload(encode(payload(99, 3))));
+  assert.equal(seq.complete, false);
+});
+
+test('two different codes claiming one position are rejected', async () => {
+  // Last-write-wins would swap a code the user did scan for one they did
+  // not, while the count still called the set complete.
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(encode(payload(1, 2))));
+  const other = { ...payload(1, 2), fd: [['Something else entirely', 1, 2, 3, 4, 5]] };
+  const decoded = await WatchScan.decodePayload(encode(other));
+  assert.throws(() => seq.add(decoded), /both say they are number 1/);
+});
+
+test('rescanning byte-identical content is still idempotent', async () => {
+  const seq = WatchScan.createSequence();
+  const one = await WatchScan.decodePayload(encode(payload(1, 2)));
+  seq.add(one);
+  seq.add(one);
+  seq.add(await WatchScan.decodePayload(encode(payload(1, 2))));
+  assert.equal(seq.scanned, 1);
+});
+
+test('an entry pointing outside the food dictionary is rejected, not dropped', async () => {
+  // Previously this decoded fine and the entries getter silently skipped the
+  // row, leaving a "complete" sequence with a meal missing and no signal.
+  const broken = { ...payload(1, 1), e: [[7, 140, 2, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('a negative food index is rejected too', async () => {
+  const broken = { ...payload(1, 1), e: [[-1, 140, 2, 1757486400]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('the real fixtures still decode after the hardening', async () => {
+  const code = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(code));
+  assert.equal(seq.complete, true);
+  assert.equal(seq.entries.length, 3);
+});
