@@ -93,6 +93,16 @@
     <button class="wide ghost" id="backup-load">Restore from a backup file</button>
     <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
     <p class="muted" id="backup-note"></p>
+    <button class="wide ghost" id="watch-scan-open">Scan from watch</button>
+    <div id="watch-scan" class="card hidden">
+      <strong>Scan from watch</strong>
+      <p class="muted">Open Export Foods on your watch and point this camera at
+        it. Nothing is uploaded — the code is read here on this device.</p>
+      <video id="watch-scan-video" playsinline muted></video>
+      <p class="muted" id="watch-scan-status"></p>
+      <button class="wide" id="watch-scan-import" disabled>Import</button>
+      <button class="wide ghost" id="watch-scan-cancel">Cancel</button>
+    </div>
   </div>
 </section>
 
@@ -291,6 +301,8 @@
 </main>
 
 <script src="foods.js"></script>
+<script src="jsqr.js"></script>
 <script src="app.js"></script>
+<script src="watch-scan.js"></script>
 </body>
 </html>

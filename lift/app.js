@@ -663,7 +663,19 @@ function renderFood() {
         `${mul(e, 'calories')} kcal - P ${mul(e, 'proteinG')} - F ${mul(e, 'fatG')} - C ${mul(e, 'carbsG')} - Fib ${mul(e, 'fiberG')}`));
       row.appendChild(info);
       const x = el('button', 'x', '\u00d7');
-      x.onclick = () => { food = food.filter((f) => f.id !== e.id); save(KEY.food, food); render(); };
+      // Mutate the live array in place rather than rebinding `food` to a
+      // new one. `food` is `let`, and anything that captured it -- a closure,
+      // a published reference -- would keep pointing at the abandoned array
+      // forever, silently. window.food was exactly that bug: an import after
+      // any delete wrote a stale array over storage, losing every entry
+      // logged since. Nothing is published by value now, and in-place
+      // mutation keeps it that way.
+      x.onclick = () => {
+        const i = food.findIndex((f) => f.id === e.id);
+        if (i !== -1) food.splice(i, 1);
+        save(KEY.food, food);
+        render();
+      };
       row.appendChild(x);
       out.appendChild(row);
     });
@@ -2537,3 +2549,46 @@ $('#ing-query').addEventListener('keydown', (e) => {
 });
 
 renderIngredientSources();
+
+/* Published for watch-scan.js, which is a separate script rather than more
+ * lines in this file. Top-level const/let never land on window by themselves.
+ *
+ * `food` and `foodDate` are NOT published by value: both are `let`s app.js
+ * can rebind or reassign, and a snapshot published once at load time would
+ * go stale forever the first time that happened, while watch-scan.js kept
+ * reading or writing the abandoned copy. Instead this publishes functions
+ * that close over the live bindings and do the whole read or write
+ * themselves. */
+Object.assign(window, {
+  KEY,
+  uid,
+  dateKey,
+  // Adds records to the live food array, persists, and re-renders -- the
+  // only supported way for watch-scan.js to write an import.
+  //
+  // Skips any record whose id is already in the store. The watch only
+  // clears its on-screen log on a manual tap, so the same codes are still
+  // there to be rescanned by accident -- and watch-scan.js gives every
+  // imported record a deterministic id (export timestamp + logged time +
+  // position in the code) precisely so that a re-import of the same code
+  // produces the same ids and can be told apart from new ones here, against
+  // the live store, rather than by a random id that would just double the
+  // day silently every time. Returns the records actually written, so the
+  // caller can report what happened and, e.g., navigate to what landed.
+  addFoodEntries: (records) => {
+    const existingIds = new Set(food.map((f) => f.id));
+    const fresh = records.filter((r) => !existingIds.has(r.id));
+    fresh.forEach((r) => food.push(r));
+    save(KEY.food, food);
+    render();
+    return { imported: fresh, skipped: records.length - fresh.length };
+  },
+  // Points the Food tab at a specific day and switches to it. `foodDate` is
+  // also a `let` (see the comment above) -- published the same way as
+  // addFoodEntries, as a setter closing over the live binding, rather than
+  // by value. Used after a successful import so the user lands on what they
+  // just imported instead of staying on "Today" wondering where it went;
+  // Previous/Next is the only other navigation, one day per tap, and
+  // retention is 60 days, so the oldest imported day could be 60 taps away.
+  goToFoodDate: (day) => { foodDate = day; showTab('food'); },
+});

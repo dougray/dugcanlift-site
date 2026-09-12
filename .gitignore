@@ -8,3 +8,7 @@ vendor
 _site/
 .jekyll-cache/
 CLAUDE.md
+
+# Claude Code worktrees and subagent-driven-development scratch
+.claude/worktrees/
+.superpowers/
