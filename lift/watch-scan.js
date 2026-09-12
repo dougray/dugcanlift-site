@@ -68,6 +68,19 @@
       throw new Error('That code came from a newer version of LIFT on the watch. '
                     + 'Update this app and try again.');
     }
+
+    // Every entry must point at a real row of the food dictionary. Checking
+    // here, at the edge, rather than skipping bad rows later: a dropped row
+    // is a meal missing from someone's day with nothing to tell them, and a
+    // sequence would still have reported itself complete.
+    const strayIndex = payload.e.some((tuple) => !Array.isArray(tuple)
+      || !Number.isInteger(tuple[0])
+      || tuple[0] < 0
+      || tuple[0] >= payload.fd.length);
+    if (strayIndex) {
+      throw new Error("That code is damaged — some of its entries don't line up "
+                    + 'with the foods it lists. Show the code again and rescan it.');
+    }
     return payload;
   }
 
@@ -91,11 +104,30 @@
                         + 'scan the rest of the first set.');
         }
 
+        // Two different codes claiming the same slot means one of them was
+        // misread. Last-write-wins would swap a code the user did scan for
+        // one they did not, and the count would still say the set was
+        // complete -- so say so instead of quietly picking one.
+        const seen = byPosition.get(position);
+        if (seen && JSON.stringify(seen) !== JSON.stringify(payload)) {
+          throw new Error(`Two different codes both say they are number ${position}. `
+                        + 'Start again and rescan the set.');
+        }
+
         byPosition.set(position, payload);
       },
       get scanned() { return byPosition.size; },
       get total() { return total; },
-      get complete() { return byPosition.size >= total; },
+      /* Every position from 1 to `total`, not merely `total` codes: a count
+       * can be satisfied by a stray out-of-range position while a real one is
+       * still missing, and importing that set would drop a whole code's worth
+       * of the user's log. */
+      get complete() {
+        for (let position = 1; position <= total; position += 1) {
+          if (!byPosition.has(position)) return false;
+        }
+        return true;
+      },
       /* Flattened, oldest first — the order a log reads in, regardless of
        * which code the user happened to point the camera at first. */
       get entries() {
