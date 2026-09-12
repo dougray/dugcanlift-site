@@ -7,6 +7,7 @@ import zlib from 'node:zlib';
 // way the browser would rather than restructuring it as a module.
 const shim = { window: {} };
 shim.window.window = shim.window;
+shim.window.document = { readyState: 'complete', getElementById: () => null };
 new Function('window', readFileSync('lift/watch-scan.js', 'utf8')).call(shim, shim.window);
 const WatchScan = shim.window.WatchScan;
 

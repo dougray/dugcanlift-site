@@ -197,5 +197,112 @@
     }));
   }
 
+  /* ---- camera ---- */
+
+  function mount() {
+    const $ = (id) => window.document.getElementById(id);
+    const open = $('watch-scan-open');
+    if (!open) return;   // not on a page that has the card
+
+    const panel = $('watch-scan');
+    const video = $('watch-scan-video');
+    const status = $('watch-scan-status');
+    const importButton = $('watch-scan-import');
+
+    let stream = null;
+    let frame = null;
+    let sequence = null;
+
+    const say = (text) => { status.textContent = text; };
+
+    function stop() {
+      if (frame) { cancelAnimationFrame(frame); frame = null; }
+      if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
+    }
+
+    function close() {
+      stop();
+      panel.classList.add('hidden');
+      sequence = null;
+      importButton.disabled = true;
+    }
+
+    function tick(canvas, context) {
+      frame = requestAnimationFrame(() => tick(canvas, context));
+      if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const image = context.getImageData(0, 0, canvas.width, canvas.height);
+      const found = window.jsQR(image.data, image.width, image.height);
+      if (!found) return;
+
+      window.WatchScan.decodePayload(found.data).then((payload) => {
+        try {
+          sequence.add(payload);
+        } catch (e) {
+          say(e.message);
+          return;
+        }
+        if (sequence.complete) {
+          stop();
+          say(`Ready to import ${sequence.entries.length} item(s).`);
+          importButton.disabled = false;
+        } else {
+          say(`Scanned ${sequence.scanned} of ${sequence.total}. Swipe to the next code.`);
+        }
+      }).catch((e) => say(e.message));
+    }
+
+    open.onclick = async () => {
+      panel.classList.remove('hidden');
+      sequence = window.WatchScan.createSequence();
+      importButton.disabled = true;
+      say('Starting the camera…');
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        say('This browser cannot use the camera. Safari on iOS or Chrome will work.');
+        return;
+      }
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment' },
+        });
+      } catch (e) {
+        say(e && e.name === 'NotAllowedError'
+          ? 'Camera access was refused. Allow it in your browser settings, then try again.'
+          : 'No camera available on this device.');
+        return;
+      }
+
+      video.srcObject = stream;
+      await video.play();
+      say('Point the camera at your watch.');
+      const canvas = window.document.createElement('canvas');
+      tick(canvas, canvas.getContext('2d', { willReadFrequently: true }));
+    };
+
+    importButton.onclick = () => {
+      const records = window.WatchScan.toFoodRecords(sequence.entries, {
+        dateKey: window.dateKey,
+        uid: window.uid,
+      });
+      records.forEach((record) => window.food.push(record));
+      window.save(window.KEY.food, window.food);
+      close();
+      window.render();
+      window.alert(`Imported ${records.length} item(s) from your watch.`);
+    };
+
+    $('watch-scan-cancel').onclick = close;
+  }
+
+  if (window.document.readyState === 'loading') {
+    window.document.addEventListener('DOMContentLoaded', mount);
+  } else {
+    mount();
+  }
+
   window.WatchScan = { b64urlToBytes, decodePayload, createSequence, toFoodRecords, MEALS };
 }(window));
