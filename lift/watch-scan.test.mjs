@@ -477,3 +477,59 @@ test('real codes stay inside the scannable size ceiling', () => {
     assert.match(code, /^1[zu][A-Za-z0-9_-]+$/);
   }
 });
+
+test('two entries in different codes of one export get different ids', () => {
+  // `indexInCode` restarts at 0 in every code, so without the code's
+  // position in the id, two foods logged in the same second in different
+  // codes collide -- and app.js deletes by matching the first record with
+  // that id, so tapping the x on one would remove the other.
+  const at = 1757486400;
+  const one = { v: 1, z: 1757500800, p: [1, 2],
+    fd: [['Chicken breast, roasted', 165, 31, 3.6, 0, 0]],
+    e: [[0, 100, 1, at]] };
+  const two = { v: 1, z: 1757500800, p: [2, 2],
+    fd: [['Oats, rolled, dry', 379, 13.2, 6.5, 67.7, 10.1]],
+    e: [[0, 50, 1, at]] };
+
+  return (async () => {
+    const seq = WatchScan.createSequence();
+    seq.add(await WatchScan.decodePayload(encode(one)));
+    seq.add(await WatchScan.decodePayload(encode(two)));
+    assert.equal(seq.complete, true);
+
+    const records = WatchScan.toFoodRecords(seq.entries, deps);
+    assert.equal(records.length, 2);
+    assert.notEqual(records[0].id, records[1].id, 'ids collide across codes');
+    assert.equal(new Set(records.map((r) => r.id)).size, 2);
+  })();
+});
+
+test('ids stay stable when the same export is scanned again', () => {
+  const at = 1757486400;
+  const one = { v: 1, z: 1757500800, p: [1, 2],
+    fd: [['Chicken breast, roasted', 165, 31, 3.6, 0, 0]],
+    e: [[0, 100, 1, at]] };
+  const two = { v: 1, z: 1757500800, p: [2, 2],
+    fd: [['Oats, rolled, dry', 379, 13.2, 6.5, 67.7, 10.1]],
+    e: [[0, 50, 1, at]] };
+
+  return (async () => {
+    const build = async (order) => {
+      const seq = WatchScan.createSequence();
+      for (const payload of order) seq.add(await WatchScan.decodePayload(encode(payload)));
+      return WatchScan.toFoodRecords(seq.entries, deps).map((r) => r.id).sort();
+    };
+    // Same ids whichever order the camera happened to catch the codes in.
+    assert.deepEqual(await build([one, two]), await build([two, one]));
+  })();
+});
+
+test('real fixture ids are stable across two separate scans', async () => {
+  const code = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const idsFor = async () => {
+    const seq = WatchScan.createSequence();
+    seq.add(await WatchScan.decodePayload(code));
+    return WatchScan.toFoodRecords(seq.entries, deps).map((r) => r.id);
+  };
+  assert.deepEqual(await idsFor(), await idsFor());
+});

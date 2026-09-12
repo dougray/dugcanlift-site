@@ -663,10 +663,13 @@ function renderFood() {
         `${mul(e, 'calories')} kcal - P ${mul(e, 'proteinG')} - F ${mul(e, 'fatG')} - C ${mul(e, 'carbsG')} - Fib ${mul(e, 'fiberG')}`));
       row.appendChild(info);
       const x = el('button', 'x', '\u00d7');
-      // Mutate the live array in place rather than rebinding `food` to a new
-      // one. `food` is `let`, and Object.assign publishes it to window.food
-      // for watch-scan.js -- rebinding here would leave that published
-      // reference pointing at a now-abandoned array forever, silently.
+      // Mutate the live array in place rather than rebinding `food` to a
+      // new one. `food` is `let`, and anything that captured it -- a closure,
+      // a published reference -- would keep pointing at the abandoned array
+      // forever, silently. window.food was exactly that bug: an import after
+      // any delete wrote a stale array over storage, losing every entry
+      // logged since. Nothing is published by value now, and in-place
+      // mutation keeps it that way.
       x.onclick = () => {
         const i = food.findIndex((f) => f.id === e.id);
         if (i !== -1) food.splice(i, 1);
