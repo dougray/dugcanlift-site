@@ -2550,13 +2550,12 @@ renderIngredientSources();
 /* Published for watch-scan.js, which is a separate script rather than more
  * lines in this file. Top-level const/let never land on window by themselves.
  *
- * `food` is NOT published by value: it is a `let` that gets rebound (see the
- * food-list `x` button, above -- well, used to; it now mutates in place, but
- * the point stands for any future rebind), and a snapshot published once at
- * load time would go stale forever the first time that happened, while
- * watch-scan.js kept writing into the abandoned copy. Instead this publishes
- * a function that closes over the live binding and does the whole write
- * itself. */
+ * `food` and `foodDate` are NOT published by value: both are `let`s app.js
+ * can rebind or reassign, and a snapshot published once at load time would
+ * go stale forever the first time that happened, while watch-scan.js kept
+ * reading or writing the abandoned copy. Instead this publishes functions
+ * that close over the live bindings and do the whole read or write
+ * themselves. */
 Object.assign(window, {
   KEY,
   uid,
@@ -2581,4 +2580,12 @@ Object.assign(window, {
     render();
     return { imported: fresh, skipped: records.length - fresh.length };
   },
+  // Points the Food tab at a specific day and switches to it. `foodDate` is
+  // also a `let` (see the comment above) -- published the same way as
+  // addFoodEntries, as a setter closing over the live binding, rather than
+  // by value. Used after a successful import so the user lands on what they
+  // just imported instead of staying on "Today" wondering where it went;
+  // Previous/Next is the only other navigation, one day per tap, and
+  // retention is 60 days, so the oldest imported day could be 60 taps away.
+  goToFoodDate: (day) => { foodDate = day; showTab('food'); },
 });
