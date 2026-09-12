@@ -25,10 +25,16 @@ available offline. **Bump `sw.js`'s `CACHE` name whenever either file
 changes** — otherwise browsers keep serving the old cached copy and a fix
 never reaches anyone who already installed the app.
 
-`app.js` publishes a handful of its globals to `window` at the very end of
-the file (`Object.assign(window, { food, save, KEY, uid, dateKey, render })`)
+`app.js` publishes a handful of things to `window` at the very end of the
+file (`Object.assign(window, { KEY, uid, dateKey, addFoodEntries })`)
 specifically for `watch-scan.js` to use. This is necessary because
 `watch-scan.js` loads as a separate `<script>` rather than more lines added
 to `app.js`, and top-level `const`/`let` declarations in a classic script
 never become properties of `window` on their own — only an explicit
 assignment does that.
+
+Note that `food` itself is never published by value — it is a `let` app.js
+can rebind, and a snapshot taken once at load time would go stale the moment
+that happened, while `watch-scan.js` kept writing into the abandoned array.
+`addFoodEntries` closes over the live binding and does the whole write
+(push, save, render) itself instead.

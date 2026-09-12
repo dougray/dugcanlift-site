@@ -347,10 +347,14 @@
         dateKey: window.dateKey,
         uid: window.uid,
       });
-      records.forEach((record) => window.food.push(record));
-      window.save(window.KEY.food, window.food);
+      // Goes through app.js's addFoodEntries rather than touching
+      // window.food/save/render directly: window.food is a snapshot taken
+      // once at load time, and app.js can rebind that `let` (e.g. deleting a
+      // row) without window.food ever finding out. Pushing into that stale
+      // array and saving it over storage is how a deletion, an import, and
+      // whatever was logged in between all got silently destroyed together.
+      window.addFoodEntries(records);
       close();
-      window.render();
       window.alert(`Imported ${records.length} item(s) from your watch.`);
     };
 
