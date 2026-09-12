@@ -259,3 +259,47 @@ test('stored macros are whole numbers, like every other write path', () => {
     assert.equal(record[field], Math.round(record[field]), `${field} is not whole`);
   }
 });
+
+/* ---- interoperability: real bytes from the watch's own encoder ---- */
+
+test('decodes a code the real watch encoder produced', async () => {
+  const code = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const seq = WatchScan.createSequence();
+  seq.add(await WatchScan.decodePayload(code));
+  assert.equal(seq.complete, true);
+  assert.equal(seq.entries.length, 3);
+  assert.equal(seq.entries[0].name,
+    'Chicken, broilers or fryers, breast, meat only, cooked, roasted');
+  assert.equal(seq.entries[0].meal, 'BREAKFAST');
+  // Per-100g macros, straight off the wire, unscaled.
+  assert.equal(seq.entries[0].per100g.calories, 165);
+  assert.equal(seq.entries[0].per100g.proteinG, 31.02);
+  // 50 g of it, so the store must end up showing 83 kcal, not 165 and not 41.
+  assert.equal(seq.entries[0].grams, 50);
+  const [record] = WatchScan.toFoodRecords([seq.entries[0]], deps);
+  assert.equal(mul(record, 'calories'), Math.round(165 * 0.5));
+});
+
+test('reassembles a real multi-code sequence', async () => {
+  const codes = readFileSync('lift/fixtures/watch-export-sequence.txt', 'utf8')
+    .split('\n').map((s) => s.trim()).filter(Boolean);
+  const seq = WatchScan.createSequence();
+  for (const code of codes) seq.add(await WatchScan.decodePayload(code));
+  assert.equal(codes.length, 2);      // 796 and 702 bytes
+  assert.equal(seq.complete, true);
+  assert.equal(seq.entries.length, 120);
+  // Reassembly must not reorder: the watch emits oldest first.
+  const times = seq.entries.map((e) => e.loggedAt);
+  assert.deepEqual(times, [...times].sort((a, b) => a - b));
+});
+
+test('real codes stay inside the scannable size ceiling', () => {
+  const all = [
+    ...readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').split('\n'),
+    ...readFileSync('lift/fixtures/watch-export-sequence.txt', 'utf8').split('\n'),
+  ].map((s) => s.trim()).filter(Boolean);
+  for (const code of all) {
+    assert.ok(code.length <= 800, `code is ${code.length} bytes`);
+    assert.match(code, /^1[zu][A-Za-z0-9_-]+$/);
+  }
+});
