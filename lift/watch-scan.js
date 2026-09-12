@@ -218,6 +218,10 @@
     function stop() {
       if (frame) { cancelAnimationFrame(frame); frame = null; }
       if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
+      // Every path that stops the camera -- Cancel, a completed scan, the
+      // tab going hidden, or a fresh tap guarding against an orphaned prior
+      // session -- must also let the user tap "Scan from watch" again.
+      open.disabled = false;
     }
 
     function close() {
@@ -261,6 +265,13 @@
     }
 
     open.onclick = async () => {
+      // Belt and suspenders against a second tap orphaning the first
+      // session's MediaStream: stop() releases any stream/loop already
+      // running, and disabling the button (cleared by stop(), including on
+      // every early return below) keeps a second tap from reaching this
+      // handler at all while one is in flight.
+      stop();
+      open.disabled = true;
       panel.classList.remove('hidden');
       sequence = window.WatchScan.createSequence();
       importButton.disabled = true;
@@ -268,6 +279,7 @@
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         say('This browser cannot use the camera. Safari on iOS or Chrome will work.');
+        open.disabled = false;
         return;
       }
       try {
@@ -282,6 +294,7 @@
         // mid-await). Either way, an already-acquired stream must not be
         // left running with nothing watching it.
         if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
+        open.disabled = false;
         say(e && e.name === 'NotAllowedError'
           ? 'Camera access was refused. Allow it in your browser settings, then try again.'
           : 'No camera available on this device.');
