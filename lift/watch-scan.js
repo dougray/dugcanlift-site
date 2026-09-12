@@ -106,7 +106,17 @@
       && Number.isInteger(tuple[2]) && tuple[2] >= 0 && tuple[2] < MEALS.length
       && typeof tuple[3] === 'number' && Number.isFinite(tuple[3]);
 
-    if (!payload.fd.every(rowIsValid) || !payload.e.every(entryIsValid)) {
+    // `p`, when present, is [position, declaredTotal]. createSequence.complete
+    // scans positions 1..total, so a malformed position such as [0, 1] can
+    // never be satisfied: the status would read "Scanned 1 of 1" forever,
+    // with Import permanently disabled and only Cancel escaping the panel.
+    // Both elements must be integers, and position must fall within
+    // 1..declaredTotal.
+    const pIsValid = !('p' in payload) || (Array.isArray(payload.p) && payload.p.length === 2
+      && Number.isInteger(payload.p[0]) && Number.isInteger(payload.p[1])
+      && payload.p[0] >= 1 && payload.p[0] <= payload.p[1]);
+
+    if (!payload.fd.every(rowIsValid) || !payload.e.every(entryIsValid) || !pIsValid) {
       throw new Error("That code is damaged — some of its entries don't line up "
                     + 'with the foods it lists. Show the code again and rescan it.');
     }

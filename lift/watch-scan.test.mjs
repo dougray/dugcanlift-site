@@ -171,14 +171,22 @@ test('entries come back in scan-independent order', async () => {
 
 /* ---- hardening: gaps found reviewing the reference implementation ---- */
 
-test('a stray position cannot fake a complete set', async () => {
-  // `size >= total` was satisfiable by an out-of-range position while a real
-  // code was still missing, and importing that set drops a whole code's
-  // worth of the log.
+test('a stray out-of-range position is rejected at decode time', async () => {
+  // Position 99 exceeds this code's own declared total of 3 -- Fix 7 rejects
+  // that at decodePayload now, before it can ever reach a sequence.
+  await assert.rejects(() => WatchScan.decodePayload(encode(payload(99, 3))), /damaged/i);
+});
+
+test('a stray position cannot fake a complete set, even bypassing decodePayload', async () => {
+  // Belt and suspenders: `size >= total` was satisfiable by an out-of-range
+  // position while a real code was still missing, and importing that set
+  // drops a whole code's worth of the log. decodePayload now refuses to
+  // produce such a payload at all (see above), but `complete` guards
+  // against it independently for anything handed to add() directly.
   const seq = WatchScan.createSequence();
   seq.add(await WatchScan.decodePayload(encode(payload(1, 3))));
   seq.add(await WatchScan.decodePayload(encode(payload(2, 3))));
-  seq.add(await WatchScan.decodePayload(encode(payload(99, 3))));
+  seq.add({ ...payload(99, 3), p: [99, 3] });
   assert.equal(seq.complete, false);
 });
 
@@ -258,6 +266,26 @@ test('an fd row with a non-numeric macro is rejected', async () => {
 
 test('an fd row with a non-string name is rejected', async () => {
   const broken = { ...payload(1, 1), fd: [[42, 165, 31, 3.6, 0, 0]] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+/* ---- Fix 7: a malformed position used to be accepted at decode time, but
+ * createSequence.complete scans positions 1..total, so p: [0, 1] could
+ * never be satisfied -- "Scanned 1 of 1" forever, Import permanently
+ * disabled, only Cancel escaping the panel. ---- */
+
+test('a position of 0 is rejected at decode time, not left to wedge the panel', async () => {
+  const broken = { ...payload(1, 1), p: [0, 1] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('a position beyond the declared total is rejected', async () => {
+  const broken = { ...payload(1, 1), p: [2, 1] };
+  await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
+});
+
+test('a non-integer position is rejected', async () => {
+  const broken = { ...payload(1, 1), p: [1.5, 1] };
   await assert.rejects(() => WatchScan.decodePayload(encode(broken)), /damaged/i);
 });
 
