@@ -369,9 +369,26 @@
       // whatever was logged in between all got silently destroyed together.
       const { imported, skipped } = window.addFoodEntries(records);
       close();
+
       const skippedNote = skipped > 0
         ? ` Skipped ${skipped} already on this device.` : '';
-      window.alert(`Imported ${imported.length} item(s) from your watch.${skippedNote}`);
+
+      if (imported.length === 0) {
+        window.alert(`Imported 0 item(s) from your watch.${skippedNote}`);
+        return;
+      }
+
+      // Previous/Next is the only date navigation, one day per tap, and
+      // retention is 60 days -- without this, a successful import could
+      // land the user 60 taps away from anything showing on the Food tab.
+      // Jump to the earliest imported day and name the range so the alert
+      // itself explains where things went.
+      const dates = imported.map((r) => r.date).sort();
+      const earliest = dates[0];
+      const latest = dates[dates.length - 1];
+      const rangeNote = earliest === latest ? ` on ${earliest}` : ` from ${earliest} to ${latest}`;
+      window.goToFoodDate(earliest);
+      window.alert(`Imported ${imported.length} item(s) from your watch${rangeNote}.${skippedNote}`);
     };
 
     $('watch-scan-cancel').onclick = close;
