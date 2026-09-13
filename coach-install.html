@@ -37,6 +37,19 @@ permalink: /coach/install/
   </ol>
   <p class="calc-sub">A Coach icon shows up alongside your other apps. It's the fire cross with <strong>COACH</strong> across it — LIFT's says <strong>LIFT</strong>, so you can tell them apart if you run both.</p>
 
+  <h2>A native Android app</h2>
+  <p>There is now a Coach built as a real Android app rather than a web page in a tab — same roster, same numbers, no browser around it. <strong>You can't install it yet.</strong> There's no signing key for it, so there's no signed build to give anyone, and nothing in this section is a download. It's written up here because it exists and the page shouldn't pretend otherwise. No date on it.</p>
+  <p>What it does today:</p>
+  <ul>
+    <li>Takes a client's link by pasting it in, or by sharing it into Coach from whatever app it arrived in</li>
+    <li>Opens on the roster sorted quietest first, with a banner across the top naming anyone who hasn't logged for seven days or more</li>
+    <li>Per client, a weekly summary table — sessions, sets, volume, average calories, average protein, how often protein hit the goal, average steps</li>
+    <li>Charts for training volume, calories against their goal, bodyweight, and estimated one-rep max for each lift</li>
+    <li>A session log down to the individual set, a day at a time</li>
+    <li>A Connect screen holding your name and email, writing the invite text for a new client, with its own <strong>Save Backup</strong> and <strong>Restore from Backup</strong></li>
+  </ul>
+  <p class="calc-sub">Tapping a client's link and having it open straight into Coach instead of a browser needs a verification file served from this site; until that's live, Android shows the usual "open with" list instead. Sharing the link into Coach works either way.</p>
+
   <h2>Connecting your first client</h2>
   <p class="calc-sub">Once per client, and then never again.</p>
   <ol>
@@ -132,12 +145,15 @@ permalink: /coach/install/
   <p class="calc-sub">The client half is built in both apps. The Coach half isn't yet, and there's no date on it.</p>
 
   <h2>Where your roster lives</h2>
-  <p class="calc-sub">On your device, in your browser, and nowhere else. There's no server behind Coach and no account, for you or your clients — the log travels inside the link itself, in the part after the <code>#</code> that browsers never send to a server. Their numbers go from their phone, through your inbox, to this device.</p>
-  <p class="calc-sub">The trade for that is real and worth knowing up front: <strong>clearing your browser's site data wipes your roster.</strong> There's a <strong>Save a backup file</strong> button under Connect for exactly this reason. Use it now and again, particularly before you clear anything or move to a new machine — <strong>Restore from a backup file</strong> puts it all back.</p>
+  <p class="calc-sub">On your device and nowhere else. There's no server behind Coach and no account, for you or your clients — the log travels inside the link itself, in the part after the <code>#</code> that browsers never send to a server. Their numbers go from their phone, through your inbox, to this device.</p>
+  <p class="calc-sub">In the browser, "on your device" means your browser's own storage, and the trade for that is real and worth knowing up front: <strong>clearing your browser's site data wipes your roster.</strong> There's a <strong>Save a backup file</strong> button under Connect for exactly this reason. Use it now and again, particularly before you clear anything or move to a new machine — <strong>Restore from a backup file</strong> puts it all back.</p>
+  <p class="calc-sub">The Android app keeps its roster in its own storage instead, one file per client, so clearing your browser's data doesn't touch it. Uninstalling the app does, and so does clearing its data from Android's app settings. It has the same two backup buttons for the same reason, and Android's own cloud backup is switched off deliberately — a client's log isn't something to hand to Google Drive on your behalf.</p>
   <p class="calc-sub">If a client reinstalls LIFT from scratch they arrive as a new person in your roster, because the app forgets its own id along with everything else. Remove the stale one; the history you already have from them stays. If they restored from one of their own backup files, though, the id comes back with it and they stay the same person — worth telling them to save one before they change phones.</p>
 
   <h2>What Coach needs to run</h2>
-  <p class="calc-sub">Any reasonably current browser — Safari 16.4 or newer, Chrome 103 or newer, or anything more recent than those. Older browsers get a clear message rather than a blank screen. Nothing to buy, no sign-up, and no limit on how many clients you keep.</p>
+  <p class="calc-sub">In a browser: any reasonably current one — Safari 16.4 or newer, Chrome 103 or newer, or anything more recent than those. Older browsers get a clear message rather than a blank screen.</p>
+  <p class="calc-sub">The Android app needs Android 8.0 or newer, and no browser at all. It talks to nothing on the network — every number it shows came out of a link you gave it.</p>
+  <p class="calc-sub">Either way: nothing to buy, no sign-up, and no limit on how many clients you keep.</p>
 
   <h2>Tell me what's missing</h2>
   <p class="calc-sub">This is the first version anyone but me has used, and it was built by someone who trains, not someone who coaches for a living. If something's in the wrong place, missing, or would only take one more column to be genuinely useful, I want to hear it. Email <a href="mailto:{{ site.email }}">{{ site.email }}</a> or send a DM on <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener">Instagram</a>.</p>
