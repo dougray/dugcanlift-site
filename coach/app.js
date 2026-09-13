@@ -12,6 +12,11 @@
 /* ---------------- storage ---------------- */
 
 const KEY = { clients: 'coach.clients', settings: 'coach.settings' };
+// Declared here, beside KEY, rather than down in their own sections: the
+// backup and the Connect tab's storage note both need every key, and both
+// can run before those sections are evaluated.
+const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans' };
+const TRAIN_KEY = { workouts: 'coach.workouts', sessions: 'coach.sessions' };
 
 function load(key, fallback) {
   try {
@@ -970,11 +975,29 @@ function renderConnect() {
   $('#coach-email').value = settings.email;
   $('#invite-text').textContent = inviteText();
 
-  const bytes = new Blob([localStorage.getItem(KEY.clients) || '']).size;
-  $('#storage-note').textContent = clients.length
-    ? `${clients.length} ${clients.length === 1 ? 'client' : 'clients'} stored here, `
-      + `${(bytes / 1024).toFixed(0)} KB. This lives in this browser only — `
-      + `clearing site data wipes it, so keep a backup.`
+  // Every store the backup carries, so the size shown matches what a backup
+  // would actually hold. Read through localStorage rather than the live
+  // arrays: render() runs at module scope before `recipes` and `workouts`
+  // are initialised, and every mutation persists immediately anyway.
+  const stored = (key) => {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || '[]');
+      return Array.isArray(value) ? value : [];
+    } catch (e) { return []; }
+  };
+  const keys = [KEY.clients, COOK_KEY.recipes, COOK_KEY.plans,
+    TRAIN_KEY.workouts, TRAIN_KEY.sessions];
+  const bytes = keys.reduce(
+    (total, key) => total + new Blob([localStorage.getItem(key) || '']).size, 0);
+  const recipeCount = stored(COOK_KEY.recipes).length;
+  const workoutCount = stored(TRAIN_KEY.workouts).length;
+  const library = recipeCount + workoutCount;
+  $('#storage-note').textContent = clients.length || library
+    ? `${clients.length} ${clients.length === 1 ? 'client' : 'clients'}, `
+      + `${recipeCount} ${recipeCount === 1 ? 'recipe' : 'recipes'} and `
+      + `${workoutCount} ${workoutCount === 1 ? 'workout' : 'workouts'} `
+      + `stored here, ${(bytes / 1024).toFixed(0)} KB. This lives in this `
+      + `browser only — clearing site data wipes it, so keep a backup.`
     : 'Nothing stored yet.';
 }
 
@@ -1042,7 +1065,12 @@ async function consume(text) {
 /* ---------------- backup ---------------- */
 
 function saveBackup() {
-  const blob = new Blob([JSON.stringify({ v: 1, clients, settings }, null, 1)],
+  // v2 adds the four library stores. v1 carried only clients and settings,
+  // which meant every recipe and workout a coach had ever written was absent
+  // from their own backup -- silently, while the Connect tab told them a
+  // backup was enough to survive clearing site data.
+  const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions };
+  const blob = new Blob([JSON.stringify(payload, null, 1)],
     { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = el('a');
@@ -1050,6 +1078,36 @@ function saveBackup() {
   a.download = `lift-coach-${todayKey()}.json`;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+/** Merge the four library stores out of a v2 backup, by id, additively --
+ *  the same rule the roster uses, for the same reason: an older backup must
+ *  never delete newer work sitting on this device. Returns a fragment for
+ *  the restore message, empty when the file carried no library (v1). */
+function restoreLibrary(parsed) {
+  const stores = [
+    ['recipes', recipes, 'recipe'],
+    ['plans', plans, 'planned meal'],
+    ['workouts', workouts, 'workout'],
+    ['sessions', sessions, 'scheduled session'],
+  ];
+  const added = [];
+  stores.forEach(([key, target, noun]) => {
+    if (!Array.isArray(parsed[key])) return;
+    let n = 0;
+    parsed[key].forEach((item) => {
+      if (item && item.id && !target.some((existing) => existing.id === item.id)) {
+        target.push(item);
+        n += 1;
+      }
+    });
+    if (n) added.push(`${n} ${noun}${n === 1 ? '' : 's'}`);
+  });
+  save(COOK_KEY.recipes, recipes);
+  save(COOK_KEY.plans, plans);
+  save(TRAIN_KEY.workouts, workouts);
+  save(TRAIN_KEY.sessions, sessions);
+  return added.length ? `, plus ${added.join(', ')}` : '';
 }
 
 function loadBackup(file) {
@@ -1066,8 +1124,12 @@ function loadBackup(file) {
         else Object.assign(existing.days, client.days);
       });
       persist();
+
+      // v1 files have no library at all; absent stays absent rather than
+      // wiping what is on this device.
+      const restored = restoreLibrary(parsed);
       render();
-      alert(`Restored ${parsed.clients.length} client(s).`);
+      alert(`Restored ${parsed.clients.length} client(s)${restored}.`);
     } catch (e) {
       alert("That file isn't a LIFT Coach backup.");
     }
@@ -1279,8 +1341,6 @@ if ('serviceWorker' in navigator) {
  * PLAN-FORMAT.md documents the wire shape. The ingredient parser below is the
  * same one in the Android, iOS and web builds of LIFT; all four must agree.
  */
-
-const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans' };
 
 let recipes = load(COOK_KEY.recipes, []);
 /* Planned meals across every client, each tagged with the client id it is for.
@@ -1879,8 +1939,6 @@ function renderCookShopping() {
  * A prescription and the log that answers it being the same shape is what
  * lets "asked for" and "did" sit next to each other without transposing.
  */
-
-const TRAIN_KEY = { workouts: 'coach.workouts', sessions: 'coach.sessions' };
 
 /** Templates, e.g. "Lower A". Written once and scheduled many times. */
 let workouts = load(TRAIN_KEY.workouts, []);
