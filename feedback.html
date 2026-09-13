@@ -1,0 +1,174 @@
+---
+layout: page
+title: Feedback
+permalink: /feedback/
+hide_title: true
+---
+
+<div class="calc">
+  <p class="hero-eyebrow">bugs and ideas</p>
+  <h1 class="calc-title">Tell Me What's Wrong</h1>
+  <p class="calc-sub">Something broken, something confusing, something missing. This fills in an email and hands it to your mail app — nothing is sent from this page, and nothing about what you type touches a server. You see the message before it goes, and you press send.</p>
+
+  <div class="card" style="border-left:3px solid var(--dcl-accent);">
+    <p class="calc-sub"><strong>One thing first.</strong> Don't paste a <strong>Send to Coach</strong> link or a Coach backup file into this form. Your whole log travels inside that link — everything you've eaten and lifted. Describe what happened instead. If the link itself is the problem, say so and we'll find a safer way to look at it.</p>
+  </div>
+
+  <form id="fb-form" onsubmit="return false;">
+    <div class="calc-row">
+      <label>What kind of thing?</label>
+      <div class="calc-toggle">
+        <input type="radio" name="fb-kind" id="fb-bug" value="bug" checked>
+        <label for="fb-bug">Something's broken</label>
+        <input type="radio" name="fb-kind" id="fb-idea" value="idea">
+        <label for="fb-idea">I want a feature</label>
+      </div>
+    </div>
+
+    <div class="calc-row">
+      <label for="fb-area">Which part?</label>
+      <select id="fb-area">
+        <option>LIFT web app</option>
+        <option>LIFT for Android</option>
+        <option>LIFT on a watch</option>
+        <option>COOK</option>
+        <option>LIFT Coach (the trainer dashboard)</option>
+        <option>Macro calculator</option>
+        <option>Supplement price tracker</option>
+        <option>The website itself</option>
+        <option>Not sure</option>
+      </select>
+    </div>
+
+    <div class="calc-row">
+      <label for="fb-what" id="fb-what-label">What happened?</label>
+      <textarea id="fb-what" rows="5" placeholder="What you did, and what the app did."></textarea>
+    </div>
+
+    <div class="calc-row">
+      <label for="fb-expected" id="fb-expected-label">What did you expect instead?</label>
+      <textarea id="fb-expected" rows="3" placeholder="Optional, but it's usually the most useful line."></textarea>
+    </div>
+
+    <div class="calc-row">
+      <label for="fb-device">Phone or browser, if you know it</label>
+      <input type="text" id="fb-device" placeholder="Pixel 8, Chrome on Windows, iPhone 14 — whatever you've got">
+    </div>
+
+    <button class="calc-submit" id="fb-send" type="button" style="width:100%;margin-top:1rem;">Open this in my email</button>
+    <p class="calc-sub" id="fb-note" style="margin-top:0.75rem;"></p>
+  </form>
+
+  <h2>If nothing opens</h2>
+  <p class="calc-sub">Some setups have no mail app wired up, and the button does nothing. In that case the address is <strong id="fb-addr">dugcanlift@gmail.com</strong> — or copy the message and paste it wherever you read mail.</p>
+  <p><button class="btn" id="fb-copy" type="button">Copy the message</button></p>
+
+  <h2>Or use GitHub</h2>
+  <p class="calc-sub">If you'd rather have a ticket you can follow, the templates are there and they ask the same questions. It's a public repository, so anything you write is public too — which is the reason the email above exists.</p>
+  <ul>
+    <li><a href="https://github.com/dougray/dugcanlift-site/issues/new?template=bug_report.yml">Report a bug on GitHub</a></li>
+    <li><a href="https://github.com/dougray/dugcanlift-site/issues/new?template=feature_request.yml">Request a feature on GitHub</a></li>
+  </ul>
+
+  <p class="calc-sub">Either way it reaches the same person. There's one of me, so it may take a day, but every one of these gets read.</p>
+</div>
+
+<script>
+(function () {
+  var ADDRESS = 'dugcanlift' + '@' + 'gmail.com';
+  var kindBug = document.getElementById('fb-bug');
+  var area = document.getElementById('fb-area');
+  var what = document.getElementById('fb-what');
+  var expected = document.getElementById('fb-expected');
+  var device = document.getElementById('fb-device');
+  var note = document.getElementById('fb-note');
+  var whatLabel = document.getElementById('fb-what-label');
+  var expectedLabel = document.getElementById('fb-expected-label');
+
+  // The two kinds want different questions. Swapping the labels beats making
+  // someone answer "what happened" about a feature that does not exist yet.
+  function relabel() {
+    if (kindBug.checked) {
+      whatLabel.textContent = 'What happened?';
+      expectedLabel.textContent = 'What did you expect instead?';
+      what.placeholder = 'What you did, and what the app did.';
+    } else {
+      whatLabel.textContent = 'What would you like it to do?';
+      expectedLabel.textContent = 'What are you doing today instead?';
+      what.placeholder = 'The thing you wish it did.';
+    }
+  }
+  document.getElementsByName('fb-kind').forEach
+    ? Array.prototype.forEach.call(document.getElementsByName('fb-kind'), function (r) { r.onchange = relabel; })
+    : null;
+  relabel();
+
+  function subject() {
+    return (kindBug.checked ? 'Bug: ' : 'Idea: ') + area.value;
+  }
+
+  function body() {
+    var lines = [];
+    lines.push(kindBug.checked ? 'WHAT HAPPENED' : 'WHAT I WANT');
+    lines.push(what.value.trim() || '(not filled in)');
+    lines.push('');
+    if (expected.value.trim()) {
+      lines.push(kindBug.checked ? 'WHAT I EXPECTED' : 'WHAT I DO TODAY INSTEAD');
+      lines.push(expected.value.trim());
+      lines.push('');
+    }
+    lines.push('WHICH PART');
+    lines.push(area.value);
+    if (device.value.trim()) {
+      lines.push('');
+      lines.push('PHONE OR BROWSER');
+      lines.push(device.value.trim());
+    }
+    return lines.join('\n');
+  }
+
+  document.getElementById('fb-send').onclick = function () {
+    if (!what.value.trim()) {
+      note.textContent = 'Write something in the first box and it will fill the email in for you.';
+      return;
+    }
+    var url = 'mailto:' + ADDRESS
+      + '?subject=' + encodeURIComponent(subject())
+      + '&body=' + encodeURIComponent(body());
+    // Some mail handlers quietly truncate a long mailto. Say so rather than
+    // letting someone send half a bug report without noticing.
+    if (url.length > 1900) {
+      note.textContent = 'That is a long one — your mail app may cut it short. '
+        + 'Use "Copy the message" below and paste it in, to be safe.';
+    } else {
+      note.textContent = '';
+    }
+    window.location.href = url;
+  };
+
+  document.getElementById('fb-copy').onclick = function () {
+    var text = 'To: ' + ADDRESS + '\nSubject: ' + subject() + '\n\n' + body();
+    var done = function () { note.textContent = 'Copied. Paste it into a new email to ' + ADDRESS + '.'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+    } else {
+      fallback(text, done);
+    }
+  };
+
+  function fallback(text, done) {
+    var box = document.createElement('textarea');
+    box.value = text;
+    box.setAttribute('readonly', '');
+    box.style.position = 'absolute';
+    box.style.left = '-9999px';
+    document.body.appendChild(box);
+    box.select();
+    try { document.execCommand('copy'); done(); }
+    catch (e) { note.textContent = 'Copying is blocked here — the address is ' + ADDRESS + '.'; }
+    document.body.removeChild(box);
+  }
+
+  document.getElementById('fb-addr').textContent = ADDRESS;
+})();
+</script>
