@@ -90,7 +90,8 @@ label {
   margin: 14px 0 6px;
 }
 
-input[type=text], input[type=number] {
+input[type=text], input[type=number], select {
+  box-sizing: border-box;
   width: 100%;
   padding: 12px;
   background: var(--bg);
@@ -99,6 +100,24 @@ input[type=text], input[type=number] {
   color: var(--text);
   font-size: 17px;   /* 16px or larger stops iOS zooming on focus */
   font-family: inherit;
+}
+
+/* The client pickers were the only controls left rendering as bare browser
+   chrome -- white box, black text -- in an otherwise dark app. `appearance:
+   none` takes the native arrow with it, so one is drawn back on. */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%238a8a8a' stroke-width='1.6' d='M1 1.5 6 6.5l5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 button {
