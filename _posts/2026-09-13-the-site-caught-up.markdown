@@ -46,8 +46,36 @@ Thirteen is the worst possible number. Enough to clip the last column and make y
 
 Tightened the padding on small screens and it fits exactly. The table also went from about 1,270 pixels tall to 840, so it's a third less scrolling. I kept the shorter wording too — a comparison table reads better when the row labels are short anyway.
 
+## Every product page has the same table now
+
+The Coach page got a comparison table first, then the LIFT page, and COOK was the one still describing itself in paragraphs. It has two now — one for using COOK inside LIFT, one for using it inside Coach — because five different things run COOK and a single table would have needed six columns and been half empty. A coach never logs a cooked meal. Someone eating never sends a week to a client.
+
+The rows are the boring ones on purpose: can you install it today, can you write recipes, does the shopping list scale, can you open a plan a coach sent you. That last row is the one that caused trouble.
+
+## The table caught the site lying
+
+Both the COOK page and the LIFT page said the phone apps could open a coach's plan link. The LIFT page had it as three ticks in a row — browser, Android, iPhone, all yes.
+
+The code agreed with them. The Android app has the whole import path written: the link is registered, the app decodes it, you get a preview, you accept, it lands. I could have stopped there and shipped the table.
+
+Then I pulled apart the actual APK the install page hands out. It was cut on the 2nd. The intent filter landed on the 8th. The file people were downloading had no idea plan links existed — the classes weren't even in it.
+
+The iPhone one is worse and quieter. It has the code too, but a universal link needs a file served from this site vouching for the app, and this site serves no such file. The free Apple signing the app is built with couldn't register one if it did. So that column was never going to be a tick, no matter what the source said.
+
+Two pages, three cells, all confidently wrong. Nobody had complained, because the people who'd have noticed are the ones who tapped a link, watched it open a browser tab, and assumed that was how it worked.
+
+## So I shipped the build instead of softening the row
+
+The honest fix was to write "no" in the Android cell. The better fix was to make it a yes, which meant cutting **LIFT 1.3** — the first Android build that can take a plan link.
+
+It's on the install page now. Same signing key as 1.2, so it installs straight over the top and your log stays put. It also carries everything else that piled up since September 2nd: GPS runs and hikes that export to Health Connect, gram-based food entry, and the shared code the watch and the phone now both use.
+
+I tested it the way I should have tested the claim in the first place — installed it on a phone, asked the system whether it really trusted the app with dugcanlift.com links (it did), and fired a real plan at it. Two recipes, four meals, two workouts. It previewed them, I accepted, and they were sitting in the Cook tab. The iPhone cell still says no, and now it says no for a reason I can point at.
+
+While I was in there I found the unit tests hadn't compiled in days — a type had moved into the shared kit and two test files never got the memo. Nothing was broken in the app. The safety net just wasn't plugged in, and I didn't know because I'd stopped looking at it.
+
 ## Why bother writing this up
 
 Because it's the unglamorous half of the work and it's easy to skip. Nobody opens a changelog hoping to read about heading levels. But a site that says an app doesn't exist when it does, or contradicts itself two pages apart, costs more than a missing feature does — the person just leaves, and you never find out why.
 
-The apps got a lot of work this week too. That's a separate post. This one was just me admitting the front door needed painting.
+The rest of the app work this week is a separate post. This one was mostly me admitting the front door needed painting — and finding, while painting it, that one of the signs on it was pointing the wrong way.
