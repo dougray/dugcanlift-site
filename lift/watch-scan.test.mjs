@@ -454,6 +454,15 @@ test('decodes a code the real watch encoder produced', async () => {
   assert.equal(mul(record, 'calories'), Math.round(165 * 0.5));
 });
 
+test('a code emitted by the Wear OS encoder decodes to the same entries as the watchOS one', async () => {
+  const watch = readFileSync('lift/fixtures/watch-export-single.txt', 'utf8').trim();
+  const wear = readFileSync('lift/fixtures/wear-export-single.txt', 'utf8').trim();
+  const a = await WatchScan.decodePayload(watch); const b = await WatchScan.decodePayload(wear);
+  assert.deepEqual(b.e, a.e); assert.deepEqual(b.p, a.p); assert.equal(b.z, a.z);
+  assert.equal(b.fd.length, a.fd.length);
+  a.fd.forEach((row, i) => { assert.equal(b.fd[i][0], row[0]); row.slice(1).forEach((n, j) => assert.ok(Math.abs(b.fd[i][j + 1] - n) < 1e-9)); });
+});
+
 test('reassembles a real multi-code sequence', async () => {
   const codes = readFileSync('lift/fixtures/watch-export-sequence.txt', 'utf8')
     .split('\n').map((s) => s.trim()).filter(Boolean);
