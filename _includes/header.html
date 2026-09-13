@@ -1,0 +1,39 @@
+{%- comment -%}
+Overrides minima's header. Minima builds its nav from each page's own `title`,
+which ties the label in the header to the page's browser title and orders it by
+`header_pages`. That gave eight items with labels like "Join" and "For Coaches"
+sitting next to product names.
+
+The nav is written out explicitly here instead, so a label can read "Coach"
+while the page stays "For Coaches", and the order is a decision rather than a
+side effect of front matter. Everything else — the site title, the checkbox
+menu toggle, the `site-nav` / `page-link` class names — is minima's, because
+minima's stylesheet is what makes the mobile menu work.
+
+The full set of links lives in the footer. This is the short list.
+{%- endcomment -%}
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger">
+        <a class="page-link" href="{{ '/app/' | relative_url }}">LIFT</a>
+        <a class="page-link" href="{{ '/coach/install/' | relative_url }}">Coach</a>
+        <a class="page-link" href="{{ '/cook/' | relative_url }}">COOK</a>
+        <a class="page-link" href="{{ '/calculator/' | relative_url }}">Calculator</a>
+        <a class="page-link" href="{{ '/about/' | relative_url }}">About</a>
+      </div>
+    </nav>
+  </div>
+</header>
