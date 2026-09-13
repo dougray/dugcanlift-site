@@ -69,6 +69,14 @@ permalink: /app/
   <p>The web version can't read HealthKit, so steps are manual there. Everything else is the same log.</p>
   <p><a href="https://github.com/dougray/dugcanlift-lift-ios">iOS source on GitHub</a></p>
 
+  <h2>On a watch</h2>
+  <p>There are two watch apps — one for Wear OS, one for Apple Watch. Both do the same narrow job: log food on the watch itself, with no phone anywhere near it, and hand the log back to LIFT afterwards.</p>
+  <p>The food library is bundled inside the app — the same 7,793 USDA records the web version searches — so a watch that has never been paired to anything still has something to log from. Search it, set an amount, pick a meal. The watch keeps what you log: 200 entries, or 60 days, whichever runs out first.</p>
+  <p>Getting it off the watch is the blunt part. The watch draws your log as a QR code — several of them, one after another, if you've logged a lot — and you scan them with <strong>Scan from watch</strong> in the <a href="{{ '/lift/' | relative_url }}">web version</a>. The camera reads the screen and that's the entire transfer; nothing is uploaded. Afterwards you clear the log on the watch yourself, behind a confirmation. The watch has no way of knowing whether a scan actually worked, and a clear that happened automatically would throw the log away every time one didn't.</p>
+  <p>On Wear OS that QR code is the only way off, deliberately. The Wearable Data Layer — the normal way a Wear watch talks to its phone — needs Google Play Services on both ends, and LIFT for Android carries none. Rather than add it, the watch app does without a phone entirely: it asks for no internet permission at all, so it could not send your log anywhere even if something in it wanted to. You search by voice or the watch keyboard, whichever your watch offers, and set the amount on the rotating bezel or crown in grams or ounces.</p>
+  <p>The Apple Watch app has been around longer and does more, because watchOS lets it: sets logged during a workout with a rest timer, and runs and hikes recorded with GPS and written to Apple Health. It also syncs to LIFT on a paired iPhone — the native iOS build, not the web version — but it installs and runs on its own, and the QR export is what a watch with no phone behind it uses.</p>
+  <p>Neither one can be installed yet. There's no Wear OS distribution at all, and the Apple Watch build has never been near App Store review. Same position as the native iOS build above: they're written, they run on real hardware, and they aren't shipped. No date on either.</p>
+
   <h2>Coming</h2>
   <ul>
     <li>Editing a logged entry without deleting it first</li>
