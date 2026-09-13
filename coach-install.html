@@ -61,7 +61,14 @@ hide_title: true
   <p class="calc-sub">Eight weeks of a client on one screen, which is the view a phone can&rsquo;t really give you.</p>
 
   <h2>A native Android app</h2>
-  <p>There is now a Coach built as a real Android app rather than a web page in a tab — same roster, same numbers, no browser around it. <strong>You can't install it yet.</strong> It has a release signing key now &mdash; made on 13 September, and the key's fingerprint is published in this site's App Links file &mdash; but no build has been cut from it, so nothing in this section is a download. It's written up here because it exists and the page shouldn't pretend otherwise. No date on it.</p>
+  <p>There is now a Coach built as a real Android app rather than a web page in a tab — same roster, same numbers, no browser around it. <strong>You can install it.</strong> It's signed with the same kind of key LIFT uses, and the fingerprint is published in this site's App Links file, which is what lets a client's link open straight into it.</p>
+  <p class="calc-sub">Not on the Play Store, so it installs the same way LIFT for Android does &mdash; a couple of extra taps the first time.</p>
+  <ol>
+    <li>On your phone, tap <a href="{{ '/assets/downloads/coach-android.apk' | relative_url }}">Download Coach for Android</a>. Chrome asks whether you really want a file it can&rsquo;t vet &mdash; tap <strong>Download anyway</strong></li>
+    <li>Open the downloaded file. Android says it isn&rsquo;t allowed to install unknown apps from this source &mdash; tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back and open the file again</li>
+    <li>Tap <strong>Install</strong>, then <strong>Open</strong></li>
+  </ol>
+  <p class="calc-sub">The screenshots on <a href="{{ '/lift/install/' | relative_url }}">the LIFT install page</a> show those screens if you want to see them first &mdash; it's the same four.</p>
   <p>What it does today:</p>
   <ul>
     <li>Takes a client's link by pasting it in, or by sharing it into Coach from whatever app it arrived in</li>
@@ -195,7 +202,7 @@ hide_title: true
         <tr>
           <td>Install it today</td>
           <td class="yes">Yes</td>
-          <td class="no">No</td>
+          <td class="yes">Yes</td>
           <td class="no">No</td>
         </tr>
         <tr>
@@ -267,7 +274,7 @@ hide_title: true
       </tbody>
     </table>
   </div>
-  <p class="calc-sub">Both of those "no"s are the same problem wearing two hats: neither native app is signed in a way that lets anyone but me install it, and there's no date on either. The browser version is the one to use, and it's the one with everything in it.</p>
+  <p class="calc-sub">That iPhone &ldquo;no&rdquo; is a signing problem: the app is built and it runs, but it&rsquo;s signed with a free Apple account, so nothing but my own phone will install it, and there&rsquo;s no date on that changing. The Android one you can have &mdash; it&rsquo;s on this page. The browser version is still the one with everything in it.</p>
 
   <h2>Tell me what's missing</h2>
   <p class="calc-sub">This is the first version anyone but me has used, and it was built by someone who trains, not someone who coaches for a living. If something's in the wrong place, missing, or would only take one more column to be genuinely useful, I want to hear it.</p>
