@@ -558,5 +558,15 @@ input:focus, select:focus {
   .feature-table th,
   .feature-table td {
     white-space: normal;
+    // 1rem of side padding per cell costs ~128px across four columns, which is
+    // most of a phone's usable width and was pushing the table into a scroll it
+    // only needed by ~13px. Tighten it here rather than cutting the wording down
+    // until the columns stop saying anything.
+    padding: 0.6rem 0.45rem;
+  }
+
+  .feature-table th:first-child,
+  .feature-table td:first-child {
+    padding-left: 0.7rem;
   }
 }
