@@ -364,7 +364,11 @@ pre code {
   margin-bottom: 0.4rem;
 }
 
-input[type="number"], select {
+input[type="number"], input[type="text"], input[type="email"], select, textarea {
+  /* border-box, or width:100% plus this padding and border measures wider
+     than the column it sits in -- which pushed the feedback form's controls
+     eleven pixels past the page edge on a phone. */
+  box-sizing: border-box;
   width: 100%;
   background: var(--dcl-surface);
   border: 1px solid var(--dcl-rule);
@@ -375,7 +379,13 @@ input[type="number"], select {
   font-size: 1rem;
 }
 
-input:focus, select:focus {
+textarea {
+  resize: vertical;
+  min-height: 3rem;
+  line-height: 1.5;
+}
+
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--dcl-accent);
 }
