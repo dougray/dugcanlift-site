@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{%- comment -%}
+Overrides minima's page layout. Minima always renders the page's own `title`
+as an <h1> above the content. Most pages here open with their own hero
+heading, which left two <h1>s on the page — the small layout one reading
+"For Coaches" sitting directly above "Set Up LIFT Coach".
+
+Pages that supply their own heading set `hide_title: true` in front matter.
+Pages that don't — the privacy policies and About — are unchanged and still
+get their title from here.
+{%- endcomment -%}
+<article class="post">
+
+  {%- unless page.hide_title -%}
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+  {%- endunless -%}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
