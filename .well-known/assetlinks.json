@@ -1,6 +1,26 @@
 [
-  { "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": { "namespace": "android_app", "package_name": "com.dugcanlift.macrocalc", "sha256_cert_fingerprints": ["E1:C7:BF:D8:06:B1:64:07:1D:F4:29:8C:3A:BB:26:39:F8:50:FD:1D:DC:DA:30:D9:6F:CA:55:61:36:CA:35:ED"] } },
-  { "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": { "namespace": "android_app", "package_name": "com.dugcanlift.coach", "sha256_cert_fingerprints": ["EC:6A:85:B2:A5:F4:D0:C0:9E:A7:AC:54:3C:00:81:70:49:4F:04:5D:04:2B:30:BC:9D:3B:FF:DA:00:9D:AB:52"] } }
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dugcanlift.macrocalc",
+      "sha256_cert_fingerprints": [
+        "E1:C7:BF:D8:06:B1:64:07:1D:F4:29:8C:3A:BB:26:39:F8:50:FD:1D:DC:DA:30:D9:6F:CA:55:61:36:CA:35:ED"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dugcanlift.coach",
+      "sha256_cert_fingerprints": [
+        "F5:37:EB:FB:EF:C3:87:75:F7:03:55:C2:66:19:1C:A0:B4:55:FE:90:16:32:46:E3:A9:56:53:FA:B2:6C:23:C2"
+      ]
+    }
+  }
 ]
