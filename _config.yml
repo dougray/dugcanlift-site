@@ -33,15 +33,8 @@ tiktok_username: dugcanlift
 youtube_username: dugcanlift
 facebook_username: dugcanlift
 
-header_pages:
-  - index.markdown
-  - about.markdown
-  - calculator.html
-  - app.html
-  - cook.html
-  - prices.html
-  - lift-install.html
-  - coach-install.html
+# The header nav is written out in _includes/header.html so a label can differ
+# from a page's own title. minima's header_pages list is therefore unused.
 
 # Build settings
 theme: minima
