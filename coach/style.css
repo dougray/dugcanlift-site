@@ -126,6 +126,16 @@ button:disabled { opacity: 0.4; }
 .row > div { flex: 1; }
 .row > button { flex: 1; }
 
+/* A meal row in the Cook plan is a label, the meal in it, and a Remove.
+   `.row`'s `> button { flex: 1 }` is right for two buttons sharing a row
+   and wrong here: on a laptop it stretched Remove across a third of the
+   card. The label gets a fixed column; everything else sizes to content. */
+.planrow { flex-wrap: wrap; align-items: center; }
+.planrow > span:first-child { flex: 0 0 5.5rem; }
+.planrow > button { flex: 0 0 auto; }
+.planmeal { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; flex: 1 1 12rem; }
+.planmeal > button { flex: 0 0 auto; }
+
 .chips {
   display: flex;
   gap: 8px;
