@@ -1936,7 +1936,7 @@ function renderPlan() {
 
     ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'].forEach((meal) => {
       const forSlot = plan.filter((m) => m.date === day && m.meal === meal);
-      const row = el('div', 'statline');
+      const row = el('div', 'statline planrow');
       row.appendChild(el('span', 'muted', meal.charAt(0) + meal.slice(1).toLowerCase()));
 
       const right = el('div');
@@ -1946,7 +1946,7 @@ function renderPlan() {
         right.appendChild(add);
       } else {
         forSlot.forEach((m) => {
-          const line = el('div');
+          const line = el('div', 'planmeal');
           line.appendChild(el('div', null, m.recipeName));
           // snapshotNutrition is per serving; this row is a whole meal.
           if (m.snapshotNutrition) {
