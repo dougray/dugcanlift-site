@@ -164,6 +164,30 @@ button:disabled { opacity: 0.4; }
 }
 
 .muted { color: var(--muted); font-size: 15px; margin: 4px 0; }
+/* A meal row is a label and the meal it names, not two things pushed to
+   opposite edges. `.statline`'s space-between is right for a stat and its
+   number on a phone; here, on anything wider, it left a third of the card
+   empty between "Lunch" and the recipe sitting in it. A fixed label column
+   keeps them adjacent at every width. */
+.planrow {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+/* Name, calories and the two buttons read as one line once there is room for
+   one, and wrap back to a stack when there isn't. */
+.planmeal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.planmeal .muted { margin: 0; }
+
 
 .big { font-size: 24px; font-weight: 700; }
 
