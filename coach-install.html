@@ -28,6 +28,18 @@ permalink: /coach/install/
     <li>Tap <strong>Add</strong> in the top right corner</li>
   </ol>
 
+  <h2>A native iPhone app</h2>
+  <p>There's a Coach built as a real iPhone app too. <strong>You can't install it.</strong> It's signed with a free Apple developer account, which runs it on a phone wired to the Mac that built it and nowhere else — no App Store build, no TestFlight, nothing to send you. It's written up here because it exists, not as an offer. No date on it.</p>
+  <p>What it does today:</p>
+  <ul>
+    <li>The same roster, flagging anyone who hasn't logged for seven days or more</li>
+    <li>The same charts — training volume, calories against goal, bodyweight, estimated one-rep max per lift — and the session log down to the individual set</li>
+    <li>A <strong>Cook</strong> tab: recipes, a week of meals built for one client, and the shopping list that falls out of it</li>
+    <li>A <strong>Train</strong> tab: workout templates put on days and sent back to that client's LIFT as a plan link</li>
+    <li>Its own <strong>Save Backup</strong> and <strong>Restore from Backup</strong>, and it reads a backup from the browser version to bring your recipes and workouts across</li>
+  </ul>
+  <p class="calc-sub">Getting a client's log into it is a paste, not a tap. The signing it uses can't claim dugcanlift.com links the way the Android app tries to, so tapping the button in their email opens the browser version instead — open the email, copy the link out of it, and paste it into Coach's <strong>Paste a Link</strong>.</p>
+
   <h2>On Android</h2>
   <ol>
     <li>Open Chrome and go to <strong>dugcanlift.com/coach</strong></li>
@@ -78,7 +90,7 @@ permalink: /coach/install/
           <td>Send to Coach</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
-          <td class="no">next release</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Every session, down to the set</td>
@@ -138,11 +150,12 @@ permalink: /coach/install/
     </table>
   </div>
   <p class="calc-sub">On the full apps, steps come from Health Connect or Apple Health at the moment they hit Send, so a count logged by a watch LIFT never talks to still reaches you. The web app has nothing like that to read, so its step numbers are the ones your client typed in themselves.</p>
+  <p class="calc-sub">That last column is the native LIFT for iPhone, and it's in the same position as the iPhone Coach above — built and running, signed with a free Apple account, not something a client can install, no date on it. An iPhone client uses the web app column today.</p>
 
-  <h2>Coming: meal plans you send back</h2>
-  <p>Right now Coach is one-directional — your clients send you their week and you read it. <a href="{{ '/cook/' | relative_url }}">COOK</a> adds the return trip: build a week of meals for a client from real recipes, send it as a link the same way they send you their log, and it lands in their app as a plan they can shop from and cook from.</p>
+  <h2>Meal plans you send back</h2>
+  <p>Mostly your clients send you their week and you read it. <a href="{{ '/cook/' | relative_url }}">COOK</a> is the return trip: build a week of meals for a client from real recipes, send it as a link the same way they send you their log, and it lands in their app as a plan they can shop from and cook from.</p>
   <p>The shopping list comes with it, scaled to the servings you planned. And because LIFT stamps what it logs, you'll be able to see which of the meals you planned actually got cooked — not just whether they hit their protein.</p>
-  <p class="calc-sub">The client half is built in both apps. The Coach half isn't yet, and there's no date on it.</p>
+  <p class="calc-sub">Where this is built, plainly: the browser version has it now, under <strong>Cook</strong> and <strong>Train</strong> — recipes, a week per client, the shopping list, and workouts you put on days and send the same way. The iPhone app has all of it too, and nobody can install that one. The Android app has none of it, and there's no date on that.</p>
 
   <h2>Where your roster lives</h2>
   <p class="calc-sub">On your device and nowhere else. There's no server behind Coach and no account, for you or your clients — the log travels inside the link itself, in the part after the <code>#</code> that browsers never send to a server. Their numbers go from their phone, through your inbox, to this device.</p>
@@ -154,6 +167,96 @@ permalink: /coach/install/
   <p class="calc-sub">In a browser: any reasonably current one — Safari 16.4 or newer, Chrome 103 or newer, or anything more recent than those. Older browsers get a clear message rather than a blank screen.</p>
   <p class="calc-sub">The Android app needs Android 8.0 or newer, and no browser at all. It talks to nothing on the network — every number it shows came out of a link you gave it.</p>
   <p class="calc-sub">Either way: nothing to buy, no sign-up, and no limit on how many clients you keep.</p>
+
+  <h2>The three Coaches, side by side</h2>
+  <p class="calc-sub">The table further up is about your clients — what arrives depending on which LIFT they run. This one is about Coach itself: the three places it runs, and what you can do in each.</p>
+  <div class="feature-table-wrap">
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Running Coach</th>
+          <th>In a browser</th>
+          <th>Android app</th>
+          <th>iPhone app</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Can you install it today</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Getting a client's log in</td>
+          <td>tap the link, or paste it</td>
+          <td>share it in, or paste it</td>
+          <td>paste it</td>
+        </tr>
+        <tr>
+          <td>Roster, flagging anyone quiet a week</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Week-by-week summary table</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+        <tr>
+          <td>Volume, fuel, bodyweight and per-lift charts</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Session log down to the set</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Invite text for a new client</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Backup file you save and restore</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Recipes and a week of meals for a client</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Shopping list from that week</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Workouts sent back as a plan</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Where the roster lives</td>
+          <td>browser storage</td>
+          <td>the app's own storage</td>
+          <td>the app's own storage</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-sub">Both of those "no"s are the same problem wearing two hats: neither native app is signed in a way that lets anyone but me install it, and there's no date on either. The browser version is the one to use, and it's the one with everything in it.</p>
 
   <h2>Tell me what's missing</h2>
   <p class="calc-sub">This is the first version anyone but me has used, and it was built by someone who trains, not someone who coaches for a living. If something's in the wrong place, missing, or would only take one more column to be genuinely useful, I want to hear it. Email <a href="mailto:{{ site.email }}">{{ site.email }}</a> or send a DM on <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener">Instagram</a>.</p>
