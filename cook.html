@@ -10,7 +10,7 @@ hide_title: true
   <h1 class="calc-title">COOK</h1>
   <p class="calc-sub">Recipes go in. A meal plan and a shopping list come out. Cook it, and it logs itself with the macros already attached — because it knew the recipe before you ate it.</p>
 
-  <p><strong>You can use it right now.</strong> COOK is live in the <a href="{{ '/lift/' | relative_url }}">web version of LIFT</a> and in <a href="{{ '/coach/' | relative_url }}">Coach</a> — that's where the beta is, so that's where it landed first. It's built in the Android and iOS apps too, but those haven't shipped in a release yet.</p>
+  <p><strong>You can use it right now.</strong> COOK is live in the <a href="{{ '/lift/' | relative_url }}">web version of LIFT</a> and in <a href="{{ '/coach/' | relative_url }}">Coach</a> — that's where the beta is, so that's where it landed first. It shipped in the Android app as well, in LIFT 1.2 — the build on the install page. It's written in the iPhone app too, but that one still isn't something you can install.</p>
 
   <h2>The gap it fills</h2>
   <p><a href="{{ '/app/' | relative_url }}">LIFT</a> tells you what you ate. <a href="{{ '/coach/' | relative_url }}">Coach</a> shows your trainer what you ate. Neither one helps with the part that actually decides your week, which is standing in a kitchen on Sunday wondering what you're making.</p>
@@ -29,11 +29,123 @@ hide_title: true
   <h3>Logging that's already done</h3>
   <p>When you cook a planned meal, one tap logs it — name, macros, the right meal slot, the right day. No searching, no re-typing, no guessing at portions you already decided on days ago.</p>
 
+  <p class="calc-sub">Same three screens in all three LIFTs, and they agree on every number. What differs is whether you can install it today, and whether a plan a coach sends can get in.</p>
+  <div class="feature-table-wrap">
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Using COOK in LIFT</th>
+          <th>In a browser</th>
+          <th>Android app</th>
+          <th>iPhone app</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Install it today</td>
+          <td class="yes">Yes</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Write and keep recipes</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Reads quantities off the line</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Build a week of meals</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Shopping list, scaled to servings</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>One tap to log a cooked meal</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Open a coach&rsquo;s plan link</td>
+          <td class="yes">tap it</td>
+          <td class="yes">tap it</td>
+          <td class="no">&#8212;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-sub">All of that is in LIFT 1.3, the Android build on the install page. The last row is new there: tap a plan link on an Android phone and it opens in the app instead of the browser, with a preview you accept or decline before anything is written. The iPhone column is the native LIFT for iPhone &mdash; built, running, signed with a free Apple account, and not something anyone can install, so an iPhone uses the browser column for all of this.</p>
+
   <h2>For your trainer, in Coach</h2>
   <p>The same tool, pointed the other way. A coach builds the week <em>for</em> a client — recipes, days, servings — and sends it over. It lands in their app as a plan they can shop from and cook from, not a PDF they'll open once and never find again.</p>
   <p>It travels the way a log already does: inside the link, after the <code>#</code>, the part browsers never send to a server. Nothing is uploaded going out and nothing is uploaded coming back. The plan is small enough to survive being an email because it doesn't carry the recipes — it points at them.</p>
   <p>And because LIFT stamps what it logs, the loop closes on its own: a coach can see which of the meals they planned actually got cooked. Not "did you hit your protein." Did you make the thing.</p>
-  <p class="calc-sub">Both halves of this work today between the web versions. The Android and iOS apps can't open a plan link yet — they have no deep-link handling — so plans are web-to-web for now. That's deliberate: the format gets proven in the beta before four clients are wired to it.</p>
+  <p class="calc-sub">Both halves work today between the web versions, and into the Android app as of LIFT 1.3. Android registers the plan link as a verified App Link &mdash; the phone checks this site for a file naming the app&rsquo;s signing key, and only then will it hand the link over &mdash; so tapping one opens LIFT rather than a browser tab, shows you what&rsquo;s in the plan, and writes nothing until you accept. The iPhone app can&rsquo;t do this yet: it would need a universal link, this site serves no Apple site-association file, and the free signing the app is built with couldn&rsquo;t register one if it did. There&rsquo;s no share-sheet or paste route behind it as a fallback, so an iPhone opens a plan link in the browser version, which handles it fine.</p>
+
+  <p class="calc-sub">Two of the three Coaches have COOK in them. The Android Coach has none of it &mdash; not a stub, nothing &mdash; and there's no date on that.</p>
+  <div class="feature-table-wrap">
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Using COOK in Coach</th>
+          <th>In a browser</th>
+          <th>Android app</th>
+          <th>iPhone app</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Install it today</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Write and keep recipes</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Reads quantities off the line</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Build a client&rsquo;s week</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Shopping list, scaled to servings</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Send the week as a link</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-sub">The Android Coach isn't destructive about what it can't show: restore a backup written by one of the others and it keeps the recipes and meals in it untouched, so saving a backup later hands them back whole. It just won't let you read or build them. The iPhone Coach has the lot and can't be installed, same as the iPhone LIFT above &mdash; in practice, coaching with COOK means the browser.</p>
 
   <h2>What it looks like</h2>
 
