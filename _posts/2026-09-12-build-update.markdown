@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Build Update: What Shipped This Week"
-date:   2026-09-13 09:00:00 -0500
+date:   2026-09-12 21:00:00 -0500
 ---
 
 I've been heads-down building for a week straight, and enough landed that it deserves a proper write-up instead of me trying to remember it all in a month. This is the first of these. If people find it useful I'll keep doing them.
