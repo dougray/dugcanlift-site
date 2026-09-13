@@ -48,6 +48,12 @@ theme: minima
 plugins:
   - jekyll-feed
 
+# Jekyll skips dot-directories by default. assetlinks.json (Android App Links'
+# Digital Asset Links verification, for LIFT and Coach) must be served from
+# /.well-known/, so that directory needs to be included explicitly.
+include:
+  - .well-known
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
