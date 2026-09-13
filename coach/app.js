@@ -1760,7 +1760,7 @@ function renderCookPlan() {
     MEALS.forEach((meal) => {
       const forSlot = plans.filter(
         (p) => p.clientId === planClientId && p.date === day && p.meal === meal);
-      const row = cookEl('div', 'row');
+      const row = cookEl('div', 'row planrow');
       row.appendChild(cookEl('span', 'muted', meal.charAt(0) + meal.slice(1).toLowerCase()));
 
       if (!forSlot.length) {
@@ -1769,16 +1769,19 @@ function renderCookPlan() {
         row.appendChild(add);
       } else {
         forSlot.forEach((p) => {
-          const label = cookEl('span', null,
-            `${p.recipeName} · ${servingsLabel(p.servings)}`);
-          row.appendChild(label);
+          // The meal and its Remove travel together, so a narrow screen wraps
+          // them as one unit instead of stranding the button under the label.
+          const line = cookEl('div', 'planmeal');
+          line.appendChild(cookEl('span', null,
+            `${p.recipeName} · ${servingsLabel(p.servings)}`));
           const rm = cookEl('button', 'chip', 'Remove');
           rm.onclick = () => {
             plans = plans.filter((x) => x.id !== p.id);
             save(COOK_KEY.plans, plans);
             renderCook();
           };
-          row.appendChild(rm);
+          line.appendChild(rm);
+          row.appendChild(line);
         });
       }
       card.appendChild(row);
