@@ -80,19 +80,19 @@ hide_title: true
         <tr>
           <td>Open a coach&rsquo;s plan link</td>
           <td class="yes">tap it</td>
-          <td class="no">&#8212;</td>
+          <td class="yes">tap it</td>
           <td class="no">&#8212;</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="calc-sub">Everything above the last row is in LIFT 1.2, the Android build on the install page. The last row is the gap: only the browser takes a plan link today, and the section below says why. That third column is the native LIFT for iPhone &mdash; built, running, signed with a free Apple account, and not something anyone can install, so an iPhone uses the browser column for all of this.</p>
+  <p class="calc-sub">All of that is in LIFT 1.3, the Android build on the install page. The last row is new there: tap a plan link on an Android phone and it opens in the app instead of the browser, with a preview you accept or decline before anything is written. The iPhone column is the native LIFT for iPhone &mdash; built, running, signed with a free Apple account, and not something anyone can install, so an iPhone uses the browser column for all of this.</p>
 
   <h2>For your trainer, in Coach</h2>
   <p>The same tool, pointed the other way. A coach builds the week <em>for</em> a client — recipes, days, servings — and sends it over. It lands in their app as a plan they can shop from and cook from, not a PDF they'll open once and never find again.</p>
   <p>It travels the way a log already does: inside the link, after the <code>#</code>, the part browsers never send to a server. Nothing is uploaded going out and nothing is uploaded coming back. The plan is small enough to survive being an email because it doesn't carry the recipes — it points at them.</p>
   <p>And because LIFT stamps what it logs, the loop closes on its own: a coach can see which of the meals they planned actually got cooked. Not "did you hit your protein." Did you make the thing.</p>
-  <p class="calc-sub">Both halves of this work today between the web versions, and not yet into the apps — for two different reasons. On Android the whole import path is written: the plan link is registered as a verified App Link, and opening one raises a preview you accept or decline. It landed after LIFT 1.2 was cut, though, so the build you can download today doesn't carry it, and a plan link still opens the web version. The iPhone app is further back: opening a link there would need a universal link, this site serves no Apple site-association file, and the free signing the app is built with couldn't register one if it did. Neither app has a share-sheet or paste route behind it as a fallback. So plans are web-to-web for now. That's deliberate: the format gets proven in the beta before four clients are wired to it.</p>
+  <p class="calc-sub">Both halves work today between the web versions, and into the Android app as of LIFT 1.3. Android registers the plan link as a verified App Link &mdash; the phone checks this site for a file naming the app&rsquo;s signing key, and only then will it hand the link over &mdash; so tapping one opens LIFT rather than a browser tab, shows you what&rsquo;s in the plan, and writes nothing until you accept. The iPhone app can&rsquo;t do this yet: it would need a universal link, this site serves no Apple site-association file, and the free signing the app is built with couldn&rsquo;t register one if it did. There&rsquo;s no share-sheet or paste route behind it as a fallback, so an iPhone opens a plan link in the browser version, which handles it fine.</p>
 
   <p class="calc-sub">Two of the three Coaches have COOK in them. The Android Coach has none of it &mdash; not a stub, nothing &mdash; and there's no date on that.</p>
   <div class="feature-table-wrap">
