@@ -35,6 +35,12 @@ hide_title: true
     <li>Scroll back through previous days</li>
   </ul>
 
+  <figure style="display:flex;gap:1rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
+    <img src="{{ '/assets/images/lift/lift-home.png' | relative_url }}" alt="The LIFT home screen, showing calories and macros against the day's goal, step count, and the day's training" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+    <img src="{{ '/assets/images/lift/lift-food.png' | relative_url }}" alt="The LIFT food log for a day, grouped by meal, with calories remaining and each macro tracking against goal" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+    <img src="{{ '/assets/images/lift/lift-train.png' | relative_url }}" alt="A LIFT training session, showing each exercise with its sets recorded as weight, reps and RPE" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+  </figure>
+
   <h3>Training that adapts to how you train</h3>
   <p>Every set can record weight, reps, RPE, time, and distance. Pick a focus — bodybuilding, powerlifting, CrossFit, Hyrox, or endurance — and you only see the fields that matter to you. Switching focus never loses anything.</p>
   <ul>
@@ -66,7 +72,8 @@ hide_title: true
   <h2>On iPhone</h2>
   <p>Use the <a href="{{ '/lift/' | relative_url }}">web version</a>. Open it in Safari, add it to your home screen, and it works offline like any other app.</p>
   <p>That isn't a stopgap — it's where the beta is. Getting it in front of real people through the browser means fixes reach you the moment I push them, with no store review sitting between us. If you want to try LIFT and tell me what's wrong with it, that's the one to use.</p>
-  <p>There's a native iOS build too — same tracker, same calculator, same COOK tab, reading steps from HealthKit instead of Health Connect. It's being built up alongside the beta rather than shipped from it. Once the app is solid, that's when it goes to Apple and Google. Not before, and no date on it.</p>
+  <p>There's a native iOS build too — the same tracker, the same calculator, the same COOK tab, reading steps from HealthKit instead of Health Connect. It's being built up alongside the beta rather than shipped from it. Once the app is solid, that's when it goes to Apple and Google. Not before, and no date on it.</p>
+  <p>Two things genuinely differ there, and both are in the food log. It has no barcode scanner. And its food search is the USDA library bundled inside the app rather than a lookup against Open Food Facts — so it finds fewer packaged products by brand, but it works on a plane, and it means the iOS app makes no network requests at all. Not fewer than the Android app. None.</p>
   <p>The web version can't read HealthKit, so steps are manual there. Everything else is the same log.</p>
   <p><a href="https://github.com/dougray/dugcanlift-lift-ios">iOS source on GitHub</a></p>
 
@@ -77,6 +84,140 @@ hide_title: true
   <p>On Wear OS that QR code is the only way off, deliberately. The Wearable Data Layer — the normal way a Wear watch talks to its phone — needs Google Play Services on both ends, and LIFT for Android carries none. Rather than add it, the watch app does without a phone entirely: it asks for no internet permission at all, so it could not send your log anywhere even if something in it wanted to. You search by voice or the watch keyboard, whichever your watch offers, and set the amount on the rotating bezel or crown in grams or ounces.</p>
   <p>The Apple Watch app has been around longer and does more, because watchOS lets it: sets logged during a workout with a rest timer, and runs and hikes recorded with GPS and written to Apple Health. It also syncs to LIFT on a paired iPhone — the native iOS build, not the web version — but it installs and runs on its own, and the QR export is what a watch with no phone behind it uses.</p>
   <p>Neither one can be installed yet. There's no Wear OS distribution at all, and the Apple Watch build has never been near App Store review. Same position as the native iOS build above: they're written, they run on real hardware, and they aren't shipped. No date on either.</p>
+
+  <p class="calc-sub">The two of them, side by side. They do the same core job and diverge after that.</p>
+  <div class="feature-table-wrap">
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>On the watch</th>
+          <th>Apple Watch</th>
+          <th>Wear OS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Install it today</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Log food with no phone</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Food library on the watch</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Keeps 200 entries, 60 days</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Getting the log off</td>
+          <td>QR, or iPhone sync</td>
+          <td>QR only</td>
+        </tr>
+        <tr>
+          <td>Sets during a workout</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+        <tr>
+          <td>Rest timer</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+        <tr>
+          <td>Runs and hikes on GPS</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+        <tr>
+          <td>Writes to Apple Health</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-sub">Every dash in the Wear OS column is the same decision: that app logs food and exports it, and asks for nothing to do it &mdash; no internet permission, no Play Services, no pairing. The Apple Watch app has been going longer and watchOS hands it more to work with.</p>
+
+  <h2>The three LIFTs, side by side</h2>
+  <p class="calc-sub">The table above is the watches. This one is LIFT itself: the three places you can run it, and what each one can actually do. It's the same log and the same calculator in all three &mdash; what differs is what the platform lets the app read, and what you're allowed to install.</p>
+  <div class="feature-table-wrap">
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Running LIFT</th>
+          <th>In a browser</th>
+          <th>Android app</th>
+          <th>iPhone app</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Install it today</td>
+          <td class="yes">Yes</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Daily steps</td>
+          <td>typed by hand</td>
+          <td class="yes">Health Connect</td>
+          <td class="yes">Apple Health</td>
+        </tr>
+        <tr>
+          <td>Runs and hikes on GPS</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Scan a barcode</td>
+          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+        <tr>
+          <td>Food search</td>
+          <td>Open Food Facts</td>
+          <td>Open Food Facts</td>
+          <td>bundled, offline</td>
+        </tr>
+        <tr>
+          <td>COOK tab</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Send a log to a coach</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Import a coach's plan</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Read a watch's QR code</td>
+          <td class="yes">&#10003;</td>
+          <td class="no">&#8212;</td>
+          <td class="no">&#8212;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-sub">The iPhone "no" is the same one on the Coach page: the app is built, it runs, and it's signed with a free Apple account, which means nothing but my own phone will install it. It has never been to App Store review and there's no date on it. The browser is the iPhone answer today, and it's what everyone in the beta is using.</p>
+  <p class="calc-sub">Two of those rows are worth spelling out. A barcode in the browser is a number you type into the search box, not something the camera reads &mdash; the camera there is for scanning a watch, not a packet. And the iPhone app scans nothing because it has nothing to scan against: its food search is a database shipped inside the app, so unlike the other two it never touches the network. COOK's ingredient lookup in the browser is offline as well; it's the Food tab's search that goes out to Open Food Facts.</p>
 
   <h2>Coming</h2>
   <ul>
