@@ -16,7 +16,9 @@ And under a section headed "Coming: meal plans you send back," it said the Coach
 
 All of that is fixed. There's a section on the watch apps that explains how getting the log off a watch actually works — it draws a QR code and you scan it with the web app, which sounds primitive and is, deliberately. There's a section on each native Coach. And there's a table at the bottom of the Coach page comparing all three side by side, because "which one should I use" turned out to be a question the page never answered.
 
-I'll say the uncomfortable part plainly: **the two native Coach apps aren't installable.** No signing for the iPhone one, and the Android one only just got its release key today. They're written and they run and you can't have them yet. The table says "No" in those cells rather than something softer, because you should be able to tell in three seconds which one you can actually use, and it's the browser one.
+When I wrote that section this morning, both native Coaches were in the same boat: written, running, and impossible to install. I said so plainly rather than softening it, because you should be able to tell in three seconds which one you can actually use.
+
+That's since changed for one of them — see the end of this post.
 
 ## The menu was chaos
 
@@ -74,8 +76,18 @@ I tested it the way I should have tested the claim in the first place — instal
 
 While I was in there I found the unit tests hadn't compiled in days — a type had moved into the shared kit and two test files never got the memo. Nothing was broken in the app. The safety net just wasn't plugged in, and I didn't know because I'd stopped looking at it.
 
+## Then the Coach half stopped being true too
+
+A few hours after publishing the above, the same question came back about the other app: the Coach page said the Android Coach had no build you could install. It had a release key by then. Nothing was stopping a build except me not having cut one.
+
+So that's done as well. **Coach for Android 1.0** is on the Coach page now. It takes a client's log link — tap it and it opens in the app, not a browser, because the site publishes a file naming the app's signing key. Roster sorted quietest first with a banner for anyone gone quiet a week. Weekly summary per client, charts, a session log down to the individual set, and a Connect screen that writes the invite text for you.
+
+It has no COOK in it. The table on the COOK page says so with a column of dashes, which someone quite reasonably read as "this app doesn't exist" — so that column is now labelled "no COOK yet" with a line underneath spelling it out. A dash should say what it means.
+
+The iPhone Coach is still the one you can't have. That one isn't a build I've failed to cut — it's signed with a free Apple account, which means it installs on exactly one phone, mine. No date on that changing.
+
 ## Why bother writing this up
 
 Because it's the unglamorous half of the work and it's easy to skip. Nobody opens a changelog hoping to read about heading levels. But a site that says an app doesn't exist when it does, or contradicts itself two pages apart, costs more than a missing feature does — the person just leaves, and you never find out why.
 
-The rest of the app work this week is a separate post. This one was mostly me admitting the front door needed painting — and finding, while painting it, that one of the signs on it was pointing the wrong way.
+The rest of the app work this week is a separate post. This one was mostly me admitting the front door needed painting — and finding, while painting it, that two of the signs on it were pointing at things that weren't true any more. Both got fixed by making the sign true rather than by rewording it.
