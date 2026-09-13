@@ -2,6 +2,7 @@
 layout: page
 title: WarWalker Privacy Policy
 permalink: /war-walker/privacy/
+hide_title: true
 ---
 
 # Privacy Policy

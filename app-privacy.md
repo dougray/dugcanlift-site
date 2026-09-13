@@ -2,6 +2,7 @@
 layout: page
 title: LIFT Privacy Policy
 permalink: /app/privacy/
+hide_title: true
 ---
 
 # Privacy Policy
