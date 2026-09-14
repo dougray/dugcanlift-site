@@ -2,19 +2,19 @@ name: Scrape Supplement Prices
 
 on:
   schedule:
-    # 09:17 UTC is 4:17am Central. Two things about that time are deliberate.
+    # Midnight Central. 05:17 UTC is 00:17 CDT in summer and 23:17 CST the
+    # night before in winter, since cron here is fixed UTC and Central is not
+    # -- both are the middle of the night, which is the point.
     #
-    # The minute: GitHub defers scheduled runs when the queue is busy, and the
-    # top of the hour is the busiest minute there is. This job asked for 13:00
-    # UTC for two weeks and never once ran before 15:44 -- typically three to
-    # five hours late. An odd minute is not a guarantee, but it is the one
-    # lever that exists.
-    #
-    # The hour: even carrying that much delay, 09:17 UTC lands well before the
-    # working day here, so a push by hand and this job are no longer reaching
-    # for main at the same time. Both of September 14th's collisions were the
-    # old schedule arriving mid-afternoon.
-    - cron: "17 9 * * *"
+    # The odd minute is deliberate: GitHub defers scheduled runs when the queue
+    # is busy, and the top of the hour is the busiest minute there is. This job
+    # asked for 13:00 UTC for two weeks and never once ran before 15:44 --
+    # typically three to five hours late, which is how a job meant for 8am
+    # Central kept arriving mid-afternoon and colliding with someone pushing.
+    # An odd minute is not a guarantee against that, but it is the one lever
+    # that exists, and starting at midnight means even hours of deferral still
+    # finish long before anyone is working.
+    - cron: "17 5 * * *"
   workflow_dispatch:        # lets you trigger it manually from the Actions tab
 
 # Two runs at once -- a manual trigger on top of the scheduled one, which is
