@@ -53,26 +53,6 @@ Both are on the [install page](/lift/install/) and the [Coach page](/coach/insta
 
 Still no App Store and no Play Store. That's deliberate while this is being built; the beta runs through the browser so fixes reach you the same day instead of waiting on a review queue.
 
-## Update: LIFT 1.5, the same day
-
-The Train tab got the other half of what it was missing.
-
-Android's Add exercise was a name you typed and an equipment field, with chips for the lifts you'd already logged. The browser and the iPhone app have both searched the same 873-exercise reference library for a while; Android was the one that couldn't. **1.5 gives it the same file** — literally the same `exercises.json`, copied rather than re-derived, and checked byte-for-byte in the built APK.
-
-That matters more than a search box usually would. A coach prescribing "Barbell Squat" and a client logging it have to be naming the same lift, or the history lines up with nothing. One file is how that stays true.
-
-Two things work differently from the browser, on purpose, because the phone has your history to hand:
-
-- **Lifts you've logged float to the top**, most recent first. No amount of tuning the reference data can tell whether "bench" means bench press or bench dips. Your own log can.
-- **That ranking runs before the 40-row cap**, not after it. The browser slices to 40 and never reorders, which on Android would hide exactly the row the ranking exists to surface — your own bench press, sitting at position 300 of the alphabet.
-
-Typing an exercise the library doesn't have still works, and still works if the file fails to load. The library is a convenience, not a gate on what you're allowed to have done.
-
-One bug worth recording, because the tests didn't catch it and a screenshot did. The result rows build a subtitle under each name — "chest, barbell". That subtitle was being sliced back out of the joined `"name - muscle, equipment"` string at the first `" - "`, and sixty-odd of these exercises have a dash in the name of their own. So the row read:
-
-    Barbell Bench Press - Medium Grip
-    Medium Grip - chest, barbell
-
-Half the name, wearing the subtitle's clothes. It's built as its own string now. The lesson isn't subtle: a test written by whoever wrote the bug tends to agree with it. Running the thing and looking at it doesn't.
-
-**Ready-made splits** were listed as waiting on this, and they were — a split is a list of exercise names, and names that don't match the library generate history that matches nothing. That's no longer in the way.
+**Update, later the same day:** LIFT 1.5 finishes the Train tab story this
+post opens with — Android searches the same 873 exercises the browser and the
+iPhone app do. [That one is its own post](/2026/09/14/lift-1-5.html).
