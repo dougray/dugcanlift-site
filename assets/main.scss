@@ -200,6 +200,18 @@ a:hover { color: var(--dcl-accent); }
 .post-title { flex: 1; font-size: 1.05rem; }
 .post-arrow { color: var(--dcl-muted); }
 
+// Callout blocks. `.card` is defined in the LIFT and Coach PWA stylesheets but
+// was never defined here, so on this site the class did nothing: the three
+// callouts that look like callouts do it entirely with an inline border-left,
+// with their text flush against the bar. Give the class a real meaning --
+// spacing, and a muted bar by default -- and the inline accent colour on those
+// three still wins where the emphasis is wanted.
+.card {
+  border-left: 3px solid var(--dcl-rule);
+  padding: 0.1rem 0 0.1rem 1rem;
+  margin: 1.5rem 0;
+}
+
 // Code blocks — override minima's light syntax theme
 .highlight, pre, code {
   background: var(--dcl-surface) !important;
