@@ -1,0 +1,72 @@
+---
+layout: page
+title: LIFT on Wear OS
+permalink: /lift/wear-install/
+hide_title: true
+---
+
+<div class="calc">
+  <p class="hero-eyebrow">beta test</p>
+  <h1 class="calc-title">LIFT on Wear OS</h1>
+  <p class="calc-sub">A food log that runs on the watch itself. Search the bundled USDA library, set an amount, pick a meal &mdash; with no phone anywhere near you and no network connection of any kind. When you want the log back in LIFT, the watch draws it as a QR code and you scan it with the web version.</p>
+
+  <div class="card" style="border-left:3px solid var(--dcl-accent);">
+    <p class="calc-sub"><strong>This one is genuinely awkward to install, and there is no way around it.</strong>
+      Wear OS has exactly one route onto a watch &mdash; the Play Store &mdash; and
+      LIFT isn&rsquo;t there yet. So this is a sideload: you need a computer on
+      the same Wi-Fi network as the watch, and about five minutes with a
+      command line. If that sounds like more than you want to do, the
+      <a href="{{ '/lift/install/' | relative_url }}">phone app</a> needs none of it.</p>
+  </div>
+
+  <h2>What you need</h2>
+  <ul>
+    <li>A watch running <strong>Wear OS 3 or newer</strong> &mdash; Pixel Watch, Galaxy Watch 4 and up, TicWatch Pro 5. Wear OS 2 watches can&rsquo;t run it</li>
+    <li>A computer with <strong>adb</strong> on it. It comes in <a href="https://developer.android.com/tools/releases/platform-tools">Android platform-tools</a>, a single download from Google &mdash; no Android Studio needed</li>
+    <li>The watch and the computer on the <strong>same Wi-Fi network</strong></li>
+    <li><a href="{{ '/assets/downloads/lift-wear.apk' | relative_url }}">LIFT for Wear OS (.apk)</a> &mdash; 20 MB, most of which is the food library</li>
+  </ul>
+
+  <h2>On the watch</h2>
+  <ol>
+    <li>Open <strong>Settings</strong>, then <strong>System</strong>, then <strong>About</strong>, then <strong>Versions</strong></li>
+    <li>Tap <strong>Build number</strong> seven times. The watch tells you you&rsquo;re a developer now</li>
+    <li>Go back to <strong>Settings</strong>. There&rsquo;s a <strong>Developer options</strong> entry that wasn&rsquo;t there before &mdash; open it</li>
+    <li>Turn on <strong>ADB debugging</strong></li>
+    <li>Turn on <strong>Debug over Wi-Fi</strong>. Give it a few seconds and it shows an address like <code>192.168.0.42:5555</code> &mdash; write that down</li>
+  </ol>
+  <p class="calc-sub">Put the watch on its charger for the rest of this. A watch that dozes off drops the connection mid-install.</p>
+
+  <h2>On the computer</h2>
+  <p class="calc-sub">Replace the address with whatever your watch showed you, and the path with wherever the file downloaded.</p>
+  <pre><code>adb connect 192.168.0.42:5555
+adb install ~/Downloads/lift-wear.apk</code></pre>
+  <p class="calc-sub">After <code>adb connect</code>, the watch asks <strong>Allow debugging?</strong> &mdash; tap the checkmark. If you miss it the install fails with <code>device unauthorized</code>; run <code>adb connect</code> again and watch the screen this time.</p>
+  <p class="calc-sub">A successful install prints <code>Success</code>. LIFT is now in the watch&rsquo;s app list, alongside everything else.</p>
+  <p class="calc-sub">When you&rsquo;re done, turn <strong>ADB debugging</strong> and <strong>Debug over Wi-Fi</strong> back off. Nothing about LIFT needs them; they were only how the file got across.</p>
+
+  <h2>Using it</h2>
+  <p class="calc-sub">The watch app has two things on its home screen: <strong>Log food</strong> and <strong>Export logged foods</strong>. Search by voice or the watch keyboard, whichever your watch offers, then set the amount on the rotating bezel or crown in grams or ounces and pick a meal.</p>
+
+  <h2>Getting the log back</h2>
+  <ol>
+    <li>On the watch, tap <strong>Export logged foods</strong></li>
+    <li>The watch draws your log as a QR code &mdash; several in sequence if you&rsquo;ve logged a lot, captioned <code>1 / 3</code> and so on. Swipe between them</li>
+    <li>On your phone or computer, open the <a href="{{ '/lift/' | relative_url }}">web version</a> and choose <strong>Scan from watch</strong>. Point the camera at the watch and work through the codes in order</li>
+    <li>Swipe past the last code and the watch asks <strong>Scanned all 3?</strong> &mdash; tap <strong>Done &mdash; clear these</strong> once you&rsquo;ve confirmed everything arrived, or <strong>Keep them</strong> to leave the log alone</li>
+    <li><strong>Done &mdash; clear these</strong> asks a second time before it does anything. That one can&rsquo;t be undone</li>
+  </ol>
+  <p class="calc-sub">Nothing clears on its own. The watch has no way of knowing whether a scan actually worked, and clearing automatically would throw the log away every time one didn&rsquo;t &mdash; which is also why the destructive tap is behind two confirmations and the safe one isn&rsquo;t behind any.</p>
+
+  <h2>Why it works this way</h2>
+  <p class="calc-sub">The normal way a Wear watch talks to its phone is the Wearable Data Layer, and that needs Google Play Services running on both ends. LIFT for Android carries none. Rather than pull Play Services in, the watch app does without a phone entirely &mdash; <strong>it asks for no internet permission at all</strong>, so it could not send your log anywhere even if something in it wanted to. The QR code is the whole transport, and it&rsquo;s a picture of a screen.</p>
+  <p class="calc-sub">The food library is bundled inside the app rather than looked up &mdash; the same 7,793 USDA records the web version searches. That&rsquo;s most of the 20 MB, and it&rsquo;s why a watch that has never been paired to anything still has something to log from.</p>
+  <p class="calc-sub">The watch keeps the most recent 200 entries, however old they are, and exports every one of them.</p>
+
+  <h2>Is it the same app as on Apple Watch?</h2>
+  <p class="calc-sub">Same job, less of it. Both log food standalone and export by QR. The Apple Watch app has been around longer and also records sets with a rest timer, runs and hikes on GPS, and writes to Apple Health &mdash; none of which the Wear app does. See the <a href="{{ '/app/' | relative_url }}">full comparison</a>.</p>
+
+  <div class="card">
+    <p class="calc-sub">Something broken, or a step above that didn&rsquo;t match what your watch said? <a href="{{ '/feedback/' | relative_url }}">Tell me about it</a> &mdash; watch menus vary by manufacturer and I&rsquo;ve only got so many watches.</p>
+  </div>
+</div>
