@@ -32,6 +32,14 @@ jobs:
       contents: write        # required for the bot to push the updated prices
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Full history, not the default shallow clone. The commit step
+          # rebases onto main before pushing, and a depth-1 checkout of any
+          # other branch shares no ancestor with main, so that rebase replays
+          # the branch's commits as add/add conflicts and fails the job after
+          # the scrape has already succeeded. This only bites manual runs on a
+          # branch, but that is exactly how a scraper change gets tested.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
