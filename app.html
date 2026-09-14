@@ -94,7 +94,8 @@ hide_title: true
     <img src="{{ '/assets/images/watch/watch-export.png' | relative_url }}" alt="The watch showing the food log as a QR code, one of two pages, ready to be scanned by the web app" style="width:180px;max-width:30%;height:auto;border-radius:22px;">
   </figure>
   <p class="calc-sub" style="text-align:center;">The Apple Watch app: the main screen, a set going in mid-workout, and the log drawn as a QR code for the web version to read. That third one is the whole transfer &mdash; point a phone at the watch.</p>
-  <p>Neither one can be installed yet. There's no Wear OS distribution at all, and the Apple Watch build has never been near App Store review. Same position as the native iOS build above: they're written, they run on real hardware, and they aren't shipped. No date on either.</p>
+  <p>The Wear OS app you can now have: it is <a href="{{ '/lift/wear-install/' | relative_url }}">downloadable here</a> as of today. Installing it is genuinely awkward, though &mdash; Wear OS has exactly one route onto a watch, the Play Store, and LIFT isn&rsquo;t there yet &mdash; so it is a sideload over adb: a computer on the same Wi-Fi network, and about five minutes with a command line.</p>
+  <p>The Apple Watch build has no equivalent route at all. It has never been near App Store review, and it is signed with a free Apple account, which means it installs on my own phone and nowhere else. Same position as the native iOS build above: written, running on real hardware, not shipped. No date on it.</p>
 
   <p class="calc-sub">The two of them, side by side. They do the same core job and diverge after that.</p>
   <div class="feature-table-wrap">
@@ -110,7 +111,7 @@ hide_title: true
         <tr>
           <td>Install it today</td>
           <td class="no">No</td>
-          <td class="no">No</td>
+          <td class="yes"><a href="{{ '/lift/wear-install/' | relative_url }}">By sideload</a></td>
         </tr>
         <tr>
           <td>Log food with no phone</td>
