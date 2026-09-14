@@ -447,9 +447,10 @@
         return;
       }
 
-      // Previous/Next is the only date navigation, one day per tap, and
-      // retention is 60 days -- without this, a successful import could
-      // land the user 60 taps away from anything showing on the Food tab.
+      // Previous/Next is the only date navigation, one day per tap, and the
+      // watch retains its most recent 200 entries with no age limit --
+      // without this, a successful import could land the user an unbounded
+      // number of taps away from anything showing on the Food tab.
       // Jump to the earliest imported day and name the range so the alert
       // itself explains where things went.
       const dates = imported.map((r) => r.date).sort();
