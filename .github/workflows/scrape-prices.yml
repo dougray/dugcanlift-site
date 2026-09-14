@@ -2,8 +2,28 @@ name: Scrape Supplement Prices
 
 on:
   schedule:
-    - cron: "0 13 * * *"   # daily at 8am Central (13:00 UTC)
+    # 09:17 UTC is 4:17am Central. Two things about that time are deliberate.
+    #
+    # The minute: GitHub defers scheduled runs when the queue is busy, and the
+    # top of the hour is the busiest minute there is. This job asked for 13:00
+    # UTC for two weeks and never once ran before 15:44 -- typically three to
+    # five hours late. An odd minute is not a guarantee, but it is the one
+    # lever that exists.
+    #
+    # The hour: even carrying that much delay, 09:17 UTC lands well before the
+    # working day here, so a push by hand and this job are no longer reaching
+    # for main at the same time. Both of September 14th's collisions were the
+    # old schedule arriving mid-afternoon.
+    - cron: "17 9 * * *"
   workflow_dispatch:        # lets you trigger it manually from the Actions tab
+
+# Two runs at once -- a manual trigger on top of the scheduled one, which is
+# how the 14th went -- would race each other for the same file and the same
+# branch. Queue them instead. Never cancel a run in progress: it may already
+# have committed, and a half-finished scrape is worse than a slow one.
+concurrency:
+  group: scrape-prices
+  cancel-in-progress: false
 
 jobs:
   scrape:
@@ -30,6 +50,13 @@ jobs:
           git add _data/supplement_prices.json
           git diff --staged --quiet && exit 0
           git commit -m "Update supplement prices [automated]"
+
+          # Catch up before the first push, not only after a rejected one. The
+          # scrape takes long enough that main has often moved since checkout,
+          # and rebasing here costs nothing while turning the common case from
+          # "push, get rejected, retry" into "push".
+          git pull --rebase origin main
+
           # A push by hand while this is mid-run would otherwise fail the job on
           # a non-fast-forward. Rebase and retry rather than lose the scrape.
           for attempt in 1 2 3; do
