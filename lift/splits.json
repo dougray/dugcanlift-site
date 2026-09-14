@@ -1,0 +1,74 @@
+{
+  "v": 1,
+  "source": "dugcanlift",
+  "note": "Starter routines. Every name here must exist verbatim in exercises.json — a split whose names do not match the library generates history that lines up with nothing, which is the whole reason these waited on it.",
+  "routines": [
+    {
+      "folder": "Push/Pull/Legs",
+      "name": "Push",
+      "exercises": [
+        { "name": "Barbell Bench Press - Medium Grip", "equipment": "Barbell", "sets": 4, "reps": 6 },
+        { "name": "Standing Military Press", "equipment": "Barbell", "sets": 3, "reps": 8 },
+        { "name": "Barbell Incline Bench Press - Medium Grip", "equipment": "Barbell", "sets": 3, "reps": 10 },
+        { "name": "Side Lateral Raise", "equipment": "Dumbbell", "sets": 3, "reps": 12 },
+        { "name": "Triceps Pushdown", "equipment": "Cable", "sets": 3, "reps": 12 }
+      ]
+    },
+    {
+      "folder": "Push/Pull/Legs",
+      "name": "Pull",
+      "exercises": [
+        { "name": "Barbell Deadlift", "equipment": "Barbell", "sets": 3, "reps": 5 },
+        { "name": "Bent Over Barbell Row", "equipment": "Barbell", "sets": 4, "reps": 8 },
+        { "name": "Wide-Grip Lat Pulldown", "equipment": "Cable", "sets": 3, "reps": 10 },
+        { "name": "Face Pull", "equipment": "Cable", "sets": 3, "reps": 15 },
+        { "name": "Barbell Curl", "equipment": "Barbell", "sets": 3, "reps": 10 }
+      ]
+    },
+    {
+      "folder": "Push/Pull/Legs",
+      "name": "Legs",
+      "exercises": [
+        { "name": "Barbell Squat", "equipment": "Barbell", "sets": 4, "reps": 6 },
+        { "name": "Leg Press", "equipment": "Machine", "sets": 3, "reps": 10 },
+        { "name": "Lying Leg Curls", "equipment": "Machine", "sets": 3, "reps": 12 },
+        { "name": "Standing Calf Raises", "equipment": "Machine", "sets": 4, "reps": 15 }
+      ]
+    },
+    {
+      "folder": "Upper/Lower",
+      "name": "Upper",
+      "exercises": [
+        { "name": "Barbell Bench Press - Medium Grip", "equipment": "Barbell", "sets": 4, "reps": 6 },
+        { "name": "Bent Over Barbell Row", "equipment": "Barbell", "sets": 4, "reps": 6 },
+        { "name": "Dumbbell Shoulder Press", "equipment": "Dumbbell", "sets": 3, "reps": 10 },
+        { "name": "Wide-Grip Lat Pulldown", "equipment": "Cable", "sets": 3, "reps": 10 },
+        { "name": "Barbell Curl", "equipment": "Barbell", "sets": 3, "reps": 12 },
+        { "name": "Triceps Pushdown", "equipment": "Cable", "sets": 3, "reps": 12 }
+      ]
+    },
+    {
+      "folder": "Upper/Lower",
+      "name": "Lower",
+      "exercises": [
+        { "name": "Barbell Squat", "equipment": "Barbell", "sets": 4, "reps": 6 },
+        { "name": "Romanian Deadlift", "equipment": "Barbell", "sets": 3, "reps": 8 },
+        { "name": "Dumbbell Lunges", "equipment": "Dumbbell", "sets": 3, "reps": 10 },
+        { "name": "Lying Leg Curls", "equipment": "Machine", "sets": 3, "reps": 12 },
+        { "name": "Standing Calf Raises", "equipment": "Machine", "sets": 4, "reps": 15 }
+      ]
+    },
+    {
+      "folder": "Full Body",
+      "name": "Full Body",
+      "exercises": [
+        { "name": "Barbell Squat", "equipment": "Barbell", "sets": 3, "reps": 5 },
+        { "name": "Barbell Bench Press - Medium Grip", "equipment": "Barbell", "sets": 3, "reps": 5 },
+        { "name": "Bent Over Barbell Row", "equipment": "Barbell", "sets": 3, "reps": 8 },
+        { "name": "Standing Military Press", "equipment": "Barbell", "sets": 3, "reps": 8 },
+        { "name": "Romanian Deadlift", "equipment": "Barbell", "sets": 3, "reps": 8 },
+        { "name": "Plank", "equipment": "Body Only", "sets": 3, "durationSec": 45 }
+      ]
+    }
+  ]
+}
