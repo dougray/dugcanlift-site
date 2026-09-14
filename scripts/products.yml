@@ -4,6 +4,14 @@
   url: "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder"
   servings: 29
 
+- name: "Gold Standard 100% Whey - Cookies & Cream (5lb)"
+  brand: "Optimum Nutrition"
+  category: "Protein"
+  url: "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder"
+  platform: "shopify_variant"
+  variant_match: "Cookies & Cream / 68 Servings"
+  servings: 68
+
 - name: "Whey Protein Concentrate (5lb)"
   brand: "Nutricost"
   category: "Protein"
