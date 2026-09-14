@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-14T19:09:33.532913+00:00",
+  "last_updated": "2026-09-14T19:21:29.222241+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -9,6 +9,16 @@
       "servings": 29,
       "price": 74.49,
       "cost_per_serving": 2.569,
+      "error": null
+    },
+    {
+      "name": "Gold Standard 100% Whey - Cookies & Cream (5lb)",
+      "brand": "Optimum Nutrition",
+      "category": "Protein",
+      "url": "https://www.optimumnutrition.com/en-us/products/gold-standard-100-whey-protein-powder",
+      "servings": 68,
+      "price": 131.99,
+      "cost_per_serving": 1.941,
       "error": null
     },
     {
