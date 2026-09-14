@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "LIFT 1.4 and COACH 1.2"
+date:   2026-09-14 12:00:00 -0500
+---
+
+Two Android releases, and between them they close the last gap where Coach on a phone did less than Coach in a browser. There's also a bug in LIFT that had been sitting in plain sight for months, which is the more interesting half of this post.
+
+## The Train tab did nothing
+
+LIFT's Train tab has always asked what you're training for — Bodybuilding, Powerlifting, CrossFit, Hyrox, Endurance, Everything. Picking one changed which fields a set asked for, and nothing else.
+
+Except it didn't even do that reliably. **Bodybuilding and Powerlifting were byte-identical.** Same five fields, same everything. The two most likely answers to the question were the same answer, so the most common experience of that feature was tapping between them and watching nothing happen. Doug noticed and said so, which is the only reason it got looked at.
+
+Focus now decides three things beyond which fields it shows you:
+
+- **What a new set starts at.** Ten reps under Bodybuilding, five under Powerlifting. A hypertrophy block and a strength block are different training, and now they start differently.
+- **Which number summarises a session.** Volume for bodybuilding. `top 245 x 5` for powerlifting. Working time for CrossFit. Distance and time for Hyrox and endurance.
+- **What the progression chart plots.** This was the worst of it. The chart always drew top weight and estimated 1RM, whatever you'd logged — so an endurance user got two dashes and a flat line for a feature that was, in principle, for them.
+
+Every one of those falls back to a plain set count when a session holds nothing of that kind, so an endurance focus over a weights-only day reads "2 sets" rather than "2 sets — 0 m". A zero you never logged is worse than no number at all.
+
+This landed in the browser first, then Android, then the iPhone app, and the iPhone one was a bigger job: a set there could only ever be a weight for reps. It had no field for time and no field for distance, which is why three of its six focuses had nothing to show. Those fields exist now.
+
+## COACH on Android caught up
+
+Coach has been three apps for a while — a browser version, an iPhone one nobody can install, and an Android one. The Android app had the roster, the charts and the session log, and neither of the two things a coach sends *back*.
+
+**1.1 added COOK.** Write recipes, build a client's week from them, read the shopping list that scales itself to the servings you planned, and send the week as a link that opens in their LIFT.
+
+**1.2 adds TRAIN.** Write routines, book them onto a client's days. With that, the Android app has the same four places as the iPhone one: Roster, Train, Cook, Connect.
+
+The interesting part of both was not the screens. Coach's backup file carries four things it calls a library — recipes, meals, routines, sessions — and until now the Android app deliberately did not understand any of them. It carried them through a backup and restore byte for byte, precisely so that a coach moving between a phone and a browser didn't lose work to an app that had no screen for it.
+
+Teaching it to read two of those four, and then the other two, meant keeping that promise intact for everything still unread. It mostly meant finding the places where the three versions quietly disagree:
+
+- The browser writes a recipe's ingredients as objects; the iPhone writes them as plain strings. Reading only one spelling would have emptied every ingredient list a browser coach owned, on the first restore, silently.
+- The browser writes a prescribed weight in **pounds**. The iPhone writes **kilograms**. Reading both into one field doesn't throw and doesn't warn — it turns a 225 lb prescription into 225 kg, which is 496 lb on your client's phone.
+
+That second one is the kind of bug that doesn't crash anything and just quietly tells someone to lift more than twice what you meant. It's converted once now, at the point the file is read, so nothing downstream has to remember which app wrote it.
+
+## Some smaller things
+
+**The Android icon was wrong.** It was the bare maltese cross with no wordmark, on a different red from the iPhone's. Coach's was worse: a placeholder letter "C" whose own source comment said "swap for real artwork before shipping". It shipped twice. Both now match their iPhone counterparts, because both are now generated from them.
+
+**The iPhone apps were letterboxed** — black bands top and bottom, using neither the full height of the screen nor the space around the notch. That's what iOS does to an app with no launch screen declared, and both had a build setting that looked like it declared one but doesn't when the app supplies its own Info.plist. One line each.
+
+**The native apps didn't look like the browser version.** The palette they share had drifted: card surfaces were a cool grey where the web and Android use a warm brown. One wrong token, every card, both iPhone apps. The Android side had been right all along, which is exactly why Android looked closer to the web than the iPhone did.
+
+## Getting them
+
+Both are on the [install page](/lift/install/) and the [Coach page](/coach/install/), and both install straight over whatever you already have — same signing key, nothing to uninstall, your log and your roster stay where they are.
+
+Still no App Store and no Play Store. That's deliberate while this is being built; the beta runs through the browser so fixes reach you the same day instead of waiting on a review queue.
