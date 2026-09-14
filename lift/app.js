@@ -2588,7 +2588,8 @@ Object.assign(window, {
   // addFoodEntries, as a setter closing over the live binding, rather than
   // by value. Used after a successful import so the user lands on what they
   // just imported instead of staying on "Today" wondering where it went;
-  // Previous/Next is the only other navigation, one day per tap, and
-  // retention is 60 days, so the oldest imported day could be 60 taps away.
+  // Previous/Next is the only other navigation, one day per tap, and the
+  // watch retains its most recent 200 entries with no age limit, so the
+  // oldest imported day could be an unbounded number of taps away.
   goToFoodDate: (day) => { foodDate = day; showTab('food'); },
 });
