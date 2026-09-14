@@ -66,4 +66,11 @@ LIFT and COACH on iPhone now share one codebase for the things they have to agre
 
 Wear OS is the one platform on the list that's still empty. COACH on Android doesn't exist yet. And I own a Garmin now, which turned out to be a genuinely useful way to feed step and weight data into LIFT through Apple Health without writing a line of code — but that's a separate post.
 
+<div class="card" style="border-left:3px solid var(--dcl-accent);">
+  <p><strong>Update, 13 September.</strong> Both of those landed the next day, so the paragraph above is out of date and I'm leaving it rather than quietly rewriting it.</p>
+  <p><a href="{{ '/coach/install/' | relative_url }}">COACH for Android</a> shipped as 1.0 — the full client roster, plan sending and log import, same as the web version.</p>
+  <p><a href="{{ '/lift/wear-install/' | relative_url }}">LIFT for Wear OS</a> also shipped as 1.0, but be warned: it installs by sideload over adb, not by tapping a link. Wear OS has exactly one route onto a watch — the Play Store — and LIFT isn't there yet. You'll need a computer and about five minutes.</p>
+  <p>The Garmin post is still owed.</p>
+</div>
+
 If you're using any of this and something's wrong, tell me. Everything above was built by one person in a week, and I'd rather hear about it from you than find it in a month.
