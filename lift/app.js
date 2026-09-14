@@ -622,12 +622,13 @@ function renderProgress() {
     statline(card, 'Furthest', metres.length ? distanceLabel(best(metres)) : '-');
     statline(card, 'Most recent', metres.length ? distanceLabel(metres[metres.length - 1]) : '-');
     statline(card, 'Longest', times.length ? clock(best(times)) : '-');
-    // km and minutes are both small numbers, so they share an axis legibly.
+    // Distance alone. km and minutes are both small numbers and would share an
+    // axis legibly here, but Android's LineChart prints its shared maximum as
+    // the axis label, where one number over two units is simply wrong -- and
+    // the two apps charting endurance differently is worse than one fewer line.
     series = [
       { label: 'Distance (km)', color: CHART.distance,
         values: history.map((h) => scaled(h.ex, 'distanceMeters', 1000)) },
-      { label: 'Time (min)', color: CHART.time,
-        values: history.map((h) => scaled(h.ex, 'durationSec', 60)) },
     ];
   } else {
     statline(card, 'Best weight', weights.length ? `${Math.round(best(weights))} lb` : '-');
