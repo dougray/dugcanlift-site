@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-14T18:19:05.807841+00:00",
+  "last_updated": "2026-09-14T19:01:12.423210+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -20,24 +20,6 @@
       "price": 51.97,
       "cost_per_serving": 1.368,
       "error": null
-    },
-    {
-      "name": "Gold Standard 100% Whey - Cookies & Cream (5lb, GNC)",
-      "brand": "GNC (Optimum Nutrition)",
-      "category": "Protein",
-      "url": "https://www.gnc.com/whey-protein/350254.html",
-      "servings": 68,
-      "price": null,
-      "error": "price not found (no meta tag, no selector match)"
-    },
-    {
-      "name": "Gold Standard 100% Whey - Cookies & Cream (5lb, via GNC)",
-      "brand": "GNC (Optimum Nutrition)",
-      "category": "Protein",
-      "url": "https://www.gnc.com/whey-protein/350254.html",
-      "servings": 68,
-      "price": null,
-      "error": "price not found (no meta tag, no selector match)"
     },
     {
       "name": "MRE Lite Whole Food Protein (2lb)",
@@ -135,16 +117,15 @@
       "category": "Protein",
       "url": "https://nutrithority.com/products/isothority",
       "servings": 30,
-      "price": null,
-      "error": "price not found (no meta tag, no selector match)"
+      "price": 54.99,
+      "cost_per_serving": 1.833,
+      "error": null
     },
     {
       "name": "Micronized Creatine Monohydrate (500g)",
       "brand": "BulkSupplements",
       "category": "Creatine",
       "url": "https://www.bulksupplements.com/products/creatine-monohydrate",
-      "platform": "shopify_variant",
-      "variant_match": "500g",
       "servings": 100,
       "price": 24.97,
       "cost_per_serving": 0.25,
@@ -154,12 +135,11 @@
       "name": "Hydrolyzed Whey Protein Isolate",
       "brand": "BulkSupplements",
       "category": "Protein",
-      "url": "https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE",
-      "platform": "shopify_variant",
-      "variant_match": "1kg",
+      "url": "https://www.bulksupplements.com/products/hydrolyzed-whey-protein-isolate-powder",
       "servings": 33,
-      "price": null,
-      "error": "404 Client Error: Not Found for url: https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE"
+      "price": 61.97,
+      "cost_per_serving": 1.878,
+      "error": null
     },
     {
       "name": "100% Pure Micronized Creatine (300g, via Suppz)",
