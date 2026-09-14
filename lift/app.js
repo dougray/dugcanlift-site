@@ -99,14 +99,56 @@ const FAT = [['20%', 0.20], ['25%', 0.25], ['30%', 0.30], ['35%', 0.35]];
 const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
 const MEAL_LABEL = { BREAKFAST: 'Breakfast', LUNCH: 'Lunch', DINNER: 'Dinner', SNACK: 'Snack' };
 
+/* Training focus.
+ *
+ * Focus used to be nothing but a field-visibility switch, and Bodybuilding and
+ * Powerlifting carried identical flags -- so picking between the two most
+ * likely options changed nothing whatsoever. It now also decides what a set
+ * starts at, which number summarises a session, and what the progress chart
+ * plots, because those are the things that actually differ between a hypertrophy
+ * block and a strength block. The flags stay because they still matter: an
+ * endurance set has no business asking for reps.
+ *
+ * `defaultReps` seeds the FIRST set of an exercise only. Every set after it
+ * copies the one before, which is a better guess than any constant.
+ *
+ * Nothing here changes what is STORED. Every set keeps every field it was
+ * given, so switching focus -- or opening a log on a device set to another
+ * focus -- never drops data, only stops asking for it. */
 const FOCUS = {
-  BODYBUILDING: { label: 'Bodybuilding', weight: 1, reps: 1, rpe: 1, time: 0, dist: 0 },
-  POWERLIFTING: { label: 'Powerlifting', weight: 1, reps: 1, rpe: 1, time: 0, dist: 0 },
-  CROSSFIT:     { label: 'CrossFit',     weight: 1, reps: 1, rpe: 0, time: 1, dist: 0 },
-  HYROX:        { label: 'Hyrox',        weight: 1, reps: 1, rpe: 0, time: 1, dist: 1 },
-  ENDURANCE:    { label: 'Endurance',    weight: 0, reps: 0, rpe: 1, time: 1, dist: 1 },
-  EVERYTHING:   { label: 'Everything',   weight: 1, reps: 1, rpe: 1, time: 1, dist: 1 },
+  BODYBUILDING: {
+    label: 'Bodybuilding',
+    weight: 1, reps: 1, rpe: 1, time: 0, dist: 0,
+    defaultReps: 10, summary: 'volume', chart: 'volume',
+  },
+  POWERLIFTING: {
+    label: 'Powerlifting',
+    weight: 1, reps: 1, rpe: 1, time: 0, dist: 0,
+    defaultReps: 5, summary: 'topSet', chart: 'strength',
+  },
+  CROSSFIT: {
+    label: 'CrossFit',
+    weight: 1, reps: 1, rpe: 0, time: 1, dist: 0,
+    defaultReps: null, summary: 'work', chart: 'work',
+  },
+  HYROX: {
+    label: 'Hyrox',
+    weight: 1, reps: 1, rpe: 0, time: 1, dist: 1,
+    defaultReps: null, summary: 'distance', chart: 'pace',
+  },
+  ENDURANCE: {
+    label: 'Endurance',
+    weight: 0, reps: 0, rpe: 1, time: 1, dist: 1,
+    defaultReps: null, summary: 'distance', chart: 'pace',
+  },
+  EVERYTHING: {
+    label: 'Everything',
+    weight: 1, reps: 1, rpe: 1, time: 1, dist: 1,
+    defaultReps: 8, summary: 'volume', chart: 'strength',
+  },
 };
+
+const currentFocus = () => FOCUS[settings.focus] || FOCUS.BODYBUILDING;
 
 function calculateMacros(sex, age, weightLb, heightIn, activity, goalAdjust, proteinPerLb, fatPct) {
   const kg = weightLb * 0.453592;
@@ -144,6 +186,62 @@ const sessionVolume = (s) => (s.exercises || []).reduce((t, ex) =>
   t + (ex.sets || []).reduce((u, st) => u + ((st.weightLb || 0) * (st.reps || 0)), 0), 0);
 
 const sessionSets = (s) => (s.exercises || []).reduce((t, ex) => t + (ex.sets || []).length, 0);
+
+const allSets = (s) => (s.exercises || []).flatMap((ex) => ex.sets || []);
+const sessionSeconds = (s) => allSets(s).reduce((t, st) => t + (st.durationSec || 0), 0);
+const sessionMetres = (s) => allSets(s).reduce((t, st) => t + (st.distanceMeters || 0), 0);
+
+/** The heaviest set that also has reps -- "315 x 3" is the number a strength
+ *  session is remembered by, and a weight with no reps is not a set. */
+function topSet(s) {
+  return allSets(s)
+    .filter((st) => st.weightLb != null && st.reps > 0)
+    .sort((a, b) => b.weightLb - a.weightLb)[0] || null;
+}
+
+/** mm:ss, or h:mm:ss once it runs past an hour. */
+function clock(seconds) {
+  const total = Math.round(seconds);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const sec = total % 60;
+  const pad = (n) => String(n).padStart(2, '0');
+  return h ? `${h}:${pad(m)}:${pad(sec)}` : `${m}:${pad(sec)}`;
+}
+
+/** Metres are the stored unit; km reads better past a kilometre. */
+function distanceLabel(metres) {
+  return metres >= 1000 ? `${(metres / 1000).toFixed(2)} km` : `${Math.round(metres)} m`;
+}
+
+/* What one line under the workout name should say. Volume is the wrong answer
+ * for four of the six focuses: a Hyrox session's number is metres and minutes,
+ * and a top single is the point of a powerlifting day. Each branch falls back
+ * to plain set count when the session holds nothing of that kind, so an
+ * endurance focus with a stray weighted set never renders "0 m". */
+function focusSummary(session, f) {
+  const sets = sessionSets(session);
+  const count = `${sets} ${sets === 1 ? 'set' : 'sets'}`;
+
+  if (f.summary === 'topSet') {
+    const best = topSet(session);
+    return best ? `${count} - top ${best.weightLb} x ${best.reps}` : count;
+  }
+  if (f.summary === 'work') {
+    const seconds = sessionSeconds(session);
+    return seconds ? `${count} - ${clock(seconds)} working` : count;
+  }
+  if (f.summary === 'distance') {
+    const metres = sessionMetres(session);
+    const seconds = sessionSeconds(session);
+    const parts = [count];
+    if (metres) parts.push(distanceLabel(metres));
+    if (seconds) parts.push(clock(seconds));
+    return parts.join(' - ');
+  }
+  const volume = sessionVolume(session);
+  return volume ? `${count} - ${Math.round(volume)} lb volume` : count;
+}
 
 function mealOf(entry) {
   if (entry.meal && MEALS.includes(entry.meal)) return entry.meal;
@@ -205,6 +303,7 @@ function bar(parent, name, eaten, target, unit = 'g') {
 const CHART = {
   calories: '#c1442c', protein: '#7c8b7a', carbs: '#5b8db8',
   fat: '#d9a441', fiber: '#8e7cc3', weight: '#c1442c', e1rm: '#5b8db8',
+  volume: '#d9a441', time: '#8e7cc3', distance: '#7c8b7a',
 };
 
 function drawChart(canvas, series, labels) {
@@ -472,23 +571,79 @@ function renderProgress() {
   const chosen = options.find((o) => matchKey(o.name, o.equipment) === selectedExercise);
   card.appendChild(el('h3', null, chosen.equipment ? `${chosen.name} (${chosen.equipment})` : chosen.name));
 
+  const sumOf = (ex, key) => (ex.sets || []).reduce((t, st) => t + (st[key] || 0), 0);
+  // A session that logged none of this metric is a gap in the line, not a zero:
+  // drawChart skips null and would otherwise draw a dive to the axis.
+  const scaled = (ex, key, divisor) => {
+    const total = sumOf(ex, key);
+    return total ? total / divisor : null;
+  };
+  const exVolume = (ex) => (ex.sets || [])
+    .reduce((t, st) => t + ((st.weightLb || 0) * (st.reps || 0)), 0);
+
   const weights = history.map((h) => topWeight(h.ex)).filter((v) => v != null);
   const rms = history.map((h) => e1rm(h.ex)).filter((v) => v != null);
+  const best = (values) => (values.length ? Math.max(...values) : null);
+
   statline(card, 'Sessions', String(history.length));
-  statline(card, 'Best weight', weights.length ? `${Math.round(Math.max(...weights))} lb` : '-');
-  statline(card, 'Most recent', weights.length ? `${Math.round(weights[weights.length - 1])} lb` : '-');
-  statline(card, 'Best est. 1RM', rms.length ? `${Math.round(Math.max(...rms))} lb` : '-');
+
+  /* Which two numbers matter depends on what you train for, and the old chart
+   * answered "top weight and estimated 1RM" for everyone -- so an endurance or
+   * Hyrox user got two dashes and a flat line.
+   *
+   * drawChart scales every series against ONE shared maximum, so a mode may
+   * only pair series of comparable magnitude: pounds against pounds, or km
+   * against minutes. Pairing metres with minutes would pin the minutes to the
+   * baseline and look like a bug. Where nothing comparable exists, one series
+   * is the honest answer. */
+  const f = currentFocus();
+  let series;
+
+  if (f.chart === 'volume') {
+    const volumes = history.map((h) => exVolume(h.ex)).filter((v) => v > 0);
+    statline(card, 'Best volume', volumes.length ? `${Math.round(best(volumes))} lb` : '-');
+    statline(card, 'Most recent', volumes.length ? `${Math.round(volumes[volumes.length - 1])} lb` : '-');
+    statline(card, 'Best weight', weights.length ? `${Math.round(best(weights))} lb` : '-');
+    series = [
+      { label: 'Volume', color: CHART.volume, values: history.map((h) => exVolume(h.ex) || null) },
+    ];
+  } else if (f.chart === 'work') {
+    const times = history.map((h) => sumOf(h.ex, 'durationSec')).filter((v) => v > 0);
+    statline(card, 'Longest', times.length ? clock(best(times)) : '-');
+    statline(card, 'Most recent', times.length ? clock(times[times.length - 1]) : '-');
+    statline(card, 'Total reps', String(history.reduce((t, h) => t + sumOf(h.ex, 'reps'), 0) || '-'));
+    series = [
+      { label: 'Working time (min)', color: CHART.time,
+        values: history.map((h) => scaled(h.ex, 'durationSec', 60)) },
+    ];
+  } else if (f.chart === 'pace') {
+    const metres = history.map((h) => sumOf(h.ex, 'distanceMeters')).filter((v) => v > 0);
+    const times = history.map((h) => sumOf(h.ex, 'durationSec')).filter((v) => v > 0);
+    statline(card, 'Furthest', metres.length ? distanceLabel(best(metres)) : '-');
+    statline(card, 'Most recent', metres.length ? distanceLabel(metres[metres.length - 1]) : '-');
+    statline(card, 'Longest', times.length ? clock(best(times)) : '-');
+    // km and minutes are both small numbers, so they share an axis legibly.
+    series = [
+      { label: 'Distance (km)', color: CHART.distance,
+        values: history.map((h) => scaled(h.ex, 'distanceMeters', 1000)) },
+      { label: 'Time (min)', color: CHART.time,
+        values: history.map((h) => scaled(h.ex, 'durationSec', 60)) },
+    ];
+  } else {
+    statline(card, 'Best weight', weights.length ? `${Math.round(best(weights))} lb` : '-');
+    statline(card, 'Most recent', weights.length ? `${Math.round(weights[weights.length - 1])} lb` : '-');
+    statline(card, 'Best est. 1RM', rms.length ? `${Math.round(best(rms))} lb` : '-');
+    series = [
+      { label: 'Top weight', color: CHART.weight, values: history.map((h) => topWeight(h.ex)) },
+      { label: 'Est. 1RM', color: CHART.e1rm, values: history.map((h) => e1rm(h.ex)) },
+    ];
+  }
 
   const canvas = el('canvas');
   canvas.setAttribute('height', '150');
   card.appendChild(canvas);
   const lg = el('div', 'legend');
   card.appendChild(lg);
-
-  const series = [
-    { label: 'Top weight', color: CHART.weight, values: history.map((h) => topWeight(h.ex)) },
-    { label: 'Est. 1RM', color: CHART.e1rm, values: history.map((h) => e1rm(h.ex)) },
-  ];
   requestAnimationFrame(() => drawChart(canvas, series, history.map((h) => shortLabel(h.date))));
   legend(lg, series);
 }
@@ -1081,7 +1236,7 @@ function renderTrain() {
 
   renderPrescribed();
 
-  const f = FOCUS[settings.focus] || FOCUS.BODYBUILDING;
+  const f = currentFocus();
   const out = $('#session-list');
   out.innerHTML = '';
 
@@ -1096,8 +1251,7 @@ function renderTrain() {
     card.appendChild(nameInput);
 
     if (sessionSets(session)) {
-      card.appendChild(el('p', 'muted',
-        `${sessionSets(session)} sets - ${Math.round(sessionVolume(session))} lb volume`));
+      card.appendChild(el('p', 'muted', focusSummary(session, f)));
     }
 
     (session.exercises || []).forEach((ex) => {
@@ -1162,7 +1316,10 @@ function addSetPrompt(ex, f) {
     if (v !== '') set.weightLb = parseFloat(v);
   }
   if (f.reps) {
-    const v = prompt('Reps', last.reps != null ? last.reps : '');
+    // The set before is the best guess there is; the focus only has to answer
+    // for the first one, where 5 and 10 are different training decisions.
+    const seed = last.reps != null ? last.reps : (f.defaultReps != null ? f.defaultReps : '');
+    const v = prompt('Reps', seed);
     if (v === null) return;
     if (v !== '') set.reps = parseInt(v, 10);
   }
