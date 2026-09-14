@@ -10,18 +10,6 @@
   url: "https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs"
   servings: 38
 
-- name: "Gold Standard 100% Whey - Cookies & Cream (5lb, GNC)"
-  brand: "GNC (Optimum Nutrition)"
-  category: "Protein"
-  url: "https://www.gnc.com/whey-protein/350254.html"
-  servings: 68
-
-- name: "Gold Standard 100% Whey - Cookies & Cream (5lb, via GNC)"
-  brand: "GNC (Optimum Nutrition)"
-  category: "Protein"
-  url: "https://www.gnc.com/whey-protein/350254.html"
-  servings: 68
-
 - name: "MRE Lite Whole Food Protein (2lb)"
   brand: "Redcon1"
   category: "Protein"
@@ -87,15 +75,15 @@
   category: "Creatine"
   url: "https://www.bulksupplements.com/products/creatine-monohydrate"
   platform: "shopify_variant"
-  variant_match: "500g"
+  variant_match: "500 Grams"
   servings: 100
 
 - name: "Hydrolyzed Whey Protein Isolate"
   brand: "BulkSupplements"
   category: "Protein"
-  url: "https://www.bulksupplements.com/products/PASTE-REAL-SLUG-HERE"
+  url: "https://www.bulksupplements.com/products/hydrolyzed-whey-protein-isolate-powder"
   platform: "shopify_variant"
-  variant_match: "1kg"
+  variant_match: "1 Kilogram"
   servings: 33
 
 - name: "100% Pure Micronized Creatine (300g, via Suppz)"
