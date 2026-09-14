@@ -208,7 +208,10 @@ a:hover { color: var(--dcl-accent); }
   border-radius: 4px;
 }
 
-pre.highlight {
+// `pre.highlight` is what Rouge emits, but a hand-written <pre> (the adb
+// commands on the Wear install page) needs the same treatment -- without the
+// scroll container a long command widens the whole page on a phone.
+pre {
   padding: 1rem;
   overflow-x: auto;
 }
@@ -563,6 +566,16 @@ input:focus, select:focus, textarea:focus {
 
 .feature-table .yes { color: var(--dcl-accent-2); font-weight: 600; }
 .feature-table .no { color: var(--dcl-muted); }
+
+// A cell whose answer is a link -- "By sideload" pointing at the Wear install
+// page. It inherits the cell's colour, so without an underline it reads as
+// plain text and nobody discovers it is clickable.
+.feature-table td a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.feature-table td a:hover { text-decoration-thickness: 2px; }
 
 @media (max-width: 600px) {
   .feature-table th,
