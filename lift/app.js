@@ -886,6 +886,7 @@ function openFoodForm(prefill) {
 
   renderMealChips();
   renderFoodUnit(prefill);
+  renderFoodPreview();
 }
 
 /* The macro fields are always per 100 g, and say so. Leaving them as a bare
@@ -898,14 +899,18 @@ function renderFoodUnit(prefill) {
       const before = amountInGrams();
       settings.servingUnit = i.u;
       save(KEY.settings, settings);
-      // Keep the amount meaning the same weight when the unit changes, so
-      // switching to ounces mid-entry does not silently re-scale the food.
+      // Carry the weight across the unit change rather than reinterpreting
+      // the number, so switching to ounces mid-entry does not turn 175 g into
+      // 175 oz. It is preserved only to the precision ounces display, one
+      // decimal -- 175 g becomes 6.2 oz, which is 175.8 g and one more
+      // calorie. Showing 6.17466 oz to avoid that would be worse.
       if (before) {
         $('#f-amount').value = FoodAmount.trim(
           FoodAmount.UNITS[servingUnitKey()].fromGrams(before)
         );
       }
       renderFoodUnit(prefill);
+      renderFoodPreview();
       render();
     });
 
@@ -925,6 +930,39 @@ function renderFoodUnit(prefill) {
     : 'Macros as they read per 100 g, then the amount you actually ate.';
 }
 
+/* What the entry will actually count as, shown before it is committed.
+ *
+ * The iPhone's food search and both watches have always shown this while you
+ * set the amount; the two hand-entry forms made you save first and find out
+ * afterwards. Seeing 219 kcal appear as you type 175 g is also how a typo in
+ * the per-100 g numbers becomes obvious at entry rather than in the day's
+ * total. */
+function renderFoodPreview() {
+  const box = $('#f-preview');
+  if (!box) return;
+
+  const grams = amountInGrams();
+  const calories = parseInt($('#f-cal').value, 10);
+  if (grams == null || isNaN(calories)) {
+    box.textContent = '';
+    return;
+  }
+
+  const t = FoodAmount.scaleFrom100g({
+    calories,
+    proteinG: parseInt($('#f-p').value, 10) || 0,
+    fatG: parseInt($('#f-f').value, 10) || 0,
+    carbsG: parseInt($('#f-c').value, 10) || 0,
+    fiberG: parseInt($('#f-fib').value, 10) || 0,
+  }, grams);
+  if (!t) { box.textContent = ''; return; }
+
+  const unit = FoodAmount.UNITS[servingUnitKey()];
+  const shown = FoodAmount.trim(unit.fromGrams(grams)) + ' ' + unit.abbreviation;
+  box.textContent = `${shown} = ${t.calories} kcal - P ${t.proteinG} - F ${t.fatG}`
+    + ` - C ${t.carbsG} - Fib ${t.fiberG}`;
+}
+
 /** The amount currently in the form, in grams. Null if it isn't a weight. */
 function amountInGrams() {
   const entered = parseFloat($('#f-amount').value);
@@ -936,6 +974,12 @@ function renderMealChips() {
   chips($('#f-meal'), MEALS.map((m) => ({ label: MEAL_LABEL[m], m })),
     (i) => i.m === formMeal, (i) => { formMeal = i.m; renderMealChips(); });
 }
+
+// Every field the preview reads, so it never shows a total for numbers that
+// are no longer on screen.
+['#f-amount', '#f-cal', '#f-p', '#f-f', '#f-c', '#f-fib'].forEach((sel) => {
+  $(sel).addEventListener('input', renderFoodPreview);
+});
 
 $('#food-add').onclick = () => openFoodForm(null);
 $('#f-cancel').onclick = () => $('#food-form').classList.add('hidden');
