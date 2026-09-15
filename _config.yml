@@ -73,6 +73,7 @@ include:
 # should be fetching them, and shipping them invites something eventually
 # doing so.
 exclude:
+  - vendor
   - lift/watch-scan.test.mjs
   - lift/fixtures/
   - lift/README.md
