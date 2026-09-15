@@ -250,17 +250,20 @@
     <input type="text" id="f-name">
     <label>Meal</label>
     <div class="chips" id="f-meal"></div>
+    <label>Log by</label>
+    <div class="chips" id="f-mode"></div>
+    <p class="muted" id="f-basis-note"></p>
     <div class="row">
-      <div><label for="f-servings">Servings</label><input type="number" id="f-servings" value="1" inputmode="decimal"></div>
-      <div><label for="f-cal">Calories</label><input type="number" id="f-cal" inputmode="numeric"></div>
+      <div><label for="f-amount" id="f-amount-label">Amount (g)</label><input type="number" id="f-amount" value="100" inputmode="decimal" step="any" min="0"></div>
+      <div><label for="f-cal" id="f-cal-label">Calories</label><input type="number" id="f-cal" inputmode="numeric"></div>
     </div>
     <div class="row">
-      <div><label for="f-p">Protein (g)</label><input type="number" id="f-p" inputmode="numeric"></div>
-      <div><label for="f-f">Fat (g)</label><input type="number" id="f-f" inputmode="numeric"></div>
+      <div><label for="f-p" id="f-p-label">Protein (g)</label><input type="number" id="f-p" inputmode="numeric"></div>
+      <div><label for="f-f" id="f-f-label">Fat (g)</label><input type="number" id="f-f" inputmode="numeric"></div>
     </div>
     <div class="row">
-      <div><label for="f-c">Carbs (g)</label><input type="number" id="f-c" inputmode="numeric"></div>
-      <div><label for="f-fib">Fiber (g)</label><input type="number" id="f-fib" inputmode="numeric"></div>
+      <div><label for="f-c" id="f-c-label">Carbs (g)</label><input type="number" id="f-c" inputmode="numeric"></div>
+      <div><label for="f-fib" id="f-fib-label">Fiber (g)</label><input type="number" id="f-fib" inputmode="numeric"></div>
     </div>
     <div class="row">
       <button id="f-save">Save</button>
@@ -301,6 +304,7 @@
 </main>
 
 <script src="foods.js"></script>
+<script src="food-amount.js"></script>
 <script src="jsqr.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
