@@ -1,5 +1,6 @@
 import yaml
 import json
+import os
 import re
 import time
 import requests
@@ -135,8 +136,17 @@ def main():
     with open("_data/supplement_prices.json", "w") as f:
         json.dump(output, f, indent=2)
 
-    failed = sum(1 for r in results if r["error"])
-    print(f"Wrote {len(results)} products to _data/supplement_prices.json ({failed} without a price)", flush=True)
+    unpriced = [r for r in results if r["error"]]
+    print(f"Wrote {len(results)} products to _data/supplement_prices.json ({len(unpriced)} without a price)", flush=True)
+
+    # Hand the tally to the workflow so it can alert when a vendor's markup
+    # changes, instead of the row silently reading "price unavailable".
+    if os.environ.get("GITHUB_OUTPUT"):
+        names = "; ".join(f"{r['brand']} {r['name']}" for r in unpriced)
+        with open(os.environ["GITHUB_OUTPUT"], "a") as out:
+            out.write(f"total={len(results)}\n")
+            out.write(f"unpriced={len(unpriced)}\n")
+            out.write(f"unpriced_names={names}\n")
 
 
 if __name__ == "__main__":
