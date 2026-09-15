@@ -814,7 +814,8 @@ function renderFood() {
     forMeal.forEach((e) => {
       const row = el('div', 'entry');
       const info = el('div');
-      info.appendChild(el('div', null, e.servings === 1 ? e.name : `${e.name} x${e.servings}`));
+      const amount = FoodAmount.amountText(e, servingUnitKey());
+      info.appendChild(el('div', null, amount ? `${e.name} - ${amount}` : e.name));
       info.appendChild(el('div', 'muted',
         `${mul(e, 'calories')} kcal - P ${mul(e, 'proteinG')} - F ${mul(e, 'fatG')} - C ${mul(e, 'carbsG')} - Fib ${mul(e, 'fiberG')}`));
       row.appendChild(info);
@@ -849,18 +850,86 @@ function guessMeal() {
 $('#food-prev').onclick = () => { foodDate = shiftDate(foodDate, -1); render(); };
 $('#food-next').onclick = () => { foodDate = shiftDate(foodDate, 1); render(); };
 
+/* Food is logged by weight. The unit is the person's preference -- grams or
+ * ounces -- and matches `servingUnit` in LIFT iOS and LIFT Android so a
+ * backup carries it between them. Grams are canonical on the wire either way.
+ *
+ * Servings are gone as something you type. Entries logged before this still
+ * carry one and still render from it, because there is no honest way to turn
+ * "2 servings" into grams after the fact. */
+let foodPer100 = null;
+
+const servingUnitKey = () => (settings.servingUnit === 'ounces' ? 'oz' : 'g');
+
 function openFoodForm(prefill) {
   $('#food-form').classList.remove('hidden');
   $('#food-search').classList.add('hidden');
   formMeal = guessMeal();
+
+  // Only a hit carrying per-100 g values can be prefilled. One that lists a
+  // serving size and nothing else has numbers on a basis this form does not
+  // use, and quietly treating them as per-100 g is how a portion becomes a
+  // reading off the side of the packet.
+  foodPer100 = prefill ? (prefill.per100 || null) : null;
+
   $('#f-name').value = prefill ? prefill.name : '';
-  $('#f-servings').value = 1;
-  $('#f-cal').value = prefill ? prefill.calories : '';
-  $('#f-p').value = prefill ? prefill.proteinG : '';
-  $('#f-f').value = prefill ? prefill.fatG : '';
-  $('#f-c').value = prefill ? prefill.carbsG : '';
-  $('#f-fib').value = prefill ? prefill.fiberG : '';
+  $('#f-amount').value = FoodAmount.trim(
+    FoodAmount.UNITS[servingUnitKey()].fromGrams(100)
+  );
+
+  const from = foodPer100;
+  $('#f-cal').value = from ? from.calories : '';
+  $('#f-p').value = from ? from.proteinG : '';
+  $('#f-f').value = from ? from.fatG : '';
+  $('#f-c').value = from ? from.carbsG : '';
+  $('#f-fib').value = from ? from.fiberG : '';
+
   renderMealChips();
+  renderFoodUnit(prefill);
+}
+
+/* The macro fields are always per 100 g, and say so. Leaving them as a bare
+ * "Calories" is how someone logs 100 g of chicken as a whole breast. */
+function renderFoodUnit(prefill) {
+  chips($('#f-mode'),
+    [{ label: 'Grams', u: 'grams' }, { label: 'Ounces', u: 'ounces' }],
+    (i) => i.u === (settings.servingUnit || 'grams'),
+    (i) => {
+      const before = amountInGrams();
+      settings.servingUnit = i.u;
+      save(KEY.settings, settings);
+      // Keep the amount meaning the same weight when the unit changes, so
+      // switching to ounces mid-entry does not silently re-scale the food.
+      if (before) {
+        $('#f-amount').value = FoodAmount.trim(
+          FoodAmount.UNITS[servingUnitKey()].fromGrams(before)
+        );
+      }
+      renderFoodUnit(prefill);
+      render();
+    });
+
+  const unit = FoodAmount.UNITS[servingUnitKey()];
+  $('#f-amount-label').textContent = `Amount (${unit.abbreviation})`;
+  $('#f-cal-label').textContent = 'Calories (per 100 g)';
+  // Short enough not to wrap onto two lines at phone width, which knocked
+  // the paired fields out of alignment. The note above carries the long form.
+  $('#f-p-label').textContent = 'Protein (g/100g)';
+  $('#f-f-label').textContent = 'Fat (g/100g)';
+  $('#f-c-label').textContent = 'Carbs (g/100g)';
+  $('#f-fib-label').textContent = 'Fiber (g/100g)';
+
+  $('#f-basis-note').textContent = prefill && !foodPer100
+    ? 'This product only lists a serving size, so its macros could not be '
+      + 'filled in here. Enter them as they read per 100 g.'
+    : 'Macros as they read per 100 g, then the amount you actually ate.';
+}
+
+/** The amount currently in the form, in grams. Null if it isn't a weight. */
+function amountInGrams() {
+  const entered = parseFloat($('#f-amount').value);
+  if (!isFinite(entered) || entered <= 0) return null;
+  return FoodAmount.UNITS[servingUnitKey()].toGrams(entered);
 }
 
 function renderMealChips() {
@@ -874,15 +943,26 @@ $('#f-cancel').onclick = () => $('#food-form').classList.add('hidden');
 $('#f-save').onclick = () => {
   const name = $('#f-name').value.trim();
   const calories = parseInt($('#f-cal').value, 10);
-  if (!name || isNaN(calories)) return;
-  food.push({
-    id: uid(), name,
-    servings: parseFloat($('#f-servings').value) || 1,
+  const grams = amountInGrams();
+  if (!name || isNaN(calories) || grams == null) return;
+
+  // Stored the way the native apps store it: the gram amount is
+  // authoritative, servings is 1, and the macros are already the totals for
+  // this amount. `totals()` multiplies by servings, so a 1 leaves them be.
+  const totalsForAmount = FoodAmount.scaleFrom100g({
     calories,
     proteinG: parseInt($('#f-p').value, 10) || 0,
     fatG: parseInt($('#f-f').value, 10) || 0,
     carbsG: parseInt($('#f-c').value, 10) || 0,
     fiberG: parseInt($('#f-fib').value, 10) || 0,
+  }, grams);
+  if (!totalsForAmount) return;
+
+  food.push({
+    id: uid(), name,
+    servings: 1,
+    amountGrams: grams,
+    ...totalsForAmount,
     date: foodDate, loggedAt: Date.now(), meal: formMeal,
   });
   save(KEY.food, food);
@@ -1009,6 +1089,12 @@ function parseProduct(p) {
   return {
     name: `${display}, ${basis}`,
     basis,
+    // Kept alongside whichever basis won above, because logging by weight
+    // needs per-100 g specifically and this is the only place that knows
+    // whether Open Food Facts gave us any. A product with only a serving
+    // size cannot be weighed into, and the form says so rather than
+    // guessing a conversion.
+    per100: per100 || null,
     ...values,
   };
 }
