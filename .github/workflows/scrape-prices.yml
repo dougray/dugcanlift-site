@@ -30,6 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write        # required for the bot to push the updated prices
+    env:
+      # Set as repository secrets from a Tailscale OAuth client tagged tag:ci.
+      # Mapped into env so the alert steps can test for their presence: an
+      # empty value skips the alert, so the bot keeps running without them.
+      TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+      TS_OAUTH_SECRET: ${{ secrets.TS_OAUTH_SECRET }}
+      NTFY_URL: https://mir.tail8ceb8.ts.net/homelab
     steps:
       - uses: actions/checkout@v5
         with:
@@ -49,9 +56,11 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Run scraper
+        id: scrape
         run: python scripts/scrape_prices.py
 
       - name: Commit updated prices
+        id: commit
         run: |
           git config user.name "price-tracker-bot"
           git config user.email "actions@github.com"
@@ -74,3 +83,38 @@ jobs:
           done
           echo "could not push after three attempts" >&2
           exit 1
+
+      # ---- alerting ---------------------------------------------------------
+      # ntfy lives on mir and is reachable only over the tailnet, so the runner
+      # joins as an ephemeral tag:ci node just long enough to post. Runs after
+      # everything else, even when a step failed, and only speaks up when
+      # something is wrong: a row without a price, a scraper crash, or a push
+      # that did not land.
+      - name: Join the tailnet
+        if: always() && env.TS_OAUTH_CLIENT_ID != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ env.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ env.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Alert via ntfy
+        if: always() && env.TS_OAUTH_CLIENT_ID != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
+        env:
+          SCRAPE: ${{ steps.scrape.outcome }}
+          COMMIT: ${{ steps.commit.outcome }}
+          TOTAL: ${{ steps.scrape.outputs.total }}
+          UNPRICED: ${{ steps.scrape.outputs.unpriced }}
+          NAMES: ${{ steps.scrape.outputs.unpriced_names }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$SCRAPE" != "success" ]; then
+            title="Price bot: scraper crashed"; body="Run: $RUN_URL"; prio=high; tags=rotating_light
+          elif [ "$COMMIT" != "success" ]; then
+            title="Price bot: could not push prices"; body="Scraped ${UNPRICED:-?} unpriced of ${TOTAL:-?}. Run: $RUN_URL"; prio=high; tags=rotating_light
+          else
+            title="Price bot: $UNPRICED of $TOTAL unpriced"; body="$NAMES"; prio=default; tags=warning
+          fi
+          curl -sS --fail --max-time 30 \
+            -H "Title: $title" -H "Priority: $prio" -H "Tags: $tags" -H "Click: $RUN_URL" \
+            -d "$body" "$NTFY_URL"
