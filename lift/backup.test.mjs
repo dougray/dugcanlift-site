@@ -106,3 +106,25 @@ test("Android's sections this build does not store are preserved", () => {
   // Android writes `routines`; the browser has none yet.
   assert.deepEqual(Object.keys(LiftBackup.unknownSections(android.data)), ['routines']);
 });
+
+// MARK: - Interop with the iOS build
+
+// Written by LIFT iOS's own BackupStore.build -- never regenerate it here.
+const ios = JSON.parse(readFileSync('lift/fixtures/ios-backup-recipes.json', 'utf8'));
+
+test("iOS's upper-case recipe and meal restore and stay linked", () => {
+  const recipes = [];
+  const plan = [];
+  assert.equal(LiftBackup.addMissing(recipes, ios.data.recipes), 1);
+  assert.equal(LiftBackup.addMissingPlan(plan, ios.data.plan, recipes), 1);
+  assert.equal(recipes[0].totalWeightGrams, 900);
+});
+
+test("the same iOS recipe already on this device in lower case is not duplicated", () => {
+  // The round trip that broke before: a browser record, restored on an iPhone,
+  // saved there in upper case, and restored back here.
+  const iosRecipe = ios.data.recipes[0];
+  const recipes = [{ ...iosRecipe, id: iosRecipe.id.toLowerCase() }];
+  assert.equal(LiftBackup.addMissing(recipes, ios.data.recipes), 0);
+  assert.equal(recipes.length, 1);
+});

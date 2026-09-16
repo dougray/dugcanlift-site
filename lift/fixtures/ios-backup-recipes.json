@@ -1,0 +1,114 @@
+{
+  "app" : "lift",
+  "data" : {
+    "coach" : {
+      "email" : "",
+      "id" : "FC4D81AE",
+      "itemised" : false,
+      "weeks" : 8,
+      "you" : ""
+    },
+    "food" : [
+
+    ],
+    "plan" : [
+      {
+        "date" : "2026-09-20",
+        "id" : "05704EA8-ADEE-48D0-B129-C9EBFEBE3FBD",
+        "loggedFoodEntryId" : null,
+        "meal" : "DINNER",
+        "recipeId" : "CD0E06B4-A1AD-4BC2-B231-A0B8D696B140",
+        "recipeName" : "Salmon and Sweet Potato",
+        "servings" : 2,
+        "snapshotNutrition" : {
+          "calories" : 546,
+          "carbsG" : 42,
+          "fatG" : 23,
+          "fiberG" : 6,
+          "proteinG" : 40
+        }
+      }
+    ],
+    "recipes" : [
+      {
+        "cookMinutes" : 25,
+        "id" : "CD0E06B4-A1AD-4BC2-B231-A0B8D696B140",
+        "importedAt" : 1789569465407,
+        "ingredients" : [
+          {
+            "grams" : 300,
+            "item" : "salmon fillet",
+            "optional" : false,
+            "qty" : 300,
+            "rawText" : "300 g salmon fillet",
+            "unit" : "g"
+          },
+          {
+            "grams" : 400,
+            "item" : "sweet potato",
+            "optional" : false,
+            "qty" : 400,
+            "rawText" : "400 g sweet potato",
+            "unit" : "g"
+          },
+          {
+            "item" : "olive oil",
+            "optional" : false,
+            "qty" : 1,
+            "rawText" : "1 tbsp olive oil",
+            "unit" : "tbsp"
+          },
+          {
+            "optional" : true,
+            "rawText" : "lemon to serve"
+          }
+        ],
+        "name" : "Salmon and Sweet Potato",
+        "nutritionPerServing" : {
+          "calories" : 546,
+          "carbsG" : 42,
+          "estimated" : false,
+          "fatG" : 23,
+          "fiberG" : 6,
+          "proteinG" : 40
+        },
+        "servings" : 2,
+        "steps" : [
+          "Roast the potato",
+          "Pan-fry the salmon"
+        ],
+        "totalWeightGrams" : 900
+      }
+    ],
+    "settings" : {
+      "stepGoal" : 10000,
+      "weightUnit" : "pounds"
+    },
+    "weights" : {
+
+    },
+    "workouts" : [
+
+    ]
+  },
+  "ext" : {
+    "ios" : {
+      "plan" : {
+        "05704EA8-ADEE-48D0-B129-C9EBFEBE3FBD" : {
+          "plannedFor" : 1789880400000
+        }
+      },
+      "recipes" : {
+        "CD0E06B4-A1AD-4BC2-B231-A0B8D696B140" : {
+          "ingredientFoodRefIDs" : {
+            "0" : "usda:175167"
+          },
+          "sodiumMg" : 410,
+          "sugarG" : 9
+        }
+      }
+    }
+  },
+  "saved" : "2026-09-16",
+  "v" : 1
+}
