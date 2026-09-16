@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v31';
+const CACHE = 'lift-v32';
 
 const SHELL = [
   '/lift/',
@@ -12,6 +12,7 @@ const SHELL = [
   '/lift/style.css',
   '/lift/appearance.js',
   '/lift/app.js',
+  '/lift/nutrients.js',
   '/lift/foods.js',
   '/lift/food-amount.js',
   '/lift/backup.js',
@@ -54,7 +55,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // The ingredient database is 634 KB, so it is not in the install bundle —
+  // The ingredient database is 718 KB, so it is not in the install bundle —
   // but it is cached the first time it is actually used, which is what makes
   // the lookup work in a gym with no signal.
   if (url.pathname === '/lift/foods.json') {

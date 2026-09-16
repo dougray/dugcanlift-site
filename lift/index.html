@@ -176,6 +176,19 @@
     <div class="row">
       <div><label for="r-fib">Fibre g</label><input type="number" id="r-fib" inputmode="decimal"></div>
     </div>
+    <details class="more" id="r-more">
+      <summary id="r-more-summary">More nutrients</summary>
+      <p class="muted">Per serving, optional, and kept with the macros above
+        &mdash; a recipe with no calories has nowhere to hold them.</p>
+      <div class="row">
+        <div><label for="r-sat">Sat fat g</label><input type="number" id="r-sat" inputmode="decimal" step="any" min="0"></div>
+        <div><label for="r-sugar">Sugar g</label><input type="number" id="r-sugar" inputmode="decimal" step="any" min="0"></div>
+      </div>
+      <div class="row">
+        <div><label for="r-sodium">Sodium mg</label><input type="number" id="r-sodium" inputmode="decimal" step="any" min="0"></div>
+        <div></div>
+      </div>
+    </details>
 
     <button class="wide" id="r-save">Save</button>
     <button class="wide ghost" id="r-cancel">Cancel</button>
@@ -289,6 +302,19 @@
       <div><label for="f-c" id="f-c-label">Carbs (g)</label><input type="number" id="f-c" inputmode="numeric"></div>
       <div><label for="f-fib" id="f-fib-label">Fiber (g)</label><input type="number" id="f-fib" inputmode="numeric"></div>
     </div>
+    <details class="more" id="f-more">
+      <summary id="f-more-summary">More nutrients</summary>
+      <p class="muted">Optional, and there are no targets for them. Blank means
+        the label didn't say &mdash; it is never counted as zero.</p>
+      <div class="row">
+        <div><label for="f-sat" id="f-sat-label">Sat fat (g/100g)</label><input type="number" id="f-sat" inputmode="decimal" step="any" min="0"></div>
+        <div><label for="f-sugar" id="f-sugar-label">Sugar (g/100g)</label><input type="number" id="f-sugar" inputmode="decimal" step="any" min="0"></div>
+      </div>
+      <div class="row">
+        <div><label for="f-sodium" id="f-sodium-label">Sodium (mg/100g)</label><input type="number" id="f-sodium" inputmode="decimal" step="any" min="0"></div>
+        <div></div>
+      </div>
+    </details>
     <p class="muted" id="f-preview"></p>
     <div class="row">
       <button id="f-save">Save</button>
@@ -359,6 +385,7 @@
   <button class="wide ghost" id="review-delete">Delete</button>
 </div>
 
+<script src="nutrients.js"></script>
 <script src="foods.js"></script>
 <script src="food-amount.js"></script>
 <script src="backup.js"></script>
