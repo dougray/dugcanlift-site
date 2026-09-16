@@ -1,3 +1,8 @@
+/* Dark is the base palette. Light applies when chosen, or when the device is
+ * in light mode and no choice has been made (appearance.js sets data-theme).
+ * The two light blocks are the same values; CSS cannot share a block between a
+ * selector and a media query. Values mirror LiftCore.Theme on iOS, the
+ * canonical source -- every text pairing passes WCAG AA. */
 :root {
   --bg: #1c1b19;
   --surface: #242220;
@@ -6,6 +11,39 @@
   --accent: #c1442c;
   --accent-2: #7c8b7a;
   --rule: #3a3733;
+  --on-accent: #f7f1e8;
+  /* A light card needs a hairline a dark one never had: parchment and
+     near-white are too close in brightness to separate on their own. */
+  --card-border: transparent;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4efe7;
+  --surface: #fffcf7;
+  --text: #26221e;
+  --muted: #665e52;
+  --accent: #b23c25;
+  --accent-2: #56664f;
+  --rule: #dcd3c5;
+  --on-accent: #fffaf3;
+  --card-border: #dcd3c5;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4efe7;
+    --surface: #fffcf7;
+    --text: #26221e;
+    --muted: #665e52;
+    --accent: #b23c25;
+    --accent-2: #56664f;
+    --rule: #dcd3c5;
+    --on-accent: #fffaf3;
+    --card-border: #dcd3c5;
+    color-scheme: light;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -74,6 +112,10 @@ main { padding: 0 16px 64px; }
 
 .card {
   background: var(--surface);
+  /* A hairline in light, nothing in dark. Inset shadow rather than a border so
+     it takes no space: a transparent 1px border made every dark card 2px
+     taller than it was before light mode existed. */
+  box-shadow: inset 0 0 0 1px var(--card-border);
   border-radius: 12px;
   padding: 16px;
   margin: 8px 0;
@@ -122,7 +164,7 @@ select:focus {
 
 button {
   background: var(--accent);
-  color: #f7f1e8;
+  color: var(--on-accent);
   border: none;
   border-radius: 999px;
   padding: 12px 20px;
@@ -173,7 +215,7 @@ button:disabled { opacity: 0.4; }
   font-size: 14px;
 }
 
-.chip.on { background: var(--accent); border-color: var(--accent); color: #f7f1e8; }
+.chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 .datenav {
   display: flex;
