@@ -253,6 +253,8 @@ button:disabled { opacity: 0.4; }
 
 .entry > div { flex: 1; }
 
+.entry.editable { cursor: pointer; }
+
 .entry .x {
   background: none;
   color: var(--accent);
