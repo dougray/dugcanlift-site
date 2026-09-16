@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v12';
+const CACHE = 'coach-v13';
 
 const SHELL = [
   '/coach/',
@@ -13,6 +13,7 @@ const SHELL = [
   '/coach/parser.js',
   '/coach/recipe-import.js',
   '/coach/appearance.js',
+  '/coach/route.js',
   '/coach/app.js',
   '/coach/foods.js',
   '/coach/exercises.json',
