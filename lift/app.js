@@ -301,9 +301,9 @@ function bar(parent, name, eaten, target, unit = 'g') {
 /* ---------------- charts ---------------- */
 
 const CHART = {
-  calories: '#c1442c', protein: '#7c8b7a', carbs: '#5b8db8',
-  fat: '#d9a441', fiber: '#8e7cc3', weight: '#c1442c', e1rm: '#5b8db8',
-  volume: '#d9a441', time: '#8e7cc3', distance: '#7c8b7a',
+  calories: 'var(--accent)', protein: 'var(--accent-2)', carbs: '#5b8db8',
+  fat: '#d9a441', fiber: '#8e7cc3', weight: 'var(--accent)', e1rm: '#5b8db8',
+  volume: '#d9a441', time: '#8e7cc3', distance: 'var(--accent-2)',
 };
 
 function drawChart(canvas, series, labels) {
@@ -325,7 +325,7 @@ function drawChart(canvas, series, labels) {
   const all = series.flatMap((s) => s.values).filter((v) => v !== null && v !== undefined);
   const max = all.length ? Math.max(...all) : 0;
   if (!max || labels.length < 2) {
-    ctx.fillStyle = '#a39c8e';
+    ctx.fillStyle = LiftAppearance.cssColor('var(--muted)');
     ctx.font = '14px -apple-system, sans-serif';
     ctx.fillText('Not enough logged yet to chart.', 0, 20);
     return;
@@ -335,7 +335,7 @@ function drawChart(canvas, series, labels) {
   const plotH = h - pad;
   const stepX = w / (labels.length - 1);
 
-  ctx.strokeStyle = '#3a3733';
+  ctx.strokeStyle = LiftAppearance.cssColor('var(--rule)');
   ctx.lineWidth = 1;
   [0, 0.5, 1].forEach((f) => {
     const y = plotH - plotH * f + pad / 2;
@@ -346,8 +346,8 @@ function drawChart(canvas, series, labels) {
   });
 
   series.forEach((s) => {
-    ctx.strokeStyle = s.color;
-    ctx.fillStyle = s.color;
+    ctx.strokeStyle = LiftAppearance.cssColor(s.color);
+    ctx.fillStyle = LiftAppearance.cssColor(s.color);
     ctx.lineWidth = 2.5;
     ctx.lineCap = 'round';
     let prev = null;
@@ -368,7 +368,7 @@ function drawChart(canvas, series, labels) {
     });
   });
 
-  ctx.fillStyle = '#a39c8e';
+  ctx.fillStyle = LiftAppearance.cssColor('var(--muted)');
   ctx.font = '12px -apple-system, sans-serif';
   ctx.fillText(String(Math.round(max)), 0, 11);
 }
@@ -1974,6 +1974,22 @@ $('#backup-file').onchange = (e) => {
   if (e.target.files[0]) loadBackup(e.target.files[0]);
   e.target.value = '';
 };
+
+
+/* ---------------- appearance ---------------- */
+
+/* System / Light / Dark. appearance.js owns the choice and the palette switch;
+ * this renders the chips and redraws, because canvas charts are drawn with the
+ * palette's colours at draw time and do not change by themselves. */
+function renderAppearance() {
+  const labels = { system: 'System', light: 'Light', dark: 'Dark' };
+  chips($('#appearance-mode'),
+    LiftAppearance.CHOICES.map((v) => ({ label: labels[v], v })),
+    (i) => i.v === LiftAppearance.get(),
+    (i) => LiftAppearance.set(i.v));
+}
+LiftAppearance.onChange(() => { renderAppearance(); render(); });
+renderAppearance();
 
 render();
 
