@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-llapingachos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EC",
+    "nativeName": "Llapingachos",
+    "summary": "Potato cakes with cheese inside, fried in achiote oil and served with a peanut sauce.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      5,
+      15,
+      30,
+      12,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/llapingachos.jpg",
+      "author": "young shanahan from Bratislava, Slovakia",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Llapingachos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "250 g Soft white cheese",
+        "item": "soft white cheese",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 tsp Achiote or paprika",
+        "item": "achiote or paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g Peanut butter",
+        "item": "peanut butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins, peel them hot and mash them dry. Add no liquid at all.",
+      "Warm the achiote in a spoon of oil for a minute and work the coloured oil into the mash with salt.",
+      "Roll balls, press a cube of cheese into each, close them up and flatten into cakes a centimetre thick.",
+      "Chill the cakes for half an hour; that is what holds their shape in the pan.",
+      "For the sauce fry the onion, add the peanut butter and milk and simmer five minutes to the thickness of cream.",
+      "Fry the cakes over medium heat, four minutes a side, to a golden crust.",
+      "Serve with a fried egg, the sauce and an avocado salad."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 20,
+      "carbsG": 50,
+      "fatG": 27,
+      "estimated": true
+    }
+  }
+}

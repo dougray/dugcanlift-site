@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hainanese-chicken-rice",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SG",
+    "nativeName": "海南鸡饭",
+    "summary": "A whole chicken poached below boiling and rice cooked in its broth, with three sauces.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      15,
+      42,
+      12,
+      10,
+      18,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/hainanese-chicken-rice.jpg",
+      "author": "No machine-readable author provided. Terence assumed (based on copyright claims).",
+      "license": "CC BY 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hainanese chicken rice",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Whole chicken",
+        "item": "whole chicken",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600
+      },
+      {
+        "rawText": "400 g Jasmine rice",
+        "item": "jasmine rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "80 g Ginger",
+        "item": "ginger",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 Spring onions",
+        "item": "spring onions",
+        "qty": 6
+      },
+      {
+        "rawText": "3 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Red chillies",
+        "item": "red chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "2 Lime",
+        "item": "lime",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Pandan leaf",
+        "item": "pandan leaf",
+        "qty": 2,
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with salt inside and out and stuff the cavity with half the ginger and the spring onions.",
+      "Bring a pot of water to the boil, lower the whole chicken in, bring it back up and turn the heat off immediately.",
+      "Keep it covered for forty minutes without lifting the lid. It is done when the juices from the thigh run clear.",
+      "Move the chicken into iced water for ten minutes, then pat it dry and brush it with sesame oil.",
+      "Skim the fat from the broth, fry the chopped garlic and ginger in it, add the rinsed rice and toast it three minutes.",
+      "Add broth to the rice at one and a half to one, drop in the pandan leaf and cook covered for fifteen minutes.",
+      "Pound the chillies with garlic, ginger and lime into a sauce. Joint the chicken and serve with the rice, cucumber, sauce and a bowl of the broth."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 46,
+      "carbsG": 68,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

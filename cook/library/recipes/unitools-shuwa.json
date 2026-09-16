@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shuwa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "OM",
+    "nativeName": "شواء",
+    "summary": "Lamb in a spice paste, wrapped in leaves and cooked for a full day. Oman's dish for Eid.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      20,
+      10,
+      15,
+      485,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shuwa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "3 kg Leg of lamb",
+        "item": "leg of lamb",
+        "qty": 3,
+        "unit": "kg",
+        "grams": 3000
+      },
+      {
+        "rawText": "3 tbsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ground red pepper",
+        "item": "ground red pepper",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Dried lime",
+        "item": "dried lime",
+        "qty": 3
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Banana leaves or foil",
+        "item": "banana leaves or foil",
+        "qty": 4
+      },
+      {
+        "rawText": "700 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Grind the garlic, all the spices, the crushed dried limes, vinegar, oil and salt into a thick paste.",
+      "Cut deep slashes to the bone and rub the paste inside them and all over the outside.",
+      "Refrigerate overnight, twelve hours at least.",
+      "Wrap the meat in banana leaves, then tightly in two layers of foil. No gap may remain.",
+      "Set the parcel on a tray, pour a cup of water into the tray and bake at 130 °C for eight hours.",
+      "Unwrap it, pour off the juices and cook the rice in them. Pull the meat into threads by hand.",
+      "Serve the meat over the rice, from a shared platter, eaten by hand."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 480,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 52,
+      "carbsG": 62,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

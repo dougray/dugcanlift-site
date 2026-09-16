@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-khinkali",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GE",
+    "nativeName": "ხინკალი",
+    "summary": "Purses of stiff dough holding chopped meat and broth. The broth appears on its own, from water worked into the filling.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      50,
+      25,
+      25,
+      30,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/khinkali.jpg",
+      "author": "Luca Bezzi",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Khinkali",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Plain flour",
+        "item": "plain flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "220 ml Water for the dough",
+        "item": "water for the dough",
+        "qty": 220,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Beef",
+        "item": "beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "200 g Pork",
+        "item": "pork",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "200 ml Iced water for the filling",
+        "item": "iced water for the filling",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 sprig Coriander",
+        "item": "coriander",
+        "qty": 1,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Black pepper, to taste",
+        "item": "black pepper"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water and a pinch of salt. It should come out noticeably stiffer than a dumpling dough — hard work to knead. Wrap it and rest it for forty minutes.",
+      "Chop the meat by hand into pieces a few millimetres across. Mix it with the onion, coriander, cumin, salt and pepper.",
+      "Work the iced water into the filling a little at a time until the mixture turns sticky and stops taking any more. Chill it for twenty minutes.",
+      "Roll out discs 12 cm across and about two millimetres thick. Put a tablespoon of filling in the middle and gather the edge in pleats all the way round — eighteen at the least. Twist the top and pinch it shut.",
+      "Drop them into a large pot of salted boiling water, swirling the water with a slotted spoon first so they do not stick. Boil for seven or eight minutes after they float."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 26,
+      "carbsG": 52,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

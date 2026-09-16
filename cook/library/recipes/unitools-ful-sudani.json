@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ful-sudani",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SD",
+    "nativeName": "فول سوداني",
+    "summary": "Ful beans cooked soft and mashed in the pot, with sesame oil, cheese and egg.",
+    "category": "breakfast",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      92,
+      8,
+      5,
+      3,
+      8,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sudanese ful",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Ful medames beans",
+        "item": "ful medames beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "60 ml Sesame oil",
+        "item": "sesame oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g White brined cheese",
+        "item": "white brined cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "boiled"
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Flatbread",
+        "item": "flatbread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Drain the soaked beans, cover them with fresh water and boil ninety minutes, until completely soft.",
+      "Pour off most of the water, leaving half a cup, salt the beans and mash them about halfway.",
+      "Crush the garlic with salt and cumin and stir it through the beans.",
+      "Turn them into a wide bowl and pour the sesame oil over without stirring it in.",
+      "Scatter over the crumbled cheese, chopped tomato, onion, chilli and halved eggs.",
+      "Serve with lemon and flatbread. It is eaten by hand from the shared bowl."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 24,
+      "carbsG": 44,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

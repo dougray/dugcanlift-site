@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ajiaco-bogotano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CO",
+    "nativeName": "Ajiaco bogotano",
+    "summary": "A chicken soup on three kinds of potato with guascas herb, capers and cream.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      45,
+      22,
+      22,
+      6,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ajiaco-bogotano.jpg",
+      "author": "Mauricio Giraldo from Bogotá, Colombia",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ajiaco bogotano",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Chicken breasts on the bone",
+        "item": "chicken breasts on the bone",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "500 g Small yellow potatoes",
+        "item": "small yellow potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Waxy potatoes",
+        "item": "waxy potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "in rounds"
+      },
+      {
+        "rawText": "400 g Floury potatoes",
+        "item": "floury potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "3 Corn on the cob",
+        "item": "corn on the cob",
+        "qty": 3,
+        "note": "halved"
+      },
+      {
+        "rawText": "3 tbsp Dried guascas",
+        "item": "dried guascas",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "6 sprigs Coriander",
+        "item": "coriander",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 tbsp Capers",
+        "item": "capers",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Avocado",
+        "item": "avocado",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Poach the chicken in two and a half litres of water with the spring onion and coriander for forty minutes. Lift it out and shred it; strain the broth.",
+      "Return the broth to the pot, add the small yellow potatoes and cook twenty minutes, until they collapse entirely and thicken the soup.",
+      "Add the other two potato varieties and the corn and cook twenty minutes more.",
+      "Add the guascas five minutes before the end: boiled long, they turn bitter.",
+      "Return the chicken, season, and serve with bowls of cream, capers and sliced avocado on the table."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 38,
+      "carbsG": 48,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

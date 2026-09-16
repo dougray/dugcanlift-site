@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-saltibarsciai",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LT",
+    "nativeName": "Šaltibarščiai",
+    "summary": "A cold beetroot soup on kefir, vivid pink, with cucumber, dill and boiled potatoes served alongside.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      45,
+      8,
+      5,
+      3,
+      60,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/saltibarsciai.jpg",
+      "author": "User:TreasuryTag",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Šaltibarščiai",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Beetroot",
+        "item": "beetroot",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "boiled and grated"
+      },
+      {
+        "rawText": "1 l Kefir",
+        "item": "kefir",
+        "qty": 1,
+        "unit": "l",
+        "note": "cold"
+      },
+      {
+        "rawText": "2 Cucumbers",
+        "item": "cucumbers",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Spring onion",
+        "item": "spring onion",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "to serve, hot"
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the beetroot until tender, cool it completely and grate it coarsely.",
+      "Cut the cucumbers into matchsticks and chop the dill and spring onion.",
+      "Mix the beetroot, cucumber and herbs with the soured cream and salt it now, before the kefir, so the salt disperses.",
+      "Pour in the cold kefir and stir. The soup turns an even pink.",
+      "Chill it for an hour. Warm šaltibarščiai makes no sense.",
+      "Boil the potatoes and serve them hot on a separate plate. Put halved eggs into the soup."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 14,
+      "carbsG": 40,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

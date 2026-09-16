@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zagorski-strukli",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HR",
+    "nativeName": "Zagorski štrukli",
+    "summary": "Thin dough with a curd filling, boiled and then baked under cream.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      42,
+      6,
+      15,
+      10,
+      5,
+      28
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/zagorski-strukli.jpg",
+      "author": "Bonč",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Zagorje štrukli",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Plain flour",
+        "item": "plain flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 ml Warm water",
+        "item": "warm water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "600 g Dry curd cheese",
+        "item": "dry curd cheese",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Eggs for the filling",
+        "item": "eggs for the filling",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "250 ml Cream",
+        "item": "cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, warm water, oil, egg and salt for ten minutes to elasticity. Oil it and rest it half an hour.",
+      "Mash the curd with the eggs, soured cream and salt. The filling should be firm rather than pourable.",
+      "Stretch the dough on a cloth by hand until translucent, brush it with melted butter and spread the filling over a third of it.",
+      "Roll it up by lifting the cloth and cut it into eight-centimetre pieces, sealing the ends by pressing with the edge of your hand.",
+      "Boil them in salted water for five minutes after they float and lift them out with a slotted spoon.",
+      "Lay them in a dish, pour the cream over, trickle on melted butter and bake at 200 °C for twenty-five minutes, to a browned top."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 28,
+      "carbsG": 44,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

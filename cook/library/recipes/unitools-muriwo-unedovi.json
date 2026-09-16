@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-muriwo-unedovi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZW",
+    "nativeName": "Muriwo unedovi",
+    "summary": "Collard greens stewed in peanut butter with tomato. The side to sadza in every household.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      7,
+      9,
+      4,
+      14,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Muriwo unedovi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Collard greens",
+        "item": "collard greens",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "finely shredded"
+      },
+      {
+        "rawText": "150 g Peanut butter",
+        "item": "peanut butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "unsweetened"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Strip the tough stems from the leaves, roll them up and shred them fine.",
+      "Fry the onion and garlic in oil until soft, five minutes.",
+      "Add the chopped tomatoes and cook seven minutes, until they collapse into a paste.",
+      "Let the peanut butter down with a cup of hot water until smooth and lump-free.",
+      "Stir in the greens and the slackened peanut butter, season and stew covered for twelve minutes.",
+      "Uncover and drive off the excess liquid; the sauce should cling to the leaves."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 12,
+      "carbsG": 18,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

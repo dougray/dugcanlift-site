@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-iraqi-biryani",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IQ",
+    "nativeName": "برياني عراقي",
+    "summary": "Rice with chicken, vermicelli, nuts and raisins, every component cooked separately.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      22,
+      8,
+      25,
+      12,
+      20,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/iraqi-biryani.jpg",
+      "author": "Zaid-khsro",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Iraqi biryani",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "600 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "100 g Vermicelli",
+        "item": "vermicelli",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "200 g Peas",
+        "item": "peas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Potatoes",
+        "item": "potatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Almonds",
+        "item": "almonds",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tbsp Baharat",
+        "item": "baharat",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Dried lime",
+        "item": "dried lime",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with onion, pierced black lime and baharat for forty minutes. Keep the broth.",
+      "Rinse the rice until the water runs clear and soak it twenty minutes.",
+      "Fry the vermicelli in ghee to a deep brown, stirring.",
+      "Fry the potato, carrot, almonds and raisins separately and drain them on paper.",
+      "Joint the chicken and fry the pieces with the tomato paste until browned.",
+      "Cook the rice with the fried vermicelli in the strained broth for twenty minutes, covered.",
+      "Mound the rice on a platter and lay the chicken and all the fried components on top, unmixed."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 42,
+      "carbsG": 86,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

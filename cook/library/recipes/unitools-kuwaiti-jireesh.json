@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kuwaiti-jireesh",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KW",
+    "nativeName": "قريش",
+    "summary": "Cracked wheat cooked down with chicken and tomato to a thick porridge under fried onion.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      12,
+      18,
+      45,
+      65,
+      15,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kuwaiti gereesh",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Cracked wheat",
+        "item": "cracked wheat",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Baharat spice mix",
+        "item": "baharat spice mix",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Dried lime loomi",
+        "item": "dried lime loomi",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the cracked wheat and soak it in cold water for an hour.",
+      "Fry two of the onions in ghee until soft and add the baharat.",
+      "Brown the chicken with the onion and add the tomatoes, tomato paste, cinnamon and pierced dried lime.",
+      "Pour in two litres of water, salt it and cook forty minutes, until the chicken is tender.",
+      "Lift out the chicken, tip the wheat into the broth and cook it an hour over a low heat.",
+      "Mash the porridge until the grain breaks down into a uniform mass.",
+      "Fry the remaining onion to deep brown, plate the porridge with the chicken and pour the onion and its butter over."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 130,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 42,
+      "carbsG": 72,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

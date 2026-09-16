@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-clam-chowder",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "US",
+    "nativeName": "New England clam chowder",
+    "summary": "A thick clam soup with cream, potato and bacon. No tomato — that is a matter of principle.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      10,
+      5,
+      15,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/clam-chowder.jpg",
+      "author": "Famartin",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "New England clam chowder",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Clams",
+        "item": "clams",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in the shell"
+      },
+      {
+        "rawText": "120 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120,
+        "note": "diced"
+      },
+      {
+        "rawText": "500 g Waxy potatoes",
+        "item": "waxy potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in 1.5 cm dice"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Celery",
+        "item": "celery",
+        "qty": 2
+      },
+      {
+        "rawText": "300 ml Single cream",
+        "item": "single cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 Bay leaf",
+        "item": "bay leaf",
+        "qty": 1
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Oyster crackers, to taste",
+        "item": "oyster crackers"
+      }
+    ],
+    "steps": [
+      "Scrub the clams and steam them in a cup of water, covered, for five minutes, until they open. Discard any that stay shut. Strain the liquor through muslin: sand settles in it.",
+      "Take the meat from the shells and chop it coarsely. Set it aside; it returns at the very end.",
+      "Render the bacon in the pot, add the butter, onion and celery, and sweat them for eight minutes until soft.",
+      "Stir in the flour, cook it two minutes, pour in the strained clam liquor and the milk, and add the potato, thyme and bay.",
+      "Simmer for fifteen minutes until the potato is soft. Crush a few pieces against the side: the soup thickens without more flour.",
+      "Pour in the cream, return the clams and warm through for two minutes without boiling. Check the salt and serve with crackers."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 28,
+      "carbsG": 34,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

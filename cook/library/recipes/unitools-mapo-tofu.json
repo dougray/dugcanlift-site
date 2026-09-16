@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mapo-tofu",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CN",
+    "nativeName": "麻婆豆腐",
+    "summary": "Tofu in a hot doubanjiang sauce with Sichuan pepper, which numbs rather than burns.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      6,
+      2,
+      3,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mapo-tofu.jpg",
+      "author": "ZhengZhou",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mapo tofu",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Soft tofu",
+        "item": "soft tofu",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in 2 cm cubes"
+      },
+      {
+        "rawText": "150 g Minced pork",
+        "item": "minced pork",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tbsp Doubanjiang",
+        "item": "doubanjiang",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Fermented black beans",
+        "item": "fermented black beans",
+        "qty": 1,
+        "unit": "tbsp",
+        "note": "chopped"
+      },
+      {
+        "rawText": "1 tsp Sichuan peppercorns",
+        "item": "sichuan peppercorns",
+        "qty": 1,
+        "unit": "tsp",
+        "note": "ground"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "15 g Ginger",
+        "item": "ginger",
+        "qty": 15,
+        "unit": "g",
+        "grams": 15
+      },
+      {
+        "rawText": "250 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Spring onion",
+        "item": "spring onion",
+        "qty": 3
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Slip the tofu into barely simmering salted water for three minutes and drain it gently.",
+      "Fry the pork until browned and its fat has rendered, then push it aside. Add the doubanjiang and fry for a minute, until the oil turns red.",
+      "Add the garlic, ginger and black beans, warm for half a minute and pour in the stock. Bring it to the boil.",
+      "Slide the tofu in and simmer for three minutes without stirring — swirl the pan instead, or the cubes break up.",
+      "Slake the cornflour in cold water and add it in two goes, letting the sauce come back to the boil each time. Off the heat, scatter over the ground Sichuan pepper and spring onion."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 24,
+      "carbsG": 12,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

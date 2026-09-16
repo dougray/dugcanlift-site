@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-schwaebischer-kartoffelsalat",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Schwäbischer Kartoffelsalat",
+    "summary": "Potato dressed in warm stock with vinegar and oil. No mayonnaise — southern Germany does not admit it here.",
+    "category": "salad",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      5,
+      8,
+      20,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/schwaebischer-kartoffelsalat.jpg",
+      "author": "Brücke-Osteuropa",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Swabian potato salad",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Waxy potatoes",
+        "item": "waxy potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "250 ml Hot vegetable stock",
+        "item": "hot vegetable stock",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Mustard",
+        "item": "mustard",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Chives, to taste",
+        "item": "chives"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins until done, about twenty minutes from the boil. Test with a knife: it should go in without dropping through.",
+      "While they cook, warm the stock with the onion, vinegar, mustard, salt and pepper, without letting it boil.",
+      "Peel the potatoes while hot, holding them on a fork, and slice them three or four millimetres thick straight into the bowl.",
+      "Pour the hot dressing over and leave it twenty minutes, turning it once. The potato drinks almost all of the liquid.",
+      "Add the oil, turn it again and taste. It should be slightly sharper than feels right; the flavour settles as it stands."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 290,
+      "proteinG": 5,
+      "carbsG": 36,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

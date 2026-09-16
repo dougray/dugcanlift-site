@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mohinga",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MM",
+    "nativeName": "မုန့်ဟင်းခါး",
+    "summary": "Rice noodles in a thick fish broth built on banana stem. Breakfast, and Myanmar's unofficial national dish.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      15,
+      8,
+      22,
+      10,
+      22,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mohinga.jpg",
+      "author": "Charles Haynes",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mohinga",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Catfish or other oily fish",
+        "item": "catfish or other oily fish",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "500 g Thin rice noodles",
+        "item": "thin rice noodles",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Onion",
+        "item": "onion",
+        "qty": 3
+      },
+      {
+        "rawText": "60 g Toasted rice flour",
+        "item": "toasted rice flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "40 g Chickpea flour",
+        "item": "chickpea flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "60 ml Fish sauce",
+        "item": "fish sauce",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6,
+        "note": "boiled, to serve"
+      },
+      {
+        "rawText": "100 g Fried split peas",
+        "item": "fried split peas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "3 Lime",
+        "item": "lime",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Poach the fish with the lemongrass and turmeric for fifteen minutes, lift it out and pick the flesh, discarding bones and skin. Strain the broth.",
+      "Pound the onion, garlic and ginger to a paste and fry it in oil with the paprika until dark and fragrant.",
+      "Mash the fish with a fork and stir it into the paste, frying five minutes; it should break down into threads.",
+      "Transfer everything to the pot with the broth, add the fish sauce and simmer twenty minutes.",
+      "Slake the rice and chickpea flours in cold water to a thin slurry and pour it into the soup in a stream, stirring.",
+      "Cook twenty minutes more, until the broth thickens to the consistency of thin cream.",
+      "Boil the noodles, divide them between bowls, ladle the soup over and serve with egg, split peas, coriander and lime."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 32,
+      "carbsG": 68,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fergese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AL",
+    "nativeName": "Fërgesë",
+    "summary": "An Albanian bake of peppers, tomatoes and curd cheese, served in its clay pan.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      18,
+      15,
+      10,
+      12,
+      8,
+      8,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fergese.jpg",
+      "author": "Berishasinan",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fërgesë",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Green peppers",
+        "item": "green peppers",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "400 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "350 g Curd cheese gjizë",
+        "item": "curd cheese gjizë",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "150 g Feta",
+        "item": "feta",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tbsp Flour",
+        "item": "flour",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Hot chilli",
+        "item": "hot chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Char the peppers over a flame or under a grill until the skins blacken.",
+      "Put the hot peppers in a bag for ten minutes and peel them.",
+      "Soften the onion and garlic in butter and stir in a spoon of flour.",
+      "Add the chopped tomatoes and reduce them to a thick base with no loose liquid.",
+      "Cut the peeled peppers into strips and stir them into the tomato base.",
+      "Mash the curd cheese with the feta and work it into the hot mixture.",
+      "Transfer it to a clay pan and bake at 200 °C for twenty minutes, until it bubbles."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 22,
+      "carbsG": 18,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

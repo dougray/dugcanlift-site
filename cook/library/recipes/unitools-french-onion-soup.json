@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-french-onion-soup",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Soupe à l'oignon gratinée",
+    "summary": "Soup from onions, stock and cheese-topped bread. All of the flavour comes from caramelisation, which takes forty minutes rather than twenty.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      25,
+      2,
+      4,
+      20,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/french-onion-soup.jpg",
+      "author": "Ludovic Péron",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "French onion soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Onions",
+        "item": "onions",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tbsp Flour",
+        "item": "flour",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1.2 l Beef stock",
+        "item": "beef stock",
+        "qty": 1.2,
+        "unit": "l"
+      },
+      {
+        "rawText": "8 slices Baguette",
+        "item": "baguette",
+        "qty": 8,
+        "unit": "slice",
+        "note": "toasted"
+      },
+      {
+        "rawText": "150 g Gruyère",
+        "item": "gruyère",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "grated"
+      },
+      {
+        "rawText": "2 sprigs Thyme",
+        "item": "thyme",
+        "qty": 2,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Melt the butter in a heavy pot, add the onions and a pinch of salt, and keep them over medium heat, stirring every few minutes. For the first twenty minutes the onions give up water.",
+      "Then the caramelisation proper begins: another twenty-five minutes to take the onions to the colour of strong tea. If they catch, lower the heat and add a spoonful of water.",
+      "Stir in the flour and cook it out for a couple of minutes so it loses its raw taste.",
+      "Pour in the wine and scrape everything stuck to the bottom back into the pot. Let it reduce by half.",
+      "Add the stock and thyme, bring to the boil and simmer for twenty minutes. Season at the end, since the stock may already be salty.",
+      "Ladle into ovenproof bowls, top each with a slice of baguette, cover with cheese and put them under the grill until bubbling and browned, about three minutes."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 430,
+      "proteinG": 17,
+      "carbsG": 40,
+      "fatG": 21,
+      "estimated": true
+    }
+  }
+}

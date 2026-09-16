@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-svickova",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CZ",
+    "nativeName": "Svíčková na smetaně",
+    "summary": "Beef in a purée of root vegetables with cream, served with dumplings, lingonberry and lemon.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      1440,
+      12,
+      20,
+      120,
+      15,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/svickova.jpg",
+      "author": "Draceane",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Svíčková na smetaně",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef sirloin or topside",
+        "item": "beef sirloin or topside",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "80 g Smoked bacon fat",
+        "item": "smoked bacon fat",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "for larding"
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Celeriac",
+        "item": "celeriac",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Parsley root",
+        "item": "parsley root",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "250 ml Double cream",
+        "item": "double cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Allspice, thyme, bay",
+        "item": "allspice, thyme, bay",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Lingonberry sauce, to taste",
+        "item": "lingonberry sauce"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      }
+    ],
+    "steps": [
+      "Lard the beef with strips of smoked fat laid along the grain. Bury it in the grated roots with the spices and vinegar and refrigerate for a day.",
+      "Dry the meat and brown it in butter on all sides. Lift it out.",
+      "In the same pan fry the roots from the marinade with the onion for twenty minutes: they should darken noticeably, which is where the colour comes from.",
+      "Return the meat, pour in the marinade and enough water to reach the vegetables, and braise covered for two hours over a low flame.",
+      "Take the meat out, remove the bay and blend the vegetables with the liquid until smooth. Pass it through a sieve: this is the step that separates a home svíčková from a restaurant one.",
+      "Stir in the cream, lemon juice and sugar, warm it without boiling and taste. Carve the meat across the grain and serve with the sauce, lingonberry and a slice of lemon."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 48,
+      "carbsG": 24,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-leche-flan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PH",
+    "nativeName": "Leche flan",
+    "summary": "A dense caramel custard made on yolks alone, steamed in a metal mould.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      8,
+      6,
+      5,
+      8,
+      6,
+      45
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/leche-flan.jpg",
+      "author": "Cary Bass",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Leche flan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "10 Egg yolks",
+        "item": "egg yolks",
+        "qty": 10
+      },
+      {
+        "rawText": "400 g Condensed milk",
+        "item": "condensed milk",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "370 ml Evaporated milk",
+        "item": "evaporated milk",
+        "qty": 370,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Sugar for the caramel",
+        "item": "sugar for the caramel",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "60 ml Water for the caramel",
+        "item": "water for the caramel",
+        "qty": 60,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Melt the sugar with the water to an amber caramel and pour it into the moulds, tilting them to coat the base.",
+      "Let the caramel set in the moulds while you make the custard.",
+      "Work the yolks with a whisk without beating them to a foam; air bubbles leave holes.",
+      "Stir in both milks, the vanilla and the zest, mixing slowly.",
+      "Strain the mixture twice through a fine sieve and lift any foam off the surface with a spoon.",
+      "Pour it into the moulds over the caramel and seal each one tightly with foil.",
+      "Steam for forty minutes at a gentle simmer, chill four hours and turn out onto a plate."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 11,
+      "carbsG": 58,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

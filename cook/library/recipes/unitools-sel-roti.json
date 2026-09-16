@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sel-roti",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NP",
+    "nativeName": "सेल रोटी",
+    "summary": "A ring of fermented rice batter deep-fried crisp outside and soft within.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      20,
+      8,
+      22,
+      62,
+      10,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sel-roti.jpg",
+      "author": "Swapnil Acharya",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sel roti",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Rice",
+        "item": "rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "150 g Sugar",
+        "item": "sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "60 g Ghee",
+        "item": "ghee",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Banana",
+        "item": "banana",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Ground cloves",
+        "item": "ground cloves",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Soak the rice in cold water overnight, drain it and pat it dry with a cloth.",
+      "Grind the wet rice in a blender with the milk to a smooth thick paste without grit.",
+      "Work in the sugar, melted ghee, mashed banana, cardamom, cloves and salt.",
+      "Beat the batter by hand for twenty minutes in circular movements, working air into it.",
+      "Let the batter stand an hour; it ferments slightly and turns bubbly.",
+      "Heat the oil to 165 °C and pour the batter into it in a ring, in one continuous movement.",
+      "Fry two minutes a side, turning with two chopsticks, to a golden colour."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 5,
+      "carbsG": 60,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

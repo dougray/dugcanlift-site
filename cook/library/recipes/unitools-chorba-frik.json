@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chorba-frik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DZ",
+    "nativeName": "شوربة فريك",
+    "summary": "A soup of freekeh, the smoked green wheat, with lamb and mint. The first thing on the table in Ramadan.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      7,
+      42,
+      22,
+      6,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chorba-frik.jpg",
+      "author": "Gillgaramond",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chorba frik",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Lamb",
+        "item": "lamb",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "150 g Freekeh",
+        "item": "freekeh",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "400 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "grated"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Celery",
+        "item": "celery",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "50 g Ghee",
+        "item": "ghee",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the meat with the onion and celery in ghee for ten minutes.",
+      "Add the grated tomato, tomato paste, cinnamon, salt and pepper and cook five minutes.",
+      "Pour in two litres of boiling water, add the chickpeas and simmer forty minutes.",
+      "Rinse the freekeh, add it and cook twenty minutes more, stirring; the grain settles and catches.",
+      "Stir in the coriander five minutes before the end and loosen with water if the soup has gone too thick.",
+      "Ladle out, crumble dried mint over each bowl and add lemon juice."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 28,
+      "carbsG": 38,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

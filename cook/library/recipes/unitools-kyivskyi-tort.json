@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kyivskyi-tort",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UA",
+    "nativeName": "Київський торт",
+    "summary": "Two meringue layers with nuts, filled with a charlotte buttercream.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      18,
+      15,
+      10,
+      130,
+      30,
+      30
+    ],
+    "ingredientScaling": [
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kyiv cake",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "8 Egg whites",
+        "item": "egg whites",
+        "qty": 8,
+        "note": "aged a day"
+      },
+      {
+        "rawText": "450 g Sugar",
+        "item": "sugar",
+        "qty": 450,
+        "unit": "g",
+        "grams": 450
+      },
+      {
+        "rawText": "250 g Cashews or hazelnuts",
+        "item": "cashews or hazelnuts",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "50 g Flour",
+        "item": "flour",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "300 g Butter",
+        "item": "butter",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Egg yolks",
+        "item": "egg yolks",
+        "qty": 2
+      },
+      {
+        "rawText": "20 g Cocoa powder",
+        "item": "cocoa powder",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tsp Vanilla sugar",
+        "item": "vanilla sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Brandy",
+        "item": "brandy",
+        "qty": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Leave the whites in an open bowl at room temperature for twelve hours.",
+      "Toast the nuts ten minutes, chop them coarsely and mix them with the flour and part of the sugar.",
+      "Whip the whites to a foam, adding the rest of the sugar a spoon at a time, to firm glossy peaks.",
+      "Fold in the nut mixture with a spatula in three additions and divide it between two tins.",
+      "Dry the layers at 150 °C for two hours and leave them in the switched-off oven until completely cold.",
+      "Cook a syrup of milk, yolks and sugar to thickness, cool it completely and beat it into the softened butter.",
+      "Split the cream: vanilla and brandy into the larger part, cocoa into the smaller. Assemble the cake and chill it six hours."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 8,
+      "carbsG": 62,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bobotie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZA",
+    "nativeName": "Bobotie",
+    "summary": "A bake of spiced mince with dried fruit under an egg and milk custard. South Africa's national dish.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      10,
+      12,
+      6,
+      42,
+      6,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bobotie.jpg",
+      "author": "Olga Ernst",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bobotie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "900 g Minced beef",
+        "item": "minced beef",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900
+      },
+      {
+        "rawText": "2 slices White bread",
+        "item": "white bread",
+        "qty": 2,
+        "unit": "slice"
+      },
+      {
+        "rawText": "400 ml Milk",
+        "item": "milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 g Dried apricots",
+        "item": "dried apricots",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 tbsp Apricot chutney",
+        "item": "apricot chutney",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Bay leaves",
+        "item": "bay leaves",
+        "qty": 4
+      },
+      {
+        "rawText": "50 g Almonds",
+        "item": "almonds",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the bread in half the milk for ten minutes and squeeze it out, keeping the milk.",
+      "Fry the onion in oil until soft, add the curry powder and turmeric and warm them a minute, until fragrant.",
+      "Add the mince and cook, breaking up lumps, until it loses its pink, about ten minutes.",
+      "Stir in the bread, apricots, raisins, chutney, vinegar, salt and pepper and take it off the heat.",
+      "Press it into a dish, level it and bake at 180 °C for forty minutes.",
+      "Beat the eggs with the remaining milk, pour it over, stand the bay leaves in the custard and scatter the almonds.",
+      "Return it to the oven for twenty minutes, until the custard sets and turns golden."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 590,
+      "proteinG": 34,
+      "carbsG": 40,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

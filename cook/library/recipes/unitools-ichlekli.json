@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ichlekli",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TM",
+    "nativeName": "Içlekli",
+    "summary": "A large closed pie of mutton and onion baked in ashes. The dish of Turkmen herders.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      25,
+      8,
+      12,
+      12,
+      5,
+      70
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ichlekli",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "280 ml Water",
+        "item": "water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 g Mutton",
+        "item": "mutton",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "5 Onions",
+        "item": "onions",
+        "qty": 5,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "100 g Mutton fat",
+        "item": "mutton fat",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 Potato",
+        "item": "potato",
+        "qty": 2,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff unleavened dough from the flour, water and salt and rest it under a cloth for thirty minutes.",
+      "Dice the mutton and fat small with a knife, and chop the onion as fine as you can.",
+      "Mix the meat, fat, onion, cumin, salt and pepper. Add no water; the onion supplies the juice.",
+      "Divide the dough in two, roll the larger piece into a round and line an oiled tin, leaving an overhang.",
+      "Spread the filling evenly, cover with the second sheet and seal the edges in a firm rope.",
+      "Make a small steam hole in the centre, brush with butter and cover with foil.",
+      "Bake at 180 °C for an hour under the foil, then uncover and give it ten more minutes to colour."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 660,
+      "proteinG": 32,
+      "carbsG": 56,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

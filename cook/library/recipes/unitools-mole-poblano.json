@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mole-poblano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "nativeName": "Mole poblano",
+    "summary": "Chicken in a dark sauce of several chillies, nuts, spices and chocolate.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      40,
+      15,
+      22,
+      25,
+      15,
+      25,
+      70
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mole-poblano.jpg",
+      "author": "Elelicht",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mole poblano",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Chicken",
+        "item": "chicken",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "6 Ancho chillies",
+        "item": "ancho chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "4 Pasilla chillies",
+        "item": "pasilla chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Mulato chillies",
+        "item": "mulato chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "80 g Almonds",
+        "item": "almonds",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 g Peanuts",
+        "item": "peanuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "60 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Tomatillos",
+        "item": "tomatillos",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Cloves",
+        "item": "cloves",
+        "qty": 4
+      },
+      {
+        "rawText": "60 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 slices Stale bread",
+        "item": "stale bread",
+        "qty": 2,
+        "unit": "slice"
+      },
+      {
+        "rawText": "120 g Lard",
+        "item": "lard",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with an onion and garlic for forty minutes. Strain and keep the broth.",
+      "Seed the chillies and toast them on a dry pan ten seconds a side, stopping short of blackening.",
+      "Cover the chillies with boiling water for twenty minutes to soften.",
+      "Fry the almonds, peanuts, sesame, raisins and bread in lard, one at a time and separately.",
+      "Char the tomatoes, tomatillos and garlic on a dry pan until blackened in patches.",
+      "Blend everything with broth in batches and pass it through a sieve twice.",
+      "Cook the sauce for an hour on a low heat, stirring, stir in the chocolate and salt, add the chicken and heat it through."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 48,
+      "carbsG": 40,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

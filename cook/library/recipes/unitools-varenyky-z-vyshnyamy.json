@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-varenyky-z-vyshnyamy",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UA",
+    "nativeName": "Вареники з вишнями",
+    "summary": "Dumplings of whole cherries and sugar. The juice stays inside if the fruit is tossed in starch first.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      30,
+      3,
+      25,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/varenyky-z-vyshnyamy.jpg",
+      "author": "Maksym Kozlenko",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Cherry varenyky",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "450 g Plain flour",
+        "item": "plain flour",
+        "qty": 450,
+        "unit": "g",
+        "grams": 450
+      },
+      {
+        "rawText": "250 ml Kefir",
+        "item": "kefir",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "0.5 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "600 g Pitted cherries",
+        "item": "pitted cherries",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "120 g Sugar",
+        "item": "sugar",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "3 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "Soured cream, to taste",
+        "item": "soured cream"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Mix the kefir with the bicarbonate and leave it five minutes, until it bubbles. Add the egg, salt and flour and knead for eight minutes.",
+      "Cover the dough and rest it half an hour. Meanwhile let the cherries drain in a colander.",
+      "Mix the starch with the sugar and toss the cherries in it right before shaping.",
+      "Roll the dough to two millimetres, cut discs, put three or four cherries on each and seal the rim dry, pressing the air out.",
+      "Boil in batches in a wide pot of salted water. Two minutes after they float, lift them out and butter them at once."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 12,
+      "carbsG": 92,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

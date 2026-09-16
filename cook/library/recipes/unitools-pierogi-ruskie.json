@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pierogi-ruskie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PL",
+    "nativeName": "Pierogi ruskie",
+    "summary": "Dumplings of potato and curd cheese, served with fried onion and soured cream.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      20,
+      10,
+      30,
+      12,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pierogi-ruskie.jpg",
+      "author": "MOs810",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pierogi ruskie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 ml Boiling water",
+        "item": "boiling water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "boiled"
+      },
+      {
+        "rawText": "250 g Dry curd cheese",
+        "item": "dry curd cheese",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Soured cream, to taste",
+        "item": "soured cream"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pour the boiling water with the oil and salt over the flour, work it with a spoon and then, once it cools, by hand for eight minutes. Cover and rest it half an hour.",
+      "Fry two of the onions in butter to a deep gold. Half goes into the filling and half is kept for serving.",
+      "Mash the warm potato with the curd and the fried onion, and season generously. The filling has to be firm enough to hold its shape.",
+      "Roll the dough to two millimetres, cut discs with a glass, add a teaspoon of filling and pinch the edges dry — wet dough will not seal.",
+      "Boil in batches in a wide pot of salted water. Lift them out a minute after they float.",
+      "Serve with the rest of the fried onion and soured cream. Plenty of people fry the boiled pierogi in butter afterwards, which is equally correct."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 590,
+      "proteinG": 20,
+      "carbsG": 82,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

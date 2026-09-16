@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-schwarzwaelder-kirschtorte",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Schwarzwälder Kirschtorte",
+    "summary": "Chocolate sponge soaked in kirsch, with whipped cream and sour cherries.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      10,
+      40,
+      12,
+      12,
+      20,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/schwarzwaelder-kirschtorte.jpg",
+      "author": "Mikel Ortega from Errenteria, Spain",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Black Forest gateau",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "150 g Flour",
+        "item": "flour",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "50 g Cocoa powder",
+        "item": "cocoa powder",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "800 ml Double cream",
+        "item": "double cream",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Gelatine",
+        "item": "gelatine",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "600 g Sour cherries",
+        "item": "sour cherries",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "with syrup"
+      },
+      {
+        "rawText": "80 ml Kirsch",
+        "item": "kirsch",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "60 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Whisk the eggs and sugar over a water bath until warm, then beat them ten minutes to a thick pale foam.",
+      "Sift the flour with the cocoa and fold it in with a spatula in three additions, then the melted butter.",
+      "Bake the sponge at 175 °C for thirty-five minutes and cool it completely, ideally overnight.",
+      "Cut the sponge into three layers and soak each with cherry syrup mixed with kirsch.",
+      "Dissolve the gelatine, whip the cream with the icing sugar and add the gelatine in a thin stream.",
+      "Assemble: sponge, cream, cherries, cream again — three times over, finishing with cream.",
+      "Cover the sides and top with chocolate shavings, decorate with cherries and chill four hours."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 7,
+      "carbsG": 46,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

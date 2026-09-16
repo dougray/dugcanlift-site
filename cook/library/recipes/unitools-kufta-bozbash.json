@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kufta-bozbash",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AZ",
+    "nativeName": "Küftə bozbaş",
+    "summary": "A clear broth with one large meatball per portion, a dried plum and apricot hidden inside it.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      8,
+      10,
+      32,
+      22,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kufta-bozbash.jpg",
+      "author": "NurlanLalaev",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kufta bozbash",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Lamb",
+        "item": "lamb",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "minced"
+      },
+      {
+        "rawText": "400 g Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "for the broth"
+      },
+      {
+        "rawText": "3 tbsp Rice",
+        "item": "rice",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "4 Potatoes",
+        "item": "potatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Dried sour plums",
+        "item": "dried sour plums",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Dried apricots",
+        "item": "dried apricots",
+        "qty": 4
+      },
+      {
+        "rawText": "1 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the bone-in lamb with cold water, bring it up and skim. Add the chickpeas and simmer for an hour.",
+      "Work a grated onion, the rice, salt and pepper into the mince and knead for five minutes, until the mass pulls back at your hand.",
+      "Divide the mince into four. Hide a plum and an apricot in each and shape a tight ball with no cracks.",
+      "Lower the kufta into the barely simmering broth and cook thirty minutes without stirring. For the first five minutes do not touch it at all.",
+      "Add the potatoes whole and the turmeric and cook twenty minutes more, until the potatoes are tender.",
+      "Into each bowl goes one kufta, one potato and some chickpeas; ladle over the broth and crumble dried mint on top."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 34,
+      "carbsG": 46,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

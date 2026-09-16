@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shah-plov",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AZ",
+    "nativeName": "Şah plov",
+    "summary": "Pilaf baked in a crown of lavash. The crust holds its shape and is cut in wedges like a pie.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      3,
+      30,
+      8,
+      7,
+      57,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shah-plov.jpg",
+      "author": "Tubus",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shah plov",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "700 g Lamb",
+        "item": "lamb",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "boneless, in cubes"
+      },
+      {
+        "rawText": "3 Thin lavash",
+        "item": "thin lavash",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Chestnuts",
+        "item": "chestnuts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "peeled"
+      },
+      {
+        "rawText": "100 g Dried apricots",
+        "item": "dried apricots",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "180 g Clarified butter",
+        "item": "clarified butter",
+        "qty": 180,
+        "unit": "g",
+        "grams": 180
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the rice in salted water for an hour, then boil it seven minutes in plenty of water and drain.",
+      "Steep the saffron in three spoons of boiling water and leave it; it gives both colour and scent.",
+      "Brown the lamb, add the onion and cook until soft. Add the chestnuts, apricots, raisins and turmeric and stew for twenty minutes.",
+      "Butter a deep dish generously and line it with overlapping lavash, letting the edges hang outside.",
+      "Layer it: rice, filling, rice again. Pour over the saffron infusion and the rest of the butter.",
+      "Fold the lavash edges over the top, cover with foil and bake at 180 °C for forty minutes, then uncover and give it fifteen more to colour.",
+      "Rest ten minutes, cover with a platter and invert. Cut it at the table."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 30,
+      "carbsG": 75,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

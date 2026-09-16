@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastel-de-choclo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CL",
+    "nativeName": "Pastel de choclo",
+    "summary": "A bake of meat filling under a lid of ground sweetcorn, with an olive and an egg inside.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      8,
+      17,
+      8,
+      5,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pastel-de-choclo.jpg",
+      "author": "Paloma Baytelman from Santiago, Chile",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastel de choclo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Sweetcorn",
+        "item": "sweetcorn",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "kernels, fresh or frozen"
+      },
+      {
+        "rawText": "700 g Minced beef",
+        "item": "minced beef",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "400 g Chicken thigh",
+        "item": "chicken thigh",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "poached, in pieces"
+      },
+      {
+        "rawText": "4 Onion",
+        "item": "onion",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "boiled, halved"
+      },
+      {
+        "rawText": "12 Black olives",
+        "item": "black olives",
+        "qty": 12
+      },
+      {
+        "rawText": "60 g Raisins",
+        "item": "raisins",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "20 g Basil",
+        "item": "basil",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tbsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Sugar",
+        "item": "sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the finely chopped onion until translucent, add the mince, cumin, salt and pepper and cook through. Let the pino cool; warm, it will weep.",
+      "Blitz the corn with the basil and milk to a coarse but even mass.",
+      "Cook it down with the butter over medium heat, stirring, for about fifteen minutes, until a spoon stands up in it.",
+      "Divide the pino between earthenware dishes and top each with a piece of chicken, half an egg and a couple of olives with raisins.",
+      "Cover with a two-centimetre layer of the corn mass, level it and dust with sugar.",
+      "Bake at 200 °C for forty minutes, the last five under the grill, to a dark caramel crust."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 34,
+      "carbsG": 62,
+      "fatG": 27,
+      "estimated": true
+    }
+  }
+}

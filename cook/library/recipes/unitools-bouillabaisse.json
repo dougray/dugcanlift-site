@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bouillabaisse",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Bouillabaisse",
+    "summary": "The Marseille fish soup of several species, with saffron and a rouille sauce.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      7,
+      42,
+      15,
+      22,
+      10,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bouillabaisse.jpg",
+      "author": "Slastic",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bouillabaisse",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1 kg Small bony rockfish",
+        "item": "small bony rockfish",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "for the broth"
+      },
+      {
+        "rawText": "1.2 kg Firm white fish",
+        "item": "firm white fish",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "three or four species"
+      },
+      {
+        "rawText": "1 Fennel",
+        "item": "fennel",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Leek",
+        "item": "leek",
+        "qty": 1
+      },
+      {
+        "rawText": "500 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 Orange zest",
+        "item": "orange zest",
+        "qty": 1
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "150 ml Olive oil",
+        "item": "olive oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Egg yolk",
+        "item": "egg yolk",
+        "qty": 1,
+        "note": "for the rouille"
+      },
+      {
+        "rawText": "1 Baguette",
+        "item": "baguette",
+        "qty": 1,
+        "note": "for the croutes"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soften the onion, leek and fennel in olive oil for ten minutes.",
+      "Add the small fish whole, the tomatoes, garlic, zest and saffron and cook five minutes.",
+      "Add two litres of water, bring it up and cook forty minutes, uncovered.",
+      "Press everything through a sieve, working the flesh through, and return the broth to the pot.",
+      "Cook the potatoes in the broth for fifteen minutes, then add the larger fish in order, firmest first.",
+      "Make the rouille: egg yolk, garlic, saffron, a pinch of cayenne and olive oil in a thin stream.",
+      "Serve the broth in bowls with croûtes and rouille, and the fish with the potatoes on a separate platter."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 52,
+      "carbsG": 38,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

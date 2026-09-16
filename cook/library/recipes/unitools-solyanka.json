@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-solyanka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RU",
+    "nativeName": "Солянка",
+    "summary": "A soup on strong stock with several meats, brined cucumbers, olives and lemon.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      90,
+      3,
+      5,
+      15,
+      6,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/solyanka.jpg",
+      "author": "Pannet",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Meat solyanka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Beef on the bone",
+        "item": "beef on the bone",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Smoked ribs",
+        "item": "smoked ribs",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Boiled sausage",
+        "item": "boiled sausage",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "in strips"
+      },
+      {
+        "rawText": "150 g Ham",
+        "item": "ham",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "in strips"
+      },
+      {
+        "rawText": "4 Brined cucumbers",
+        "item": "brined cucumbers",
+        "qty": 4,
+        "note": "in strips"
+      },
+      {
+        "rawText": "150 ml Cucumber brine",
+        "item": "cucumber brine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Olives and capers",
+        "item": "olives and capers",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "Lemon, to taste",
+        "item": "lemon"
+      },
+      {
+        "rawText": "Soured cream and herbs, to taste",
+        "item": "soured cream and herbs"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Make a stock from the beef and the smoked ribs: an hour and a half at a bare simmer, skimming. Lift the meat out and pull it apart.",
+      "Fry the onion until soft, add the tomato paste and cook three minutes, until it darkens and stops smelling raw.",
+      "Add the cucumbers and cook them with the onion for five minutes, so they do not stay hard in the finished soup.",
+      "Put the fried mixture, the pulled meat, the sausage and the ham into the stock, pour in the brine and simmer for fifteen minutes.",
+      "Add the olives and capers, warm for five minutes and take it off. Check the salt only now: the brine and the smoked meat have already seasoned it.",
+      "In the bowl: a slice of lemon, soured cream and herbs. The lemon goes into the bowl rather than the pot, where boiling would turn it bitter."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 32,
+      "carbsG": 12,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

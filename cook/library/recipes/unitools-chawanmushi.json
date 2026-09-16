@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chawanmushi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "茶碗蒸し",
+    "summary": "A savoury egg custard set on dashi and steamed, with a prawn and mushrooms inside.",
+    "category": "snack",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      4,
+      6,
+      6,
+      5,
+      15,
+      5
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chawanmushi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "480 ml Dashi",
+        "item": "dashi",
+        "qty": 480,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Light soy sauce",
+        "item": "light soy sauce",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Mirin",
+        "item": "mirin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "8 Prawns",
+        "item": "prawns",
+        "qty": 8
+      },
+      {
+        "rawText": "100 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "4 Shiitake mushrooms",
+        "item": "shiitake mushrooms",
+        "qty": 4
+      },
+      {
+        "rawText": "4 slices Kamaboko fish cake",
+        "item": "kamaboko fish cake",
+        "qty": 4,
+        "unit": "slice"
+      },
+      {
+        "rawText": "10 g Mitsuba or coriander",
+        "item": "mitsuba or coriander",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Beat the eggs with chopsticks without raising foam; the movement should cut rather than whip.",
+      "Add the cooled dashi, soy, mirin and salt and stir without whisking.",
+      "Strain the mixture twice through a fine sieve; that is the only route to smoothness.",
+      "Divide the prawn, a piece of chicken, a mushroom and a slice of kamaboko between the cups.",
+      "Pour in the custard, lift any bubbles off the surface with a spoon and cover with foil.",
+      "Steam gently for fifteen minutes with the steamer lid propped open a centimetre.",
+      "Test with a skewer: the liquid that rises should run clear. Scatter with herbs and serve hot."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 180,
+      "proteinG": 18,
+      "carbsG": 5,
+      "fatG": 8,
+      "estimated": true
+    }
+  }
+}

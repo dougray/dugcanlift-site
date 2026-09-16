@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-nasi-goreng",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ID",
+    "nativeName": "Nasi goreng",
+    "summary": "Fried rice with a chilli and shrimp-paste base, sweet soy sauce and an egg on top.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      3,
+      5,
+      4,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/nasi-goreng.jpg",
+      "author": "shankar s. from Dubai, united arab emirates",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nasi goreng",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "cold, from the day before"
+      },
+      {
+        "rawText": "250 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "diced"
+      },
+      {
+        "rawText": "150 g Prawns",
+        "item": "prawns",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Red chillies",
+        "item": "red chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tsp Terasi shrimp paste",
+        "item": "terasi shrimp paste",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Kecap manis",
+        "item": "kecap manis",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "150 g Cabbage",
+        "item": "cabbage",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "shredded"
+      },
+      {
+        "rawText": "Cucumber and fried shallots, to taste",
+        "item": "cucumber and fried shallots"
+      },
+      {
+        "rawText": "4 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 4,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Pound the shallot, garlic, chilli and terasi to a paste in a mortar. It smells aggressive; that is correct, frying softens it.",
+      "Heat the wok and fry the paste in the oil for two minutes, until it darkens and the smell turns deep.",
+      "Add the chicken and fry three minutes, then the prawns and cabbage for two more.",
+      "Tip in the cold rice, breaking up the lumps with the spatula, pour in the kecap manis and fry over a high flame for three minutes, tossing constantly.",
+      "Fry the eggs separately until the edges are lacy and the yolks loose. Serve the rice with an egg on top, slices of cucumber and fried shallots."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 34,
+      "carbsG": 70,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

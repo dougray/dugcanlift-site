@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-habichuelas-con-dulce",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DO",
+    "nativeName": "Habichuelas con dulce",
+    "summary": "A sweet dessert cream of red beans with coconut milk, sweet potato and biscuits.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      60,
+      8,
+      12,
+      8,
+      20,
+      22,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/habichuelas-con-dulce.jpg",
+      "author": "Arlene Campusano",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sweet cream of beans",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Red beans",
+        "item": "red beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "800 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "370 ml Evaporated milk",
+        "item": "evaporated milk",
+        "qty": 370,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Sweet potato",
+        "item": "sweet potato",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 g Sugar",
+        "item": "sugar",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "3 Cinnamon sticks",
+        "item": "cinnamon sticks",
+        "qty": 3
+      },
+      {
+        "rawText": "6 Cloves",
+        "item": "cloves",
+        "qty": 6
+      },
+      {
+        "rawText": "100 g Raisins",
+        "item": "raisins",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "150 g Milk biscuits",
+        "item": "milk biscuits",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Boil the soaked beans in fresh water for an hour, until completely soft.",
+      "Blend the beans with some of their liquid to a smooth mass.",
+      "Press the mass through a sieve with a spoon and discard the skins left behind.",
+      "Return it to the heat and add the coconut and evaporated milk, cinnamon, cloves and sugar.",
+      "Cook twenty minutes on a low heat, stirring so it does not catch.",
+      "Add the sweet potato in pieces and the raisins and cook twenty minutes more, until the potato is tender.",
+      "Stir in the vanilla, butter and a pinch of salt, chill it and serve it cold with biscuits."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 12,
+      "carbsG": 68,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

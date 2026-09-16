@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zurek",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PL",
+    "nativeName": "Żurek",
+    "summary": "A sour soup on a rye starter with white sausage and egg. The sourness comes from fermentation, not vinegar.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      30,
+      5,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/zurek.jpg",
+      "author": "Chris Olszewski",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Żurek",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 ml Rye starter",
+        "item": "rye starter",
+        "qty": 400,
+        "unit": "ml",
+        "note": "bought or home-made"
+      },
+      {
+        "rawText": "500 g White sausage",
+        "item": "white sausage",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "100 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Dried marjoram",
+        "item": "dried marjoram",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 l Vegetable or meat stock",
+        "item": "vegetable or meat stock",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "100 ml Single cream",
+        "item": "single cream",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "Horseradish, to taste",
+        "item": "horseradish"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Render the bacon in a pot, soften the onion in it, add the garlic and marjoram and warm them for half a minute.",
+      "Pour in the stock, lower the sausage in whole and simmer for thirty minutes. Do not pierce it, or its juices leave too early.",
+      "Lift the sausage out, slice it and return it to the pot. Shake the starter in its jar and pour it in, stirring.",
+      "Warm it for five minutes without letting it boil hard, stir in the cream and taste. If it is not sour enough, add more starter; salt at the end.",
+      "Ladle into bowls, add half a boiled egg each and serve with horseradish. In Poland żurek often comes in a hollowed loaf."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 26,
+      "carbsG": 22,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

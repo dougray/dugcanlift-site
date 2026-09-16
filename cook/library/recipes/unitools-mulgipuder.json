@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mulgipuder",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EE",
+    "nativeName": "Mulgipuder",
+    "summary": "A mash of potato and pearl barley with pork crackling. An Estonian dish recognised as a national symbol.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      62,
+      22,
+      14,
+      3,
+      8,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mulgipuder.jpg",
+      "author": "M0d3M",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mulgipuder",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "250 g Pearl barley",
+        "item": "pearl barley",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "rinsed"
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "250 g Smoked pork belly",
+        "item": "smoked pork belly",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "diced"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the barley and boil it in salted water for an hour, until soft.",
+      "Add the roughly cut potato to the same pot and cook twenty minutes more.",
+      "Render the pork belly to crackling, add the onion and fry until golden.",
+      "Drain most of the water from the barley and potato, keeping half a cup.",
+      "Mash with the butter and milk, leaving the barley grains still visible. Season with salt and pepper.",
+      "Serve into bowls and spoon the crackling, onion and rendered fat over the top."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 18,
+      "carbsG": 64,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ghapama",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AM",
+    "nativeName": "Ղափամա",
+    "summary": "A whole pumpkin baked with rice, dried fruit and nuts. A festive dish, cut open at the table.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      7,
+      12,
+      5,
+      5,
+      90,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ghapama.jpg",
+      "author": "Benoît Prieur",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ghapama",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "3 kg Pumpkin",
+        "item": "pumpkin",
+        "qty": 3,
+        "unit": "kg",
+        "grams": 3000,
+        "note": "round, firm-skinned"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "boiled until half done"
+      },
+      {
+        "rawText": "150 g Dried apricots",
+        "item": "dried apricots",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "120 g Prunes",
+        "item": "prunes",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "100 g Raisins",
+        "item": "raisins",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "120 g Walnuts",
+        "item": "walnuts",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "80 g Almonds",
+        "item": "almonds",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "3 tbsp Honey",
+        "item": "honey",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the top off the pumpkin with its stalk; that is the lid. Scoop out the seeds and loose flesh with a spoon, leaving a wall two fingers thick.",
+      "Boil the rice in salted water for seven minutes, to half done, and drain.",
+      "Cover the dried fruit with boiling water for ten minutes, drain, and chop the apricots and prunes coarsely. Chop the nuts.",
+      "Mix the rice with the fruit, nuts, melted butter, honey and cinnamon. Salt it: a sweet filling without salt tastes flat.",
+      "Fill the pumpkin, without packing it down, put the cut lid back on and set it on a baking tray.",
+      "Bake at 180 °C for an hour and a half. Test at the side with a knife: it should go into the wall without resistance.",
+      "Rest fifteen minutes, carry it out whole and cut it into wedges from the crown to the base."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 470,
+      "proteinG": 9,
+      "carbsG": 71,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

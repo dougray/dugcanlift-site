@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tarator",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BG",
+    "nativeName": "Таратор",
+    "summary": "A cold yoghurt soup with cucumber, garlic, dill and walnuts.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      12,
+      5,
+      6,
+      5,
+      5,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tarator.jpg",
+      "author": "MOs810",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tarator",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 ml Bulgarian yoghurt",
+        "item": "bulgarian yoghurt",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Cucumbers",
+        "item": "cucumbers",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "80 g Walnuts",
+        "item": "walnuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "3 tbsp Sunflower oil",
+        "item": "sunflower oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Cold water",
+        "item": "cold water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Grate the cucumbers coarsely or dice them small and salt them.",
+      "Leave the cucumber ten minutes to give up its water, but do not pour that water away.",
+      "Crush the garlic with salt into a paste so it does not turn up in pieces.",
+      "Grind the walnuts to a fine crumb, keeping a few larger pieces back.",
+      "Whisk the yoghurt with the cold water until even and add the garlic and walnuts.",
+      "Stir in the cucumber with its juice, the chopped dill and the sunflower oil.",
+      "Chill it an hour and serve with an ice cube in each bowl."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 260,
+      "proteinG": 12,
+      "carbsG": 14,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

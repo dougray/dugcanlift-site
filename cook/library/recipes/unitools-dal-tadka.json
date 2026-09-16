@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dal-tadka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "दाल तड़का",
+    "summary": "A lentil stew finished by pouring sizzling spiced fat over it. That step is the dish.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      3,
+      10,
+      2,
+      1,
+      1
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/dal-tadka.jpg",
+      "author": "Sriyarao22",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Dal tadka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "200 g Toor dal",
+        "item": "toor dal",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "rinsed"
+      },
+      {
+        "rawText": "0.5 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Ghee",
+        "item": "ghee",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Mustard seeds",
+        "item": "mustard seeds",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove",
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomato",
+        "item": "tomato",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Dried red chillies",
+        "item": "dried red chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "1 pinch Asafoetida",
+        "item": "asafoetida",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the lentils with three cups of water, add the turmeric and simmer covered for thirty minutes, until the grains collapse into a soft mass.",
+      "Mash some of the lentils against the side of the pot and season. The consistency should be that of a thick soup.",
+      "Separately fry the onion until golden, add the tomatoes and cook until they break down into a sauce. Stir that into the lentils.",
+      "Heat the ghee in a small pan until it is just short of smoking. Add the mustard seeds; they should crackle within seconds.",
+      "Add the cumin at once, the garlic and chillies ten seconds later, the asafoetida twenty seconds after that. The whole thing takes under a minute and cannot be left alone.",
+      "Pour the sizzling tadka straight into the lentils — it should hiss. Stir once and serve with rice or flatbread."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 16,
+      "carbsG": 42,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

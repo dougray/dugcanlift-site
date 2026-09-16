@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-api-morado",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BO",
+    "nativeName": "Api morado",
+    "summary": "A hot thick purple corn drink with cinnamon and cloves, with fried pastries.",
+    "category": "drink",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      12,
+      15,
+      5,
+      40,
+      7,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Api morado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Purple corn",
+        "item": "purple corn",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "2.5 l Water",
+        "item": "water",
+        "qty": 2.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "3 Cinnamon sticks",
+        "item": "cinnamon sticks",
+        "qty": 3
+      },
+      {
+        "rawText": "6 Cloves",
+        "item": "cloves",
+        "qty": 6
+      },
+      {
+        "rawText": "1 Orange peel",
+        "item": "orange peel",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Cheese for the pastel",
+        "item": "cheese for the pastel",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Soak the purple corn in cold water overnight, keeping that water in the morning.",
+      "Grind the corn with its water in a blender to an even purple liquid.",
+      "Strain it through a fine sieve, pressing the pulp, and strain it a second time.",
+      "Add the remaining water, the cinnamon, cloves and orange peel.",
+      "Cook over medium heat for forty minutes, stirring with a wooden spoon, until it thickens.",
+      "Add the sugar and lemon juice and cook five minutes more.",
+      "Remove the spices and serve it hot in mugs, with a fried cheese pastry."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 280,
+      "proteinG": 4,
+      "carbsG": 64,
+      "fatG": 2,
+      "estimated": true
+    }
+  }
+}

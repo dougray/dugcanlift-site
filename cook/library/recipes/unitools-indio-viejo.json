@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-indio-viejo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NI",
+    "nativeName": "Indio viejo",
+    "summary": "A thick stew of shredded beef, thickened with corn masa and mint.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      90,
+      20,
+      18,
+      8,
+      7,
+      24,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/indio-viejo.jpg",
+      "author": "MiguelRamirez77",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Indio viejo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Beef brisket",
+        "item": "beef brisket",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "150 g Masa harina",
+        "item": "masa harina",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Sweet pepper",
+        "item": "sweet pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Mint",
+        "item": "mint",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "150 ml Orange juice",
+        "item": "orange juice",
+        "qty": 150,
+        "unit": "ml",
+        "note": "from sour orange"
+      },
+      {
+        "rawText": "1 tsp Annatto",
+        "item": "annatto",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the brisket with an onion and salt for an hour and a half, until fully tender.",
+      "Lift out the meat, keep the broth and pull the beef into fine threads by hand.",
+      "Fry the onion, garlic, pepper and tomatoes with the annatto to a thick base.",
+      "Slake the masa in cold broth until smooth, without a single lump.",
+      "Add the shredded meat to the vegetable base and warm it five minutes.",
+      "Pour in the slaked masa in a thin stream, stirring constantly, and cook twenty minutes.",
+      "Add the orange juice, stir in the chopped mint and serve it with rice."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 42,
+      "carbsG": 44,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

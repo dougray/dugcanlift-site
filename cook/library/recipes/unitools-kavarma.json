@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kavarma",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BG",
+    "nativeName": "Каварма",
+    "summary": "Pork with mushrooms and peppers, stewed in a clay pot under an egg.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      9,
+      8,
+      6,
+      8,
+      45,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kavarma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Mushrooms",
+        "item": "mushrooms",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "150 g Brined white cheese",
+        "item": "brined white cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Summer savory",
+        "item": "summer savory",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the diced pork in oil on all sides.",
+      "Add the onion and peppers and fry seven minutes, until soft.",
+      "Add the mushrooms and cook over a high flame until their water has gone.",
+      "Take it off the heat, stir in the paprika and savory, add the wine and return it to the heat for three minutes.",
+      "Add the chopped tomatoes, season, and divide everything between the pots.",
+      "Bake at 180 °C for forty-five minutes, covered.",
+      "Take the lids off, break an egg into each pot, scatter the cheese and give them eight minutes more."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 46,
+      "carbsG": 16,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-coq-au-vin",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Coq au vin",
+    "summary": "Chicken braised in red wine with bacon, mushrooms and small onions. Marinating the day before does half the work.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      480,
+      15,
+      6,
+      60,
+      15,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/coq-au-vin.jpg",
+      "author": "stevendepolo",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Coq au vin",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken, jointed",
+        "item": "chicken, jointed",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "750 ml Dry red wine",
+        "item": "dry red wine",
+        "qty": 750,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "in lardons"
+      },
+      {
+        "rawText": "300 g Button mushrooms",
+        "item": "button mushrooms",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "250 g Small onions",
+        "item": "small onions",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 Carrot",
+        "item": "carrot",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "300 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 sprigs Thyme and bay",
+        "item": "thyme and bay",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the chicken with the wine, carrot, garlic and herbs and leave it in the fridge overnight. In the morning lift the meat out and dry it, keeping the wine.",
+      "Render the bacon in a casserole and lift it out. In that fat, brown the chicken hard on all sides, in batches.",
+      "Dust with the flour, stir and cook for two minutes. Pour in the marinade with its vegetables and the stock, bring to the boil and skim.",
+      "Braise covered over a low flame or at 160 °C for an hour. The sauce should barely tremble.",
+      "While it braises, fry the onions in butter until golden, and separately the mushrooms over a high flame until they colour.",
+      "Add the onions, mushrooms and bacon to the pot, give it ten minutes over a low flame and check the sauce for salt."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 48,
+      "carbsG": 16,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ohridska-pastrmka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MK",
+    "nativeName": "Ohridska pastrmka",
+    "summary": "Trout baked whole with lemon and herbs, from Lake Ohrid.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      8,
+      12,
+      5,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ohridska-pastrmka.jpg",
+      "author": "Mihail Verbal",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ohrid trout",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Trout",
+        "item": "trout",
+        "qty": 4,
+        "note": "whole, gutted"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the trout, pat them dry and cut two slashes on each side.",
+      "Rub the fish with salt, pepper, paprika and olive oil inside and out.",
+      "Tuck lemon slices, garlic, parsley and thyme into each cavity.",
+      "Slice the potatoes thin and lay them overlapping on an oiled tray.",
+      "Set the fish on the potatoes and pour over the wine and the remaining oil.",
+      "Bake at 200 °C for twenty-five minutes, until the skin colours.",
+      "Test at the spine and serve straight from the tray with a wedge of lemon."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 46,
+      "carbsG": 32,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

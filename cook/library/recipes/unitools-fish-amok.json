@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fish-amok",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KH",
+    "nativeName": "អាម៉ុកត្រី",
+    "summary": "Fish in a coconut curry, steamed in a cup folded from banana leaf.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      5,
+      8,
+      16,
+      10,
+      22,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fish-amok.jpg",
+      "author": "sharonang",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fish amok",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g White fish",
+        "item": "white fish",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "fillet, in pieces"
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Coconut cream",
+        "item": "coconut cream",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Galangal",
+        "item": "galangal",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "6 Kaffir lime leaves",
+        "item": "kaffir lime leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Egg",
+        "item": "egg",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Spinach or young cabbage",
+        "item": "spinach or young cabbage",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Banana leaves",
+        "item": "banana leaves",
+        "qty": 4
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Pound the lemongrass, galangal, turmeric, garlic, shallot and half the lime leaves in a mortar to a smooth paste.",
+      "Warm the paste in a pan with half the coconut milk for five minutes, until it smells right.",
+      "Take it off the heat, cool it to warm and whisk in the eggs, fish sauce, palm sugar and the rest of the milk.",
+      "Fold the fish pieces through and leave them to marinate fifteen minutes.",
+      "Fold cups from the banana leaves, or use ramekins. Line the bottom with spinach leaves.",
+      "Divide the fish and sauce between them without filling to the brim and steam for twenty minutes.",
+      "Spoon over the coconut cream, scatter with shredded lime leaves and serve with rice."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 32,
+      "carbsG": 14,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

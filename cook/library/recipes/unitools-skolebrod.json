@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-skolebrod",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NO",
+    "nativeName": "Skolebrød",
+    "summary": "A cardamom-scented bun with custard in the centre, icing and desiccated coconut.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      18,
+      62,
+      25,
+      45,
+      10,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/skolebrod.jpg",
+      "author": "BodyTag (ul by TBjornstad 19:22, 3 February 2008 (UTC))",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Skolebrød",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "400 ml Milk for the custard",
+        "item": "milk for the custard",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Cornflour",
+        "item": "cornflour",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "200 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "80 g Desiccated coconut",
+        "item": "desiccated coconut",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm milk with a spoon of sugar and leave it ten minutes.",
+      "Knead a dough from the flour, yeast mixture, sugar, cardamom, egg, salt and softened butter, working it fifteen minutes.",
+      "Let it rise somewhere warm for an hour, until doubled.",
+      "Cook a custard of milk, yolks, cornflour, sugar and vanilla and cool it completely under film.",
+      "Divide the dough into twelve balls, set them on a tray and prove them forty minutes.",
+      "Press a well into each bun with the base of a glass and spoon custard into it.",
+      "Bake at 200 °C for twelve minutes, cool them, pipe the icing in a ring and scatter the coconut."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 60,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

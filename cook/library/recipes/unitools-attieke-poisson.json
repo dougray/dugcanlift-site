@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-attieke-poisson",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CI",
+    "nativeName": "Attiéké",
+    "summary": "Steamed fermented cassava couscous with grilled fish and a sharp onion salad.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      25,
+      5,
+      12,
+      10,
+      14,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/attieke-poisson.jpg",
+      "author": "Zakouski",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Attiéké with fish",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Attiéké",
+        "item": "attiéké",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Tilapia or sea bream",
+        "item": "tilapia or sea bream",
+        "qty": 4,
+        "note": "whole, gutted"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Stock cube",
+        "item": "stock cube",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grind the garlic, ginger, chilli, stock cube, salt and oil into a paste.",
+      "Slash the fish at the sides and rub the paste inside the cuts and over the skin. Leave it twenty minutes.",
+      "Break up the attiéké with your hands, sprinkle it with hot water and salt it.",
+      "Cover it and let it steam ten minutes, in a steamer or simply covered somewhere warm.",
+      "Slice the onion, tomatoes and chilli and mix them with lemon juice, salt and a spoon of oil.",
+      "Grill the fish over coals or in a griddle pan, seven minutes a side.",
+      "Serve the attiéké, fish and salad on one plate, with a wedge of lemon."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 40,
+      "carbsG": 58,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

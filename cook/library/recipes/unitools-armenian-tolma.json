@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-armenian-tolma",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AM",
+    "nativeName": "Պասուց տոլմա",
+    "summary": "A lenten dolma of soured cabbage leaves with lentils, beans and grains.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      70,
+      20,
+      15,
+      10,
+      15,
+      35,
+      70
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pasuts tolma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "800 g Soured cabbage leaves",
+        "item": "soured cabbage leaves",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 g Red beans",
+        "item": "red beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "150 g Lentils",
+        "item": "lentils",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "100 g Cracked wheat",
+        "item": "cracked wheat",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Rice",
+        "item": "rice",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the beans, chickpeas and lentils separately until soft; each takes its own time.",
+      "Parboil the cracked wheat and the rice and drain them.",
+      "Fry the chopped onion in oil until golden and add the tomato paste and paprika.",
+      "Combine all the grains and pulses with the onion, season, and stir in the coriander.",
+      "Rinse the cabbage leaves of excess brine and pare down the thick ribs.",
+      "Roll the filling in the leaves into tight parcels, packing them in layers in a pot.",
+      "Add water to the level of the top layer, cover with a weighted plate and cook an hour on a low heat. Cool it completely."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 16,
+      "carbsG": 58,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

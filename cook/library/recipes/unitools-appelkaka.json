@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-appelkaka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SE",
+    "nativeName": "Äppelkaka",
+    "summary": "An apple cake with cinnamon under a crisp butter crumble, served with vanilla sauce.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      4,
+      10,
+      5,
+      45,
+      8,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/appelkaka.jpg",
+      "author": "b:sv:Marsve (talk | contribs)",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Swedish apple cake",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1 kg Tart apples",
+        "item": "tart apples",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "200 g Flour",
+        "item": "flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "cold"
+      },
+      {
+        "rawText": "150 g Sugar",
+        "item": "sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 g Rolled oats",
+        "item": "rolled oats",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml",
+        "note": "for the sauce"
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml",
+        "note": "for the sauce"
+      },
+      {
+        "rawText": "4 Egg yolks",
+        "item": "egg yolks",
+        "qty": 4
+      },
+      {
+        "rawText": "1 Vanilla",
+        "item": "vanilla",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Cornflour",
+        "item": "cornflour",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Peel the apples, cut them into thick wedges and spread them in a buttered dish.",
+      "Scatter half the sugar and the cinnamon over the apples and toss them lightly in the dish.",
+      "Rub the cold butter into the flour with the remaining sugar and salt, using your fingertips, to a coarse crumb.",
+      "Mix in the oats and scatter the crumble over the apples without pressing it down.",
+      "Bake at 190 °C for forty minutes, until the top is golden and juice bubbles at the edges.",
+      "Warm the milk and cream with the split vanilla pod, without letting it boil.",
+      "Whisk the yolks with the cornflour, pour in the hot milk in a thin stream and cook the sauce to thickness, stirring."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 7,
+      "carbsG": 62,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

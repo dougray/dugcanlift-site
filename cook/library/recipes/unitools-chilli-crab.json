@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chilli-crab",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SG",
+    "nativeName": "辣椒螃蟹",
+    "summary": "Crab in a thick tomato-chilli sauce bound with egg, mopped up with fried mantou buns.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      4,
+      10,
+      4,
+      3,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chilli-crab.jpg",
+      "author": "megawatts86",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chilli crab",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Mud crab",
+        "item": "mud crab",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "cleaned and jointed"
+      },
+      {
+        "rawText": "150 ml Tomato ketchup",
+        "item": "tomato ketchup",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Sambal paste",
+        "item": "sambal paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Fresh red chillies",
+        "item": "fresh red chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Rice vinegar",
+        "item": "rice vinegar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "300 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "8 Mantou buns",
+        "item": "mantou buns",
+        "qty": 8
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Coriander",
+        "item": "coriander",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Joint the crab: lift the shell, cut the body into four and crack the claws with the back of a knife.",
+      "Pound the garlic, ginger and chillies to a paste and fry it in oil for three minutes, until fragrant.",
+      "Add the sambal, ketchup, sugar and vinegar and cook two minutes, until the sauce darkens.",
+      "Pour in the stock, bring it up and add the crab pieces. Cover and cook eight minutes.",
+      "Slake the cornflour in cold water and stir it in to thicken the sauce.",
+      "Turn off the heat and pour in the beaten eggs in a thin stream, stirring once in a circle.",
+      "Scatter with coriander and serve with the fried mantou."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 40,
+      "carbsG": 48,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gong-bao-chicken",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CN",
+    "nativeName": "宫保鸡丁",
+    "summary": "Diced chicken with peanuts and dried chillies in a sauce where the vinegar matters more than the sugar.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      3,
+      1,
+      3,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gong-bao-chicken.jpg",
+      "author": "John Thompson from Iqaluit",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gong bao chicken",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in 2 cm dice"
+      },
+      {
+        "rawText": "1 Egg white",
+        "item": "egg white",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "8 Whole dried chillies",
+        "item": "whole dried chillies",
+        "qty": 8
+      },
+      {
+        "rawText": "1 tsp Sichuan peppercorns",
+        "item": "sichuan peppercorns",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Chinkiang black vinegar",
+        "item": "chinkiang black vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "15 g Ginger",
+        "item": "ginger",
+        "qty": 15,
+        "unit": "g",
+        "grams": 15
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Mix the chicken with the egg white, a spoon of cornflour, a spoon of soy and a pinch of salt, and leave it twenty minutes.",
+      "Mix the sauce in advance: vinegar, the rest of the soy, the sugar and the rest of the cornflour with two spoons of water. Keep it within reach — there is no time to mix it later.",
+      "Heat the oil and fry the chillies with the Sichuan pepper for twenty seconds, until dark but not black. Burnt chilli turns bitter.",
+      "Add the chicken and leave it alone for a minute, then toss and cook through — two minutes more.",
+      "Throw in the garlic, ginger and the white of the spring onion, then after half a minute pour in the sauce. It thickens in seconds. Off the heat, add the peanuts and the green of the onion."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 470,
+      "proteinG": 38,
+      "carbsG": 22,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

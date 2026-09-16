@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kapustnica",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SK",
+    "nativeName": "Kapustnica",
+    "summary": "A soup of sauerkraut with smoked meat, sausage and dried mushrooms. The Slovak Christmas table.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      40,
+      32,
+      10,
+      16,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kapustnica.jpg",
+      "author": "Auctor quaerendae",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kapustnica",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Sauerkraut",
+        "item": "sauerkraut",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "with its brine"
+      },
+      {
+        "rawText": "500 g Smoked pork ribs",
+        "item": "smoked pork ribs",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Smoked sausage",
+        "item": "smoked sausage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "in rounds"
+      },
+      {
+        "rawText": "30 g Dried porcini",
+        "item": "dried porcini",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Prunes",
+        "item": "prunes",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tbsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the mushrooms in a cup of warm water for twenty minutes. Keep the water.",
+      "Simmer the smoked ribs in two litres of water for forty minutes with the bay.",
+      "Squeeze the kraut and set the brine aside. Add the kraut, the mushrooms with their water and the prunes to the broth and cook thirty minutes.",
+      "Fry the onion, take it off the heat, stir in the paprika and flour and let it down with a ladle of broth until smooth.",
+      "Pour the roux into the pot, add the sausage and cook fifteen minutes more.",
+      "Strip the meat off the bones, return it to the soup and bring the sourness up with the brine to taste. Serve with soured cream."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 26,
+      "carbsG": 26,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

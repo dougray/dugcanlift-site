@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-laksa-singapore",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SG",
+    "nativeName": "Katong laksa",
+    "summary": "Rice noodles in a coconut broth with prawns, cut short and eaten with a spoon only.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      27,
+      22,
+      15,
+      20,
+      17,
+      7,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/laksa-singapore.jpg",
+      "author": "Giddy98",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Katong laksa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Thick rice noodles",
+        "item": "thick rice noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 g Prawns",
+        "item": "prawns",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "shell-on"
+      },
+      {
+        "rawText": "300 g Cockles",
+        "item": "cockles",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "500 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "12 Dried chillies",
+        "item": "dried chillies",
+        "qty": 12
+      },
+      {
+        "rawText": "8 Shallots",
+        "item": "shallots",
+        "qty": 8
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Galangal",
+        "item": "galangal",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "2 tsp Belacan",
+        "item": "belacan",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "5 Candlenuts",
+        "item": "candlenuts",
+        "qty": 5
+      },
+      {
+        "rawText": "40 g Dried shrimp",
+        "item": "dried shrimp",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "20 g Laksa leaf",
+        "item": "laksa leaf",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "150 g Bean sprouts",
+        "item": "bean sprouts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the prawns, fry the shells and simmer them in a litre of water for twenty minutes, then strain.",
+      "Soak the dried chillies and dried shrimp in boiling water for twenty minutes.",
+      "Blend the chillies, shallot, garlic, lemongrass, galangal, turmeric, candlenuts and belacan into a paste.",
+      "Fry the paste in oil for twenty minutes over medium heat, until the oil breaks out at the edges.",
+      "Add the prawn broth and the laksa leaf and cook fifteen minutes.",
+      "Add the coconut milk, season and warm it five minutes without letting it boil.",
+      "Cut the cooked noodles into short lengths, divide them between bowls with the prawns and sprouts and ladle over the broth."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 38,
+      "carbsG": 62,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

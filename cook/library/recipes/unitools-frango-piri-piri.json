@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-frango-piri-piri",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MZ",
+    "nativeName": "Frango à cafreal",
+    "summary": "Chicken spatchcocked and grilled over coals under a sauce of piri-piri, garlic and lemon.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      2,
+      12,
+      25,
+      48,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/frango-piri-piri.jpg",
+      "author": "Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you want to use this picture out of the Wikimedia project scope. This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license. You are free: to share – to copy, distribute and transmit the work to remix – to adapt the work Under the following conditions: attribution – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. share alike – If you remix, transform, or build upon the material, you must distribute your contributions under the same or compatible license as the original.https://creativecommons.org/licenses/by-sa/4.0CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Piri-piri chicken",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Whole chicken",
+        "item": "whole chicken",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600
+      },
+      {
+        "rawText": "8 Piri-piri chillies",
+        "item": "piri-piri chillies",
+        "qty": 8
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Smoked paprika",
+        "item": "smoked paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tbsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the chicken along the backbone, open it out and press it flat.",
+      "Blend the chillies, garlic, the juice of two lemons, paprika, vinegar, oregano, oil and salt.",
+      "Pour half the sauce into a separate bowl; that half is for basting.",
+      "Coat the chicken with the rest, working it under the skin, and refrigerate overnight.",
+      "Light the coals and rake them to the sides; the heat has to be indirect.",
+      "Grill the chicken skin up for thirty minutes, then turn it and give it fifteen more.",
+      "For the last five minutes baste with the reserved sauce mixed with melted butter. Serve with lemon."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 52,
+      "carbsG": 8,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

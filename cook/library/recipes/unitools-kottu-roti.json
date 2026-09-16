@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kottu-roti",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LK",
+    "nativeName": "කොත්තු රොටි",
+    "summary": "Godamba roti chopped on the griddle with vegetables, egg and curry, worked with two cleavers.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      6,
+      3,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kottu-roti.jpg",
+      "author": "Dan arndt",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kottu roti",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "6 Roti or paratha",
+        "item": "roti or paratha",
+        "qty": 6,
+        "note": "from the day before"
+      },
+      {
+        "rawText": "300 g Cooked chicken",
+        "item": "cooked chicken",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "shredded"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Leek",
+        "item": "leek",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1,
+        "note": "julienned"
+      },
+      {
+        "rawText": "200 g Cabbage",
+        "item": "cabbage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "shredded"
+      },
+      {
+        "rawText": "200 ml Chicken curry with sauce",
+        "item": "chicken curry with sauce",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Green chillies",
+        "item": "green chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tsp Curry powder",
+        "item": "curry powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the roti into centimetre strips: that makes the chopping easier later.",
+      "Heat a large pan with the oil, fry the onion, leek and chilli two minutes, add the carrot and cabbage and cook three more.",
+      "Push the vegetables aside, break the eggs into the cleared space, let them set and break them up.",
+      "Add the chicken, curry powder and strips of roti and start chopping with two spatulas, mixing as you go. Three minutes of real work.",
+      "Pour the curry sauce down the side and keep chopping a minute more. The mixture should be moist but not wet."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 32,
+      "carbsG": 66,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

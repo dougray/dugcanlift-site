@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-horiatiki-salata",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GR",
+    "nativeName": "Χωριάτικη σαλάτα",
+    "summary": "The village salad, with no leaves in it: tomato, cucumber, onion, olives and a whole slab of feta on top.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      null,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/horiatiki-salata.jpg",
+      "author": "User:Jpatokal",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Horiatiki salad",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Ripe tomatoes",
+        "item": "ripe tomatoes",
+        "qty": 4,
+        "note": "in large wedges"
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1,
+        "note": "in thick half-moons"
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "1 Green pepper",
+        "item": "green pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Feta",
+        "item": "feta",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "in one piece"
+      },
+      {
+        "rawText": "80 g Kalamata olives",
+        "item": "kalamata olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the tomatoes into large wedges and salt them straight in the bowl. Leave them five minutes: the juice they give up becomes the base of the dressing.",
+      "Add the cucumber, pepper and onion. Mix with your hands rather than a spoon — nothing breaks that way.",
+      "Scatter the olives over, lay the slab of feta on top and pour the oil over everything at once. Sprinkle the oregano straight onto the feta, where the oil will open it up."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 10,
+      "carbsG": 11,
+      "fatG": 27,
+      "estimated": true
+    }
+  }
+}

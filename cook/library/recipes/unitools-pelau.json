@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pelau",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TT",
+    "nativeName": "Pelau",
+    "summary": "Rice with chicken, pigeon peas and coconut milk, browned in burnt sugar.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      5,
+      5,
+      12,
+      7,
+      6,
+      28
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pelau.jpg",
+      "author": "Arnold Gatilao from Oakland, CA, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pelau",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Pigeon peas",
+        "item": "pigeon peas",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "half-cooked"
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Brown sugar",
+        "item": "brown sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Green seasoning",
+        "item": "green seasoning",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Ketchup",
+        "item": "ketchup",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Coleslaw",
+        "item": "coleslaw",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Marinate the chicken in the green seasoning, ketchup, salt and pepper for at least an hour.",
+      "Heat the oil in a heavy pot and add the sugar, without stirring it with a spoon.",
+      "Wait until the sugar darkens almost to black and starts to smoke, and put the chicken in at once.",
+      "Fry the chicken, turning it in the caramel, until every piece is dark brown.",
+      "Add the onion, carrot, pumpkin and pigeon peas and warm them five minutes.",
+      "Add the rinsed rice, pour in the coconut milk and water to a finger above and drop in the whole chilli.",
+      "Cover and cook twenty-five minutes on a low heat without opening it. Serve with coleslaw."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 82,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

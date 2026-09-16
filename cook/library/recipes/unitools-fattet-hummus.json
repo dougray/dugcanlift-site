@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fattet-hummus",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LB",
+    "nativeName": "فتة حمص",
+    "summary": "Layers of fried pita, hot chickpeas and garlic yoghurt with browned butter and pine nuts.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      90,
+      12,
+      6,
+      4,
+      6,
+      5,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fattet-hummus.jpg",
+      "author": "روتانا",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fattet hummus",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "3 Pita bread",
+        "item": "pita bread",
+        "qty": 3
+      },
+      {
+        "rawText": "700 ml Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 tbsp Tahini",
+        "item": "tahini",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the chickpeas in unsalted water for ninety minutes, until completely soft, and keep the water.",
+      "Tear the pitas into two-finger pieces and fry them in oil to a golden crisp.",
+      "Whisk the yoghurt with the tahini, crushed garlic, lemon juice and salt until smooth.",
+      "Let the yoghurt mixture down with a couple of spoons of the chickpea water to the body of thick cream.",
+      "Fry the pine nuts in the ghee until golden and take them off the heat.",
+      "Spread the fried bread in a dish and top it with the hot chickpeas and a spoon of their liquid.",
+      "Pour over the yoghurt, spoon on the butter and nuts, dust with paprika and parsley and serve at once."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 26,
+      "carbsG": 54,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

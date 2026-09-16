@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-spas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AM",
+    "nativeName": "Սպաս",
+    "summary": "A soup of matsun and wheat groats. The whole difficulty is keeping the yoghurt base from splitting.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      27,
+      5,
+      20,
+      6,
+      8,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/spas.jpg",
+      "author": "Hakskdnsnsnnd",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Spas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 l Matsun or plain yoghurt",
+        "item": "matsun or plain yoghurt",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "120 g Dzavar (cracked wheat)",
+        "item": "dzavar (cracked wheat)",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "20 g Coriander",
+        "item": "coriander",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the dzavar overnight, then boil it in a litre of water until soft, about twenty-five minutes. Keep the water.",
+      "Whisk the matsun with the egg and flour until completely smooth. No lumps may remain; each one becomes a curd in the soup.",
+      "Pour the mixture into a cold pan and heat it over medium, stirring with a wooden spoon in one direction, until it comes to a boil.",
+      "At the first bubbles, stir in the wheat with its cooking water and hold it on a low heat for five more minutes.",
+      "Fry the onion in butter until golden and stir it into the soup with the dried mint. Salt to taste.",
+      "Ladle out and scatter with coriander. Spas must not be boiled twice; reheat it only until hot."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 280,
+      "proteinG": 14,
+      "carbsG": 30,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-goi-cuon",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VN",
+    "nativeName": "Gỏi cuốn",
+    "summary": "Fresh rice paper rolls with prawn, pork, noodles and herbs, never fried.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      30,
+      2,
+      8,
+      6,
+      4,
+      15,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/goi-cuon.jpg",
+      "author": "pelican from Tokyo, Japan",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gỏi cuốn",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "16 Rice paper",
+        "item": "rice paper",
+        "qty": 16
+      },
+      {
+        "rawText": "400 g Prawns",
+        "item": "prawns",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Pork belly",
+        "item": "pork belly",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 g Rice vermicelli",
+        "item": "rice vermicelli",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Lettuce",
+        "item": "lettuce",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "30 g Mint",
+        "item": "mint",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "30 g Garlic chives",
+        "item": "garlic chives",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 tbsp Peanut butter",
+        "item": "peanut butter",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Hoisin sauce",
+        "item": "hoisin sauce",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the pork belly in salted water for thirty minutes, cool it and slice it thin.",
+      "Boil the prawns two minutes, cool them and split each one lengthways.",
+      "Boil the vermicelli, rinse it in cold water and drain it well.",
+      "Let the peanut butter down with the hoisin, garlic and water to the thickness of pouring cream.",
+      "Dip a sheet of rice paper in warm water for two seconds and lay it on a damp cloth.",
+      "Lay two prawn halves cut side down in the upper third, and below them the lettuce, noodles, pork and herbs.",
+      "Fold the bottom up, tuck the sides in and roll it tight. Serve with the peanut sauce."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 28,
+      "carbsG": 44,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

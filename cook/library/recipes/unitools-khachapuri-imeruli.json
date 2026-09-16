@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-khachapuri-imeruli",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GE",
+    "nativeName": "იმერული ხაჭაპური",
+    "summary": "A round flatbread with the cheese inside rather than on top. The dough is made on matsoni, and there is as much filling as there is dough.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      10,
+      60,
+      5,
+      10,
+      16
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/khachapuri-imeruli.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Imeretian khachapuri",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 ml Matsoni or kefir",
+        "item": "matsoni or kefir",
+        "qty": 200,
+        "unit": "ml",
+        "note": "at room temperature"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "melted"
+      },
+      {
+        "rawText": "1 tsp Dry yeast",
+        "item": "dry yeast",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "250 g Suluguni",
+        "item": "suluguni",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "grated"
+      },
+      {
+        "rawText": "250 g Fresh curd cheese",
+        "item": "fresh curd cheese",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Stir the yeast and sugar into the warm matsoni and leave it ten minutes to foam. No foam means dead yeast, so start again.",
+      "Add the egg, the melted butter, the salt and the flour. Knead a soft dough: it should stay slightly tacky, and no more flour goes in.",
+      "Cover it and leave it somewhere warm for an hour, until it has doubled.",
+      "Mix both cheeses together by hand until even and divide into four balls. Divide the dough into four as well.",
+      "Roll each piece of dough into a disc, set a ball of cheese in the middle, gather the edges to the centre and pinch them shut. Turn it seam down and roll it gently to about a centimetre thick.",
+      "Cook in a dry pan over medium heat for about four minutes a side, until dark spots appear. Brush the finished bread with butter."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 28,
+      "carbsG": 58,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

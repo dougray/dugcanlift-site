@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bryndzove-halusky",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SK",
+    "nativeName": "Bryndzové halušky",
+    "summary": "Potato dumplings with sheep's brynza and bacon crackling. Slovakia's national dish.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      5,
+      10,
+      10,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bryndzove-halusky.jpg",
+      "author": "Gregory finster",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bryndzové halušky",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "raw, finely grated"
+      },
+      {
+        "rawText": "250 g Flour",
+        "item": "flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "400 g Sheep's brynza",
+        "item": "sheep's brynza",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "diced"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Grate the potatoes finely and squeeze them lightly; only a little water should go, as a dry mass will not bind.",
+      "Mix in the flour, egg and salt. The mass should slide off a spoon slowly rather than pour.",
+      "Fry the bacon in a dry pan until crisp and lift it out, keeping the fat.",
+      "Push the dough into boiling salted water through a colander with large holes. The dumplings are done when they float, after about three minutes.",
+      "Drain the dumplings, return them to the warm pan and stir in the brynza with a spoon of the cooking water. Keep the heat off.",
+      "Serve into bowls, spoon over the hot fat and scatter the crackling on top."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 24,
+      "carbsG": 58,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

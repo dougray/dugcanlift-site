@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kaesespaetzle",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Käsespätzle",
+    "summary": "Swabian egg noodles layered with cheese and buried under fried onion.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      20,
+      10,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kaesespaetzle.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Käsespätzle",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "150 ml Water or milk",
+        "item": "water or milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 g Emmental or Bergkäse",
+        "item": "emmental or bergkäse",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "grated"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 pinch Nutmeg",
+        "item": "nutmeg",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Mix the flour, eggs, water, salt and nutmeg and beat the dough with a spoon for a good five minutes, until bubbles rise and it starts to string off the spoon.",
+      "While the dough rests, fry the onion in butter over medium heat until deep gold. That is twenty minutes, not five — the sugars need the time to caramelise.",
+      "Press the dough into boiling salted water through a spätzle grater or a wide-holed colander. They float within a minute; lift them out with a slotted spoon.",
+      "Layer them into a warm dish: spätzle, cheese, spätzle, cheese. The heat of the noodles melts it; no oven is needed.",
+      "Bury it under the fried onion and serve at once. The classic side is a green salad with a vinegar dressing, and it is a counterweight rather than a garnish."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 30,
+      "carbsG": 78,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

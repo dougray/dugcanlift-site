@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-curanto-en-olla",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CL",
+    "nativeName": "Pulmay",
+    "summary": "Shellfish, meat and potato cakes cooked in layers in one pot without water.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      30,
+      6,
+      10,
+      10,
+      8,
+      60
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/curanto-en-olla.jpg",
+      "author": "Renzo Disi",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Curanto en olla",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Mussels",
+        "item": "mussels",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "1 kg Clams",
+        "item": "clams",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "800 g Pork ribs",
+        "item": "pork ribs",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "800 g Chicken",
+        "item": "chicken",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "400 g Smoked sausage",
+        "item": "smoked sausage",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "200 g Flour",
+        "item": "flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "for the cakes"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "250 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "8 Cabbage leaves",
+        "item": "cabbage leaves",
+        "qty": 8
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "60 g Lard",
+        "item": "lard",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Scrub the shellfish through several changes of water and discard any that are already open.",
+      "Boil half the potatoes, mash them and work them with the flour and lard into firm chapalele cakes.",
+      "Line the bottom of the pot with two layers of cabbage leaves.",
+      "Lay the shellfish in as the first layer, add the wine and cover with more cabbage leaves.",
+      "Arrange the ribs, chicken, sausage and onion as the second layer and cover with leaves again.",
+      "Put the whole potatoes and the cakes on top, cover with leaves and close the lid tightly.",
+      "Cook over medium heat for an hour without opening it. Serve in layers, with the broth from the bottom in separate bowls."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 68,
+      "carbsG": 58,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

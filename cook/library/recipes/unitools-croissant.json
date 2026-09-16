@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-croissant",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Croissant",
+    "summary": "A laminated yeasted dough with twenty-seven layers of butter. Temperature decides everything: dough and butter must be equally cold.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      8,
+      240,
+      12,
+      10,
+      150,
+      20,
+      140
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/croissant.jpg",
+      "author": "Sarah Stierch",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Croissant",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Strong flour",
+        "item": "strong flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "280 ml Cold milk",
+        "item": "cold milk",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "15 g Fresh yeast",
+        "item": "fresh yeast",
+        "qty": 15,
+        "unit": "g",
+        "grams": 15
+      },
+      {
+        "rawText": "55 g Sugar",
+        "item": "sugar",
+        "qty": 55,
+        "unit": "g",
+        "grams": 55
+      },
+      {
+        "rawText": "11 g Salt",
+        "item": "salt",
+        "qty": 11,
+        "unit": "g",
+        "grams": 11
+      },
+      {
+        "rawText": "40 g Butter for the dough",
+        "item": "butter for the dough",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "softened"
+      },
+      {
+        "rawText": "280 g Butter for laminating",
+        "item": "butter for laminating",
+        "qty": 280,
+        "unit": "g",
+        "grams": 280,
+        "note": "82% fat"
+      },
+      {
+        "rawText": "1 Egg for glazing",
+        "item": "egg for glazing",
+        "qty": 1
+      }
+    ],
+    "steps": [
+      "Mix the flour, cold milk, yeast, sugar, salt and softened butter for five minutes. No longer: strong gluten fights the rolling later.",
+      "Flatten the dough into a rectangle, wrap it and refrigerate at least four hours, better overnight.",
+      "Beat the cold butter with a rolling pin into a centimetre-thick square and keep it cold. It should bend without cracking or melting.",
+      "Roll the dough to twice the size of the butter square, lay the butter in the middle and fold the edges over it like an envelope, sealing the seams.",
+      "Roll it into a long rectangle and fold it in three. Chill forty minutes. Repeat twice more — three folds in all.",
+      "Roll the dough to four millimetres, cut triangles with a ten-centimetre base and roll each from the base to the tip, stretching gently.",
+      "Prove two hours at 25 °C — no warmer, or the butter runs out. Glaze with egg and bake at 200 °C for eighteen minutes."
+    ],
+    "prepMinutes": 180,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 40,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

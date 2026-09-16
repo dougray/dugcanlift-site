@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ceviche",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PE",
+    "nativeName": "Cebiche",
+    "summary": "Raw fish in lime juice with onion and ají. It marinates for minutes, not hours — longer and it is cooked through.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      5,
+      5,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ceviche.jpg",
+      "author": "Picanteria karol",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ceviche",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Sashimi-grade white fish",
+        "item": "sashimi-grade white fish",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in 2 cm cubes"
+      },
+      {
+        "rawText": "10 Limes",
+        "item": "limes",
+        "qty": 10,
+        "note": "juiced"
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1,
+        "note": "sliced paper-thin"
+      },
+      {
+        "rawText": "1 Ají limo or rocoto",
+        "item": "ají limo or rocoto",
+        "qty": 1
+      },
+      {
+        "rawText": "4 sprigs Coriander",
+        "item": "coriander",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 Sweet potato",
+        "item": "sweet potato",
+        "qty": 1,
+        "note": "boiled"
+      },
+      {
+        "rawText": "150 g Choclo corn",
+        "item": "choclo corn",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "boiled"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the sliced onion in iced water for ten minutes and pat it dry: the harshness goes, the flavour stays.",
+      "Squeeze the limes by hand rather than in a press: pressure on the skin releases bitter oils.",
+      "Salt the fish, mix it with the chopped ají and coriander, pour the lime over and leave it exactly three to five minutes. The edges turn opaque and the middle stays translucent.",
+      "Add the onion, toss once and serve at once with the sweet potato and corn. Pour the juice from the bowl into small glasses."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 290,
+      "proteinG": 34,
+      "carbsG": 30,
+      "fatG": 3,
+      "estimated": true
+    }
+  }
+}

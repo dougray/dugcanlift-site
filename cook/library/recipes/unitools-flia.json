@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-flia",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "XK",
+    "nativeName": "Flia",
+    "summary": "A layered pie of thin batter, poured one layer at a time under a heated iron lid called a saç.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      5,
+      8,
+      6,
+      5,
+      60,
+      14
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/flia.jpg",
+      "author": "Arbenllapashtica",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Flia",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "900 ml Water",
+        "item": "water",
+        "qty": 900,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 ml Soured cream",
+        "item": "soured cream",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "300 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 300,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "100 g Honey",
+        "item": "honey",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 tsp Salt",
+        "item": "salt",
+        "qty": 2,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Whisk the flour with the water and salt into a smooth thin batter — thicker than for pancakes, but pourable.",
+      "Let the soured cream down with cold water to the consistency of thin cream and salt it.",
+      "Butter a round tin and pour the batter in stripes from the centre outwards, like the spokes of a wheel.",
+      "Put it under the top grill for four minutes, until the layer sets and spots appear.",
+      "Sprinkle with the thinned cream and pour the next layer into the gaps between the previous stripes.",
+      "Repeat, alternating the direction of the stripes, until the batter runs out — usually twenty to twenty-five layers.",
+      "Pour over melted butter, rest it ten minutes and serve with yoghurt or honey."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 10,
+      "carbsG": 52,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

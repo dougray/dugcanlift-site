@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gravlaks",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NO",
+    "nativeName": "Gravlaks",
+    "summary": "Salmon cured for two days under a weight with salt, sugar and dill. No heat and no smoke.",
+    "category": "snack",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      6,
+      4,
+      2880,
+      5,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gravlaks",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1 kg Salmon fillet, skin on",
+        "item": "salmon fillet, skin on",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "the middle cut"
+      },
+      {
+        "rawText": "100 g Coarse salt",
+        "item": "coarse salt",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "90 g Sugar",
+        "item": "sugar",
+        "qty": 90,
+        "unit": "g",
+        "grams": 90
+      },
+      {
+        "rawText": "100 g Dill",
+        "item": "dill",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tbsp White peppercorns",
+        "item": "white peppercorns",
+        "qty": 1,
+        "unit": "tbsp",
+        "note": "crushed"
+      },
+      {
+        "rawText": "2 tbsp Aquavit or vodka",
+        "item": "aquavit or vodka",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "optional"
+      },
+      {
+        "rawText": "3 tbsp Mustard for the sauce",
+        "item": "mustard for the sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Vinegar for the sauce",
+        "item": "vinegar for the sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Oil for the sauce",
+        "item": "oil for the sauce",
+        "qty": 100,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Run your fingers over the fillet for pin bones and pull them with tweezers. Leave the skin on: it holds the shape while curing.",
+      "Mix the salt, sugar and crushed pepper. Sprinkle the fish with aquavit and rub the mixture into the flesh.",
+      "Lay half the dill in a dish, the fish on it skin down, and bury it under the rest of the dill.",
+      "Cover with film, set a board and a kilo weight on top and refrigerate for forty-eight hours.",
+      "Every twelve hours pour off the brine that has collected and turn the fish over.",
+      "Scrape off the cure, pat the fish dry and slice it thinly on the diagonal, stopping at the skin. Serve with a mustard sauce of mustard, sugar, vinegar and oil."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 280,
+      "proteinG": 26,
+      "carbsG": 4,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-moules-marinieres",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BE",
+    "nativeName": "Moules marinières",
+    "summary": "Mussels steamed in white wine with celery and onion. Five minutes under a lid, no longer.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      6,
+      3,
+      6,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/moules-marinieres.jpg",
+      "author": "Archangel12",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Moules marinières",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 kg Mussels",
+        "item": "mussels",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "live, in the shell"
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Celery",
+        "item": "celery",
+        "qty": 3
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "300 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "3 sprigs Thyme and bay",
+        "item": "thyme and bay",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "800 g Chips",
+        "item": "chips",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "Black pepper, to taste",
+        "item": "black pepper"
+      }
+    ],
+    "steps": [
+      "Sort the mussels: discard any that are cracked or that will not close when tapped. Pull away the beards and rinse them under the tap.",
+      "Melt the butter in a wide pot and sweat the shallot, celery and garlic for five minutes without letting them colour.",
+      "Pour in the wine, add the thyme and bay and bring it to the boil.",
+      "Tip in the mussels, cover at once and hold them over a fierce flame for five minutes, shaking the pot a couple of times.",
+      "Lift the lid: the shells should be open. Throw out any that are not. Scatter parsley, add pepper and serve with chips and the broth in a separate cup."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 38,
+      "carbsG": 52,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

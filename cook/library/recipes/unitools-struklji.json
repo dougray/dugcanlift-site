@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-struklji",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SI",
+    "nativeName": "Štruklji",
+    "summary": "A roll of thin dough with a curd filling, boiled in cloth and cut into rounds.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      45,
+      10,
+      20,
+      12,
+      10,
+      55
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/struklji.jpg",
+      "author": "Hladnikm",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Štruklji",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 ml Warm water",
+        "item": "warm water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "700 g Curd cheese",
+        "item": "curd cheese",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "20 g Tarragon",
+        "item": "tarragon",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20,
+        "note": "for the savoury version"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "80 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knead a soft dough from the flour, warm water, oil and salt and work it fifteen minutes.",
+      "Cover it with a warmed bowl and rest it forty minutes; the dough has to turn pliable.",
+      "Work the curd with the eggs, soured cream, sugar and raisins until even.",
+      "Stretch the dough by hand on a cloth until translucent, as for strudel.",
+      "Spread the filling over the sheet, leaving the edges clear, and roll it up using the cloth.",
+      "Wrap the roll loosely in a clean cloth, tie the ends and lower it into boiling salted water.",
+      "Boil it forty minutes, unwrap it, cut it into rounds and fry them in butter with the breadcrumbs."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 20,
+      "carbsG": 50,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

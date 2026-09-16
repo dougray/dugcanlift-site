@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chimichurri",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AR",
+    "nativeName": "Chimichurri",
+    "summary": "A sauce of parsley, oregano, garlic and vinegar. A knife rather than a blender: texture matters more than smoothness.",
+    "category": "sauce",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      2,
+      5,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chimichurri.jpg",
+      "author": "Gveret Tered",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chimichurri",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "60 g Flat-leaf parsley",
+        "item": "flat-leaf parsley",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "2 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Red wine vinegar",
+        "item": "red wine vinegar",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "180 ml Olive oil",
+        "item": "olive oil",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Warm water",
+        "item": "warm water",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Coarse salt",
+        "item": "coarse salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the salt in the warm water: that spreads it evenly instead of leaving it on the bottom of the jar.",
+      "Rub the dried oregano between your palms and steep it in the vinegar for five minutes: it softens and releases its scent.",
+      "Chop the parsley and garlic fine with a knife. The garlic is chopped rather than crushed: crushed it gives a sharpness that never leaves.",
+      "Mix everything together, pour in the oil and stir. Let it stand two hours at room temperature."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 190,
+      "proteinG": 1,
+      "carbsG": 2,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

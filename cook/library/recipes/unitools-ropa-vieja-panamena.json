@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ropa-vieja-panamena",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PA",
+    "nativeName": "Ropa vieja",
+    "summary": "Shredded beef in tomato sauce with olives and capers, in the Panamanian style — drier than the Cuban.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      90,
+      15,
+      10,
+      12,
+      22,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ropa-vieja-panamena.jpg",
+      "author": "El Mono Español",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Panamanian ropa vieja",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "900 g Beef flank",
+        "item": "beef flank",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "500 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 g Green olives",
+        "item": "green olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tbsp Capers",
+        "item": "capers",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Culantro or coriander",
+        "item": "culantro or coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the beef whole in salted water with bay for an hour and a half. Keep the broth.",
+      "Cool the meat and pull it into long strands along the grain.",
+      "Fry the onion, pepper and garlic in oil until soft, eight minutes.",
+      "Add the tomatoes, tomato paste, cumin and oregano and cook ten minutes to thicken.",
+      "Fold in the meat, olives and capers and stew twenty minutes, adding broth a spoonful at a time.",
+      "Drive off any excess liquid uncovered; the sauce should coat the strands.",
+      "Scatter with culantro and serve with rice and fried plantain."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 46,
+      "carbsG": 46,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

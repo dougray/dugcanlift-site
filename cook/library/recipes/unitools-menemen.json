@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-menemen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "Menemen",
+    "summary": "Eggs cooked into tomatoes and green pepper. They are never beaten and rarely stirred, or you end up with ordinary scrambled eggs.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      4,
+      10,
+      4,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/menemen.jpg",
+      "author": "E4024",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Menemen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "4 Ripe tomatoes",
+        "item": "ripe tomatoes",
+        "qty": 4,
+        "note": "peeled and chopped"
+      },
+      {
+        "rawText": "2 Long green peppers",
+        "item": "long green peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "20 g Butter",
+        "item": "butter",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tbsp Olive oil",
+        "item": "olive oil",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Pul biber flakes",
+        "item": "pul biber flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "White cheese, to taste",
+        "item": "white cheese"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Slice the peppers into rings and fry them in the two fats for three or four minutes, until the edges start to darken.",
+      "Add the tomatoes, salt them and cook over medium heat for ten minutes. Wait for the oil to separate and glisten at the edges — that is the sign the water has gone.",
+      "Lower the heat, break the eggs straight into the sauce and scatter the pepper flakes. Stir slowly and only two or three times, leaving streaks of yolk.",
+      "Take it off when the white has set and the yolk is still loose: the pan finishes the job. Scatter over the oregano and the cheese."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 310,
+      "proteinG": 16,
+      "carbsG": 12,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

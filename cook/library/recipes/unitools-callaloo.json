@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-callaloo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TT",
+    "nativeName": "Callaloo",
+    "summary": "A thick purée of taro leaves with okra and coconut milk. The Trinidadian Sunday table.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      7,
+      6,
+      40,
+      7,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/callaloo.jpg",
+      "author": "https://www.flickr.com/photos/67276179@N08/",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Callaloo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Taro leaves or spinach",
+        "item": "taro leaves or spinach",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "250 g Okra",
+        "item": "okra",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "300 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Wash the leaves, strip the tough stems and chop them coarsely.",
+      "Fry the onion and garlic in butter until soft.",
+      "Add the leaves, okra, pumpkin, thyme and the whole scotch bonnet, and cover with water two fingers above.",
+      "Simmer forty minutes covered. No less: raw taro leaves burn the mouth.",
+      "Remove the chilli and thyme, add the coconut milk and warm it five minutes without boiling.",
+      "Break the soup down with a swizzle stick or a masher to a thick but not perfectly smooth purée."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 55,
+    "nutritionPerServing": {
+      "calories": 260,
+      "proteinG": 7,
+      "carbsG": 20,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gyudon",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "牛丼",
+    "summary": "Thinly sliced beef simmered with onion in dashi, soy and mirin, over rice.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      3,
+      5,
+      3,
+      1,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gyudon.jpg",
+      "author": "Ocdp",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gyudon",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "300 g Beef",
+        "item": "beef",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "sliced almost transparent"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "200 ml Dashi",
+        "item": "dashi",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Mirin",
+        "item": "mirin",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Sake",
+        "item": "sake",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "10 g Ginger",
+        "item": "ginger",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "400 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "Beni shoga pickled ginger, to taste",
+        "item": "beni shoga pickled ginger"
+      }
+    ],
+    "steps": [
+      "Bring the dashi with the soy, mirin, sake, sugar and grated ginger to the boil in a wide pan.",
+      "Add the onion and simmer for five minutes over medium heat, until it turns translucent.",
+      "Lay the beef over the surface slice by slice rather than in a heap, and cook two or three minutes. Skim any foam.",
+      "Take it off the moment the beef loses its pink. Left longer it toughens within a minute.",
+      "Divide the rice between bowls, spoon the beef and onion over with two or three spoons of the broth, and serve with the pickled ginger."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 34,
+      "carbsG": 82,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

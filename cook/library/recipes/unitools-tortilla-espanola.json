@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tortilla-espanola",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Tortilla española",
+    "summary": "A thick omelette of potato and onion, where the potato is not fried but poached in oil until it is nearly a purée.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      3,
+      20,
+      10,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tortilla-espanola.jpg",
+      "author": "Charlie Marchant from UK",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Spanish tortilla",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "sliced thin"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "400 ml Olive oil",
+        "item": "olive oil",
+        "qty": 400,
+        "unit": "ml",
+        "note": "nearly all of it goes back in the bottle"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Heat the oil in a deep pan until it is warm rather than hot — a slice of potato dropped in should sigh, not crackle. Add the potato and onion and salt them.",
+      "Poach for twenty minutes, turning gently now and then. It is ready when a slice breaks easily against the side of the pan. Drain through a colander, keeping the potato.",
+      "Beat the eggs with a pinch of salt and fold the warm potato through them. Let it sit for ten minutes: the potato gives up starch and the tortilla holds together for it.",
+      "In a 24 cm pan with a spoon of oil, pour the mixture in and cook over medium heat for four minutes, easing the edges towards the middle with a spatula.",
+      "Cover with a plate, flip in one movement and slide it back raw side down. Three minutes more leaves the centre slightly loose, which is how it should be."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 430,
+      "proteinG": 15,
+      "carbsG": 30,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

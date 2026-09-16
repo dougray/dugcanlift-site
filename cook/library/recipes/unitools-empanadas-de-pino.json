@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-empanadas-de-pino",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CL",
+    "nativeName": "Empanadas de pino",
+    "summary": "Baked pastries with a meat filling, an olive and an egg. Chilean food for 18 September and for any Sunday.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      22,
+      10,
+      40,
+      20,
+      15,
+      27
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/empanadas-de-pino.jpg",
+      "author": "Valeta",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Empanadas de pino",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "120 g Rendered pork fat",
+        "item": "rendered pork fat",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced, not minced"
+      },
+      {
+        "rawText": "5 Onion",
+        "item": "onion",
+        "qty": 5
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "12 Black olives",
+        "item": "black olives",
+        "qty": 12
+      },
+      {
+        "rawText": "60 g Raisins",
+        "item": "raisins",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Dice the onion and sweat it in fat for twenty minutes over a low heat; it should turn sweet, not brown.",
+      "Add the meat, paprika and cumin and stew twenty minutes. By volume there should be at least as much onion as meat.",
+      "Chill the filling for at least three hours, ideally overnight.",
+      "Knead a dough from the flour, melted fat, warm milk and salt. Work it ten minutes and rest it half an hour.",
+      "Roll out twenty-centimetre rounds. On each go two spoons of filling, an olive, a quarter egg and a pinch of raisins.",
+      "Fold into a parcel, seal the edges and turn them over twice. Prick the top with a toothpick so steam can escape.",
+      "Brush with yolk and bake at 200 °C for twenty-five minutes, to a deep gold."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 590,
+      "proteinG": 26,
+      "carbsG": 55,
+      "fatG": 29,
+      "estimated": true
+    }
+  }
+}

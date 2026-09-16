@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-torta-frita",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UY",
+    "nativeName": "Torta frita",
+    "summary": "Flat rounds made on rendered fat and deep-fried, which Uruguayans make when it rains.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      6,
+      8,
+      12,
+      22,
+      15,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/torta-frita.jpg",
+      "author": "Jerowiki",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Torta frita",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Hot water",
+        "item": "hot water",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Lard",
+        "item": "lard",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "melted"
+      },
+      {
+        "rawText": "1 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "50 g Sugar",
+        "item": "sugar",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "to serve"
+      },
+      {
+        "rawText": "200 g Dulce de leche",
+        "item": "dulce de leche",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1.5 tsp Salt",
+        "item": "salt",
+        "qty": 1.5,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Mix the flour with the salt and baking powder in a large bowl.",
+      "Melt the lard and stir it into the hot water until even.",
+      "Pour the liquid into the flour and work it with a spoon until it cools enough to handle.",
+      "Knead by hand for ten minutes to a smooth elastic dough.",
+      "Cover it and rest it twenty minutes at room temperature.",
+      "Divide it into eight, roll each into a half-centimetre round and cut a slit in the centre.",
+      "Fry at 180 °C for a minute and a half a side and serve with sugar or dulce de leche."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 6,
+      "carbsG": 48,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

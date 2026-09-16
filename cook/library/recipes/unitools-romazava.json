@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-romazava",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MG",
+    "nativeName": "Romazava",
+    "summary": "Meat in broth with brèdes mafana, a bitter green that makes the mouth tingle.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      7,
+      8,
+      62,
+      12,
+      12,
+      7,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/romazava.jpg",
+      "author": "Z thomas",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Romazava",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Beef",
+        "item": "beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Pork",
+        "item": "pork",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Brèdes mafana or watercress",
+        "item": "brèdes mafana or watercress",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "300 g Spinach",
+        "item": "spinach",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Mustard greens",
+        "item": "mustard greens",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion, garlic and ginger in oil until soft, five minutes.",
+      "Add both meats and the tomatoes and warm them through, without browning.",
+      "Add a litre and a half of water, season and simmer an hour.",
+      "Wash the greens and chop them coarsely, discarding tough stems.",
+      "Add the mustard greens and spinach and cook ten minutes.",
+      "Add the mafana for the last five minutes; long cooking weakens its effect.",
+      "Serve in deep bowls with a large helping of boiled rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 42,
+      "carbsG": 52,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tagine-de-poulet",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MA",
+    "nativeName": "طاجين الدجاج",
+    "summary": "Chicken braised with preserved lemons and olives. The sourness comes from the peel, not the flesh.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      60,
+      5,
+      40,
+      20,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tagine-de-poulet.jpg",
+      "author": "Foodista",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chicken tagine with preserved lemon",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken, jointed",
+        "item": "chicken, jointed",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400
+      },
+      {
+        "rawText": "2 Preserved lemon",
+        "item": "preserved lemon",
+        "qty": 2,
+        "note": "peel only"
+      },
+      {
+        "rawText": "150 g Green olives",
+        "item": "green olives",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Ground ginger",
+        "item": "ground ginger",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "6 sprigs Coriander and parsley",
+        "item": "coriander and parsley",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Water",
+        "item": "water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grind the garlic, ginger, turmeric, saffron, chopped herbs, oil, salt and pepper into a paste. Rub it over the chicken and leave it an hour.",
+      "Spread the onion in an even layer over the base of the tagine or a heavy pan: it keeps the chicken off the bottom and becomes part of the sauce.",
+      "Set the chicken on top skin up, pour the water down the side, cover and cook over a low flame for forty minutes without lifting the lid.",
+      "Add the preserved lemon peel in strips and the olives, cover and give it twenty minutes more.",
+      "Take the lid off and reduce the sauce for five minutes if it is still loose. Check the salt only at the end: the lemon and olives have already provided it."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 44,
+      "carbsG": 12,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

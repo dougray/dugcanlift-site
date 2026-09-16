@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-langos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HU",
+    "nativeName": "Lángos",
+    "summary": "A yeasted flatbread deep-fried, rubbed with garlic and buried under soured cream and cheese.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      10,
+      60,
+      10,
+      12,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/langos.jpg",
+      "author": "sikeri",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lángos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "150 g Potato",
+        "item": "potato",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "boiled and mashed"
+      },
+      {
+        "rawText": "200 ml Warm milk",
+        "item": "warm milk",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "7 g Dried yeast",
+        "item": "dried yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "200 g Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Hard cheese",
+        "item": "hard cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "grated"
+      },
+      {
+        "rawText": "700 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in the warm milk and leave it ten minutes, until it foams.",
+      "Mix the flour, mashed potato, salt and the yeast liquid and knead for eight minutes to a smooth soft dough. It stays a little tacky; that is right.",
+      "Cover and prove for an hour in the warm: the dough should double.",
+      "Divide into four, stretch each by hand into a twenty-centimetre round, leaving the edges thicker.",
+      "Deep-fry at 175 °C for ninety seconds a side. It balloons; that is correct, do not press it down.",
+      "Rub the hot bread with a cut clove of garlic, spread it with soured cream and pile on the cheese."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 18,
+      "carbsG": 68,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

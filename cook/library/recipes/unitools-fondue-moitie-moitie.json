@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fondue-moitie-moitie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CH",
+    "nativeName": "Fondue moitié-moitié",
+    "summary": "Gruyère and Vacherin melted in white wine with starch. The acidity of the wine keeps the cheese from seizing.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      2,
+      4,
+      4,
+      10,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fondue-moitie-moitie.jpg",
+      "author": "JHG (Julien29)",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Cheese fondue",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Gruyère",
+        "item": "gruyère",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "coarsely grated"
+      },
+      {
+        "rawText": "400 g Vacherin fribourgeois",
+        "item": "vacherin fribourgeois",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "coarsely grated"
+      },
+      {
+        "rawText": "300 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 clove Garlic",
+        "item": "garlic",
+        "qty": 1,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Kirsch",
+        "item": "kirsch",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Lemon juice",
+        "item": "lemon juice",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Nutmeg and pepper",
+        "item": "nutmeg and pepper",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "600 g Firm-crumbed bread",
+        "item": "firm-crumbed bread",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "cubed, with crust"
+      }
+    ],
+    "steps": [
+      "Rub the inside of the pot with a cut clove of garlic and leave it in.",
+      "Toss both grated cheeses with the cornflour by hand until every shred is coated.",
+      "Warm the wine with the lemon juice until bubbles appear at the edge, but not to a boil.",
+      "Add the cheese a handful at a time, stirring in a figure of eight until each is fully melted before the next goes in.",
+      "When the mass turns even and strings from the spoon, add the kirsch and season with nutmeg and pepper.",
+      "Move it to the burner and keep the flame at its lowest. The bread is speared through the crust rather than the crumb."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 48,
+      "carbsG": 48,
+      "fatG": 52,
+      "estimated": true
+    }
+  }
+}

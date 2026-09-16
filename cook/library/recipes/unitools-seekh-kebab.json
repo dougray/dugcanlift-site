@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-seekh-kebab",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PK",
+    "nativeName": "سیخ کباب",
+    "summary": "Spiced mince moulded onto a skewer and grilled over coals.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      6,
+      10,
+      12,
+      65,
+      15,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/seekh-kebab.jpg",
+      "author": "MOUMITAPAL12061989",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Seekh kebab",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Minced beef",
+        "item": "minced beef",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "fatty, 20 per cent"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2,
+        "note": "wrung dry"
+      },
+      {
+        "rawText": "2 tbsp Ginger garlic paste",
+        "item": "ginger garlic paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Green chillies",
+        "item": "green chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tbsp Garam masala",
+        "item": "garam masala",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Green papaya paste",
+        "item": "green papaya paste",
+        "qty": 1,
+        "unit": "tbsp",
+        "note": "as a tenderiser"
+      },
+      {
+        "rawText": "2 tbsp Chickpea flour",
+        "item": "chickpea flour",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "toasted"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 Naan",
+        "item": "naan",
+        "qty": 5,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grate the onions finely and wring them dry in muslin, discarding the juice.",
+      "Toast the chickpea flour in a dry pan until it smells nutty and let it cool.",
+      "Mix the mince with the onion, ginger garlic paste, papaya, spices, coriander and chillies.",
+      "Work the mixture ten minutes, until it turns tacky and pulls back at your hand.",
+      "Fold in the chickpea flour and chill the mixture for at least an hour.",
+      "With wet hands mould the mince onto flat skewers in an even two-centimetre layer.",
+      "Grill over hot coals four minutes a side, basting with oil. Serve with naan."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 46,
+      "carbsG": 32,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

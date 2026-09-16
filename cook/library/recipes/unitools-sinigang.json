@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sinigang",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PH",
+    "nativeName": "Sinigang",
+    "summary": "A sour tamarind soup with pork and vegetables. Sourness is the main flavour here, not an accent.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      65,
+      2,
+      3,
+      15,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sinigang.jpg",
+      "author": "Jessartcam",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sinigang",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Pork ribs",
+        "item": "pork ribs",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "4 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Daikon",
+        "item": "daikon",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "in rounds"
+      },
+      {
+        "rawText": "300 g Taro or potato",
+        "item": "taro or potato",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 g Green beans",
+        "item": "green beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Aubergine",
+        "item": "aubergine",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g Kangkong or spinach",
+        "item": "kangkong or spinach",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Green chillies",
+        "item": "green chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 l Water",
+        "item": "water",
+        "qty": 2,
+        "unit": "l"
+      }
+    ],
+    "steps": [
+      "Cover the ribs with water, bring to the boil, skim and simmer for an hour with the onion and tomatoes.",
+      "Crush the softened tomatoes in the pot: they give the broth its body.",
+      "Add the tamarind paste and fish sauce, then taste. The sourness should be pronounced, not a hint.",
+      "Add the taro and daikon and cook ten minutes, then the aubergine and beans for five more.",
+      "Throw in the greens and chillies and take the pot off after thirty seconds. The greens should stay bright."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 460,
+      "proteinG": 34,
+      "carbsG": 24,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

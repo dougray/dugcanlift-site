@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ratatouille",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Ratatouille niçoise",
+    "summary": "A Provençal vegetable stew where each vegetable is cooked separately before they meet — otherwise it turns to mush.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      4,
+      6,
+      7,
+      20,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ratatouille.jpg",
+      "author": "Jack145945",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ratatouille",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 Aubergine",
+        "item": "aubergine",
+        "qty": 1,
+        "note": "in 2 cm cubes"
+      },
+      {
+        "rawText": "2 Courgette",
+        "item": "courgette",
+        "qty": 2,
+        "note": "in cubes"
+      },
+      {
+        "rawText": "2 Bell pepper",
+        "item": "bell pepper",
+        "qty": 2
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "ripe, peeled"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 tbsp Olive oil",
+        "item": "olive oil",
+        "qty": 6,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 pinch Basil",
+        "item": "basil",
+        "qty": 1,
+        "unit": "pinch",
+        "note": "at the end"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the aubergine over high heat in two spoons of oil until the edges brown, then set it aside. Aubergine drinks oil instantly — do not add more, it gives it back later.",
+      "In the same pan, fry the courgette until golden, about four minutes, and add it to the aubergine. It should stay firm.",
+      "Fry the pepper until soft with a few charred spots and set it aside as well.",
+      "In the remaining oil, sweat the onion until soft, add the garlic and thyme and give it half a minute, until fragrant.",
+      "Add the tomatoes and cook them down over medium heat into a thick sauce, about twenty minutes. It should hold on a spoon rather than run off it.",
+      "Return the vegetables to the pan, season and warm them through together for ten minutes over low heat. Take it off, add the basil and let it stand — ratatouille is better warm than hot."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 240,
+      "proteinG": 5,
+      "carbsG": 20,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}
