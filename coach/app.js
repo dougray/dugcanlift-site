@@ -2743,6 +2743,58 @@ $('#import-open').onclick = () => {
   $('#import-query').focus();
 };
 $('#import-cancel').onclick = () => $('#import-panel').classList.add('hidden');
+
+/* Paste a recipe.
+ *
+ * The third way in, and the only one that touches no network at all. It exists
+ * because the search above needs a dish TheMealDB happens to know, and because
+ * a recipe website cannot be read from here at all: a browser may not fetch
+ * another site's page, so the address bar is no use and the text is.
+ *
+ * parseCaption (recipe-import.js) only PROPOSES a split. Nothing is saved here
+ * -- it fills the recipe form and the coach checks it, which is the whole
+ * safety argument. The form's two textareas are already one-per-line, so the
+ * editor the split lands in is the editor that already existed, and a wrong
+ * split costs an edit rather than a number. parseIngredient still reads the
+ * quantities on save, and still refuses to weigh a volume.
+ */
+$('#rp-open').onclick = () => {
+  $('#rp-panel').classList.remove('hidden');
+  $('#rp-note').textContent = '';
+  $('#rp-text').focus();
+};
+$('#rp-cancel').onclick = () => $('#rp-panel').classList.add('hidden');
+
+$('#rp-go').onclick = () => {
+  const parsed = parseCaption($('#rp-text').value);
+
+  if (!parsed.ingredientLines.length && !parsed.steps.length) {
+    $('#rp-note').textContent =
+      'Nothing in that reads as a recipe. Paste the ingredients and steps as text.';
+    return;
+  }
+
+  openRecipeForm(null);
+  $('#rp-panel').classList.add('hidden');
+
+  $('#r-name').value = parsed.name || '';
+  $('#r-ingredients').value = parsed.ingredientLines.join('\n');
+  $('#r-steps').value = parsed.steps.join('\n');
+  // Only ever from an explicit "serves 4". A guessed yield silently divides
+  // every macro by a number nobody chose, so an unstated one stays at 1 and
+  // says so below.
+  $('#r-servings').value = parsed.servings || 1;
+
+  const advice = {
+    labelled: 'Split on the headings in the text — check it read them right.',
+    inferred: 'The text labelled one section and this worked out the rest, so check the division.',
+    unsorted: 'The text had no headings, so everything landed in Ingredients — cut any method steps out and paste them into Method.',
+  }[parsed.split];
+
+  $('#ing-tally').textContent = parsed.servings
+    ? advice
+    : advice + ' The text did not say how many this serves; set it before sending.';
+};
 $('#import-go').onclick = () => {
   const query = $('#import-query').value.trim();
   if (query) searchMealDb(query);

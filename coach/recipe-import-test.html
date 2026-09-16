@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Recipe import tests — LIFT Coach</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding: 1.5rem; }
+  .case { padding: .4rem 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .95rem; }
+  .pass::before { content: 'PASS'; color: #7c8b7a; font-weight: 700; margin-right: .6rem; }
+  .fail::before { content: 'FAIL'; color: #c1442c; font-weight: 700; margin-right: .6rem; }
+  .detail { color: #a39c8e; font-size: .85rem; margin-left: 3.2rem; }
+  #summary { font-size: 1.3rem; font-weight: 700; margin: 1rem 0; }
+  h2 { font-size: 1rem; margin: 1.4rem 0 .2rem; color: #a39c8e; }
+</style>
+</head>
+<body>
+
+<h1>Recipe import tests</h1>
+<p class="muted">
+  Open this page to check the two recipe readers. No build step and no
+  toolchain — the same reason the rest of Coach has none.
+</p>
+<p class="muted">
+  These cases are the same fixtures as <code>RecipeJSONLDTests</code> and
+  <code>CaptionRecipeTests</code> in the iOS build, and
+  <code>RecipeJsonLdTest</code> and <code>CaptionRecipeTest</code> in the
+  Android one. Unlike <code>parser.js</code>, these readers owe no cross-client
+  parity contract — they are input paths, and what they produce is
+  indistinguishable from a hand-typed recipe once saved. Running identical
+  fixtures through all three is how they stay recognisably the same feature
+  anyway.
+</p>
+
+<div id="summary"></div>
+<div id="results"></div>
+
+<!-- parser.js too: the last few caption cases hand their lines to
+     parseIngredient, which is the point -- this reader only splits. -->
+<script src="parser.js"></script>
+<script src="recipe-import.js"></script>
+<script>
+const results = [];
+
+function check(label, actual, expected) {
+  const ok = JSON.stringify(actual) === JSON.stringify(expected);
+  results.push({ label, ok, actual, expected });
+}
+
+/* ================= Captions ================= */
+
+const tuscan = parseCaption(
+  'Creamy Tuscan Chicken \u{1F357}\n\n' +
+  'Ingredients:\n- 2 chicken breasts\n- 1 cup heavy cream\n- 200g spinach\n\n' +
+  'Method:\n1. Sear the chicken\n2. Add the cream and wilt the spinach\n\n' +
+  '#mealprep #highprotein');
+check('a labelled caption splits on its own headings', tuscan.split, 'labelled');
+check('the name is the first line', tuscan.name, 'Creamy Tuscan Chicken \u{1F357}');
+check('bullets are stripped from ingredients', tuscan.ingredientLines,
+  ['2 chicken breasts', '1 cup heavy cream', '200g spinach']);
+check('list numbering is stripped from steps', tuscan.steps,
+  ['Sear the chicken', 'Add the cream and wilt the spinach']);
+
+const decorated = parseCaption(
+  '\u{1F6D2} INGREDIENTS \u{1F447}\n2 eggs\n— Instructions —\nWhisk them');
+check('headings are found through emoji and dashes', decorated.split, 'labelled');
+check('decorated heading still splits ingredients', decorated.ingredientLines, ['2 eggs']);
+check('decorated heading still splits steps', decorated.steps, ['Whisk them']);
+
+const youll = parseCaption("What you'll need:\n1 banana\nHow to make it:\nMash it");
+check("“what you'll need” is an ingredient heading", youll.ingredientLines, ['1 banana']);
+check('“how to make it” is a method heading', youll.steps, ['Mash it']);
+
+/* "1.5 cups" losing its "1." would silently become five cups. */
+const numbered = parseCaption('Ingredients\n1. 1.5 cups flour\n2) 2 eggs');
+check('numbering goes but a decimal quantity survives', numbered.ingredientLines,
+  ['1.5 cups flour', '2 eggs']);
+
+check('mixed bullet characters are all removed',
+  parseCaption('Ingredients\n• 100 g rice\n▢ 1 tbsp oil\n* 2 cloves garlic').ingredientLines,
+  ['100 g rice', '1 tbsp oil', '2 cloves garlic']);
+
+check('one heading only is an inference, and says so',
+  parseCaption('Ingredients:\n2 eggs\n1 cup milk').split, 'inferred');
+
+const above = parseCaption('Garlic Butter Rice\n200 g rice\n2 cloves garlic\nMethod\nBoil the rice');
+check('a method heading takes its ingredients from above', above.ingredientLines,
+  ['200 g rice', '2 cloves garlic']);
+check('and its steps from below', above.steps, ['Boil the rice']);
+
+const methodFirst = parseCaption('Instructions:\nMelt the butter\nIngredients:\n50 g butter');
+check('method-first is still labelled', methodFirst.split, 'labelled');
+check('method-first reads its steps', methodFirst.steps, ['Melt the butter']);
+check('method-first reads its ingredients', methodFirst.ingredientLines, ['50 g butter']);
+
+/* Everything lands on one side. The editor cuts the method out; the parser
+ * does not pretend to know where it starts. */
+const unsorted = parseCaption('Banana Pancakes\n2 eggs\n1 banana\nBlend and fry');
+check('no headings means unsorted, not guessed at', unsorted.split, 'unsorted');
+check('an unsorted paste puts everything on one side', unsorted.ingredientLines,
+  ['2 eggs', '1 banana', 'Blend and fry']);
+
+['Serves 4', 'Servings: 4', 'Makes about 4 bowls', 'Feeds 4'].forEach((line) => {
+  const y = parseCaption('Ingredients\n2 eggs\n' + line);
+  check('an explicit yield is read: ' + line, y.servings, 4);
+  check('and is not also an ingredient: ' + line, y.ingredientLines, ['2 eggs']);
+});
+
+/* The exact line that made yield inference a bad idea: it is a cooking time,
+ * and reading it as a yield halves every macro in the dish. */
+check('a cooking time is not a yield',
+  parseCaption('Ingredients\n1 ham bone\nMethod\nCook slowly with the ham bone for 2 hours').servings,
+  null);
+check('a yield word with no number is not a yield',
+  parseCaption('Ingredients\n100 g rice\nServes with rice').servings, null);
+
+/* A title at the top is stated structure; a title in the middle is a guess,
+ * and a wrong one takes a real line out of the recipe with it. */
+const quantityFirst = parseCaption('2 eggs\n1 banana\nBlend');
+check('a quantity line is never the name', quantityFirst.name, null);
+check('and no line is lost to a wrong name', quantityFirst.ingredientLines,
+  ['2 eggs', '1 banana', 'Blend']);
+check('a line below the heading is never the name',
+  parseCaption('Ingredients\nSalt\nPepper').name, null);
+check('the name is not also an ingredient',
+  parseCaption('Banana Pancakes\n2 eggs').ingredientLines, ['2 eggs']);
+
+check('hashtag, mention and emoji lines are dropped',
+  parseCaption('Ingredients\n2 eggs\n\u{1F525}\u{1F525}\u{1F525}\n#foodie #mealprep\n@somecreator').ingredientLines,
+  ['2 eggs']);
+
+check('an edited box reparses to lines',
+  captionLines('- 2 eggs\n\n• 1 cup milk\n   \n3. 200 g flour'),
+  ['2 eggs', '1 cup milk', '200 g flour']);
+
+const empty = parseCaption('');
+check('empty input is unsorted with no name', [empty.split, empty.name], ['unsorted', null]);
+
+/* Quantities stay parser.js's job, and it still refuses to weigh a volume. */
+const oats = parseCaption('Ingredients\n- 1 1/2 cups oats\n- a handful of nuts');
+check('the caption reader leaves quantities to the parser',
+  parseIngredient(oats.ingredientLines[0]).qty, 1.5);
+check('and the parser still refuses a volume',
+  parseIngredient(oats.ingredientLines[0]).grams, null);
+check('and still gives up cleanly on prose',
+  parseIngredient(oats.ingredientLines[1]).qty, undefined);
+
+/* ================= JSON-LD ================= */
+
+const page = (json) =>
+  '<html><head><script type="application/ld+json">' + json + '<\/script></head></html>';
+
+const lasagne = recipeFromJsonLd(page(JSON.stringify({
+  '@type': 'Recipe', name: 'Lasagne',
+  recipeIngredient: ['500 g beef mince', '2 tbsp olive oil'],
+  recipeInstructions: ['Brown the mince', 'Layer and bake'],
+  recipeYield: '6 servings',
+})));
+check('reads a recipe out of a page', lasagne.name, 'Lasagne');
+check('reads its ingredients', lasagne.ingredientLines, ['500 g beef mince', '2 tbsp olive oil']);
+check('reads its steps', lasagne.steps, ['Brown the mince', 'Layer and bake']);
+check('reads its yield', lasagne.servings, 6);
+
+check('skips non-recipe blocks and keeps looking',
+  recipeFromJsonLd('<html><script type="application/ld+json">{"@type":"WebSite","name":"A blog"}<\/script>' +
+    '<script type="application/ld+json">{"@type":"Recipe","name":"Soup"}<\/script></html>').name, 'Soup');
+check('finds a recipe inside an @graph',
+  recipeFromJsonLdPayload('{"@graph":[{"@type":"Article","name":"Post"},{"@type":"Recipe","name":"Stew"}]}').name,
+  'Stew');
+check('accepts an array of @types',
+  recipeFromJsonLdPayload('{"@type":["Article","Recipe"],"name":"Pie"}').name, 'Pie');
+check('a page with no recipe returns null',
+  recipeFromJsonLd(page('{"@type":"WebSite","name":"A blog"}')), null);
+check('a page with no JSON-LD returns null',
+  recipeFromJsonLd('<html><body>nothing here</body></html>'), null);
+check('a recipe with no name is not a recipe',
+  recipeFromJsonLdPayload('{"@type":"Recipe","recipeYield":"4"}'), null);
+
+check('reads HowToStep objects',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"Eggs","recipeInstructions":[' +
+    '{"@type":"HowToStep","text":"Crack them"},{"@type":"HowToStep","text":"Whisk them"}]}').steps,
+  ['Crack them', 'Whisk them']);
+check('flattens HowToSections',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"Cake","recipeInstructions":[' +
+    '{"@type":"HowToSection","itemListElement":[{"@type":"HowToStep","text":"Cream the butter"}]},' +
+    '{"@type":"HowToSection","itemListElement":[{"@type":"HowToStep","text":"Beat the sugar"}]}]}').steps,
+  ['Cream the butter', 'Beat the sugar']);
+
+/* Splitting on sentences would cut "Bake at 200 C. for 20 minutes" in half. */
+check('a single paragraph splits on newlines only',
+  recipeFromJsonLdPayload(JSON.stringify({ '@type': 'Recipe', name: 'Toast',
+    recipeInstructions: 'Bake at 200 C. for 20 minutes.\nSlice it.' })).steps,
+  ['Bake at 200 C. for 20 minutes.', 'Slice it.']);
+check('strips markup and entities',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"Salt &amp; Pepper Squid","recipeInstructions":["<p>Fry it<\/p>"]}').name,
+  'Salt & Pepper Squid');
+
+[['"4"', 4], ['"4 servings"', 4], ['"Serves 6"', 6], ['8', 8], ['["4","4 servings"]', 4]]
+  .forEach(([yieldValue, want]) => {
+    check('reads yield ' + yieldValue,
+      recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","recipeYield":' + yieldValue + '}').servings, want);
+  });
+['"a crowd"', '"plenty"', 'true', '0'].forEach((yieldValue) => {
+  check('a yield with no number stays null: ' + yieldValue,
+    recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","recipeYield":' + yieldValue + '}').servings, null);
+});
+
+[['PT30M', 30], ['PT1H15M', 75], ['P0DT0H30M', 30], ['PT2H', 120], ['P1D', 1440]]
+  .forEach(([iso, want]) => {
+    check('reads ISO 8601 ' + iso,
+      recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","prepTime":"' + iso + '"}').prepMinutes, want);
+  });
+/* Reading months as minutes would be a silent thirty-fold error. */
+check('months are ignored rather than read as minutes',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","prepTime":"P2M"}').prepMinutes, null);
+
+check('reads a string author',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","author":"Nigel"}').author, 'Nigel');
+check('reads a Person author',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","author":{"@type":"Person","name":"Nigella"}}').author,
+  'Nigella');
+
+const macros = recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","nutrition":{' +
+  '"calories":"350 calories","proteinContent":"12 g","carbohydrateContent":"40 g",' +
+  '"fatContent":"15 g","sodiumContent":"320 mg"}}').nutritionPerServing;
+check('reads calories', macros.calories, 350);
+check('reads protein', macros.proteinG, 12);
+check('reads sodium in milligrams', macros.sodiumMg, 320);
+/* A gram value read as milligrams would be wrong by a thousand. */
+check('converts sodium published in grams',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","nutrition":{"calories":"1","sodiumContent":"0.32 g"}}')
+    .nutritionPerServing.sodiumMg, 320);
+check('nutrition without calories is dropped',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","nutrition":{"proteinContent":"12 g"}}')
+    .nutritionPerServing, null);
+check('reads a thousands separator',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","nutrition":{"calories":"1,200 calories"}}')
+    .nutritionPerServing.calories, 1200);
+check('reads the pre-2017 ingredients spelling',
+  recipeFromJsonLdPayload('{"@type":"Recipe","name":"X","ingredients":["100 g rice"]}').ingredientLines,
+  ['100 g rice']);
+
+/* render */
+const failed = results.filter((r) => !r.ok).length;
+const summary = document.getElementById('summary');
+summary.textContent = failed
+  ? `${failed} of ${results.length} failing`
+  : `All ${results.length} passing`;
+summary.style.color = failed ? '#c1442c' : '#7c8b7a';
+
+const out = document.getElementById('results');
+results.forEach((r) => {
+  const row = document.createElement('div');
+  row.className = 'case ' + (r.ok ? 'pass' : 'fail');
+  row.textContent = r.label;
+  out.appendChild(row);
+  if (!r.ok) {
+    const detail = document.createElement('div');
+    detail.className = 'detail';
+    detail.textContent = `got ${JSON.stringify(r.actual)}, wanted ${JSON.stringify(r.expected)}`;
+    out.appendChild(detail);
+  }
+});
+</script>
+
+</body>
+</html>

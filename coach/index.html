@@ -107,6 +107,21 @@
   <div id="cook-recipes">
     <button class="wide" id="recipe-new">New recipe</button>
     <button class="wide ghost" id="import-open">Import a recipe</button>
+    <button class="wide ghost" id="rp-open">Paste a recipe</button>
+
+    <div id="rp-panel" class="card hidden">
+      <strong>Paste a recipe</strong>
+      <p class="muted">For a recipe written out as text — a video caption, an
+        email, a card off the fridge. Nothing is sent anywhere; this reads what
+        you paste and fills the recipe form, which you then check.</p>
+      <p class="muted">A recipe website will not work here. A browser cannot
+        fetch another site's page, so paste the recipe's text rather than its
+        address.</p>
+      <textarea id="rp-text" rows="8" placeholder="Creamy Tuscan Chicken&#10;&#10;Ingredients:&#10;- 2 chicken breasts&#10;- 200 g spinach&#10;&#10;Method:&#10;1. Sear the chicken&#10;&#10;Serves 4"></textarea>
+      <p class="muted" id="rp-note"></p>
+      <button id="rp-go">Read it</button>
+      <button class="ghost wide" id="rp-cancel">Cancel</button>
+    </div>
 
     <div id="import-panel" class="card hidden">
       <strong>Import a recipe</strong>
@@ -305,6 +320,7 @@
 </main>
 
 <script src="parser.js"></script>
+<script src="recipe-import.js"></script>
 <script src="foods.js"></script>
 <script src="app.js"></script>
 </body>
