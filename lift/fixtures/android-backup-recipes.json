@@ -1,0 +1,117 @@
+{
+ "v": 1,
+ "app": "lift",
+ "saved": "2026-09-16",
+ "data": {
+  "recipes": [
+   {
+    "id": "2e338a37-fd70-46ad-95b7-f9c671a2f8b8",
+    "name": "Overnight Oats",
+    "servings": 2,
+    "totalWeightGrams": 600,
+    "ingredients": [
+     {
+      "rawText": "80 g rolled oats",
+      "item": "rolled oats",
+      "qty": 80,
+      "unit": "g",
+      "grams": 80,
+      "optional": false
+     },
+     {
+      "rawText": "200 g greek yogurt",
+      "item": "greek yogurt",
+      "qty": 200,
+      "unit": "g",
+      "grams": 200,
+      "optional": false
+     },
+     {
+      "rawText": "1 tbsp honey",
+      "item": "honey",
+      "qty": 1,
+      "unit": "tbsp",
+      "optional": false
+     },
+     {
+      "rawText": "a pinch of cinnamon",
+      "optional": false
+     }
+    ],
+    "steps": [
+     "Mix everything",
+     "Chill overnight"
+    ],
+    "nutritionPerServing": {
+     "calories": 388,
+     "proteinG": 28,
+     "carbsG": 47,
+     "fatG": 10,
+     "fiberG": 6,
+     "estimated": true
+    },
+    "sourceUrl": "https:\/\/example.com\/oats",
+    "prepMinutes": 5,
+    "importedAt": 1789569166820
+   }
+  ],
+  "plan": [
+   {
+    "id": "332779d6-8029-4789-86ea-82db3f195040",
+    "recipeId": "2e338a37-fd70-46ad-95b7-f9c671a2f8b8",
+    "date": "2026-09-18",
+    "meal": "BREAKFAST",
+    "servings": 1,
+    "recipeName": "Overnight Oats",
+    "snapshotNutrition": {
+     "calories": 388,
+     "proteinG": 28,
+     "carbsG": 47,
+     "fatG": 10,
+     "fiberG": 6,
+     "estimated": true
+    }
+   },
+   {
+    "id": "9e4e261f-63f7-4ad2-82c2-d8ed1291bdfd",
+    "recipeId": "2e338a37-fd70-46ad-95b7-f9c671a2f8b8",
+    "date": "2026-09-19",
+    "meal": "BREAKFAST",
+    "servings": 1,
+    "amountGrams": 250,
+    "recipeName": "Overnight Oats",
+    "snapshotNutrition": {
+     "calories": 388,
+     "proteinG": 28,
+     "carbsG": 47,
+     "fatG": 10,
+     "fiberG": 6,
+     "estimated": true
+    },
+    "snapshotNutritionPerGram": {
+     "calories": 1.2933333333333334,
+     "proteinG": 0.09333333333333334,
+     "carbsG": 0.15666666666666668,
+     "fatG": 0.03333333333333333,
+     "fiberG": 0.02,
+     "estimated": true
+    }
+   }
+  ],
+  "food": [],
+  "workouts": [],
+  "routines": [],
+  "settings": {
+   "focus": "BODYBUILDING",
+   "stepGoal": 10000
+  },
+  "coach": {
+   "email": "",
+   "you": "",
+   "id": "fc9fe6da",
+   "weeks": 8,
+   "itemised": false
+  },
+  "weights": {}
+ }
+}

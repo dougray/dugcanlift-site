@@ -8,7 +8,7 @@
 
 const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', settings: 'lift.settings', steps: 'lift.steps',
               coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights',
-              ext: 'lift.ext',
+              ext: 'lift.ext', unknownData: 'lift.unknownData',
               recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
               training: 'lift.training', templates: 'lift.templates' };
 
@@ -1857,11 +1857,15 @@ function render() {
  * Keeping the client id means a coach sees the same person after a restore
  * rather than a second one appearing in their roster. */
 
-const BACKUP_KEYS = ['goal', 'food', 'workouts', 'settings', 'steps', 'coach', 'profile', 'weights'];
+/* What goes in a backup, and the merge rules, live in backup.js so node can
+ * test them. See coach/BACKUP-FORMAT.md. */
 
 function saveBackup() {
-  const data = {};
-  BACKUP_KEYS.forEach((k) => { data[k] = load(KEY[k], null); });
+  const stored = {};
+  LiftBackup.STORED.forEach((k) => { stored[k] = load(KEY[k], null); });
+  // Sections a newer client wrote that this build does not store go back out
+  // as they came in -- the same promise `ext` makes, for the same reason.
+  const data = LiftBackup.buildData(stored, load(KEY.unknownData, {}));
   const out = { v: 1, app: 'lift', saved: todayKey(), data };
   // Hand back whatever another platform recorded that this one has no field
   // for. Dropping it would mean a phone's backup came through here and lost
@@ -1886,14 +1890,10 @@ function loadBackup(file) {
       const incoming = parsed && parsed.data;
       if (!incoming || parsed.app !== 'lift') throw new Error('not a LIFT backup');
 
-      const addMissing = (current, arriving) => {
-        const seen = new Set(current.map((r) => r && r.id));
-        let added = 0;
-        (arriving || []).forEach((r) => {
-          if (r && r.id && !seen.has(r.id)) { current.push(r); added += 1; }
-        });
-        return added;
-      };
+      // Case-insensitive now: an exact comparison duplicated every food entry
+      // and workout on a round trip through an iPhone, which writes ids in
+      // upper case. The rule and its tests are in backup.js.
+      const addMissing = LiftBackup.addMissing;
       const fillGaps = (current, arriving) => {
         Object.entries(arriving || {}).forEach(([k, v]) => {
           if (current[k] == null) current[k] = v;
@@ -1903,8 +1903,34 @@ function loadBackup(file) {
       // Keep the parts of the file this app cannot read, so saving again
       // returns them intact rather than quietly dropping them.
       if (parsed.ext && Object.keys(parsed.ext).length) save(KEY.ext, parsed.ext);
+      const unknown = LiftBackup.unknownSections(incoming);
+      if (Object.keys(unknown).length) {
+        save(KEY.unknownData, { ...load(KEY.unknownData, {}), ...unknown });
+      }
 
-      const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts);
+      // Ingredient lines are reparsed rather than trusted: rawText is the
+      // contract, and every client runs the same parser. Only the fields the
+      // parser does not own are carried from the file -- spreading the whole
+      // ingredient under the parse would keep the file's cached quantity for
+      // exactly the lines that do not parse.
+      const arrivingRecipes = (incoming.recipes || []).filter(Boolean).map((r) => ({
+        ...r,
+        ingredients: (r.ingredients || []).map((i) => {
+          const raw = typeof i === 'string' ? i : (i && i.rawText) || '';
+          const extra = {};
+          if (i && typeof i === 'object') {
+            if (i.optional != null) extra.optional = i.optional;
+            if (i.note != null) extra.note = i.note;
+          }
+          return { ...extra, ...parseIngredient(raw) };
+        }),
+        steps: r.steps || [],
+      }));
+
+      const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts)
+        + addMissing(recipes, arrivingRecipes)
+        // After recipes, so a meal whose recipe came in this same file keeps it.
+        + LiftBackup.addMissingPlan(plan, incoming.plan, recipes);
       fillGaps(steps, incoming.steps);
       fillGaps(weights, incoming.weights);
       if (!goal && incoming.goal) goal = incoming.goal;
@@ -1920,6 +1946,8 @@ function loadBackup(file) {
       save(KEY.profile, profile);
       save(KEY.coach, coach);
       save(KEY.settings, settings);
+      save(KEY.recipes, recipes);
+      save(KEY.plan, plan);
 
       render();
       alert(added
