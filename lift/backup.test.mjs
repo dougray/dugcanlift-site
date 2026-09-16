@@ -59,8 +59,8 @@ test('a planned meal whose recipe exists nowhere is skipped', () => {
 // MARK: - Rule 2: unknown sections survive
 
 test('a section this build does not store is kept', () => {
-  const unknown = LiftBackup.unknownSections({ food: [], recipes: [], routines: [{ id: 'x' }] });
-  assert.deepEqual(unknown, { routines: [{ id: 'x' }] });
+  const unknown = LiftBackup.unknownSections({ food: [], recipes: [], swims: [{ id: 'x' }] });
+  assert.deepEqual(unknown, { swims: [{ id: 'x' }] });
 });
 
 test('shopping ticks are never preserved or written', () => {
@@ -70,8 +70,8 @@ test('shopping ticks are never preserved or written', () => {
 });
 
 test('a preserved section goes back out unchanged', () => {
-  const data = LiftBackup.buildData({ food: [] }, { routines: [{ id: 'x', sets: 3 }] });
-  assert.deepEqual(data.routines, [{ id: 'x', sets: 3 }]);
+  const data = LiftBackup.buildData({ food: [] }, { swims: [{ id: 'x', laps: 3 }] });
+  assert.deepEqual(data.swims, [{ id: 'x', laps: 3 }]);
 });
 
 test('a preserved section can never overwrite one this build stores', () => {
@@ -102,9 +102,19 @@ test("Android's recipes and both planned meals restore", () => {
   assert.equal(plan.find((m) => m.amountGrams).amountGrams, 250);
 });
 
-test("Android's sections this build does not store are preserved", () => {
-  // Android writes `routines`; the browser has none yet.
-  assert.deepEqual(Object.keys(LiftBackup.unknownSections(android.data)), ['routines']);
+test("Android's routines are stored now, not merely preserved", () => {
+  // Android writes `routines`. The browser kept them as an unknown section
+  // until it had routines of its own.
+  assert.deepEqual(Object.keys(LiftBackup.unknownSections(android.data)), []);
+  const routines = [];
+  LiftBackup.addMissing(routines, android.data.routines);
+  assert.equal(routines.length, android.data.routines.length);
+});
+
+test('routines and outdoor activities are written', () => {
+  const data = LiftBackup.buildData({ routines: [{ id: 'r' }], outdoor: [{ id: 'o' }] }, {});
+  assert.deepEqual(data.routines, [{ id: 'r' }]);
+  assert.deepEqual(data.outdoor, [{ id: 'o' }]);
 });
 
 // MARK: - Interop with the iOS build
