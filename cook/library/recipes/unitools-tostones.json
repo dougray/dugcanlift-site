@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tostones",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CU",
+    "nativeName": "Tostones",
+    "summary": "Green plantain fried twice, flattened between the fryings, with a garlic dip.",
+    "category": "snack",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      5,
+      6,
+      12,
+      8,
+      5,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tostones.jpg",
+      "author": "AMartiniouk",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tostones",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Green plantains",
+        "item": "green plantains",
+        "qty": 4
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "500 ml Water",
+        "item": "water",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lime",
+        "item": "lime",
+        "qty": 1
+      },
+      {
+        "rawText": "0.5 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Score the plantain skin lengthways and lever it off with a knife; a green one will not peel by hand.",
+      "Cut them across into three-centimetre pieces.",
+      "Crush half the garlic with salt and stir it into half a litre of warm water.",
+      "Fry the pieces at 160 °C for four minutes, until soft but not golden.",
+      "Flatten each piece with the base of a glass or a press to a centimetre thick.",
+      "Dip the discs in the garlic water for a second and pat them dry.",
+      "Fry them a second time at 190 °C for two minutes to a crisp shell, salt them and serve with a mojo of the remaining garlic, olive oil and lime."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 3,
+      "carbsG": 54,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

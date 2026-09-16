@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lampuki-pie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MT",
+    "nativeName": "Torta tal-lampuki",
+    "summary": "The Maltese pie of dorado with spinach, olives and cauliflower.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      25,
+      10,
+      15,
+      30,
+      20,
+      50
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lampuki pie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Dorado or sea bream",
+        "item": "dorado or sea bream",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "800 g Shortcrust pastry",
+        "item": "shortcrust pastry",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "500 g Spinach",
+        "item": "spinach",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Cauliflower",
+        "item": "cauliflower",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "120 g Olives",
+        "item": "olives",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "50 g Capers",
+        "item": "capers",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Sultanas",
+        "item": "sultanas",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "60 g Walnuts",
+        "item": "walnuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1,
+        "note": "to glaze"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the fish steaks three minutes a side and let them cool.",
+      "Lift the flesh off the bones, picking out every small bone.",
+      "Fry the onion, add the cauliflower florets and stew them ten minutes.",
+      "Add the spinach, tomato paste, olives, capers, sultanas and walnuts and cook it dry.",
+      "Cool the filling completely and fold the fish into it in pieces.",
+      "Line a tin with pastry, add the filling and cover it with a second sheet, crimping the edge.",
+      "Glaze it with egg, cut vents and bake at 190 °C for forty-five minutes, to a golden crust."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 36,
+      "carbsG": 48,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-njeguski-steak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ME",
+    "nativeName": "Njeguški stek",
+    "summary": "A pork chop with a pocket stuffed with Njeguši prosciutto and cheese, fried in breadcrumbs.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      8,
+      8,
+      12,
+      22,
+      12,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Njeguški steak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Pork loin",
+        "item": "pork loin",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in thick pieces"
+      },
+      {
+        "rawText": "150 g Njeguši prosciutto",
+        "item": "njeguši prosciutto",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "200 g Njeguši or kashkaval cheese",
+        "item": "njeguši or kashkaval cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "100 g Flour",
+        "item": "flour",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "250 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "300 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut each piece along its length, stopping short of the far edge, and open it like a book.",
+      "Beat the opened meat lightly under film and season the inside.",
+      "Lay in a slice of prosciutto and a slab of cheese, close it and press the edges together.",
+      "Coat in flour, egg and crumbs, then repeat the egg and crumbs a second time.",
+      "Chill for twenty minutes; the coating sets and will not slide off in the pan.",
+      "Fry over medium heat, six minutes a side, to a deep gold.",
+      "Drain on a rack, rest it five minutes and serve with fried potatoes and lemon."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 54,
+      "carbsG": 44,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mangu",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DO",
+    "nativeName": "Mangú",
+    "summary": "Mashed boiled green plantain with pickled onion, egg, fried cheese and salami.",
+    "category": "breakfast",
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      5,
+      16,
+      8,
+      10,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mangu.jpg",
+      "author": "",
+      "license": ""
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mangú",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Green plantains",
+        "item": "green plantains",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Red onions",
+        "item": "red onions",
+        "qty": 2
+      },
+      {
+        "rawText": "60 ml Vinegar",
+        "item": "vinegar",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 g Salami",
+        "item": "salami",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Frying cheese",
+        "item": "frying cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the plantains under water, halve them and boil in salted water for twenty minutes, until soft.",
+      "Set aside a cup of the cooking water and cool it.",
+      "Pickle the sliced onion in vinegar with salt and leave it fifteen minutes.",
+      "Mash the hot plantain with butter, adding the cold water, to a smooth purée.",
+      "Fry slices of salami and cheese in a dry pan until browned.",
+      "Fry the eggs and build the plate: purée, the onion and its vinegar on top, salami, cheese and egg alongside."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 30,
+      "carbsG": 58,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

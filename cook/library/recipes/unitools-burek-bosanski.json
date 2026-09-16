@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-burek-bosanski",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BA",
+    "nativeName": "Burek",
+    "summary": "A spiral of hand-stretched pastry with a meat filling. In Bosnia only the meat one is called burek.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      45,
+      8,
+      20,
+      12,
+      45,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/burek-bosanski.jpg",
+      "author": "",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bosnian burek",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "280 ml Warm water",
+        "item": "warm water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Minced beef",
+        "item": "minced beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Vinegar",
+        "item": "vinegar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 400,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, warm water, a spoon of oil, the vinegar and salt, and work it fifteen minutes until elastic.",
+      "Divide it into four balls, oil them, cover and leave them forty minutes.",
+      "Mix the raw mince with the onion, salt, pepper and two spoons of water; the water keeps the filling from drying out.",
+      "Stretch a ball by hand on a cloth-covered table into a translucent sheet, working from the centre outwards.",
+      "Sprinkle the sheet with oil, lay the filling in a line along one edge and roll it into a long thin cylinder.",
+      "Coil the cylinders into a round tin from the centre outwards, brush with oil and bake at 200 °C for forty minutes.",
+      "Sprinkle the hot burek with water and cover it with a cloth for five minutes to soften the crust. Serve with yoghurt."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 30,
+      "carbsG": 58,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sardinhas-assadas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PT",
+    "nativeName": "Sardinhas assadas",
+    "summary": "Whole sardines salted coarsely and grilled over coals, served on a slice of bread.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      32,
+      25,
+      20,
+      5,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sardinhas-assadas.jpg",
+      "author": "Bosc d'Anjou from New York, NY, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sardinhas assadas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Sardines",
+        "item": "sardines",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "whole, large"
+      },
+      {
+        "rawText": "150 g Coarse salt",
+        "item": "coarse salt",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "8 slices Country bread",
+        "item": "country bread",
+        "qty": 8,
+        "unit": "slice"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      }
+    ],
+    "steps": [
+      "Rinse the sardines without gutting them and pat them dry on the outside.",
+      "Bury the fish in coarse salt on all sides and leave it half an hour at room temperature.",
+      "Light the coals and let them ash over; an open flame burns the skin within a minute.",
+      "Char the peppers on the coals, peel them and dress them with oil, garlic and vinegar.",
+      "Shake the excess salt off the fish and lay them on a hot, oiled grate.",
+      "Grill four minutes a side, turning them exactly once.",
+      "Lay the sardines on slices of bread and serve with boiled potatoes and the pepper salad."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 34,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

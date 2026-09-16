@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-arroz-con-coco",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PA",
+    "nativeName": "Arroz con coco",
+    "summary": "Rice cooked in coconut milk with caramelised coconut solids, dark and faintly sweet.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      15,
+      4,
+      5,
+      6,
+      12,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/arroz-con-coco.jpg",
+      "author": "Gunawan Kartapranata",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Coconut rice",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "800 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 800,
+        "unit": "ml",
+        "note": "full-fat"
+      },
+      {
+        "rawText": "400 ml Water",
+        "item": "water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "optional"
+      },
+      {
+        "rawText": "1.5 tsp Salt",
+        "item": "salt",
+        "qty": 1.5,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Pour the coconut milk into a heavy pot and cook it over medium heat, stirring.",
+      "Keep cooking until the milk separates into oil and brown solids.",
+      "The moment the solids turn deep brown, add the water at once to stop the caramelisation.",
+      "Add the sugar, salt and raisins and bring it to the boil.",
+      "Rinse the rice until the water runs clear and add it to the pot in an even layer.",
+      "Cook uncovered over medium heat until the liquid falls to the level of the rice.",
+      "Cover it, drop the heat to its lowest and hold it twenty minutes without opening it once."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 8,
+      "carbsG": 68,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-coxinha",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BR",
+    "nativeName": "Coxinha",
+    "summary": "Deep-fried teardrops of cooked dough with a chicken filling, shaped like a drumstick.",
+    "category": "snack",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      5,
+      5,
+      12,
+      35,
+      30,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/coxinha.jpg",
+      "author": "Romerito Pontes from São Carlos",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Coxinha",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "700 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 g Catupiry or cream cheese",
+        "item": "catupiry or cream cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "300 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Poach the chicken in salted water for twenty minutes, lift it out and pull it into threads. Keep the broth.",
+      "Fry the onion and garlic, add the chicken, tomato paste, parsley and salt and cook five minutes.",
+      "Bring the broth and butter to the boil, add all the flour at once and work it on the heat for five minutes.",
+      "Turn the dough onto the table and knead it by hand until it is smooth and stops sticking.",
+      "Flatten a piece of dough on your palm, add filling and a little catupiry, seal it and draw it into a teardrop with a point.",
+      "Coat in egg and crumbs, repeat once more and chill them twenty minutes.",
+      "Fry in batches at 175 °C for four minutes, to a deep gold."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 24,
+      "carbsG": 48,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

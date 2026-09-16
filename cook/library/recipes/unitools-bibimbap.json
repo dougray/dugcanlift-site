@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bibimbap",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KR",
+    "nativeName": "비빔밥",
+    "summary": "Rice under separately cooked vegetables, meat and an egg, mixed with gochujang right before eating.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      6,
+      2,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bibimbap.jpg",
+      "author": "Sous Chef",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bibimbap",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Cooked short-grain rice",
+        "item": "cooked short-grain rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "250 g Beef",
+        "item": "beef",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "in thin strips"
+      },
+      {
+        "rawText": "200 g Spinach",
+        "item": "spinach",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Soybean sprouts",
+        "item": "soybean sprouts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1,
+        "note": "julienned"
+      },
+      {
+        "rawText": "150 g Shiitake mushrooms",
+        "item": "shiitake mushrooms",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "4 tbsp Gochujang",
+        "item": "gochujang",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Sesame seeds, to taste",
+        "item": "sesame seeds"
+      }
+    ],
+    "steps": [
+      "Marinate the beef in soy, garlic and a spoon of sesame oil for twenty minutes.",
+      "Blanch the spinach for thirty seconds, squeeze it dry and dress with sesame oil and a pinch of salt. Boil the sprouts three minutes and dress them the same way, with garlic.",
+      "Fry the carrot and the mushrooms separately, a couple of minutes each, seasoning each on its own. No need to wash the pan in between.",
+      "Sear the beef over a high flame for two minutes. Fry the eggs separately, leaving the yolks runny.",
+      "Divide the hot rice between bowls, arrange the vegetables and beef in sections, and top with an egg and a spoon of gochujang. Each person does the mixing."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 34,
+      "carbsG": 76,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

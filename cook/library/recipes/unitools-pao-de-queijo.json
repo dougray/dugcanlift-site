@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pao-de-queijo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BR",
+    "nativeName": "Pão de queijo",
+    "summary": "Cheese balls of tapioca starch — a crust outside, a stretchy hollow inside. No wheat and no yeast.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      15,
+      8,
+      10,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pao-de-queijo.jpg",
+      "author": "Murilo manzini",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pão de queijo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Tapioca starch",
+        "item": "tapioca starch",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Water",
+        "item": "water",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Parmesan",
+        "item": "parmesan",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "grated"
+      },
+      {
+        "rawText": "100 g Mozzarella",
+        "item": "mozzarella",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "grated"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Bring the milk, water, oil and salt to just below boiling.",
+      "Pour all the hot liquid into the starch at once and stir with a spatula. The mixture looks lumpy and odd; that is correct. Let it cool to warm.",
+      "Work in the eggs one at a time, then both cheeses. Knead to an even sticky mass — hands are easier than a spoon.",
+      "With wet hands roll walnut-sized balls and space them three centimetres apart on a tray.",
+      "Bake at 200 °C for twenty minutes until golden. Do not open the door for the first fifteen: the steam escapes and they collapse."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 12,
+      "carbsG": 40,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

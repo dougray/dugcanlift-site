@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bint-al-sahn",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "YE",
+    "nativeName": "بنت الصحن",
+    "summary": "A many-layered enriched bread brushed with ghee, drenched in honey and scattered with nigella.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      18,
+      62,
+      25,
+      15,
+      25,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bint-al-sahn.jpg",
+      "author": "Rukn950",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bint al-sahn",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "200 ml Warm milk",
+        "item": "warm milk",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Ghee",
+        "item": "ghee",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "250 g Honey",
+        "item": "honey",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 tsp Nigella seeds",
+        "item": "nigella seeds",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in the warm milk and leave it ten minutes.",
+      "Knead a soft dough from the flour, eggs, yeast mixture, salt and two spoons of ghee, and work it fifteen minutes.",
+      "Let it rise somewhere warm for an hour, until doubled.",
+      "Divide it into ten balls, oil them and rest them twenty minutes under film.",
+      "Stretch the first ball by hand to the size of the tin, lay it in and brush it generously with ghee.",
+      "Repeat with the rest, buttering every layer. Brush the top one too and scatter it with nigella.",
+      "Bake at 190 °C for thirty-five minutes and pour the honey over immediately, while the bread is hot."
+    ],
+    "prepMinutes": 80,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 9,
+      "carbsG": 70,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

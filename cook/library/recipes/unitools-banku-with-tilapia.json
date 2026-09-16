@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-banku-with-tilapia",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GH",
+    "nativeName": "Banku",
+    "summary": "Fermented maize and cassava dough worked smooth, with grilled fish and a hot pepper sauce.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      8,
+      22,
+      8,
+      20,
+      10,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/banku-with-tilapia.jpg",
+      "author": "sshreeves",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Banku with tilapia",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Maize flour",
+        "item": "maize flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "fermented for three days"
+      },
+      {
+        "rawText": "200 g Cassava dough",
+        "item": "cassava dough",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Tilapia",
+        "item": "tilapia",
+        "qty": 4,
+        "note": "whole, gutted"
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Habanero chillies",
+        "item": "habanero chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Mix the maize and cassava doughs with a litre of water and salt to a smooth, lump-free batter.",
+      "Set it over medium heat and work it with a wooden paddle without stopping. It starts to thicken after five minutes.",
+      "Keep working it for twenty minutes, pressing it against the sides, until it turns dense and glossy.",
+      "Shape balls with wet hands and wrap each in film or a banana leaf.",
+      "Rub the fish with salt, ginger and garlic and grill or pan-fry it eight minutes a side.",
+      "Grind the tomatoes, habaneros, onion, salt and a spoon of oil in a mortar to a coarse sauce.",
+      "Serve a ball of banku, the fish and a bowl of sauce. It is eaten by hand, pinching off dough and dipping it."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 38,
+      "carbsG": 78,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

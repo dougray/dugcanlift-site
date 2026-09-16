@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-beshbarmak-kyrgyz",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KG",
+    "nativeName": "Бешбармак",
+    "summary": "Mutton with home-made noodles in an onion sauce called chyk. The Kyrgyz version: mutton, and no potato.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      155,
+      50,
+      22,
+      12,
+      12,
+      15,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/beshbarmak-kyrgyz.jpg",
+      "author": "Pannet",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kyrgyz beshbarmak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.8 kg Mutton on the bone",
+        "item": "mutton on the bone",
+        "qty": 1.8,
+        "unit": "kg",
+        "grams": 1800
+      },
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "170 ml Water for the dough",
+        "item": "water for the dough",
+        "qty": 170,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 Onions",
+        "item": "onions",
+        "qty": 5
+      },
+      {
+        "rawText": "100 g Mutton fat",
+        "item": "mutton fat",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "10 Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 10
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the meat with cold water, bring it up, skim and simmer two and a half hours with the peppercorns and bay.",
+      "Knead a stiff dough from the flour, eggs, water and salt and rest it forty minutes.",
+      "Roll it a millimetre thick and cut it into diamonds six centimetres across.",
+      "Render the mutton fat and cook the sliced onion in it until soft.",
+      "Add two ladles of broth to the onion and stew ten minutes into a thick gravy; that is the chyk.",
+      "Boil the dough diamonds in the strained broth in batches, four minutes each, and plate them straight away.",
+      "Pull the meat into sheets, lay it over the dough, spoon the chyk over and scatter with coriander. Serve the broth in bowls."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 165,
+    "nutritionPerServing": {
+      "calories": 700,
+      "proteinG": 44,
+      "carbsG": 58,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

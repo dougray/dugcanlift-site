@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fanesca",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EC",
+    "nativeName": "Fanesca",
+    "summary": "The Holy Week soup of twelve grains and pulses with salt cod.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      30,
+      80,
+      10,
+      20,
+      12,
+      35,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fanesca",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "700 g Salt cod",
+        "item": "salt cod",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "soaked for a day"
+      },
+      {
+        "rawText": "1.5 l Milk",
+        "item": "milk",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "500 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Courgette",
+        "item": "courgette",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Corn kernels",
+        "item": "corn kernels",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g White beans",
+        "item": "white beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Lupini beans",
+        "item": "lupini beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Lentils",
+        "item": "lentils",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Peas",
+        "item": "peas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Broad beans",
+        "item": "broad beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Rice",
+        "item": "rice",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Peanuts",
+        "item": "peanuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "250 ml Cream",
+        "item": "cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Fresh cheese",
+        "item": "fresh cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5,
+        "note": "boiled, to serve"
+      },
+      {
+        "rawText": "1 tbsp Achiote",
+        "item": "achiote",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the cod for a day with four changes of water and poach it in milk for twenty minutes.",
+      "Boil the beans, lupini, broad beans, lentils and peas separately until soft.",
+      "Grind the peanuts with milk to a smooth mass; it is the soup's thickener.",
+      "Fry the onion in annatto oil, add the pumpkin and courgette and stew twenty minutes.",
+      "Blend the pumpkin and courgette and return them to the pot with the cod's milk.",
+      "Stir in all the cooked pulses, the rice, corn and peanut mass and cook thirty minutes.",
+      "Add the cream, cheese and pieces of cod, and serve with halved eggs and fried plantain."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 42,
+      "carbsG": 68,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

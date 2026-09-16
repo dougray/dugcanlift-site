@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sklandrausis",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LV",
+    "nativeName": "Sklandrausis",
+    "summary": "A rye pastry case with two layers of purée, potato and carrot, dusted with cinnamon.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      30,
+      10,
+      10,
+      20,
+      12,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sklandrausis.jpg",
+      "author": "Silvija Dalge Tetere",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sklandrausis",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "400 g Rye flour",
+        "item": "rye flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "180 ml Warm water",
+        "item": "warm water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "600 g Carrots",
+        "item": "carrots",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Sugar",
+        "item": "sugar",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the rye flour, warm water, melted butter and salt and rest it half an hour.",
+      "Boil the potatoes and carrots separately until completely soft.",
+      "Mash the potatoes with soured cream, an egg, caraway and salt into a smooth purée.",
+      "Mash the carrots with soured cream, an egg, sugar and cinnamon into a separate purée.",
+      "Roll the dough thin, cut rounds and shape rims with your fingers, folding the edges up.",
+      "Spread the potato purée as the first layer and the carrot over it, levelling with a spoon.",
+      "Bake at 200 °C for twenty-five minutes and dust them with cinnamon while still hot."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 7,
+      "carbsG": 46,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

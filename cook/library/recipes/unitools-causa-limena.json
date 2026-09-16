@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-causa-limena",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PE",
+    "nativeName": "Causa limeña",
+    "summary": "Layers of yellow potato purée with lime and ají, filled with chicken or tuna.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      35,
+      7,
+      12,
+      8,
+      6,
+      8,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/causa-limena.jpg",
+      "author": "spersper",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Causa limeña",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Yellow potatoes",
+        "item": "yellow potatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "4 tbsp Ají amarillo paste",
+        "item": "ají amarillo paste",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Limes",
+        "item": "limes",
+        "qty": 4
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Tinned tuna",
+        "item": "tinned tuna",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "150 g Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Avocado",
+        "item": "avocado",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "60 g Black olives",
+        "item": "black olives",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "20 g Coriander",
+        "item": "coriander",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins until completely soft, peel them hot and press them through a ricer.",
+      "Work the purée by hand for five minutes, until it is even and elastic.",
+      "Cool the purée to room temperature, then work in the ají paste, lime juice, oil and salt.",
+      "Mix the tuna with the mayonnaise, finely chopped red onion and coriander.",
+      "Press half the purée into a mould in a layer a centimetre and a half thick and level it.",
+      "Spread the filling and the avocado slices and cover with the other half of the purée.",
+      "Chill it two hours, garnish with egg and olives and serve cold."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 22,
+      "carbsG": 38,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

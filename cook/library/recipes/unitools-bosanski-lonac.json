@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bosanski-lonac",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BA",
+    "nativeName": "Bosanski lonac",
+    "summary": "Meat and vegetables layered in a clay pot and cooked four hours without stirring.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      8,
+      10,
+      5,
+      245,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bosanski-lonac.jpg",
+      "author": "Kami at German Wikipedia",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bosanski lonac",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "500 g Cabbage",
+        "item": "cabbage",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Parsley root",
+        "item": "parsley root",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Garlic",
+        "item": "garlic",
+        "qty": 1,
+        "note": "whole head"
+      },
+      {
+        "rawText": "150 g Smoked pork fat",
+        "item": "smoked pork fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "200 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut all the vegetables into large pieces; they have to survive four hours without collapsing.",
+      "Line the bottom of the pot with the diced pork fat, put the meat on it and season.",
+      "Layer on the onion, carrot, parsley root, potato, peppers, cabbage and tomato.",
+      "Tuck in the whole head of garlic and the bay leaves, pour in the wine and add water to half the height of the pot.",
+      "Cover and put it in a 150 °C oven for four hours. Do not open it and do not stir.",
+      "Serve straight from the pot, digging to the bottom so every layer reaches the plate."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 660,
+      "proteinG": 44,
+      "carbsG": 42,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

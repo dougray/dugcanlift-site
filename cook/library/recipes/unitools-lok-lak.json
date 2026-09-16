@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lok-lak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KH",
+    "nativeName": "ឡុកឡាក់",
+    "summary": "Cubes of beef seared over high heat, on salad, with a dip of lime and black pepper.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      5,
+      8,
+      10,
+      5,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lok-lak.jpg",
+      "author": "Alexandersingh9",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lok lak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef sirloin",
+        "item": "beef sirloin",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in three-centimetre cubes"
+      },
+      {
+        "rawText": "2 tbsp Oyster sauce",
+        "item": "oyster sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Ground black pepper",
+        "item": "ground black pepper",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Lettuce",
+        "item": "lettuce",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Marinate the beef in the oyster and soy sauces with garlic, sugar and half the pepper for twenty minutes.",
+      "Mix the lime juice with the remaining pepper and a pinch of salt; that is the dipping sauce.",
+      "Arrange the lettuce, tomato and cucumber slices and red onion rings on a platter.",
+      "Heat a pan as high as it goes and sear the beef in batches, a minute and a half each, without stirring constantly.",
+      "Fry the eggs, keeping the yolks runny.",
+      "Pile the beef on the vegetables, top with the eggs and give everyone their own small bowl of the dip."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 42,
+      "carbsG": 18,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

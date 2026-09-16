@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ackee-and-saltfish",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JM",
+    "nativeName": "Ackee and saltfish",
+    "summary": "Jamaica's national dish: ackee fruit, which looks and behaves like scrambled egg, with soaked salt cod.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      8,
+      5,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ackee-and-saltfish.jpg",
+      "author": "gailf548 from New York State, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ackee and saltfish",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "540 g Tinned ackee",
+        "item": "tinned ackee",
+        "qty": 540,
+        "unit": "g",
+        "grams": 540,
+        "note": "drained"
+      },
+      {
+        "rawText": "300 g Salt cod",
+        "item": "salt cod",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Sweet pepper",
+        "item": "sweet pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomato",
+        "item": "tomato",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Spring onion",
+        "item": "spring onion",
+        "qty": 3
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1,
+        "note": "whole, uncut"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Black pepper, to taste",
+        "item": "black pepper"
+      }
+    ],
+    "steps": [
+      "Boil the soaked cod for twenty minutes, drain, cool it and flake it, discarding skin and bones.",
+      "Fry the onion and pepper in the oil for eight minutes, add the thyme and the whole scotch bonnet: uncut, it gives aroma without heat.",
+      "Add the cod and tomatoes and cook through for five minutes.",
+      "Tip in the ackee, add black pepper and warm it two minutes, swirling the pan only. No spatula.",
+      "Lift out the chilli and serve with fried plantain, bread or boiled ground provisions."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 28,
+      "carbsG": 14,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

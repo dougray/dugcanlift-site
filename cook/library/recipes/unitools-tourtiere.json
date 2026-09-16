@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tourtiere",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CA",
+    "nativeName": "Tourtière",
+    "summary": "A double-crust pie of spiced pork and potato. The Québec Christmas table.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      4,
+      40,
+      25,
+      12,
+      10,
+      58
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tourtiere.jpg",
+      "author": "St. Lawrence restaurant",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tourtière",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "700 g Minced pork",
+        "item": "minced pork",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "300 g Minced beef",
+        "item": "minced beef",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "boiled and mashed"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Ground cloves",
+        "item": "ground cloves",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Allspice",
+        "item": "allspice",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Nutmeg",
+        "item": "nutmeg",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "250 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "700 g Shortcrust pastry",
+        "item": "shortcrust pastry",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1,
+        "note": "for glazing"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion and garlic until soft, add both minces and cook, breaking up lumps, for ten minutes.",
+      "Add all the spices, season, and pour in the stock.",
+      "Simmer gently for forty minutes, until the liquid has almost gone.",
+      "Stir in the mashed potato and cool the filling completely.",
+      "Line a tin with pastry, add the cold filling and level it.",
+      "Cover with a second sheet, crimp the edges, cut vents and glaze with egg.",
+      "Bake at 200 °C for fifteen minutes, then at 180 °C for forty more, to a deep golden crust."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 700,
+      "proteinG": 30,
+      "carbsG": 50,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

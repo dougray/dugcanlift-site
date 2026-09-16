@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-caldo-verde",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PT",
+    "nativeName": "Caldo verde",
+    "summary": "A potato purée soup with finely shredded kale and slices of smoked chouriço.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      22,
+      5,
+      8,
+      12,
+      3,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/caldo-verde.jpg",
+      "author": "Mateus Hidalgo",
+      "license": "CC BY-SA 2.5 br"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Caldo verde",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "300 g Kale",
+        "item": "kale",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "shredded to threads"
+      },
+      {
+        "rawText": "200 g Chouriço",
+        "item": "chouriço",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Corn bread",
+        "item": "corn bread",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soften the onion and garlic in half the olive oil for eight minutes.",
+      "Add the diced potato, cover with a litre and a half of water and boil twenty minutes, until completely soft.",
+      "Blend the soup to a smooth purée and season it.",
+      "Fry the chouriço slices in a dry pan until they colour and drain them on paper.",
+      "Roll the kale leaves tightly and cut across them into threads.",
+      "Bring the purée to the boil, add the kale and cook it exactly three minutes.",
+      "Ladle it out, add the sausage slices and pour over raw olive oil."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 12,
+      "carbsG": 42,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

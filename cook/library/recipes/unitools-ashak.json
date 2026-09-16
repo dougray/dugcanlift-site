@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ashak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AF",
+    "nativeName": "آشک",
+    "summary": "Afghan leek dumplings under garlic yoghurt and a meat sauce.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      45,
+      22,
+      20,
+      8,
+      25,
+      30,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ashak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "180 ml Water",
+        "item": "water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Spring onions",
+        "item": "spring onions",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Minced beef",
+        "item": "minced beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "500 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 500,
+        "unit": "ml",
+        "note": "thick"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Dried mint",
+        "item": "dried mint",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water and salt and rest it forty minutes under film.",
+      "Chop the spring onion very fine, salt it and wring it out in a cloth.",
+      "Fry the onion with the mince, add the tomato paste and stew it twenty minutes.",
+      "Whisk the yoghurt with crushed garlic and salt and leave it at room temperature.",
+      "Roll the dough thin and cut eight-centimetre rounds.",
+      "Add the leek filling, fold each into a half-moon and crimp the edge tight.",
+      "Boil the dumplings five minutes, lay them on the yoghurt, spoon the sauce over and dust with mint and chilli."
+    ],
+    "prepMinutes": 80,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 32,
+      "carbsG": 58,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-anzac-biscuits",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AU",
+    "nativeName": "Anzac biscuits",
+    "summary": "Oat biscuits on golden syrup and bicarbonate, without eggs, keeping for weeks.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      8,
+      3,
+      5,
+      10,
+      5,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/anzac-biscuits.jpg",
+      "author": "me (w:User:pfctdayelise)",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Anzac biscuits",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 20,
+    "ingredients": [
+      {
+        "rawText": "150 g Rolled oats",
+        "item": "rolled oats",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Flour",
+        "item": "flour",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Desiccated coconut",
+        "item": "desiccated coconut",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "150 g Brown sugar",
+        "item": "brown sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 tbsp Golden syrup",
+        "item": "golden syrup",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Boiling water",
+        "item": "boiling water",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Mix the oats, flour, coconut, sugar and salt in a large bowl.",
+      "Melt the butter with the golden syrup over a low heat, without letting it boil.",
+      "Dissolve the bicarbonate in the boiling water and pour it straight into the butter mixture; it foams up.",
+      "Pour the foaming mixture into the dry ingredients and stir until even.",
+      "Roll walnut-sized balls and set them on a tray with generous gaps between them.",
+      "Flatten each ball with your palm to a centimetre thick; they spread further in the oven.",
+      "Bake at 160 °C for twelve to eighteen minutes and cool them on the tray rather than a rack."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 18,
+    "nutritionPerServing": {
+      "calories": 180,
+      "proteinG": 2,
+      "carbsG": 23,
+      "fatG": 9,
+      "estimated": true
+    }
+  }
+}

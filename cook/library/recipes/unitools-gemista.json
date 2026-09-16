@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gemista",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GR",
+    "nativeName": "Γεμιστά",
+    "summary": "Tomatoes and peppers stuffed with herbed rice and baked with potatoes in olive oil.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      6,
+      10,
+      8,
+      15,
+      10,
+      80
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gemista.jpg",
+      "author": "Photo and cooking: Badseed",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gemista",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "8 Large tomatoes",
+        "item": "large tomatoes",
+        "qty": 8
+      },
+      {
+        "rawText": "4 Bell peppers",
+        "item": "bell peppers",
+        "qty": 4
+      },
+      {
+        "rawText": "300 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "50 g Parsley",
+        "item": "parsley",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "20 g Mint",
+        "item": "mint",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "200 ml Olive oil",
+        "item": "olive oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut lids off the tomatoes and scoop out the flesh with a spoon without piercing the walls.",
+      "Blitz the flesh and add the sugar; it takes the edge off the tomato acidity.",
+      "Soften the onion in olive oil for ten minutes, until sweet.",
+      "Mix the raw rice with the onion, herbs, half the tomato purée, salt and pepper.",
+      "Fill the vegetables two-thirds full, cap them with their lids and set them in a dish.",
+      "Tuck potato wedges between them, pour over the remaining purée and douse it all with oil.",
+      "Bake covered with foil at 180 °C for an hour, then uncover and give it twenty minutes more."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 8,
+      "carbsG": 60,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

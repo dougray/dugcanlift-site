@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chapli-kebab",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PK",
+    "nativeName": "چپلی کباب",
+    "summary": "Flat beef patties with cornmeal, tomato and whole coriander seeds.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      22,
+      10,
+      16,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chapli-kebab.jpg",
+      "author": "Murcotipton",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chapli kebab",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Minced beef",
+        "item": "minced beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "fatty"
+      },
+      {
+        "rawText": "60 g Cornmeal",
+        "item": "cornmeal",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "2 tbsp Coriander seeds",
+        "item": "coriander seeds",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "coarsely crushed"
+      },
+      {
+        "rawText": "1 tbsp Dried pomegranate seeds",
+        "item": "dried pomegranate seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Green chillies",
+        "item": "green chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "8 sprigs Coriander leaf",
+        "item": "coriander leaf",
+        "qty": 8,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "120 g Ghee for frying",
+        "item": "ghee for frying",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Mix the mince with the cornmeal, egg, onion, chilli, coriander leaf, crushed coriander seed, pomegranate seeds and salt.",
+      "Fold in the tomatoes last so they do not weep too early, and chill the mixture for twenty minutes.",
+      "With wet hands shape flat patties twelve centimetres across and a centimetre thick.",
+      "Heat half a centimetre of ghee and fry them three or four minutes a side over medium heat, uncovered.",
+      "Serve with flatbread, onion rings and lemon. Traditionally an egg is broken over each patty in the pan."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 34,
+      "carbsG": 16,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

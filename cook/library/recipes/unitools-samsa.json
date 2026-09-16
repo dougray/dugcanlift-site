@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-samsa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UZ",
+    "nativeName": "Somsa",
+    "summary": "Flaky triangles of chopped lamb and onion, baked to a crisp shell.",
+    "category": "snack",
+    "difficulty": "hard",
+    "stepMinutes": [
+      40,
+      40,
+      15,
+      15,
+      20,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/samsa.jpg",
+      "author": "Ji-Elle",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Samsa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Plain flour",
+        "item": "plain flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Warm water",
+        "item": "warm water",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Lamb tail fat",
+        "item": "lamb tail fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "melted"
+      },
+      {
+        "rawText": "500 g Lamb",
+        "item": "lamb",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "500 g Onions",
+        "item": "onions",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "2 tsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Egg for glazing",
+        "item": "egg for glazing",
+        "qty": 1
+      },
+      {
+        "rawText": "Sesame seeds, to taste",
+        "item": "sesame seeds"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, warm water and salt for ten minutes and rest it under film for half an hour.",
+      "Roll the dough into a thin sheet, brush it with the melted fat, roll it into a tight log and chill it for half an hour.",
+      "Mix the chopped meat with the onion, cumin and pepper. Salt it immediately before shaping, not before that.",
+      "Cut the log into two-centimetre discs, set each cut side up and roll it into a round: the layers stay visible.",
+      "Add the filling and seal into a triangle, pressing the seams firmly. Set them seam down, glaze with egg and scatter with sesame.",
+      "Bake at 220 °C for ten minutes, then drop to 190 °C for twenty-five more, to a deep gold."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 24,
+      "carbsG": 46,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

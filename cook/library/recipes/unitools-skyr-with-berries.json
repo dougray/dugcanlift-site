@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-skyr-with-berries",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IS",
+    "nativeName": "Skyr",
+    "summary": "Home-made skyr, the Icelandic cultured dairy, strained thick, with bilberries.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      20,
+      5,
+      3,
+      10,
+      15,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "fixed",
+      "linear",
+      "linear",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/skyr-with-berries.jpg",
+      "author": "IcelandicProvisions",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Skyr with berries",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "4 l Skimmed milk",
+        "item": "skimmed milk",
+        "qty": 4,
+        "unit": "l"
+      },
+      {
+        "rawText": "100 g Skyr or yoghurt as starter",
+        "item": "skyr or yoghurt as starter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 pinch Rennet",
+        "item": "rennet",
+        "qty": 2,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "400 g Bilberries",
+        "item": "bilberries",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "150 ml Cream",
+        "item": "cream",
+        "qty": 150,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 g Sugar",
+        "item": "sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "100 g Rolled oats",
+        "item": "rolled oats",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Heat the milk to 85 °C, stirring, and hold it ten minutes without letting it boil.",
+      "Cool the milk to 40 °C by standing the pot in cold water.",
+      "Slacken the starter with a ladle of the warm milk and stir it back into the pot.",
+      "Add the rennet, stir for a few seconds and cover the pot.",
+      "Leave it somewhere warm for twelve hours, until the mass sets into a firm curd.",
+      "Turn the curd into a cloth and hang it over a bowl for six hours to drain the whey.",
+      "Whisk the skyr smooth and serve it with bilberries, cream and oats."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 220,
+      "proteinG": 20,
+      "carbsG": 22,
+      "fatG": 6,
+      "estimated": true
+    }
+  }
+}

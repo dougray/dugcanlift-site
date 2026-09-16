@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sarmale-moldovenesti",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MD",
+    "nativeName": "Sarmale",
+    "summary": "Small rolls of soured cabbage stewed with smoked meat under a blanket of leaves.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      20,
+      12,
+      50,
+      8,
+      15,
+      190
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Moldovan sarmale",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Whole soured cabbage",
+        "item": "whole soured cabbage",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "700 g Minced pork",
+        "item": "minced pork",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "150 g Rice",
+        "item": "rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "uncooked"
+      },
+      {
+        "rawText": "400 g Smoked ribs",
+        "item": "smoked ribs",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "500 ml Tomato juice",
+        "item": "tomato juice",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Dried dill",
+        "item": "dried dill",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Thyme",
+        "item": "thyme",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Soured cream",
+        "item": "soured cream",
+        "qty": 250,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Take the head apart into leaves and pare down the thick rib at the base of each.",
+      "Fry the onion in oil until golden and cool it completely.",
+      "Mix the mince with the raw rice, onion, dill, thyme, salt and pepper.",
+      "Halve the larger leaves and roll parcels the size of a thumb.",
+      "Line the base of a pot with leaf trimmings and pieces of smoked rib.",
+      "Pack the sarmale in tight circles, laying ribs between every other layer.",
+      "Pour over tomato juice and water, cover with torn leaves and stew at 150 °C for three hours."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 28,
+      "carbsG": 32,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

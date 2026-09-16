@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-matapa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MZ",
+    "nativeName": "Matapa",
+    "summary": "Cassava leaves pounded with peanuts and coconut milk, with prawns. Mozambique's national dish.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      10,
+      42,
+      22,
+      12,
+      7,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Matapa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "700 g Cassava leaves or spinach",
+        "item": "cassava leaves or spinach",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "200 g Peanuts",
+        "item": "peanuts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "ground"
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Prawns",
+        "item": "prawns",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Piri-piri chilli",
+        "item": "piri-piri chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Wash the leaves, strip the tough stems and pound them to a paste in a mortar.",
+      "Fry the onion and garlic in oil until soft and add the tomatoes.",
+      "Stir in the leaves, add water to the same level and cook forty minutes on a low heat.",
+      "Add the ground peanuts and cook twenty minutes more, stirring.",
+      "Add the prawns, the whole piri-piri and salt and stew ten minutes.",
+      "Pour in the coconut milk and warm it five minutes without letting it boil.",
+      "Serve with rice or with xima, the maize porridge."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 32,
+      "carbsG": 40,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

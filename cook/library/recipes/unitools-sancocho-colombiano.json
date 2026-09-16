@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sancocho-colombiano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CO",
+    "nativeName": "Sancocho de gallina",
+    "summary": "A chicken soup with cassava, plantain and corn, cooked over an open fire.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      10,
+      40,
+      22,
+      27,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sancocho-colombiano.jpg",
+      "author": "Daguerreroa",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Colombian sancocho",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Chicken",
+        "item": "chicken",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "free-range, in pieces"
+      },
+      {
+        "rawText": "600 g Cassava",
+        "item": "cassava",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Green plantains",
+        "item": "green plantains",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Corn cobs",
+        "item": "corn cobs",
+        "qty": 3
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "5 Spring onions",
+        "item": "spring onions",
+        "qty": 5
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Achiote",
+        "item": "achiote",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Avocado",
+        "item": "avocado",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the finely chopped onion, spring onion, tomato and garlic with the cumin and achiote down to a paste.",
+      "Put the chicken in the pot, add half the hogao and cover with four litres of water.",
+      "Bring it up, skim and simmer forty minutes.",
+      "Add the corn in halved cobs and the cassava in large pieces and cook twenty minutes.",
+      "Add the plantain and potato and cook twenty-five minutes more.",
+      "Mash a couple of pieces of cassava in the pot to thicken the soup and stir in the remaining hogao.",
+      "Scatter with coriander and serve with white rice and avocado on separate plates."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 110,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 44,
+      "carbsG": 68,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

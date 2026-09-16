@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mansaf",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JO",
+    "nativeName": "منسف",
+    "summary": "Lamb in a sauce of jameed, fermented dried yoghurt, over rice and flatbread. Jordan's national dish.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      85,
+      15,
+      42,
+      25,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mansaf.jpg",
+      "author": "Jktab",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mansaf",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "500 g Jameed",
+        "item": "jameed",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "or 1 kg thick yoghurt"
+      },
+      {
+        "rawText": "700 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "4 Thin flatbread",
+        "item": "thin flatbread",
+        "qty": 4
+      },
+      {
+        "rawText": "100 g Almonds",
+        "item": "almonds",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "60 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "6 Cardamom",
+        "item": "cardamom",
+        "qty": 6
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the jameed in warm water for four hours, break it up by hand and pass it through a sieve to an even liquid.",
+      "Simmer the lamb with the cardamom for an hour and twenty minutes, skimming. Keep the broth.",
+      "Pour the jameed liquid in with the meat and bring it up, stirring continuously in one direction.",
+      "Drop the heat to its lowest and hold it forty minutes. The sauce thickens and turns creamy.",
+      "Cook the rice in the meat broth with turmeric and a spoon of ghee.",
+      "Fry the almonds and pine nuts in ghee until golden and set them aside.",
+      "Line a platter with the bread, moisten it with sauce, spread the rice, lay the meat on top, spoon over more sauce and scatter the nuts and parsley."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 48,
+      "carbsG": 74,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

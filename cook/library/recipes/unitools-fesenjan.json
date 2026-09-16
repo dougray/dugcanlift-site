@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fesenjan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IR",
+    "nativeName": "خورش فسنجان",
+    "summary": "Duck or chicken in a thick sauce of ground walnuts and pomegranate molasses.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      18,
+      6,
+      60,
+      6,
+      60,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fesenjan.jpg",
+      "author": "stringparts",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fesenjan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Duck or chicken",
+        "item": "duck or chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "500 g Walnuts",
+        "item": "walnuts",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 ml Pomegranate molasses",
+        "item": "pomegranate molasses",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      },
+      {
+        "rawText": "100 g Pomegranate seeds",
+        "item": "pomegranate seeds",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Toast the walnuts in a dry pan for five minutes, cool them and grind them almost to a paste.",
+      "Fry the onion until golden, add the turmeric and the meat and brown it all over.",
+      "Lift out the meat, add the walnut paste to the pot and pour in a litre of hot water.",
+      "Cook the sauce an hour on a low heat, stirring every ten minutes; it darkens and starts releasing oil.",
+      "Add the pomegranate molasses, cinnamon, sugar and saffron and return the meat to the pot.",
+      "Stew an hour more, until the sauce turns dark brown and thick and oil shows at the edges.",
+      "Taste and adjust the balance of sour and sweet, and serve with rice and pomegranate seeds."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 44,
+      "carbsG": 52,
+      "fatG": 58,
+      "estimated": true
+    }
+  }
+}

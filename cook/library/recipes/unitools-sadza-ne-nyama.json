@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sadza-ne-nyama",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZW",
+    "nativeName": "Sadza ne nyama",
+    "summary": "Stiff maize porridge with stewed beef and greens. The daily meal of Zimbabwe.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      85,
+      20,
+      8,
+      10,
+      17,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sadza ne nyama",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Maize meal",
+        "item": "maize meal",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "800 g Beef",
+        "item": "beef",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "on the bone, in pieces"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "400 g Collard greens",
+        "item": "collard greens",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Peanut butter",
+        "item": "peanut butter",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "for the greens"
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the meat, add the onion and garlic and fry until soft.",
+      "Add the tomatoes, cover with water to the same level, season and stew for an hour and twenty.",
+      "Shred the greens fine and stew them with tomato and peanut butter for fifteen minutes.",
+      "Slake a quarter of the maize meal in cold water and stir it into a litre of boiling water.",
+      "Cook that thin porridge for ten minutes, stirring with a wooden paddle.",
+      "Rain in the rest of the meal a little at a time, working it hard for fifteen minutes to a stiff mass.",
+      "Turn the sadza onto plates with a wet spoon and serve with the meat and greens."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 105,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 42,
+      "carbsG": 66,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

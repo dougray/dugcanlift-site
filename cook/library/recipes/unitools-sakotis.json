@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sakotis",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LT",
+    "nativeName": "Šakotis",
+    "summary": "A spiked tree cake baked layer by layer on a turning spit over a fire.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      10,
+      12,
+      8,
+      8,
+      8,
+      85
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sakotis.jpg",
+      "author": "Sven Teschke",
+      "license": "CC BY-SA 3.0 de"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Šakotis",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 16,
+    "ingredients": [
+      {
+        "rawText": "20 Eggs",
+        "item": "eggs",
+        "qty": 20
+      },
+      {
+        "rawText": "500 g Butter",
+        "item": "butter",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Sugar",
+        "item": "sugar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "100 g Potato starch",
+        "item": "potato starch",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Lemon zest",
+        "item": "lemon zest",
+        "qty": 2
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Separate the whites from the yolks and whip the whites with half the sugar to firm peaks.",
+      "Beat the softened butter with the remaining sugar until pale, about eight minutes.",
+      "Add the yolks one at a time, still beating, then work in the soured cream, vanilla and zest.",
+      "Sift the flour with the starch and salt and fold it in with a spatula in three additions.",
+      "Fold in the whipped whites gently so the mixture does not collapse; the batter has to stay airy.",
+      "Heat the oven to 190 °C and pour the first thin layer onto a greased spit or into a tin.",
+      "Bake each layer three minutes to a golden colour and pour the next, until the batter runs out."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 40,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

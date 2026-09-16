@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sauerbraten",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Rheinischer Sauerbraten",
+    "summary": "Beef steeped for days in a vinegar marinade and braised in it, with a gravy thickened on gingerbread.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      4320,
+      15,
+      10,
+      120,
+      15,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sauerbraten.jpg",
+      "author": "Brücke-Osteuropa",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sauerbraten",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef topside",
+        "item": "beef topside",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "400 ml Red wine vinegar",
+        "item": "red wine vinegar",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 ml Dry red wine",
+        "item": "dry red wine",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Celeriac",
+        "item": "celeriac",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 tbsp Cloves, juniper, bay, peppercorns",
+        "item": "cloves, juniper, bay, peppercorns",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Gingerbread",
+        "item": "gingerbread",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "crumbled"
+      },
+      {
+        "rawText": "50 g Raisins",
+        "item": "raisins",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Oil for frying",
+        "item": "oil for frying",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the vinegar with the wine, vegetables and spices, cool it completely and pour it over the beef. Keep it in the fridge three to five days, turning once a day.",
+      "Lift the meat out, dry it with kitchen paper and brown it hard on every side in a hot casserole. Strain the marinade, keeping the vegetables.",
+      "Fry the marinated vegetables in the same fat, add the sugar and let it catch a little colour. Pour in the marinade and bring it to the boil.",
+      "Return the meat, cover and braise over a low flame for two hours, turning it once halfway. A fork should meet no resistance.",
+      "Take the meat out and keep it warm. Stir the crumbled gingerbread and the raisins into the gravy and cook for fifteen minutes: the gingerbread dissolves and thickens it on its own.",
+      "Blend the gravy smooth and taste it for the balance of sour and sweet. Carve the meat across the grain and pour the gravy over."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 610,
+      "proteinG": 54,
+      "carbsG": 26,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-murgh-makhani",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "मुर्ग़ मक्खनी",
+    "summary": "Yoghurt-marinated chicken, roasted, in a tomato and cream sauce finished with fenugreek.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      60,
+      20,
+      20,
+      5,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/murgh-makhani.jpg",
+      "author": "Yuvraj Singh 97",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Butter chicken",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Boneless chicken thigh",
+        "item": "boneless chicken thigh",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "150 g Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "20 g Ginger",
+        "item": "ginger",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20,
+        "note": "grated"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Garam masala",
+        "item": "garam masala",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Kashmiri chilli powder",
+        "item": "kashmiri chilli powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Tinned tomatoes",
+        "item": "tinned tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "120 ml Double cream",
+        "item": "double cream",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Cashews",
+        "item": "cashews",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "soaked in boiling water"
+      },
+      {
+        "rawText": "1 tbsp Kasuri methi",
+        "item": "kasuri methi",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Mix the yoghurt with half the ginger, garlic and spices, season it and marinate the chicken for at least an hour, better overnight.",
+      "Roast the chicken at 220 °C for twenty minutes, or sear it in a screaming-hot pan until it takes dark scorch marks. It can stay slightly underdone inside — the sauce will finish it.",
+      "Melt the butter and fry the onion with the rest of the ginger and garlic until golden. Add the tomatoes and the spices and cook for fifteen minutes.",
+      "Blend the sauce with the soaked cashews until completely smooth and return it to the pan. It is the cashews, not flour, that give the sauce its body.",
+      "Return the chicken to the sauce, pour in the cream and warm it through for five minutes without letting it boil. Crush the kasuri methi between your palms, stir it in and take the pan off."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 42,
+      "carbsG": 18,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kuyrdak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KZ",
+    "nativeName": "Қуырдақ",
+    "summary": "Offal and meat fried in a cauldron with onion and potato on rendered tail fat.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      12,
+      7,
+      10,
+      8,
+      18,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kuyrdak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "150 g Tail fat",
+        "item": "tail fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "400 g Mutton",
+        "item": "mutton",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Liver",
+        "item": "liver",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "300 g Heart",
+        "item": "heart",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Kidneys",
+        "item": "kidneys",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Herbs",
+        "item": "herbs",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the kidneys in cold water for an hour, changing it twice, and trim out every duct.",
+      "Render the tail fat in the cauldron to cracklings and lift them out with a slotted spoon.",
+      "Sear the mutton hard to a dark crust, five minutes.",
+      "Add the heart and fry eight minutes more, stirring.",
+      "Add the kidneys, then the liver three minutes later, and fry three more; the liver must not overcook.",
+      "Add the diced onion and potato, season, add the cumin and cook covered for fifteen minutes.",
+      "Stir in the garlic and herbs, take it off the heat and serve straight from the cauldron with flatbread."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 48,
+      "carbsG": 32,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fritule",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HR",
+    "nativeName": "Fritule",
+    "summary": "Small doughnuts with raisins, citrus zest and rakija, deep-fried.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      12,
+      6,
+      8,
+      65,
+      10,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fritule.jpg",
+      "author": "Roberta F.",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fritule",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Sugar",
+        "item": "sugar",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "150 g Raisins",
+        "item": "raisins",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 tbsp Rakija or rum",
+        "item": "rakija or rum",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Orange zest",
+        "item": "orange zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "50 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Soak the raisins in the rakija for twenty minutes, so they swell and give up their aroma.",
+      "Dissolve the yeast in the warm milk with a spoon of sugar and leave it until it foams.",
+      "Beat the eggs with the remaining sugar, the zests, vanilla and salt.",
+      "Combine with the yeast mixture and the flour and whisk to a smooth loose batter.",
+      "Stir in the raisins with their rakija and let the batter rise an hour somewhere warm.",
+      "Heat the oil to 170 °C and drop the batter in with two teaspoons, shaping irregular balls.",
+      "Fry three minutes, turning them, to a deep gold, and dust them with icing sugar while hot."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 6,
+      "carbsG": 54,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

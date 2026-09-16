@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dograma",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TM",
+    "nativeName": "Dogroma",
+    "summary": "Crumbled flatbread with mutton and onion under hot broth. The Turkmen dish of Eid al-Adha.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      120,
+      15,
+      12,
+      8,
+      6,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Dograma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Mutton on the bone",
+        "item": "mutton on the bone",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "500 g Unleavened çörek flatbread",
+        "item": "unleavened çörek flatbread",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 tsp Black pepper",
+        "item": "black pepper",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the mutton with cold water, bring it up and skim thoroughly.",
+      "Simmer two hours with the bay, until the meat comes away from the bone.",
+      "Lift out the meat, cool it and pull it into threads by hand, discarding bones and sinew.",
+      "Crumble the flatbread by hand into pieces the size of a fingernail. Do not cut it.",
+      "Slice the onion thin and work it with a pinch of salt so it softens.",
+      "Mix the bread, meat and onion dry in a large bowl, and season.",
+      "Divide between bowls and pour over the strained boiling broth immediately before serving."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 52,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

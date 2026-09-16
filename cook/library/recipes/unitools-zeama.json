@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zeama",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MD",
+    "nativeName": "Zeamă",
+    "summary": "Chicken soup with home-made noodles, soured with bran borș. The Moldovan remedy for everything.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      40,
+      25,
+      18,
+      20,
+      8,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Zeamă",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "free-range, in pieces"
+      },
+      {
+        "rawText": "250 g Flour",
+        "item": "flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "for the noodles"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "400 ml Bran borș",
+        "item": "bran borș",
+        "qty": 400,
+        "unit": "ml",
+        "note": "or juice of 2 lemons"
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Potatoes",
+        "item": "potatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Lovage",
+        "item": "lovage",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the chicken with three litres of cold water, bring it up and skim.",
+      "Simmer forty minutes on a low heat with a whole onion.",
+      "Knead a stiff dough from the flour and eggs, roll it thin, let it dry and cut it into fine noodles.",
+      "Lift out the chicken and joint it, and add the carrot, pepper and potato to the broth.",
+      "After fifteen minutes add the noodles and cook five minutes.",
+      "Boil the borș separately, strain it and pour it into the soup. Cook five minutes.",
+      "Return the meat, season and stir in the lovage and parsley. Let it stand ten minutes."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 30,
+      "carbsG": 40,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

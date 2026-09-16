@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mchuzi-wa-samaki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TZ",
+    "nativeName": "Mchuzi wa samaki",
+    "summary": "Tanzanian fish curry on coconut milk with tamarind and curry powder.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      18,
+      12,
+      12,
+      3,
+      12,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mchuzi wa samaki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg White fish",
+        "item": "white fish",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "600 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Hot chilli",
+        "item": "hot chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rub the fish steaks with salt and half the curry powder and leave them fifteen minutes.",
+      "Fry the fish two minutes a side to a crust and lift it onto a plate.",
+      "Soften the onion in the same pan and add the garlic and ginger.",
+      "Add the remaining curry powder and warm it a minute, until the aroma lifts.",
+      "Add the tomatoes and chilli and reduce them to a thick base without loose liquid.",
+      "Pour in the coconut milk with the tamarind and warm it without letting it boil.",
+      "Return the fish to the sauce, let it sit five minutes and serve with rice and coriander."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 44,
+      "carbsG": 18,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

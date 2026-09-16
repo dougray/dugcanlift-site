@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shopska-salata",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BG",
+    "nativeName": "Шопска салата",
+    "summary": "Tomato, cucumber and pepper under a cap of grated white cheese. The vegetables are cut large, the cheese grated fine.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      8,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shopska-salata.jpg",
+      "author": "Popo le Chien",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shopska salad",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4,
+        "note": "in large dice"
+      },
+      {
+        "rawText": "2 Cucumbers",
+        "item": "cucumbers",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Red peppers",
+        "item": "red peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "0.5 Onion",
+        "item": "onion",
+        "qty": 0.5,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "200 g Bulgarian white cheese",
+        "item": "bulgarian white cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "4 tbsp Sunflower oil",
+        "item": "sunflower oil",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Red wine vinegar",
+        "item": "red wine vinegar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Olives, to taste",
+        "item": "olives"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Char the peppers over a flame until the skin blackens, close them in a covered dish for ten minutes and peel them.",
+      "Cut the tomatoes and cucumbers into two-centimetre dice and the peppers into strips.",
+      "Mix the vegetables with the onion and parsley and dress with the oil, vinegar and salt.",
+      "Mound it on a dish and blanket it with the grated cheese without stirring. Finish with olives."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 290,
+      "proteinG": 12,
+      "carbsG": 12,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

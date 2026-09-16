@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rupjmaizes-kartojums",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LV",
+    "nativeName": "Rupjmaizes kārtojums",
+    "summary": "Layers of dark rye breadcrumbs, whipped cream and cranberry jam.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      15,
+      20,
+      6,
+      10,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rye bread layer dessert",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Dark rye bread",
+        "item": "dark rye bread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "stale, crumbed"
+      },
+      {
+        "rawText": "500 ml Double cream",
+        "item": "double cream",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Cranberry jam",
+        "item": "cranberry jam",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vanilla sugar",
+        "item": "vanilla sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Cranberries",
+        "item": "cranberries",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Crumb the stale bread in a blender or by hand to a coarse crumb.",
+      "Mix the crumbs with the sugar and cinnamon and dry them in the oven at 160 °C for twelve minutes, stirring twice.",
+      "Cool the crumbs completely. On warm crumbs the cream collapses and the layers merge.",
+      "Whip the cold cream with the vanilla sugar to firm peaks.",
+      "Layer into glasses: crumbs, jam, cream, and repeat. Finish with cream.",
+      "Chill for at least four hours, ideally overnight. Serve with cranberries on top."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 470,
+      "proteinG": 6,
+      "carbsG": 54,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

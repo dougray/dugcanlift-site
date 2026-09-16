@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pabellon-criollo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VE",
+    "nativeName": "Pabellón criollo",
+    "summary": "A plate in four parts: shredded stewed beef, black beans, white rice and fried plantain.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      90,
+      85,
+      12,
+      20,
+      20,
+      10,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pabellon-criollo.jpg",
+      "author": "Wilfredor",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pabellón criollo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Beef flank",
+        "item": "beef flank",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "350 g Black beans",
+        "item": "black beans",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "350 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "ripe, black-skinned"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Bell pepper",
+        "item": "bell pepper",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "400 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the beans with half the onion and some garlic until soft, an hour to ninety minutes. Salt at the end.",
+      "Simmer the beef whole in salted water for an hour and twenty minutes. Lift it out and cool it enough to handle.",
+      "Pull the meat into threads along the grain. Across the grain it shreds into crumbs.",
+      "Fry the remaining onion, pepper and garlic, add the tomatoes and cumin, then the meat, and stew twenty minutes with a ladle of the broth.",
+      "Cook the rice loose, without butter or spice; here it is the neutral part.",
+      "Slice the plantain on the diagonal and fry over medium heat until caramel on both sides.",
+      "Build the plate in sectors: rice, beans, meat and plantain side by side, unmixed."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 45,
+      "carbsG": 96,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

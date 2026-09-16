@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-omani-mishkak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "OM",
+    "nativeName": "مشكاك",
+    "summary": "Meat on skewers in a tamarind and spice marinade, grilled over coals at the roadside.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      15,
+      8,
+      10,
+      20,
+      8,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mishkak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Beef or lamb",
+        "item": "beef or lamb",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in small cubes"
+      },
+      {
+        "rawText": "3 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground red pepper",
+        "item": "ground red pepper",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "4 Flatbread",
+        "item": "flatbread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the tamarind, crushed garlic and ginger, all the spices, oil and salt into a marinade.",
+      "Cut the meat into one-and-a-half-centimetre cubes and coat it in the marinade.",
+      "Refrigerate for at least four hours, ideally overnight.",
+      "Thread the pieces onto skewers packed close, without gaps.",
+      "Get the coals hot — you should not be able to hold a palm above the grate for more than three seconds.",
+      "Grill a minute and a half on each of four sides, basting with the leftover marinade.",
+      "Slide the meat off the skewers into flatbread, add raw onion and serve at once."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 46,
+      "carbsG": 28,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

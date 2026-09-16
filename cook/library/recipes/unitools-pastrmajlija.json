@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastrmajlija",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MK",
+    "nativeName": "Пастрмалија",
+    "summary": "A yeast-dough boat with cured pork and an egg, from Štip.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      12,
+      14,
+      62,
+      15,
+      12,
+      28
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pastrmajlija.jpg",
+      "author": "Dan from Brussels, Europe",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastrmajlija",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 ml Warm water",
+        "item": "warm water",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Pork neck",
+        "item": "pork neck",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "with its fat, diced"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "2 tsp Paprika",
+        "item": "paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Hot chilli",
+        "item": "hot chilli",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Dice the pork into centimetre cubes, salt it generously and leave it two hours in the cold.",
+      "Dissolve the yeast in the warm water and leave it ten minutes, until it foams.",
+      "Knead a soft dough from the flour, sponge, oil and salt and work it ten minutes.",
+      "Let it rise an hour somewhere warm, until doubled.",
+      "Divide the dough into four and stretch each into an oval thirty centimetres long.",
+      "Fold the edges in to make a rim and spread the meat with paprika over the whole surface.",
+      "Bake at 250 °C for twenty minutes, crack an egg on top and give it five more."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 38,
+      "carbsG": 58,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

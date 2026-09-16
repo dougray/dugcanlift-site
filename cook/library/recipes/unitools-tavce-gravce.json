@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tavce-gravce",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MK",
+    "nativeName": "Тавче гравче",
+    "summary": "White beans baked in a clay pan with onion, paprika and peppers. North Macedonia's national dish.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      62,
+      12,
+      6,
+      5,
+      42,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tavce-gravce.jpg",
+      "author": "Oliver Manev",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tavče gravče",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g White beans",
+        "item": "white beans",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Dried red peppers",
+        "item": "dried red peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Flour",
+        "item": "flour",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Drain the soaked beans, cover them with fresh water, bring it to the boil and drain again after ten minutes.",
+      "Cover them a third time, add one whole onion and boil an hour until soft, without salt.",
+      "Fry the sliced onion in oil until golden, take it off the heat and stir in the paprika and flour.",
+      "Pour off some of the bean water, leaving it level with the beans, salt them and stir in the onion mixture.",
+      "Transfer to a clay pan, arrange the dried peppers on top and scatter with mint.",
+      "Bake at 200 °C for forty minutes, until a browned crust forms on top.",
+      "Rest ten minutes and serve straight from the pan, scattered with parsley."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 20,
+      "carbsG": 52,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-meat-pie-australian",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AU",
+    "nativeName": "Meat pie",
+    "summary": "A hand-sized pie with a thick beef filling: shortcrust base, puff lid, tomato sauce on top.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      2,
+      45,
+      30,
+      20,
+      12,
+      28
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/meat-pie-australian.jpg",
+      "author": "fir0002 flagstaffotos [at] gmail.com Canon 20D + Canon 17-40mm f/4 L",
+      "license": "GFDL 1.2"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Australian meat pie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Beef",
+        "item": "beef",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "finely diced or minced"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "500 ml Beef stock",
+        "item": "beef stock",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Flour",
+        "item": "flour",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Worcestershire sauce",
+        "item": "worcestershire sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Shortcrust pastry",
+        "item": "shortcrust pastry",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Puff pastry",
+        "item": "puff pastry",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1,
+        "note": "for glazing"
+      },
+      {
+        "rawText": "100 ml Tomato sauce",
+        "item": "tomato sauce",
+        "qty": 100,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the beef in batches so it does not release its juices, and set it aside.",
+      "Fry the onion until soft, stir in the flour and cook it two minutes.",
+      "Return the meat, add the stock, Worcestershire sauce and tomato paste and stew forty minutes, until thick.",
+      "Cool the filling completely, ideally in the fridge.",
+      "Line the tins with shortcrust, trim the edges and fill them with the cold filling.",
+      "Cover with rounds of puff pastry, seal the edges and cut a vent in the middle.",
+      "Glaze with egg and bake at 200 °C for twenty-five minutes, to a deep golden lid."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 32,
+      "carbsG": 54,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

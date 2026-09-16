@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-vepro-knedlo-zelo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CZ",
+    "nativeName": "Vepřo knedlo zelo",
+    "summary": "Braised pork with bread dumplings and soured cabbage. Czechia's unofficial national dish.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      62,
+      20,
+      90,
+      50,
+      25,
+      27,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/vepro-knedlo-zelo.jpg",
+      "author": "I would appreciate being notified if you use my work outside Wikimedia. Do not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain. If you would like special permission to use, license, or purchase the image please contact me to negotiate terms. More of my work can be found in my personal gallery.",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pork with dumplings and cabbage",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "for the dumplings"
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g Stale bread",
+        "item": "stale bread",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "in cubes"
+      },
+      {
+        "rawText": "700 g Sauerkraut",
+        "item": "sauerkraut",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Lard",
+        "item": "lard",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the pork with salt, pepper, caraway and garlic and leave it an hour at room temperature.",
+      "Brown the pork in lard on all sides, add the onion and pour in water to half the height of the meat.",
+      "Braise covered at 160 °C for an hour and a half, basting every twenty minutes.",
+      "Knead a dough from the flour, warm milk with yeast, the egg and salt and let it rise forty minutes.",
+      "Fold in the bread cubes, shape two logs and boil them ten minutes on each side.",
+      "Stew the sauerkraut with onion, caraway and sugar for twenty-five minutes.",
+      "Cut the dumplings with thread and the pork into slices, and serve with the cabbage under the pan juices."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 48,
+      "carbsG": 68,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

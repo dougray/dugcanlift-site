@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-moqueca-baiana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BR",
+    "nativeName": "Moqueca baiana",
+    "summary": "Fish stewed in coconut milk with dendê palm oil, in a clay pot.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      12,
+      5,
+      8,
+      4,
+      22,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/moqueca-baiana.jpg",
+      "author": "BR",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Moqueca baiana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg White fish",
+        "item": "white fish",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "firm fillet, in large pieces"
+      },
+      {
+        "rawText": "300 g Prawns",
+        "item": "prawns",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Dendê palm oil",
+        "item": "dendê palm oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2,
+        "note": "mixed colours"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the fish with salt, pepper, crushed garlic and lime juice and leave it twenty minutes.",
+      "Slice the onion, tomatoes and peppers into rings of the same thickness.",
+      "Line the bottom of the clay pot with half the onion, tomato and pepper rings.",
+      "Lay the fish in a single layer, the prawns and remaining vegetables over it, and season.",
+      "Pour the coconut milk and dendê oil down the side, without dousing the fish from above.",
+      "Cover and cook twenty minutes over medium heat, rocking the pot but never stirring.",
+      "Scatter with coriander and spring onion and serve straight from the pot, with rice and farofa."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 34,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

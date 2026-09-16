@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-wiener-schnitzel",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AT",
+    "nativeName": "Wiener Schnitzel",
+    "summary": "Veal beaten to three millimetres, crumbed and fried in plenty of fat until the coating puffs away.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      8,
+      null,
+      6,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/wiener-schnitzel.jpg",
+      "author": "Kobako",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Wiener Schnitzel",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Veal escalope",
+        "item": "veal escalope",
+        "qty": 4,
+        "note": "150 g each"
+      },
+      {
+        "rawText": "80 g Plain flour",
+        "item": "plain flour",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "fine, from white bread"
+      },
+      {
+        "rawText": "400 g Clarified butter or lard",
+        "item": "clarified butter or lard",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Beat the meat between two sheets of film to three millimetres. Use the flat side of the mallet, not the toothed one: teeth tear the fibres.",
+      "Beat the eggs to an even liquid without foam. Salt the meat and coat it in flour, then egg, then crumbs.",
+      "Do not press the crumbs on. The coating has to sit loosely; only then will it lift and puff.",
+      "Heat a centimetre of fat to 170 °C and lower the schnitzel in. Fry two minutes, swirling the pan the whole time so fat washes over the top.",
+      "Turn it and give it ninety seconds more, to gold. Drain on a rack and serve immediately with a wedge of lemon."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 44,
+      "carbsG": 38,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

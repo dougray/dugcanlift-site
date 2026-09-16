@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tom-yum-goong",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TH",
+    "nativeName": "ต้มยำกุ้ง",
+    "summary": "A hot and sour prawn soup where the balance is set at the end: fish sauce, lime and sugar go in to taste rather than by the recipe.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      17,
+      5,
+      4,
+      2,
+      1
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tom yum goong",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Prawns",
+        "item": "prawns",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "heads on, keep the shells"
+      },
+      {
+        "rawText": "1 l Water or stock",
+        "item": "water or stock",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "2 Lemongrass",
+        "item": "lemongrass",
+        "qty": 2,
+        "note": "bruised and cut"
+      },
+      {
+        "rawText": "5 slices Galangal",
+        "item": "galangal",
+        "qty": 5,
+        "unit": "slice"
+      },
+      {
+        "rawText": "5 Kaffir lime leaves",
+        "item": "kaffir lime leaves",
+        "qty": 5
+      },
+      {
+        "rawText": "200 g Mushrooms",
+        "item": "mushrooms",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Chillies",
+        "item": "chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Lime juice",
+        "item": "lime juice",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Coriander, to taste",
+        "item": "coriander"
+      }
+    ],
+    "steps": [
+      "Peel the prawns, leaving the tails on. Keep the shells and heads: the broth is built on them.",
+      "Fry the shells in the pot for a couple of minutes until bright orange, cover with the water and simmer fifteen minutes. Strain.",
+      "Return the broth to the heat, add the lemongrass, galangal and lime leaves and let them steep at a low simmer for five minutes.",
+      "Add the mushrooms and the crushed chillies, then after two minutes the prawns. They are done the moment they curl into a C — beyond that they turn rubbery.",
+      "Take the pot off the heat. Add the fish sauce, lime juice and sugar, stir and taste. Adjust a spoon at a time until sour, salty and hot sit where you want them.",
+      "Ladle into bowls and scatter over the coriander. Leave the lemongrass and galangal in the pot, or warn people not to eat them."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 190,
+      "proteinG": 24,
+      "carbsG": 12,
+      "fatG": 4,
+      "estimated": true
+    }
+  }
+}

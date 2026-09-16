@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shorshe-ilish",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BD",
+    "nativeName": "সরষে ইলিশ",
+    "summary": "Hilsa in a ground mustard sauce, cooked by steaming. The great fish of Bengal.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      10,
+      12,
+      5,
+      5,
+      14,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shorshe-ilish.jpg",
+      "author": "Tuhi2001",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shorshe ilish",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Hilsa or herring",
+        "item": "hilsa or herring",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "60 g Mustard seeds",
+        "item": "mustard seeds",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "yellow and black in equal parts"
+      },
+      {
+        "rawText": "6 Green chillies",
+        "item": "green chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 ml Mustard oil",
+        "item": "mustard oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Nigella seeds",
+        "item": "nigella seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the mustard seeds in warm water for twenty minutes.",
+      "Grind them with two chillies, a pinch of salt and a little water into a smooth paste.",
+      "Rub the fish steaks with turmeric and salt and leave them ten minutes.",
+      "Heat the mustard oil until it smokes, take it off and let it cool a minute; raw mustard oil is acrid.",
+      "Add the nigella, pour in the mustard paste let down with half a cup of water, and cook three minutes.",
+      "Lay the fish in a single layer, add the remaining chillies whole, cover and stew twelve minutes.",
+      "Finish with a spoon of raw mustard oil, take it off the heat and serve with rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 38,
+      "carbsG": 34,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

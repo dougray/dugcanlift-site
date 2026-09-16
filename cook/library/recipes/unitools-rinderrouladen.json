@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rinderrouladen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Rinderrouladen",
+    "summary": "Thin slices of beef rolled around mustard, bacon and gherkin and braised until they give way.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      10,
+      12,
+      95,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rinderrouladen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Beef, thinly sliced",
+        "item": "beef, thinly sliced",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "150-200 g each, beaten thin"
+      },
+      {
+        "rawText": "4 tbsp Medium mustard",
+        "item": "medium mustard",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "120 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "4 Gherkins",
+        "item": "gherkins",
+        "qty": 4,
+        "note": "quartered lengthways"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Dry red wine",
+        "item": "dry red wine",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 ml Beef stock",
+        "item": "beef stock",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Oil for frying",
+        "item": "oil for frying",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Beat the beef to five millimetres, season it and spread with mustard. Lay the bacon, strips of onion and a gherkin along the short edge.",
+      "Roll them up, tucking the sides in, and secure with a skewer or string. Firm but not tight — the filling expands.",
+      "Brown the rolls hard on every side and lift them out. In the same fat fry the remaining onion and the carrot, add the tomato paste and give it a minute.",
+      "Pour in the wine, let it reduce by half, add the stock and bay. Return the rolls, cover and braise over a low flame for an hour and a half.",
+      "Lift the rolls out and remove the skewers. Blend the gravy in the pot or crush it with a masher, then reduce it to the thickness you want."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 52,
+      "carbsG": 14,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

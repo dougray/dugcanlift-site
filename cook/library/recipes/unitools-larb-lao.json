@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-larb-lao",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LA",
+    "nativeName": "ລາບ",
+    "summary": "Chopped meat with toasted rice powder, herbs and lime. The national dish of Laos.",
+    "category": "salad",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      6,
+      15,
+      5,
+      6,
+      4,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/larb-lao.jpg",
+      "author": "Jpatokal",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Larb",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Pork",
+        "item": "pork",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "3 tbsp Sticky rice",
+        "item": "sticky rice",
+        "qty": 3,
+        "unit": "tbsp",
+        "note": "raw, for the powder"
+      },
+      {
+        "rawText": "4 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Limes",
+        "item": "limes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 tsp Toasted chilli flakes",
+        "item": "toasted chilli flakes",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "30 g Mint",
+        "item": "mint",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "300 g Lettuce and raw vegetables",
+        "item": "lettuce and raw vegetables",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Toast the raw sticky rice in a dry pan for ten minutes, to a deep gold, stirring.",
+      "Grind the cooled rice in a mortar or mill to a coarse powder.",
+      "Chop the pork fine with a knife, but not to a paste; the pieces should stay distinguishable.",
+      "Cook the meat in a pan with two spoons of water over medium heat for five minutes, breaking up lumps.",
+      "Take it off the heat and let it cool to warm, about five minutes.",
+      "Stir in the fish sauce, lime juice, chilli, shallot and rice powder.",
+      "Add the herbs, toss and serve with sticky rice and raw vegetables."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 34,
+      "carbsG": 20,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hong-shao-rou",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CN",
+    "nativeName": "红烧肉",
+    "summary": "Pork belly braised in caramel and soy until it glistens. The classic of red-braising.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      5,
+      6,
+      4,
+      4,
+      65,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hong shao rou",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "900 g Pork belly",
+        "item": "pork belly",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "in 3 cm cubes, skin on"
+      },
+      {
+        "rawText": "50 g Rock sugar",
+        "item": "rock sugar",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "60 ml Light soy sauce",
+        "item": "light soy sauce",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Dark soy sauce",
+        "item": "dark soy sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Shaoxing wine",
+        "item": "shaoxing wine",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Star anise",
+        "item": "star anise",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "30 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 30,
+        "unit": "ml"
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Drop the pork cubes into boiling water for two minutes, drain and rinse them under cold water.",
+      "Dry the meat thoroughly. Wet, it spits in the caramel and cools it.",
+      "Melt the sugar in the oil over medium heat to an amber colour, stirring; it takes three or four minutes.",
+      "Add the meat and turn it for two minutes, until every cube is coated in the caramel.",
+      "Add the wine, both soy sauces, the ginger, spring onion and spices.",
+      "Add hot water level with the meat and braise covered for an hour on a low heat.",
+      "Uncover and reduce the sauce hard to a glaze, spooning it over the meat."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 32,
+      "carbsG": 32,
+      "fatG": 56,
+      "estimated": true
+    }
+  }
+}

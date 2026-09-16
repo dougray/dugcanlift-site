@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-poronkaristys",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FI",
+    "nativeName": "Poronkäristys",
+    "summary": "Shaved reindeer fried in butter and braised in beer, with mash and lingonberry.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      5,
+      12,
+      7,
+      32,
+      30,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/poronkaristys.jpg",
+      "author": "Htm",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Poronkäristys",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Reindeer meat",
+        "item": "reindeer meat",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "frozen, shaved"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "250 ml Dark beer",
+        "item": "dark beer",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Water",
+        "item": "water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Lingonberries",
+        "item": "lingonberries",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "crushed with sugar"
+      },
+      {
+        "rawText": "150 g Pickled cucumbers",
+        "item": "pickled cucumbers",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Take the reindeer from the freezer and shave it into thin curls with a sharp knife.",
+      "Melt the butter in a cast-iron pan and heat it until it just smokes.",
+      "Add the frozen shavings and fry them hard until all the water has gone.",
+      "Add the chopped onion and fry five minutes more, to a good colour.",
+      "Add the beer and water, season, and stew covered for half an hour.",
+      "Boil the potatoes and mash them with hot milk to a smooth purée.",
+      "Serve the meat on the mash with a spoon of lingonberry and pickled cucumbers."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 46,
+      "carbsG": 42,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

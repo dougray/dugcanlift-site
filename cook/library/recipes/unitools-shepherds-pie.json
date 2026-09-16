@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shepherds-pie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GB",
+    "nativeName": "Shepherd's pie",
+    "summary": "Lamb in a thick gravy under mashed potato, baked to a browned crust.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      10,
+      20,
+      25,
+      6,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shepherds-pie.jpg",
+      "author": "JIP",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shepherd's pie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Minced lamb",
+        "item": "minced lamb",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "floury"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Peas",
+        "item": "peas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Worcestershire sauce",
+        "item": "worcestershire sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "300 ml Meat stock",
+        "item": "meat stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "120 ml Milk",
+        "item": "milk",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the mince over a high flame, leaving it alone for the first minute so it takes dark colour. Lift it out, pouring off the excess fat.",
+      "In the same pan fry the onion and carrot for eight minutes, add the flour and tomato paste and cook two minutes.",
+      "Return the meat, pour in the stock and Worcestershire, add the thyme and cook uncovered for twenty minutes, until the gravy is thick.",
+      "Boil the potatoes and mash them with the butter and hot milk until smooth, seasoning generously. The mash should be firm rather than pourable.",
+      "Stir the peas into the meat, put it in a dish, cover with the mash and score the top with a fork.",
+      "Bake at 200 °C for twenty-five minutes until browned. Let it stand ten minutes before cutting."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 34,
+      "carbsG": 48,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

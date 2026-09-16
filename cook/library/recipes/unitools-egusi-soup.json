@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-egusi-soup",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NG",
+    "nativeName": "Egusi soup",
+    "summary": "A thick soup of ground egusi melon seeds with greens, meat and palm oil.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      25,
+      8,
+      3,
+      8,
+      22,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Egusi soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Ground egusi seeds",
+        "item": "ground egusi seeds",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "200 g Stockfish",
+        "item": "stockfish",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Smoked fish",
+        "item": "smoked fish",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 ml Palm oil",
+        "item": "palm oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Spinach or ugwu leaves",
+        "item": "spinach or ugwu leaves",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 3
+      },
+      {
+        "rawText": "3 tbsp Ground crayfish",
+        "item": "ground crayfish",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Stock cube",
+        "item": "stock cube",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Fermented locust beans",
+        "item": "fermented locust beans",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the beef with onion, stock cube and salt for forty minutes. Keep the broth.",
+      "Soak the stockfish in boiling water for twenty minutes and break it into pieces, removing bones.",
+      "Mix the ground egusi with a little water into a thick paste that holds its shape.",
+      "Heat the palm oil until clear and fry the onion and ground scotch bonnet for three minutes.",
+      "Drop the egusi paste into the oil by the spoonful without stirring and let the lumps set for five minutes.",
+      "Pour in the broth and add the meat, both fish, the crayfish and the locust beans, and cook twenty minutes.",
+      "Stir in the greens for the last five minutes and serve with fufu or eba."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 48,
+      "carbsG": 22,
+      "fatG": 54,
+      "estimated": true
+    }
+  }
+}

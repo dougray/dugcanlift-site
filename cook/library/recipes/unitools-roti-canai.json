@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-roti-canai",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MY",
+    "nativeName": "Roti canai",
+    "summary": "A flatbread stretched translucent and crumpled before frying. The layers come from air rather than butter.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      240,
+      5,
+      12,
+      16,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/roti-canai.jpg",
+      "author": "Yosri at ms.wikipedia",
+      "license": "GFDL"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Roti canai",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Plain flour",
+        "item": "plain flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "280 ml Warm water",
+        "item": "warm water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Condensed milk",
+        "item": "condensed milk",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "120 g Ghee or margarine",
+        "item": "ghee or margarine",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "150 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 150,
+        "unit": "ml",
+        "note": "for resting the dough"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water, egg, condensed milk and salt for fifteen minutes, until it is very elastic and smooth.",
+      "Divide into balls, coat each in oil and set them in a bowl covered with more oil. Leave them at least four hours.",
+      "On an oiled surface flatten a ball and stretch it from the centre, slapping it with your palms until the sheet turns translucent.",
+      "Brush the sheet with ghee, fold the edges to the middle and coil it into a tight spiral. Let it sit ten minutes.",
+      "Flatten the spiral into a round and fry it on medium heat, two minutes a side in ghee, until it takes golden spots.",
+      "Straight from the pan, crumple the bread between your palms from both sides and the layers open. Serve with dhal or curry."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 52,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

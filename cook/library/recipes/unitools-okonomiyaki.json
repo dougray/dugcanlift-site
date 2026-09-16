@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-okonomiyaki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "お好み焼き",
+    "summary": "A thick cabbage pancake where the batter only binds. Yam in the batter gives it the airy texture.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      32,
+      6,
+      3,
+      6,
+      6,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/okonomiyaki.jpg",
+      "author": "ume-y",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Okonomiyaki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Cabbage",
+        "item": "cabbage",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in 1 cm squares"
+      },
+      {
+        "rawText": "150 g Plain flour",
+        "item": "plain flour",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Nagaimo yam",
+        "item": "nagaimo yam",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "grated"
+      },
+      {
+        "rawText": "120 ml Dashi",
+        "item": "dashi",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "200 g Pork belly",
+        "item": "pork belly",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "40 g Tenkasu tempura scraps",
+        "item": "tenkasu tempura scraps",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Okonomi sauce, to taste",
+        "item": "okonomi sauce"
+      },
+      {
+        "rawText": "Japanese mayonnaise, to taste",
+        "item": "japanese mayonnaise"
+      },
+      {
+        "rawText": "Katsuobushi and aonori, to taste",
+        "item": "katsuobushi and aonori"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Mix the flour, grated yam and dashi and rest it half an hour in the fridge: the batter comes together better.",
+      "Fold the eggs into the batter, then the cabbage, spring onion and tenkasu. Fold from underneath and briefly: the cabbage must not start weeping.",
+      "Mound a quarter of the mixture onto a hot pan in a fifteen-centimetre round and do not flatten it: the air inside is wanted.",
+      "Lay slices of pork belly on top and cook five minutes covered over medium heat.",
+      "Turn it with two spatulas in one decisive movement and cook five minutes more, this time uncovered.",
+      "Brush with okonomi sauce, pipe lines of mayonnaise and drag a cocktail stick across them. Scatter over katsuobushi and aonori."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 24,
+      "carbsG": 44,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

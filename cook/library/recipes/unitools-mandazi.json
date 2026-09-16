@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mandazi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KE",
+    "nativeName": "Mandazi",
+    "summary": "Triangular doughnuts on coconut milk with cardamom, lightly sweet, for tea.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      5,
+      12,
+      62,
+      12,
+      18,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mandazi.jpg",
+      "author": "The original uploader was ChildofMidnight at English Wikipedia.",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mandazi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Sugar",
+        "item": "sugar",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "melted"
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "0.5 tsp Salt",
+        "item": "salt",
+        "qty": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Warm the coconut milk and dissolve the yeast in it with a spoon of sugar.",
+      "Mix the flour with the remaining sugar, the cardamom and the salt.",
+      "Work in the egg, melted butter and the coconut yeast mixture and knead a soft dough.",
+      "Let it rise somewhere warm for an hour, until doubled.",
+      "Divide the dough into four, rolling each piece into a round a centimetre thick.",
+      "Cut each round into four triangles and let them rest fifteen minutes.",
+      "Fry at 170 °C for two minutes a side, to a golden colour."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 6,
+      "carbsG": 48,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

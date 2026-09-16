@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kunafa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EG",
+    "nativeName": "كنافة",
+    "summary": "Fine shredded pastry with a cheese filling, baked and drenched in sugar syrup.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      15,
+      12,
+      10,
+      10,
+      45,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kunafa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "500 g Kataifi pastry",
+        "item": "kataifi pastry",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "700 g Akkawi or mozzarella",
+        "item": "akkawi or mozzarella",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "unsalted"
+      },
+      {
+        "rawText": "250 g Ghee",
+        "item": "ghee",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "400 g Sugar",
+        "item": "sugar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 ml Water",
+        "item": "water",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Rose water",
+        "item": "rose water",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Orange blossom water",
+        "item": "orange blossom water",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Pistachios",
+        "item": "pistachios",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 pinch Orange food colouring",
+        "item": "orange food colouring",
+        "qty": 1,
+        "unit": "pinch",
+        "note": "optional"
+      }
+    ],
+    "steps": [
+      "Boil a syrup of sugar, water and lemon juice for ten minutes, take it off, add the flower waters and cool it completely.",
+      "Soak salted cheese in cold water for two hours, changing it three times, and cut it into cubes.",
+      "Pull the kataifi apart into separate strands by hand and shorten them with scissors.",
+      "Pour the melted ghee over the pastry and rub it through with your hands until every strand glistens.",
+      "Press half the pastry into a greased tin, spread the cheese short of the edges and cover with the other half.",
+      "Bake at 190 °C for forty minutes to a deep gold underneath — check by lifting an edge with a spatula.",
+      "Turn it out onto a platter, pour the cold syrup over at once and scatter with ground pistachios."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 20,
+      "carbsG": 68,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

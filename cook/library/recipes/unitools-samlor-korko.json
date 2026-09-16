@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-samlor-korko",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KH",
+    "nativeName": "សម្លកកូរ",
+    "summary": "A thick vegetable soup with toasted ground rice, pork and prahok, from a dozen vegetables.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      15,
+      5,
+      15,
+      20,
+      12,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/samlor-korko.jpg",
+      "author": "Mx. Granger",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Samlor korko",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Pork",
+        "item": "pork",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "diced"
+      },
+      {
+        "rawText": "60 g Rice",
+        "item": "rice",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "to toast and grind"
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Galangal",
+        "item": "galangal",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Prahok",
+        "item": "prahok",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "300 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "300 g Green papaya",
+        "item": "green papaya",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Aubergines",
+        "item": "aubergines",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Yard-long beans",
+        "item": "yard-long beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Moringa leaves or spinach",
+        "item": "moringa leaves or spinach",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Toast the rice in a dry pan to a deep gold and grind it to a fine powder.",
+      "Pound the lemongrass, galangal, turmeric and garlic into a kroeung paste.",
+      "Fry the paste in oil for five minutes, add the prahok and cook two minutes more.",
+      "Add the pork and brown it, then pour in a litre and a half of water.",
+      "Cook twenty minutes, then add the pumpkin, papaya and aubergine.",
+      "Add the rice powder, first stirred into a ladle of the broth, and cook ten minutes.",
+      "Add the beans and moringa leaves for the last five minutes and adjust with fish sauce and palm sugar."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 28,
+      "carbsG": 42,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chapati-kenyan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KE",
+    "nativeName": "Chapati",
+    "summary": "A soft layered flatbread of wheat dough coiled into a spiral before rolling.",
+    "category": "bread",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      18,
+      62,
+      15,
+      12,
+      20,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chapati-kenyan.jpg",
+      "author": "KittyKaht from Hong Kong, Hong Kong",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kenyan chapati",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "350 ml Warm water",
+        "item": "warm water",
+        "qty": 350,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1.5 tsp Salt",
+        "item": "salt",
+        "qty": 1.5,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Mix the flour with the salt and sugar, add the warm water and two spoons of oil.",
+      "Knead the dough fifteen minutes, until it is smooth and elastic.",
+      "Cover it with a damp cloth and rest it an hour at room temperature.",
+      "Divide it into eight balls, roll each into a thin round and brush it generously with oil.",
+      "Roll the round into a rope, coil it like a snail and press it flat with your palm.",
+      "Rest the coils fifteen minutes and roll each one out into a round again.",
+      "Cook them in a dry pan a minute and a half a side, brushing with oil, to browned spots."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 7,
+      "carbsG": 44,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

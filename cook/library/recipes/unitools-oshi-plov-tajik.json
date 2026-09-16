@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-oshi-plov-tajik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TJ",
+    "nativeName": "Оши палав",
+    "summary": "Pilaf with mutton, yellow carrot and a whole head of garlic, recognised by UNESCO as heritage.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      12,
+      18,
+      12,
+      42,
+      8,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/oshi-plov-tajik.jpg",
+      "author": "GeoO",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tajik oshi palav",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Mutton",
+        "item": "mutton",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "on the bone, in large pieces"
+      },
+      {
+        "rawText": "150 g Mutton fat",
+        "item": "mutton fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "700 g Devzira or short-grain rice",
+        "item": "devzira or short-grain rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "800 g Yellow carrots",
+        "item": "yellow carrots",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in thick batons"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "note": "whole heads"
+      },
+      {
+        "rawText": "2 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Barberries",
+        "item": "barberries",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice through seven changes of water and soak it an hour in warm salted water.",
+      "Render the mutton fat in the cauldron and lift out the cracklings.",
+      "Brown the meat hard, add the onion and fry it golden.",
+      "Add the carrot and cook ten minutes, leaving it undisturbed for the first five so it heats rather than weeps.",
+      "Add boiling water two fingers above, along with the chickpeas, cumin, barberries and salt, and simmer the zirvak forty minutes.",
+      "Spread the rice in an even layer, press in the garlic heads and add boiling water a centimetre above the rice.",
+      "Cook on a high flame until the water has gone, mound the rice, pierce it to the bottom, cover and hold twenty minutes on the lowest heat."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 34,
+      "carbsG": 76,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

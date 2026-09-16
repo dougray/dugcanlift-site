@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pelmeni",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RU",
+    "nativeName": "Пельмени",
+    "summary": "Small dumplings of unleavened dough with chopped meat and onion, boiled in broth.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      18,
+      45,
+      20,
+      22,
+      20,
+      45,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pelmeni.jpg",
+      "author": "Eugene Kim @ Flickr",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pelmeni",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "220 ml Iced water",
+        "item": "iced water",
+        "qty": 220,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Beef",
+        "item": "beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Pork",
+        "item": "pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "fatty"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "50 g Crushed ice",
+        "item": "crushed ice",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "30 ml Vinegar",
+        "item": "vinegar",
+        "qty": 30,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, eggs, iced water and salt and work it fifteen minutes.",
+      "Wrap it in film and refrigerate it forty minutes.",
+      "Chop the meat by hand or put it through a coarse plate, and mix it with the grated onion, salt and pepper.",
+      "Work the crushed ice into the filling and chill it twenty minutes.",
+      "Roll the dough a millimetre thick and cut six-centimetre rounds.",
+      "Put a teaspoon of filling on each round, fold it into a half-moon, seal it and join the ends into a ring.",
+      "Boil them in salted broth with bay for four minutes after they surface, and serve with butter and soured cream."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 34,
+      "carbsG": 62,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

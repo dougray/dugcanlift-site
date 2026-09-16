@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dolma-iraqi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IQ",
+    "nativeName": "دولمة",
+    "summary": "Vine leaves and vegetables stuffed with spiced rice and meat, layered in one pot and cooked under a weight.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      25,
+      30,
+      15,
+      12,
+      5,
+      78
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/dolma-iraqi.jpg",
+      "author": "Violetamyftari",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Iraqi dolma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Vine leaves",
+        "item": "vine leaves",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "400 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Lamb",
+        "item": "lamb",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "minced"
+      },
+      {
+        "rawText": "4 Bell peppers",
+        "item": "bell peppers",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Large onions",
+        "item": "large onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Aubergines",
+        "item": "aubergines",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Pomegranate molasses",
+        "item": "pomegranate molasses",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tbsp Baharat",
+        "item": "baharat",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the rice and mix it with the mince, chopped parsley, tomato paste, baharat, oil, salt and pepper.",
+      "Cut lids off the peppers and tomatoes and hollow them. Blanch the onions whole and separate them into layers.",
+      "Roll the filling in vine leaves into tight cylinders — the rice doubles, so leave it room.",
+      "Fill the vegetables two-thirds full and put their lids back on.",
+      "Line the pot with tomato slices, then layer the parcels and stuffed vegetables, the heaviest at the bottom.",
+      "Mix water with the pomegranate molasses, lemon juice and salt and pour it in until it reaches the top layer.",
+      "Cover with a weighted plate and cook on a low heat for an hour and fifteen minutes. Serve by inverting the pot onto a platter."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 20,
+      "carbsG": 62,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

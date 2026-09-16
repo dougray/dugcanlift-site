@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kibbeh-bil-sanieh",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SY",
+    "nativeName": "كبة بالصينية",
+    "summary": "Two layers of bulgur and meat with a filling of mince and pine nuts between them, baked in a tray.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      15,
+      7,
+      10,
+      8,
+      10,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kibbeh-bil-sanieh.jpg",
+      "author": "Bazel",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kibbeh bil sanieh",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Fine bulgur",
+        "item": "fine bulgur",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 g Lean beef",
+        "item": "lean beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "for the shell"
+      },
+      {
+        "rawText": "500 g Lamb",
+        "item": "lamb",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "minced, for the filling"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "80 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tbsp Baharat",
+        "item": "baharat",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "120 ml Olive oil",
+        "item": "olive oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the bulgur in cold water for twenty minutes and squeeze it completely dry.",
+      "Blitz the lean beef with one onion to a paste and work in the bulgur, salt and half the spices.",
+      "Knead the mass five minutes, wetting your hands, until it is smooth and tacky.",
+      "Fry the remaining onion, add the minced lamb, the spices and the pine nuts and cook ten minutes.",
+      "Press half the mass into an oiled tray in a one-centimetre layer, smoothing it with a wet palm.",
+      "Spread the filling and cover with the other half of the mass, smoothed the same way.",
+      "Cut it into diamonds down to the base, pour over the olive oil and bake at 200 °C for forty minutes, to a browned crust."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 34,
+      "carbsG": 42,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

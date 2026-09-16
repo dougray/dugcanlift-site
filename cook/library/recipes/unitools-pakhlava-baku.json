@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pakhlava-baku",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AZ",
+    "nativeName": "Bakı paxlavası",
+    "summary": "Diamonds of eight layers of dough with a nut filling, under a saffron syrup.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      70,
+      8,
+      12,
+      35,
+      15,
+      55
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pakhlava-baku.jpg",
+      "author": "James Gordon from Los Angeles, California, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Baku pakhlava",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 16,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "300 g Ghee",
+        "item": "ghee",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "500 g Walnuts",
+        "item": "walnuts",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "ground"
+      },
+      {
+        "rawText": "400 g Sugar",
+        "item": "sugar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "200 g Honey",
+        "item": "honey",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "40 Walnut halves",
+        "item": "walnut halves",
+        "qty": 40,
+        "note": "to decorate"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm milk and knead a dough with the flour, yolks, a spoon of ghee and salt.",
+      "Let the dough rise an hour somewhere warm and divide it into eight equal balls.",
+      "Mix the ground walnuts with half the sugar and the cardamom; that is the filling.",
+      "Roll the first ball to the size of the tin, lay it in and brush it generously with ghee.",
+      "Alternate layers of dough and nut filling, buttering each, until the dough runs out.",
+      "Cut it into diamonds right down to the base, press a walnut half into each and brush with saffron infusion.",
+      "Bake at 180 °C for forty-five minutes and pour over a hot syrup of honey and the remaining sugar."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 9,
+      "carbsG": 52,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

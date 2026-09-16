@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-galbijjim",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KR",
+    "nativeName": "갈비찜",
+    "summary": "Beef short ribs braised in soy with pear, until the meat falls from the bone.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      10,
+      8,
+      8,
+      90,
+      27,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/galbijjim.jpg",
+      "author": "by Richy! at flickr",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Galbijjim",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef short ribs",
+        "item": "beef short ribs",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "150 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Korean pear",
+        "item": "korean pear",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "3 tbsp Sugar",
+        "item": "sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Mirin",
+        "item": "mirin",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "300 g Daikon",
+        "item": "daikon",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 g Shiitake mushrooms",
+        "item": "shiitake mushrooms",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Chestnuts",
+        "item": "chestnuts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "peeled"
+      },
+      {
+        "rawText": "8 Jujube dates",
+        "item": "jujube dates",
+        "qty": 8
+      },
+      {
+        "rawText": "3 Spring onion",
+        "item": "spring onion",
+        "qty": 3
+      }
+    ],
+    "steps": [
+      "Soak the ribs in cold water for an hour, changing it twice, until the water runs clear.",
+      "Blanch the ribs in boiling water for five minutes, drain and rinse them under cold water.",
+      "Blend the pear, onion, garlic and ginger to a smooth purée.",
+      "Mix the purée with the soy, sugar, mirin and sesame oil and pour it over the ribs.",
+      "Bring it up, skim, and braise covered for an hour and a half on a low heat.",
+      "Add the carrot, daikon, mushrooms, chestnuts and jujubes and braise twenty-five minutes more.",
+      "Uncover and reduce the sauce to a gloss, spooning it over the ribs. Scatter with spring onion."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 48,
+      "carbsG": 40,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

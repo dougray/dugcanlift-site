@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pozole-rojo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "nativeName": "Pozole rojo",
+    "summary": "A soup of pork and hominy in a dried chilli broth, with a pile of fresh garnishes on the table.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      125,
+      22,
+      8,
+      5,
+      45,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pozole-rojo.jpg",
+      "author": "Ivette Degollado",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pozole rojo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "800 g Hominy",
+        "item": "hominy",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "tinned"
+      },
+      {
+        "rawText": "6 Guajillo chillies",
+        "item": "guajillo chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "3 Ancho chillies",
+        "item": "ancho chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Mexican oregano",
+        "item": "mexican oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "Radish, cabbage, lime, onion, to taste",
+        "item": "radish, cabbage, lime, onion"
+      },
+      {
+        "rawText": "Tostadas, to taste",
+        "item": "tostadas"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the pork with water, add half the onion, three cloves of garlic and the bay, and simmer two hours, skimming.",
+      "Seed the chillies, toast them in a dry pan twenty seconds a side and cover them with boiling water for twenty minutes.",
+      "Blend the chillies with the remaining onion, garlic and a cup of the broth, and pass the result through a sieve without fail.",
+      "Fry the strained sauce in a spoon of fat for five minutes: it darkens and thickens. Pour it into the pot with the meat.",
+      "Add the rinsed hominy and the oregano and cook another forty minutes. Pull the meat into shreds and return it.",
+      "Serve with bowls of sliced radish, cabbage, onion, lime wedges, oregano and tostadas. Everyone builds their own bowl."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 38,
+      "carbsG": 44,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

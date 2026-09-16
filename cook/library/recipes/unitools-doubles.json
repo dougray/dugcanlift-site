@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-doubles",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TT",
+    "nativeName": "Doubles",
+    "summary": "Two soft fried breads called bara with spiced chickpea channa between them. Trinidad's street breakfast.",
+    "category": "breakfast",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      62,
+      60,
+      12,
+      12,
+      25,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Doubles",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "450 g Flour",
+        "item": "flour",
+        "qty": 450,
+        "unit": "g",
+        "grams": 450
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "100 ml Tamarind sauce",
+        "item": "tamarind sauce",
+        "qty": 100,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "600 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in warm water, add the flour, turmeric and salt and knead a soft dough.",
+      "Let the dough rise somewhere warm for an hour, until doubled.",
+      "Boil the chickpeas with garlic for an hour, until completely soft.",
+      "Fry the onion, add the curry powder and cumin, warm them a minute and stir in the chickpeas with half their liquid.",
+      "Mash a third of the chickpeas in the pot and cook ten minutes to thicken the sauce.",
+      "Divide the dough into small balls, rest them twenty minutes and flatten them by hand into discs.",
+      "Fry the baras twenty seconds a side in hot oil; they must stay soft. Put the channa between two baras and serve with tamarind."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 18,
+      "carbsG": 68,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

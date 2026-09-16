@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-schweinshaxe",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DE",
+    "nativeName": "Schweinshaxe",
+    "summary": "Pork knuckle roasted to a glassy crackling, with dark beer and sauerkraut.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      10,
+      8,
+      60,
+      85,
+      6,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/schweinshaxe.jpg",
+      "author": "Erich Ferdinand",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Schweinshaxe",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 Pork knuckle",
+        "item": "pork knuckle",
+        "qty": 2,
+        "note": "about 1 kg each"
+      },
+      {
+        "rawText": "1 l Dark beer",
+        "item": "dark beer",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Celeriac",
+        "item": "celeriac",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "600 g Sauerkraut",
+        "item": "sauerkraut",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "to serve"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Coarse salt and pepper, to taste",
+        "item": "coarse salt and pepper"
+      }
+    ],
+    "steps": [
+      "Score the skin in diamonds every centimetre and a half, down to the fat but not into the meat.",
+      "Rub the knuckles with coarse salt, pepper, caraway and garlic, working it into the cuts.",
+      "Put them in a pot with the onion, carrot, celeriac and bay, and cover with beer and water.",
+      "Simmer for an hour, never letting it boil hard.",
+      "Move the knuckles to a tray, pat the skin dry and roast at 180 °C for an hour and twenty.",
+      "Every twenty minutes baste with beer from the pot and fat from the tray.",
+      "Raise the oven to 240 °C for the last ten minutes, until the crackling blisters."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 58,
+      "carbsG": 34,
+      "fatG": 56,
+      "estimated": true
+    }
+  }
+}

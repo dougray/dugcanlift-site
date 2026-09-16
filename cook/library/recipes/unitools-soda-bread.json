@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-soda-bread",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IE",
+    "nativeName": "Soda bread",
+    "summary": "Bread on bicarbonate and buttermilk, with no yeast and no proving. Three minutes from mixing to oven.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      3,
+      2,
+      2,
+      47,
+      60
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/soda-bread.jpg",
+      "author": "Jim Lukach",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Soda bread",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "350 g Plain flour",
+        "item": "plain flour",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "150 g Wholemeal flour",
+        "item": "wholemeal flour",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "400 ml Buttermilk",
+        "item": "buttermilk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Rolled oats",
+        "item": "rolled oats",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "for the top"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 220 °C in advance. The bread has to go in immediately after mixing; it cannot wait.",
+      "Mix both flours, the bicarbonate and the salt in a bowl and stir well so the soda spreads evenly.",
+      "Pour in the buttermilk and mix with a knife or your hand only until it comes together. The dough is sticky and uneven, which is correct.",
+      "Turn it onto a floured tray, shape it into a round loaf and cut a deep cross almost to the base.",
+      "Scatter the oats over and bake fifteen minutes at 220 °C, then thirty at 190 °C.",
+      "A finished loaf sounds hollow when its base is tapped. Cool it on a rack for at least an hour: hot soda bread will not slice."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 260,
+      "proteinG": 9,
+      "carbsG": 52,
+      "fatG": 2,
+      "estimated": true
+    }
+  }
+}

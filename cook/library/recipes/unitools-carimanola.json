@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-carimanola",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PA",
+    "nativeName": "Carimañola",
+    "summary": "Torpedo-shaped cassava croquettes with a meat filling, deep-fried.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      30,
+      12,
+      15,
+      20,
+      15,
+      12,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/carimanola.jpg",
+      "author": "Jdvillalobos",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Carimañola",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Cassava",
+        "item": "cassava",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "400 g Minced beef",
+        "item": "minced beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Culantro or coriander",
+        "item": "culantro or coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Peel the cassava, strip the woody core and boil it in salted water until completely soft.",
+      "Mash the cassava hot and work it with the egg and salt into a pliable dough.",
+      "Fry the onion, pepper and garlic, add the mince, cumin and tomato paste and cook it through.",
+      "Stir the culantro into the filling and cool it completely.",
+      "Take a lump of dough with wet hands, flatten it on your palm and put the filling in the centre.",
+      "Seal it and draw it into a torpedo with pointed ends.",
+      "Fry at 175 °C for four minutes, to a deep golden crust, and serve them hot."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 20,
+      "carbsG": 52,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

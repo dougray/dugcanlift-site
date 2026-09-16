@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kuurdak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KG",
+    "nativeName": "Куурдак",
+    "summary": "Lamb fried in its own tail fat with onion and potato.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      18,
+      4,
+      20,
+      18,
+      12,
+      24,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kuurdak.jpg",
+      "author": "Rio Murr from Minsk, Belarus",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kuurdak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Lamb",
+        "item": "lamb",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "meat and offal"
+      },
+      {
+        "rawText": "200 g Lamb tail fat",
+        "item": "lamb tail fat",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Cumin",
+        "item": "cumin",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "4 Flatbread",
+        "item": "flatbread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Dice the tail fat and render it in a cauldron to golden crackling.",
+      "Lift out the crackling with a slotted spoon and set it aside; it goes back at the very end.",
+      "Cut the meat into walnut-sized pieces and fry it in batches to a dark crust.",
+      "Return all the meat to the pot, salt it, add the cumin and cover it for fifteen minutes.",
+      "Add the onion in thick half-moons and fry until it turns translucent.",
+      "Add the potatoes in large pieces and cook twenty minutes more, covered.",
+      "Return the crackling, add the garlic and coriander and serve it straight from the pot with bread."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 55,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 28,
+      "fatG": 54,
+      "estimated": true
+    }
+  }
+}

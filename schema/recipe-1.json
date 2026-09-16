@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dugcanlift.com/schema/recipe-1.json",
+  "title": "LIFT recipe wire format",
+  "description": "Canonical payload returned by recipe-ingest and consumed by both LIFT apps. Nutrition is PER SERVING. Masses are grams, volumes millilitres, all doubles.",
+  "type": "object",
+  "required": ["schemaVersion", "name", "servings", "ingredients", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "sourceURL": {
+      "type": "string",
+      "description": "The post the recipe came from. Absent for manual entry."
+    },
+    "sourceAuthor": { "type": "string" },
+    "servings": { "type": "number", "exclusiveMinimum": 0 },
+    "prepMinutes": { "type": "integer", "minimum": 0 },
+    "cookMinutes": { "type": "integer", "minimum": 0 },
+
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["rawText"],
+        "additionalProperties": false,
+        "properties": {
+          "rawText": {
+            "type": "string",
+            "description": "Exactly as heard or read, e.g. '2 tbsp olive oil'. Always kept. This is what the user checks the parse against, and what the shopping list falls back to when qty/unit could not be resolved."
+          },
+          "item": { "type": "string", "description": "Normalised name, e.g. 'olive oil'." },
+          "qty": { "type": "number" },
+          "unit": {
+            "type": "string",
+            "description": "Free text as spoken: g, ml, tbsp, cup, clove, whole."
+          },
+          "grams": {
+            "type": "number",
+            "description": "Resolved mass, when a conversion was possible. Drives macro lookup."
+          },
+          "optional": { "type": "boolean", "default": false },
+          "note": { "type": "string", "description": "e.g. 'finely diced'." }
+        }
+      }
+    },
+
+    "steps": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+
+    "nutritionPerServing": {
+      "type": "object",
+      "description": "OMIT THIS ENTIRELY when macros are not known. Do not emit zeros — a zero enters a daily total as fact.",
+      "additionalProperties": false,
+      "properties": {
+        "calories": { "type": "number", "minimum": 0 },
+        "proteinG": { "type": "number", "minimum": 0 },
+        "carbsG":   { "type": "number", "minimum": 0 },
+        "fatG":     { "type": "number", "minimum": 0 },
+        "fiberG":   { "type": "number", "minimum": 0 },
+        "sugarG":   { "type": "number", "minimum": 0 },
+        "sodiumMg": { "type": "number", "minimum": 0 },
+        "estimated": {
+          "type": "boolean",
+          "description": "True when derived by the LLM rather than from a food database. Both apps must surface this before the user logs it."
+        }
+      }
+    },
+
+    "sourceTranscript": {
+      "type": "string",
+      "description": "Caption, transcript and OCR text merged. Shown beside the parsed recipe so a bad quantity is visible before saving. Never dropped."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["caption", "transcript", "ocr", "mixed"],
+      "description": "Which stage produced the parse. 'caption' is the most trustworthy."
+    },
+    "importedAt": { "type": "string", "format": "date-time" }
+  }
+}

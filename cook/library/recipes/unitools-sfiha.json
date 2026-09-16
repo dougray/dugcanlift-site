@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sfiha",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LB",
+    "nativeName": "صفيحة",
+    "summary": "Open flatbreads with minced lamb, tomato and pomegranate molasses, from Baalbek.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      14,
+      62,
+      12,
+      8,
+      15,
+      12,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sfiha.jpg",
+      "author": "Bazel",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sfiha",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "280 ml Warm water",
+        "item": "warm water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "minced"
+      },
+      {
+        "rawText": "400 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "grated"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2,
+        "note": "grated"
+      },
+      {
+        "rawText": "3 tbsp Pomegranate molasses",
+        "item": "pomegranate molasses",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Tahini",
+        "item": "tahini",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Baharat",
+        "item": "baharat",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm water, knead a soft dough with the flour, oil and salt, and work it ten minutes.",
+      "Leave the dough to rise somewhere warm for an hour, until doubled.",
+      "Grate the tomatoes and onion and drain them in a sieve, keeping a little of the juice.",
+      "Mix the mince with the grated vegetables, pomegranate molasses, tahini, baharat, salt and pepper.",
+      "Divide the dough into balls and roll them into ten-centimetre rounds.",
+      "Spread the topping in a thin layer, leaving half a centimetre at the rim, and scatter with pine nuts.",
+      "Bake at 220 °C for eight minutes, until the edges colour. Serve with lemon."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 28,
+      "carbsG": 50,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

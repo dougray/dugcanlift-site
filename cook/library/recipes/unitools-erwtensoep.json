@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-erwtensoep",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NL",
+    "nativeName": "Erwtensoep",
+    "summary": "A thick split pea soup with smoked sausage, dense enough for a spoon to stand in it.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      60,
+      65,
+      15,
+      22,
+      15,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/erwtensoep.jpg",
+      "author": "",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Erwtensoep",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Split peas",
+        "item": "split peas",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "500 g Pork ribs",
+        "item": "pork ribs",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Pork belly",
+        "item": "pork belly",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "400 g Rookworst",
+        "item": "rookworst",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Celeriac",
+        "item": "celeriac",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "2 Leeks",
+        "item": "leeks",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Celery leaves",
+        "item": "celery leaves",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "300 g Rye bread",
+        "item": "rye bread",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the peas and cover them, with the ribs and belly, in two and a half litres of cold water.",
+      "Bring it up, skim and simmer an hour, until the peas start breaking down.",
+      "Add the potato, carrot, celeriac and onion and cook another hour, stirring so nothing catches.",
+      "Lift out the meat, strip it from the bones and return it to the soup in pieces.",
+      "Add the sliced leek and celery leaves and cook twenty minutes.",
+      "Cool it completely and leave it overnight in the fridge; the soup thickens.",
+      "Reheat it, add the sliced sausage for five minutes and serve with rye bread."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 40,
+      "carbsG": 58,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

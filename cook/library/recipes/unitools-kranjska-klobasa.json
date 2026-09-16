@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kranjska-klobasa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SI",
+    "nativeName": "Kranjska klobasa",
+    "summary": "A boiled pork sausage with garlic, served with horseradish and mustard, protected by origin.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      15,
+      15,
+      10,
+      25,
+      15,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kranjska-klobasa.jpg",
+      "author": "ModriDirkac",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Carniolan sausage",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600
+      },
+      {
+        "rawText": "400 g Pork back fat",
+        "item": "pork back fat",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Curing salt",
+        "item": "curing salt",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 tsp Ground black pepper",
+        "item": "ground black pepper",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "150 ml Iced water",
+        "item": "iced water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Sausage casings",
+        "item": "sausage casings",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Grated horseradish",
+        "item": "grated horseradish",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "100 g Mustard",
+        "item": "mustard",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "400 g Bread",
+        "item": "bread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Dice the pork and fat and chill them to just above freezing.",
+      "Put the meat through the coarse plate of a mincer and the fat through the medium one.",
+      "Work in the curing salt, crushed garlic, pepper and iced water and knead the mixture until tacky.",
+      "Leave the mixture in the fridge for a day so the salt distributes and the colour sets.",
+      "Fill the casings tightly but without air pockets and tie them in twenty-centimetre pairs.",
+      "Air-dry the sausages two hours and cold-smoke them if you can.",
+      "Lower them into water at 75 °C and hold them twenty-five minutes without letting it boil. Serve with horseradish and mustard."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 32,
+      "carbsG": 22,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

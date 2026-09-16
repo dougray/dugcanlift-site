@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kleftiko",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CY",
+    "nativeName": "Κλέφτικο",
+    "summary": "Lamb baked five hours in sealed clay with not a drop of water.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      10,
+      15,
+      12,
+      8,
+      10,
+      320
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kleftiko.jpg",
+      "author": "Haydn Blackey",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kleftiko",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2 kg Lamb shoulder",
+        "item": "lamb shoulder",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "bone-in"
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Halloumi",
+        "item": "halloumi",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut deep slits into the lamb and push a sliver of garlic into each.",
+      "Rub the meat with salt, pepper, oregano, olive oil and lemon juice.",
+      "Leave the lamb to marinate in the fridge for at least four hours.",
+      "Cut the potatoes into large wedges and lay them in the base of a clay dish.",
+      "Set the meat on the potatoes and add the bay, cinnamon and lemon halves.",
+      "Cover it and seal the join with a strip of dough or a double layer of foil.",
+      "Bake at 160 °C for five hours without opening it and rest it twenty minutes."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 300,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 52,
+      "carbsG": 34,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

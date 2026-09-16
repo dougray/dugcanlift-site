@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-baursaki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KZ",
+    "nativeName": "Бауырсақ",
+    "summary": "Squares of yeast dough deep-fried into hollow puffs. The bread of the tea table and of every feast.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      12,
+      60,
+      12,
+      20,
+      20,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/baursaki.jpg",
+      "author": "Brücke-Osteuropa",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Baursak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "2 Egg",
+        "item": "egg",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "melted"
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in the warm milk and leave it ten minutes, until it foams.",
+      "Work in the eggs, melted butter, salt and flour to a soft dough. It should stay slightly tacky.",
+      "Cover and leave somewhere warm for an hour, until the dough has doubled.",
+      "Knock it back, roll it out a centimetre and a half thick and cut it into three-centimetre squares or diamonds.",
+      "Let the pieces stand under a cloth for twenty minutes; this second rise is the reason for the hollow.",
+      "Heat the oil to 170 °C and fry in batches for two to three minutes, turning, to an even gold.",
+      "Drain on paper and serve warm, with tea, soured cream or honey."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 330,
+      "proteinG": 8,
+      "carbsG": 44,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

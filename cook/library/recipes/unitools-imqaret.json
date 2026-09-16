@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-imqaret",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MT",
+    "nativeName": "Imqaret",
+    "summary": "Maltese pastry diamonds with an aniseed date filling, deep-fried.",
+    "category": "dessert",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      20,
+      30,
+      15,
+      15,
+      15,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/imqaret.jpg",
+      "author": "larrylurex",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Imqaret",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "180 g Margarine or lard",
+        "item": "margarine or lard",
+        "qty": 180,
+        "unit": "g",
+        "grams": 180
+      },
+      {
+        "rawText": "120 ml Cold water",
+        "item": "cold water",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Dates",
+        "item": "dates",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "pitted"
+      },
+      {
+        "rawText": "2 tsp Aniseed",
+        "item": "aniseed",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Orange zest",
+        "item": "orange zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "40 ml Anise liqueur",
+        "item": "anise liqueur",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Chop the dates and put them in a pan with the zests, aniseed and liqueur.",
+      "Cook the filling over a low heat for twenty minutes, to a thick even paste.",
+      "Cool the filling completely; warm, it tears the pastry as you wrap it.",
+      "Cut the margarine into the flour with salt to a crumb and bring the dough together with cold water.",
+      "Roll the dough into a long strip twelve centimetres wide.",
+      "Lay a rope of the date paste down the centre, fold the edges over and press the seam.",
+      "Cut it on the diagonal into diamonds and fry them at 180 °C, two minutes a side."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 5,
+      "carbsG": 62,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

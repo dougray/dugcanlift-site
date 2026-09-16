@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lasagne-alla-bolognese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Lasagne alla bolognese",
+    "summary": "Layers of pasta, ragù and béchamel. The ragù simmers three hours on milk and wine rather than tomato.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      22,
+      15,
+      35,
+      180,
+      15,
+      15,
+      60
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lasagne alla bolognese",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Minced beef",
+        "item": "minced beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Minced pork",
+        "item": "minced pork",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "100 g Pancetta",
+        "item": "pancetta",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "300 g Onion, carrot, celery",
+        "item": "onion, carrot, celery",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 ml Stock",
+        "item": "stock",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Lasagne sheets",
+        "item": "lasagne sheets",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "80 g Plain flour",
+        "item": "plain flour",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 l Milk for the béchamel",
+        "item": "milk for the béchamel",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "150 g Parmesan",
+        "item": "parmesan",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "grated"
+      },
+      {
+        "rawText": "1 pinch Nutmeg",
+        "item": "nutmeg",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Render the pancetta, add the soffritto and sweat it twenty minutes over a low flame until completely soft. There is no hurrying this: the vegetables have to dissolve.",
+      "Add both minces and cook over a high flame, breaking up the lumps, until every drop of water has gone and the meat starts to brown.",
+      "Pour in the milk and let it cook away entirely, about twenty minutes. Then the wine, likewise to dryness.",
+      "Add the tomato paste and the stock, bring it to the boil and simmer three hours on the lowest heat, topping up with water as needed.",
+      "Make the béchamel: melt the butter, whisk in the flour, cook it a minute and pour in warm milk in a thin stream, whisking. Cook to the thickness of cream and season with nutmeg.",
+      "Build the layers: béchamel, pasta, ragù, béchamel, parmesan — six times over. The top layer is béchamel with parmesan.",
+      "Bake at 180 °C for forty minutes, the last ten uncovered. Let it stand twenty minutes before cutting."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 220,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 42,
+      "carbsG": 58,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

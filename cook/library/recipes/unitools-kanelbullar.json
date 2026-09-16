@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kanelbullar",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SE",
+    "nativeName": "Kanelbullar",
+    "summary": "Cinnamon buns knotted rather than rolled. The cardamom in the dough matters more than the cinnamon inside.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      70,
+      15,
+      20,
+      45,
+      14
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kanelbullar.jpg",
+      "author": "Andy Li",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kanelbullar",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Plain flour",
+        "item": "plain flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Dried yeast",
+        "item": "dried yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "80 g Sugar for the dough",
+        "item": "sugar for the dough",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tsp Cardamom",
+        "item": "cardamom",
+        "qty": 2,
+        "unit": "tsp",
+        "note": "ground from the pods"
+      },
+      {
+        "rawText": "100 g Butter for the dough",
+        "item": "butter for the dough",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "120 g Butter for the filling",
+        "item": "butter for the filling",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120,
+        "note": "softened"
+      },
+      {
+        "rawText": "100 g Sugar for the filling",
+        "item": "sugar for the filling",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tbsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Egg for glazing",
+        "item": "egg for glazing",
+        "qty": 1
+      },
+      {
+        "rawText": "Pearl sugar, to taste",
+        "item": "pearl sugar"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Warm the milk to thirty-seven degrees and dissolve the yeast. Mix with the flour, sugar, salt and cardamom and knead for ten minutes.",
+      "Work in the soft butter piece by piece until the dough turns smooth and glossy. Prove for an hour.",
+      "Beat the butter with the sugar and cinnamon to a paste. Roll the dough into a half-centimetre rectangle and spread the filling over all of it.",
+      "Fold the sheet in three, cut two-centimetre strips, twist each one and tie it in a knot. Space them on a tray.",
+      "Prove them for forty minutes, brush with egg and scatter with pearl sugar.",
+      "Bake at 220 °C for twelve minutes. Short and hot is what keeps the middle moist."
+    ],
+    "prepMinutes": 120,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 6,
+      "carbsG": 54,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}
