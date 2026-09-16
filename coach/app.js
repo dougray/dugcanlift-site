@@ -1894,14 +1894,13 @@ $('#r-save').onclick = () => {
   //
   // Fibre used to be hard-coded to 0 here because there was no field for it,
   // so a recipe that arrived carrying fibre lost it the first time anyone
-  // opened it and pressed Save.
-  const nutrition = typed.every((v) => v === null) ? null : {
-    calories: typed[0] || 0,
-    proteinG: typed[1] || 0,
-    carbsG: typed[2] || 0,
-    fatG: typed[3] || 0,
-    fiberG: typed[4] || 0,
-  };
+  // opened it and pressed Save. Sugar and sodium went the same way until the
+  // merge moved to recipe-nutrition.js, which carries every key the form
+  // does not show.
+  const existing = editingRecipeId
+    ? (recipes.find((r) => r.id === editingRecipeId) || {}).nutritionPerServing
+    : null;
+  const nutrition = CoachRecipeNutrition.mergeNutrition(typed, existing);
 
   const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
   const servings = parseFloat($('#r-servings').value) || 1;

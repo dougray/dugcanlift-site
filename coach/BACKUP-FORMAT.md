@@ -30,7 +30,7 @@ Every client reads and writes these, and the field names match what each
 platform already stores, which is why a browser backup restores on a phone.
 
 **`food[]`** — `id`, `name`, `servings`, `calories`, `proteinG`, `fatG`,
-`carbsG`, `fiberG`, `amountGrams`, `date` (`YYYY-MM-DD`), `loggedAt` (epoch ms), `meal`
+`carbsG`, `fiberG`, `saturatedFatG`, `sugarG`, `sodiumMg`, `amountGrams`, `date` (`YYYY-MM-DD`), `loggedAt` (epoch ms), `meal`
 (`BREAKFAST` | `LUNCH` | `DINNER` | `SNACK`).
 
 **`workouts[]`** — `id`, `date`, `name`, `note`, `startedAt` (epoch ms), and
@@ -53,6 +53,12 @@ phone apps keep their routes in their own stores and Health, and preserve the
 section untouched like any other they do not store. A recording still in
 progress is never written.
 
+Saturated fat and sugar are grams and sodium is milligrams, **per serving**
+like the other macros, on food and on a recipe. Absent or `null` means the
+source did not say — never `0`. They have no goal. Files written before these
+existed carried an iPhone's sugar and sodium under `ext.ios`; a reader should
+still take them from there when the common field is missing.
+
 **`goal`** — `calories`, `proteinG`, `fatG`, `carbsG`, `fiberG`.
 
 **`settings`** — `focus`, `stepGoal`.
@@ -66,7 +72,7 @@ instead of a stranger joining their roster.
 **`recipes[]`** — `id`, `name`, `servings`, `totalWeightGrams`, `ingredients[]`
 of `{ rawText, item, qty, unit, grams, optional, note }`, `steps[]` (strings),
 `nutritionPerServing` of `{ calories, proteinG, carbsG, fatG, fiberG,
-estimated }`, `sourceUrl`, `sourceAuthor`, `sourceTranscript`, `prepMinutes`,
+saturatedFatG, sugarG, sodiumMg, estimated }`, `sourceUrl`, `sourceAuthor`, `sourceTranscript`, `prepMinutes`,
 `cookMinutes`, `importedAt` (epoch ms).
 
 Only `id`, `name` and `servings` are required. `rawText` is the contract for an

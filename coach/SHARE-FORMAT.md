@@ -97,6 +97,39 @@ how both apps already store them, and `meal` is 0 breakfast, 1 lunch, 2 dinner,
 3 snack. The gram-based amount (`amountGrams`) is not included in
 this compact format; it appears only in the fuller BACKUP-FORMAT.
 
+### Saturated fat, sugar and sodium
+
+Tracked, not targeted: there is no goal for them. They travel in keys of their
+own rather than as extra positions in `ft` and `f`, because decoders already in
+use accept exactly five totals and exactly eight item fields and would drop a
+longer tuple — and with it the day's food.
+
+**On a day** — `fx`, present when at least one food logged that day recorded
+any of the three:
+
+```jsonc
+"fx": [21.5, 48, 2310, 6, 4, 5, 6]
+//     [saturatedFatG, sugarG, sodiumMg, foods, withSaturatedFat, withSugar, withSodium]
+```
+
+The first three are totals over only the foods that recorded each value —
+multiplied by servings, as `ft` is. `foods` is how many foods were logged that
+day, and the last three say how many of them each total covers. That is what
+lets a coach read *2,310 mg sodium from 6 of 6 foods* differently from *from 2
+of 6*: a partial total is a floor, not a day. A total with no food behind it is
+`null`, never `0`. Grams to one decimal, sodium in whole milligrams.
+
+**Itemized** — `fe`, sent only alongside `f`, one entry per `f` entry in the
+same order:
+
+```jsonc
+"fe": [ [3.1, 2, 540], null, [null, 12] ]
+//      [saturatedFatG, sugarG, sodiumMg] per serving, trailing nulls trimmed
+```
+
+`null` for a food with none of the three. Per serving, like the macros in `f`.
+`fx` is still sent with an itemized day, so a decoder never has to add it up.
+
 ### Outdoor
 
 Runs, walks and hikes a client recorded with GPS. Three optional parts, all
