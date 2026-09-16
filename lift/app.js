@@ -861,6 +861,49 @@ let foodPer100 = null;
 
 const servingUnitKey = () => (settings.servingUnit === 'ounces' ? 'oz' : 'g');
 
+/* A recipe's total weight, in grams, or null when blank or not a positive
+ * number. Null is a real answer: an unweighed recipe keeps working by
+ * servings, and a zero would be a dish that weighs nothing. */
+function recipeWeightGrams() {
+  const typed = parseFloat($('#r-weight').value);
+  if (!isFinite(typed) || typed <= 0) return null;
+  return FoodAmount.UNITS[servingUnitKey()].toGrams(typed);
+}
+
+/* The recipe form's unit chips. They change the same person-level setting the
+ * food form does -- one preference, as in LIFT iOS -- and carry the weight
+ * across the switch rather than reinterpreting the number, so 1200 g becomes
+ * 42.3 oz and never 1200 oz. */
+function renderRecipeWeightUnit() {
+  chips($('#r-weight-mode'),
+    [{ label: 'Grams', u: 'grams' }, { label: 'Ounces', u: 'ounces' }],
+    (i) => i.u === (settings.servingUnit || 'grams'),
+    (i) => {
+      const before = recipeWeightGrams();
+      settings.servingUnit = i.u;
+      save(KEY.settings, settings);
+      if (before) {
+        $('#r-weight').value = FoodAmount.trim(FoodAmount.UNITS[servingUnitKey()].fromGrams(before));
+      }
+      renderRecipeWeightUnit();
+      render();
+    });
+  $('#r-weight-label').textContent = `Total weight (${FoodAmount.UNITS[servingUnitKey()].abbreviation})`;
+  renderRecipeWeightEach();
+}
+
+/* "4 servings · 300 g each", when both numbers are known. The point of the
+ * field: a count says how many portions exist, not how much is on the scale. */
+function renderRecipeWeightEach() {
+  const grams = recipeWeightGrams();
+  const count = parseFloat($('#r-servings').value);
+  const out = $('#r-weight-each');
+  if (!grams || !(count > 0)) { out.textContent = ''; return; }
+  const unit = FoodAmount.UNITS[servingUnitKey()];
+  out.textContent = `${count} serving${count === 1 ? '' : 's'} \u00B7 `
+    + `${FoodAmount.trim(unit.fromGrams(grams / count))} ${unit.abbreviation} each`;
+}
+
 function openFoodForm(prefill) {
   $('#food-form').classList.remove('hidden');
   $('#food-search').classList.add('hidden');
@@ -2152,6 +2195,12 @@ function openRecipeForm(id) {
   const r = id ? recipeById(id) : null;
   $('#r-name').value = r ? r.name : '';
   $('#r-servings').value = r ? r.servings : 1;
+  // Grams on the recipe, the person's preferred unit on screen -- the same
+  // rule the food form follows.
+  $('#r-weight').value = r && r.totalWeightGrams > 0
+    ? FoodAmount.trim(FoodAmount.UNITS[servingUnitKey()].fromGrams(r.totalWeightGrams))
+    : '';
+  renderRecipeWeightUnit();
   $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
   $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
   const n = r && r.nutritionPerServing;
@@ -2231,6 +2280,9 @@ $('#r-save').onclick = () => {
     ingredients: lines('#r-ingredients').map(parseIngredient),
     steps: lines('#r-steps'),
     nutritionPerServing: nutrition,
+    // Written even when null, so clearing the field on an existing recipe
+    // actually clears it -- the spread below would otherwise keep the old one.
+    totalWeightGrams: recipeWeightGrams(),
   };
 
   if (editingRecipeId) {
@@ -2857,6 +2909,9 @@ function applyTally() {
     + `${round(ingredientTally.calories)} kcal for the whole recipe, `
     + `${round(ingredientTally.calories / servings)} a serving.`;
 }
+
+$('#r-weight').addEventListener('input', renderRecipeWeightEach);
+$('#r-servings').addEventListener('input', renderRecipeWeightEach);
 
 ['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((selector) => {
   $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
