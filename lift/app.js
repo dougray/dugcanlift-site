@@ -201,6 +201,18 @@ function totals(list) {
   }), { calories: 0, proteinG: 0, fatG: 0, carbsG: 0, fiberG: 0 });
 }
 
+/* Saturated fat, sugar and sodium for a day, under the macros: plain rows, no
+ * bars, because there is no goal to draw one against. Each row says how many of
+ * the day's foods it covers when that is not all of them -- a partial total is
+ * a floor, not the day. Nothing at all when no food recorded any. */
+function nutrientRows(parent, entries) {
+  const rows = LiftNutrients.dayRows(entries);
+  if (!rows.length) return;
+  const box = el('div', 'nutrients');
+  rows.forEach((r) => statline(box, r.label, r.value));
+  parent.appendChild(box);
+}
+
 const sessionVolume = (s) => (s.exercises || []).reduce((t, ex) =>
   t + (ex.sets || []).reduce((u, st) => u + ((st.weightLb || 0) * (st.reps || 0)), 0), 0);
 
@@ -476,6 +488,7 @@ function renderHome() {
   statline(fuel, 'Carbs', `${eaten.carbsG} g`);
   statline(fuel, 'Fat', `${eaten.fatG} g`);
   statline(fuel, 'Fiber', `${eaten.fiberG} g`);
+  nutrientRows(fuel, entriesFor(today));
 
   const week = lastNDays(7);
   const weekSessions = workouts.filter((w) => week.includes(w.date));
@@ -809,6 +822,7 @@ function renderFood() {
   } else {
     sum.appendChild(el('p', 'muted', 'Set a goal on the Home tab and it will show up here.'));
   }
+  nutrientRows(sum, list);
 
   // recent, deduplicated by name
   const seen = new Map();
@@ -853,6 +867,8 @@ function renderFood() {
       info.appendChild(el('div', null, amount ? `${e.name} - ${amount}` : e.name));
       info.appendChild(el('div', 'muted',
         `${mul(e, 'calories')} kcal - P ${mul(e, 'proteinG')} - F ${mul(e, 'fatG')} - C ${mul(e, 'carbsG')} - Fib ${mul(e, 'fiberG')}`));
+      const extras = LiftNutrients.entryLine(e);
+      if (extras) info.appendChild(el('div', 'muted small', extras));
       row.appendChild(info);
       const x = el('button', 'x', '\u00d7');
       // Mutate the live array in place rather than rebinding `food` to a
@@ -987,6 +1003,8 @@ function openFoodForm(prefill) {
   $('#f-f').value = from ? from.fatG : '';
   $('#f-c').value = from ? from.carbsG : '';
   $('#f-fib').value = from ? from.fiberG : '';
+  setDetailFields(from);
+  $('#f-more').open = false;
 
   renderMealChips();
   renderFoodUnit(prefill);
@@ -1015,6 +1033,7 @@ function openFoodEdit(id) {
   $('#f-f').value = show(values.fatG);
   $('#f-c').value = show(values.carbsG);
   $('#f-fib').value = show(values.fiberG);
+  setDetailFields(values);
 
   renderMealChips();
   renderFoodUnit(null);
@@ -1034,7 +1053,36 @@ function typedMacros() {
   return {
     calories: read('#f-cal'), proteinG: read('#f-p'), fatG: read('#f-f'),
     carbsG: read('#f-c'), fiberG: read('#f-fib'),
+    ...typedDetails(),
   };
+}
+
+/* The "More nutrients" fields. Blank stays blank both ways: an unknown value
+ * prefills empty, and an empty field reads back as null -- never 0. Prefilled
+ * at the precision they are stored to, one decimal and whole milligrams. */
+const DETAIL_INPUTS = { saturatedFatG: '#f-sat', sugarG: '#f-sugar', sodiumMg: '#f-sodium' };
+
+function setDetailFields(values) {
+  LiftNutrients.FIELDS.forEach((field) => {
+    const v = values ? LiftNutrients.value(values[field]) : null;
+    $(DETAIL_INPUTS[field]).value = v == null ? '' : LiftNutrients.roundField(field, v);
+  });
+  renderMoreSummary();
+}
+
+function typedDetails() {
+  const out = {};
+  LiftNutrients.FIELDS.forEach((field) => {
+    out[field] = LiftNutrients.parseField($(DETAIL_INPUTS[field]).value);
+  });
+  return out;
+}
+
+/* Says how many are filled while the disclosure is closed, so a prefilled
+ * sodium figure is not hidden behind a plain "More nutrients". */
+function renderMoreSummary() {
+  const filled = Object.values(typedDetails()).filter((v) => v != null).length;
+  $('#f-more-summary').textContent = filled ? `More nutrients \u00b7 ${filled} filled` : 'More nutrients';
 }
 
 /** What saving the edit form would write, or null if it cannot be saved. */
@@ -1062,6 +1110,9 @@ function renderFoodUnit(prefill) {
     $('#f-f-label').textContent = 'Fat (g/serving)';
     $('#f-c-label').textContent = 'Carbs (g/serving)';
     $('#f-fib-label').textContent = 'Fiber (g/serving)';
+    $('#f-sat-label').textContent = 'Sat fat (g/serving)';
+    $('#f-sugar-label').textContent = 'Sugar (g/serving)';
+    $('#f-sodium-label').textContent = 'Sodium (mg/serving)';
     $('#f-basis-note').textContent = 'This entry was logged by the serving, '
       + 'so it stays that way: macros for one serving, then how many you had.';
     return;
@@ -1100,6 +1151,9 @@ function renderFoodUnit(prefill) {
   $('#f-f-label').textContent = 'Fat (g/100g)';
   $('#f-c-label').textContent = 'Carbs (g/100g)';
   $('#f-fib-label').textContent = 'Fiber (g/100g)';
+  $('#f-sat-label').textContent = 'Sat fat (g/100g)';
+  $('#f-sugar-label').textContent = 'Sugar (g/100g)';
+  $('#f-sodium-label').textContent = 'Sodium (mg/100g)';
 
   $('#f-basis-note').textContent = prefill && !foodPer100
     ? 'This product only lists a serving size, so its macros could not be '
@@ -1123,9 +1177,11 @@ function renderFoodPreview() {
     if (!f) { box.textContent = ''; return; }
     const total = (field) => mul(f, field);
     const amount = FoodAmount.amountText(f, servingUnitKey());
+    const extras = LiftNutrients.entryLine(f);
     box.textContent = `${amount || '1 serving'} = ${total('calories')} kcal`
       + ` - P ${total('proteinG')} - F ${total('fatG')}`
-      + ` - C ${total('carbsG')} - Fib ${total('fiberG')}`;
+      + ` - C ${total('carbsG')} - Fib ${total('fiberG')}`
+      + (extras ? ` \u00b7 ${extras}` : '');
     return;
   }
 
@@ -1142,13 +1198,16 @@ function renderFoodPreview() {
     fatG: parseInt($('#f-f').value, 10) || 0,
     carbsG: parseInt($('#f-c').value, 10) || 0,
     fiberG: parseInt($('#f-fib').value, 10) || 0,
+    ...typedDetails(),
   }, grams);
   if (!t) { box.textContent = ''; return; }
+  const extras = LiftNutrients.entryLine(t);
 
   const unit = FoodAmount.UNITS[servingUnitKey()];
   const shown = FoodAmount.trim(unit.fromGrams(grams)) + ' ' + unit.abbreviation;
   box.textContent = `${shown} = ${t.calories} kcal - P ${t.proteinG} - F ${t.fatG}`
-    + ` - C ${t.carbsG} - Fib ${t.fiberG}`;
+    + ` - C ${t.carbsG} - Fib ${t.fiberG}`
+    + (extras ? ` \u00b7 ${extras}` : '');
 }
 
 /** The amount currently in the form, in grams. Null if it isn't a weight. */
@@ -1165,8 +1224,11 @@ function renderMealChips() {
 
 // Every field the preview reads, so it never shows a total for numbers that
 // are no longer on screen.
-['#f-amount', '#f-cal', '#f-p', '#f-f', '#f-c', '#f-fib'].forEach((sel) => {
+['#f-amount', '#f-cal', '#f-p', '#f-f', '#f-c', '#f-fib', '#f-sat', '#f-sugar', '#f-sodium'].forEach((sel) => {
   $(sel).addEventListener('input', renderFoodPreview);
+});
+['#f-sat', '#f-sugar', '#f-sodium'].forEach((sel) => {
+  $(sel).addEventListener('input', renderMoreSummary);
 });
 
 $('#food-add').onclick = () => openFoodForm(null);
@@ -1183,7 +1245,7 @@ $('#f-save').onclick = () => {
     // In place, keeping id, date, loggedAt and anything else the entry
     // carries -- a backup from the phone can hold keys this form never shows.
     const updated = { ...food[i], ...fields, name, meal: formMeal };
-    FoodAmount.FIELDS.forEach((field) => {
+    [...FoodAmount.FIELDS, ...FoodAmount.DETAILS].forEach((field) => {
       if (updated[field] === undefined) delete updated[field];
     });
     food[i] = updated;
@@ -1206,6 +1268,8 @@ $('#f-save').onclick = () => {
     fatG: parseInt($('#f-f').value, 10) || 0,
     carbsG: parseInt($('#f-c').value, 10) || 0,
     fiberG: parseInt($('#f-fib').value, 10) || 0,
+    // Absent when blank, and scaled to the amount when not, like the macros.
+    ...typedDetails(),
   }, grams);
   if (!totalsForAmount) return;
 
@@ -1321,6 +1385,9 @@ function parseProduct(p) {
       fatG: Math.round(num(n[`fat_${suffix}`]) || 0),
       carbsG: Math.round(num(n[`carbohydrates_${suffix}`]) || 0),
       fiberG: Math.round(num(n[`fiber_${suffix}`]) || 0),
+      // Unrounded, and null where the product does not say: rounding happens
+      // once, on the amount eaten. See nutrients.js for sodium and salt.
+      ...LiftNutrients.fromOpenFoodFacts(n, suffix),
     };
   };
 
@@ -2263,10 +2330,17 @@ function buildPayload(weeks, itemised) {
           e.calories || 0, e.proteinG || 0, e.fatG || 0, e.carbsG || 0, e.fiberG || 0,
           MEALS.indexOf(mealOf(e)),
         ]);
+        // One per f entry, same order; absent when no food recorded any.
+        const fe = LiftNutrients.itemRows(entries);
+        if (fe) day.fe = fe;
       } else {
         const t = totals(entries);
         day.ft = [t.calories, t.proteinG, t.fatG, t.carbsG, t.fiberG];
       }
+      // Saturated fat, sugar and sodium totals with their coverage counts, sent
+      // with itemised days too so a coach never has to add them up.
+      const fx = LiftNutrients.dayTotals(entries);
+      if (fx) day.fx = fx;
     }
 
     // Runs, walks and hikes that day, as SHARE-FORMAT.md "Outdoor" spells them.
@@ -2553,7 +2627,10 @@ function loadBackup(file) {
       // parser does not own are carried from the file -- spreading the whole
       // ingredient under the parse would keep the file's cached quantity for
       // exactly the lines that do not parse.
-      const arrivingRecipes = (incoming.recipes || []).filter(Boolean).map((r) => ({
+      // Older iPhone files carry sugar and sodium only under ext.ios. See
+      // backup.js, rule 4.
+      const arrivingRecipes = LiftBackup.recipesWithIosDetails(
+        (incoming.recipes || []).filter(Boolean), parsed.ext).map((r) => ({
         ...r,
         ingredients: (r.ingredients || []).map((i) => {
           const raw = typeof i === 'string' ? i : (i && i.rawText) || '';
@@ -2567,7 +2644,8 @@ function loadBackup(file) {
         steps: r.steps || [],
       }));
 
-      const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts)
+      const arrivingFood = LiftBackup.foodWithIosDetails((incoming.food || []).filter(Boolean), parsed.ext);
+      const added = addMissing(food, arrivingFood) + addMissing(workouts, incoming.workouts)
         + addMissing(recipes, arrivingRecipes)
         // After recipes, so a meal whose recipe came in this same file keeps it.
         + LiftBackup.addMissingPlan(plan, incoming.plan, recipes)
@@ -2850,6 +2928,14 @@ function renderRecipes() {
   });
 }
 
+const RECIPE_DETAIL_INPUTS = { saturatedFatG: '#r-sat', sugarG: '#r-sugar', sodiumMg: '#r-sodium' };
+
+function renderRecipeMoreSummary() {
+  const filled = Object.values(RECIPE_DETAIL_INPUTS)
+    .filter((selector) => LiftNutrients.parseField($(selector).value) != null).length;
+  $('#r-more-summary').textContent = filled ? `More nutrients \u00b7 ${filled} filled` : 'More nutrients';
+}
+
 function openRecipeForm(id) {
   editingRecipeId = id;
   const r = id ? recipeById(id) : null;
@@ -2881,6 +2967,15 @@ function openRecipeForm(id) {
     $(selector).dataset.typed = n ? '1' : '';
   });
   $('#r-fib').dataset.typed = n && n.fiberG ? '1' : '';
+  // The same for the three details: typed only when the recipe has one, so an
+  // unknown sodium stays open to the ingredient tally.
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([field, selector]) => {
+    const v = n ? LiftNutrients.value(n[field]) : null;
+    $(selector).value = v == null ? '' : v;
+    $(selector).dataset.typed = v == null ? '' : '1';
+  });
+  $('#r-more').open = false;
+  renderRecipeMoreSummary();
   ingredientTally = null;
   $('#ing-query').value = '';
   $('#ing-results').innerHTML = '';
@@ -2930,6 +3025,16 @@ $('#r-save').onclick = () => {
     // fibre lost it the first time anyone opened it and pressed Save.
     fiberG: typed[4] || 0,
   };
+  // Saturated fat, sugar and sodium per serving, absent when blank. They live
+  // on the macros, so a recipe with none of those cannot hold them either --
+  // inventing a zero-calorie serving to carry a sodium figure would be worse.
+  if (nutrition) {
+    const details = {};
+    Object.entries(RECIPE_DETAIL_INPUTS).forEach(([field, selector]) => {
+      details[field] = LiftNutrients.parseField($(selector).value);
+    });
+    LiftNutrients.assign(nutrition, details);
+  }
 
   const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
   const servings = parseFloat($('#r-servings').value) || 1;
@@ -3088,6 +3193,9 @@ function logPlannedMeal(id) {
     loggedAt: Date.now(),
     meal: m.meal,
   };
+  // Per serving like the macros, rounded to what is stored everywhere else,
+  // and only the ones the recipe actually knows.
+  LiftNutrients.assign(entry, LiftNutrients.scaled(n, 1));
   food.push(entry);
   save(KEY.food, food);
 
@@ -3207,6 +3315,10 @@ function importPlan(payload) {
       calories: raw.u[0] || 0, proteinG: raw.u[1] || 0,
       carbsG: raw.u[2] || 0, fatG: raw.u[3] || 0, fiberG: raw.u[4] || 0,
     } : null;
+    // ux is [saturatedFatG, sugarG, sodiumMg] per serving, trailing nulls
+    // trimmed. It rides on the macros: a plan that sent ux with no u has
+    // nowhere to put it, for the reason the recipe form gives.
+    if (nutrition) LiftNutrients.assign(nutrition, LiftNutrients.parseRow(raw.ux));
 
     const body = {
       name,
@@ -3447,7 +3559,13 @@ checkForIncomingPlan();
 let ingredientSource = 'library';
 let ingredientTally = null;
 
-const emptyTally = () => ({ calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0 });
+const emptyTally = () => ({
+  calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0,
+  // Saturated fat, sugar and sodium are summed over the lines that recorded
+  // them, with a count, so the tally can tell a whole recipe from part of one.
+  details: { saturatedFatG: 0, sugarG: 0, sodiumMg: 0 },
+  detailLines: { saturatedFatG: 0, sugarG: 0, sodiumMg: 0 },
+});
 
 function renderIngredientSources() {
   chips($('#ing-source'),
@@ -3531,7 +3649,14 @@ function addIngredient(hit, quantity) {
 
   if (!ingredientTally) ingredientTally = emptyTally();
   const contribution = foodContribution(hit, quantity);
-  Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
+  ['calories', 'proteinG', 'carbsG', 'fatG', 'fiberG'].forEach((key) => {
+    ingredientTally[key] += contribution[key];
+  });
+  LiftNutrients.FIELDS.forEach((field) => {
+    if (contribution[field] == null) return;
+    ingredientTally.details[field] += contribution[field];
+    ingredientTally.detailLines[field] += 1;
+  });
   ingredientTally.lines += 1;
 
   applyTally();
@@ -3563,6 +3688,18 @@ function applyTally() {
     field.value = Math.round(value);
   });
 
+  // A detail is filled in only when every looked-up ingredient recorded it. A
+  // sodium figure from two of five ingredients is a floor, and written into a
+  // recipe's per-serving field it would read as the whole dish.
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
+    const field = $(selector);
+    if (field.dataset.typed === '1') return;
+    field.value = ingredientTally.detailLines[key] === ingredientTally.lines
+      ? LiftNutrients.roundField(key, ingredientTally.details[key] / servings)
+      : '';
+  });
+  renderRecipeMoreSummary();
+
   const round = (n) => Math.round(n).toLocaleString();
   note.textContent = `${ingredientTally.lines} looked-up `
     + `ingredient${ingredientTally.lines === 1 ? '' : 's'} - `
@@ -3573,8 +3710,11 @@ function applyTally() {
 $('#r-weight').addEventListener('input', renderRecipeWeightEach);
 $('#r-servings').addEventListener('input', renderRecipeWeightEach);
 
-['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((selector) => {
+['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib', '#r-sat', '#r-sugar', '#r-sodium'].forEach((selector) => {
   $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
+});
+['#r-sat', '#r-sugar', '#r-sodium'].forEach((selector) => {
+  $(selector).addEventListener('input', renderRecipeMoreSummary);
 });
 
 $('#r-servings').addEventListener('input', applyTally);

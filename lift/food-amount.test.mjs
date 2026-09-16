@@ -145,3 +145,59 @@ test('an untouched amount in ounces keeps the exact stored weight', () => {
   assert.equal(FoodAmount.editedGrams(entry, '', 'g'), null);
   assert.equal(FoodAmount.editedGrams(entry, '0', 'g'), null);
 });
+
+/* ---------------- saturated fat, sugar and sodium ---------------- */
+
+test('the details scale with the amount, rounded once to one decimal or a whole mg', () => {
+  const per100 = { ...chicken, saturatedFatG: 1.13, sugarG: 0, sodiumMg: 74 };
+  const out = FoodAmount.scaleFrom100g(per100, 175);
+  assert.equal(out.saturatedFatG, 2, '1.13 x 1.75 = 1.9775');
+  assert.equal(out.sugarG, 0, 'a recorded zero stays a zero');
+  assert.equal(out.sodiumMg, 130, '74 x 1.75 = 129.5, half-up');
+  assert.deepEqual(FoodAmount.DETAILS, ['saturatedFatG', 'sugarG', 'sodiumMg']);
+});
+
+test('an unknown detail stays absent when scaled, never zero', () => {
+  const out = FoodAmount.scaleFrom100g({ ...chicken, sugarG: null, sodiumMg: '' }, 200);
+  assert.equal('sugarG' in out, false);
+  assert.equal('sodiumMg' in out, false);
+  assert.equal('saturatedFatG' in out, false);
+});
+
+const salted = { ...logged, saturatedFatG: 2, sodiumMg: 130 };
+
+test('a weighed entry prefills its details per 100 g, and only the ones it has', () => {
+  const shown = FoodAmount.per100From(salted);
+  assert.equal(shown.saturatedFatG, 1.1);
+  assert.equal(shown.sodiumMg, 74);
+  assert.equal('sugarG' in shown, false);
+});
+
+test('editing only the weight rescales the stored details exactly', () => {
+  const typed = { ...FoodAmount.per100From(salted), sugarG: null };
+  const out = FoodAmount.editWeighed(salted, typed, 350);
+  assert.equal(out.saturatedFatG, 4, 'from the stored 2 g, not the rounded 1.1 on screen');
+  assert.equal(out.sodiumMg, 260);
+  assert.equal('sugarG' in out, false, 'unknown before, unknown after');
+  const same = FoodAmount.editWeighed(salted, typed, 175);
+  assert.equal(same.saturatedFatG, 2);
+  assert.equal(same.sodiumMg, 130);
+});
+
+test('a changed detail reads per 100 g; a cleared one is removed, not zeroed', () => {
+  const typed = { ...FoodAmount.per100From(salted), sugarG: 10, sodiumMg: null };
+  const out = FoodAmount.editWeighed(salted, typed, 200);
+  assert.equal(out.sugarG, 20);
+  assert.ok('sodiumMg' in out && out.sodiumMg === undefined,
+    'written as undefined so spreading it over the entry clears the old value');
+  assert.equal({ ...salted, ...out }.sodiumMg, undefined);
+});
+
+test('a serving-based entry takes its details per serving as typed', () => {
+  const old = { servings: 2, calories: 150, proteinG: 12, fatG: 5, carbsG: 10, sugarG: 9 };
+  const out = FoodAmount.editServings(old,
+    { calories: 150, proteinG: 12, fatG: 5, carbsG: 10, saturatedFatG: 1.5, sugarG: null, sodiumMg: 300 }, 1);
+  assert.equal(out.saturatedFatG, 1.5);
+  assert.equal(out.sodiumMg, 300);
+  assert.ok('sugarG' in out && out.sugarG === undefined, 'cleared');
+});

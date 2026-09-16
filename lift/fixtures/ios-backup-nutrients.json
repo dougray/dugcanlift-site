@@ -1,0 +1,111 @@
+{
+ "app": "lift",
+ "data": {
+  "food": [
+   {
+    "amountGrams": 150,
+    "calories": 240,
+    "carbsG": 30,
+    "date": "2026-09-15",
+    "fatG": 6,
+    "fiberG": 4,
+    "id": "6F1E2D3C-0000-4000-8000-000000000001",
+    "loggedAt": 1789480800000,
+    "meal": "BREAKFAST",
+    "name": "Granola",
+    "proteinG": 7,
+    "servings": 1
+   },
+   {
+    "calories": 110,
+    "carbsG": 26,
+    "date": "2026-09-15",
+    "fatG": 0,
+    "fiberG": 0,
+    "id": "6F1E2D3C-0000-4000-8000-000000000002",
+    "loggedAt": 1789488000000,
+    "meal": "SNACK",
+    "name": "Orange juice",
+    "proteinG": 2,
+    "servings": 2,
+    "sugarG": 21
+   },
+   {
+    "calories": 90,
+    "carbsG": 1,
+    "date": "2026-09-15",
+    "fatG": 7,
+    "fiberG": 0,
+    "id": "6F1E2D3C-0000-4000-8000-000000000003",
+    "loggedAt": 1789491600000,
+    "meal": "LUNCH",
+    "name": "Egg",
+    "proteinG": 6,
+    "servings": 1
+   }
+  ],
+  "recipes": [
+   {
+    "id": "9A8B7C6D-0000-4000-8000-000000000001",
+    "ingredients": [
+     { "rawText": "400 g chopped tomatoes", "optional": false }
+    ],
+    "name": "Tomato soup",
+    "nutritionPerServing": {
+     "calories": 120,
+     "carbsG": 18,
+     "estimated": false,
+     "fatG": 3,
+     "fiberG": 4,
+     "proteinG": 4
+    },
+    "servings": 2,
+    "steps": []
+   },
+   {
+    "id": "9A8B7C6D-0000-4000-8000-000000000002",
+    "ingredients": [],
+    "name": "Unmeasured stew",
+    "nutritionPerServing": null,
+    "servings": 4,
+    "steps": []
+   }
+  ],
+  "workouts": []
+ },
+ "ext": {
+  "ios": {
+   "food": {
+    "6F1E2D3C-0000-4000-8000-000000000001": {
+     "brand": "Oat Co",
+     "foodRefID": "off:5000000000001",
+     "servingGrams": 45,
+     "servingUnit": "grams",
+     "sodiumMg": 0,
+     "sugarG": 18.5
+    },
+    "6F1E2D3C-0000-4000-8000-000000000002": {
+     "foodRefID": "usda:169098",
+     "servingUnit": "serving",
+     "sodiumMg": 2,
+     "sugarG": 99
+    },
+    "6F1E2D3C-0000-4000-8000-000000000003": {
+     "foodRefID": "",
+     "servingUnit": "serving"
+    }
+   },
+   "recipes": {
+    "9A8B7C6D-0000-4000-8000-000000000001": {
+     "sodiumMg": 640,
+     "sugarG": 11
+    },
+    "9A8B7C6D-0000-4000-8000-000000000002": {
+     "sodiumMg": 900
+    }
+   }
+  }
+ },
+ "saved": "2026-09-16",
+ "v": 1
+}
