@@ -28,7 +28,7 @@
   /** Sections this build stores and writes from its own data. Everything else
    *  it reads is preserved. Order is the order they appear in the file. */
   var STORED = ['goal', 'food', 'workouts', 'settings', 'steps', 'coach', 'profile',
-                'weights', 'recipes', 'plan'];
+                'weights', 'recipes', 'plan', 'routines', 'outdoor'];
 
   /** Deliberately not stored, by the format: ticks mark one week's shop, and
    *  restoring last month's would show this week's list as already bought. */

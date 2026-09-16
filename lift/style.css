@@ -301,3 +301,87 @@ canvas { width: 100%; display: block; }
   border-radius: 8px;
   background: #000;
 }
+
+/* ---------------- routines and outdoor ---------------- */
+
+.small { font-size: 13px; }
+.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+details.starters summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style-position: inside;
+}
+
+.cardhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardhead .chips { padding-bottom: 0; }
+.cardhead .chip { padding: 4px 12px; }
+
+.cardtitle { display: block; margin-bottom: 10px; }
+
+/* A whole card or row that opens something, drawn like the card it is. */
+button.linkcard, button.linkrow {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  font-weight: 400;
+  border-radius: 12px;
+}
+button.linkcard { background: var(--surface); padding: 16px; }
+button.linkrow {
+  display: flex;
+  background: none;
+  border-top: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 12px 0 4px;
+  margin-top: 8px;
+}
+button.linkrow .muted { margin: 0; }
+
+canvas.route {
+  background: var(--bg);
+  border-radius: 12px;
+  margin: 4px 0 10px;
+}
+.card canvas.route, .linkcard canvas.route { box-shadow: inset 0 0 0 1px var(--rule); }
+
+.routeline { display: flex; gap: 8px; font-weight: 700; margin-bottom: 8px; }
+.routeline .muted { margin: 0; font-weight: 600; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 6px 0;
+}
+.stats .muted { margin: 0; }
+.stat {
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.besthead { font-weight: 700; margin-top: 14px; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  background: var(--bg);
+  padding: calc(env(safe-area-inset-top) + 16px) calc(env(safe-area-inset-right) + 16px)
+           calc(env(safe-area-inset-bottom) + 24px) calc(env(safe-area-inset-left) + 16px);
+}
+.overlay .stat { font-size: 22px; }
+#review-close { float: right; }
+
