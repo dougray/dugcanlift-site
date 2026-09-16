@@ -48,10 +48,13 @@ is optional, and absent means not prescribed, never zero.
 `distanceMeters`, `elevationGainMeters`, and `routePoints[]` of `latitude`,
 `longitude`, `altitudeMeters` (`null` when the device reported none),
 `recordedAtEpochMs`, `horizontalAccuracyMeters`. Field names are LIFT for
-Android's own storage. Only the browser build writes this section so far; the
-phone apps keep their routes in their own stores and Health, and preserve the
-section untouched like any other they do not store. A recording still in
-progress is never written.
+Android's own storage. All three LIFT builds write and restore it. Restore
+adds activities whose `id` the device does not already have, compared
+case-insensitively; an activity with no end or an unknown type is skipped. A
+recording still in progress is never written, and a Health Connect or HealthKit
+export record is never carried: a restored activity was not exported from the
+phone it lands on. An `id` that is not a UUID may be given a stable UUID by a
+client that needs one.
 
 Saturated fat and sugar are grams and sodium is milligrams, **per serving**
 like the other macros, on food and on a recipe. Absent or `null` means the

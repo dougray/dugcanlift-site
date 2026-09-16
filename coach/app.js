@@ -156,66 +156,9 @@ function deltaText(value, unit, invertColour = false) {
 
 /* ---------------- payload → client record ---------------- */
 
-function expandSet(tuple) {
-  const [weightLb, reps, rpe, durationSec, distanceM, flags] = tuple;
-  return {
-    weightLb: weightLb ?? null,
-    reps: reps ?? null,
-    rpe: rpe ?? null,
-    durationSec: durationSec ?? null,
-    distanceM: distanceM ?? null,
-    warmup: !!((flags || 0) & 1),
-  };
-}
-
-function expandDay(raw, dictExercises, dictFoods) {
-  const day = {};
-  if (raw.n) day.name = raw.n;
-  if (raw.fo) day.focus = raw.fo;
-  if (raw.bw != null) day.bodyweightLb = raw.bw;
-  if (raw.st != null) day.steps = raw.st;
-  if (Array.isArray(raw.o)) {
-    const outdoor = CoachRoute.readDay(raw.o);
-    if (outdoor.length) day.outdoor = outdoor;
-  }
-
-  if (Array.isArray(raw.w)) {
-    day.exercises = raw.w.map(([index, sets]) => {
-      const [name, equipment] = String(dictExercises[index] || '').split('|');
-      return {
-        name: name || 'Exercise',
-        equipment: equipment || '',
-        sets: (sets || []).map(expandSet),
-      };
-    });
-  }
-
-  if (Array.isArray(raw.ft)) {
-    const [calories, proteinG, fatG, carbsG, fiberG] = raw.ft;
-    day.foodTotals = { calories, proteinG, fatG, carbsG, fiberG };
-  }
-
-  if (Array.isArray(raw.f)) {
-    day.food = raw.f.map(([index, servings, calories, proteinG, fatG, carbsG, fiberG, meal]) => ({
-      name: dictFoods[index] || 'Food',
-      servings: servings ?? 1,
-      calories, proteinG, fatG, carbsG, fiberG,
-      meal: MEALS[meal] || '',
-    }));
-    // An itemised payload carries no totals line — it doesn't need to.
-    if (!day.foodTotals) {
-      day.foodTotals = day.food.reduce((acc, e) => ({
-        calories: acc.calories + Math.round(e.calories * e.servings),
-        proteinG: acc.proteinG + Math.round(e.proteinG * e.servings),
-        fatG:     acc.fatG     + Math.round(e.fatG * e.servings),
-        carbsG:   acc.carbsG   + Math.round(e.carbsG * e.servings),
-        fiberG:   acc.fiberG   + Math.round(e.fiberG * e.servings),
-      }), { calories: 0, proteinG: 0, fatG: 0, carbsG: 0, fiberG: 0 });
-    }
-  }
-
-  return day;
-}
+// expandSet and expandDay live in share-import.js, so node tests them.
+const expandDay = (raw, dictExercises, dictFoods) =>
+  CoachShareImport.expandDay(raw, dictExercises, dictFoods, MEALS);
 
 function expand(payload) {
   const c = payload.c;
@@ -864,6 +807,8 @@ function renderFuel(client) {
     stats.appendChild(el('p', 'muted', 'No food logged in the last four weeks.'));
   }
 
+  renderNutrientDetails(client, stats);
+
   const series = [
     { label: 'Calories', color: CHART.calories, values: kcal },
     { label: 'Protein (g)', color: CHART.protein, values: protein },
@@ -874,6 +819,28 @@ function renderFuel(client) {
   }
   drawChart($('#chart-fuel'), series, days);
   legend($('#legend-fuel'), series);
+}
+
+/* Saturated fat, sugar and sodium: the newest day that recorded any, then
+ * averages over the last week and four weeks counting only the days that
+ * recorded each. No goal exists for them, so no target and no bar. */
+function renderNutrientDetails(client, parent) {
+  const block = (heading, lines) => {
+    if (!lines.length) return;
+    parent.appendChild(el('p', 'nutrient-heading', heading));
+    lines.forEach((line) => statline(parent, line.label, line.value));
+  };
+  const latest = dayKeys(client).filter((k) => client.days[k].nutrientTotals).pop();
+  if (latest) {
+    block(`Latest day recorded, ${shortDate(latest)}`,
+      CoachNutrients.dayLines(client.days[latest].nutrientTotals));
+  }
+  const windowTotals = (span) => lastNDays(span)
+    .map((k) => client.days[k] && client.days[k].nutrientTotals);
+  block('Last 7 days, average',
+    CoachNutrients.averages(windowTotals(7)).map((a) => CoachNutrients.averageLine(a)));
+  block('Last 4 weeks, average',
+    CoachNutrients.averages(windowTotals(28)).map((a) => CoachNutrients.averageLine(a)));
 }
 
 function renderBodyweight(client, unit) {
@@ -1043,6 +1010,10 @@ function renderSessions(client, unit) {
       body.appendChild(block);
     });
 
+    // The day's saturated fat, sugar and sodium, with coverage when partial.
+    const nutrientLines = (block) => CoachNutrients.dayLines(day.nutrientTotals)
+      .forEach((line) => block.appendChild(el('div', 'setline', line.text)));
+
     if (day.food && day.food.length) {
       const block = el('div', 'exercise');
       block.appendChild(el('h3', null, 'Food'));
@@ -1054,7 +1025,10 @@ function renderSessions(client, unit) {
           + `${Math.round(entry.proteinG * entry.servings)}g protein`
           + (entry.meal ? ` · ${entry.meal}` : '')));
         block.appendChild(line);
+        const detail = CoachNutrients.foodLine(entry);
+        if (detail) block.appendChild(el('div', 'setline muted', detail));
       });
+      nutrientLines(block);
       body.appendChild(block);
     } else if (hasFood(day)) {
       const block = el('div', 'exercise');
@@ -1062,6 +1036,7 @@ function renderSessions(client, unit) {
       const t = day.foodTotals;
       block.appendChild(el('div', 'setline',
         `${num(t.calories)} kcal · ${t.proteinG}p / ${t.fatG}f / ${t.carbsG}c / ${t.fiberG} fibre`));
+      nutrientLines(block);
       block.appendChild(el('p', 'muted',
         'Daily totals only — ask them to switch on itemised food in LIFT if you want the detail.'));
       body.appendChild(block);
@@ -1529,16 +1504,10 @@ async function encodePlan(clientId) {
     const r = recipeById(id);
     if (!r) return;
     index[id] = inline.length;
-    const n = r.nutritionPerServing;
-    inline.push({
-      n: r.name,
-      s: r.servings,
-      // Per serving, omitted entirely when unknown — a zero here would become
-      // a zero-calorie dinner in the client's day total.
-      ...(n ? { u: [n.calories, n.proteinG, n.carbsG, n.fatG, n.fiberG || 0] } : {}),
-      i: (r.ingredients || []).map((g) => g.rawText),
-      t: r.steps || [],
-    });
+    // `u` per serving, omitted when no macro was entered -- a zero would
+    // become a zero-calorie dinner in the client's day total -- and `ux`
+    // when any of saturated fat, sugar and sodium is known.
+    inline.push(CoachRecipeNutrition.planRecipe(r, CoachNutrients.row));
   });
 
   // Workout templates ride inline the same way recipes do, and for the same
@@ -1607,16 +1576,8 @@ async function encodeLibrary(clientId, { recipeIds = [], workoutIds = [] }) {
     n: settings.name || '',
   };
 
-  const inlineRecipes = recipeIds.map(recipeById).filter(Boolean).map((r) => {
-    const n = r.nutritionPerServing;
-    return {
-      n: r.name,
-      s: r.servings,
-      ...(n ? { u: [n.calories, n.proteinG, n.carbsG, n.fatG, n.fiberG || 0] } : {}),
-      i: (r.ingredients || []).map((g) => g.rawText),
-      t: r.steps || [],
-    };
-  });
+  const inlineRecipes = recipeIds.map(recipeById).filter(Boolean)
+    .map((r) => CoachRecipeNutrition.planRecipe(r, CoachNutrients.row));
   if (inlineRecipes.length) payload.r = inlineRecipes;
 
   const inlineWorkouts = workoutIds.map(workoutById).filter(Boolean).map((w) => ({
@@ -1802,9 +1763,11 @@ function renderCookRecipes() {
     card.appendChild(cookEl('p', 'muted', servingsLabel(r.servings)));
 
     const n = r.nutritionPerServing;
-    card.appendChild(cookEl('p', 'muted', n
+    card.appendChild(cookEl('p', 'muted', CoachRecipeNutrition.hasMacros(n)
       ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
       : 'Macros not set'));
+    const detail = CoachNutrients.foodLine(n);
+    if (detail) card.appendChild(cookEl('p', 'muted', `${detail} a serving`));
 
     if ((r.ingredients || []).length) {
       card.appendChild(cookEl('p', 'muted',
@@ -1824,6 +1787,8 @@ function renderCookRecipes() {
   });
 }
 
+const RECIPE_DETAIL_INPUTS = { saturatedFatG: '#r-sat', sugarG: '#r-sugar', sodiumMg: '#r-sodium' };
+
 function openRecipeForm(id) {
   editingRecipeId = id;
   const r = id ? recipeById(id) : null;
@@ -1837,10 +1802,13 @@ function openRecipeForm(id) {
   $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
   $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
   const n = r && r.nutritionPerServing;
-  $('#r-cal').value = n ? n.calories : '';
-  $('#r-p').value = n ? n.proteinG : '';
-  $('#r-c').value = n ? n.carbsG : '';
-  $('#r-f').value = n ? n.fatG : '';
+  // Five zeros are placeholders on a recipe that holds only saturated fat,
+  // sugar or sodium, and reopen blank rather than as a zero-calorie dish.
+  const macros = CoachRecipeNutrition.hasMacros(n);
+  $('#r-cal').value = macros ? n.calories : '';
+  $('#r-p').value = macros ? n.proteinG : '';
+  $('#r-c').value = macros ? n.carbsG : '';
+  $('#r-f').value = macros ? n.fatG : '';
   // Fibre is often absent on a recipe that has the other four, so a blank
   // stays blank rather than showing a zero nobody measured.
   $('#r-fib').value = n && n.fiberG ? n.fiberG : '';
@@ -1849,12 +1817,19 @@ function openRecipeForm(id) {
   // A recipe already carrying macros counts as typed: reopening it to add one
   // more ingredient must not throw away numbers that were already right.
   ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
-    $(selector).dataset.typed = n ? '1' : '';
+    $(selector).dataset.typed = macros ? '1' : '';
   });
   // Fibre counts as typed only when the recipe actually has some. A recipe
   // without it leaves the field open to the ingredient tally rather than
   // pinning it to a blank nobody chose.
   $('#r-fib').dataset.typed = n && n.fiberG ? '1' : '';
+  // Saturated fat, sugar and sodium the same way, one at a time: a known
+  // value is kept, an unknown one stays open to the tally.
+  const known = CoachNutrients.details(n);
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
+    $(selector).value = known[key] == null ? '' : known[key];
+    $(selector).dataset.typed = known[key] == null ? '' : '1';
+  });
   ingredientTally = null;
   $('#ing-query').value = '';
   $('#ing-results').innerHTML = '';
@@ -1900,7 +1875,12 @@ $('#r-save').onclick = () => {
   const existing = editingRecipeId
     ? (recipes.find((r) => r.id === editingRecipeId) || {}).nutritionPerServing
     : null;
-  const nutrition = CoachRecipeNutrition.mergeNutrition(typed, existing);
+  // Saturated fat, sugar and sodium are form fields; blank removes them.
+  const details = {};
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
+    details[key] = CoachNutrients.parseField($(selector).value);
+  });
+  const nutrition = CoachRecipeNutrition.mergeNutrition(typed, existing, details);
 
   const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
   const servings = parseFloat($('#r-servings').value) || 1;
@@ -2022,7 +2002,7 @@ function addPlannedMeal(day, meal) {
     [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
       const row = cookEl('button', 'chip wide');
       const n = r.nutritionPerServing;
-      row.textContent = n
+      row.textContent = CoachRecipeNutrition.hasMacros(n)
         ? `${r.name} — ${Math.round(n.calories * servings)} kcal`
         : r.name;
       row.onclick = () => {
@@ -2688,7 +2668,12 @@ let ingredientSource = 'library';
 /** Macros accumulated from looked-up ingredients, for the recipe being edited. */
 let ingredientTally = null;
 
-const emptyTally = () => ({ calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0 });
+const emptyTally = () => ({
+  calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0,
+  // Saturated fat, sugar and sodium, summed over the lines that recorded them
+  // with a count, so the tally can tell a whole recipe from part of one.
+  details: CoachNutrients.emptyTally(),
+});
 
 function renderIngredientSources() {
   chipRow($('#ing-source'),
@@ -2772,7 +2757,10 @@ function addIngredient(hit, quantity) {
 
   if (!ingredientTally) ingredientTally = emptyTally();
   const contribution = foodContribution(hit, quantity);
-  Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
+  ['calories', 'proteinG', 'carbsG', 'fatG', 'fiberG'].forEach((key) => {
+    ingredientTally[key] += contribution[key];
+  });
+  CoachNutrients.addToTally(ingredientTally.details, contribution);
   ingredientTally.lines += 1;
 
   applyTally();
@@ -2806,6 +2794,15 @@ function applyTally() {
     field.value = Math.round(value);
   });
 
+  // A detail is filled in only when every looked-up ingredient recorded it;
+  // otherwise it is left blank, never a partial figure (nutrients.js).
+  const details = CoachNutrients.tallyPerServing(ingredientTally.details, servings);
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
+    const field = $(selector);
+    if (field.dataset.typed === '1') return;
+    field.value = details[key] == null ? '' : details[key];
+  });
+
   note.textContent = `${ingredientTally.lines} looked-up `
     + `ingredient${ingredientTally.lines === 1 ? '' : 's'} · `
     + `${num(ingredientTally.calories)} kcal for the whole recipe, `
@@ -2815,7 +2812,7 @@ function applyTally() {
 $('#r-weight').addEventListener('input', renderRecipeWeightEach);
 $('#r-servings').addEventListener('input', renderRecipeWeightEach);
 
-['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((selector) => {
+['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib', '#r-sat', '#r-sugar', '#r-sodium'].forEach((selector) => {
   // A field the coach edits stops being ours to fill in.
   $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
 });

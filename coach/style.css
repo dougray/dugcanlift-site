@@ -231,7 +231,21 @@ button:disabled { opacity: 0.4; }
 .statline {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 6px 0;
+}
+
+/* A long value ("1,840 mg · from 3 of 5 foods") wraps under itself at phone
+ * width rather than into the label. */
+.statline span:last-child { text-align: right; }
+
+/* Saturated fat, sugar and sodium: a quiet heading per block, no bars. */
+.nutrient-heading {
+  margin: 14px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 .muted { color: var(--muted); font-size: 15px; margin: 4px 0; }

@@ -495,6 +495,7 @@ function jsonLdNutrition(any) {
     carbsG: jsonLdQuantity(any.carbohydrateContent) || 0,
     fatG: jsonLdQuantity(any.fatContent) || 0,
     fiberG: jsonLdQuantity(any.fiberContent),
+    saturatedFatG: jsonLdQuantity(any.saturatedFatContent),
     sugarG: jsonLdQuantity(any.sugarContent),
     sodiumMg,
   };

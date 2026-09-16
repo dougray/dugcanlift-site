@@ -193,6 +193,18 @@
       <div><label for="r-fib">Fibre g</label><input type="number" id="r-fib" inputmode="decimal"></div>
     </div>
 
+    <label>Saturated fat, sugar and sodium per serving</label>
+    <p class="muted">Optional, and tracked rather than targeted. Blank stays
+      unknown. A looked-up figure fills in only when every ingredient you looked
+      up recorded it.</p>
+    <div class="row">
+      <div><label for="r-sat">Sat fat g</label><input type="number" id="r-sat" inputmode="decimal" min="0"></div>
+      <div><label for="r-sugar">Sugar g</label><input type="number" id="r-sugar" inputmode="decimal" min="0"></div>
+    </div>
+    <div class="row">
+      <div><label for="r-sodium">Sodium mg</label><input type="number" id="r-sodium" inputmode="decimal" min="0"></div>
+    </div>
+
     <button class="wide" id="r-save">Save</button>
     <button class="ghost wide" id="r-cancel">Cancel</button>
     <button class="ghost wide hidden" id="r-delete">Delete recipe</button>
@@ -344,7 +356,9 @@
 <script src="recipe-import.js"></script>
 <script src="foods.js"></script>
 <script src="route.js"></script>
+<script src="nutrients.js"></script>
 <script src="recipe-nutrition.js"></script>
+<script src="share-import.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
