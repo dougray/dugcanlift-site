@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pelekie-zirni-ar-speki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LV",
+    "nativeName": "Pelēkie zirņi ar speķi",
+    "summary": "Grey peas cooked soft with onion and rendered smoked pork. Latvian winter and Christmas food.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      85,
+      12,
+      12,
+      4,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Grey peas with speck",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Grey peas",
+        "item": "grey peas",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "300 g Smoked pork belly",
+        "item": "smoked pork belly",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "diced"
+      },
+      {
+        "rawText": "3 Onion",
+        "item": "onion",
+        "qty": 3
+      },
+      {
+        "rawText": "300 ml Kefir",
+        "item": "kefir",
+        "qty": 300,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tsp Black pepper",
+        "item": "black pepper",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the peas twelve hours in cold water, changing it once.",
+      "Drain, cover with fresh water two fingers above and boil unsalted for an hour and twenty minutes, until soft.",
+      "Dice the pork belly and render it in a dry pan to golden crackling.",
+      "Add the chopped onion and fry it in the rendered fat until soft and golden.",
+      "Drain the peas, leaving a little liquid in the pot, and season with salt and pepper.",
+      "Stir the crackling, onion and fat into the peas and serve hot, with cold kefir in a glass."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 610,
+      "proteinG": 28,
+      "carbsG": 54,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

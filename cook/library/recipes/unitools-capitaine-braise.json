@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-capitaine-braise",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ML",
+    "nativeName": "Capitaine braisé",
+    "summary": "Nile perch grilled whole over coals, with a yet onion sauce and fried plantain.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      15,
+      10,
+      32,
+      6,
+      40,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Grilled capitaine",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 kg Nile perch or pike-perch",
+        "item": "nile perch or pike-perch",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "whole, gutted"
+      },
+      {
+        "rawText": "5 Onions",
+        "item": "onions",
+        "qty": 5
+      },
+      {
+        "rawText": "2 tbsp Mustard",
+        "item": "mustard",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Stock cube",
+        "item": "stock cube",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Plantains",
+        "item": "plantains",
+        "qty": 3
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut deep slashes to the bone on both sides of the fish, every three centimetres.",
+      "Grind the garlic, ginger, chilli, stock cube, lemon juice and oil into a paste and work it into the cuts.",
+      "Leave the fish to marinate for an hour in the cold.",
+      "Slice the onions and sweat them in oil over a low heat for thirty minutes, to a caramel colour.",
+      "Stir the mustard and lemon juice into the onions and season; that is the yet sauce.",
+      "Grill the fish over indirect heat, twenty minutes a side.",
+      "Fry the plantain and serve the fish under the onion sauce, with the plantain and lemon."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 56,
+      "carbsG": 42,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

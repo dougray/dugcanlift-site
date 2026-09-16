@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sabich",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IL",
+    "nativeName": "סביח",
+    "summary": "Pita with fried aubergine, boiled egg, amba and salad. The Iraqi-Israeli street classic.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      60,
+      35,
+      18,
+      6,
+      10,
+      6,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sabich",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 Aubergines",
+        "item": "aubergines",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Pita bread",
+        "item": "pita bread",
+        "qty": 4
+      },
+      {
+        "rawText": "4 tbsp Amba",
+        "item": "amba",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Tahini",
+        "item": "tahini",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Cucumbers",
+        "item": "cucumbers",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Zhug",
+        "item": "zhug",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cook the eggs at the barest simmer for an hour, then cool them in cold water and peel them.",
+      "Slice the aubergines a centimetre thick, salt them and press them under a weight for half an hour.",
+      "Pat the slices dry and fry them in oil to a deep gold on both sides.",
+      "Whisk the tahini with lemon juice, water and salt to the thickness of pouring cream.",
+      "Dice the tomatoes and cucumbers small and mix them with the parsley, lemon and salt.",
+      "Warm the pitas, cut them into pockets and spread tahini inside.",
+      "Layer in the aubergine, sliced egg and salad, and spoon over the amba, tahini and zhug."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 20,
+      "carbsG": 52,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

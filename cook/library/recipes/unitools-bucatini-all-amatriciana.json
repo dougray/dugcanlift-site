@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bucatini-all-amatriciana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Bucatini all'amatriciana",
+    "summary": "Guanciale, tomato and pecorino. No onion, no garlic, no olive oil — the fat comes from the meat.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      3,
+      10,
+      10,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bucatini-all-amatriciana.jpg",
+      "author": "stu_spivack",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bucatini all'amatriciana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Bucatini",
+        "item": "bucatini",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "150 g Guanciale",
+        "item": "guanciale",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "in short batons"
+      },
+      {
+        "rawText": "400 g San Marzano tomatoes",
+        "item": "san marzano tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "80 g Pecorino romano",
+        "item": "pecorino romano",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "1 Dried chilli",
+        "item": "dried chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "60 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Put the guanciale into a cold dry pan and turn on a medium flame. A slow start renders the fat completely; a hot pan burns the outside and leaves it tough within.",
+      "When the pieces turn glassy and gold at the edges, lift half of them out for the top. Pour in the wine and let it cook away.",
+      "Crush the tomatoes by hand, add them with the chilli and simmer for ten minutes. The sauce should thicken without losing its red.",
+      "Boil the bucatini a minute short, move it into the sauce with a ladle of its water and finish it over the flame for half a minute.",
+      "Off the heat, stir in the pecorino and serve. The reserved guanciale goes on top with a little more cheese."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 610,
+      "proteinG": 24,
+      "carbsG": 74,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

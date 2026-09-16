@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shoyu-ramen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "醤油ラーメン",
+    "summary": "Broth, tare and oil — three separate things assembled in the bowl rather than cooked together.",
+    "category": "soup",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      180,
+      20,
+      130,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shoyu-ramen.jpg",
+      "author": "Miscellaneous contributor",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shoyu ramen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken carcasses",
+        "item": "chicken carcasses",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "500 g Pork belly",
+        "item": "pork belly",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "10 g Kombu",
+        "item": "kombu",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "20 g Dried shiitake",
+        "item": "dried shiitake",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "200 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Mirin",
+        "item": "mirin",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 ml Sake",
+        "item": "sake",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "500 g Ramen noodles",
+        "item": "ramen noodles",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "2 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Cover the carcasses with cold water, boil for ten minutes and pour it away. Rinse the bones and the pot: the clarity of the broth depends on it.",
+      "Cover again with fresh water, add the ginger and garlic and simmer for three hours. Put the kombu in twenty minutes before the end and lift it out before it boils — boiled kombu turns bitter.",
+      "For the tare, reduce the soy, mirin, sake and shiitake to a third. What is left is a thick dark liquid — two spoons per bowl.",
+      "Boil the eggs for six and a half minutes, cool them in iced water, peel and steep them in the leftover tare for two hours.",
+      "Boil the noodles separately, strictly to the time on the packet, drain and put them straight into bowls with the tare in the bottom.",
+      "Pour the hot broth over, stir once so the tare disperses, and lay on the pork, the egg and the spring onion. Finish with the sesame oil."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 82,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

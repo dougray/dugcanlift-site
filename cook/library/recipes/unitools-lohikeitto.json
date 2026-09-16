@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lohikeitto",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FI",
+    "nativeName": "Lohikeitto",
+    "summary": "Finnish salmon soup with potato and cream, a heap of dill and a knob of butter in the bowl.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      5,
+      16,
+      4,
+      6,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lohikeitto.jpg",
+      "author": "aiko99ann",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lohikeitto",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Salmon fillet",
+        "item": "salmon fillet",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in 3 cm cubes"
+      },
+      {
+        "rawText": "500 g Salmon head and bones",
+        "item": "salmon head and bones",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "500 g Waxy potatoes",
+        "item": "waxy potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "diced"
+      },
+      {
+        "rawText": "1 Leek",
+        "item": "leek",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "250 ml Single cream",
+        "item": "single cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "8 Allspice berries",
+        "item": "allspice berries",
+        "qty": 8
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the head and bones with a litre and a half of water, add the allspice and bay, and simmer twenty-five minutes, skimming. Strain it.",
+      "Fry the leek and carrot in butter for five minutes without letting them colour.",
+      "Pour in the strained stock, add the potato and cook fifteen minutes until soft.",
+      "Add the cream and warm it without boiling. Season.",
+      "Slip in the pieces of salmon and hold them at a bare simmer for exactly five minutes. The fish should stay in whole pieces.",
+      "Ladle into bowls and add a knob of butter and a generous handful of dill to each."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 32,
+      "carbsG": 26,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

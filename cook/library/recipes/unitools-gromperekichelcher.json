@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gromperekichelcher",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LU",
+    "nativeName": "Gromperekichelcher",
+    "summary": "Potato fritters with onion and parsley, deep-fried crisp. Christmas market food.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      6,
+      5,
+      8,
+      20,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gromperekichelcher",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "60 g Flour",
+        "item": "flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "50 g Parsley",
+        "item": "parsley",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 Shallots",
+        "item": "shallots",
+        "qty": 2
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "250 g Apple sauce",
+        "item": "apple sauce",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grate the potatoes, onions and shallots coarsely into one bowl.",
+      "Wring the mixture out in a cloth, but not bone dry; a little moisture is needed.",
+      "Mix in the eggs, flour, chopped parsley, salt and pepper.",
+      "Heat the oil to 175 °C. Hotter, and the edges burn before the middle is hot.",
+      "Drop the mixture in by the spoonful, flattened to half a centimetre, and fry three minutes a side.",
+      "Drain on a rack, salt them and serve hot with apple sauce."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 44,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

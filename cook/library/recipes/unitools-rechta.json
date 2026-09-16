@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rechta",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DZ",
+    "nativeName": "رشتة",
+    "summary": "Algerian handmade noodles steamed over broth and dressed with a white chicken sauce.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      40,
+      22,
+      40,
+      22,
+      20,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rechta.jpg",
+      "author": "Romaissaroro",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rechta",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "280 ml Water",
+        "item": "water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "500 g Turnips",
+        "item": "turnips",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "soaked"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tsp White pepper",
+        "item": "white pepper",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, water, a spoon of oil and salt and work it fifteen minutes.",
+      "Roll the dough into a thin sheet and cut it into two-millimetre noodles.",
+      "Spread the noodles on a cloth, dust them with flour and dry them twenty minutes.",
+      "Simmer the chicken with the onion, chickpeas, cinnamon and white pepper in two litres of water for forty minutes.",
+      "Add the turnip in wedges and cook twenty minutes more, until tender.",
+      "Steam the noodles over the broth fifteen minutes, take them off, sprinkle with oil and toss them.",
+      "Repeat the steaming twice more, mound the noodles, top with the chicken and turnip and ladle broth over."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 82,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

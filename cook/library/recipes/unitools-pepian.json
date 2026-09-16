@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pepian",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GT",
+    "nativeName": "Pepián",
+    "summary": "Chicken in a thick sauce of toasted seeds and chillies. One of Guatemala's oldest dishes.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      10,
+      15,
+      8,
+      6,
+      22,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pepian.jpg",
+      "author": "erwin.flores69",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pepián",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "120 g Pumpkin seeds",
+        "item": "pumpkin seeds",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "60 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "4 Guajillo chillies",
+        "item": "guajillo chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Pasilla chillies",
+        "item": "pasilla chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "300 g Tomatillos",
+        "item": "tomatillos",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Green beans",
+        "item": "green beans",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with an onion and salt for forty minutes. Keep the broth.",
+      "Toast the pumpkin and sesame seeds in a dry pan to a deep gold, stirring.",
+      "In the same pan char the chillies, tomatoes, tomatillos and garlic until blackened in patches.",
+      "Blend everything with two ladles of the broth and the cinnamon to a smooth sauce.",
+      "Pass the sauce through a sieve; the chilli skins left behind would spoil the texture.",
+      "Cook the sauce twenty minutes, stirring, until it thickens and darkens.",
+      "Add the chicken, potato and beans and stew fifteen minutes. Serve with rice and coriander."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 44,
+      "carbsG": 52,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

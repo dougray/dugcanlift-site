@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-stegt-flaesk",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DK",
+    "nativeName": "Stegt flæsk med persillesovs",
+    "summary": "Slices of pork belly fried crisp, with potatoes and a parsley sauce.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      5,
+      16,
+      25,
+      5,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/stegt-flaesk.jpg",
+      "author": "Original uploader was ChildofMidnight at en.wikipedia",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Stegt flæsk",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "900 g Pork belly",
+        "item": "pork belly",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "in 5 mm slices"
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "500 ml Milk",
+        "item": "milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "50 g Flour",
+        "item": "flour",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "100 g Parsley",
+        "item": "parsley",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "0.5 tsp Nutmeg",
+        "item": "nutmeg",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 g Pickled beetroot",
+        "item": "pickled beetroot",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pat the belly slices dry with paper and salt them on both sides.",
+      "Lay them in a single layer in a cold dry pan and turn the heat to medium.",
+      "Fry eight minutes a side, pouring the rendered fat off into a cup as it collects.",
+      "Boil the potatoes in their skins until tender and peel them hot.",
+      "Melt the butter, stir in the flour and cook it two minutes without letting it colour.",
+      "Pour in the milk in a thin stream, whisking until smooth, and cook the sauce five minutes.",
+      "Stir in the mountain of chopped parsley, the nutmeg, salt and pepper and serve with the pork, potatoes and beetroot."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 36,
+      "carbsG": 44,
+      "fatG": 62,
+      "estimated": true
+    }
+  }
+}

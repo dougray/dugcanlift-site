@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-omani-halwa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "OM",
+    "nativeName": "حلوى عمانية",
+    "summary": "A chewy halwa of starch, rosewater and saffron, stirred two hours in a cauldron.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      12,
+      8,
+      6,
+      95,
+      25,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/omani-halwa.jpg",
+      "author": "Silpa11",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Omani halwa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 16,
+    "ingredients": [
+      {
+        "rawText": "300 g Cornstarch",
+        "item": "cornstarch",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "700 g Sugar",
+        "item": "sugar",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "1.5 l Water",
+        "item": "water",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "350 g Ghee",
+        "item": "ghee",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "60 ml Rosewater",
+        "item": "rosewater",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "2 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "150 g Cashews",
+        "item": "cashews",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Honey",
+        "item": "honey",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      }
+    ],
+    "steps": [
+      "Slake the starch in half the cold water until completely smooth, with no lumps.",
+      "Boil a syrup from the sugar and the remaining water and bring it to a rolling boil.",
+      "Pour the starch mixture into the boiling syrup in a thin stream, stirring without stopping.",
+      "Steep the saffron in a spoon of hot water and add it to the mass with the cardamom.",
+      "Stir over a low heat for an hour and a half, adding the ghee a little at a time.",
+      "Work in the honey, rosewater and toasted cashews once the mass starts pulling from the sides.",
+      "Spread it in a tin in a three-centimetre layer, level it and cool it six hours."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 130,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 3,
+      "carbsG": 56,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

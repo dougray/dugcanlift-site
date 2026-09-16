@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tufahije",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BA",
+    "nativeName": "Tufahije",
+    "summary": "Apples poached in syrup and filled with walnuts under whipped cream.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      8,
+      22,
+      25,
+      6,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tufahije",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "6 Firm apples",
+        "item": "firm apples",
+        "qty": 6
+      },
+      {
+        "rawText": "250 g Walnuts",
+        "item": "walnuts",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "ground"
+      },
+      {
+        "rawText": "300 g Sugar",
+        "item": "sugar",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "700 ml Water",
+        "item": "water",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "300 ml Double cream",
+        "item": "double cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "6 Walnut halves",
+        "item": "walnut halves",
+        "qty": 6,
+        "note": "to decorate"
+      }
+    ],
+    "steps": [
+      "Peel the apples and core them without going through, so each forms a cup.",
+      "Make a syrup of water, sugar, lemon juice and cinnamon, bringing it to the boil.",
+      "Lower the apples into the syrup and poach them twenty minutes on a low heat, turning them.",
+      "Lift the apples out with a slotted spoon and cool them completely, keeping the syrup.",
+      "Mix the ground walnuts with three spoons of the syrup into a pliable mass.",
+      "Fill the apples with the walnut mass, mounded, and set them in dishes.",
+      "Spoon over the remaining syrup and top with whipped cream and a walnut half."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 8,
+      "carbsG": 54,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-feijoada",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BR",
+    "nativeName": "Feijoada",
+    "summary": "Black beans stewed with several cuts of smoked and salted pork, served with orange and greens.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      90,
+      60,
+      10,
+      2,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/feijoada.jpg",
+      "author": "Wilfredor",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Feijoada",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "700 g Black beans",
+        "item": "black beans",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "400 g Salted pork",
+        "item": "salted pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked 12 hours"
+      },
+      {
+        "rawText": "500 g Smoked pork ribs",
+        "item": "smoked pork ribs",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Smoked sausage",
+        "item": "smoked sausage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "300 g Pork belly",
+        "item": "pork belly",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Oranges",
+        "item": "oranges",
+        "qty": 2
+      },
+      {
+        "rawText": "300 g Collard greens",
+        "item": "collard greens",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "shredded fine"
+      },
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Boil the salted meat in fresh water for twenty minutes and drain: the last stage of getting the salt out.",
+      "Cover the beans with water three fingers above, add the bay, the ribs and the salted meat, and simmer for an hour and a half.",
+      "Add the belly and the sausage and give it another hour. The beans should be collapsing and the liquid thickening on its own.",
+      "Fry the onion and garlic until golden, add a ladle of beans, mash them and return it all to the pot. That thickens the stew and deepens it.",
+      "Fry the greens over a high flame for two minutes with garlic — they should stay bright green and crisp.",
+      "Serve the beans and meat with the rice, greens and orange segments alongside. Everyone builds their own plate."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 46,
+      "carbsG": 62,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

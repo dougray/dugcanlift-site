@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-smorrebrod",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DK",
+    "nativeName": "Smørrebrød",
+    "summary": "An open sandwich on rye with butter. The order of the layers and the thickness of the butter both matter.",
+    "category": "snack",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      6,
+      8,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/smorrebrod.jpg",
+      "author": "User:Nillerdk",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Smørrebrød",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "8 slices Rye bread",
+        "item": "rye bread",
+        "qty": 8,
+        "unit": "slice"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "softened"
+      },
+      {
+        "rawText": "200 g Pickled herring",
+        "item": "pickled herring",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Small prawns",
+        "item": "small prawns",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "boiled"
+      },
+      {
+        "rawText": "8 Lettuce leaves",
+        "item": "lettuce leaves",
+        "qty": 8
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "4 tbsp Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "20 g Dill",
+        "item": "dill",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Capers and lemon, to taste",
+        "item": "capers and lemon"
+      }
+    ],
+    "steps": [
+      "Butter every slice right to the edges. The layer should be visible to the eye rather than translucent.",
+      "For herring: a lettuce leaf, then pieces of herring, onion rings and capers. The lettuce keeps the brine off the bread.",
+      "For prawns: lay them in tight overlapping rows, then a spoon of mayonnaise, a slice of lemon and dill.",
+      "For egg: overlapping rounds of boiled egg, a line of mayonnaise, dill and a pinch of salt over the top.",
+      "Serve at once, with a knife and fork. Smørrebrød is not picked up by hand; it is not built for that."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 26,
+      "carbsG": 32,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

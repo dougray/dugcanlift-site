@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chivito",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UY",
+    "nativeName": "Chivito",
+    "summary": "A sandwich of thin steak, ham, bacon, cheese and a fried egg. Uruguay's national dish.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      6,
+      3,
+      8,
+      6,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chivito.jpg",
+      "author": "https://www.flickr.com/photos/mattrubens/",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chivito",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Beef tenderloin",
+        "item": "beef tenderloin",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in thin slices"
+      },
+      {
+        "rawText": "4 Buns",
+        "item": "buns",
+        "qty": 4
+      },
+      {
+        "rawText": "150 g Ham",
+        "item": "ham",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Bacon",
+        "item": "bacon",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "200 g Mozzarella",
+        "item": "mozzarella",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Lettuce",
+        "item": "lettuce",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "60 g Green olives",
+        "item": "green olives",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "100 g Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "30 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 30,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pound the beef under film to four millimetres and season it.",
+      "Fry the bacon crisp and drain it on paper.",
+      "Get the pan very hot and sear the steaks forty-five seconds a side.",
+      "Lay the cheese on the meat in the pan and cover it for thirty seconds so it softens.",
+      "Fry the eggs with runny yolks and toast the cut buns in a dry pan.",
+      "Spread mayonnaise on both halves and layer lettuce, tomato, the steak with its cheese, ham, bacon and the egg.",
+      "Close it, spear it with a cocktail stick and an olive, and serve with chips."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 890,
+      "proteinG": 52,
+      "carbsG": 46,
+      "fatG": 54,
+      "estimated": true
+    }
+  }
+}

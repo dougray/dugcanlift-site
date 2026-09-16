@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bacalhau-a-bras",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PT",
+    "nativeName": "Bacalhau à Brás",
+    "summary": "Salt cod with matchstick potatoes and egg that binds everything without becoming an omelette.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      15,
+      11,
+      4,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bacalhau-a-bras.jpg",
+      "author": "MollySVH",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bacalhau à brás",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Salt cod",
+        "item": "salt cod",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "soaked for a day"
+      },
+      {
+        "rawText": "700 g Potatoes",
+        "item": "potatoes",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in matchsticks"
+      },
+      {
+        "rawText": "8 Eggs",
+        "item": "eggs",
+        "qty": 8
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Black olives",
+        "item": "black olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "6 sprigs Parsley",
+        "item": "parsley",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "600 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Poach the soaked cod for five minutes, cool it and pull it into flakes by hand, discarding skin and bones. By hand rather than with a fork: that is how small bones are found.",
+      "Deep-fry the potato matchsticks at 180 °C to a crisp gold, in batches. Drain on a rack and salt them.",
+      "In a wide pan sweat the onion in the olive oil for ten minutes until soft and sweet, adding the garlic for the last minute.",
+      "Add the cod and warm it through for three minutes, then tip in the potato and toss.",
+      "Take the pan off the heat, pour in the beaten eggs and stir without stopping for half a minute, until they turn creamy. Scatter over the parsley and olives."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 610,
+      "proteinG": 42,
+      "carbsG": 34,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tam-mak-hoong",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LA",
+    "nativeName": "ຕຳໝາກຫຸ່ງ",
+    "summary": "Green papaya salad pounded in a mortar. The Lao version, made with fermented fish padaek.",
+    "category": "salad",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      4,
+      3,
+      3,
+      3,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tam-mak-hoong.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tam mak hoong",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Green papaya",
+        "item": "green papaya",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "shredded"
+      },
+      {
+        "rawText": "4 tbsp Padaek or fish sauce",
+        "item": "padaek or fish sauce",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 Bird's eye chillies",
+        "item": "bird's eye chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "150 g Cherry tomatoes",
+        "item": "cherry tomatoes",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Yard-long beans",
+        "item": "yard-long beans",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Thai aubergines",
+        "item": "thai aubergines",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the papaya and shred it into long fine strips with a knife or a som tam grater.",
+      "Pound the garlic and chillies in the mortar into a coarse paste.",
+      "Add the cut beans and bruise them lightly with the pestle.",
+      "Add the tomatoes and crush them until their juice runs.",
+      "Add the padaek, lime juice and palm sugar and mix with the pestle and a spoon.",
+      "Add the papaya and work the pestle, turning with the spoon, for two minutes, until the fibres soften.",
+      "Taste and adjust for sourness, salt and heat. Serve with sticky rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 160,
+      "proteinG": 5,
+      "carbsG": 32,
+      "fatG": 2,
+      "estimated": true
+    }
+  }
+}

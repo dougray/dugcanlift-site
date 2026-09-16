@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-nihari",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PK",
+    "nativeName": "نہاری",
+    "summary": "Beef shin stewed overnight in a thick spiced gravy with marrow, bound with a wheat-flour slurry.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      12,
+      280,
+      12,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/nihari.jpg",
+      "author": "Sm faysal",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nihari",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef shin",
+        "item": "beef shin",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "500 g Marrow bones",
+        "item": "marrow bones",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Fennel seeds",
+        "item": "fennel seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Kashmiri chilli powder",
+        "item": "kashmiri chilli powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Cinnamon, cardamom, cloves, star anise",
+        "item": "cinnamon, cardamom, cloves, star anise",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Wheat flour",
+        "item": "wheat flour",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "120 g Ghee",
+        "item": "ghee",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "Lemon, ginger, coriander, chilli, to taste",
+        "item": "lemon, ginger, coriander, chilli"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onions in ghee to a deep gold, about twenty minutes. Set half aside for serving.",
+      "Add the ginger and garlic, the spices and the chilli, warm them a minute, then the meat and bones, and sear until the raw colour goes.",
+      "Cover with water three fingers above, bring to the boil, skim and cook on the lowest heat for four or five hours. The meat should fall apart at a touch.",
+      "Whisk the flour into a cup of cold water until smooth and pour it in as a thin stream, stirring constantly. Cook ten minutes: the gravy thickens and turns glossy.",
+      "Lift out the bones and set the marrow aside separately. Serve with the fried onion, matchsticks of ginger, coriander, green chilli and lemon — everyone adds their own."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 300,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 52,
+      "carbsG": 20,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

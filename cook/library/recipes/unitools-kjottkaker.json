@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kjottkaker",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NO",
+    "nativeName": "Kjøttkaker",
+    "summary": "Large meat patties in a brown sauce, with lingonberry and stewed peas.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      10,
+      22,
+      12,
+      15,
+      10,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kjottkaker.jpg",
+      "author": "Edward Russell",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kjøttkaker",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "800 g Minced beef",
+        "item": "minced beef",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "3 tbsp Potato starch",
+        "item": "potato starch",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Iced water",
+        "item": "iced water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "grated"
+      },
+      {
+        "rawText": "0.5 tsp Ground ginger",
+        "item": "ground ginger",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Nutmeg",
+        "item": "nutmeg",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "40 g Flour",
+        "item": "flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "600 ml Beef stock",
+        "item": "beef stock",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Peas",
+        "item": "peas",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 g Lingonberries",
+        "item": "lingonberries",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Work the mince with the starch, salt, pepper, ginger and nutmeg for five minutes.",
+      "Add the iced water a spoon at a time, still working the mixture, until it turns tacky and even.",
+      "Fold in the grated onion and chill the mixture twenty minutes.",
+      "Shape flat oval patties with wet hands, about a hundred grams each.",
+      "Fry the patties in butter four minutes a side and move them to a pot.",
+      "Stir the flour into the pan with the remaining fat, cook it to a nutty brown and add the stock.",
+      "Pour the sauce over the patties and stew twenty minutes. Serve with potatoes, peas and lingonberry."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 44,
+      "carbsG": 48,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

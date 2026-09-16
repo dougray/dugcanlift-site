@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-quiche-lorraine",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Quiche lorraine",
+    "summary": "A shortcrust base with bacon and a cream and egg custard. No cheese and no onion — the classical recipe has neither.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      70,
+      25,
+      22,
+      8,
+      5,
+      40
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/quiche-lorraine.jpg",
+      "author": "Ghouston",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Quiche lorraine",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "250 g Plain flour",
+        "item": "plain flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "125 g Butter",
+        "item": "butter",
+        "qty": 125,
+        "unit": "g",
+        "grams": 125,
+        "note": "cold, in cubes"
+      },
+      {
+        "rawText": "1 Egg for the pastry",
+        "item": "egg for the pastry",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Iced water",
+        "item": "iced water",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "250 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "in lardons"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "200 ml Double cream",
+        "item": "double cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Milk",
+        "item": "milk",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Nutmeg",
+        "item": "nutmeg",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the cold butter into the flour with a pinch of salt to a crumb, add the egg and iced water and bring the dough together without kneading. Chill it an hour.",
+      "Roll the pastry out, line the tin, prick it and chill it again for twenty minutes: that is what stops it shrinking.",
+      "Line it with paper and weights and blind-bake at 190 °C for fifteen minutes, then remove the weights and give it five minutes more, to a dry base.",
+      "Render the bacon until browned and drain it on paper: spare fat splits the custard.",
+      "Whisk the eggs with the cream and milk without foaming, and season with nutmeg and pepper. It barely needs salt: the bacon is salty.",
+      "Scatter the bacon over the base, pour the custard in and bake at 170 °C for thirty-five minutes. The centre should still wobble slightly when it comes out."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 20,
+      "carbsG": 28,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

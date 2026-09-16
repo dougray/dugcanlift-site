@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gazpacho",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Gazpacho andaluz",
+    "summary": "A cold tomato soup blended with bread and oil into an emulsion — that is what makes it thick rather than watery.",
+    "category": "soup",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      3,
+      2,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gazpacho.jpg",
+      "author": "Haydn Blackey",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gazpacho",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Ripe tomatoes",
+        "item": "ripe tomatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1,
+        "note": "peeled"
+      },
+      {
+        "rawText": "0.5 Green pepper",
+        "item": "green pepper",
+        "qty": 0.5
+      },
+      {
+        "rawText": "1 clove Garlic",
+        "item": "garlic",
+        "qty": 1,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 g Stale white bread",
+        "item": "stale white bread",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "crumb only, soaked"
+      },
+      {
+        "rawText": "80 ml Extra virgin olive oil",
+        "item": "extra virgin olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Sherry vinegar",
+        "item": "sherry vinegar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the bread crumb in cold water for ten minutes and squeeze it dry.",
+      "Blend the tomatoes, cucumber, pepper, garlic and bread until completely smooth. It takes longer than you expect — a good two minutes at full speed.",
+      "With the blender still running, pour the oil in a thin stream. The soup pales and thickens: that is the emulsion.",
+      "Add the vinegar and salt, taste and season again. Pass it through a sieve for a silkier texture and chill for at least two hours."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 220,
+      "proteinG": 4,
+      "carbsG": 17,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

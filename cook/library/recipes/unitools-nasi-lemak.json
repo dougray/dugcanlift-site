@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-nasi-lemak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MY",
+    "nativeName": "Nasi lemak",
+    "summary": "Rice cooked in coconut milk with pandan, served with sambal, anchovies, egg and peanuts.",
+    "category": "breakfast",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      27,
+      25,
+      20,
+      12,
+      18,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/nasi-lemak.jpg",
+      "author": "Meandkancil2020",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nasi lemak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Jasmine rice",
+        "item": "jasmine rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Pandan leaves",
+        "item": "pandan leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "15 Dried chillies",
+        "item": "dried chillies",
+        "qty": 15
+      },
+      {
+        "rawText": "8 Shallots",
+        "item": "shallots",
+        "qty": 8
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tsp Belacan shrimp paste",
+        "item": "belacan shrimp paste",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Dried anchovies",
+        "item": "dried anchovies",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Peanuts",
+        "item": "peanuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and cover it with coconut milk let down with water, salt and pandan.",
+      "Add slices of ginger and cook covered for fifteen minutes, then let it stand ten.",
+      "Soak the dried chillies in boiling water for twenty minutes and blend them with the shallot, garlic and belacan.",
+      "Fry the paste in oil for twenty minutes over medium heat, until oil breaks out at the edges.",
+      "Add the tamarind, palm sugar and salt and cook the sambal ten minutes more to thicken it.",
+      "Fry the anchovies and peanuts separately until crisp and hard-boil the eggs.",
+      "Build the plate: a mound of rice, a spoon of sambal, anchovies, peanuts, half an egg and cucumber slices."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 26,
+      "carbsG": 82,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

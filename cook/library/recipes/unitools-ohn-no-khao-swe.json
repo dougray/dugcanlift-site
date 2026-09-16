@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ohn-no-khao-swe",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MM",
+    "nativeName": "အုန်းနို့ခေါက်ဆွဲ",
+    "summary": "Wheat noodles in a thick coconut broth with chicken and chickpea flour.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      10,
+      22,
+      5,
+      6,
+      17,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ohn-no-khao-swe.jpg",
+      "author": "Gary Stevens",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ohn no khao swe",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Wheat noodles",
+        "item": "wheat noodles",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "700 g Chicken thigh",
+        "item": "chicken thigh",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in small pieces"
+      },
+      {
+        "rawText": "600 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Chickpea flour",
+        "item": "chickpea flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5,
+        "note": "boiled, to serve"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Pound the onion, garlic and ginger to a paste and fry it in oil with the turmeric and paprika.",
+      "Add the chicken in small pieces and fry it until it whitens all over.",
+      "Add a litre of water and the fish sauce and simmer twenty minutes.",
+      "Slake the chickpea flour in a cup of cold water until completely smooth and lump-free.",
+      "Pour the slaked flour into the broth in a thin stream, whisking without stopping.",
+      "Cook ten minutes to thicken, add the coconut milk and warm it five minutes without boiling.",
+      "Boil the noodles, divide them between bowls, ladle over the broth and serve with egg, lime and chilli."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 66,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

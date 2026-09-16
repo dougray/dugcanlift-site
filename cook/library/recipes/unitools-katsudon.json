@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-katsudon",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "カツ丼",
+    "summary": "A breaded pork cutlet finished in sweet-salt broth with egg and slid onto rice.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      6,
+      null,
+      4,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/katsudon.jpg",
+      "author": "Ocdp",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Katsudon",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "2 Pork loin",
+        "item": "pork loin",
+        "qty": 2,
+        "note": "150 g each, beaten flat"
+      },
+      {
+        "rawText": "40 g Plain flour",
+        "item": "plain flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 Egg for coating",
+        "item": "egg for coating",
+        "qty": 1
+      },
+      {
+        "rawText": "80 g Panko breadcrumbs",
+        "item": "panko breadcrumbs",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "200 ml Dashi",
+        "item": "dashi",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Mirin",
+        "item": "mirin",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Eggs for the broth",
+        "item": "eggs for the broth",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Nick the fat rim of each cutlet in a few places so they do not curl, season them and coat in flour, then egg, then panko.",
+      "Deep-fry at 170 °C for three minutes a side until golden. Drain on a rack rather than paper, so the underside stays crisp.",
+      "Cut the cutlets into strips a centimetre and a half wide without moving them apart — the shape matters when you serve.",
+      "In a small pan bring the dashi, soy, mirin and sugar to the boil, add the onion and cook for three minutes until soft.",
+      "Slide the cutlet into the broth, pour two thirds of the loosely beaten egg around it and cover for a minute. Add the rest, cover for twenty seconds more and take it off — the top layer of egg should stay loose.",
+      "Slide everything in the pan onto the rice in one movement, sauce and all."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 42,
+      "carbsG": 78,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

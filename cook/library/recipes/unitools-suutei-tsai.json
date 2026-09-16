@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-suutei-tsai",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MN",
+    "nativeName": "Сүүтэй цай",
+    "summary": "Mongolian salted milk tea with butter, boiled rather than brewed.",
+    "category": "drink",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      5,
+      8,
+      6,
+      5,
+      3,
+      5
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/suutei-tsai.jpg",
+      "author": "Popolon",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Suutei tsai",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "20 g Green tea",
+        "item": "green tea",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20,
+        "note": "brick tea if possible"
+      },
+      {
+        "rawText": "1 l Water",
+        "item": "water",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "700 ml Milk",
+        "item": "milk",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Toasted flour",
+        "item": "toasted flour",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "optional"
+      }
+    ],
+    "steps": [
+      "Break up the brick tea and cover it with a litre of cold water in a pot.",
+      "Bring it to the boil and cook five minutes, until the liquor darkens.",
+      "Pour in the milk and bring it back to the boil, watching that it does not run over.",
+      "Salt it and cook five minutes more over a low heat.",
+      "Ladle the tea up and pour it back from a height a dozen times.",
+      "Add the butter and stir until it disappears.",
+      "Strain it into bowls and serve it hot, with toasted flour if you like."
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 140,
+      "proteinG": 5,
+      "carbsG": 8,
+      "fatG": 9,
+      "estimated": true
+    }
+  }
+}

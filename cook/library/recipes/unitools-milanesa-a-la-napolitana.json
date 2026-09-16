@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-milanesa-a-la-napolitana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UY",
+    "nativeName": "Milanesa a la napolitana",
+    "summary": "A breaded cutlet under tomato sauce, ham and melted cheese.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      6,
+      10,
+      16,
+      14,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Milanesa a la napolitana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Beef",
+        "item": "beef",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "thin cuts for pounding"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "250 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "300 ml Tomato sauce",
+        "item": "tomato sauce",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Ham",
+        "item": "ham",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "250 g Mozzarella",
+        "item": "mozzarella",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "250 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pound the meat to five millimetres and season it.",
+      "Beat the eggs with crushed garlic and chopped parsley; that garlic in the egg wash is the Uruguayan touch.",
+      "Dip the pieces in the egg, then press them firmly into the breadcrumbs.",
+      "Let the coating set for fifteen minutes in the fridge.",
+      "Fry in hot oil three minutes a side, to a golden crust, and drain on a rack.",
+      "Lay the milanesas on a tray, spoon on the tomato sauce, cover with ham and cheese and dust with oregano.",
+      "Grill for four minutes, until the cheese melts and colours."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 54,
+      "carbsG": 48,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

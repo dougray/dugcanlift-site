@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-stamppot",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NL",
+    "nativeName": "Stamppot boerenkool",
+    "summary": "Mashed potato crushed together with curly kale, with smoked sausage and a well of gravy.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      20,
+      8,
+      6,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/stamppot.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Stamppot",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Floury potatoes",
+        "item": "floury potatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "500 g Curly kale",
+        "item": "curly kale",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "shredded fine"
+      },
+      {
+        "rawText": "500 g Smoked rookworst sausage",
+        "item": "smoked rookworst sausage",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "150 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "diced"
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml",
+        "note": "hot"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tbsp Mustard",
+        "item": "mustard",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Meat gravy",
+        "item": "meat gravy",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in salted water for twenty minutes. Seven minutes before the end pile the kale on top to steam.",
+      "Meanwhile warm the sausage in water for twenty minutes without letting it boil: boiling splits the skin and the fat leaves.",
+      "Render the bacon until crisp and set it aside, keeping the fat.",
+      "Drain, crush the potato and kale together with a masher, working in the hot milk, butter, bacon fat and mustard.",
+      "Fold in the crackling, divide between plates, make a well and fill it with gravy. Slice the sausage and lay it over."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 30,
+      "carbsG": 62,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

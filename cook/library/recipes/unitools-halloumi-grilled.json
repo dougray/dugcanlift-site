@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-halloumi-grilled",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CY",
+    "nativeName": "Χαλλούμι",
+    "summary": "Cypriot cheese seared to a crust, with cold watermelon and mint. The island's summer plate.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      18,
+      5,
+      8,
+      8,
+      3,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Grilled halloumi with watermelon",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Halloumi",
+        "item": "halloumi",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "800 g Watermelon",
+        "item": "watermelon",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "chilled, in cubes"
+      },
+      {
+        "rawText": "20 g Mint",
+        "item": "mint",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "50 ml Olive oil",
+        "item": "olive oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Honey",
+        "item": "honey",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Rocket",
+        "item": "rocket",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "Black pepper, to taste",
+        "item": "black pepper"
+      }
+    ],
+    "steps": [
+      "Soak the halloumi in cold water for fifteen minutes, drain it and pat it completely dry.",
+      "Cut the cheese into centimetre slices — thinner and it dries out, thicker and it will not heat through.",
+      "Cut the chilled watermelon into large cubes and keep it in the fridge until serving.",
+      "Heat a dry pan hard and sear the halloumi two minutes a side, to dark stripes.",
+      "Whisk the olive oil with the lemon juice, honey and pepper.",
+      "Arrange the watermelon, rocket and hot cheese, spoon over the dressing and scatter with mint. Serve at once."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 22,
+      "carbsG": 16,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

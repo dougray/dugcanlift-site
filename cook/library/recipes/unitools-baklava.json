@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-baklava",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "Baklava",
+    "summary": "Forty layers of yufka with pistachio, soaked in syrup. Hot baklava takes cold syrup, and only that way round.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      60,
+      10,
+      25,
+      25,
+      8,
+      60,
+      360
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/baklava.jpg",
+      "author": "Sakaman",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Baklava",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "500 g Yufka or filo pastry",
+        "item": "yufka or filo pastry",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Pistachios",
+        "item": "pistachios",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "coarsely chopped"
+      },
+      {
+        "rawText": "300 g Clarified butter",
+        "item": "clarified butter",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "500 g Sugar",
+        "item": "sugar",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 ml Water",
+        "item": "water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Lemon juice",
+        "item": "lemon juice",
+        "qty": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Make the syrup: bring the sugar and water to the boil, cook fifteen minutes, add the lemon juice and cool it completely.",
+      "Melt the butter and let it settle — use only the clear upper layer and discard the sediment.",
+      "Lay twenty sheets into a greased tin, brushing each with butter. Scatter the pistachios in an even layer.",
+      "Cover with twenty more sheets, brushing each in the same way. Butter the top sheet especially generously.",
+      "Cut it into diamonds with a sharp knife, right down to the base of the tin.",
+      "Bake at 170 °C for an hour, to a deep gold. Take it out and pour the cold syrup into the cuts at once.",
+      "Leave it six hours, better overnight. Cutting and serving earlier is pointless: the syrup has not reached the lower layers."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 490,
+      "proteinG": 8,
+      "carbsG": 54,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

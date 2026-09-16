@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-massaman-curry",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TH",
+    "nativeName": "แกงมัสมั่น",
+    "summary": "A mild curry of beef, potato and peanuts, built on spices of the Muslim tradition.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      4,
+      8,
+      65,
+      22,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/massaman-curry.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Massaman curry",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "900 g Beef",
+        "item": "beef",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "5 tbsp Massaman curry paste",
+        "item": "massaman curry paste",
+        "qty": 5,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "800 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "3 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "400 g Jasmine rice",
+        "item": "jasmine rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Heat the thick part of the coconut milk without stirring until the oil separates.",
+      "Fry the massaman paste in that oil for four minutes, until it darkens and smells right.",
+      "Add the beef and turn it in the paste, then add the cinnamon, cardamom and bay.",
+      "Add the rest of the coconut milk and stew gently for an hour, until the meat is tender.",
+      "Add the potato and onion in large pieces and cook twenty minutes more.",
+      "Stir in the tamarind, palm sugar and fish sauce and taste: it should read sweet, sour and salty at once.",
+      "Add the peanuts, warm them five minutes and serve with jasmine rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 56,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

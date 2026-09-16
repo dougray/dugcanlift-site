@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jamaican-patty",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JM",
+    "nativeName": "Jamaican beef patty",
+    "summary": "Pastries of turmeric-yellow flaky dough with a spiced beef filling.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      35,
+      40,
+      15,
+      12,
+      25,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jamaican patties",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Curry powder",
+        "item": "curry powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "250 g Lard or shortening",
+        "item": "lard or shortening",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "cold"
+      },
+      {
+        "rawText": "150 ml Iced water",
+        "item": "iced water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Minced beef",
+        "item": "minced beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 tsp Ground allspice",
+        "item": "ground allspice",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "250 ml Beef stock",
+        "item": "beef stock",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the flour with turmeric, curry powder and salt and rub in the cold fat in large pieces, not to a fine crumb.",
+      "Add the iced water and bring the dough together without kneading, then chill it half an hour.",
+      "Roll it out, fold it in three and repeat twice more, chilling between folds.",
+      "Fry the onion, spring onion, thyme and chopped scotch bonnet, add the mince and cook it through.",
+      "Add the stock, allspice and breadcrumbs and cook ten minutes to a juicy but not runny filling.",
+      "Cool the filling completely, roll out the dough and cut fifteen-centimetre rounds.",
+      "Put filling on half of each round, fold it over, crimp with a fork and bake at 200 °C for thirty minutes."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 24,
+      "carbsG": 42,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-olla-de-carne",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CR",
+    "nativeName": "Olla de carne",
+    "summary": "The Costa Rican meat pot with cassava, squash, corn and plantain.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      125,
+      15,
+      22,
+      22,
+      12,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/olla-de-carne.jpg",
+      "author": "Aleat88",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Olla de carne",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef shank",
+        "item": "beef shank",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "bone-in"
+      },
+      {
+        "rawText": "500 g Cassava",
+        "item": "cassava",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Squash",
+        "item": "squash",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Corn",
+        "item": "corn",
+        "qty": 2,
+        "note": "on the cob"
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "green"
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Sweet pepper",
+        "item": "sweet pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Lime",
+        "item": "lime",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the shank with cold water, bring it to the boil and skim it thoroughly.",
+      "Add the onion, pepper and salt and simmer two hours, until the meat is tender.",
+      "Cut the cassava into large pieces, removing the woody core, and add it to the broth.",
+      "Twenty minutes later add the corn on the cob and the carrots.",
+      "Twenty minutes after that add the potatoes and squash in large pieces.",
+      "The plantain goes in last and cooks ten minutes, no longer.",
+      "Lift the solids out onto a platter, ladle the broth into cups and serve with rice, coriander and lime."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 68,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

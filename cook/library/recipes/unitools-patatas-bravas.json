@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-patatas-bravas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Patatas bravas",
+    "summary": "Twice-fried potato under a hot paprika sauce. The Madrid version has no tomato in it at all.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      20,
+      5,
+      8,
+      6,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/patatas-bravas.jpg",
+      "author": "Krista",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Patatas bravas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in 3 cm cubes"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Hot paprika",
+        "item": "hot paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 ml Chicken or vegetable stock",
+        "item": "chicken or vegetable stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Sherry vinegar",
+        "item": "sherry vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Olive oil for the sauce",
+        "item": "olive oil for the sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "800 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the potato into uneven chunks: broken faces give more crisp surface. Rinse off the starch and dry them thoroughly.",
+      "Fry at 140 °C for eight minutes until soft, without letting them colour. Set them aside to cool at least ten minutes.",
+      "For the sauce, fry the garlic in olive oil, take the pan off the heat, add the flour and both paprikas and stir. On the flame paprika burns in seconds.",
+      "Return it to a low flame, pour in the stock in a thin stream, stirring, and cook five minutes to a sauce. Add the vinegar and salt.",
+      "Raise the oil to 190 °C and fry the potato three minutes more, to a deep gold. Salt it at once.",
+      "Pile them on a dish and pour the hot sauce over immediately before serving."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 6,
+      "carbsG": 48,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dobos-torta",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HU",
+    "nativeName": "Dobos torta",
+    "summary": "Five thin sponge layers with chocolate buttercream under a caramel lid.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      8,
+      15,
+      40,
+      25,
+      10,
+      25
+    ],
+    "ingredientScaling": [
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/dobos-torta.jpg",
+      "author": "Megan Chromik",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Dobos torte",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "150 g Sugar",
+        "item": "sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "150 g Flour",
+        "item": "flour",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "250 g Butter",
+        "item": "butter",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "200 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Eggs for the cream",
+        "item": "eggs for the cream",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Sugar for the caramel",
+        "item": "sugar for the caramel",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "100 g Hazelnuts",
+        "item": "hazelnuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Whisk the eggs and sugar over a water bath until warm, then beat them eight minutes to a thick foam.",
+      "Fold in the sifted flour with a spatula in three additions, trying not to knock the air out.",
+      "Draw six circles on parchment and spread a thin layer of batter on each.",
+      "Bake the layers at 200 °C for six minutes each, to golden edges, and lift them off the parchment at once.",
+      "Whisk the eggs with the icing sugar over a water bath until thick, cool it and work in the softened butter and melted chocolate.",
+      "Melt the caramel sugar with lemon juice to amber and pour it over the flattest layer.",
+      "Cut the caramel layer into twelve wedges with a hot oiled knife, assemble the cake and set the wedges on top."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 8,
+      "carbsG": 58,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

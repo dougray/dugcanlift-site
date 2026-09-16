@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ghormeh-sabzi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IR",
+    "nativeName": "قورمه‌سبزی",
+    "summary": "Lamb stewed with a mountain of herbs, beans and dried lime. The herbs are fried until nearly black.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      60,
+      22,
+      60,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ghormeh-sabzi.jpg",
+      "author": "Amin Majidi",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ghormeh sabzi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Lamb",
+        "item": "lamb",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in 3 cm cubes"
+      },
+      {
+        "rawText": "300 g Parsley",
+        "item": "parsley",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Coriander",
+        "item": "coriander",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Spring onion or leek",
+        "item": "spring onion or leek",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 tbsp Dried fenugreek leaf",
+        "item": "dried fenugreek leaf",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 g Kidney beans",
+        "item": "kidney beans",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "4 Dried limes",
+        "item": "dried limes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion with the turmeric until gold, add the meat and brown it on all sides.",
+      "Cover with water, add the beans and simmer for an hour.",
+      "Meanwhile chop all the herbs fine and fry them in the oil for twenty minutes, stirring. They shrink to a quarter and darken; that is correct. Add the fenugreek for the last two minutes.",
+      "Stir the herbs into the pot, prick the dried limes with a fork and drop them in whole. Simmer for another hour.",
+      "Crush the limes against the side of the pot, season and let it stand fifteen minutes. The sauce should be dark and thick, with oil separated on top."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 42,
+      "carbsG": 46,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

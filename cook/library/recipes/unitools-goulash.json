@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-goulash",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HU",
+    "nativeName": "Gulyás",
+    "summary": "Beef stewed with onion and paprika. There is as much onion by weight as meat, and it dissolves into the sauce.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      3,
+      30,
+      90,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/goulash.jpg",
+      "author": "Silar",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Goulash",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1 kg Beef shin or shoulder",
+        "item": "beef shin or shoulder",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in 3 cm cubes"
+      },
+      {
+        "rawText": "1 kg Onions",
+        "item": "onions",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "3 tbsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Sweet peppers",
+        "item": "sweet peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Lard or oil",
+        "item": "lard or oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Sweat the onion in the lard over a low flame for twenty minutes, until soft and golden. It feels long and pointless, and it is where the sweetness of the sauce comes from.",
+      "Take the pan off the heat, add the paprika and caraway and stir. Half a minute later return it to the flame and add the meat.",
+      "Cook the meat with the onion covered for half an hour without adding water: it gives up its own. Only then pour in water to the level of the meat.",
+      "Simmer for an hour and a half. Add the peppers, tomatoes and garlic forty minutes before the end, the potatoes twenty-five.",
+      "Salt it at the very end and let it stand fifteen minutes before serving."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 42,
+      "carbsG": 32,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

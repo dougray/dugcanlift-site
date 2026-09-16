@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kholodnik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BY",
+    "nativeName": "Халаднік",
+    "summary": "A cold beetroot soup on kefir with sorrel, cucumber and egg, pink and sharply sour.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      50,
+      12,
+      12,
+      8,
+      4,
+      62,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kholodnik",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Beetroot",
+        "item": "beetroot",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Sorrel",
+        "item": "sorrel",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 l Kefir",
+        "item": "kefir",
+        "qty": 1,
+        "unit": "l",
+        "note": "cold"
+      },
+      {
+        "rawText": "3 Cucumbers",
+        "item": "cucumbers",
+        "qty": 3
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "50 g Spring onion",
+        "item": "spring onion",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "to serve, hot"
+      },
+      {
+        "rawText": "1 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the beetroot until tender with a spoon of vinegar so it keeps its colour, and cool it completely.",
+      "Cook the sorrel in a little water for five minutes, until it darkens, and cool it.",
+      "Grate the cooled beetroot coarsely and cut the cucumbers into matchsticks.",
+      "Mix the beetroot, the sorrel with its liquid, the cucumber and herbs with the soured cream and salt it.",
+      "Add the cold kefir and stir to an even pink.",
+      "Chill it an hour so the soup infuses and turns genuinely cold.",
+      "Boil the potatoes and serve them hot on a separate plate, with halved eggs in the soup."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 15,
+      "carbsG": 38,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

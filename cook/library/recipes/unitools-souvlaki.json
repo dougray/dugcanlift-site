@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-souvlaki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GR",
+    "nativeName": "Σουβλάκι",
+    "summary": "Pork on skewers in lemon, oregano and olive oil, cooked fast over a fierce heat.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      120,
+      10,
+      8,
+      12,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/souvlaki.jpg",
+      "author": "EntaXoyas",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Souvlaki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in 3 cm cubes"
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1,
+        "note": "juice and zest"
+      },
+      {
+        "rawText": "2 tsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Pita breads",
+        "item": "pita breads",
+        "qty": 4
+      },
+      {
+        "rawText": "200 g Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "0.5 Cucumber",
+        "item": "cucumber",
+        "qty": 0.5,
+        "note": "grated and squeezed"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the oil, lemon juice and zest, oregano, crushed garlic, salt and pepper. Coat the meat and leave it two hours, and no more than four.",
+      "While it marinates, make the tzatziki: yoghurt with the squeezed cucumber, a clove of garlic, a spoon of oil and salt.",
+      "Thread the meat onto skewers loosely — the heat has to get between the pieces. A tightly packed skewer stays raw in the middle.",
+      "Cook on a hot grill or griddle, three minutes on each of the four sides. The meat should darken rather than pale.",
+      "Rest the meat for five minutes, warm the pitas thirty seconds a side, and serve with the tzatziki and lemon."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 660,
+      "proteinG": 46,
+      "carbsG": 32,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

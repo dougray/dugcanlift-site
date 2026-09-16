@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-machboos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AE",
+    "nativeName": "مجبوس",
+    "summary": "Rice with prawns or chicken on the bizar spice mix with dried lime. The staple of the Gulf.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      17,
+      3,
+      8,
+      15,
+      7,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Machboos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "800 g Prawns",
+        "item": "prawns",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "large, peeled"
+      },
+      {
+        "rawText": "500 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Dried lime loomi",
+        "item": "dried lime loomi",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Bizar spice mix",
+        "item": "bizar spice mix",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Green chilli",
+        "item": "green chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and soak it twenty minutes.",
+      "Fry the onion in ghee to a deep gold, fifteen minutes, and set a third aside.",
+      "Add the garlic, ginger, bizar and turmeric and warm them a minute, until fragrant.",
+      "Add the tomatoes and the pierced limes, pour in water at one and a half times the volume of the rice, and season.",
+      "Bring it up, add the rice, cover and cook fifteen minutes on a low heat.",
+      "Lay the prawns over the rice, cover and give it five more minutes; they cook in the steam.",
+      "Rest it ten minutes and scatter with the reserved onion, coriander and chilli."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 42,
+      "carbsG": 78,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-koki-corn",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CM",
+    "nativeName": "Koki",
+    "summary": "A pudding of ground black-eyed beans with palm oil, steamed in banana leaves.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      35,
+      20,
+      20,
+      12,
+      8,
+      20,
+      95
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Koki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Black-eyed beans",
+        "item": "black-eyed beans",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 ml Red palm oil",
+        "item": "red palm oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Hot chilli",
+        "item": "hot chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Spinach",
+        "item": "spinach",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "optional"
+      },
+      {
+        "rawText": "40 g Ground dried crayfish",
+        "item": "ground dried crayfish",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "optional"
+      },
+      {
+        "rawText": "6 Banana leaves",
+        "item": "banana leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "400 ml Warm water",
+        "item": "warm water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Salt",
+        "item": "salt",
+        "qty": 2,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Soak the beans four hours, then rub them between your hands so the skins come away.",
+      "Rinse the beans several times, pouring off the floating skins, until the grains are clean and white.",
+      "Grind the beans with the onion and chilli into a thick paste, adding water a spoon at a time.",
+      "Beat the mass by hand or with a spatula for ten minutes, until it lightens and turns airy.",
+      "Warm the palm oil and work it into the mass to an even orange.",
+      "Pass the banana leaves over a flame until pliable and spoon the mass onto them with the greens.",
+      "Fold the parcels, tie them and steam them an hour and a half, until firm."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 20,
+      "carbsG": 42,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

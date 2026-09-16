@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-cepelinai",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LT",
+    "nativeName": "Cepelinai",
+    "summary": "Large potato dumplings with a meat filling, named after airships. Served with crackling and soured cream.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      25,
+      12,
+      10,
+      10,
+      15,
+      28,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/cepelinai.jpg",
+      "author": "Diliff",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Cepelinai",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Raw potatoes",
+        "item": "raw potatoes",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "500 g Boiled potatoes",
+        "item": "boiled potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "500 g Minced pork",
+        "item": "minced pork",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Smoked pork fat",
+        "item": "smoked pork fat",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "diced"
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Potato starch",
+        "item": "potato starch",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Marjoram",
+        "item": "marjoram",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grate the raw potato finely and wring it out in a cloth. Collect the liquid in a bowl.",
+      "Let the liquid stand ten minutes, pour off the water and stir the settled starch back into the grated potato.",
+      "Mash the boiled potato and combine it with the grated, adding the starch and salt. The mass should shape without sticking.",
+      "Mix the mince with half the finely chopped onion, marjoram, salt and pepper and roll four firm balls.",
+      "With wet hands take a lump of dough, flatten it on your palm, set the filling in it and seal it into an elongated oval.",
+      "Lower them into barely simmering salted water and cook twenty-five minutes. Do not stir; just rock the pot once in the first minute.",
+      "Render the pork fat with the remaining onion to crackling, spoon it over the cepelinai and serve with soured cream."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 28,
+      "carbsG": 68,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

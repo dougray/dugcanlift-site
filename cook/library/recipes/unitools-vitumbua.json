@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-vitumbua",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TZ",
+    "nativeName": "Vitumbua",
+    "summary": "Rice cakes on coconut milk, cooked in a pan of hemispherical wells.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      6,
+      20,
+      5,
+      6,
+      12,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/vitumbua.jpg",
+      "author": "Imaculate",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Vitumbua",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "300 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 g Sugar",
+        "item": "sugar",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "5 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "1 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Grated coconut",
+        "item": "grated coconut",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Drain the soaked rice and grind it with the coconut milk into a smooth, loose batter.",
+      "Stir in the yeast, sugar, cardamom, salt and grated coconut.",
+      "Leave the batter to ferment four hours in the warm, until it is covered in bubbles.",
+      "Stir the batter and check the body: it should pour in a ribbon rather than drop in a lump.",
+      "Heat the dimpled pan and brush each well with oil.",
+      "Fill the wells three-quarters full and cook three minutes, until the edges set.",
+      "Turn the cakes with a skewer and give them three minutes more, to a browned sphere."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 5,
+      "carbsG": 48,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

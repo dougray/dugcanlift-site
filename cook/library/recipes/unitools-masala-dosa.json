@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-masala-dosa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "मसाला डोसा",
+    "summary": "A thin crisp crêpe of fermented rice and lentil batter with a spiced potato filling.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      20,
+      20,
+      10,
+      12,
+      8,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/masala-dosa.jpg",
+      "author": "Yakshitha",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Masala dosa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Rice",
+        "item": "rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked six hours"
+      },
+      {
+        "rawText": "100 g Urad dal",
+        "item": "urad dal",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked six hours"
+      },
+      {
+        "rawText": "1 tsp Fenugreek seeds",
+        "item": "fenugreek seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "boiled"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Mustard seeds",
+        "item": "mustard seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "12 Curry leaves",
+        "item": "curry leaves",
+        "qty": 12
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Green chillies",
+        "item": "green chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the rice separately and the dal with the fenugreek separately, six hours each.",
+      "Grind the dal to a light fluffy paste, then the rice to a slightly grainy one, and combine them.",
+      "Salt it, cover it and leave it somewhere warm for eight to twelve hours, until it rises and smells sour.",
+      "Pop the mustard seeds in oil, then add the curry leaves, onion, chillies and ginger.",
+      "Add the turmeric and the crushed potato, season and warm it five minutes; that is the filling.",
+      "Heat a flat pan, wipe it with the oiled onion and pour a ladle of batter, spreading it in a spiral from the centre.",
+      "Drizzle oil around the edge and cook until the underside browns, two minutes. Add the filling and fold it over."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 14,
+      "carbsG": 76,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

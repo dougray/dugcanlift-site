@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chiles-en-nogada",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "nativeName": "Chiles rellenos",
+    "summary": "Poblano peppers stuffed with cheese in an airy egg batter, fried and served under tomato sauce.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      12,
+      14,
+      8,
+      15,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chiles-en-nogada.jpg",
+      "author": "Koffermejia",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chiles rellenos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "6 Poblano peppers",
+        "item": "poblano peppers",
+        "qty": 6
+      },
+      {
+        "rawText": "350 g Oaxaca cheese or mozzarella",
+        "item": "oaxaca cheese or mozzarella",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "80 g Plain flour",
+        "item": "plain flour",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Mexican oregano",
+        "item": "mexican oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Char the peppers over a flame or under a grill until blistered black all over, close them in a bag for ten minutes and peel the skin away.",
+      "Make a lengthways slit, ease the seeds out leaving the stalk in place, stuff with cheese and pin the slit with a cocktail stick.",
+      "For the sauce, blend the tomatoes with the onion and garlic, fry the purée in a spoon of oil for ten minutes with the oregano, and season.",
+      "Whip the whites to firm peaks, add a pinch of salt and fold in the yolks one at a time, trying not to knock the air out.",
+      "Dust a pepper in flour, dip it in the batter and lower it into oil at 180 °C. Fry two minutes a side, spooning oil over the top.",
+      "Drain on a rack, remove the sticks and serve with the hot tomato sauce beneath the pepper rather than over it."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 24,
+      "carbsG": 24,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

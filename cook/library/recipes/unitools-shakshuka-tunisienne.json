@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shakshuka-tunisienne",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TN",
+    "nativeName": "لبلابي",
+    "summary": "Chickpeas in a garlic broth poured over torn stale bread, with an egg, cumin and harissa.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      90,
+      6,
+      10,
+      4,
+      3,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shakshuka-tunisienne.jpg",
+      "author": "Sami Mlouhi",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tunisian lablabi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "300 g Stale white bread",
+        "item": "stale white bread",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Harissa",
+        "item": "harissa",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Olives",
+        "item": "olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tbsp Capers",
+        "item": "capers",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Tinned tuna",
+        "item": "tinned tuna",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the chickpeas in two litres of water with half the garlic for ninety minutes, until soft but whole.",
+      "Pound the remaining garlic with salt and cumin to a paste and stir it into the broth. Season.",
+      "Soft-boil the eggs, six minutes from the boil, and peel them.",
+      "Tear the bread into large pieces into deep bowls, filling them halfway.",
+      "Ladle the hot broth and chickpeas over the bread until it is thoroughly soaked.",
+      "Top with an egg, a spoon of harissa, olives, capers and tuna, then olive oil and lemon."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 22,
+      "carbsG": 60,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

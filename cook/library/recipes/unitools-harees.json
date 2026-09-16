@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-harees",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KW",
+    "nativeName": "هريس",
+    "summary": "Wheat and meat cooked down and beaten into one smooth mass. Ramadan food across the Gulf.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      20,
+      125,
+      65,
+      22,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Harees",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Whole wheat",
+        "item": "whole wheat",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "900 g Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 4
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the wheat overnight in cold water and rinse it.",
+      "Cover the meat with three litres of water, bring it up and skim.",
+      "Add the wheat, cinnamon and cardamom and simmer two hours.",
+      "Remove the bones and whole spices, season, and cook an hour more, stirring and topping up with boiling water.",
+      "Beat the mass with a wooden spoon or a mixer until entirely smooth — twenty minutes of work.",
+      "Spread it in a dish, make a hollow, pour in melted ghee and scatter with fried onion."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 210,
+    "nutritionPerServing": {
+      "calories": 600,
+      "proteinG": 38,
+      "carbsG": 52,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mas-huni",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MV",
+    "nativeName": "މަސް ހުނި",
+    "summary": "Tuna worked with coconut, onion and lime, with hot roshi flatbread. The Maldivian breakfast.",
+    "category": "breakfast",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      10,
+      5,
+      6,
+      4,
+      15,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mas-huni.jpg",
+      "author": "Xavier Romero-Frias",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mas huni",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Smoked or tinned tuna",
+        "item": "smoked or tinned tuna",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Grated coconut",
+        "item": "grated coconut",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "fresh"
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Chillies",
+        "item": "chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "10 Curry leaves",
+        "item": "curry leaves",
+        "qty": 10
+      },
+      {
+        "rawText": "300 g Flour for roshi",
+        "item": "flour for roshi",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "160 ml Water",
+        "item": "water",
+        "qty": 160,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 30,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water, a spoon of oil and salt and rest it twenty minutes.",
+      "Chop the onion, chillies and curry leaves as fine as you can.",
+      "Work the onion, chilli and salt with your hands until the onion releases its juice and softens.",
+      "Add the grated coconut and the flaked tuna and keep working it with your fingers until even.",
+      "Squeeze in the lime juice and mix again. Taste and adjust for salt and acidity.",
+      "Roll the dough into thin flatbreads and cook them on a dry pan a minute a side.",
+      "Serve the mas huni with the hot roshi and black tea."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 34,
+      "carbsG": 52,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

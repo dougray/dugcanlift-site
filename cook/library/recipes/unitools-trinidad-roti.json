@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-trinidad-roti",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TT",
+    "nativeName": "Buss up shut",
+    "summary": "A layered flatbread beaten into rags on the pan, served with chicken or goat curry.",
+    "category": "bread",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      14,
+      62,
+      50,
+      15,
+      25,
+      25,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/trinidad-roti.jpg",
+      "author": "Gary Soup",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Trinidad roti",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Flour",
+        "item": "flour",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "400 ml Warm water",
+        "item": "warm water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 kg Chicken for the curry",
+        "item": "chicken for the curry",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "3 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "2 tsp Salt",
+        "item": "salt",
+        "qty": 2,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knead a soft dough from the flour, baking powder, salt and warm water, working it ten minutes.",
+      "Cover it and rest it an hour; the dough should become pliable and stop springing back.",
+      "Marinate the chicken with the curry powder, garlic, thyme and salt and stew it with the potato for forty minutes.",
+      "Divide the dough into six balls, roll each one thin and brush it with oil.",
+      "Roll the round into a rope, coil it into a spiral and let it rest twenty minutes.",
+      "Roll the spirals out into rounds again and cook them on a dry pan a minute and a half a side, brushing with ghee.",
+      "Move the bread onto a board and beat it into soft rags with two spatulas. Serve with the curry."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 38,
+      "carbsG": 76,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

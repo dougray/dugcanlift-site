@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sarma-serbian",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RS",
+    "nativeName": "Sarma",
+    "summary": "Rolls of soured cabbage leaves with pork and rice, stewed with smoked meat.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      12,
+      10,
+      40,
+      8,
+      12,
+      150
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sarma-serbian.jpg",
+      "author": "Виолетова",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sarma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Whole soured cabbage",
+        "item": "whole soured cabbage",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "700 g Minced pork",
+        "item": "minced pork",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "300 g Minced beef",
+        "item": "minced beef",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "120 g Rice",
+        "item": "rice",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "500 g Smoked ribs",
+        "item": "smoked ribs",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "150 g Smoked pork fat",
+        "item": "smoked pork fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tbsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Take the cabbage apart into leaves, rinse off the excess brine and pare down the thick ribs.",
+      "Fry the chopped onion in oil until soft and let it cool.",
+      "Mix both minces with the raw rice, the onion, a spoon of paprika, salt and pepper.",
+      "Roll the filling in the leaves into tight parcels, tucking the ends in.",
+      "Line the bottom of the pot with shredded cabbage trimmings and half the ribs.",
+      "Pack the sarma in layers with ribs and pork fat between them, and add water level with the top layer.",
+      "Stew two and a half hours on a low heat, adding a roux of flour, paprika and tomato paste at the end."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 36,
+      "carbsG": 32,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

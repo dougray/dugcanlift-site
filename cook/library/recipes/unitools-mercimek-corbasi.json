@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mercimek-corbasi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "Mercimek çorbası",
+    "summary": "A red lentil soup blended smooth and finished with lemon and paprika butter.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      25,
+      3,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mercimek-corbasi.jpg",
+      "author": "Stolbovsky",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mercimek çorbası",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "250 g Red lentils",
+        "item": "red lentils",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "rinsed"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Potato",
+        "item": "potato",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1.4 l Water or stock",
+        "item": "water or stock",
+        "qty": 1.4,
+        "unit": "l"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Lemon, to taste",
+        "item": "lemon"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onion and carrot in a spoon of butter until soft, add the tomato paste and give it another minute, until it darkens.",
+      "Add the lentils, potato and water, bring to the boil and simmer for twenty-five minutes, until the lentils have collapsed completely.",
+      "Blend until entirely smooth. The soup should be thick but still pourable; loosen it with boiling water if it is not.",
+      "Melt the rest of the butter, take it off the heat and stir in the mint and paprika. Ladle out the soup, spoon the butter over and serve with a wedge of lemon."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 330,
+      "proteinG": 16,
+      "carbsG": 45,
+      "fatG": 10,
+      "estimated": true
+    }
+  }
+}

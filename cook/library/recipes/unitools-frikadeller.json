@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-frikadeller",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DK",
+    "nativeName": "Frikadeller",
+    "summary": "Danish meat patties — flat rather than round — fried in butter to a dark crust.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      7,
+      32,
+      5,
+      12,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/frikadeller.jpg",
+      "author": "Nillerdk",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Frikadeller",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Minced pork",
+        "item": "minced pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Minced veal",
+        "item": "minced veal",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "grated"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "3 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "0.5 tsp Ground allspice",
+        "item": "ground allspice",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "800 g Boiled potatoes",
+        "item": "boiled potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "Pickled red cabbage, to taste",
+        "item": "pickled red cabbage"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix both minces with the grated onion, egg, flour, salt, pepper and allspice.",
+      "Work it for five minutes, adding the milk in stages. The mixture should turn tacky and string off the spoon.",
+      "Chill it for half an hour: cold farce holds its shape better.",
+      "Melt the butter over medium heat. With a spoon dipped in water, scoop the mixture into the pan and flatten each one.",
+      "Fry six minutes a side, to a dark brown crust. Do not hurry: the colour is the flavour.",
+      "Serve with boiled potatoes, pickled red cabbage and the gravy from the pan."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 36,
+      "carbsG": 42,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

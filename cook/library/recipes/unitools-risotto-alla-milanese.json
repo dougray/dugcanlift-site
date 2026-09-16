@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-risotto-alla-milanese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Risotto alla milanese",
+    "summary": "A saffron risotto built on stock and near-constant stirring, which is what pulls the starch out of the rice and makes it creamy.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      2,
+      8,
+      2,
+      2,
+      18,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/risotto-alla-milanese.jpg",
+      "author": "Tamorlan",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Risotto alla milanese",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "320 g Carnaroli rice",
+        "item": "carnaroli rice",
+        "qty": 320,
+        "unit": "g",
+        "grams": 320
+      },
+      {
+        "rawText": "1.2 l Stock",
+        "item": "stock",
+        "qty": 1.2,
+        "unit": "l",
+        "note": "kept hot"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "120 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "cold"
+      },
+      {
+        "rawText": "80 g Parmesan",
+        "item": "parmesan",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "grated"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Steep the saffron in a ladle of hot stock and set it aside. Keep the rest of the stock at a bare simmer — cold stock stops the cooking.",
+      "Melt half the butter and sweat the onion over low heat until soft and translucent without letting it colour, about eight minutes.",
+      "Add the rice and stir for a couple of minutes until the grains are translucent at the edges and milky in the centre. This is the tostatura, and it keeps the grains intact.",
+      "Pour in the wine and let it evaporate completely — the smell of alcohol has to go.",
+      "Add the stock a ladle at a time, stirring, waiting until the rice has nearly absorbed it before the next. Around eighteen minutes, until the grain is soft outside with a slight bite in the middle.",
+      "Stir in the saffron infusion, take the pan off the heat and beat in the cold butter and parmesan, shaking the pan hard. The risotto should spread slowly across the plate."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 15,
+      "carbsG": 71,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

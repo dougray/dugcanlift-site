@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ceviche-ecuatoriano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EC",
+    "nativeName": "Ceviche de camarón",
+    "summary": "Prawns in a tomato and lime broth, served cold with popcorn and plantain crisps.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      27,
+      2,
+      30,
+      15,
+      10,
+      6,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ceviche-ecuatoriano.jpg",
+      "author": "Kevinmero",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ecuadorian ceviche",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "900 g Prawns",
+        "item": "prawns",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "shell-on"
+      },
+      {
+        "rawText": "3 Red onions",
+        "item": "red onions",
+        "qty": 3
+      },
+      {
+        "rawText": "8 Limes",
+        "item": "limes",
+        "qty": 8
+      },
+      {
+        "rawText": "2 Orange",
+        "item": "orange",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "4 tbsp Ketchup",
+        "item": "ketchup",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Mustard",
+        "item": "mustard",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "100 g Popcorn",
+        "item": "popcorn",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "150 g Plantain crisps",
+        "item": "plantain crisps",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the prawns, boil the shells in a litre of water for twenty minutes and strain the broth.",
+      "Poach the prawns in that broth for exactly two minutes and drop them straight into iced water.",
+      "Chill the broth completely; it becomes the base of the dressing.",
+      "Slice the red onion thin, rinse it in cold water and cure it in lime juice with salt.",
+      "Blend two tomatoes to a purée and mix it with the ketchup, mustard, orange juice and the cold broth.",
+      "Combine the prawns, cured onion, chopped tomatoes and the dressing.",
+      "Chill it an hour, stir in the coriander and serve with popcorn and plantain crisps."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 40,
+      "carbsG": 38,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sticky-toffee-pudding",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GB",
+    "nativeName": "Sticky toffee pudding",
+    "summary": "A moist date sponge under a hot sauce of cream and dark sugar.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      18,
+      5,
+      10,
+      6,
+      38,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sticky-toffee-pudding.jpg",
+      "author": "Sarah Stierch",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sticky toffee pudding",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "250 g Dates",
+        "item": "dates",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "pitted"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 g Flour",
+        "item": "flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "300 g Dark muscovado sugar",
+        "item": "dark muscovado sugar",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 ml Double cream",
+        "item": "double cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Cover the chopped dates with a cup of boiling water and the bicarbonate and leave them fifteen minutes.",
+      "Mash the dates with a fork into a coarse paste, water and all.",
+      "Beat a hundred grams of the butter with a hundred and fifty of the sugar until pale, adding the eggs one by one.",
+      "Fold in the flour with the baking powder, then the date paste; the batter comes out loose, which is correct.",
+      "Pour it into a greased tin and bake at 180 °C for thirty-five minutes, to a skewer that comes out with moist crumbs.",
+      "Melt the remaining butter with the remaining sugar and the cream and cook the sauce five minutes to thicken.",
+      "Prick the warm sponge with a skewer, pour over half the sauce and serve the rest in a jug."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 6,
+      "carbsG": 80,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

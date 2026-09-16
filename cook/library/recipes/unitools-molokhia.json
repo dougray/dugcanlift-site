@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-molokhia",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EG",
+    "nativeName": "ملوخية",
+    "summary": "A soup of jute leaves, slippery in texture, with a garlic and coriander tempering.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      45,
+      15,
+      6,
+      12,
+      8,
+      4,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/molokhia.jpg",
+      "author": "Showshow777",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Molokhia",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Molokhia leaves",
+        "item": "molokhia leaves",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "fresh or frozen"
+      },
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "4 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with the onion, cardamom and bay for forty-five minutes and strain the broth.",
+      "Chop the molokhia leaves finely with a mezzaluna or blitz them to an even green mass.",
+      "Bring the broth to the boil, add the leaves and immediately drop the heat to its lowest.",
+      "Hold the soup just below a simmer for ten minutes, stirring; it thickens and turns slippery.",
+      "Crush the garlic with salt into a paste and fry it in ghee with the coriander until deep gold.",
+      "Pour the tempering into the soup — it will hiss — and cover the pot immediately for a minute.",
+      "Serve with boiled rice, the chicken and lemon, each in its own dish."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 40,
+      "carbsG": 42,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

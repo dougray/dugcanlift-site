@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-yassa-poulet",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SN",
+    "nativeName": "Yassa ginaar",
+    "summary": "Chicken marinated in lemon under a mountain of caramelised onion with mustard.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      15,
+      27,
+      4,
+      32,
+      12,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/yassa-poulet.jpg",
+      "author": "Ajocom",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chicken yassa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "1.5 kg Onions",
+        "item": "onions",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "5 Lemons",
+        "item": "lemons",
+        "qty": 5
+      },
+      {
+        "rawText": "3 tbsp Dijon mustard",
+        "item": "dijon mustard",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 Scotch bonnet chilli",
+        "item": "scotch bonnet chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the lemon juice, mustard, garlic, salt and pepper, pour it over the chicken and onions and chill for at least four hours.",
+      "Lift out the chicken, pat it dry and brown it in oil on all sides.",
+      "In the same pan cook the onion from the marinade over medium heat for twenty-five minutes, until golden and soft.",
+      "Pour in the remaining marinade and the stock and add the bay leaves and the whole chilli.",
+      "Return the chicken, cover and stew thirty minutes on a low heat.",
+      "Uncover and reduce the sauce ten minutes more until thick. Remove the chilli.",
+      "Serve with boiled rice, the onions piled over the chicken."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 42,
+      "carbsG": 62,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

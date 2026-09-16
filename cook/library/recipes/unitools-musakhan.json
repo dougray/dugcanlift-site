@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-musakhan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JO",
+    "nativeName": "مسخن",
+    "summary": "Chicken with onion and sumac on taboon bread soaked in olive oil.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      35,
+      22,
+      40,
+      7,
+      40,
+      6,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/musakhan.jpg",
+      "author": "Kokaly",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Musakhan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Chicken",
+        "item": "chicken",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "1.5 kg Onions",
+        "item": "onions",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "60 g Sumac",
+        "item": "sumac",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "250 ml Olive oil",
+        "item": "olive oil",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "6 Taboon flatbreads",
+        "item": "taboon flatbreads",
+        "qty": 6
+      },
+      {
+        "rawText": "80 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tsp Ground allspice",
+        "item": "ground allspice",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground cinnamon",
+        "item": "ground cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 300,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with salt, pepper, allspice, cardamom and cinnamon and leave it half an hour.",
+      "Slice the onions into thin half-moons; a kilo and a half takes about twenty minutes.",
+      "Stew the onions in the olive oil over a low heat for forty minutes, until translucent and sweet.",
+      "Stir two-thirds of the sumac and salt into the onions and give them five more minutes.",
+      "Brown the chicken and roast it at 200 °C for twenty-five minutes.",
+      "Toast the pine nuts in a dry pan until golden, watching that they do not scorch.",
+      "Lay down the bread, the onions on it, the chicken on top, spoon over the pan oil and scatter with sumac and nuts."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 48,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

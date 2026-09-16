@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hallaca",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VE",
+    "nativeName": "Hallaca",
+    "summary": "Corn dough with a meat guiso, olives and raisins, wrapped in banana leaf.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      5,
+      25,
+      65,
+      20,
+      20,
+      45,
+      90
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/hallaca.jpg",
+      "author": "Wilfredor",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hallaca",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "1 kg Masarepa corn flour",
+        "item": "masarepa corn flour",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced"
+      },
+      {
+        "rawText": "500 g Pork",
+        "item": "pork",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "diced"
+      },
+      {
+        "rawText": "500 g Chicken",
+        "item": "chicken",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "3 tbsp Annatto seeds",
+        "item": "annatto seeds",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Olives",
+        "item": "olives",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "120 g Raisins",
+        "item": "raisins",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "3 tbsp Capers",
+        "item": "capers",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "20 Banana leaves",
+        "item": "banana leaves",
+        "qty": 20
+      },
+      {
+        "rawText": "150 ml Sweet wine",
+        "item": "sweet wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 g Lard",
+        "item": "lard",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 l Meat stock",
+        "item": "meat stock",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Warm the annatto seeds in the lard for five minutes and strain it; the coloured fat goes into both dough and guiso.",
+      "Fry the onion and pepper in the annatto fat, add all three meats and brown them.",
+      "Add the wine and stock and stew an hour, until the meat is tender and the sauce thick.",
+      "Cool the guiso completely, ideally leaving it overnight in the fridge.",
+      "Knead a dough from the masarepa, warm stock, annatto fat and salt until pliable.",
+      "Warm the banana leaves, spread a disc of dough on each and add guiso, olives, raisins and capers.",
+      "Wrap in two leaves, tie them crosswise with string and boil them for an hour and twenty."
+    ],
+    "prepMinutes": 150,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 36,
+      "carbsG": 62,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

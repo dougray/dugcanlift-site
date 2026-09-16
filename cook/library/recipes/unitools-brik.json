@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-brik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TN",
+    "nativeName": "بريك",
+    "summary": "A thin sheet of pastry with an egg inside, fried so the yolk stays liquid.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      6,
+      3,
+      2,
+      3,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/brik.jpg",
+      "author": "Souad Anane Lesina",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Brik",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Malsouka or filo sheets",
+        "item": "malsouka or filo sheets",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "200 g Tinned tuna",
+        "item": "tinned tuna",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Potato",
+        "item": "potato",
+        "qty": 2,
+        "note": "boiled and mashed"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Capers",
+        "item": "capers",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tsp Harissa",
+        "item": "harissa",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the mashed potato with the tuna, chopped onion, capers, parsley, harissa, salt and pepper.",
+      "Heat the oil to 180 °C. Test with a scrap of pastry: it should surface at once and sizzle.",
+      "Lay a sheet on a plate, put two spoons of filling on one half and make a hollow in it.",
+      "Break an egg into the hollow, season it and fold the sheet over immediately, pressing the edges.",
+      "Slide the brik into the oil and fry forty seconds a side, steadying it with a slotted spoon.",
+      "Drain on paper and serve immediately with a wedge of lemon."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 390,
+      "proteinG": 20,
+      "carbsG": 24,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

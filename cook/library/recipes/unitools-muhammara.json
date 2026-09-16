@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-muhammara",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SY",
+    "nativeName": "محمرة",
+    "summary": "A paste of roasted red pepper, walnuts and pomegranate molasses, from Aleppo.",
+    "category": "snack",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      20,
+      8,
+      10,
+      6,
+      6,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/muhammara.jpg",
+      "author": "Krista",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Muhammara",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "6 Red bell peppers",
+        "item": "red bell peppers",
+        "qty": 6
+      },
+      {
+        "rawText": "200 g Walnuts",
+        "item": "walnuts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "80 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 tbsp Pomegranate molasses",
+        "item": "pomegranate molasses",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Aleppo pepper",
+        "item": "aleppo pepper",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Pita bread",
+        "item": "pita bread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Char the peppers over a flame or under the grill until the skin blackens all over.",
+      "Put them in a bowl, cover it with film for fifteen minutes and remove the skin and seeds.",
+      "Toast the walnuts in a dry pan for five minutes, until they smell nutty.",
+      "Pound the walnuts in a mortar or pulse them briefly to a coarse crumb.",
+      "Blitz the peppers with the garlic, pomegranate molasses, lemon, cumin and Aleppo pepper.",
+      "Fold in the walnuts and breadcrumbs by hand and season, keeping the mass grainy.",
+      "Pour in the olive oil in a thin stream, stirring, and chill it an hour before serving."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 8,
+      "carbsG": 22,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

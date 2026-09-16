@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sernik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PL",
+    "nativeName": "Sernik",
+    "summary": "A dense curd cheesecake on a shortcrust base, made with twaróg rather than cream cheese.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      18,
+      15,
+      15,
+      10,
+      5,
+      55
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sernik.jpg",
+      "author": "Jacek Halicki",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sernik",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "1 kg Firm curd cheese",
+        "item": "firm curd cheese",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "250 g Flour",
+        "item": "flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "250 g Sugar",
+        "item": "sugar",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "50 g Potato starch",
+        "item": "potato starch",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Vanilla",
+        "item": "vanilla",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Rub the flour with a hundred grams of cold butter, a spoon of sugar, a yolk and the baking powder to a crumb and bring it into a dough.",
+      "Press the dough into a tin and bake it at 180 °C for fifteen minutes, to a pale gold.",
+      "Pass the curd through a sieve twice; the smoothness of the filling depends entirely on it.",
+      "Beat the remaining butter with the sugar until pale, add the yolks one by one, then the curd, soured cream, starch, vanilla and zest.",
+      "Whip the whites with a pinch of salt to firm peaks and fold them in with a spatula in three additions.",
+      "Fold in the raisins, pour the filling onto the base and level it.",
+      "Bake at 160 °C for fifty-five minutes, then switch the oven off and leave the cake inside with the door ajar for an hour."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 18,
+      "carbsG": 44,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

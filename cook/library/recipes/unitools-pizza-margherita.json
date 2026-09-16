@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pizza-margherita",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Pizza margherita",
+    "summary": "A long-fermented dough, uncooked tomato, mozzarella and basil. Time decides everything here, not the number of ingredients.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      35,
+      1440,
+      180,
+      60,
+      5,
+      9
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pizza-margherita.jpg",
+      "author": "Dale Cruse from San Francisco, CA, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pizza margherita",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Type 00 flour",
+        "item": "type 00 flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "325 ml Water",
+        "item": "water",
+        "qty": 325,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 g Fresh yeast",
+        "item": "fresh yeast",
+        "qty": 1,
+        "unit": "g",
+        "grams": 1
+      },
+      {
+        "rawText": "12 g Salt for the dough",
+        "item": "salt for the dough",
+        "qty": 12,
+        "unit": "g",
+        "grams": 12
+      },
+      {
+        "rawText": "400 g San Marzano tomatoes",
+        "item": "san marzano tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Fior di latte mozzarella",
+        "item": "fior di latte mozzarella",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "sliced and drained"
+      },
+      {
+        "rawText": "20 g Basil",
+        "item": "basil",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "4 tbsp Olive oil",
+        "item": "olive oil",
+        "qty": 4,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the water, add the flour and mix to a rough dough. Rest it twenty minutes, then work in the salt and knead ten minutes to a smooth ball.",
+      "Leave it two hours at room temperature, divide it into four balls and refrigerate for a day.",
+      "Take the dough out three hours before baking. Crush the tomatoes by hand with a pinch of salt: the sauce is done.",
+      "Heat the oven with a stone or steel at full power for at least an hour. It takes longer than seems necessary and it is not optional.",
+      "Stretch a ball with your fingers from the centre outwards, leaving the rim untouched. No rolling pin: it drives the air out of the rim and the crust will not rise.",
+      "Spread a thin layer of sauce, lay on the mozzarella and trickle over the oil. Bake seven to nine minutes, until the rim is spotted, and add the basil to the finished pizza."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 30,
+      "carbsG": 92,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

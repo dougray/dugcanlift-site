@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-karjalanpiirakka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FI",
+    "nativeName": "Karjalanpiirakka",
+    "summary": "A rye shell filled with rice porridge, brushed with butter out of the oven and served with egg butter.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      45,
+      7,
+      25,
+      20,
+      18,
+      12,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/karjalanpiirakka.jpg",
+      "author": "Ralf Roletschek",
+      "license": "GFDL 1.2"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Karelian pies",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "250 g Rye flour",
+        "item": "rye flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "150 ml Water",
+        "item": "water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "700 ml Milk",
+        "item": "milk",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cook the rice in the milk over a low flame for forty minutes, to a slightly loose porridge. Season it and cool it.",
+      "Knead a dough from the rye flour, water and salt for five minutes. It comes out firm and not sticky.",
+      "Divide it into sixteen balls and roll each into an oval half a millimetre thick. Dust with rye flour rather than wheat.",
+      "Spoon porridge into the middle, leaving the edges bare, and crimp them into a frill with the filling left open.",
+      "Bake at 250 °C for fifteen minutes — short and very hot, or the thin pastry dries out.",
+      "Melt half the butter with an equal amount of hot water and dip the hot pies in it. Cover them with a cloth for ten minutes.",
+      "Mash the boiled eggs with the rest of the butter, softened, and salt: this is munavoi, egg butter. Serve it with the pies."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 240,
+      "proteinG": 6,
+      "carbsG": 32,
+      "fatG": 10,
+      "estimated": true
+    }
+  }
+}

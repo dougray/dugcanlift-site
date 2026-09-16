@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kabuli-pulao",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AF",
+    "nativeName": "قابلی پلو",
+    "summary": "Rice with lamb under a layer of caramelised carrot, raisins and almonds. Afghanistan's national dish.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      20,
+      65,
+      8,
+      5,
+      5,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kabuli-pulao.jpg",
+      "author": "Jost Wagner",
+      "license": "CC BY-SA 1.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kabuli pulao",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1 kg Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "700 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "500 g Carrots",
+        "item": "carrots",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in fine matchsticks"
+      },
+      {
+        "rawText": "150 g Raisins",
+        "item": "raisins",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "80 g Almonds",
+        "item": "almonds",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "slivered"
+      },
+      {
+        "rawText": "50 g Pistachios",
+        "item": "pistachios",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 tbsp Sugar",
+        "item": "sugar",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Char masala",
+        "item": "char masala",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "6 Cardamom",
+        "item": "cardamom",
+        "qty": 6
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the rice in salted water for two hours and rinse it until the water runs clear.",
+      "Fry the onion in oil until deep gold, add the meat and brown it.",
+      "Add a litre of water, the cardamom and salt and simmer an hour, until the meat is tender. Strain the broth.",
+      "Melt two spoons of sugar in a dry pan to a dark caramel and let it down carefully with a ladle of broth.",
+      "Fry the carrot with the rest of the sugar for five minutes until glossy, add the raisins and nuts and take it off.",
+      "Parboil the rice for five minutes and drain it.",
+      "Layer the rice over the meat in the pot, spoon over the caramel broth, dust with char masala, pierce to the bottom and hold covered thirty minutes on a low heat. Serve with the carrot and raisins on top."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 110,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 38,
+      "carbsG": 96,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

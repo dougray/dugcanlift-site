@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-baleadas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HN",
+    "nativeName": "Baleadas",
+    "summary": "A wheat flour tortilla folded over refried beans, soured cream and crumbled cheese.",
+    "category": "breakfast",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      22,
+      12,
+      10,
+      12,
+      12,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/baleadas.jpg",
+      "author": "Ronny Medina",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Baleadas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "60 g Lard or shortening",
+        "item": "lard or shortening",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "220 ml Hot water",
+        "item": "hot water",
+        "qty": 220,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Red beans",
+        "item": "red beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "cooked"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "200 ml Thick soured cream",
+        "item": "thick soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Salty white cheese",
+        "item": "salty white cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 Avocado",
+        "item": "avocado",
+        "qty": 1,
+        "note": "optional"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rub the flour with the fat and salt to a crumb, add the hot water and knead a soft dough.",
+      "Divide it into eight balls, oil them and rest them twenty minutes under a cloth.",
+      "Fry the onion in oil, add the cooked beans with some of their liquid and mash them smooth.",
+      "Fry the purée over medium heat for ten minutes, until it holds its shape on a spoon.",
+      "Roll the balls into thin twenty-centimetre rounds.",
+      "Cook them on a hot dry pan a minute a side, to spotted but not dried out.",
+      "Spread beans over half the tortilla, add cream and cheese, fold it over and serve hot."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 18,
+      "carbsG": 58,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}
