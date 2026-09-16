@@ -2129,6 +2129,10 @@ function buildPayload(weeks, itemised) {
       }
     }
 
+    // Runs, walks and hikes that day, as SHARE-FORMAT.md "Outdoor" spells them.
+    const activities = LiftOutdoor.shareDay(outdoorOn(key));
+    if (activities.length) { day.o = activities; any = true; }
+
     if (steps[key] != null) { day.st = steps[key]; any = true; }
     if (weights[key] != null) { day.bw = weights[key]; any = true; }
 
@@ -2158,6 +2162,14 @@ function buildPayload(weeks, itemised) {
     payload.g = { c: goal.calories, p: goal.proteinG, f: goal.fatG, cb: goal.carbsG, fb: goal.fiberG };
   }
   if (foodDict.length) payload.fd = foodDict;
+  // Bests are all-time, not the window. The route goes only when asked for,
+  // trimmed so it never shows where someone starts and finishes.
+  const bestsOut = LiftOutdoor.shareBests(outdoor);
+  if (bestsOut) payload.ob = bestsOut;
+  if (coach.route) {
+    const route = LiftOutdoor.shareLastRoute(outdoor);
+    if (route) payload.lr = route;
+  }
   return payload;
 }
 
@@ -2286,6 +2298,11 @@ function renderCoach() {
     [{ label: 'Daily totals', v: false }, { label: 'Every food logged', v: true }],
     (i) => coach.itemised === i.v,
     (i) => { coach.itemised = i.v; save(KEY.coach, coach); renderCoach(); });
+
+  chips($('#coach-route'),
+    [{ label: "Don't send", v: false }, { label: 'Send, trimmed', v: true }],
+    (i) => !!coach.route === i.v,
+    (i) => { coach.route = i.v; save(KEY.coach, coach); renderCoach(); });
 
   updateLinkSize();
 }

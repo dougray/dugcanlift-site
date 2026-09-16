@@ -1,0 +1,3348 @@
+{
+ "note": "Activities in BACKUP-FORMAT outdoor[] shape (hike-unfinished has no end, which a backup never writes, to prove senders skip it). See outdoor-share-expected.json.",
+ "outdoor": [
+  {
+   "id": "run-long",
+   "activityType": "RUN",
+   "startedAtEpochMs": 1789000000000,
+   "endedAtEpochMs": 1789003000000,
+   "distanceMeters": 10001.4,
+   "elevationGainMeters": 0,
+   "routePoints": [
+    {
+     "latitude": 30.3,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000000000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.301524,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000060000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.303049,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000120000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.304574,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000180000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.306098,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000240000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.307623,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000300000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.309147,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000360000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.310672,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000420000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.312196,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000480000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.313721,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000540000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.315245,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000600000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.316769,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000660000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.318294,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000720000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.319819,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000780000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.321343,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000840000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.322868,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000900000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.324392,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789000960000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.325917,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001020000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.327441,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001080000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.328966,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001140000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.33049,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001200000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.332014,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001260000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.333539,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001320000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.335064,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001380000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.336588,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001440000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.338113,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001500000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.339637,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001560000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.341162,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001620000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.342686,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001680000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.34421,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001740000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.345735,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001800000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.347259,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001860000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.348784,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001920000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.350309,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789001980000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.351833,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002040000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.353358,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002100000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.354882,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002160000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.356407,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002220000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.357931,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002280000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.359455,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002340000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.36098,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002400000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.362505,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002460000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.364029,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002520000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.365554,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002580000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.367078,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002640000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.368603,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002700000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.370127,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002760000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.371652,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002820000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.373176,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002880000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.3747,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789002940000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.376225,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003000000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.37775,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003060000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.379274,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003120000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.380799,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003180000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.382323,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003240000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.383848,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003300000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.385372,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003360000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.386897,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003420000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.388421,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003480000,
+     "horizontalAccuracyMeters": 9
+    },
+    {
+     "latitude": 30.389945,
+     "longitude": -97.8,
+     "altitudeMeters": null,
+     "recordedAtEpochMs": 1789003540000,
+     "horizontalAccuracyMeters": 9
+    }
+   ]
+  },
+  {
+   "id": "walk-short",
+   "activityType": "WALK",
+   "startedAtEpochMs": 1789172800000,
+   "endedAtEpochMs": 1789173040000,
+   "distanceMeters": 299.7,
+   "elevationGainMeters": 0,
+   "routePoints": [
+    {
+     "latitude": 30.25,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172800000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.250245,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172820000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.25049,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172840000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.250735,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172860000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.25098,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172880000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.251225,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172900000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.25147,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172920000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.251715,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172940000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.25196,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172960000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.252205,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789172980000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.25245,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789173000000,
+     "horizontalAccuracyMeters": 5
+    },
+    {
+     "latitude": 30.252695,
+     "longitude": -97.75,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789173020000,
+     "horizontalAccuracyMeters": 5
+    }
+   ]
+  },
+  {
+   "id": "run-loop",
+   "activityType": "RUN",
+   "startedAtEpochMs": 1789259200000,
+   "endedAtEpochMs": 1789260920000,
+   "distanceMeters": 2794.6,
+   "elevationGainMeters": 36.7,
+   "routePoints": [
+    {
+     "latitude": 30.2672,
+     "longitude": -97.7431,
+     "altitudeMeters": 150,
+     "recordedAtEpochMs": 1789259200000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267263,
+     "longitude": -97.743099,
+     "altitudeMeters": 150.4,
+     "recordedAtEpochMs": 1789259204000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267326,
+     "longitude": -97.743098,
+     "altitudeMeters": 150.8,
+     "recordedAtEpochMs": 1789259208000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267389,
+     "longitude": -97.743095,
+     "altitudeMeters": 151.1,
+     "recordedAtEpochMs": 1789259212000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267452,
+     "longitude": -97.743091,
+     "altitudeMeters": 151.5,
+     "recordedAtEpochMs": 1789259216000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267515,
+     "longitude": -97.743086,
+     "altitudeMeters": 151.9,
+     "recordedAtEpochMs": 1789259220000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267577,
+     "longitude": -97.743079,
+     "altitudeMeters": 152.3,
+     "recordedAtEpochMs": 1789259224000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26764,
+     "longitude": -97.743072,
+     "altitudeMeters": 152.6,
+     "recordedAtEpochMs": 1789259228000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267703,
+     "longitude": -97.743063,
+     "altitudeMeters": 153,
+     "recordedAtEpochMs": 1789259232000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267765,
+     "longitude": -97.743054,
+     "altitudeMeters": 153.4,
+     "recordedAtEpochMs": 1789259236000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267827,
+     "longitude": -97.743043,
+     "altitudeMeters": 153.7,
+     "recordedAtEpochMs": 1789259240000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267889,
+     "longitude": -97.743031,
+     "altitudeMeters": 154.1,
+     "recordedAtEpochMs": 1789259244000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267951,
+     "longitude": -97.743018,
+     "altitudeMeters": 154.4,
+     "recordedAtEpochMs": 1789259248000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268013,
+     "longitude": -97.743003,
+     "altitudeMeters": 154.8,
+     "recordedAtEpochMs": 1789259252000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268075,
+     "longitude": -97.742988,
+     "altitudeMeters": 155.1,
+     "recordedAtEpochMs": 1789259256000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268136,
+     "longitude": -97.742971,
+     "altitudeMeters": 155.5,
+     "recordedAtEpochMs": 1789259260000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268197,
+     "longitude": -97.742954,
+     "altitudeMeters": 155.8,
+     "recordedAtEpochMs": 1789259264000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268258,
+     "longitude": -97.742935,
+     "altitudeMeters": 156.1,
+     "recordedAtEpochMs": 1789259268000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268319,
+     "longitude": -97.742915,
+     "altitudeMeters": 156.4,
+     "recordedAtEpochMs": 1789259272000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268379,
+     "longitude": -97.742894,
+     "altitudeMeters": 156.8,
+     "recordedAtEpochMs": 1789259276000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268439,
+     "longitude": -97.742872,
+     "altitudeMeters": 157.1,
+     "recordedAtEpochMs": 1789259280000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268499,
+     "longitude": -97.742849,
+     "altitudeMeters": 157.4,
+     "recordedAtEpochMs": 1789259284000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268558,
+     "longitude": -97.742825,
+     "altitudeMeters": 157.7,
+     "recordedAtEpochMs": 1789259288000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268617,
+     "longitude": -97.7428,
+     "altitudeMeters": 158,
+     "recordedAtEpochMs": 1789259292000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268676,
+     "longitude": -97.742773,
+     "altitudeMeters": 158.2,
+     "recordedAtEpochMs": 1789259296000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268734,
+     "longitude": -97.742746,
+     "altitudeMeters": 158.5,
+     "recordedAtEpochMs": 1789259300000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268792,
+     "longitude": -97.742717,
+     "altitudeMeters": 158.8,
+     "recordedAtEpochMs": 1789259304000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26885,
+     "longitude": -97.742688,
+     "altitudeMeters": 159,
+     "recordedAtEpochMs": 1789259308000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268907,
+     "longitude": -97.742657,
+     "altitudeMeters": 159.3,
+     "recordedAtEpochMs": 1789259312000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268964,
+     "longitude": -97.742625,
+     "altitudeMeters": 159.5,
+     "recordedAtEpochMs": 1789259316000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26902,
+     "longitude": -97.742593,
+     "altitudeMeters": 159.7,
+     "recordedAtEpochMs": 1789259320000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269076,
+     "longitude": -97.742559,
+     "altitudeMeters": 159.9,
+     "recordedAtEpochMs": 1789259324000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269131,
+     "longitude": -97.742524,
+     "altitudeMeters": 160.1,
+     "recordedAtEpochMs": 1789259328000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269186,
+     "longitude": -97.742489,
+     "altitudeMeters": 160.3,
+     "recordedAtEpochMs": 1789259332000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269241,
+     "longitude": -97.742452,
+     "altitudeMeters": 160.5,
+     "recordedAtEpochMs": 1789259336000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269295,
+     "longitude": -97.742414,
+     "altitudeMeters": 160.7,
+     "recordedAtEpochMs": 1789259340000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269348,
+     "longitude": -97.742376,
+     "altitudeMeters": 160.9,
+     "recordedAtEpochMs": 1789259344000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269401,
+     "longitude": -97.742336,
+     "altitudeMeters": 161,
+     "recordedAtEpochMs": 1789259348000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269453,
+     "longitude": -97.742295,
+     "altitudeMeters": 161.2,
+     "recordedAtEpochMs": 1789259352000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269505,
+     "longitude": -97.742254,
+     "altitudeMeters": 161.3,
+     "recordedAtEpochMs": 1789259356000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269556,
+     "longitude": -97.742211,
+     "altitudeMeters": 161.4,
+     "recordedAtEpochMs": 1789259360000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269607,
+     "longitude": -97.742168,
+     "altitudeMeters": 161.5,
+     "recordedAtEpochMs": 1789259364000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269657,
+     "longitude": -97.742123,
+     "altitudeMeters": 161.6,
+     "recordedAtEpochMs": 1789259368000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269706,
+     "longitude": -97.742078,
+     "altitudeMeters": 161.7,
+     "recordedAtEpochMs": 1789259372000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269755,
+     "longitude": -97.742032,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789259376000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269803,
+     "longitude": -97.741985,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789259380000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269851,
+     "longitude": -97.741937,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789259384000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269898,
+     "longitude": -97.741888,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259388000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269944,
+     "longitude": -97.741839,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259392000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269989,
+     "longitude": -97.741788,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259396000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270034,
+     "longitude": -97.741737,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259400000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270078,
+     "longitude": -97.741685,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259404000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270121,
+     "longitude": -97.741632,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789259408000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270164,
+     "longitude": -97.741578,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789259412000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270206,
+     "longitude": -97.741524,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789259416000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270247,
+     "longitude": -97.741469,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789259420000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270288,
+     "longitude": -97.741413,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789259424000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270327,
+     "longitude": -97.741356,
+     "altitudeMeters": 161.7,
+     "recordedAtEpochMs": 1789259428000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270366,
+     "longitude": -97.741299,
+     "altitudeMeters": 161.6,
+     "recordedAtEpochMs": 1789259432000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270404,
+     "longitude": -97.741241,
+     "altitudeMeters": 161.5,
+     "recordedAtEpochMs": 1789259436000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270442,
+     "longitude": -97.741182,
+     "altitudeMeters": 161.4,
+     "recordedAtEpochMs": 1789259440000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270478,
+     "longitude": -97.741123,
+     "altitudeMeters": 161.3,
+     "recordedAtEpochMs": 1789259444000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270514,
+     "longitude": -97.741063,
+     "altitudeMeters": 161.1,
+     "recordedAtEpochMs": 1789259448000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270549,
+     "longitude": -97.741002,
+     "altitudeMeters": 161,
+     "recordedAtEpochMs": 1789259452000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270583,
+     "longitude": -97.74094,
+     "altitudeMeters": 160.8,
+     "recordedAtEpochMs": 1789259456000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270616,
+     "longitude": -97.740878,
+     "altitudeMeters": 160.7,
+     "recordedAtEpochMs": 1789259460000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270648,
+     "longitude": -97.740816,
+     "altitudeMeters": 160.5,
+     "recordedAtEpochMs": 1789259464000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27068,
+     "longitude": -97.740753,
+     "altitudeMeters": 160.3,
+     "recordedAtEpochMs": 1789259468000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27071,
+     "longitude": -97.740689,
+     "altitudeMeters": 160.1,
+     "recordedAtEpochMs": 1789259472000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27074,
+     "longitude": -97.740625,
+     "altitudeMeters": 159.9,
+     "recordedAtEpochMs": 1789259476000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270769,
+     "longitude": -97.74056,
+     "altitudeMeters": 159.7,
+     "recordedAtEpochMs": 1789259480000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270797,
+     "longitude": -97.740495,
+     "altitudeMeters": 159.4,
+     "recordedAtEpochMs": 1789259484000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270824,
+     "longitude": -97.740429,
+     "altitudeMeters": 159.2,
+     "recordedAtEpochMs": 1789259488000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27085,
+     "longitude": -97.740362,
+     "altitudeMeters": 159,
+     "recordedAtEpochMs": 1789259492000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270876,
+     "longitude": -97.740296,
+     "altitudeMeters": 158.7,
+     "recordedAtEpochMs": 1789259496000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2709,
+     "longitude": -97.740228,
+     "altitudeMeters": 158.4,
+     "recordedAtEpochMs": 1789259500000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270923,
+     "longitude": -97.740161,
+     "altitudeMeters": 158.2,
+     "recordedAtEpochMs": 1789259504000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270946,
+     "longitude": -97.740093,
+     "altitudeMeters": 157.9,
+     "recordedAtEpochMs": 1789259508000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270968,
+     "longitude": -97.740024,
+     "altitudeMeters": 157.6,
+     "recordedAtEpochMs": 1789259512000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270988,
+     "longitude": -97.739955,
+     "altitudeMeters": 157.3,
+     "recordedAtEpochMs": 1789259516000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271008,
+     "longitude": -97.739886,
+     "altitudeMeters": 157,
+     "recordedAtEpochMs": 1789259520000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271027,
+     "longitude": -97.739816,
+     "altitudeMeters": 156.7,
+     "recordedAtEpochMs": 1789259524000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271045,
+     "longitude": -97.739746,
+     "altitudeMeters": 156.4,
+     "recordedAtEpochMs": 1789259528000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271062,
+     "longitude": -97.739676,
+     "altitudeMeters": 156,
+     "recordedAtEpochMs": 1789259532000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271078,
+     "longitude": -97.739606,
+     "altitudeMeters": 155.7,
+     "recordedAtEpochMs": 1789259536000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271093,
+     "longitude": -97.739535,
+     "altitudeMeters": 155.4,
+     "recordedAtEpochMs": 1789259540000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271107,
+     "longitude": -97.739464,
+     "altitudeMeters": 155,
+     "recordedAtEpochMs": 1789259544000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27112,
+     "longitude": -97.739392,
+     "altitudeMeters": 154.7,
+     "recordedAtEpochMs": 1789259548000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271132,
+     "longitude": -97.739321,
+     "altitudeMeters": 154.3,
+     "recordedAtEpochMs": 1789259552000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271143,
+     "longitude": -97.739249,
+     "altitudeMeters": 154,
+     "recordedAtEpochMs": 1789259556000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271153,
+     "longitude": -97.739177,
+     "altitudeMeters": 153.6,
+     "recordedAtEpochMs": 1789259560000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271162,
+     "longitude": -97.739105,
+     "altitudeMeters": 153.3,
+     "recordedAtEpochMs": 1789259564000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27117,
+     "longitude": -97.739032,
+     "altitudeMeters": 152.9,
+     "recordedAtEpochMs": 1789259568000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271177,
+     "longitude": -97.73896,
+     "altitudeMeters": 152.5,
+     "recordedAtEpochMs": 1789259572000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271184,
+     "longitude": -97.738887,
+     "altitudeMeters": 152.2,
+     "recordedAtEpochMs": 1789259576000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271189,
+     "longitude": -97.738815,
+     "altitudeMeters": 151.8,
+     "recordedAtEpochMs": 1789259580000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271193,
+     "longitude": -97.738742,
+     "altitudeMeters": 151.4,
+     "recordedAtEpochMs": 1789259584000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271196,
+     "longitude": -97.738669,
+     "altitudeMeters": 151,
+     "recordedAtEpochMs": 1789259588000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271198,
+     "longitude": -97.738596,
+     "altitudeMeters": 150.7,
+     "recordedAtEpochMs": 1789259592000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2712,
+     "longitude": -97.738523,
+     "altitudeMeters": 150.3,
+     "recordedAtEpochMs": 1789259596000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2712,
+     "longitude": -97.73845,
+     "altitudeMeters": 149.9,
+     "recordedAtEpochMs": 1789259600000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271199,
+     "longitude": -97.738378,
+     "altitudeMeters": 149.5,
+     "recordedAtEpochMs": 1789259604000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271197,
+     "longitude": -97.738305,
+     "altitudeMeters": 149.2,
+     "recordedAtEpochMs": 1789259608000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271195,
+     "longitude": -97.738232,
+     "altitudeMeters": 148.8,
+     "recordedAtEpochMs": 1789259612000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271191,
+     "longitude": -97.738159,
+     "altitudeMeters": 148.4,
+     "recordedAtEpochMs": 1789259616000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271186,
+     "longitude": -97.738086,
+     "altitudeMeters": 148,
+     "recordedAtEpochMs": 1789259620000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271181,
+     "longitude": -97.738014,
+     "altitudeMeters": 147.7,
+     "recordedAtEpochMs": 1789259624000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271174,
+     "longitude": -97.737941,
+     "altitudeMeters": 147.3,
+     "recordedAtEpochMs": 1789259628000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271166,
+     "longitude": -97.737869,
+     "altitudeMeters": 146.9,
+     "recordedAtEpochMs": 1789259632000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271158,
+     "longitude": -97.737796,
+     "altitudeMeters": 146.6,
+     "recordedAtEpochMs": 1789259636000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271148,
+     "longitude": -97.737724,
+     "altitudeMeters": 146.2,
+     "recordedAtEpochMs": 1789259640000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271137,
+     "longitude": -97.737652,
+     "altitudeMeters": 145.8,
+     "recordedAtEpochMs": 1789259644000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271126,
+     "longitude": -97.737581,
+     "altitudeMeters": 145.5,
+     "recordedAtEpochMs": 1789259648000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271113,
+     "longitude": -97.737509,
+     "altitudeMeters": 145.1,
+     "recordedAtEpochMs": 1789259652000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2711,
+     "longitude": -97.737438,
+     "altitudeMeters": 144.8,
+     "recordedAtEpochMs": 1789259656000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271085,
+     "longitude": -97.737367,
+     "altitudeMeters": 144.5,
+     "recordedAtEpochMs": 1789259660000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27107,
+     "longitude": -97.737296,
+     "altitudeMeters": 144.1,
+     "recordedAtEpochMs": 1789259664000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271053,
+     "longitude": -97.737226,
+     "altitudeMeters": 143.8,
+     "recordedAtEpochMs": 1789259668000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271036,
+     "longitude": -97.737156,
+     "altitudeMeters": 143.5,
+     "recordedAtEpochMs": 1789259672000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.271018,
+     "longitude": -97.737086,
+     "altitudeMeters": 143.2,
+     "recordedAtEpochMs": 1789259676000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270998,
+     "longitude": -97.737017,
+     "altitudeMeters": 142.9,
+     "recordedAtEpochMs": 1789259680000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270978,
+     "longitude": -97.736948,
+     "altitudeMeters": 142.6,
+     "recordedAtEpochMs": 1789259684000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270957,
+     "longitude": -97.736879,
+     "altitudeMeters": 142.3,
+     "recordedAtEpochMs": 1789259688000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270935,
+     "longitude": -97.736811,
+     "altitudeMeters": 142,
+     "recordedAtEpochMs": 1789259692000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270912,
+     "longitude": -97.736743,
+     "altitudeMeters": 141.7,
+     "recordedAtEpochMs": 1789259696000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270888,
+     "longitude": -97.736675,
+     "altitudeMeters": 141.4,
+     "recordedAtEpochMs": 1789259700000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270863,
+     "longitude": -97.736608,
+     "altitudeMeters": 141.2,
+     "recordedAtEpochMs": 1789259704000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270837,
+     "longitude": -97.736542,
+     "altitudeMeters": 140.9,
+     "recordedAtEpochMs": 1789259708000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270811,
+     "longitude": -97.736476,
+     "altitudeMeters": 140.7,
+     "recordedAtEpochMs": 1789259712000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270783,
+     "longitude": -97.73641,
+     "altitudeMeters": 140.4,
+     "recordedAtEpochMs": 1789259716000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270755,
+     "longitude": -97.736345,
+     "altitudeMeters": 140.2,
+     "recordedAtEpochMs": 1789259720000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270725,
+     "longitude": -97.73628,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789259724000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270695,
+     "longitude": -97.736216,
+     "altitudeMeters": 139.8,
+     "recordedAtEpochMs": 1789259728000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270664,
+     "longitude": -97.736153,
+     "altitudeMeters": 139.6,
+     "recordedAtEpochMs": 1789259732000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270632,
+     "longitude": -97.73609,
+     "altitudeMeters": 139.4,
+     "recordedAtEpochMs": 1789259736000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270599,
+     "longitude": -97.736028,
+     "altitudeMeters": 139.3,
+     "recordedAtEpochMs": 1789259740000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270566,
+     "longitude": -97.735966,
+     "altitudeMeters": 139.1,
+     "recordedAtEpochMs": 1789259744000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270531,
+     "longitude": -97.735905,
+     "altitudeMeters": 138.9,
+     "recordedAtEpochMs": 1789259748000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270496,
+     "longitude": -97.735845,
+     "altitudeMeters": 138.8,
+     "recordedAtEpochMs": 1789259752000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.27046,
+     "longitude": -97.735785,
+     "altitudeMeters": 138.7,
+     "recordedAtEpochMs": 1789259756000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270423,
+     "longitude": -97.735726,
+     "altitudeMeters": 138.5,
+     "recordedAtEpochMs": 1789259760000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270385,
+     "longitude": -97.735667,
+     "altitudeMeters": 138.4,
+     "recordedAtEpochMs": 1789259764000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270347,
+     "longitude": -97.73561,
+     "altitudeMeters": 138.3,
+     "recordedAtEpochMs": 1789259768000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270308,
+     "longitude": -97.735553,
+     "altitudeMeters": 138.3,
+     "recordedAtEpochMs": 1789259772000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270268,
+     "longitude": -97.735496,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789259776000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270227,
+     "longitude": -97.735441,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789259780000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270185,
+     "longitude": -97.735386,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789259784000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270143,
+     "longitude": -97.735332,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259788000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2701,
+     "longitude": -97.735279,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259792000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270056,
+     "longitude": -97.735226,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259796000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.270012,
+     "longitude": -97.735175,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259800000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269967,
+     "longitude": -97.735124,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259804000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269921,
+     "longitude": -97.735074,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789259808000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269874,
+     "longitude": -97.735024,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789259812000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269827,
+     "longitude": -97.734976,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789259816000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269779,
+     "longitude": -97.734929,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789259820000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269731,
+     "longitude": -97.734882,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789259824000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269682,
+     "longitude": -97.734836,
+     "altitudeMeters": 138.3,
+     "recordedAtEpochMs": 1789259828000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269632,
+     "longitude": -97.734792,
+     "altitudeMeters": 138.4,
+     "recordedAtEpochMs": 1789259832000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269582,
+     "longitude": -97.734748,
+     "altitudeMeters": 138.5,
+     "recordedAtEpochMs": 1789259836000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269531,
+     "longitude": -97.734705,
+     "altitudeMeters": 138.6,
+     "recordedAtEpochMs": 1789259840000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269479,
+     "longitude": -97.734663,
+     "altitudeMeters": 138.8,
+     "recordedAtEpochMs": 1789259844000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269427,
+     "longitude": -97.734622,
+     "altitudeMeters": 138.9,
+     "recordedAtEpochMs": 1789259848000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269375,
+     "longitude": -97.734582,
+     "altitudeMeters": 139,
+     "recordedAtEpochMs": 1789259852000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269321,
+     "longitude": -97.734542,
+     "altitudeMeters": 139.2,
+     "recordedAtEpochMs": 1789259856000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269268,
+     "longitude": -97.734504,
+     "altitudeMeters": 139.4,
+     "recordedAtEpochMs": 1789259860000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269214,
+     "longitude": -97.734467,
+     "altitudeMeters": 139.6,
+     "recordedAtEpochMs": 1789259864000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269159,
+     "longitude": -97.734431,
+     "altitudeMeters": 139.8,
+     "recordedAtEpochMs": 1789259868000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269104,
+     "longitude": -97.734396,
+     "altitudeMeters": 140,
+     "recordedAtEpochMs": 1789259872000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.269048,
+     "longitude": -97.734361,
+     "altitudeMeters": 140.2,
+     "recordedAtEpochMs": 1789259876000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268992,
+     "longitude": -97.734328,
+     "altitudeMeters": 140.4,
+     "recordedAtEpochMs": 1789259880000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268936,
+     "longitude": -97.734296,
+     "altitudeMeters": 140.6,
+     "recordedAtEpochMs": 1789259884000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268879,
+     "longitude": -97.734265,
+     "altitudeMeters": 140.9,
+     "recordedAtEpochMs": 1789259888000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268821,
+     "longitude": -97.734235,
+     "altitudeMeters": 141.1,
+     "recordedAtEpochMs": 1789259892000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268763,
+     "longitude": -97.734206,
+     "altitudeMeters": 141.4,
+     "recordedAtEpochMs": 1789259896000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268705,
+     "longitude": -97.734178,
+     "altitudeMeters": 141.6,
+     "recordedAtEpochMs": 1789259900000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268647,
+     "longitude": -97.734151,
+     "altitudeMeters": 141.9,
+     "recordedAtEpochMs": 1789259904000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268588,
+     "longitude": -97.734125,
+     "altitudeMeters": 142.2,
+     "recordedAtEpochMs": 1789259908000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268529,
+     "longitude": -97.7341,
+     "altitudeMeters": 142.5,
+     "recordedAtEpochMs": 1789259912000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268469,
+     "longitude": -97.734077,
+     "altitudeMeters": 142.8,
+     "recordedAtEpochMs": 1789259916000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268409,
+     "longitude": -97.734054,
+     "altitudeMeters": 143.1,
+     "recordedAtEpochMs": 1789259920000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268349,
+     "longitude": -97.734033,
+     "altitudeMeters": 143.4,
+     "recordedAtEpochMs": 1789259924000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268288,
+     "longitude": -97.734012,
+     "altitudeMeters": 143.7,
+     "recordedAtEpochMs": 1789259928000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268228,
+     "longitude": -97.733993,
+     "altitudeMeters": 144,
+     "recordedAtEpochMs": 1789259932000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268167,
+     "longitude": -97.733975,
+     "altitudeMeters": 144.4,
+     "recordedAtEpochMs": 1789259936000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268105,
+     "longitude": -97.733958,
+     "altitudeMeters": 144.7,
+     "recordedAtEpochMs": 1789259940000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.268044,
+     "longitude": -97.733942,
+     "altitudeMeters": 145.1,
+     "recordedAtEpochMs": 1789259944000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267982,
+     "longitude": -97.733927,
+     "altitudeMeters": 145.4,
+     "recordedAtEpochMs": 1789259948000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26792,
+     "longitude": -97.733913,
+     "altitudeMeters": 145.7,
+     "recordedAtEpochMs": 1789259952000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267858,
+     "longitude": -97.733901,
+     "altitudeMeters": 146.1,
+     "recordedAtEpochMs": 1789259956000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267796,
+     "longitude": -97.733889,
+     "altitudeMeters": 146.5,
+     "recordedAtEpochMs": 1789259960000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267734,
+     "longitude": -97.733879,
+     "altitudeMeters": 146.8,
+     "recordedAtEpochMs": 1789259964000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267671,
+     "longitude": -97.73387,
+     "altitudeMeters": 147.2,
+     "recordedAtEpochMs": 1789259968000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267609,
+     "longitude": -97.733862,
+     "altitudeMeters": 147.6,
+     "recordedAtEpochMs": 1789259972000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267546,
+     "longitude": -97.733855,
+     "altitudeMeters": 147.9,
+     "recordedAtEpochMs": 1789259976000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267483,
+     "longitude": -97.733849,
+     "altitudeMeters": 148.3,
+     "recordedAtEpochMs": 1789259980000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26742,
+     "longitude": -97.733844,
+     "altitudeMeters": 148.7,
+     "recordedAtEpochMs": 1789259984000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267357,
+     "longitude": -97.733841,
+     "altitudeMeters": 149.1,
+     "recordedAtEpochMs": 1789259988000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267294,
+     "longitude": -97.733839,
+     "altitudeMeters": 149.4,
+     "recordedAtEpochMs": 1789259992000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267231,
+     "longitude": -97.733837,
+     "altitudeMeters": 149.8,
+     "recordedAtEpochMs": 1789259996000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267169,
+     "longitude": -97.733837,
+     "altitudeMeters": 150.2,
+     "recordedAtEpochMs": 1789260000000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267106,
+     "longitude": -97.733839,
+     "altitudeMeters": 150.6,
+     "recordedAtEpochMs": 1789260004000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267043,
+     "longitude": -97.733841,
+     "altitudeMeters": 150.9,
+     "recordedAtEpochMs": 1789260008000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26698,
+     "longitude": -97.733844,
+     "altitudeMeters": 151.3,
+     "recordedAtEpochMs": 1789260012000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266917,
+     "longitude": -97.733849,
+     "altitudeMeters": 151.7,
+     "recordedAtEpochMs": 1789260016000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266854,
+     "longitude": -97.733855,
+     "altitudeMeters": 152.1,
+     "recordedAtEpochMs": 1789260020000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266791,
+     "longitude": -97.733862,
+     "altitudeMeters": 152.4,
+     "recordedAtEpochMs": 1789260024000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266729,
+     "longitude": -97.73387,
+     "altitudeMeters": 152.8,
+     "recordedAtEpochMs": 1789260028000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266666,
+     "longitude": -97.733879,
+     "altitudeMeters": 153.2,
+     "recordedAtEpochMs": 1789260032000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266604,
+     "longitude": -97.733889,
+     "altitudeMeters": 153.5,
+     "recordedAtEpochMs": 1789260036000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266542,
+     "longitude": -97.733901,
+     "altitudeMeters": 153.9,
+     "recordedAtEpochMs": 1789260040000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26648,
+     "longitude": -97.733913,
+     "altitudeMeters": 154.3,
+     "recordedAtEpochMs": 1789260044000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266418,
+     "longitude": -97.733927,
+     "altitudeMeters": 154.6,
+     "recordedAtEpochMs": 1789260048000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266356,
+     "longitude": -97.733942,
+     "altitudeMeters": 154.9,
+     "recordedAtEpochMs": 1789260052000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266295,
+     "longitude": -97.733958,
+     "altitudeMeters": 155.3,
+     "recordedAtEpochMs": 1789260056000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266233,
+     "longitude": -97.733975,
+     "altitudeMeters": 155.6,
+     "recordedAtEpochMs": 1789260060000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266172,
+     "longitude": -97.733993,
+     "altitudeMeters": 156,
+     "recordedAtEpochMs": 1789260064000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266112,
+     "longitude": -97.734012,
+     "altitudeMeters": 156.3,
+     "recordedAtEpochMs": 1789260068000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266051,
+     "longitude": -97.734033,
+     "altitudeMeters": 156.6,
+     "recordedAtEpochMs": 1789260072000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265991,
+     "longitude": -97.734054,
+     "altitudeMeters": 156.9,
+     "recordedAtEpochMs": 1789260076000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265931,
+     "longitude": -97.734077,
+     "altitudeMeters": 157.2,
+     "recordedAtEpochMs": 1789260080000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265871,
+     "longitude": -97.7341,
+     "altitudeMeters": 157.5,
+     "recordedAtEpochMs": 1789260084000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265812,
+     "longitude": -97.734125,
+     "altitudeMeters": 157.8,
+     "recordedAtEpochMs": 1789260088000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265753,
+     "longitude": -97.734151,
+     "altitudeMeters": 158.1,
+     "recordedAtEpochMs": 1789260092000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265695,
+     "longitude": -97.734178,
+     "altitudeMeters": 158.4,
+     "recordedAtEpochMs": 1789260096000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265637,
+     "longitude": -97.734206,
+     "altitudeMeters": 158.6,
+     "recordedAtEpochMs": 1789260100000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265579,
+     "longitude": -97.734235,
+     "altitudeMeters": 158.9,
+     "recordedAtEpochMs": 1789260104000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265521,
+     "longitude": -97.734265,
+     "altitudeMeters": 159.1,
+     "recordedAtEpochMs": 1789260108000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265464,
+     "longitude": -97.734296,
+     "altitudeMeters": 159.4,
+     "recordedAtEpochMs": 1789260112000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265408,
+     "longitude": -97.734328,
+     "altitudeMeters": 159.6,
+     "recordedAtEpochMs": 1789260116000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265352,
+     "longitude": -97.734361,
+     "altitudeMeters": 159.8,
+     "recordedAtEpochMs": 1789260120000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265296,
+     "longitude": -97.734396,
+     "altitudeMeters": 160,
+     "recordedAtEpochMs": 1789260124000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265241,
+     "longitude": -97.734431,
+     "altitudeMeters": 160.2,
+     "recordedAtEpochMs": 1789260128000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265186,
+     "longitude": -97.734467,
+     "altitudeMeters": 160.4,
+     "recordedAtEpochMs": 1789260132000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265132,
+     "longitude": -97.734504,
+     "altitudeMeters": 160.6,
+     "recordedAtEpochMs": 1789260136000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265079,
+     "longitude": -97.734542,
+     "altitudeMeters": 160.8,
+     "recordedAtEpochMs": 1789260140000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265025,
+     "longitude": -97.734582,
+     "altitudeMeters": 161,
+     "recordedAtEpochMs": 1789260144000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264973,
+     "longitude": -97.734622,
+     "altitudeMeters": 161.1,
+     "recordedAtEpochMs": 1789260148000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264921,
+     "longitude": -97.734663,
+     "altitudeMeters": 161.2,
+     "recordedAtEpochMs": 1789260152000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264869,
+     "longitude": -97.734705,
+     "altitudeMeters": 161.4,
+     "recordedAtEpochMs": 1789260156000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264818,
+     "longitude": -97.734748,
+     "altitudeMeters": 161.5,
+     "recordedAtEpochMs": 1789260160000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264768,
+     "longitude": -97.734792,
+     "altitudeMeters": 161.6,
+     "recordedAtEpochMs": 1789260164000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264718,
+     "longitude": -97.734836,
+     "altitudeMeters": 161.7,
+     "recordedAtEpochMs": 1789260168000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264669,
+     "longitude": -97.734882,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789260172000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264621,
+     "longitude": -97.734929,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789260176000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264573,
+     "longitude": -97.734976,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789260180000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264526,
+     "longitude": -97.735024,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789260184000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264479,
+     "longitude": -97.735074,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260188000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264433,
+     "longitude": -97.735124,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260192000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264388,
+     "longitude": -97.735175,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260196000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264344,
+     "longitude": -97.735226,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260200000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2643,
+     "longitude": -97.735279,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260204000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264257,
+     "longitude": -97.735332,
+     "altitudeMeters": 162,
+     "recordedAtEpochMs": 1789260208000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264215,
+     "longitude": -97.735386,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789260212000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264173,
+     "longitude": -97.735441,
+     "altitudeMeters": 161.9,
+     "recordedAtEpochMs": 1789260216000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264132,
+     "longitude": -97.735496,
+     "altitudeMeters": 161.8,
+     "recordedAtEpochMs": 1789260220000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264092,
+     "longitude": -97.735553,
+     "altitudeMeters": 161.7,
+     "recordedAtEpochMs": 1789260224000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264053,
+     "longitude": -97.73561,
+     "altitudeMeters": 161.7,
+     "recordedAtEpochMs": 1789260228000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264015,
+     "longitude": -97.735667,
+     "altitudeMeters": 161.6,
+     "recordedAtEpochMs": 1789260232000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263977,
+     "longitude": -97.735726,
+     "altitudeMeters": 161.5,
+     "recordedAtEpochMs": 1789260236000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26394,
+     "longitude": -97.735785,
+     "altitudeMeters": 161.3,
+     "recordedAtEpochMs": 1789260240000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263904,
+     "longitude": -97.735845,
+     "altitudeMeters": 161.2,
+     "recordedAtEpochMs": 1789260244000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263869,
+     "longitude": -97.735905,
+     "altitudeMeters": 161.1,
+     "recordedAtEpochMs": 1789260248000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263834,
+     "longitude": -97.735966,
+     "altitudeMeters": 160.9,
+     "recordedAtEpochMs": 1789260252000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263801,
+     "longitude": -97.736028,
+     "altitudeMeters": 160.7,
+     "recordedAtEpochMs": 1789260256000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263768,
+     "longitude": -97.73609,
+     "altitudeMeters": 160.6,
+     "recordedAtEpochMs": 1789260260000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263736,
+     "longitude": -97.736153,
+     "altitudeMeters": 160.4,
+     "recordedAtEpochMs": 1789260264000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263705,
+     "longitude": -97.736216,
+     "altitudeMeters": 160.2,
+     "recordedAtEpochMs": 1789260268000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263675,
+     "longitude": -97.73628,
+     "altitudeMeters": 160,
+     "recordedAtEpochMs": 1789260272000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263645,
+     "longitude": -97.736345,
+     "altitudeMeters": 159.8,
+     "recordedAtEpochMs": 1789260276000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263617,
+     "longitude": -97.73641,
+     "altitudeMeters": 159.6,
+     "recordedAtEpochMs": 1789260280000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263589,
+     "longitude": -97.736476,
+     "altitudeMeters": 159.3,
+     "recordedAtEpochMs": 1789260284000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263563,
+     "longitude": -97.736542,
+     "altitudeMeters": 159.1,
+     "recordedAtEpochMs": 1789260288000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263537,
+     "longitude": -97.736608,
+     "altitudeMeters": 158.8,
+     "recordedAtEpochMs": 1789260292000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263512,
+     "longitude": -97.736675,
+     "altitudeMeters": 158.6,
+     "recordedAtEpochMs": 1789260296000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263488,
+     "longitude": -97.736743,
+     "altitudeMeters": 158.3,
+     "recordedAtEpochMs": 1789260300000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263465,
+     "longitude": -97.736811,
+     "altitudeMeters": 158,
+     "recordedAtEpochMs": 1789260304000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263443,
+     "longitude": -97.736879,
+     "altitudeMeters": 157.7,
+     "recordedAtEpochMs": 1789260308000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263422,
+     "longitude": -97.736948,
+     "altitudeMeters": 157.4,
+     "recordedAtEpochMs": 1789260312000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263402,
+     "longitude": -97.737017,
+     "altitudeMeters": 157.1,
+     "recordedAtEpochMs": 1789260316000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263382,
+     "longitude": -97.737086,
+     "altitudeMeters": 156.8,
+     "recordedAtEpochMs": 1789260320000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263364,
+     "longitude": -97.737156,
+     "altitudeMeters": 156.5,
+     "recordedAtEpochMs": 1789260324000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263347,
+     "longitude": -97.737226,
+     "altitudeMeters": 156.2,
+     "recordedAtEpochMs": 1789260328000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26333,
+     "longitude": -97.737296,
+     "altitudeMeters": 155.9,
+     "recordedAtEpochMs": 1789260332000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263315,
+     "longitude": -97.737367,
+     "altitudeMeters": 155.5,
+     "recordedAtEpochMs": 1789260336000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2633,
+     "longitude": -97.737438,
+     "altitudeMeters": 155.2,
+     "recordedAtEpochMs": 1789260340000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263287,
+     "longitude": -97.737509,
+     "altitudeMeters": 154.9,
+     "recordedAtEpochMs": 1789260344000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263274,
+     "longitude": -97.737581,
+     "altitudeMeters": 154.5,
+     "recordedAtEpochMs": 1789260348000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263263,
+     "longitude": -97.737652,
+     "altitudeMeters": 154.2,
+     "recordedAtEpochMs": 1789260352000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263252,
+     "longitude": -97.737724,
+     "altitudeMeters": 153.8,
+     "recordedAtEpochMs": 1789260356000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263242,
+     "longitude": -97.737796,
+     "altitudeMeters": 153.4,
+     "recordedAtEpochMs": 1789260360000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263234,
+     "longitude": -97.737869,
+     "altitudeMeters": 153.1,
+     "recordedAtEpochMs": 1789260364000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263226,
+     "longitude": -97.737941,
+     "altitudeMeters": 152.7,
+     "recordedAtEpochMs": 1789260368000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263219,
+     "longitude": -97.738014,
+     "altitudeMeters": 152.3,
+     "recordedAtEpochMs": 1789260372000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263214,
+     "longitude": -97.738086,
+     "altitudeMeters": 152,
+     "recordedAtEpochMs": 1789260376000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263209,
+     "longitude": -97.738159,
+     "altitudeMeters": 151.6,
+     "recordedAtEpochMs": 1789260380000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263205,
+     "longitude": -97.738232,
+     "altitudeMeters": 151.2,
+     "recordedAtEpochMs": 1789260384000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263203,
+     "longitude": -97.738305,
+     "altitudeMeters": 150.8,
+     "recordedAtEpochMs": 1789260388000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263201,
+     "longitude": -97.738378,
+     "altitudeMeters": 150.5,
+     "recordedAtEpochMs": 1789260392000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2632,
+     "longitude": -97.73845,
+     "altitudeMeters": 150.1,
+     "recordedAtEpochMs": 1789260396000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2632,
+     "longitude": -97.738523,
+     "altitudeMeters": 149.7,
+     "recordedAtEpochMs": 1789260400000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263202,
+     "longitude": -97.738596,
+     "altitudeMeters": 149.3,
+     "recordedAtEpochMs": 1789260404000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263204,
+     "longitude": -97.738669,
+     "altitudeMeters": 149,
+     "recordedAtEpochMs": 1789260408000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263207,
+     "longitude": -97.738742,
+     "altitudeMeters": 148.6,
+     "recordedAtEpochMs": 1789260412000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263211,
+     "longitude": -97.738815,
+     "altitudeMeters": 148.2,
+     "recordedAtEpochMs": 1789260416000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263216,
+     "longitude": -97.738887,
+     "altitudeMeters": 147.8,
+     "recordedAtEpochMs": 1789260420000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263223,
+     "longitude": -97.73896,
+     "altitudeMeters": 147.5,
+     "recordedAtEpochMs": 1789260424000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26323,
+     "longitude": -97.739032,
+     "altitudeMeters": 147.1,
+     "recordedAtEpochMs": 1789260428000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263238,
+     "longitude": -97.739105,
+     "altitudeMeters": 146.7,
+     "recordedAtEpochMs": 1789260432000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263247,
+     "longitude": -97.739177,
+     "altitudeMeters": 146.4,
+     "recordedAtEpochMs": 1789260436000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263257,
+     "longitude": -97.739249,
+     "altitudeMeters": 146,
+     "recordedAtEpochMs": 1789260440000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263268,
+     "longitude": -97.739321,
+     "altitudeMeters": 145.7,
+     "recordedAtEpochMs": 1789260444000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26328,
+     "longitude": -97.739392,
+     "altitudeMeters": 145.3,
+     "recordedAtEpochMs": 1789260448000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263293,
+     "longitude": -97.739464,
+     "altitudeMeters": 145,
+     "recordedAtEpochMs": 1789260452000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263307,
+     "longitude": -97.739535,
+     "altitudeMeters": 144.6,
+     "recordedAtEpochMs": 1789260456000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263322,
+     "longitude": -97.739606,
+     "altitudeMeters": 144.3,
+     "recordedAtEpochMs": 1789260460000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263338,
+     "longitude": -97.739676,
+     "altitudeMeters": 144,
+     "recordedAtEpochMs": 1789260464000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263355,
+     "longitude": -97.739746,
+     "altitudeMeters": 143.6,
+     "recordedAtEpochMs": 1789260468000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263373,
+     "longitude": -97.739816,
+     "altitudeMeters": 143.3,
+     "recordedAtEpochMs": 1789260472000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263392,
+     "longitude": -97.739886,
+     "altitudeMeters": 143,
+     "recordedAtEpochMs": 1789260476000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263412,
+     "longitude": -97.739955,
+     "altitudeMeters": 142.7,
+     "recordedAtEpochMs": 1789260480000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263432,
+     "longitude": -97.740024,
+     "altitudeMeters": 142.4,
+     "recordedAtEpochMs": 1789260484000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263454,
+     "longitude": -97.740093,
+     "altitudeMeters": 142.1,
+     "recordedAtEpochMs": 1789260488000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263477,
+     "longitude": -97.740161,
+     "altitudeMeters": 141.8,
+     "recordedAtEpochMs": 1789260492000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2635,
+     "longitude": -97.740228,
+     "altitudeMeters": 141.6,
+     "recordedAtEpochMs": 1789260496000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263524,
+     "longitude": -97.740296,
+     "altitudeMeters": 141.3,
+     "recordedAtEpochMs": 1789260500000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26355,
+     "longitude": -97.740362,
+     "altitudeMeters": 141,
+     "recordedAtEpochMs": 1789260504000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263576,
+     "longitude": -97.740429,
+     "altitudeMeters": 140.8,
+     "recordedAtEpochMs": 1789260508000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263603,
+     "longitude": -97.740495,
+     "altitudeMeters": 140.6,
+     "recordedAtEpochMs": 1789260512000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263631,
+     "longitude": -97.74056,
+     "altitudeMeters": 140.3,
+     "recordedAtEpochMs": 1789260516000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26366,
+     "longitude": -97.740625,
+     "altitudeMeters": 140.1,
+     "recordedAtEpochMs": 1789260520000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26369,
+     "longitude": -97.740689,
+     "altitudeMeters": 139.9,
+     "recordedAtEpochMs": 1789260524000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26372,
+     "longitude": -97.740753,
+     "altitudeMeters": 139.7,
+     "recordedAtEpochMs": 1789260528000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263752,
+     "longitude": -97.740816,
+     "altitudeMeters": 139.5,
+     "recordedAtEpochMs": 1789260532000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263784,
+     "longitude": -97.740878,
+     "altitudeMeters": 139.3,
+     "recordedAtEpochMs": 1789260536000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263817,
+     "longitude": -97.74094,
+     "altitudeMeters": 139.2,
+     "recordedAtEpochMs": 1789260540000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263851,
+     "longitude": -97.741002,
+     "altitudeMeters": 139,
+     "recordedAtEpochMs": 1789260544000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263886,
+     "longitude": -97.741063,
+     "altitudeMeters": 138.9,
+     "recordedAtEpochMs": 1789260548000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263922,
+     "longitude": -97.741123,
+     "altitudeMeters": 138.7,
+     "recordedAtEpochMs": 1789260552000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263958,
+     "longitude": -97.741182,
+     "altitudeMeters": 138.6,
+     "recordedAtEpochMs": 1789260556000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.263996,
+     "longitude": -97.741241,
+     "altitudeMeters": 138.5,
+     "recordedAtEpochMs": 1789260560000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264034,
+     "longitude": -97.741299,
+     "altitudeMeters": 138.4,
+     "recordedAtEpochMs": 1789260564000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264073,
+     "longitude": -97.741356,
+     "altitudeMeters": 138.3,
+     "recordedAtEpochMs": 1789260568000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264112,
+     "longitude": -97.741413,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789260572000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264153,
+     "longitude": -97.741469,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789260576000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264194,
+     "longitude": -97.741524,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789260580000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264236,
+     "longitude": -97.741578,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789260584000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264279,
+     "longitude": -97.741632,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260588000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264322,
+     "longitude": -97.741685,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260592000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264366,
+     "longitude": -97.741737,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260596000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264411,
+     "longitude": -97.741788,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260600000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264456,
+     "longitude": -97.741839,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260604000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264502,
+     "longitude": -97.741888,
+     "altitudeMeters": 138,
+     "recordedAtEpochMs": 1789260608000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264549,
+     "longitude": -97.741937,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789260612000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264597,
+     "longitude": -97.741985,
+     "altitudeMeters": 138.1,
+     "recordedAtEpochMs": 1789260616000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264645,
+     "longitude": -97.742032,
+     "altitudeMeters": 138.2,
+     "recordedAtEpochMs": 1789260620000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264694,
+     "longitude": -97.742078,
+     "altitudeMeters": 138.3,
+     "recordedAtEpochMs": 1789260624000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264743,
+     "longitude": -97.742123,
+     "altitudeMeters": 138.4,
+     "recordedAtEpochMs": 1789260628000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264793,
+     "longitude": -97.742168,
+     "altitudeMeters": 138.5,
+     "recordedAtEpochMs": 1789260632000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264844,
+     "longitude": -97.742211,
+     "altitudeMeters": 138.6,
+     "recordedAtEpochMs": 1789260636000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264895,
+     "longitude": -97.742254,
+     "altitudeMeters": 138.7,
+     "recordedAtEpochMs": 1789260640000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264947,
+     "longitude": -97.742295,
+     "altitudeMeters": 138.8,
+     "recordedAtEpochMs": 1789260644000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.264999,
+     "longitude": -97.742336,
+     "altitudeMeters": 139,
+     "recordedAtEpochMs": 1789260648000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265052,
+     "longitude": -97.742376,
+     "altitudeMeters": 139.1,
+     "recordedAtEpochMs": 1789260652000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265105,
+     "longitude": -97.742414,
+     "altitudeMeters": 139.3,
+     "recordedAtEpochMs": 1789260656000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265159,
+     "longitude": -97.742452,
+     "altitudeMeters": 139.5,
+     "recordedAtEpochMs": 1789260660000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265214,
+     "longitude": -97.742489,
+     "altitudeMeters": 139.7,
+     "recordedAtEpochMs": 1789260664000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265269,
+     "longitude": -97.742524,
+     "altitudeMeters": 139.9,
+     "recordedAtEpochMs": 1789260668000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265324,
+     "longitude": -97.742559,
+     "altitudeMeters": 140.1,
+     "recordedAtEpochMs": 1789260672000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26538,
+     "longitude": -97.742593,
+     "altitudeMeters": 140.3,
+     "recordedAtEpochMs": 1789260676000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265436,
+     "longitude": -97.742625,
+     "altitudeMeters": 140.5,
+     "recordedAtEpochMs": 1789260680000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265493,
+     "longitude": -97.742657,
+     "altitudeMeters": 140.7,
+     "recordedAtEpochMs": 1789260684000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26555,
+     "longitude": -97.742688,
+     "altitudeMeters": 141,
+     "recordedAtEpochMs": 1789260688000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265608,
+     "longitude": -97.742717,
+     "altitudeMeters": 141.2,
+     "recordedAtEpochMs": 1789260692000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265666,
+     "longitude": -97.742746,
+     "altitudeMeters": 141.5,
+     "recordedAtEpochMs": 1789260696000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265724,
+     "longitude": -97.742773,
+     "altitudeMeters": 141.8,
+     "recordedAtEpochMs": 1789260700000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265783,
+     "longitude": -97.7428,
+     "altitudeMeters": 142,
+     "recordedAtEpochMs": 1789260704000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265842,
+     "longitude": -97.742825,
+     "altitudeMeters": 142.3,
+     "recordedAtEpochMs": 1789260708000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265901,
+     "longitude": -97.742849,
+     "altitudeMeters": 142.6,
+     "recordedAtEpochMs": 1789260712000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.265961,
+     "longitude": -97.742872,
+     "altitudeMeters": 142.9,
+     "recordedAtEpochMs": 1789260716000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266021,
+     "longitude": -97.742894,
+     "altitudeMeters": 143.2,
+     "recordedAtEpochMs": 1789260720000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266081,
+     "longitude": -97.742915,
+     "altitudeMeters": 143.6,
+     "recordedAtEpochMs": 1789260724000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266142,
+     "longitude": -97.742935,
+     "altitudeMeters": 143.9,
+     "recordedAtEpochMs": 1789260728000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266203,
+     "longitude": -97.742954,
+     "altitudeMeters": 144.2,
+     "recordedAtEpochMs": 1789260732000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266264,
+     "longitude": -97.742971,
+     "altitudeMeters": 144.5,
+     "recordedAtEpochMs": 1789260736000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266325,
+     "longitude": -97.742988,
+     "altitudeMeters": 144.9,
+     "recordedAtEpochMs": 1789260740000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266387,
+     "longitude": -97.743003,
+     "altitudeMeters": 145.2,
+     "recordedAtEpochMs": 1789260744000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266449,
+     "longitude": -97.743018,
+     "altitudeMeters": 145.6,
+     "recordedAtEpochMs": 1789260748000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266511,
+     "longitude": -97.743031,
+     "altitudeMeters": 145.9,
+     "recordedAtEpochMs": 1789260752000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266573,
+     "longitude": -97.743043,
+     "altitudeMeters": 146.3,
+     "recordedAtEpochMs": 1789260756000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266635,
+     "longitude": -97.743054,
+     "altitudeMeters": 146.6,
+     "recordedAtEpochMs": 1789260760000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266697,
+     "longitude": -97.743063,
+     "altitudeMeters": 147,
+     "recordedAtEpochMs": 1789260764000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.26676,
+     "longitude": -97.743072,
+     "altitudeMeters": 147.4,
+     "recordedAtEpochMs": 1789260768000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266823,
+     "longitude": -97.743079,
+     "altitudeMeters": 147.7,
+     "recordedAtEpochMs": 1789260772000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266885,
+     "longitude": -97.743086,
+     "altitudeMeters": 148.1,
+     "recordedAtEpochMs": 1789260776000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.266948,
+     "longitude": -97.743091,
+     "altitudeMeters": 148.5,
+     "recordedAtEpochMs": 1789260780000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267011,
+     "longitude": -97.743095,
+     "altitudeMeters": 148.9,
+     "recordedAtEpochMs": 1789260784000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267074,
+     "longitude": -97.743098,
+     "altitudeMeters": 149.2,
+     "recordedAtEpochMs": 1789260788000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.267137,
+     "longitude": -97.743099,
+     "altitudeMeters": 149.6,
+     "recordedAtEpochMs": 1789260792000,
+     "horizontalAccuracyMeters": 6
+    },
+    {
+     "latitude": 30.2672,
+     "longitude": -97.7431,
+     "altitudeMeters": 150,
+     "recordedAtEpochMs": 1789260796000,
+     "horizontalAccuracyMeters": 6
+    }
+   ]
+  },
+  {
+   "id": "hike-unfinished",
+   "activityType": "HIKE",
+   "startedAtEpochMs": 1789345600000,
+   "endedAtEpochMs": null,
+   "distanceMeters": 900,
+   "elevationGainMeters": 0,
+   "routePoints": []
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "note": "Exactly what SHARE-FORMAT.md \"Outdoor\" requires for outdoor-share-input.json. o is every activity in start order, as if all were one day. Produced by LIFT web; never regenerate from a native encoder.",
+ "o": [
+  [
+   0,
+   3000,
+   10001,
+   0
+  ],
+  [
+   1,
+   240,
+   300,
+   0
+  ],
+  [
+   0,
+   1720,
+   2795,
+   37
+  ]
+ ],
+ "ob": [
+  [
+   0,
+   2,
+   10001,
+   3000,
+   300
+  ],
+  [
+   1,
+   1,
+   300,
+   240,
+   null
+  ]
+ ],
+ "lr": [
+  0,
+  1789259200,
+  1720,
+  2795,
+  37,
+  "_|vwDjjqsQWK_@UUMSQUO]YQSSQY]QUQUOUUa@OWMWSc@KYKYIYOg@I[G[Kg@E[E]Ei@C]C[A]Ai@?]?]@i@B]@[B]Fi@D[D[Ji@F[H[HYNg@JWLYRe@LWLUNWV_@PUPUZ]PQRQRQ\\YTOTM^UTKVMTIb@OVIVGb@IXEVEXCb@EXAX?b@?X?X@b@DXBVDVDd@HVFVH`@NVHVLTJ^TTLTN\\XRPRPPPZ\\PTNTX^LVNTLVRd@JXJVPf@HXFZHZJh@DZDZFh@B\\@ZB\\@h@?\\?\\Ah@A\\CZC\\Eh@E\\GZIf@GZIZOf@IXKXKXSb@MVOVU`@OTQTQTY\\SPQR]XUNSPUL_@TWJ"
+ ],
+ "trimmedPointCount": 150
+}
