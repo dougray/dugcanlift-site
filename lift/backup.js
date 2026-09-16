@@ -21,6 +21,13 @@
  *
  *   3. A planned meal whose recipe is on neither side is skipped. It would
  *      render as a meal with nothing behind it.
+ *
+ *   4. Sugar and sodium come from `ext.ios` when the common field is missing.
+ *      Before BACKUP-FORMAT gave saturatedFatG, sugarG and sodiumMg common
+ *      names, an iPhone wrote sugar and sodium only there -- keyed by record
+ *      id, upper case -- so an older phone file restored here would otherwise
+ *      arrive with none. The common field wins whenever both exist. iOS never
+ *      recorded saturated fat, so there is nothing to fall back to for it.
  */
 (function (global) {
   'use strict';
@@ -90,6 +97,62 @@
     return data;
   }
 
+  var IOS_DETAILS = ['sugarG', 'sodiumMg'];
+
+  /** A finite, non-negative number, or null. */
+  function nutrient(v) {
+    return typeof v === 'number' && isFinite(v) && v >= 0 ? v : null;
+  }
+
+  /** `section[id]`, matching the id case-insensitively. */
+  function extrasFor(section, id) {
+    if (!section || typeof section !== 'object' || id == null) return null;
+    if (section[id] && typeof section[id] === 'object') return section[id];
+    var want = idKey(id);
+    var key = Object.keys(section).find(function (k) { return idKey(k) === want; });
+    return key && section[key] && typeof section[key] === 'object' ? section[key] : null;
+  }
+
+  function fillFrom(target, extras) {
+    var out = target;
+    IOS_DETAILS.forEach(function (f) {
+      if (nutrient(out[f]) != null) return;
+      var v = nutrient(extras[f]);
+      if (v == null) return;
+      if (out === target) out = Object.assign({}, target);
+      out[f] = v;
+    });
+    return out;
+  }
+
+  /**
+   * Food entries with sugar and sodium filled from `ext.ios.food` where the
+   * common field is missing (rule 4). Returns new records; the file's own
+   * objects are left as they were.
+   */
+  function foodWithIosDetails(food, ext) {
+    var section = ext && ext.ios && ext.ios.food;
+    return (food || []).map(function (e) {
+      var extras = e && extrasFor(section, e.id);
+      return extras ? fillFrom(e, extras) : e;
+    });
+  }
+
+  /**
+   * The same for recipes, from `ext.ios.recipes`, into nutritionPerServing. A
+   * recipe with no macros has nowhere to hold them -- nutrition cannot exist
+   * without calories -- so it is left as it is.
+   */
+  function recipesWithIosDetails(recipes, ext) {
+    var section = ext && ext.ios && ext.ios.recipes;
+    return (recipes || []).map(function (r) {
+      var extras = r && extrasFor(section, r.id);
+      if (!extras || !r.nutritionPerServing || typeof r.nutritionPerServing !== 'object') return r;
+      var nutrition = fillFrom(r.nutritionPerServing, extras);
+      return nutrition === r.nutritionPerServing ? r : Object.assign({}, r, { nutritionPerServing: nutrition });
+    });
+  }
+
   global.LiftBackup = {
     STORED: STORED,
     NEVER_BACKED_UP: NEVER_BACKED_UP,
@@ -97,5 +160,7 @@
     addMissingPlan: addMissingPlan,
     unknownSections: unknownSections,
     buildData: buildData,
+    foodWithIosDetails: foodWithIosDetails,
+    recipesWithIosDetails: recipesWithIosDetails,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -16,6 +16,10 @@
  *
  * Everything here is per 100 g except an Open Food Facts product that only
  * publishes per-serving figures, which says so in `per`.
+ *
+ * Saturated fat, sugar and sodium ride along on both sources as null when the
+ * source did not say -- never 0 (see nutrients.js). foods.json carries them as
+ * its last three columns; scripts/build_foods_json.py writes that file.
  */
 
 const FOOD_PROXY = 'https://lift-proxy.dugcanlift.workers.dev';
@@ -24,14 +28,22 @@ const FOOD_DB = 'foods.json';
 let foodLibrary = null;
 let foodLibraryError = null;
 
-/** Loaded on first use: 131 KB over the wire is not something to spend at boot. */
+/* Loaded on first use: 166 KB over the wire is not something to spend at boot.
+ *
+ * A row is [name, categoryIndex, kcal, proteinG, fatG, carbsG, fiberG,
+ * saturatedFatG, sugarG, sodiumMg], per 100 g, and the file's `columns` names
+ * them. The last three were appended later and are null where USDA has no
+ * value, so a row read by an older copy of this function -- seven positions --
+ * still reads correctly. Sodium is milligrams; everything else is grams. */
 async function loadFoodLibrary() {
   if (foodLibrary || foodLibraryError) return foodLibrary;
   try {
     const response = await fetch(FOOD_DB);
     if (!response.ok) throw new Error('HTTP ' + response.status);
     const raw = await response.json();
-    foodLibrary = raw.foods.map(([name, category, calories, proteinG, fatG, carbsG, fiberG]) => ({
+    const perGram = (v) => (typeof v === 'number' && isFinite(v) && v >= 0 ? v / 100 : null);
+    foodLibrary = raw.foods.map(([name, category, calories, proteinG, fatG, carbsG, fiberG,
+                                  saturatedFatG, sugarG, sodiumMg]) => ({
       name,
       category: raw.categories[category] || '',
       per: 'g',
@@ -42,6 +54,9 @@ async function loadFoodLibrary() {
         fatG: fatG / 100,
         carbsG: carbsG / 100,
         fiberG: fiberG / 100,
+        saturatedFatG: perGram(saturatedFatG),
+        sugarG: perGram(sugarG),
+        sodiumMg: perGram(sodiumMg),
       },
       label: `${Math.round(calories)} kcal per 100 g · P ${Math.round(proteinG)}`
            + ` C ${Math.round(carbsG)} F ${Math.round(fatG)}`,
@@ -109,8 +124,10 @@ function parseFoodProduct(product) {
       fatG: value(nutriments[`fat_${suffix}`]) || 0,
       carbsG: value(nutriments[`carbohydrates_${suffix}`]) || 0,
       fiberG: value(nutriments[`fiber_${suffix}`]) || 0,
+      ...LiftNutrients.fromOpenFoodFacts(nutriments, suffix),
     };
   };
+  const perGram = (v) => (v == null ? null : v / 100);
 
   const per100 = read('100g');
   const perServing = read('serving');
@@ -126,7 +143,9 @@ function parseFoodProduct(product) {
     per: per100 ? 'g' : 'serving',
     unit: per100
       ? { calories: values.calories / 100, proteinG: values.proteinG / 100,
-          fatG: values.fatG / 100, carbsG: values.carbsG / 100, fiberG: values.fiberG / 100 }
+          fatG: values.fatG / 100, carbsG: values.carbsG / 100, fiberG: values.fiberG / 100,
+          saturatedFatG: perGram(values.saturatedFatG), sugarG: perGram(values.sugarG),
+          sodiumMg: perGram(values.sodiumMg) }
       : values,
     label: `${Math.round(values.calories)} kcal ${basis} · P ${Math.round(values.proteinG)}`
          + ` C ${Math.round(values.carbsG)} F ${Math.round(values.fatG)}`,
@@ -149,14 +168,19 @@ async function searchPackagedFoods(query) {
 }
 
 /** What a quantity of one hit contributes. Grams, or servings when that is all
- *  the source publishes. */
+ *  the source publishes. Saturated fat, sugar and sodium are null when the
+ *  source did not record them, so a caller can tell a gap from a zero. */
 function foodContribution(hit, quantity) {
+  const detail = (v) => (v == null ? null : v * quantity);
   return {
     calories: hit.unit.calories * quantity,
     proteinG: hit.unit.proteinG * quantity,
     fatG: hit.unit.fatG * quantity,
     carbsG: hit.unit.carbsG * quantity,
     fiberG: hit.unit.fiberG * quantity,
+    saturatedFatG: detail(hit.unit.saturatedFatG),
+    sugarG: detail(hit.unit.sugarG),
+    sodiumMg: detail(hit.unit.sodiumMg),
   };
 }
 

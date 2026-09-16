@@ -29,6 +29,25 @@
 
   var FIELDS = ['calories', 'proteinG', 'fatG', 'carbsG', 'fiberG'];
 
+  /* Saturated fat, sugar and sodium (see nutrients.js). Scaled by the same
+   * rules as the macros, with two differences that both follow from them being
+   * optional: they round to one decimal (sodium to a whole milligram) rather
+   * than to whole grams, because 0.4 g of saturated fat is not 0; and an
+   * unknown one stays absent everywhere -- it is never filled in as 0, not even
+   * when a field that had a value is cleared. */
+  var DETAILS = ['saturatedFatG', 'sugarG', 'sodiumMg'];
+
+  function roundDetail(field, value) {
+    return field === 'sodiumMg' ? Math.round(value) : Math.round(value * 10) / 10;
+  }
+
+  /** A finite, non-negative detail value, or null. */
+  function detailValue(value) {
+    if (!isNumber(value)) return null;
+    var n = Number(value);
+    return n >= 0 ? n : null;
+  }
+
   /**
    * Totals for `grams` of a food whose macros are given per 100 g.
    *
@@ -47,6 +66,10 @@
     FIELDS.forEach(function (field) {
       var value = Number(per100[field]);
       out[field] = Math.round((isFinite(value) ? value : 0) * factor);
+    });
+    DETAILS.forEach(function (field) {
+      var value = detailValue(per100[field]);
+      if (value != null) out[field] = roundDetail(field, value * factor);
     });
     return out;
   }
@@ -84,6 +107,10 @@
    * not as a zero nobody measured. A field that had a value and was cleared
    * saves as 0, which is what a blank means on the add form. Calories blank
    * refuses the save, also as the add form does.
+   *
+   * Saturated fat, sugar and sodium follow the same scaling, but blank always
+   * saves absent: they are optional on the add form too, where blank means
+   * "the label did not say", and a cleared one means the same.
    */
 
   function isNumber(value) {
@@ -101,6 +128,12 @@
       out[field] = isNumber(entry[field])
         ? Math.round(Number(entry[field]) * 100 / Number(entry.amountGrams))
         : null;
+    });
+    // Only the details the entry has: an absent one is absent here too, and
+    // the form treats a missing key as blank.
+    DETAILS.forEach(function (field) {
+      var stored = detailValue(entry[field]);
+      if (stored != null) out[field] = roundDetail(field, stored * 100 / Number(entry.amountGrams));
     });
     return out;
   }
@@ -124,6 +157,15 @@
       } else {
         out[field] = Math.round(value * grams / 100);
       }
+    });
+    DETAILS.forEach(function (field) {
+      var value = detailValue(typed[field]);
+      var stored = detailValue(entry[field]);
+      // A cleared value is written as undefined, not left out: the caller
+      // spreads this over the entry, and a missing key would keep it.
+      if (value == null) { if (entry[field] !== undefined) out[field] = undefined; }
+      else if (stored != null && value === before[field]) out[field] = roundDetail(field, stored * ratio);
+      else out[field] = roundDetail(field, value * grams / 100);
     });
     return out;
   }
@@ -156,6 +198,11 @@
       if (value == null) out[field] = isNumber(stored) ? 0 : stored;
       else out[field] = value;
     });
+    DETAILS.forEach(function (field) {
+      var value = detailValue(typed[field]);
+      if (value != null) out[field] = value;
+      else if (entry[field] !== undefined) out[field] = undefined;
+    });
     return out;
   }
 
@@ -171,6 +218,7 @@
     GRAMS_PER_OUNCE: GRAMS_PER_OUNCE,
     UNITS: UNITS,
     FIELDS: FIELDS,
+    DETAILS: DETAILS,
     scaleFrom100g: scaleFrom100g,
     amountText: amountText,
     per100From: per100From,

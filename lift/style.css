@@ -309,6 +309,19 @@ canvas { width: 100%; display: block; }
 .small { font-size: 13px; }
 .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
+/* "More nutrients" on the food and recipe forms: closed until asked for, so
+   the fields everyone fills stay the ones on screen. */
+details.more { margin-top: 14px; }
+details.more summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style-position: inside;
+  padding: 6px 0;
+}
+details.more > p { margin: 6px 0 0; }
+
+.nutrients { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); }
+
 details.starters summary {
   cursor: pointer;
   font-weight: 700;

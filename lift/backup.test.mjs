@@ -138,3 +138,40 @@ test("the same iOS recipe already on this device in lower case is not duplicated
   assert.equal(LiftBackup.addMissing(recipes, ios.data.recipes), 0);
   assert.equal(recipes.length, 1);
 });
+
+// MARK: - Rule 4: sugar and sodium from an older iPhone file's ext.ios
+
+const iosFile = JSON.parse(readFileSync('lift/fixtures/ios-backup-nutrients.json', 'utf8'));
+
+test('food takes sugar and sodium from ext.ios when the common field is missing', () => {
+  const food = LiftBackup.foodWithIosDetails(iosFile.data.food, iosFile.ext);
+  const [granola, juice, egg] = food;
+  assert.equal(granola.sugarG, 18.5);
+  assert.equal(granola.sodiumMg, 0, 'a recorded zero is a value');
+  assert.equal(granola.saturatedFatG, undefined, 'iOS never recorded saturated fat');
+  assert.equal(juice.sugarG, 21, 'the common field wins over ext.ios');
+  assert.equal(juice.sodiumMg, 2, 'and ext.ios still fills the one that is missing');
+  assert.equal('sugarG' in egg, false, 'nothing in either place stays absent');
+  assert.equal('sodiumMg' in egg, false);
+  assert.equal(iosFile.data.food[0].sugarG, undefined, "the file's own objects are not changed");
+});
+
+test('ext.ios ids match case-insensitively', () => {
+  const lower = iosFile.data.food.map((e) => ({ ...e, id: e.id.toLowerCase() }));
+  assert.equal(LiftBackup.foodWithIosDetails(lower, iosFile.ext)[0].sugarG, 18.5);
+});
+
+test('recipes take them into nutritionPerServing, and only when it exists', () => {
+  const [soup, stew] = LiftBackup.recipesWithIosDetails(iosFile.data.recipes, iosFile.ext);
+  assert.equal(soup.nutritionPerServing.sugarG, 11);
+  assert.equal(soup.nutritionPerServing.sodiumMg, 640);
+  assert.equal(soup.nutritionPerServing.calories, 120);
+  assert.equal(stew.nutritionPerServing, null, 'no macros, nowhere to hold them');
+});
+
+test('a file with no ext restores exactly as before', () => {
+  const food = [{ id: 'a', calories: 1 }];
+  assert.deepEqual(LiftBackup.foodWithIosDetails(food, undefined), food);
+  assert.deepEqual(LiftBackup.recipesWithIosDetails([{ id: 'r', nutritionPerServing: { calories: 1 } }], {}),
+    [{ id: 'r', nutritionPerServing: { calories: 1 } }]);
+});
