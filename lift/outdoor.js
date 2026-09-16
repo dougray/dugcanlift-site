@@ -216,6 +216,101 @@
     };
   }
 
+  // MARK: - Sending to a coach (SHARE-FORMAT.md, "Outdoor")
+
+  var TRIM_METERS = 200;
+  var MAX_SHARED_POINTS = 150;
+  var typeIndex = function (key) { return TYPES.findIndex(function (t) { return t.key === key; }); };
+
+  /** The day's `o` tuples, in start order. */
+  function shareDay(activities) {
+    return (activities || [])
+      .filter(function (a) { return a && a.endedAtEpochMs != null && typeIndex(a.activityType) >= 0; })
+      .sort(function (a, b) { return a.startedAtEpochMs - b.startedAtEpochMs; })
+      .map(function (a) {
+        return [typeIndex(a.activityType), Math.round(durationMs(a) / 1000),
+          Math.round(a.distanceMeters || 0), Math.round(a.elevationGainMeters || 0)];
+      });
+  }
+
+  /** `ob`, or null when there is nothing finished. */
+  function shareBests(activities) {
+    var out = bests(activities).map(function (b) {
+      return [typeIndex(b.type), b.count,
+        b.longestDistanceMeters == null ? null : Math.round(b.longestDistanceMeters),
+        b.longestDurationMs == null ? null : Math.round(b.longestDurationMs / 1000),
+        b.fastestPaceSecondsPerMeter == null ? null : Math.round(b.fastestPaceSecondsPerMeter * 1000)];
+    });
+    return out.length ? out : null;
+  }
+
+  /** The route with its first and last 200 m removed, then thinned to 150. */
+  function trimAndThin(route) {
+    var n = (route || []).length;
+    if (n < 2) return [];
+    var along = [0];
+    for (var i = 1; i < n; i++) {
+      along.push(along[i - 1] + haversineMeters(route[i - 1][LAT], route[i - 1][LON], route[i][LAT], route[i][LON]));
+    }
+    var total = along[n - 1];
+    var kept = route.filter(function (p, i) { return along[i] >= TRIM_METERS && total - along[i] >= TRIM_METERS; });
+    if (kept.length <= MAX_SHARED_POINTS) return kept;
+    var thinned = [];
+    for (var j = 0; j < MAX_SHARED_POINTS; j++) {
+      thinned.push(kept[Math.floor(j * (kept.length - 1) / (MAX_SHARED_POINTS - 1) + 0.5)]);
+    }
+    return thinned;
+  }
+
+  /** Google's encoded polyline, precision 5, rounding as the format specifies. */
+  function encodePolyline(points) {
+    var out = '', prevLat = 0, prevLon = 0;
+    var chunk = function (value) {
+      var v = value < 0 ? ~(value << 1) : value << 1;
+      while (v >= 0x20) { out += String.fromCharCode((0x20 | (v & 0x1f)) + 63); v >>= 5; }
+      out += String.fromCharCode(v + 63);
+    };
+    points.forEach(function (p) {
+      var lat = Math.floor(p[LAT] * 100000 + 0.5), lon = Math.floor(p[LON] * 100000 + 0.5);
+      chunk(lat - prevLat); chunk(lon - prevLon);
+      prevLat = lat; prevLon = lon;
+    });
+    return out;
+  }
+
+  /** Back to compact points `[lat, lon]`, for drawing. */
+  function decodePolyline(text) {
+    var points = [], index = 0, lat = 0, lon = 0;
+    var next = function () {
+      var result = 0, shift = 0, b;
+      do {
+        if (index >= text.length) return null;
+        b = text.charCodeAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      return (result & 1) ? ~(result >> 1) : (result >> 1);
+    };
+    while (index < (text || '').length) {
+      var dLat = next(), dLon = next();
+      if (dLat === null || dLon === null) break;
+      lat += dLat; lon += dLon;
+      points.push([lat / 100000, lon / 100000]);
+    }
+    return points;
+  }
+
+  /** `lr`, or null: no finished route, or nothing left once trimmed. */
+  function shareLastRoute(activities) {
+    var last = lastRoute(activities);
+    if (!last) return null;
+    var kept = trimAndThin(last.route);
+    if (kept.length < 2) return null;
+    return [typeIndex(last.activityType), Math.floor(last.startedAtEpochMs / 1000),
+      Math.round(durationMs(last) / 1000), Math.round(last.distanceMeters || 0),
+      Math.round(last.elevationGainMeters || 0), encodePolyline(kept)];
+  }
+
   global.LiftOutdoor = {
     TYPES: TYPES,
     MAX_ACCURACY_METERS: MAX_ACCURACY_METERS,
@@ -234,5 +329,11 @@
     project: project,
     toBackup: toBackup,
     fromBackup: fromBackup,
+    shareDay: shareDay,
+    shareBests: shareBests,
+    shareLastRoute: shareLastRoute,
+    trimAndThin: trimAndThin,
+    encodePolyline: encodePolyline,
+    decodePolyline: decodePolyline,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

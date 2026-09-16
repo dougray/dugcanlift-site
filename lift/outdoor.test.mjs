@@ -170,3 +170,57 @@ test('an unfinished or unknown activity is not restored', () => {
   assert.equal(O.fromBackup({ ...a, activityType: 'SWIM' }), null);
   assert.equal(O.fromBackup({ ...a, id: '' }), null);
 });
+
+// MARK: - Sending to a coach (SHARE-FORMAT.md, "Outdoor")
+
+const shareInput = JSON.parse(readFileSync('lift/fixtures/outdoor-share-input.json', 'utf8')).outdoor;
+const shareExpected = JSON.parse(readFileSync('lift/fixtures/outdoor-share-expected.json', 'utf8'));
+const shareActivities = shareInput.map((a) => O.fromBackup(a) || { ...a, route: [] });
+
+test('the polyline matches Google\'s own worked example', () => {
+  assert.equal(O.encodePolyline([[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]]), '_p~iF~ps|U_ulLnnqC_mqNvxq`@');
+  assert.deepEqual(O.decodePolyline('_p~iF~ps|U_ulLnnqC_mqNvxq`@'), [[38.5, -120.2], [40.7, -120.95], [43.252, -126.453]]);
+});
+
+test('negative halves round the way the format says, not the way Math.round does', () => {
+  // floor(v * 1e5 + 0.5): -0.000005 becomes 0, where a round-half-away-from-zero gives -1.
+  assert.equal(O.encodePolyline([[0, -0.000005]]), '??');
+});
+
+test('the shared fixture still produces exactly what it says', () => {
+  assert.deepEqual(O.shareDay(shareActivities), shareExpected.o);
+  assert.deepEqual(O.shareBests(shareActivities), shareExpected.ob);
+  assert.deepEqual(O.shareLastRoute(shareActivities), shareExpected.lr);
+});
+
+test('the first and last 200 m of a route never leave the phone', () => {
+  const loop = shareActivities.find((a) => a.id === 'run-loop');
+  const start = loop.route[0];
+  const sent = O.decodePolyline(shareExpected.lr[5]);
+  assert.equal(sent.length, 150, 'thinned to 150');
+  sent.forEach(([lat, lon]) => {
+    assert.ok(O.haversineMeters(start[0], start[1], lat, lon) > 150,
+      'every point sent is well clear of the front door');
+  });
+});
+
+test('a route with nothing left after trimming is not sent, and no older one is sent instead', () => {
+  const walk = shareActivities.find((a) => a.id === 'walk-short');
+  const olderLongRun = shareActivities.find((a) => a.id === 'run-long');
+  assert.equal(O.trimAndThin(walk.route).length, 0);
+  assert.equal(O.shareLastRoute([olderLongRun, walk]), null);
+});
+
+test('an unfinished activity is in neither the day nor the bests', () => {
+  assert.equal(shareExpected.o.length, 3);
+  assert.deepEqual(shareExpected.ob.map((b) => b[0]), [0, 1], 'no hike row');
+});
+
+test('the fixture link decodes to the same parts', async () => {
+  const { inflateRawSync } = await import('node:zlib');
+  const link = readFileSync('lift/fixtures/outdoor-share-link.txt', 'utf8').trim();
+  const payload = JSON.parse(inflateRawSync(Buffer.from(link.split('#1z')[1], 'base64url')));
+  assert.deepEqual(payload.ob, shareExpected.ob);
+  assert.deepEqual(payload.lr, shareExpected.lr);
+  assert.deepEqual(payload.d.flatMap((d) => d.o), shareExpected.o);
+});
