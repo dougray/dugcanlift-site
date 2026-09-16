@@ -174,6 +174,10 @@ function expandDay(raw, dictExercises, dictFoods) {
   if (raw.fo) day.focus = raw.fo;
   if (raw.bw != null) day.bodyweightLb = raw.bw;
   if (raw.st != null) day.steps = raw.st;
+  if (Array.isArray(raw.o)) {
+    const outdoor = CoachRoute.readDay(raw.o);
+    if (outdoor.length) day.outdoor = outdoor;
+  }
 
   if (Array.isArray(raw.w)) {
     day.exercises = raw.w.map(([index, sets]) => {
@@ -237,6 +241,10 @@ function expand(payload) {
     exportedAt: (payload.z || 0) * 1000,
     coverage: [payload.r, payload.t || payload.r],
     days,
+    // All-time bests and the newest route, per SHARE-FORMAT.md "Outdoor". The
+    // route is present only when the client chose to send it.
+    outdoorBests: CoachRoute.readBests(payload.ob),
+    lastRoute: CoachRoute.readLastRoute(payload.lr),
   };
 }
 
@@ -267,6 +275,8 @@ function absorb(incoming) {
       name: incoming.name, sex: incoming.sex, age: incoming.age,
       heightIn: incoming.heightIn, unit: incoming.unit, platform: incoming.platform,
       goal: incoming.goal, exportedAt: incoming.exportedAt,
+      // Absent clears: a client who stops sending their route expects it gone.
+      outdoorBests: incoming.outdoorBests, lastRoute: incoming.lastRoute,
     });
   }
   existing.receivedAt = Date.now();
@@ -623,7 +633,119 @@ function renderClient() {
   renderFuel(client);
   renderBodyweight(client, unit);
   renderLifts(client, unit);
+  renderOutdoor(client, unit);
   renderSessions(client, unit);
+}
+
+/* ---------------- outdoor ----------------
+ *
+ * What the client ran, walked and hiked, from SHARE-FORMAT.md "Outdoor". The
+ * reading and formatting rules are route.js. The map is the client's newest
+ * route with its first and last 200 m already cut off by their app, drawn on a
+ * canvas rather than street tiles -- a map server would otherwise learn where
+ * the client runs. */
+
+const hasOutdoor = (day) => !!(day && day.outdoor && day.outdoor.length);
+
+function drawRoute(canvas, points, aspect) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const h = Math.round(w / aspect);
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  const pts = CoachRoute.project(points, w, h);
+  const accent = LiftAppearance.cssColor('var(--accent)');
+  ctx.strokeStyle = accent;
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+  ctx.stroke();
+  const dot = (p, r, color) => { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill(); };
+  dot(pts[0], 5, LiftAppearance.cssColor('var(--accent-2)'));
+  dot(pts[pts.length - 1], 6, accent);
+}
+
+function outdoorStats(parent, stats) {
+  const grid = el('div', 'stats');
+  stats.forEach(([label, value]) => {
+    const cell = el('div');
+    cell.appendChild(el('div', 'muted small', label));
+    cell.appendChild(el('div', 'stat', value));
+    grid.appendChild(cell);
+  });
+  parent.appendChild(grid);
+}
+
+function renderOutdoor(client, unit) {
+  const node = $('#client-outdoor');
+  node.innerHTML = '';
+  const du = CoachRoute.distanceUnit(unit);
+  const recent = dayKeys(client).filter((k) => hasOutdoor(client.days[k])).reverse();
+  const route = client.lastRoute;
+  const bests = client.outdoorBests;
+  const heading = $('#client-outdoor-heading');
+
+  if (!route && !bests && !recent.length) {
+    heading.classList.add('hidden');
+    return;
+  }
+  heading.classList.remove('hidden');
+
+  if (route) {
+    const card = el('div', 'card');
+    card.appendChild(el('strong', 'cardtitle', 'Last route'));
+    const canvas = el('canvas', 'route');
+    card.appendChild(canvas);
+    const line = el('div', 'routeline');
+    line.appendChild(el('span', null, CoachRoute.typeLabel(route.type)));
+    line.appendChild(el('span', 'muted', new Date(route.startedAt).toLocaleDateString(undefined,
+      { weekday: 'short', month: 'short', day: 'numeric' })));
+    card.appendChild(line);
+    outdoorStats(card, [
+      ['Distance', CoachRoute.distanceText(route.distanceM, du)],
+      ['Time', route.durationSec != null ? CoachRoute.durationText(route.durationSec) : '—'],
+      ['Pace', CoachRoute.activityPace(route.distanceM, route.durationSec, du) || '—'],
+    ]);
+    card.appendChild(el('p', 'muted small', 'The first and last 200 m are left off by the client\'s app.'));
+    node.appendChild(card);
+    drawRoute(canvas, route.points, 2);
+  }
+
+  if (bests) {
+    const card = el('div', 'card');
+    card.appendChild(el('strong', 'cardtitle', 'Personal bests'));
+    bests.forEach((b) => {
+      card.appendChild(el('div', 'besthead',
+        `${CoachRoute.typeLabel(b.type)} · ${b.count} ${b.count === 1 ? 'activity' : 'activities'}`));
+      outdoorStats(card, [
+        ['Farthest', b.farthestM != null ? CoachRoute.distanceText(b.farthestM, du) : '—'],
+        ['Longest', b.longestSec != null ? CoachRoute.durationText(b.longestSec) : '—'],
+        ['Fastest pace', b.fastestSecPerKm != null ? CoachRoute.paceText(b.fastestSecPerKm, du) : '—'],
+      ]);
+    });
+    node.appendChild(card);
+  }
+
+  if (recent.length) {
+    const card = el('div', 'card');
+    card.appendChild(el('strong', 'cardtitle', 'Recent'));
+    recent.slice(0, 10).forEach((key) => {
+      client.days[key].outdoor.forEach((a) => {
+        const row = el('div', 'statline');
+        row.appendChild(el('span', null, `${shortDate(key)} · ${CoachRoute.typeLabel(a.type)}`));
+        row.appendChild(el('span', 'muted',
+          `${CoachRoute.distanceText(a.distanceM, du)} · ${a.durationSec != null ? CoachRoute.durationText(a.durationSec) : '—'}`));
+        card.appendChild(row);
+      });
+    });
+    node.appendChild(card);
+  }
 }
 
 function renderClientHead(client, unit) {
@@ -883,7 +1005,8 @@ function renderSessions(client, unit) {
   const node = $('#session-log');
   node.innerHTML = '';
 
-  const keys = dayKeys(client).filter((k) => hasTraining(client.days[k]) || hasFood(client.days[k]));
+  const keys = dayKeys(client).filter((k) =>
+    hasTraining(client.days[k]) || hasFood(client.days[k]) || hasOutdoor(client.days[k]));
   if (!keys.length) {
     node.appendChild(el('p', 'muted', 'Nothing logged yet.'));
     return;
@@ -899,6 +1022,9 @@ function renderSessions(client, unit) {
     const parts = [];
     if (hasTraining(day)) parts.push(`${daySets(day)} sets · ${weightText(dayVolume(day), unit)}`);
     if (hasFood(day)) parts.push(`${num(day.foodTotals.calories)} kcal · ${day.foodTotals.proteinG}g protein`);
+    if (hasOutdoor(day)) {
+      parts.push(day.outdoor.map((a) => `${CoachRoute.typeLabel(a.type)} ${CoachRoute.distanceText(a.distanceM, CoachRoute.distanceUnit(unit))}`).join(', '));
+    }
     left.appendChild(el('div', 'muted', parts.join('  ·  ')));
     summary.appendChild(left);
     if (day.focus) summary.appendChild(el('span', 'pill', day.focus.toLowerCase()));

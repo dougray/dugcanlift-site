@@ -417,3 +417,34 @@ code { background: var(--bg); padding: 1px 5px; border-radius: 4px; font-size: 1
 .delta.down { color: var(--accent); }
 
 .client-row .metrics b.under { color: var(--accent); }
+
+/* ---------------- outdoor ---------------- */
+
+.small { font-size: 13px; }
+.cardtitle { display: block; margin-bottom: 10px; }
+canvas.route {
+  width: 100%;
+  display: block;
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--rule);
+  margin: 4px 0 10px;
+}
+.routeline { display: flex; gap: 8px; font-weight: 700; margin-bottom: 8px; }
+.routeline .muted { margin: 0; font-weight: 600; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 6px 0;
+}
+.stats .muted { margin: 0; }
+.stat {
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.besthead { font-weight: 700; margin-top: 14px; }
