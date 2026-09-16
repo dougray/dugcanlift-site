@@ -1644,6 +1644,9 @@ function openRecipeForm(id) {
   $('#r-p').value = n ? n.proteinG : '';
   $('#r-c').value = n ? n.carbsG : '';
   $('#r-f').value = n ? n.fatG : '';
+  // Fibre is often absent on a recipe that has the other four, so a blank
+  // stays blank rather than showing a zero nobody measured.
+  $('#r-fib').value = n && n.fiberG ? n.fiberG : '';
   $('#r-delete').classList.toggle('hidden', !r);
 
   // A recipe already carrying macros counts as typed: reopening it to add one
@@ -1651,6 +1654,10 @@ function openRecipeForm(id) {
   ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
     $(selector).dataset.typed = n ? '1' : '';
   });
+  // Fibre counts as typed only when the recipe actually has some. A recipe
+  // without it leaves the field open to the ingredient tally rather than
+  // pinning it to a blank nobody chose.
+  $('#r-fib').dataset.typed = n && n.fiberG ? '1' : '';
   ingredientTally = null;
   $('#ing-query').value = '';
   $('#ing-results').innerHTML = '';
@@ -1685,14 +1692,18 @@ $('#r-save').onclick = () => {
     const raw = $(sel).value.trim();
     return raw === '' ? null : parseFloat(raw);
   };
-  const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f')];
+  const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f'), num('#r-fib')];
   // Null unless something was typed. An untouched form must not write zeros.
+  //
+  // Fibre used to be hard-coded to 0 here because there was no field for it,
+  // so a recipe that arrived carrying fibre lost it the first time anyone
+  // opened it and pressed Save.
   const nutrition = typed.every((v) => v === null) ? null : {
     calories: typed[0] || 0,
     proteinG: typed[1] || 0,
     carbsG: typed[2] || 0,
     fatG: typed[3] || 0,
-    fiberG: 0,
+    fiberG: typed[4] || 0,
   };
 
   const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
@@ -2587,6 +2598,7 @@ function applyTally() {
     '#r-p': ingredientTally.proteinG / servings,
     '#r-c': ingredientTally.carbsG / servings,
     '#r-f': ingredientTally.fatG / servings,
+    '#r-fib': ingredientTally.fiberG / servings,
   };
 
   Object.entries(perServing).forEach(([selector, value]) => {
@@ -2601,7 +2613,7 @@ function applyTally() {
     + `${num(ingredientTally.calories / servings)} a serving.`;
 }
 
-['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
+['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((selector) => {
   // A field the coach edits stops being ours to fill in.
   $(selector).addEventListener('input', (e) => { e.target.dataset.typed = '1'; });
 });
@@ -2694,7 +2706,7 @@ async function useImportedRecipe(index) {
   $('#import-panel').classList.add('hidden');
 
   ingredientTally = null;
-  ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((s) => { $(s).dataset.typed = ''; $(s).value = ''; });
+  ['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((s) => { $(s).dataset.typed = ''; $(s).value = ''; });
 
   const note = $('#ing-tally');
   note.textContent = 'Costing the ingredients…';
