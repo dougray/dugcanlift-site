@@ -97,6 +97,65 @@ how both apps already store them, and `meal` is 0 breakfast, 1 lunch, 2 dinner,
 3 snack. The gram-based amount (`amountGrams`) is not included in
 this compact format; it appears only in the fuller BACKUP-FORMAT.
 
+### Outdoor
+
+Runs, walks and hikes a client recorded with GPS. Three optional parts, all
+added without a version bump: a decoder that predates them ignores them.
+
+**On a day** — `o`, one tuple per finished activity that started that day, in
+start order. A day holding only an outdoor activity is still a day.
+
+```jsonc
+"o": [ [0, 1720, 5012, 38] ]   // [type, durationSec, distanceMeters, climbMeters]
+```
+
+`type` is 0 run, 1 walk, 2 hike. All four numbers are whole, rounded to the
+nearest. `distanceMeters` and `climbMeters` are 0 when nothing was measured.
+
+**Personal bests** — top-level `ob`, all-time rather than the window, one entry
+per type with at least one finished activity, in type order:
+
+```jsonc
+"ob": [ [0, 14, 21097, 7260, 301] ]
+//     [type, count, farthestMeters, longestSec, fastestSecPerKm]
+```
+
+Any of the last three is `null` when there is nothing to show — no distance
+ever measured, or no activity of at least **1 km**, the shortest that may set
+a pace. A best of zero is never sent. Rounded to the nearest whole number.
+
+**Last route** — top-level `lr`, sent **only when the client has chosen to
+include it**. Off by default on every sender.
+
+```jsonc
+"lr": [0, 1755590400, 1720, 5012, 38, "_p~iF~ps|U_ulLnnqC_mqNvxq`@"]
+//     [type, startedAtEpochSec, durationSec, distanceMeters, climbMeters, polyline]
+```
+
+It is the newest finished activity with a route of two or more points. The
+four numbers are that whole activity, untrimmed. The polyline is not:
+
+1. **Trim.** Walk the route adding haversine distance (earth radius
+   6,371,000 m). Drop every point less than **200 m** along the route from
+   its first point, and every point less than 200 m from its last. A route
+   usually starts and ends at someone's front door; this is what keeps it
+   there. If fewer than two points survive, `lr` is not sent — the sender does
+   not fall back to an older route.
+2. **Thin.** More than **150** points left: keep the points at index
+   `floor(i * (n - 1) / 149 + 0.5)` for `i` = 0…149, where `n` is the count.
+3. **Encode** as a Google encoded polyline at precision 5, rounding each
+   coordinate as `floor(value * 100000 + 0.5)`. Spelled out because the
+   platforms' own `round` functions disagree on negative halves, and every
+   sender must produce the same string.
+
+A newer payload's `ob` and `lr` replace the coach's stored ones, and an absent
+one clears it. A client who turns the route off expects it gone, not frozen at
+the last one they sent.
+
+A sender's shared test lives with LIFT web: `lift/fixtures/outdoor-share-input.json`
+is a set of activities in the backup format's `outdoor[]` shape, and
+`outdoor-share-expected.json` is exactly the `o`, `ob` and `lr` it must produce.
+
 ### Steps
 
 Read from the platform's own health store at send time — Health Connect on
