@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1c1b19">
+<!-- Before the stylesheet, so the page never paints the wrong palette first. -->
+<script src="appearance.js" data-key="coach.appearance"></script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -284,6 +286,12 @@
 
 <!-- ---------------- CONNECT ---------------- -->
 <section id="connect" class="tab">
+  <h2>Appearance</h2>
+  <div class="card">
+    <div class="chips" id="appearance-mode"></div>
+    <p class="muted">System follows your device's light or dark setting.</p>
+  </div>
+
   <h2>Your details</h2>
   <div class="card">
     <p class="muted">Only used to write the invite below. Stays on this device.</p>
