@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shish-barak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SY",
+    "nativeName": "شيش برك",
+    "summary": "Small lamb dumplings baked and then cooked in a garlic and mint yoghurt sauce.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      50,
+      15,
+      20,
+      40,
+      15,
+      15,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shish-barak.jpg",
+      "author": "Elena777 ; cropped by Off-shell",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shish barak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "180 ml Water",
+        "item": "water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Lamb",
+        "item": "lamb",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "minced"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "50 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tsp Baharat",
+        "item": "baharat",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 l Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "2 tbsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Dried mint",
+        "item": "dried mint",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Ghee",
+        "item": "ghee",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "300 g Rice",
+        "item": "rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, water and salt and rest it forty minutes.",
+      "Fry the onion with the mince, baharat, salt and pepper, add the pine nuts and let it cool.",
+      "Roll the dough thin and cut four-centimetre rounds.",
+      "Shape half-moons around the filling and join the ends into a ring, like tortellini.",
+      "Bake the dumplings at 200 °C for twelve minutes, until golden.",
+      "Whisk the yoghurt with the starch, egg and salt and bring it to the boil, stirring without stopping in one direction.",
+      "Lower the dumplings into the sauce, cook ten minutes and pour over ghee with garlic and mint."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 38,
+      "carbsG": 64,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

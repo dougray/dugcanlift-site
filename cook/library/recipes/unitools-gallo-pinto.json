@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gallo-pinto",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CR",
+    "nativeName": "Gallo pinto",
+    "summary": "Yesterday's rice fried with black beans and Salsa Lizano. The Costa Rican breakfast, every day.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      7,
+      5,
+      4,
+      9,
+      2,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gallo-pinto.jpg",
+      "author": "C T Johansson",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gallo pinto",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "day-old, cold"
+      },
+      {
+        "rawText": "400 g Black beans",
+        "item": "black beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "cooked, with liquid"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Salsa Lizano",
+        "item": "salsa lizano",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the finely chopped onion, pepper and garlic in oil until soft, five minutes.",
+      "Add the beans with a ladle of their liquid and warm them three minutes.",
+      "Add the cold rice and stir, breaking up lumps with a spatula.",
+      "Add the Salsa Lizano, season and fry over medium heat for seven minutes, stirring occasionally.",
+      "Stir in the chopped coriander and take it off the heat.",
+      "Serve with fried eggs, fried plantain and, if you like, soured cream or fresh cheese."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 18,
+      "carbsG": 76,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

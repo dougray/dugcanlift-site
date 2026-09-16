@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-galayet-bandora",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JO",
+    "nativeName": "قلاية بندورة",
+    "summary": "Tomatoes cooked down in olive oil with chilli and garlic to a thick sauce.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      3,
+      15,
+      5,
+      15,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Galayet bandora",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Tomatoes",
+        "item": "tomatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "ripe"
+      },
+      {
+        "rawText": "120 ml Olive oil",
+        "item": "olive oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Green chilli",
+        "item": "green chilli",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Flatbreads",
+        "item": "flatbreads",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the tomatoes into large wedges, skins and seeds left in.",
+      "Heat the olive oil in a wide pan and soften the onion in it.",
+      "Add the crushed garlic and the whole green chillies and warm them a minute.",
+      "Tip in the tomatoes, salt them and stew over a medium heat, stirring now and then.",
+      "Crush the tomatoes with a spoon once the skins start to lift from the flesh.",
+      "Reduce it fifteen minutes more, until the oil rises at the edges as a separate layer.",
+      "Scatter with dried mint and serve it in the pan with flatbread."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 8,
+      "carbsG": 32,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

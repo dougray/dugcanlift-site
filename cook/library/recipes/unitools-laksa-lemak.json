@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-laksa-lemak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MY",
+    "nativeName": "Laksa lemak",
+    "summary": "Noodles in a coconut broth built on a rempah paste, with prawns and tofu. The paste is fried until the oil separates.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      15,
+      13,
+      5,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/laksa-lemak.jpg",
+      "author": "Alpha from Melbourne, Australia",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Laksa lemak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Rice noodles",
+        "item": "rice noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Prawns",
+        "item": "prawns",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 g Fried tofu puffs",
+        "item": "fried tofu puffs",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "500 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 ml Prawn or chicken stock",
+        "item": "prawn or chicken stock",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "30 g Galangal",
+        "item": "galangal",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "8 Dried chillies",
+        "item": "dried chillies",
+        "qty": 8
+      },
+      {
+        "rawText": "6 Shallots",
+        "item": "shallots",
+        "qty": 6
+      },
+      {
+        "rawText": "1 tbsp Belacan shrimp paste",
+        "item": "belacan shrimp paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Bean sprouts, cucumber, lime, to taste",
+        "item": "bean sprouts, cucumber, lime"
+      },
+      {
+        "rawText": "80 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 80,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Soak the dried chillies in boiling water for fifteen minutes, then blend them with the shallots, lemongrass, galangal, turmeric and belacan to a smooth paste.",
+      "Fry the paste in the oil over medium heat for fifteen minutes, stirring. It is ready when the oil starts separating and rising at the edges.",
+      "Pour in the stock, bring it to the boil and simmer ten minutes. Add the prawns and tofu for three minutes.",
+      "Add the coconut milk and warm it through without letting it boil hard. Season.",
+      "Divide the cooked noodles between bowls, ladle the broth over and serve the sprouts, cucumber and lime alongside."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 32,
+      "carbsG": 62,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

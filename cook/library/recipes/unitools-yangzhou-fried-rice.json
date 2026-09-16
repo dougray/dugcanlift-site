@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-yangzhou-fried-rice",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CN",
+    "nativeName": "扬州炒饭",
+    "summary": "Rice with prawns, ham and egg, where every grain stays separate under a thin film of egg.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      2,
+      3,
+      3,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/yangzhou-fried-rice.jpg",
+      "author": "Ceeseven",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Yangzhou fried rice",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "cold, from the day before"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "150 g Prawns",
+        "item": "prawns",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Cooked ham",
+        "item": "cooked ham",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "100 g Peas",
+        "item": "peas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "3 Spring onion",
+        "item": "spring onion",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Shaoxing wine",
+        "item": "shaoxing wine",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Light soy sauce",
+        "item": "light soy sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and white pepper, to taste",
+        "item": "salt and white pepper"
+      }
+    ],
+    "steps": [
+      "Separate two yolks and rub them through the cold rice with your hands until every grain is coated. Beat the remaining eggs separately.",
+      "Heat the wok with a spoon of oil until it smokes, pour in the beaten eggs, let them set and break them into pieces. Set them aside.",
+      "Fry the prawns for ninety seconds, add the ham, carrot and peas and cook a minute more. Add them to the eggs.",
+      "Add the rest of the oil, tip in the rice and fry three minutes at full heat, tossing constantly. The grains should be jumping in the wok, not sitting in it.",
+      "Return everything to the wok, pour the wine down the side and add the soy, season and toss for thirty seconds more. Scatter over the spring onion."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 26,
+      "carbsG": 68,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

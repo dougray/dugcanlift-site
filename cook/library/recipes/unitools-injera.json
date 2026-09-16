@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-injera",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ET",
+    "nativeName": "እንጀራ",
+    "summary": "A sour, porous flatbread of teff on a three-day ferment, serving as both bread and plate.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      10,
+      5,
+      15,
+      15,
+      8,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/injera.jpg",
+      "author": "Artem.G",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Injera",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Teff flour",
+        "item": "teff flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "1.2 l Water",
+        "item": "water",
+        "qty": 1.2,
+        "unit": "l"
+      },
+      {
+        "rawText": "100 ml Ersho starter",
+        "item": "ersho starter",
+        "qty": 100,
+        "unit": "ml",
+        "note": "from a previous batch"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "20 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 20,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Mix the teff flour with water to the consistency of pouring cream, without lumps.",
+      "Cover it with a cloth and leave it at room temperature for three days, without stirring.",
+      "Pour off the liquid that has separated on top; it is bitter and must not be left in.",
+      "Take a cup of the batter, cook it in boiling water to a thick paste and stir it back in.",
+      "Let the batter stand another two hours and let it down with water to a very thin cream.",
+      "Heat a wide pan, oil it lightly and pour the batter in a spiral from the rim to the centre.",
+      "Cover for two minutes, until eyes appear all over the surface, and lift it off without turning."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 280,
+      "proteinG": 9,
+      "carbsG": 56,
+      "fatG": 3,
+      "estimated": true
+    }
+  }
+}

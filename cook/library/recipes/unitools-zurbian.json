@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zurbian",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "YE",
+    "nativeName": "زربيان",
+    "summary": "Yemeni rice with lamb and potato, coloured with saffron and baked sealed.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      35,
+      18,
+      70,
+      18,
+      7,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/zurbian.jpg",
+      "author": "AninnymouseEditor",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Zurbian",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Lamb",
+        "item": "lamb",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "bone-in"
+      },
+      {
+        "rawText": "600 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "300 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Hawaij spice mix",
+        "item": "hawaij spice mix",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 6
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Marinate the lamb in yoghurt with the hawaij and salt for two hours.",
+      "Rinse the rice until the water runs clear and soak it thirty minutes.",
+      "Fry the onion in ghee to a deep gold and set half of it aside.",
+      "Brown the meat with the remaining onion, add the tomatoes and cardamom and stew an hour.",
+      "Fry the potato rounds to a golden crust in a separate pan.",
+      "Boil the rice in salted water for seven minutes, to half done, and drain it.",
+      "Layer the meat, rice, potato and raisins, streak the saffron over and bake it covered for thirty minutes."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 110,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 78,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

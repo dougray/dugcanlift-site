@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kitfo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ET",
+    "nativeName": "ክትፎ",
+    "summary": "Hand-chopped raw beef worked with spiced niter kibbeh butter and mitmita spice.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      20,
+      8,
+      25,
+      5,
+      3,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kitfo.jpg",
+      "author": "Milo.G",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kitfo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Beef fillet",
+        "item": "beef fillet",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "very fresh"
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "for the niter kibbeh"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "5 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 5
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Fenugreek seeds",
+        "item": "fenugreek seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Mitmita spice",
+        "item": "mitmita spice",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 g Ayib or fresh curd",
+        "item": "ayib or fresh curd",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "300 g Stewed collard greens",
+        "item": "stewed collard greens",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "4 Injera",
+        "item": "injera",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Melt the butter over a low heat with the ginger, garlic, cardamom, cinnamon and fenugreek.",
+      "Hold it twenty minutes without boiling, until the foam settles and the butter turns clear.",
+      "Strain the niter kibbeh through muslin and keep it warm.",
+      "Trim every membrane and sinew from the beef and chop it very fine with a knife, almost to a paste.",
+      "Work the warm niter kibbeh, mitmita and salt into the meat by hand for two minutes.",
+      "Warm the mixture in a pan for thirty seconds to body temperature, without letting it whiten.",
+      "Serve it on injera with the ayib cheese and stewed greens alongside."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 46,
+      "carbsG": 12,
+      "fatG": 54,
+      "estimated": true
+    }
+  }
+}

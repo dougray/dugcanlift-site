@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mantu-afghan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AF",
+    "nativeName": "منتو",
+    "summary": "Steamed dumplings of beef and onion under garlic yoghurt and a yellow split pea sauce.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      52,
+      12,
+      40,
+      6,
+      20,
+      25,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mantu-afghan.jpg",
+      "author": "Grueslayer",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Afghan mantu",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "230 ml Water",
+        "item": "water",
+        "qty": 230,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Minced beef",
+        "item": "minced beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "200 g Yellow split peas",
+        "item": "yellow split peas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "500 ml Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Dried mint",
+        "item": "dried mint",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water and salt, work it ten minutes and rest it forty under film.",
+      "Mix the mince with the finely chopped onion, salt, pepper and coriander. Add no water.",
+      "Boil the split peas forty minutes until soft, with a spoon of tomato paste and salt.",
+      "Crush the garlic with salt, stir it into the yoghurt and thin it with water to pouring consistency.",
+      "Roll the dough thin and cut it into eight-centimetre squares.",
+      "Add the filling and bring the corners together crosswise, leaving four open corners.",
+      "Steam twenty-five minutes. Set them on a layer of yoghurt, spoon over the pea sauce, more yoghurt, and dust with mint."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 30,
+      "carbsG": 70,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

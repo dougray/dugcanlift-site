@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mamaliga",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RO",
+    "nativeName": "Mămăligă",
+    "summary": "A firm cornmeal porridge, cut with a thread rather than a knife.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      5,
+      30,
+      4,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mamaliga.jpg",
+      "author": "",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mămăligă",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Medium cornmeal",
+        "item": "medium cornmeal",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "1.2 l Water",
+        "item": "water",
+        "qty": 1.2,
+        "unit": "l"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 g Brined cheese",
+        "item": "brined cheese",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "crumbled"
+      },
+      {
+        "rawText": "Soured cream, to taste",
+        "item": "soured cream"
+      },
+      {
+        "rawText": "2 tsp Salt",
+        "item": "salt",
+        "qty": 2,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Bring the salted water to the boil. Set aside a handful of the meal; it is wanted at the end.",
+      "Pour the meal in as a thin stream, whisking without stopping. Do not pause until all of it is in.",
+      "Drop to the lowest heat and cook thirty minutes, stirring with a wooden spoon every three or four minutes. The mass pulls away from the sides.",
+      "Add the reserved handful of meal and work it in: it gives the light graininess mămăligă is valued for.",
+      "Stir in the butter, turn it out onto a board and let it stand five minutes. Cut it into slabs with thread and serve with the cheese and soured cream."
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 12,
+      "carbsG": 48,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-roast-beef-yorkshire",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GB",
+    "nativeName": "Roast beef and Yorkshire pudding",
+    "summary": "A beef joint roasted whole, with an airy batter pudding baked in beef dripping.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      70,
+      60,
+      12,
+      65,
+      22,
+      12,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/roast-beef-yorkshire.jpg",
+      "author": "Jeremy Keith (Flickr user \"adactio\")",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Roast beef with Yorkshire pudding",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2 kg Beef joint",
+        "item": "beef joint",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "rib or topside"
+      },
+      {
+        "rawText": "140 g Flour",
+        "item": "flour",
+        "qty": 140,
+        "unit": "g",
+        "grams": 140
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 g Beef dripping",
+        "item": "beef dripping",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "400 ml Beef stock",
+        "item": "beef stock",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Red wine",
+        "item": "red wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp English mustard",
+        "item": "english mustard",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Whisk the flour, eggs, milk and salt into a smooth batter and rest it an hour in the fridge.",
+      "Take the beef out of the fridge an hour before cooking, pat it dry and season it.",
+      "Sear the joint in a pan on all sides to a dark crust, two minutes a face.",
+      "Set it on the vegetables in a tray and roast at 200 °C for twenty minutes, then at 160 °C for forty more for a pink centre.",
+      "Lift the beef out, cover it with foil and rest it twenty minutes; it goes on cooking.",
+      "Heat the pudding tins with a spoon of dripping in each at 220 °C until the fat smokes.",
+      "Pour the cold batter halfway up the tins and bake twenty minutes without opening the door."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 56,
+      "carbsG": 46,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

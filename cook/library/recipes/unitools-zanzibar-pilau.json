@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zanzibar-pilau",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TZ",
+    "nativeName": "Pilau",
+    "summary": "Rice with beef on the island's spices: clove, cardamom, cinnamon and black pepper, and no turmeric at all.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      40,
+      20,
+      4,
+      7,
+      5,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/zanzibar-pilau.jpg",
+      "author": "WeakieFoo",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Zanzibar pilau",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Beef",
+        "item": "beef",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "diced"
+      },
+      {
+        "rawText": "600 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "10 Cloves",
+        "item": "cloves",
+        "qty": 10
+      },
+      {
+        "rawText": "8 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 8
+      },
+      {
+        "rawText": "2 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "3 Potatoes",
+        "item": "potatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and soak it twenty minutes.",
+      "Simmer the beef with half the spices for forty minutes, until tender. Keep the broth.",
+      "Fry the onion in oil over medium heat for twenty minutes, to a deep brown, almost black.",
+      "Add the garlic, ginger and the remaining spices and warm them two minutes.",
+      "Add the cooked meat and the diced potato, stir and warm through five minutes.",
+      "Add the rice, pour in broth at one and a half times the volume of the rice, and season.",
+      "Bring it up, cover and cook twenty minutes on a low heat without lifting the lid. Rest it ten minutes."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 700,
+      "proteinG": 38,
+      "carbsG": 82,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

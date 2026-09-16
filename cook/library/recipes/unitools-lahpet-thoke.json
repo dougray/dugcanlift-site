@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lahpet-thoke",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MM",
+    "nativeName": "လက်ဖက်သုပ်",
+    "summary": "A salad of fermented tea leaves with fried beans, nuts and garlic.",
+    "category": "salad",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      4,
+      5,
+      10,
+      5,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lahpet-thoke.jpg",
+      "author": "Wagaung",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lahpet thoke",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "150 g Fermented tea leaves",
+        "item": "fermented tea leaves",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "80 g Fried peanuts",
+        "item": "fried peanuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 g Fried broad beans",
+        "item": "fried broad beans",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "40 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove",
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Cabbage",
+        "item": "cabbage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "finely shredded"
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Lime",
+        "item": "lime",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the garlic slices in oil until golden and lift them out at once; a few seconds more and they turn bitter.",
+      "Toast the sesame in a dry pan until fragrant, two minutes, stirring.",
+      "Rinse the tea paste in cold water if it is very salty and squeeze it dry.",
+      "Shred the cabbage fine, cut the tomatoes into wedges and the chilli into rings.",
+      "Combine everything in a bowl with the peanuts, beans, sesame, garlic oil, fish sauce and lime juice.",
+      "Toss it with your hands immediately before serving and scatter the fried garlic over the top."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 14,
+      "carbsG": 20,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

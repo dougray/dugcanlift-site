@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-beef-noodle-soup-taiwan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TW",
+    "nativeName": "牛肉麵",
+    "summary": "Wheat noodles in a dark broth of beef shank with fermented bean paste and spices.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      5,
+      6,
+      125,
+      14,
+      10,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/beef-noodle-soup-taiwan.jpg",
+      "author": "MDRX",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Taiwanese beef noodle soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Beef shank",
+        "item": "beef shank",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "with tendon"
+      },
+      {
+        "rawText": "400 g Wheat noodles",
+        "item": "wheat noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 tbsp Doubanjiang",
+        "item": "doubanjiang",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Shaoxing wine",
+        "item": "shaoxing wine",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "50 g Ginger",
+        "item": "ginger",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Star anise",
+        "item": "star anise",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Rock sugar",
+        "item": "rock sugar",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "300 g Bok choy",
+        "item": "bok choy",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "100 g Pickled mustard greens",
+        "item": "pickled mustard greens",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the meat with cold water, bring it up, boil two minutes and drain; this removes the scum.",
+      "Fry the ginger, garlic and doubanjiang in oil for five minutes, until the oil turns red.",
+      "Add the tomatoes, wine and soy sauce, cook three minutes and return the meat to the pot.",
+      "Add water two fingers above the meat, drop in the star anise, cinnamon and sugar and simmer two hours.",
+      "Lift out the meat, cut it into thick slices and return it to the broth for ten minutes.",
+      "Cook the noodles in a separate pot of clean water and blanch the bok choy.",
+      "Divide the noodles between bowls, add the meat and greens, ladle over the broth and top with pickled mustard greens and spring onion."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 48,
+      "carbsG": 68,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

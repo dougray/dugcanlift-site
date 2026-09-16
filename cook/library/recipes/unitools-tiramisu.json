@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tiramisu",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Tiramisù",
+    "summary": "Savoiardi in coffee under a mascarpone cream. No baking, but two places where it can go wrong.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      5,
+      6,
+      6,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tiramisu.jpg",
+      "author": "Missvain",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tiramisu",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Mascarpone",
+        "item": "mascarpone",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "cold"
+      },
+      {
+        "rawText": "4 Egg yolks",
+        "item": "egg yolks",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Egg whites",
+        "item": "egg whites",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "300 g Savoiardi",
+        "item": "savoiardi",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "350 ml Strong espresso",
+        "item": "strong espresso",
+        "qty": 350,
+        "unit": "ml",
+        "note": "cooled"
+      },
+      {
+        "rawText": "2 tbsp Marsala",
+        "item": "marsala",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "optional"
+      },
+      {
+        "rawText": "Cocoa powder, to taste",
+        "item": "cocoa powder"
+      }
+    ],
+    "steps": [
+      "Whisk the yolks with half the sugar over a pan of boiling water, without touching the water, until pale and thick — about seven minutes. Take it off and cool to room temperature.",
+      "Fold the cold mascarpone into the cooled yolks with a spoon rather than a mixer. A mixer breaks the fat and the cream turns grainy — the first place tiramisu usually fails.",
+      "Whip the whites with the rest of the sugar to firm peaks and fold them into the cream in three additions, lifting from underneath.",
+      "Mix the coffee with the marsala. Dip each savoiardo for one second a side and lay them in a tight layer in the dish.",
+      "Spread half the cream, level it, then repeat the biscuit and cream layers. Cover and refrigerate for at least six hours, better overnight.",
+      "Dust with cocoa through a sieve right before serving. Do it in advance and the cocoa takes on moisture and goes blotchy."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 10,
+      "carbsG": 42,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

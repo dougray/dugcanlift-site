@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-trdelnik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CZ",
+    "nativeName": "Trdelník",
+    "summary": "A ribbon of yeasted dough wound round a spit, baked and rolled in sugar and nuts.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      75,
+      15,
+      10,
+      20,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/trdelnik.jpg",
+      "author": "Tamorlan",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Trdelník",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Plain flour",
+        "item": "plain flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "220 ml Warm milk",
+        "item": "warm milk",
+        "qty": 220,
+        "unit": "ml"
+      },
+      {
+        "rawText": "7 g Dried yeast",
+        "item": "dried yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "60 g Sugar for the dough",
+        "item": "sugar for the dough",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "softened"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Sugar for coating",
+        "item": "sugar for coating",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Walnuts",
+        "item": "walnuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "2 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with a spoon of sugar in the warm milk and let it foam for ten minutes.",
+      "Knead a dough from the flour, the yeast liquid, eggs, sugar and salt for ten minutes, then work in the soft butter piece by piece. Prove for an hour.",
+      "Roll the dough out and cut two-centimetre ribbons. Butter the spits and roll them in sugar.",
+      "Wind a ribbon round each spit, overlapping by a third and pulling it slightly taut. Roll it on the table so the layers bond.",
+      "Brush with butter, roll in the sugar, nut and cinnamon mixture and bake at 190 °C for eighteen minutes, turning every five.",
+      "Let it cool three minutes and twist it off the spit. Hot, it tears; fully cooled, it sticks."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 470,
+      "proteinG": 9,
+      "carbsG": 68,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

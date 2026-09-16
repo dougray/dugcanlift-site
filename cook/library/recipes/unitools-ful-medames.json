@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ful-medames",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EG",
+    "nativeName": "فول مدمس",
+    "summary": "Fava beans stewed to a cream with olive oil, lemon and cumin.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      240,
+      3,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ful-medames.jpg",
+      "author": "Abdullah Geelah",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ful medames",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Dried fava beans",
+        "item": "dried fava beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Tomato",
+        "item": "tomato",
+        "qty": 2,
+        "note": "diced"
+      },
+      {
+        "rawText": "6 sprigs Parsley",
+        "item": "parsley",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "Chilli flakes, to taste",
+        "item": "chilli flakes"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Drain the soaked beans, cover them with fresh water three fingers above and bring to the boil. Skim.",
+      "Drop to the lowest possible heat and cook covered for three or four hours, until the beans start to collapse. Top up the water as needed.",
+      "Mash about half the beans in the pot with a masher, leaving the rest whole.",
+      "Stir in the crushed garlic and season. Divide between bowls.",
+      "Into each bowl: olive oil generously, lemon juice, cumin, tomato, parsley and chilli to taste. Serve with flatbread."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 22,
+      "carbsG": 46,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-completo-italiano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CL",
+    "nativeName": "Completo italiano",
+    "summary": "A hot dog under mounds of mashed avocado, tomato and mayonnaise, coloured like the Italian flag.",
+    "category": "snack",
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      10,
+      5,
+      2,
+      4,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/completo-italiano.jpg",
+      "author": "Paul Lowry",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Completo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Frankfurters",
+        "item": "frankfurters",
+        "qty": 4
+      },
+      {
+        "rawText": "4 Hot dog buns",
+        "item": "hot dog buns",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Avocados",
+        "item": "avocados",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "200 g Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g Sauerkraut",
+        "item": "sauerkraut",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "optional"
+      },
+      {
+        "rawText": "50 g Ají sauce",
+        "item": "ají sauce",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mash the avocados with a fork, salt and lemon juice into a coarse purée, not smooth.",
+      "Dice the tomatoes small, salt them and drain them in a sieve to lose the excess water.",
+      "Poach the frankfurters in water on a low heat for five minutes, without letting them split.",
+      "Warm the buns in steam or in the oven for two minutes; they should be soft and hot.",
+      "Put a frankfurter in each bun and spread the drained tomato over it in an even layer.",
+      "Pile the avocado over the tomato, covering it completely.",
+      "Finish with a generous stripe of mayonnaise and serve the ají sauce separately."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 18,
+      "carbsG": 46,
+      "fatG": 52,
+      "estimated": true
+    }
+  }
+}

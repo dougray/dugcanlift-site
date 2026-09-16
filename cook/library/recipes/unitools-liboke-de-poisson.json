@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-liboke-de-poisson",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CD",
+    "nativeName": "Liboke",
+    "summary": "Spiced fish wrapped in a banana leaf and baked in embers.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      10,
+      8,
+      10,
+      10,
+      32,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/liboke-de-poisson.jpg",
+      "author": "T.K. Naliaka",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Liboke de poisson",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Tilapia or carp",
+        "item": "tilapia or carp",
+        "qty": 4,
+        "note": "whole, gutted"
+      },
+      {
+        "rawText": "12 Banana leaves",
+        "item": "banana leaves",
+        "qty": 12
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 Pili-pili chilli",
+        "item": "pili-pili chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "500 g Cassava",
+        "item": "cassava",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Slash the fish at the sides and rub it with salt, pepper and lemon juice.",
+      "Grind the garlic, ginger and chilli to a paste and work it into the cuts and the cavity.",
+      "Pass the banana leaves over a flame so they turn pliable and stop cracking.",
+      "Lay tomato and onion slices on a leaf, the fish on them, then more tomato and spring onion.",
+      "Wrap in three leaves into a tight parcel and tie it with a strip of the same leaf.",
+      "Set the parcels on the coals and bake them fifteen minutes a side.",
+      "Serve them still in the leaf, with boiled cassava or rice."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 44,
+      "carbsG": 46,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

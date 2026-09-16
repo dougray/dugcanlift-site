@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-begova-corba",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BA",
+    "nativeName": "Begova čorba",
+    "summary": "A thick chicken soup with okra, bound with yolks and soured cream, a Bosnian classic.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      60,
+      20,
+      8,
+      5,
+      17,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/begova-corba.jpg",
+      "author": "BiHVolim",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Begova čorba",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "whole"
+      },
+      {
+        "rawText": "400 g Veal",
+        "item": "veal",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "optional"
+      },
+      {
+        "rawText": "200 g Okra",
+        "item": "okra",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "small, whole"
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Celeriac",
+        "item": "celeriac",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "250 ml Soured cream",
+        "item": "soured cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken and veal with the onion, carrot and celeriac for an hour, skimming.",
+      "Lift out the meat, strain the broth and pull the chicken into fine threads.",
+      "Rinse the okra under cold water and pat it dry without trimming the caps.",
+      "Melt the butter, stir in the flour and cook it two minutes without letting it colour.",
+      "Pour the broth into the roux, add the okra and cook fifteen minutes.",
+      "Whisk the yolks with the soured cream and ladle in hot broth, stirring without stopping.",
+      "Take the pot off the heat, pour in the mixture, return the meat and warm it through without boiling. Add lemon and parsley."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 44,
+      "carbsG": 16,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

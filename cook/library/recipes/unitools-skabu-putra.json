@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-skabu-putra",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LV",
+    "nativeName": "Skābputra",
+    "summary": "Cold barley porridge on soured milk, Latvian field-day food.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      60,
+      30,
+      8,
+      10,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Skābputra",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "250 g Pearl barley",
+        "item": "pearl barley",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1.5 l Water",
+        "item": "water",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 l Curdled milk or buttermilk",
+        "item": "curdled milk or buttermilk",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Spring onion",
+        "item": "spring onion",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the barley and soak it in cold water for two hours.",
+      "Boil the barley in a litre and a half of water for an hour, until it collapses entirely.",
+      "Salt the porridge and cool it completely, stirring so no skin forms.",
+      "Work the curdled milk into the cold porridge gradually, to the consistency of a thick soup.",
+      "Leave it four hours somewhere cold so the sourness develops and evens out.",
+      "Boil the potatoes in their skins and serve them hot alongside.",
+      "Ladle it into bowls, add soured cream and scatter with spring onion and dill."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 14,
+      "carbsG": 54,
+      "fatG": 8,
+      "estimated": true
+    }
+  }
+}

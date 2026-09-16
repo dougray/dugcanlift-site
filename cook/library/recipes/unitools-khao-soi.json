@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-khao-soi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TH",
+    "nativeName": "ข้าวซอย",
+    "summary": "Northern Thai noodles in coconut curry, boiled noodles in the broth and fried ones on top.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      10,
+      3,
+      5,
+      32,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/khao-soi.jpg",
+      "author": "Chainwit.",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Khao soi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Egg noodles",
+        "item": "egg noodles",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "800 g Chicken drumsticks",
+        "item": "chicken drumsticks",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "800 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 tbsp Red curry paste",
+        "item": "red curry paste",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "100 g Pickled mustard greens",
+        "item": "pickled mustard greens",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      }
+    ],
+    "steps": [
+      "Set a fifth of the noodles aside, separate the strands and deep-fry them to a golden crisp.",
+      "Heat the thick part of the coconut milk in a pan, without stirring, until the oil separates out.",
+      "Fry the curry paste, curry powder and turmeric in that oil for three minutes, until deeply fragrant.",
+      "Add the chicken and turn it in the paste until it is coated all over.",
+      "Add the rest of the coconut milk and some water, the fish sauce and the sugar, and simmer thirty minutes.",
+      "Boil the remaining noodles and divide them between bowls.",
+      "Ladle over the curry and chicken, top with the fried noodles, shallot, pickled greens, coriander and a wedge of lime."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 42,
+      "carbsG": 62,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

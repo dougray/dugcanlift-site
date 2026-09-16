@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-toast-skagen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SE",
+    "nativeName": "Toast Skagen",
+    "summary": "Prawns in a dill mayonnaise on fried bread, with roe on top.",
+    "category": "snack",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      6,
+      4,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Toast Skagen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Small cold-water prawns",
+        "item": "small cold-water prawns",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "peeled"
+      },
+      {
+        "rawText": "150 g Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 ml Crème fraîche",
+        "item": "crème fraîche",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "4 slices White bread",
+        "item": "white bread",
+        "qty": 4,
+        "unit": "slice"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 g Whitefish or trout roe",
+        "item": "whitefish or trout roe",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Grated horseradish",
+        "item": "grated horseradish",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Drain the prawns in a sieve and let them sit for at least ten minutes.",
+      "Mix the mayonnaise with the crème fraîche, chopped dill, horseradish, lemon juice, salt and pepper.",
+      "Chop the red onion as fine as you can and stir it into the dressing.",
+      "Fold the prawns into the dressing gently, taking care not to crush them.",
+      "Trim the crusts from the bread and fry the slices in butter until browned on both sides.",
+      "Pile the prawns onto each toast, top with a spoon of roe and a sprig of dill. Serve at once."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 28,
+      "carbsG": 20,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

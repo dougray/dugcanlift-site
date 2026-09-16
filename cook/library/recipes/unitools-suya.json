@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-suya",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NG",
+    "nativeName": "Suya",
+    "summary": "Beef skewers in a ground peanut and spice rub, applied twice — before and after grilling.",
+    "category": "snack",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      5,
+      32,
+      8,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/suya.jpg",
+      "author": "WhisperToMe",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Suya",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef sirloin",
+        "item": "beef sirloin",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in thin strips"
+      },
+      {
+        "rawText": "150 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 tsp Ground ginger",
+        "item": "ground ginger",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Garlic powder",
+        "item": "garlic powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Cayenne pepper",
+        "item": "cayenne pepper",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Paprika",
+        "item": "paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Stock cube",
+        "item": "stock cube",
+        "qty": 1
+      },
+      {
+        "rawText": "4 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Onion, tomato, cabbage to serve, to taste",
+        "item": "onion, tomato, cabbage to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Grind the peanuts to a fine crumb, wrap them in a cloth and press hard: the oil stays on the cloth and the powder comes out dry.",
+      "Mix the peanut powder with the ginger, garlic, cayenne, paprika, crumbled stock cube and salt: this is the yaji.",
+      "Oil the strips of beef and coat them in half the rub. Leave them half an hour.",
+      "Thread the meat onto skewers in waves so the heat gets between the folds, and grill it over a fierce fire two or three minutes a side.",
+      "Dust the hot meat with the other half of the rub and serve with onion rings, tomato and cabbage."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 42,
+      "carbsG": 12,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

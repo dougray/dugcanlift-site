@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pulpo-a-feira",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Pulpo á feira",
+    "summary": "Boiled octopus on a wooden board with paprika, coarse salt and olive oil.",
+    "category": "snack",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      6,
+      42,
+      3,
+      17,
+      25,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pulpo-a-feira.jpg",
+      "author": "Basotxerri",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pulpo a feira",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 kg Octopus",
+        "item": "octopus",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "frozen and thawed"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "2 tbsp Smoked paprika",
+        "item": "smoked paprika",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Hot paprika",
+        "item": "hot paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 ml Olive oil",
+        "item": "olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Coarse salt",
+        "item": "coarse salt",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Bay leaf",
+        "item": "bay leaf",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      }
+    ],
+    "steps": [
+      "Bring a large pot of water to the boil with the onion and bay. Do not salt it.",
+      "Hold the octopus by the head and dip the tentacles into the boiling water for five seconds, then lift it out. Repeat three times.",
+      "Lower the octopus in whole and cook at a bare simmer for forty minutes.",
+      "Test with a fork at the thickest part of a tentacle: it should go in without resistance.",
+      "Turn off the heat and leave the octopus in the water for fifteen minutes; it finishes and softens further.",
+      "Boil the potatoes in the same water and cut them into rounds.",
+      "Cut the tentacles with scissors into centimetre pieces, lay them over the potato, dust with paprika and salt and pour over the oil."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 42,
+      "carbsG": 26,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

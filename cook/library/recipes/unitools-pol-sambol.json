@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pol-sambol",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LK",
+    "nativeName": "පොල් සම්බෝල",
+    "summary": "Fresh coconut pounded with chilli, onion and lime. Five minutes to make and served with everything.",
+    "category": "sauce",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      4,
+      3,
+      5,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pol-sambol.jpg",
+      "author": "Dan arndt",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pol sambol",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "250 g Grated coconut",
+        "item": "grated coconut",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "fresh or thawed"
+      },
+      {
+        "rawText": "2 tbsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "2 tbsp Maldive fish",
+        "item": "maldive fish",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Lime",
+        "item": "lime",
+        "qty": 1,
+        "note": "juiced"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Pound the chilli flakes with the salt and the Maldive fish to a rough paste.",
+      "Add the onion and keep pounding: it should give up its juice and stain the paste.",
+      "Work the coconut in by hand, rubbing the mixture between your palms until it turns evenly red.",
+      "Add the lime juice, mix and taste. The sambol should be hot, sour and salty at once."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 240,
+      "proteinG": 5,
+      "carbsG": 9,
+      "fatG": 21,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sukuma-wiki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KE",
+    "nativeName": "Sukuma wiki",
+    "summary": "Collard greens stewed with onion and tomato. The everyday accompaniment to ugali across East Africa.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      9,
+      3,
+      11,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sukuma-wiki.jpg",
+      "author": "Nana Pearls",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sukuma wiki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Collard greens",
+        "item": "collard greens",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "finely shredded"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Strip the tough stems from the leaves, roll the leaves up and shred them fine.",
+      "Fry the onion in oil until soft, add the garlic and cumin and warm them a minute.",
+      "Add the chopped tomatoes and cook seven minutes, until they collapse into a paste.",
+      "Add the greens, salt them and stir. They collapse by half within a minute.",
+      "Add half a cup of water, cover and stew ten minutes; the greens should soften but stay green.",
+      "Finish with lemon juice and serve with ugali or rice."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 180,
+      "proteinG": 6,
+      "carbsG": 14,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

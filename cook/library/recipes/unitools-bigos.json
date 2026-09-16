@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bigos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PL",
+    "nativeName": "Bigos",
+    "summary": "Sauerkraut and fresh cabbage stewed with several meats and dried fruit over three days.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      35,
+      35,
+      25,
+      15,
+      125,
+      65,
+      65
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bigos.jpg",
+      "author": "Dr. Bernd Gross",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bigos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "1 kg Sauerkraut",
+        "item": "sauerkraut",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "1 kg Fresh cabbage",
+        "item": "fresh cabbage",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "600 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "400 g Smoked kielbasa",
+        "item": "smoked kielbasa",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "400 g Beef",
+        "item": "beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "50 g Dried porcini",
+        "item": "dried porcini",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "150 g Prunes",
+        "item": "prunes",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "250 ml Dry red wine",
+        "item": "dry red wine",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "8 Juniper berries",
+        "item": "juniper berries",
+        "qty": 8
+      },
+      {
+        "rawText": "4 Bay leaves",
+        "item": "bay leaves",
+        "qty": 4
+      },
+      {
+        "rawText": "6 Allspice berries",
+        "item": "allspice berries",
+        "qty": 6
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the dried mushrooms in a cup of warm water for half an hour and slice them, straining and keeping the water.",
+      "Squeeze the sauerkraut, shred the fresh cabbage and stew each in its own pot for thirty minutes.",
+      "Render the bacon to crackling, brown the pork and beef in its fat, then the onion.",
+      "Combine both cabbages, the meats, sausage, mushrooms with their water, prunes, tomato paste and spices in a large pot.",
+      "Add the wine, bring it up and stew two hours on the lowest heat, stirring occasionally.",
+      "Cool it completely and leave it a day in the cold, then bring it back to the boil and stew an hour.",
+      "Repeat the cycle once more on the third day. Serve with rye bread and a glass of vodka."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 38,
+      "carbsG": 24,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

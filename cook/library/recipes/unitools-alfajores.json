@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-alfajores",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AR",
+    "nativeName": "Alfajores",
+    "summary": "Two crumbly cornflour biscuits joined with dulce de leche and rolled in coconut.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      6,
+      5,
+      6,
+      62,
+      20,
+      15,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/alfajores.jpg",
+      "author": "Enrique Dans",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Alfajores",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "300 g Cornflour",
+        "item": "cornflour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Flour",
+        "item": "flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Brandy",
+        "item": "brandy",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Dulce de leche",
+        "item": "dulce de leche",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "100 g Desiccated coconut",
+        "item": "desiccated coconut",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Beat the softened butter with the icing sugar until pale, about four minutes.",
+      "Add the yolks one at a time, then the vanilla, zest and brandy.",
+      "Sift the cornflour with the flour, baking powder and salt and fold it in without long working.",
+      "Wrap the dough in film and refrigerate it an hour.",
+      "Roll it half a centimetre thick and cut four-centimetre rounds.",
+      "Bake at 170 °C for twelve minutes; the biscuits should stay pale, with only the underside going golden.",
+      "Cool them completely, sandwich them in pairs with dulce de leche and roll the sides in coconut."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 5,
+      "carbsG": 56,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

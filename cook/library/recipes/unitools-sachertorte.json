@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sachertorte",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AT",
+    "nativeName": "Sachertorte",
+    "summary": "A dense chocolate sponge with apricot jam under a mirror chocolate glaze.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      12,
+      12,
+      45,
+      20,
+      15,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sachertorte",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "130 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 130,
+        "unit": "g",
+        "grams": 130,
+        "note": "for the sponge"
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "110 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 110,
+        "unit": "g",
+        "grams": 110
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "110 g Sugar",
+        "item": "sugar",
+        "qty": 110,
+        "unit": "g",
+        "grams": 110
+      },
+      {
+        "rawText": "140 g Flour",
+        "item": "flour",
+        "qty": 140,
+        "unit": "g",
+        "grams": 140
+      },
+      {
+        "rawText": "250 g Apricot jam",
+        "item": "apricot jam",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "200 g Chocolate for the glaze",
+        "item": "chocolate for the glaze",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "250 g Sugar for the glaze",
+        "item": "sugar for the glaze",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "150 ml Water",
+        "item": "water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Cream",
+        "item": "cream",
+        "qty": 250,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Melt the sponge chocolate over a water bath and cool it to lukewarm.",
+      "Beat the butter with the icing sugar and vanilla until pale, add the yolks one by one, then the chocolate.",
+      "Whip the whites with the sugar to firm peaks and fold them in with a spatula, alternating with the sifted flour.",
+      "Bake at 170 °C for forty-five minutes, the first fifteen with the oven door propped open.",
+      "Cool it completely, split the sponge in two and spread the warmed sieved jam between the layers and over the sides.",
+      "Cook a syrup of sugar and water to 108 °C, take it off the heat and stir in the chocolate until smooth.",
+      "Cool the glaze to the body of cream, pour it onto the centre and spread it by tilting the cake. Let it set two hours."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 7,
+      "carbsG": 62,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

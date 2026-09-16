@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-spanakopita",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GR",
+    "nativeName": "Σπανακόπιτα",
+    "summary": "A filo pie of spinach and feta. The spinach is squeezed bone dry, or the base stays raw.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      8,
+      6,
+      10,
+      10,
+      55
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/spanakopita.jpg",
+      "author": "Jaume Escofet from London, UK",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Spanakopita",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1 kg Spinach",
+        "item": "spinach",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "300 g Feta",
+        "item": "feta",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "crumbled"
+      },
+      {
+        "rawText": "450 g Filo pastry",
+        "item": "filo pastry",
+        "qty": 450,
+        "unit": "g",
+        "grams": 450
+      },
+      {
+        "rawText": "6 Spring onions",
+        "item": "spring onions",
+        "qty": 6
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "150 ml Olive oil",
+        "item": "olive oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Nutmeg",
+        "item": "nutmeg",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Chop the spinach, salt it and leave it twenty minutes. Squeeze it dry by the handful — more water comes out than seems possible.",
+      "Fry the spring onion in a spoon of oil until soft and let it cool.",
+      "Mix the spinach with the onion, feta, dill, eggs, nutmeg and pepper. Taste before salting: the feta is salty already.",
+      "Line the tin with seven sheets of filo, brushing each with olive oil and letting the edges overhang.",
+      "Spread the filling, fold the overhanging edges in and cover with six more sheets, brushing each one.",
+      "Score the top into portions without cutting through to the filling, flick water over it and bake at 180 °C for fifty minutes, to a deep gold."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 16,
+      "carbsG": 34,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

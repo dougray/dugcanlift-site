@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rellenitos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GT",
+    "nativeName": "Rellenitos de plátano",
+    "summary": "Balls of ripe plantain purée filled with sweetened black beans and chocolate.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      10,
+      32,
+      20,
+      20,
+      20,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rellenitos.jpg",
+      "author": "Celina",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rellenitos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "6 Ripe plantains",
+        "item": "ripe plantains",
+        "qty": 6,
+        "note": "black-skinned"
+      },
+      {
+        "rawText": "300 g Black beans",
+        "item": "black beans",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "cooked"
+      },
+      {
+        "rawText": "120 g Sugar",
+        "item": "sugar",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "80 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Ground cloves",
+        "item": "ground cloves",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Flour",
+        "item": "flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "800 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "to serve"
+      },
+      {
+        "rawText": "150 ml Soured cream",
+        "item": "soured cream",
+        "qty": 150,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Boil the plantains in their skins for twenty minutes, until completely soft.",
+      "Peel them hot and mash them into a smooth purée with a pinch of salt and the flour.",
+      "Chill the purée for half an hour; warm, it will not hold as balls.",
+      "Mash the cooked beans and reduce them with the sugar, cinnamon and cloves to a thick paste.",
+      "Stir the chocolate into the hot bean paste and cool it completely.",
+      "Flatten a piece of purée on your palm, add the bean filling and seal it into a firm ball.",
+      "Fry at 170 °C for three minutes, to a browned crust, and serve with icing sugar and soured cream."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 8,
+      "carbsG": 78,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

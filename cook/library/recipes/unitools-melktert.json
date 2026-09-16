@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-melktert",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZA",
+    "nativeName": "Melktert",
+    "summary": "A milk tart with cinnamon: a barely-egged custard filling in a shortcrust base.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      35,
+      20,
+      10,
+      6,
+      8,
+      8,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/melktert.jpg",
+      "author": "Luca Nebuloni",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Melktert",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "250 g Flour for the base",
+        "item": "flour for the base",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "125 g Butter",
+        "item": "butter",
+        "qty": 125,
+        "unit": "g",
+        "grams": 125
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "1 l Milk",
+        "item": "milk",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "40 g Cornflour",
+        "item": "cornflour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Flour for the filling",
+        "item": "flour for the filling",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tsp Ground cinnamon",
+        "item": "ground cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Rub the flour with the cold butter, a spoon of sugar and an egg into a dough and chill it half an hour.",
+      "Line a tin with the pastry and blind-bake it at 180 °C for fifteen minutes, to a pale gold.",
+      "Heat the milk with the cinnamon stick until hot and leave it to infuse ten minutes.",
+      "Whisk the remaining eggs with the sugar, flour, cornflour, vanilla and salt until smooth.",
+      "Pour in the hot milk in a thin stream, whisking constantly, and return it to the heat.",
+      "Cook over medium heat for eight minutes, until the filling thickens to the body of double cream.",
+      "Pour the filling into the base, chill it three hours and dust it with ground cinnamon before serving."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 9,
+      "carbsG": 52,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

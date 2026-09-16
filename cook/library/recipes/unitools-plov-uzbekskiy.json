@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-plov-uzbekskiy",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UZ",
+    "nativeName": "Palov",
+    "summary": "Rice steamed over a zirvak of lamb, carrot and onion. It is never stirred once it goes in.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      15,
+      20,
+      40,
+      8,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/plov-uzbekskiy.jpg",
+      "author": "Ji-Elle",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Uzbek plov",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "800 g Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "100 g Lamb tail fat",
+        "item": "lamb tail fat",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "or vegetable oil"
+      },
+      {
+        "rawText": "700 g Devzira or another firm rice",
+        "item": "devzira or another firm rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "700 g Yellow and red carrot",
+        "item": "yellow and red carrot",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in batons"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Garlic bulbs",
+        "item": "garlic bulbs",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tbsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Barberries",
+        "item": "barberries",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 Whole chilli",
+        "item": "whole chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and cover it with warm salted water for as long as the zirvak takes.",
+      "Render the tail fat in the pot until only crackling is left and lift it out. Brown the meat hard over a high flame.",
+      "Add the onion and fry it gold, then the carrot — and leave it alone for five minutes so it sets. Then stir and fry ten minutes more.",
+      "Pour in boiling water to the level of the contents, add the chickpeas, cumin, barberries, chilli and the whole garlic bulbs. Simmer for forty minutes: this is the zirvak.",
+      "Salt the zirvak noticeably harder than seems right: the rice takes it. Spread the rice over in an even layer with a slotted spoon, without stirring, and pour boiling water two fingers above it.",
+      "Cook uncovered over a high flame until the water drops below the rice. Gather the rice into a mound, pierce it to the base in several places, cover and give it twenty minutes on the lowest heat."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 38,
+      "carbsG": 82,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

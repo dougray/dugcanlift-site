@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-samgyetang",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KR",
+    "nativeName": "삼계탕",
+    "summary": "A whole young chicken stuffed with glutinous rice and ginseng, simmered in its own broth.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      12,
+      15,
+      8,
+      5,
+      75,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/samgyetang.jpg",
+      "author": "ayustety (a flickr user)",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Samgyetang",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Poussin",
+        "item": "poussin",
+        "qty": 4,
+        "note": "500-700 g each"
+      },
+      {
+        "rawText": "200 g Glutinous rice",
+        "item": "glutinous rice",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "soaked two hours"
+      },
+      {
+        "rawText": "4 Ginseng root",
+        "item": "ginseng root",
+        "qty": 4
+      },
+      {
+        "rawText": "8 Jujube dates",
+        "item": "jujube dates",
+        "qty": 8
+      },
+      {
+        "rawText": "16 cloves Garlic",
+        "item": "garlic",
+        "qty": 16,
+        "unit": "clove"
+      },
+      {
+        "rawText": "8 Chestnuts",
+        "item": "chestnuts",
+        "qty": 8
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the glutinous rice in cold water for two hours and drain it.",
+      "Rinse the birds, trim the excess fat at the cavity and pat them dry.",
+      "Fill each cavity two-thirds with rice, adding a ginseng root, garlic, a chestnut and a jujube.",
+      "Cross the legs and tuck one through a slit in the other; the cavity then closes without string.",
+      "Pack the birds into a pot and add cold water just to cover them.",
+      "Bring it up, skim, and simmer for an hour and a quarter.",
+      "Serve each bird in its own bowl of broth, with salt and pepper on a separate saucer."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 52,
+      "carbsG": 46,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

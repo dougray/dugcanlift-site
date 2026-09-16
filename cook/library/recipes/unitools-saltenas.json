@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-saltenas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BO",
+    "nativeName": "Salteñas",
+    "summary": "Baked pastries whose filling stays liquid inside. The Bolivian mid-morning snack.",
+    "category": "snack",
+    "difficulty": "hard",
+    "stepMinutes": [
+      25,
+      6,
+      15,
+      40,
+      20,
+      20,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/saltenas.jpg",
+      "author": "Francesc Fort",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Salteñas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 tbsp Sugar",
+        "item": "sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Achiote or paprika",
+        "item": "achiote or paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "500 g Beef",
+        "item": "beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "300 g Potatoes",
+        "item": "potatoes",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "diced, boiled"
+      },
+      {
+        "rawText": "150 g Green peas",
+        "item": "green peas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Onion",
+        "item": "onion",
+        "qty": 3
+      },
+      {
+        "rawText": "20 g Gelatine",
+        "item": "gelatine",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "500 ml Beef stock",
+        "item": "beef stock",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Ají or hot paprika",
+        "item": "ají or hot paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "boiled, in wedges"
+      },
+      {
+        "rawText": "12 Olives",
+        "item": "olives",
+        "qty": 12
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion with the ají and cumin, add the beef and cook through. Pour in the stock and simmer ten minutes.",
+      "Dissolve the gelatine in a couple of spoons of hot water and stir it into the stew with the potato and peas.",
+      "Cool the filling and refrigerate it for at least four hours; it has to set to a firm jelly.",
+      "Knead a dough from the flour, softened butter, sugar, achiote, salt and warm water. Rest it half an hour.",
+      "Roll fifteen-centimetre rounds. On each go a spoon of the cold jelly, a wedge of egg and an olive.",
+      "Seal the seam in a plait along the top and stand the pastries seam-up. Any gap means the broth escapes.",
+      "Bake at 220 °C for twenty-five minutes. The high heat is what sets the pastry before the jelly melts."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 24,
+      "carbsG": 58,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gallo-pinto-nicaraguense",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NI",
+    "nativeName": "Gallo pinto",
+    "summary": "Rice fried with red beans. The Nicaraguan version: red beans, and no Salsa Lizano.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      7,
+      5,
+      4,
+      8,
+      3,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gallo-pinto-nicaraguense.jpg",
+      "author": "Gmasmcal",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nicaraguan gallo pinto",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "day-old, cold"
+      },
+      {
+        "rawText": "400 g Red beans",
+        "item": "red beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "cooked, with liquid"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Coriander",
+        "item": "coriander",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "150 g Cuajada cheese",
+        "item": "cuajada cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion, garlic and pepper in oil until soft, five minutes.",
+      "Add the beans with a ladle of their liquid and warm them three minutes.",
+      "Add the cold rice and stir, breaking up lumps with a spatula.",
+      "Fry over a high flame for eight minutes, leaving it undisturbed for the last three so a crust forms underneath.",
+      "Season and stir in the coriander.",
+      "Serve with fried plantain, cuajada cheese and a fried egg."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 18,
+      "carbsG": 72,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

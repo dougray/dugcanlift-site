@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-miso-soup",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JP",
+    "nativeName": "味噌汁",
+    "summary": "A soup of dashi and miso that takes ten minutes. Miso must never boil: boiling takes out both the aroma and the point of it.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      2,
+      2,
+      5,
+      2,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/miso-soup.jpg",
+      "author": "Ocdp",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Miso soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 ml Water",
+        "item": "water",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Kombu",
+        "item": "kombu",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10,
+        "note": "wiped, not washed"
+      },
+      {
+        "rawText": "15 g Bonito flakes",
+        "item": "bonito flakes",
+        "qty": 15,
+        "unit": "g",
+        "grams": 15
+      },
+      {
+        "rawText": "4 tbsp Miso paste",
+        "item": "miso paste",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 g Tofu",
+        "item": "tofu",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "cubed"
+      },
+      {
+        "rawText": "1 tbsp Dried wakame",
+        "item": "dried wakame",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Spring onion",
+        "item": "spring onion",
+        "qty": 2
+      }
+    ],
+    "steps": [
+      "Cover the kombu with cold water and set it over low heat. Bring it to the edge of a boil over about ten minutes and lift the seaweed out before bubbles appear.",
+      "Bring the water to the boil, add the bonito flakes, take it off the heat at once and let it stand for two minutes until the flakes sink.",
+      "Strain the stock through a sieve without pressing the flakes — pressed flakes turn it bitter.",
+      "Soak the wakame in cold water for five minutes; it swells several times over.",
+      "Warm the dashi, add the tofu and the wakame and hold it at a low heat for a couple of minutes.",
+      "Whisk the miso smooth in a ladle of the hot stock, stir it back in and take the pan off the heat immediately. Scatter over the spring onion."
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 110,
+      "proteinG": 9,
+      "carbsG": 8,
+      "fatG": 4,
+      "estimated": true
+    }
+  }
+}

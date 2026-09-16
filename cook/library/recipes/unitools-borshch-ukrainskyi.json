@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-borshch-ukrainskyi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UA",
+    "nativeName": "Український борщ",
+    "summary": "Borscht on pork ribs with aged salo crushed with garlic, and garlic pampushky alongside.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      95,
+      20,
+      10,
+      10,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/borshch-ukrainskyi.jpg",
+      "author": "Juerg Vollmer from Zürich, Schweiz",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ukrainian borscht with pampushky",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Pork ribs",
+        "item": "pork ribs",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "3 Beetroot",
+        "item": "beetroot",
+        "qty": 3,
+        "note": "in matchsticks"
+      },
+      {
+        "rawText": "400 g Cabbage",
+        "item": "cabbage",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "4 Potatoes",
+        "item": "potatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g White beans",
+        "item": "white beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "cooked"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Aged salo",
+        "item": "aged salo",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 sprigs Dill and parsley",
+        "item": "dill and parsley",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Soured cream, to taste",
+        "item": "soured cream"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Make a stock from the ribs: an hour and a half at a bare simmer, skimmed. Lift the meat out and pull it apart.",
+      "Braise the beetroot separately with a spoon of oil, the tomato paste and the vinegar, covered, for twenty minutes. The vinegar is what holds the colour.",
+      "Fry the onion and carrot until soft. Put the potatoes into the stock and give them ten minutes, before any acid reaches the pot.",
+      "Add the cabbage, then after five minutes the beetroot, the fried vegetables and the beans. Give it five minutes.",
+      "Pound the salo with the garlic and herbs to a paste and stir it into the pot. Take it straight off the heat and let it stand covered for twenty minutes."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 26,
+      "carbsG": 32,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

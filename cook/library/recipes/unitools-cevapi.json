@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-cevapi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RS",
+    "nativeName": "Ћевапи",
+    "summary": "Skinless minced-meat sausages over coals, with raw onion and somun flatbread.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      6,
+      12,
+      720,
+      15,
+      6,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/cevapi.jpg",
+      "author": "Christian Paul from Vancouver, Canada",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ćevapi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Minced beef",
+        "item": "minced beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Minced lamb",
+        "item": "minced lamb",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Minced pork",
+        "item": "minced pork",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 ml Iced water",
+        "item": "iced water",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Onion to serve",
+        "item": "onion to serve",
+        "qty": 2,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "4 Somun flatbreads",
+        "item": "somun flatbreads",
+        "qty": 4
+      },
+      {
+        "rawText": "Kajmak or soured cream, to taste",
+        "item": "kajmak or soured cream"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Combine all three minces with the crushed garlic, bicarbonate, paprika, salt and pepper.",
+      "Work it by hand for ten minutes, adding the iced water a little at a time, until the mass turns tacky and even.",
+      "Press film onto the surface and refrigerate for at least twelve hours.",
+      "With wet hands roll sausages eight centimetres long and as thick as a thumb.",
+      "Grill over hot coals or on a griddle three minutes a side, turning once.",
+      "Split the warm somun, tuck the ćevapi inside and add a pile of raw onion and kajmak."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 44,
+      "carbsG": 30,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

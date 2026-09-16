@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-poulet-dg",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CM",
+    "nativeName": "Poulet DG",
+    "summary": "Fried chicken with fried plantain and vegetables. The dish called \"the director general's chicken\".",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      32,
+      15,
+      12,
+      10,
+      22,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/poulet-dg.jpg",
+      "author": "MarieroseNN",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Poulet DG",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "4 Plantains",
+        "item": "plantains",
+        "qty": 4,
+        "note": "ripe but firm"
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Green beans",
+        "item": "green beans",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "300 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Marinate the chicken in crushed garlic, ginger, thyme, salt and pepper for half an hour.",
+      "Fry the chicken in oil until browned all over and lift it out.",
+      "Cut the plantain into large pieces and fry it in the same oil, to caramelised edges.",
+      "Pour off most of the oil and fry the onion, tomatoes and pepper until soft.",
+      "Return the chicken, add the carrot, beans and the whole scotch bonnet, pour in a cup of water and stew twenty minutes.",
+      "Remove the chilli, fold in the plantain and warm it three minutes. Serve at once."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 62,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

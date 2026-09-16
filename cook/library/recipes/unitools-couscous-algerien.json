@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-couscous-algerien",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DZ",
+    "nativeName": "كسكس",
+    "summary": "Semolina steamed three times over a pot of meat and vegetables, with the broth served apart.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      60,
+      20,
+      8,
+      17,
+      14,
+      20,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/couscous-algerien.jpg",
+      "author": "Slothtysloth",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Algerian couscous",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Couscous",
+        "item": "couscous",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "1 kg Lamb",
+        "item": "lamb",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "on the bone, in pieces"
+      },
+      {
+        "rawText": "200 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Turnips",
+        "item": "turnips",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Courgettes",
+        "item": "courgettes",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ras el hanout",
+        "item": "ras el hanout",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Harissa",
+        "item": "harissa",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the meat with the onion in the base of the couscoussier, add the tomato paste, spices and chickpeas and cover with water. Cook an hour.",
+      "Sprinkle the couscous with water and oil and rub it between your hands so the grains separate. Steam it fifteen minutes.",
+      "Turn the grain into a wide dish, sprinkle again, rake it apart and let it cool five minutes.",
+      "Return it to the steam for fifteen more minutes. Meanwhile add the carrot and turnip to the broth.",
+      "Rake it a third time, working in the butter, and steam it a final ten minutes.",
+      "Add the courgette and pumpkin to the broth for the last twenty minutes; they cook faster than the roots.",
+      "Mound the couscous, meat and vegetables on top. Serve the broth in a separate bowl and the harissa in a third."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 760,
+      "proteinG": 40,
+      "carbsG": 88,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

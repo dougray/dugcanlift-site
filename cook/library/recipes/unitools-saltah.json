@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-saltah",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "YE",
+    "nativeName": "سلتة",
+    "summary": "A meat stew served boiling in a stone pot under a whipped fenugreek froth called hulba.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      12,
+      15,
+      65,
+      10,
+      3,
+      5
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/saltah.jpg",
+      "author": "Rania al-Bahara",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Saltah",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "60 g Fenugreek seeds",
+        "item": "fenugreek seeds",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Potatoes",
+        "item": "potatoes",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 tbsp Zhug sauce",
+        "item": "zhug sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Rice",
+        "item": "rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "cooked"
+      },
+      {
+        "rawText": "4 Flatbread",
+        "item": "flatbread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Drain the soaked fenugreek, rinse it several times and grind it to a paste.",
+      "Whip the paste with cold water for ten minutes, by whisk or mixer, until it turns into a white froth.",
+      "Fry the onion and garlic, add the meat and brown it.",
+      "Add the tomatoes and potato, cover with water, season and stew an hour, until the meat is tender.",
+      "Heat a stone or cast-iron pot until very hot and transfer the boiling stew into it.",
+      "Break the eggs into the boiling stew and stir; they set into threads.",
+      "Spoon the hulba and a spoon of zhug on top and carry it to the table still bubbling. Serve with bread and rice."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 38,
+      "carbsG": 44,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

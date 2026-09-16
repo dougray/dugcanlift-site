@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gundruk-soup",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NP",
+    "nativeName": "Gundruk ko jhol",
+    "summary": "A sour soup of fermented dried greens with potato, soybeans and chilli.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      10,
+      5,
+      5,
+      6,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gundruk soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "80 g Gundruk",
+        "item": "gundruk",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "or fermented greens"
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "100 g Soybeans",
+        "item": "soybeans",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "20 g Ginger",
+        "item": "ginger",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Dried chillies",
+        "item": "dried chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tsp Fenugreek seeds",
+        "item": "fenugreek seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Timur pepper",
+        "item": "timur pepper",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 ml Mustard oil",
+        "item": "mustard oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the gundruk in warm water for ten minutes and squeeze it out, keeping the water.",
+      "Toast the soybeans in a dry pan until they darken in patches and crack.",
+      "Heat the mustard oil until it smokes, take it off and let it cool a minute; raw mustard oil is acrid.",
+      "Fry the onion, garlic, ginger and turmeric, add the tomatoes and cook five minutes.",
+      "Add the gundruk, soybeans and potato, and pour in the soaking water and a litre of water.",
+      "Cook twenty-five minutes, until the potato and beans are soft, and season.",
+      "Sizzle the dried chillies, fenugreek and timur in a spoon of oil and pour it into the soup."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 14,
+      "carbsG": 36,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

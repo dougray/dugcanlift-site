@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tamales-guatemaltecos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GT",
+    "nativeName": "Tamales",
+    "summary": "Corn dough with meat and recado sauce, wrapped in banana leaf and steamed.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      60,
+      20,
+      22,
+      25,
+      12,
+      35,
+      95
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tamales-guatemaltecos.jpg",
+      "author": "Luisfi",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Guatemalan tamales",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "700 g Masa harina",
+        "item": "masa harina",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "800 g Pork",
+        "item": "pork",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "200 g Lard",
+        "item": "lard",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "500 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Guajillo chillies",
+        "item": "guajillo chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "80 g Pumpkin seeds",
+        "item": "pumpkin seeds",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "40 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "16 Banana leaves",
+        "item": "banana leaves",
+        "qty": 16
+      },
+      {
+        "rawText": "16 Olives",
+        "item": "olives",
+        "qty": 16
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the pork with the onion and salt for an hour. Strain and keep the broth.",
+      "Toast the seeds, sesame, chillies and tomatoes in a dry pan and blend them with broth; that is the recado.",
+      "Cook the recado twenty minutes to thicken it and season.",
+      "Slake the masa harina with warm broth, add the melted lard and work it twenty minutes over a low heat.",
+      "Pass the banana leaves over a flame for ten seconds each so they turn pliable.",
+      "On a leaf spread the dough, then a piece of meat, a spoon of recado, a strip of pepper and an olive. Wrap in two leaves.",
+      "Stack the parcels seam down in a pot and steam them for an hour and a half."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 26,
+      "carbsG": 54,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

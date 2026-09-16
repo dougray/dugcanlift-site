@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kugelis",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LT",
+    "nativeName": "Kugelis",
+    "summary": "A potato bake from raw grated potato with bacon and onion, served with soured cream.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      18,
+      25,
+      12,
+      6,
+      5,
+      5,
+      100
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kugelis.jpg",
+      "author": "Eden, Janine and Jim",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kugelis",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Potatoes",
+        "item": "potatoes",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "300 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "diced"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml",
+        "note": "hot"
+      },
+      {
+        "rawText": "300 ml Soured cream",
+        "item": "soured cream",
+        "qty": 300,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tsp Marjoram",
+        "item": "marjoram",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Render the bacon to crackling, add the chopped onion and fry it golden.",
+      "Grate the potatoes finely and squeeze them lightly, collecting the liquid in a bowl.",
+      "Let the liquid stand ten minutes, pour off the water and stir the settled starch back in.",
+      "Add the hot milk and the hot fat with the onion and crackling, stirring quickly.",
+      "Work in the eggs, salt, pepper and marjoram to an even thick mass.",
+      "Pour it into a greased dish in a four-centimetre layer and level it.",
+      "Bake at 180 °C for an hour and a half, to a deep golden crust, and rest it twenty minutes."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 95,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 14,
+      "carbsG": 48,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

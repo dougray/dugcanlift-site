@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-aji-de-gallina",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PE",
+    "nativeName": "Ají de gallina",
+    "summary": "Shredded chicken in a creamy sauce of ají amarillo, nuts and bread.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      12,
+      12,
+      8,
+      12,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/aji-de-gallina.jpg",
+      "author": "Feralbt",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ají de gallina",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "800 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "5 tbsp Ají amarillo paste",
+        "item": "ají amarillo paste",
+        "qty": 5,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 slices White bread",
+        "item": "white bread",
+        "qty": 4,
+        "unit": "slice"
+      },
+      {
+        "rawText": "400 ml Milk",
+        "item": "milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Walnuts",
+        "item": "walnuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 g Parmesan",
+        "item": "parmesan",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "boiled"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "60 g Black olives",
+        "item": "black olives",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Poach the chicken breast in salted water for twenty minutes and pull it into fine threads by hand.",
+      "Soak the crustless bread in the milk for ten minutes.",
+      "Fry the onion and garlic until soft, add the ají paste and turmeric and cook five minutes.",
+      "Blend the soaked bread with its milk, the walnuts and the fried onion until smooth.",
+      "Return the mixture to the pan and cook it ten minutes on a low heat, stirring.",
+      "Stir in the chicken and parmesan, season and warm it five minutes to the thickness of soured cream.",
+      "Serve over boiled potato and rice, garnished with egg and olives."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 48,
+      "carbsG": 56,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

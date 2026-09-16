@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-nyama-choma",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KE",
+    "nativeName": "Nyama choma",
+    "summary": "Goat meat grilled slowly over coals in large pieces, with kachumbari and ugali.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      25,
+      82,
+      12,
+      20,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/nyama-choma.jpg",
+      "author": "Samuel Kiongo",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nyama choma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2 kg Goat meat",
+        "item": "goat meat",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "leg or ribs, in large pieces"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "400 g Maize flour",
+        "item": "maize flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "for the ugali"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the meat with salt, pepper, the juice of two lemons, crushed garlic and oil. Leave it an hour.",
+      "Light the coals and let them ash over. The heat is right when you can hold a palm above the grate for five seconds.",
+      "Lay the meat on in whole pieces and grill, turning every ten minutes, for an hour and twenty.",
+      "Mix the diced tomato, onion, coriander and chilli with lemon juice and salt; that is kachumbari.",
+      "For the ugali bring a litre of water to the boil, rain in the flour, stirring constantly with a wooden spoon, and work it fifteen minutes into a firm mass.",
+      "Rest the meat ten minutes, cut it small across the grain and serve with ugali, kachumbari and salt."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 52,
+      "carbsG": 42,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

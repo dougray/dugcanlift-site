@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-koupepia",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CY",
+    "nativeName": "Κουπέπια",
+    "summary": "Cypriot vine leaves rolled with rice, mince and cinnamon, finished with lemon.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      15,
+      8,
+      40,
+      6,
+      10,
+      65
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Koupepia",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Vine leaves",
+        "item": "vine leaves",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "brined or fresh"
+      },
+      {
+        "rawText": "400 g Minced pork",
+        "item": "minced pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Minced beef",
+        "item": "minced beef",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "uncooked"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4,
+        "note": "grated"
+      },
+      {
+        "rawText": "2 tsp Ground cinnamon",
+        "item": "ground cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Scald the vine leaves for a minute and spread them on a cloth.",
+      "Mix both minces with the raw rice, grated onion, tomatoes and herbs.",
+      "Work in the cinnamon, mint, salt, pepper and half the olive oil.",
+      "Put a spoon of filling on a leaf, fold the sides in and roll it into a tight cylinder.",
+      "Line the pot with torn leaves so the rolls do not catch.",
+      "Pack the rolls in tight layers seam down and weight them with a plate.",
+      "Pour in water with lemon juice and oil and cook them an hour, covered, over a low heat."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 28,
+      "carbsG": 40,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

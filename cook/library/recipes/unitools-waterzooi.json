@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-waterzooi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BE",
+    "nativeName": "Gentse waterzooi",
+    "summary": "A Ghent stew of chicken or fish in a creamy broth with julienned root vegetables.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      20,
+      12,
+      17,
+      12,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/waterzooi.jpg",
+      "author": "ayustety from Tokyo, Japan",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Waterzooi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "2 Leeks",
+        "item": "leeks",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Celeriac",
+        "item": "celeriac",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "250 ml Cream",
+        "item": "cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with the onion, bay and thyme for forty minutes and strain the broth.",
+      "Cut the leek, carrot and celeriac into fine julienne of equal length.",
+      "Sweat the vegetables in butter for ten minutes, without letting them colour.",
+      "Add the broth and the potato in batons and cook fifteen minutes.",
+      "Joint the chicken, return it to the pot and take it off the heat.",
+      "Whisk the yolks with the cream and ladle in hot broth, stirring, until the bowl warms up.",
+      "Pour the mixture back into the pot off the heat, warm it through without boiling, and add lemon and parsley."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 34,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

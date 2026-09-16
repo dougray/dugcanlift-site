@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-salo-po-ukrainski",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UA",
+    "nativeName": "Сало",
+    "summary": "Pork back fat dry-cured with garlic and spices, matured in the cold for a week.",
+    "category": "snack",
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      10,
+      15,
+      8,
+      10,
+      8,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Home-cured salo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Pork back fat",
+        "item": "pork back fat",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "from the back, skin on"
+      },
+      {
+        "rawText": "300 g Coarse salt",
+        "item": "coarse salt",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "2 Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "note": "heads"
+      },
+      {
+        "rawText": "2 tbsp Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Bay leaves",
+        "item": "bay leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "1 tbsp Coriander seeds",
+        "item": "coriander seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Paprika",
+        "item": "paprika",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "for the coating"
+      },
+      {
+        "rawText": "400 g Rye bread",
+        "item": "rye bread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Rinse the fat, dry it thoroughly and cut it into slabs ten centimetres wide.",
+      "Cut deep slits every two centimetres in each slab, stopping short of the skin.",
+      "Push a slice of garlic and a peppercorn into each slit.",
+      "Crush the remaining peppercorns and coriander and mix them with the salt and crumbled bay.",
+      "Roll the slabs in the mixture on all sides, pressing it into the slits.",
+      "Pack them into an enamelled dish skin down, cover and refrigerate for a week.",
+      "Scrape off the excess salt, roll the slabs in paprika and keep them in the freezer. Slice them thin and serve with rye bread."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 6,
+      "carbsG": 12,
+      "fatG": 82,
+      "estimated": true
+    }
+  }
+}

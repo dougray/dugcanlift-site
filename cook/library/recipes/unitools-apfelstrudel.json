@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-apfelstrudel",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AT",
+    "nativeName": "Apfelstrudel",
+    "summary": "Apples with cinnamon and raisins in a dough stretched until it is transparent. It is pulled by hand, never rolled.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      70,
+      10,
+      15,
+      5,
+      5,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/apfelstrudel.jpg",
+      "author": "Burkhard Mücke",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Apfelstrudel",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "250 g Strong flour",
+        "item": "strong flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "125 ml Warm water",
+        "item": "warm water",
+        "qty": 125,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 kg Tart apples",
+        "item": "tart apples",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 g Raisins",
+        "item": "raisins",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "80 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1,
+        "note": "juice and zest"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, warm water, oil and a pinch of salt for ten minutes, until smooth and very elastic. Oil it, cover it and leave it an hour.",
+      "Fry the breadcrumbs in half the butter until golden. Mix the apples with the sugar, cinnamon, raisins, lemon juice and zest.",
+      "Spread a cloth on the table, dust it with flour and stretch the dough with the backs of your hands from the centre outwards, until it is transparent. Trim the thick edges.",
+      "Brush the dough with melted butter, scatter the crumbs over a third of it and pile the apples onto them, leaving a border.",
+      "Roll it up by lifting the cloth — by hand the dough tears. Tuck the ends under, move it seam down onto a tray and brush with butter.",
+      "Bake at 190 °C for forty minutes, brushing with butter twice along the way. Serve warm, dusted with icing sugar."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 5,
+      "carbsG": 66,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

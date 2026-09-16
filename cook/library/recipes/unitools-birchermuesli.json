@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-birchermuesli",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CH",
+    "nativeName": "Birchermüesli",
+    "summary": "Oats soaked overnight with grated apple, cream and nuts.",
+    "category": "breakfast",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      5,
+      8,
+      3,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bircher muesli",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "200 g Rolled oats",
+        "item": "rolled oats",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "300 ml Water or apple juice",
+        "item": "water or apple juice",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Apples",
+        "item": "apples",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "150 ml Cream",
+        "item": "cream",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Condensed milk",
+        "item": "condensed milk",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Hazelnuts",
+        "item": "hazelnuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "200 g Berries",
+        "item": "berries",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 tbsp Honey",
+        "item": "honey",
+        "qty": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Cover the oats with water or apple juice and leave them overnight in the fridge.",
+      "In the morning stir in the yoghurt, cream and condensed milk until even.",
+      "Grate the apples, skins and all, on a coarse grater straight into the bowl.",
+      "Squeeze lemon juice over the grated apple at once and stir it through so it does not brown.",
+      "Toast the hazelnuts in a dry pan for five minutes and chop them coarsely.",
+      "Stir in the honey, divide it between bowls and top with the nuts and berries."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 14,
+      "carbsG": 58,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shelpek",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KZ",
+    "nativeName": "Шелпек",
+    "summary": "Thin flatbreads fried in oil, the memorial bread of Kazakh tradition.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      7,
+      5,
+      12,
+      32,
+      15,
+      5,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shelpek",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 7,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 ml Kefir",
+        "item": "kefir",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "0.5 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "melted"
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Mix the kefir with the bicarbonate and leave it five minutes; the mixture foams.",
+      "Add the egg, sugar, salt and melted butter and stir until even.",
+      "Work in the flour a little at a time and knead a soft dough that stays slightly tacky.",
+      "Cover it with a cloth and rest it half an hour at room temperature.",
+      "Divide it into seven balls and roll each into a thin twenty-centimetre round.",
+      "Prick each round in several places with a fork so it does not balloon in one bubble.",
+      "Fry them in hot oil a minute a side, to golden spots, and drain them on paper."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 8,
+      "carbsG": 48,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

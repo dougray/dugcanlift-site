@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-salata-aswad",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SD",
+    "nativeName": "سلطة أسود",
+    "summary": "A Sudanese salad of fried aubergine with peanut butter and lemon.",
+    "category": "salad",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      6,
+      22,
+      5,
+      8,
+      10,
+      17
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Salata aswad",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "800 g Aubergines",
+        "item": "aubergines",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 g Peanut butter",
+        "item": "peanut butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "unsweetened"
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Hot chilli",
+        "item": "hot chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "200 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dice the aubergines, salt them and leave them twenty minutes to draw out the bitterness.",
+      "Pat the cubes dry with paper; wet ones spit in the oil.",
+      "Fry the aubergine in batches to a dark brown crust and drain it on paper.",
+      "Pound the garlic with salt into a paste in a mortar.",
+      "Let the peanut butter down with lemon juice, the garlic and water to the body of soured cream.",
+      "Chop the tomatoes, onion and chilli fine and mix them with the cooled aubergine.",
+      "Pour over the peanut dressing, toss it and let it stand fifteen minutes."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 10,
+      "carbsG": 18,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-draniki",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BY",
+    "nativeName": "Дранікі",
+    "summary": "Potato pancakes from raw grated potato, fried to a crisp edge and served with soured cream.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      5,
+      2,
+      4,
+      20,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/draniki.jpg",
+      "author": "Photo made by Daniel Spils and uploaded to flickr.com",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Draniki",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Dill",
+        "item": "dill",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grate the potato and onion finely into the same bowl.",
+      "Let the mass stand three minutes and pour off the water that gathers on top, leaving the sediment.",
+      "Season with salt and pepper. Add nothing else.",
+      "Heat the oil over medium and drop the mixture in by the spoonful, flattening it to half a centimetre.",
+      "Fry three to four minutes a side, to a deep golden crisp crust.",
+      "Drain on paper and serve immediately with soured cream and dill."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 390,
+      "proteinG": 8,
+      "carbsG": 42,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

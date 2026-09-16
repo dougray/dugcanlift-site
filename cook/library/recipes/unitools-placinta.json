@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-placinta",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MD",
+    "nativeName": "Plăcintă",
+    "summary": "A flat pie of stretched dough with cheese, pumpkin or apple, cooked in a dry pan.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      14,
+      45,
+      12,
+      15,
+      12,
+      4,
+      26
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/placinta.jpg",
+      "author": "",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Plăcintă",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "260 ml Warm water",
+        "item": "warm water",
+        "qty": 260,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Brined white cheese",
+        "item": "brined white cheese",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "400 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "for the second filling"
+      },
+      {
+        "rawText": "3 tbsp Sugar",
+        "item": "sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knead a soft dough from the flour, warm water, a spoon of oil and salt, and work it ten minutes.",
+      "Divide it into six balls, oil them generously and leave them under film for forty minutes.",
+      "Mash the cheese with the egg and dill. Grate the pumpkin and mix it with sugar for the second filling.",
+      "Stretch a ball by hand on an oiled table into a thin round, until it turns translucent.",
+      "Put the filling in the middle and fold the edges to the centre, into a parcel or a round.",
+      "Flatten it with your palm to a centimetre and a half.",
+      "Cook in a hot dry pan four minutes a side, to a mottled crust."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 440,
+      "proteinG": 14,
+      "carbsG": 46,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

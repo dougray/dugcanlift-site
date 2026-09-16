@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-papanasi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RO",
+    "nativeName": "Papanași",
+    "summary": "Curd doughnuts shaped as a ring with a ball on top, with soured cream and jam.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      8,
+      10,
+      22,
+      15,
+      18,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/papanasi.jpg",
+      "author": "",
+      "license": ""
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Papanași",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Curd cheese",
+        "item": "curd cheese",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "well drained"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "250 g Flour",
+        "item": "flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "50 g Semolina",
+        "item": "semolina",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "60 g Sugar",
+        "item": "sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 ml Thick soured cream",
+        "item": "thick soured cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 g Blackcurrant jam",
+        "item": "blackcurrant jam",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Wring the curd in muslin and push it through a sieve to remove any grain.",
+      "Mix the curd with the eggs, sugar, zest, vanilla, bicarbonate and salt.",
+      "Work in the semolina and flour a little at a time, until the dough is soft but stops sticking.",
+      "Rest the dough twenty minutes; the semolina swells and shaping becomes easier.",
+      "Shape six ten-centimetre rings and six balls the size of a walnut.",
+      "Fry at 165 °C for three minutes a side, to a golden colour.",
+      "Set a ring on a plate, spoon over the soured cream and jam, and crown it with a ball."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 22,
+      "carbsG": 62,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

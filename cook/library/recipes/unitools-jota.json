@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jota",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SI",
+    "nativeName": "Jota",
+    "summary": "A thick soup of soured turnip or sauerkraut with beans, potato and smoked meat.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      62,
+      40,
+      22,
+      22,
+      8,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/jota.jpg",
+      "author": "Petar43",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jota",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Soured turnip or sauerkraut",
+        "item": "soured turnip or sauerkraut",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 g Beans",
+        "item": "beans",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Smoked pork ribs",
+        "item": "smoked pork ribs",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Smoked sausage",
+        "item": "smoked sausage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the soaked beans in a separate pot until soft, an hour. Keep the water.",
+      "Simmer the smoked ribs in a litre and a half of water for forty minutes with the bay.",
+      "Add the soured turnip or sauerkraut with some of its brine and cook twenty minutes.",
+      "Add the diced potato and sausage and cook twenty minutes more.",
+      "Fry the onion and garlic in oil until golden and stir them into the soup.",
+      "Add the beans with their water, mash some of the potato in the pot and cook five minutes.",
+      "Strip the meat from the bones, return it to the soup and season with salt and pepper."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 490,
+      "proteinG": 26,
+      "carbsG": 46,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

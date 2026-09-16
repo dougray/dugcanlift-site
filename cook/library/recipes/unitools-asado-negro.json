@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-asado-negro",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VE",
+    "nativeName": "Asado negro",
+    "summary": "Beef seared black in burnt sugar and braised for four hours.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      10,
+      18,
+      15,
+      8,
+      250,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/asado-negro.jpg",
+      "author": "Ferchoelmejor",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Asado negro",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Beef rump",
+        "item": "beef rump",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "in one piece"
+      },
+      {
+        "rawText": "150 g Panela or brown sugar",
+        "item": "panela or brown sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Leek",
+        "item": "leek",
+        "qty": 1
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "500 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Red wine",
+        "item": "red wine",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Worcestershire sauce",
+        "item": "worcestershire sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Rice",
+        "item": "rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pierce the meat in several places with a knife, rub it with salt, pepper and garlic and leave it an hour.",
+      "Melt the panela in oil in a heavy pot until nearly black, without stirring it with a spoon.",
+      "Lower the beef into the caramel and sear it on all sides to a black crust, about fifteen minutes.",
+      "Lift out the meat and fry the onion, pepper, carrot and leek in the same fat until soft.",
+      "Return the meat, add the tomatoes, wine, Worcestershire sauce and bay, and add water to half its height.",
+      "Braise covered for four hours on the lowest heat, turning the joint every hour.",
+      "Lift out the meat, strain the sauce, reduce it by half and slice the beef across the grain."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 260,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 54,
+      "carbsG": 52,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

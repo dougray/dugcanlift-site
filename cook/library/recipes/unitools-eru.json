@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-eru",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CM",
+    "nativeName": "Eru",
+    "summary": "A Cameroonian stew of finely shredded eru leaf with waterleaf and palm oil.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      60,
+      25,
+      30,
+      12,
+      12,
+      22,
+      14
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/eru.jpg",
+      "author": "Minette Lontsie",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Eru",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Eru leaf",
+        "item": "eru leaf",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "or spinach"
+      },
+      {
+        "rawText": "800 g Waterleaf",
+        "item": "waterleaf",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "or chard"
+      },
+      {
+        "rawText": "150 ml Red palm oil",
+        "item": "red palm oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Beef",
+        "item": "beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "300 g Tripe",
+        "item": "tripe",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "150 g Dried fish",
+        "item": "dried fish",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "50 g Ground dried crayfish",
+        "item": "ground dried crayfish",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Hot chilli",
+        "item": "hot chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Stock cube",
+        "item": "stock cube",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the beef and tripe with the onion and a stock cube for an hour, until tender.",
+      "Soak the dried fish in hot water twenty minutes and flake it, taking out the bones.",
+      "Shred the eru leaf as fine as you can, rolling it tight before cutting.",
+      "Rinse the waterleaf and cut it coarsely; it wilts right down as it cooks anyway.",
+      "Put the waterleaf into the pot with the meat and let it wilt, giving up its juice.",
+      "Add the eru, fish, crayfish and chilli and stew twenty minutes with the lid on.",
+      "Pour in the palm oil, stir it through and cook ten minutes more uncovered."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 14,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

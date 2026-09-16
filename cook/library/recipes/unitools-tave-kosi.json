@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tave-kosi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AL",
+    "nativeName": "Tavë kosi",
+    "summary": "Lamb baked under a thick yoghurt custard with egg and rice. Albania's national dish.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      45,
+      10,
+      5,
+      8,
+      3,
+      5,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tave-kosi.jpg",
+      "author": "MirelaAndoni",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tavë kosi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1 kg Lamb",
+        "item": "lamb",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "800 ml Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 800,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "60 g Flour",
+        "item": "flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 g Rice",
+        "item": "rice",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the lamb with salt, pepper, garlic and oregano and roast it at 190 °C for forty minutes, dotted with butter.",
+      "Parboil the rice for seven minutes and drain it.",
+      "Melt the remaining butter, stir in the flour and cook two minutes to a nutty smell.",
+      "Whisk the yoghurt with the eggs and salt, add the flour mixture and beat until completely smooth.",
+      "Stir in the rice. It takes up some of the moisture and keeps the custard from splitting.",
+      "Arrange the meat and its juices in a dish and pour the yoghurt mixture over.",
+      "Bake at 180 °C for forty-five minutes, until the top colours and the centre still trembles slightly."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 24,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

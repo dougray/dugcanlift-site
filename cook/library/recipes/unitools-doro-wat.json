@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-doro-wat",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ET",
+    "nativeName": "ዶሮ ወጥ",
+    "summary": "Chicken in a thick berbere sauce, built on a kilo of onion cooked dry until it disintegrates.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      30,
+      40,
+      12,
+      40,
+      12,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/doro-wat.jpg",
+      "author": "USDAgov",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Doro wat",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken, jointed",
+        "item": "chicken, jointed",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400
+      },
+      {
+        "rawText": "1 kg Onions",
+        "item": "onions",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "3 tbsp Berbere",
+        "item": "berbere",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "120 g Niter kibbeh spiced butter",
+        "item": "niter kibbeh spiced butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6,
+        "note": "hard-boiled"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "120 ml Red wine or tej",
+        "item": "red wine or tej",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Marinate the chicken in lemon juice and salt for half an hour.",
+      "Cook the onion in a dry pot over medium heat for forty minutes, stirring. It weeps, reduces and turns into a dark paste. Add neither oil nor water.",
+      "Add the spiced butter, garlic and ginger, cook five minutes, then stir in the berbere and fry five more: the spices have to open in the fat.",
+      "Pour in the wine and a cup of water, add the chicken and braise covered for forty minutes over a low flame.",
+      "Score the boiled eggs in several places and slip them into the sauce for the last ten minutes.",
+      "Serve with injera. The sauce should be thick and dark red, with oil separated on top."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 46,
+      "carbsG": 18,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

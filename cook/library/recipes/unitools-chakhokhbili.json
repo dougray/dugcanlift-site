@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chakhokhbili",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GE",
+    "nativeName": "ჩახოხბილი",
+    "summary": "Chicken stewed without water in its own juices with tomatoes and a mountain of fresh herbs.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      12,
+      12,
+      6,
+      30,
+      10,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chakhokhbili.jpg",
+      "author": "Georgian Recipes at Georgia About",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chakhokhbili",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "800 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "60 g Coriander",
+        "item": "coriander",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "40 g Purple basil",
+        "item": "purple basil",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "30 g Tarragon",
+        "item": "tarragon",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tbsp Khmeli suneli",
+        "item": "khmeli suneli",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the chicken pieces in a dry heavy pot without fat, to a golden crust.",
+      "Lift out the meat, add the butter and soften the onion in the rendered fat.",
+      "Skin the tomatoes, grate them and add them to the onion.",
+      "Return the chicken, season, add the khmeli suneli and the whole chilli and cover the pot.",
+      "Stew thirty minutes on a low heat, never adding water.",
+      "Chop all the herbs and the garlic coarsely, not to a paste.",
+      "Stir in the herbs and garlic, cover the pot, take it off the heat and let it stand ten minutes."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 46,
+      "carbsG": 20,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

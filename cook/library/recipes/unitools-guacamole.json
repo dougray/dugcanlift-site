@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-guacamole",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "summary": "Avocado, lime, onion and chilli crushed with a fork. No blender and no sour cream: both turn it into a dip rather than guacamole.",
+    "category": "snack",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      1,
+      3,
+      4,
+      1
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/guacamole.jpg",
+      "author": "Missvain",
+      "license": "CC BY 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Guacamole",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "3 Avocado",
+        "item": "avocado",
+        "qty": 3,
+        "note": "ripe"
+      },
+      {
+        "rawText": "1 Lime",
+        "item": "lime",
+        "qty": 1,
+        "note": "juiced"
+      },
+      {
+        "rawText": "0.5 Red onion",
+        "item": "red onion",
+        "qty": 0.5,
+        "note": "finely chopped"
+      },
+      {
+        "rawText": "1 Jalapeño",
+        "item": "jalapeño",
+        "qty": 1,
+        "note": "seeds removed"
+      },
+      {
+        "rawText": "3 sprigs Coriander",
+        "item": "coriander",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "1 Tomato",
+        "item": "tomato",
+        "qty": 1,
+        "note": "seeded and diced"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Halve the avocados, remove the stones and scoop the flesh into a bowl. A ripe avocado gives under a finger without collapsing.",
+      "Add the lime juice and the salt straight away. The acid needs to reach the flesh before it starts to brown.",
+      "Crush with a fork to a coarse, uneven mass. Lumps of avocado should remain — that is the texture you want.",
+      "Fold in the onion, the jalapeño and the coriander, taste, and adjust the salt or lime. The tomato goes in last and gently, so it does not water everything down.",
+      "Serve at once. If it has to wait, press cling film directly onto the surface — air is what darkens it."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 230,
+      "proteinG": 3,
+      "carbsG": 12,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

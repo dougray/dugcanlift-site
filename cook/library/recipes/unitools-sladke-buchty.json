@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sladke-buchty",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SK",
+    "nativeName": "Buchty",
+    "summary": "Yeast buns with plum jam or curd, baked packed together so their sides fuse.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      17,
+      18,
+      62,
+      12,
+      15,
+      10,
+      78
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sladke-buchty.jpg",
+      "author": "Ceridan",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Buchty",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 ml Warm milk",
+        "item": "warm milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "80 g Sugar",
+        "item": "sugar",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "300 g Plum jam",
+        "item": "plum jam",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "250 g Curd cheese",
+        "item": "curd cheese",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "40 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with a spoon of sugar in the warm milk and leave it fifteen minutes, until it foams.",
+      "Knead a dough from the flour, sponge, yolks, remaining sugar, zest, salt and half the butter.",
+      "Let it rise somewhere warm for an hour, until doubled.",
+      "Divide it into twelve balls and flatten each into a disc on your palm.",
+      "Put a spoon of jam or curd in each, seal the seam and turn them seam down.",
+      "Dip each bun in melted butter and pack them touching in a tin.",
+      "Prove them forty minutes, bake at 180 °C for thirty-five minutes and dust them with icing sugar."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 9,
+      "carbsG": 56,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

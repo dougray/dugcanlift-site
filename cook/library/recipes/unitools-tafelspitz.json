@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tafelspitz",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AT",
+    "nativeName": "Tafelspitz",
+    "summary": "Beef rump boiled in a clear broth, with apple horseradish and fried potatoes.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      155,
+      10,
+      6,
+      10,
+      25,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tafelspitz.jpg",
+      "author": "RobertK",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tafelspitz",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.8 kg Beef rump",
+        "item": "beef rump",
+        "qty": 1.8,
+        "unit": "kg",
+        "grams": 1800,
+        "note": "in one piece"
+      },
+      {
+        "rawText": "500 g Marrow bones",
+        "item": "marrow bones",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "200 g Celeriac",
+        "item": "celeriac",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Leek",
+        "item": "leek",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "10 Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 10
+      },
+      {
+        "rawText": "100 g Grated horseradish",
+        "item": "grated horseradish",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 Apples",
+        "item": "apples",
+        "qty": 2
+      },
+      {
+        "rawText": "30 g Chives",
+        "item": "chives",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil three litres of water with the root vegetables, bay and peppercorns and lower the beef into it.",
+      "Skim, and hold it just below a simmer for two and a half hours, never letting it bubble.",
+      "Halve the onions and char the cut faces black on a dry pan; they give the broth its colour.",
+      "Add the charred onion and the marrow bones to the pot for the last hour.",
+      "Grate the apples and mix them with the horseradish; that is Apfelkren, and it is made just before serving.",
+      "Boil the potatoes, slice them and fry them in butter until browned.",
+      "Slice the meat across the grain, serve the broth separately and the meat with the horseradish, potatoes and chives."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 58,
+      "carbsG": 38,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

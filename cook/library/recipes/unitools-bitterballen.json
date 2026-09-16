@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bitterballen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NL",
+    "nativeName": "Bitterballen",
+    "summary": "Balls of stiff meat ragout in breadcrumbs, deep-fried and served with mustard.",
+    "category": "snack",
+    "difficulty": "hard",
+    "stepMinutes": [
+      90,
+      3,
+      12,
+      15,
+      20,
+      35,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bitterballen.jpg",
+      "author": "Globered13",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bitterballen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Beef",
+        "item": "beef",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "for braising"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "120 g Flour",
+        "item": "flour",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "600 ml Beef stock",
+        "item": "beef stock",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "0.5 tsp Nutmeg",
+        "item": "nutmeg",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "250 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "100 g Mustard",
+        "item": "mustard",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the beef in the stock for ninety minutes, until completely tender, and shred it fine.",
+      "Fry the onion in butter, stir in the flour and cook it three minutes without letting it colour.",
+      "Pour in the hot stock in a thin stream and cook it to a very thick paste, about ten minutes.",
+      "Stir in the meat, parsley, nutmeg, salt and pepper, spread it in a dish and chill it four hours.",
+      "Roll the set mixture into walnut-sized balls with damp hands.",
+      "Coat them in flour, egg and crumbs, chill them twenty minutes, then repeat the egg and crumbs.",
+      "Fry at 180 °C for three minutes, to a deep gold, and serve with mustard."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 24,
+      "carbsG": 38,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

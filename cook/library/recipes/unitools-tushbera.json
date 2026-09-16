@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tushbera",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TJ",
+    "nativeName": "Тушбера",
+    "summary": "Tajik dumplings in broth with herbs, boiled in thin dough and served in a bowl.",
+    "category": "soup",
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      42,
+      25,
+      10,
+      30,
+      35,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tushbera",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "200 ml Water",
+        "item": "water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Lamb",
+        "item": "lamb",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "boneless"
+      },
+      {
+        "rawText": "100 g Lamb tail fat",
+        "item": "lamb tail fat",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 l Lamb broth",
+        "item": "lamb broth",
+        "qty": 2,
+        "unit": "l"
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "200 ml Katyk or soured cream",
+        "item": "katyk or soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Cumin",
+        "item": "cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, egg, water and salt and work it fifteen minutes.",
+      "Cover the dough and rest it forty minutes; that is what makes it pliable.",
+      "Chop the lamb and tail fat by knife into a fine crumb.",
+      "Mix the meat with finely chopped onion, cumin, salt and pepper.",
+      "Roll the dough until translucent and cut five-centimetre rounds.",
+      "Fold the dumplings, sealing the edge and bringing two corners together into a ring.",
+      "Cook them in the boiling broth for eight minutes and serve them in a bowl with katyk and coriander."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 32,
+      "carbsG": 54,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

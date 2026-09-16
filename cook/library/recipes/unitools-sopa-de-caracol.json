@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sopa-de-caracol",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HN",
+    "nativeName": "Sopa de caracol",
+    "summary": "Conch soup in coconut milk with cassava and plantain. The Garifuna cooking of the Caribbean coast.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      6,
+      42,
+      22,
+      7,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sopa-de-caracol.jpg",
+      "author": "Eugene Kim from San Francisco, USA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Conch soup",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "700 g Conch or squid",
+        "item": "conch or squid",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "600 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Cassava",
+        "item": "cassava",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Green plantain",
+        "item": "green plantain",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tsp Achiote",
+        "item": "achiote",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pound the conch with a mallet and cut it into small pieces. Squeeze lime over it.",
+      "Fry the onion, garlic and pepper in oil with the achiote until soft.",
+      "Add half the coconut milk let down with water and bring it up.",
+      "Add the conch and simmer forty minutes, until tender.",
+      "Add the cassava, plantain and carrot in large pieces and cook twenty minutes.",
+      "Add the remaining thick coconut milk and warm it five minutes without boiling.",
+      "Scatter with coriander and serve with lime and fried plantain."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 34,
+      "carbsG": 46,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

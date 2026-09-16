@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-machanka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BY",
+    "nativeName": "Мачанка",
+    "summary": "A thick pork and sausage gravy on soured cream, into which pancakes are dipped. Hence the name.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      27,
+      6,
+      10,
+      20,
+      20,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Machanka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "diced"
+      },
+      {
+        "rawText": "250 g Smoked sausage",
+        "item": "smoked sausage",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "250 g Smoked ribs",
+        "item": "smoked ribs",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "300 ml Soured cream",
+        "item": "soured cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "250 g Flour for pancakes",
+        "item": "flour for pancakes",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "500 ml Milk",
+        "item": "milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the pork well, add the onion and fry until soft.",
+      "Add the sliced sausage and ribs, pour in a cup of water, add the bay and stew twenty-five minutes.",
+      "Whisk the flour into the soured cream until smooth and stir it into the pot.",
+      "Simmer ten minutes on a low heat, until the gravy thickens to the consistency of pouring cream.",
+      "Whisk a pancake batter from the flour, milk, eggs and salt and let it stand fifteen minutes.",
+      "Cook thin unsweetened pancakes in a dry pan.",
+      "Serve the machanka in a deep bowl with the pancakes stacked beside it. You tear off a piece and dip."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 34,
+      "carbsG": 54,
+      "fatG": 46,
+      "estimated": true
+    }
+  }
+}

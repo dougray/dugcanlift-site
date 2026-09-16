@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-osso-buco-alla-milanese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Ossobuco alla milanese",
+    "summary": "Veal shin braised two hours in wine and stock, finished with a gremolata of zest and garlic.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      5,
+      12,
+      12,
+      8,
+      125,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/osso-buco-alla-milanese.jpg",
+      "author": "Mogens Engelund",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Osso buco alla milanese",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Veal shin",
+        "item": "veal shin",
+        "qty": 4,
+        "note": "cut across, 4 cm thick"
+      },
+      {
+        "rawText": "60 g Flour",
+        "item": "flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Celery",
+        "item": "celery",
+        "qty": 2
+      },
+      {
+        "rawText": "250 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 ml Meat stock",
+        "item": "meat stock",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Tie each piece round its circumference with kitchen string so the meat stays on the bone.",
+      "Nick the membrane around the edge in two or three places, or the pieces curl as they brown.",
+      "Dust with flour and brown them in butter on both sides, four minutes a side.",
+      "Lift out the meat and soften the finely chopped onion, carrot and celery.",
+      "Add the wine and reduce it by half, scraping up what has caught on the bottom.",
+      "Return the meat, add stock to half the height of the pieces and braise covered for two hours on a low heat.",
+      "Mix the chopped zest, garlic and parsley and scatter it over the osso buco before serving."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 130,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 18,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

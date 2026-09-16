@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kjotsupa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IS",
+    "nativeName": "Kjötsúpa",
+    "summary": "A clear lamb soup with root vegetables and barley. One pot, four ingredients, three hours.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      90,
+      42,
+      22,
+      12,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kjotsupa.jpg",
+      "author": "Ypsilon from Finland",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kjötsúpa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "shoulder or neck"
+      },
+      {
+        "rawText": "120 g Pearl barley",
+        "item": "pearl barley",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4
+      },
+      {
+        "rawText": "400 g Swede",
+        "item": "swede",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "300 g Cabbage",
+        "item": "cabbage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "1 tsp Dried herbs",
+        "item": "dried herbs",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the meat with three litres of cold water, bring it up and skim carefully.",
+      "Simmer for an hour and a half, never letting it boil hard; the broth has to stay clear.",
+      "Add the barley and onion and cook forty minutes more.",
+      "Add the carrot, swede and potato in large pieces and cook twenty minutes.",
+      "Add the cabbage for the last ten minutes and season with salt and pepper.",
+      "Divide the meat between bowls, ladle over the broth and vegetables and serve with rye bread."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 36,
+      "carbsG": 42,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

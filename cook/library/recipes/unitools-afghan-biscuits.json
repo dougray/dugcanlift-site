@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-afghan-biscuits",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NZ",
+    "nativeName": "Afghan biscuits",
+    "summary": "Dense chocolate biscuits with cornflakes, under icing and half a walnut.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      6,
+      3,
+      8,
+      20,
+      25,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Afghan biscuits",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 16,
+    "ingredients": [
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "softened"
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "180 g Flour",
+        "item": "flour",
+        "qty": 180,
+        "unit": "g",
+        "grams": 180
+      },
+      {
+        "rawText": "30 g Cocoa powder",
+        "item": "cocoa powder",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 g Cornflakes",
+        "item": "cornflakes",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "20 g Cocoa for the icing",
+        "item": "cocoa for the icing",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "3 tbsp Hot water",
+        "item": "hot water",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "16 Walnut halves",
+        "item": "walnut halves",
+        "qty": 16
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Beat the softened butter with the sugar until pale, about four minutes.",
+      "Sift the flour with the cocoa and salt and fold it in with a spatula to an even dough.",
+      "Add the cornflakes and fold them through in one movement, trying not to break them.",
+      "Drop the dough onto a tray by the spoonful and press each one down lightly.",
+      "Bake at 180 °C for eighteen minutes; the biscuits stay soft to the touch and firm up as they cool.",
+      "Cool them completely on the tray, without trying to lift them hot.",
+      "Whisk the icing sugar with the cocoa and hot water into a thick icing, coat the biscuits and press a walnut half into each."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 240,
+      "proteinG": 3,
+      "carbsG": 29,
+      "fatG": 13,
+      "estimated": true
+    }
+  }
+}

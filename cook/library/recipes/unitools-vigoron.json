@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-vigoron",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NI",
+    "nativeName": "Vigorón",
+    "summary": "Boiled cassava with pork crackling and cabbage salad, served on a banana leaf.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      65,
+      22,
+      40,
+      14,
+      35,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/vigoron.jpg",
+      "author": "Nicaraguan food",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Vigorón",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Cassava",
+        "item": "cassava",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "800 g Pork skin with fat",
+        "item": "pork skin with fat",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "500 g Cabbage",
+        "item": "cabbage",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "100 ml White vinegar",
+        "item": "white vinegar",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Hot chilli",
+        "item": "hot chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "5 Banana leaf",
+        "item": "banana leaf",
+        "qty": 5,
+        "note": "to serve on"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Shred the cabbage finely and mix it with the tomatoes, onion, vinegar, lime juice and salt.",
+      "Leave the curtido to pickle at least an hour, stirring it now and then.",
+      "Cut the pork skin into squares, salt it and leave it twenty minutes.",
+      "Render the skin in its own fat over a low heat for forty minutes.",
+      "Raise the heat and fry ten minutes more, until the crackling puffs and turns crisp.",
+      "Boil the cassava in salted water until tender, having cut out the woody core.",
+      "Lay the cassava on a banana leaf, the curtido over it and the crackling on top, with the chilli."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 24,
+      "carbsG": 62,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

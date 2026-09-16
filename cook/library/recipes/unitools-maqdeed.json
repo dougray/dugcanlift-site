@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-maqdeed",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "OM",
+    "nativeName": "مقديد",
+    "summary": "Sun-dried meat with turmeric, boiled and then fried with onion.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      30,
+      15,
+      20,
+      15,
+      40,
+      12,
+      14
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Maqdeed",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Lamb",
+        "item": "lamb",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "boneless"
+      },
+      {
+        "rawText": "120 g Coarse salt",
+        "item": "coarse salt",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "3 tbsp Turmeric",
+        "item": "turmeric",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Dried chilli",
+        "item": "dried chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tbsp Cumin",
+        "item": "cumin",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Rice",
+        "item": "rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Cut the lamb into two-finger strips along the grain.",
+      "Rub the strips all over with salt and turmeric, sparing neither.",
+      "Hang the meat in shade with a draught and dry it three to five days, until fully hard.",
+      "Soak the dried meat in cold water for two hours, changing the water once.",
+      "Boil the meat forty minutes, until it softens and starts to come apart in threads.",
+      "Fry the onion with the garlic, cumin and chilli in ghee until golden.",
+      "Add the shredded meat and fry ten minutes more, to browned edges. Serve it with rice."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 52,
+      "carbsG": 34,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

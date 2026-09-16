@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pho-bo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VN",
+    "nativeName": "Phở bò",
+    "summary": "A clear beef broth with charred ginger and whole spices, rice noodles, and beef that finishes cooking in the bowl.",
+    "category": "soup",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      8,
+      5,
+      180,
+      10,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pho-bo.jpg",
+      "author": "Kenny Louie from Vancouver, Canada",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Phở bò",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef marrow bones",
+        "item": "beef marrow bones",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "500 g Brisket",
+        "item": "brisket",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Sirloin",
+        "item": "sirloin",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "sliced almost transparent"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Ginger",
+        "item": "ginger",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "4 Star anise",
+        "item": "star anise",
+        "qty": 4
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Cloves",
+        "item": "cloves",
+        "qty": 4
+      },
+      {
+        "rawText": "1 tbsp Coriander seeds",
+        "item": "coriander seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Fish sauce",
+        "item": "fish sauce",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "400 g Flat rice noodles",
+        "item": "flat rice noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "Coriander, spring onion, Thai basil, to taste",
+        "item": "coriander, spring onion, thai basil"
+      },
+      {
+        "rawText": "Lime and chilli, to taste",
+        "item": "lime and chilli"
+      }
+    ],
+    "steps": [
+      "Cover the bones with cold water, bring to the boil and let them go for ten minutes. Throw the water away, rinse the bones under the tap and wash the pot. This step is what buys you a clear broth.",
+      "Halve the onion and ginger and char the cut faces in a dry pan or straight over the flame until they blacken in patches.",
+      "Toast the spices in a dry pan until they smell, then tie them in muslin. Return the bones to the clean pot with the brisket, onion, ginger and spices, and cover with water three fingers above.",
+      "Simmer for three hours at the barest tremble. Skim for the first half hour. Lift the brisket out after ninety minutes and let it cool.",
+      "Strain the broth through a fine sieve and season with fish sauce and sugar. Taste it: it should be slightly saltier than pleasant to drink on its own, because the noodles will take their share.",
+      "Cook the noodles and divide them between bowls. Lay the sliced brisket and the raw sirloin on top. Ladle boiling broth over so it covers the meat, and serve the herbs, lime and chilli alongside."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 34,
+      "carbsG": 62,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

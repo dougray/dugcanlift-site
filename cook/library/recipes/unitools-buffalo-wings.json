@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-buffalo-wings",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "US",
+    "nativeName": "Buffalo wings",
+    "summary": "Unbreaded wings in a sauce of hot pepper sauce and butter. Salt draws the moisture out before baking.",
+    "category": "snack",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      240,
+      5,
+      20,
+      25,
+      4,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/buffalo-wings.jpg",
+      "author": "Willis Lam",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Buffalo wings",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Chicken wings",
+        "item": "chicken wings",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "split at the joint"
+      },
+      {
+        "rawText": "1 tbsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Hot pepper sauce",
+        "item": "hot pepper sauce",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 tbsp White vinegar",
+        "item": "white vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Garlic powder",
+        "item": "garlic powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Celery sticks, to taste",
+        "item": "celery sticks"
+      },
+      {
+        "rawText": "Blue cheese dip, to taste",
+        "item": "blue cheese dip"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dry the wings with kitchen paper, salt them and leave them uncovered on a rack in the fridge for at least four hours, better overnight.",
+      "Dust with the baking powder and toss so the coating is thin and even. Too much leaves a soapy taste.",
+      "Spread them on a rack over a tray and bake at 120 °C for twenty minutes: the fat renders out.",
+      "Raise the oven to 220 °C and bake another twenty-five minutes, to a deep gold and a crisp.",
+      "Melt the butter, take it off the heat and whisk in the pepper sauce, vinegar and garlic powder to an even emulsion.",
+      "Toss the hot wings with the sauce in a bowl and serve immediately with celery and blue cheese dip."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 42,
+      "carbsG": 3,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

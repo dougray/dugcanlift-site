@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-beshbarmak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KZ",
+    "nativeName": "Бесбармақ",
+    "summary": "Boiled meat on sheets of pasta with an onion broth called sorpa. The centrepiece of a Kazakh table.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      155,
+      50,
+      20,
+      12,
+      15,
+      12,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/beshbarmak.jpg",
+      "author": "Igors Jefimovs",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Beshbarmak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef on the bone",
+        "item": "beef on the bone",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "brisket or shoulder"
+      },
+      {
+        "rawText": "300 g Kazy or horsemeat",
+        "item": "kazy or horsemeat",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "optional"
+      },
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Egg",
+        "item": "egg",
+        "qty": 2
+      },
+      {
+        "rawText": "180 ml Water for the dough",
+        "item": "water for the dough",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Onion",
+        "item": "onion",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "10 Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 10
+      },
+      {
+        "rawText": "20 g Herbs",
+        "item": "herbs",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the meat with cold water, bring it up, skim, and simmer on the lowest heat for two and a half hours with the peppercorns and bay.",
+      "Knead a stiff dough from the flour, eggs, water and salt and rest it under film for forty minutes.",
+      "Roll the dough a millimetre thick and cut it into squares of about eight centimetres.",
+      "Slice the onion into rings, pour a ladle of hot broth over it and leave it ten minutes; this is the sorpa that dresses the dish.",
+      "Lift out the meat, skim the fat into a separate bowl and boil the dough squares in that broth in batches, three to four minutes each.",
+      "Pull the meat apart into thin sheets across the grain. Lay the dough on a large platter, the meat on top, the onions and their broth over that.",
+      "Serve the remaining broth hot in bowls with herbs; it is drunk before the dish or alongside it."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 45,
+      "carbsG": 63,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

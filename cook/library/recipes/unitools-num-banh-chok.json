@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-num-banh-chok",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KH",
+    "nativeName": "នំបញ្ចុក",
+    "summary": "Cold rice noodles under a fish and coconut curry with a mountain of raw vegetables and herbs.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      20,
+      12,
+      5,
+      12,
+      20,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/num-banh-chok.jpg",
+      "author": "Thomas Wanhoff from Siem Reap, Cambodia",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Num banh chok",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Fine rice noodles",
+        "item": "fine rice noodles",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "700 g White fish",
+        "item": "white fish",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "500 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Lemongrass",
+        "item": "lemongrass",
+        "qty": 4
+      },
+      {
+        "rawText": "40 g Galangal",
+        "item": "galangal",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "30 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "6 Kaffir lime leaves",
+        "item": "kaffir lime leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "3 tbsp Prahok or fish sauce",
+        "item": "prahok or fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 g Banana blossom",
+        "item": "banana blossom",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Bean sprouts",
+        "item": "bean sprouts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Cucumbers",
+        "item": "cucumbers",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Yard-long beans",
+        "item": "yard-long beans",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Mint, basil, coriander",
+        "item": "mint, basil, coriander",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "150 g Water lily stems",
+        "item": "water lily stems",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Poach the fish in salted water for ten minutes, lift it out and pick it by hand, removing every bone.",
+      "Pound the lemongrass, galangal, turmeric and lime leaves in a mortar into a kroeung paste.",
+      "Work the picked fish into the paste in the mortar, keeping the threads distinguishable.",
+      "Warm the fish and spice mixture in a pan for five minutes, then add the prahok and the fish broth.",
+      "Add the coconut milk and warm it ten minutes without letting it boil.",
+      "Shred all the vegetables fine and pile them on a large platter.",
+      "Boil the noodles, rinse them in cold water and serve them cold under the warm curry."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 38,
+      "carbsG": 58,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

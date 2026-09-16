@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tarte-tatin",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FR",
+    "nativeName": "Tarte Tatin",
+    "summary": "An upside-down apple tart: the apples caramelise at the bottom, the pastry goes on top and becomes the base.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      10,
+      5,
+      10,
+      20,
+      8,
+      48
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tarte Tatin",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Firm tart apples",
+        "item": "firm tart apples",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "350 g Puff pastry",
+        "item": "puff pastry",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Vanilla",
+        "item": "vanilla",
+        "qty": 1
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml",
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Peel the apples, halve them, core them and squeeze lemon over them.",
+      "Melt the sugar in a cast-iron pan over medium heat to an amber caramel, without stirring it with a spoon.",
+      "Take it off the heat and beat in the butter piece by piece, with the vanilla and a pinch of salt.",
+      "Pack the apple halves cut side up, tight against each other, in a circle.",
+      "Cook on the hob for twenty minutes over medium heat, until the apples sink and take up the caramel.",
+      "Cover with a round of puff pastry, tucking the edges down inside the pan, and prick it in several places.",
+      "Bake at 200 °C for forty minutes, rest it five, and invert it onto a plate in one movement."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 4,
+      "carbsG": 64,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

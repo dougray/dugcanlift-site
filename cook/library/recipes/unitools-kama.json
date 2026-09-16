@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kama",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EE",
+    "nativeName": "Kama",
+    "summary": "A dessert of roasted mixed-grain flour stirred into kefir. Estonian breakfast and summer pudding at once.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      3,
+      5,
+      15,
+      3,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kama.jpg",
+      "author": "Tappinen",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kama",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "200 g Kama flour",
+        "item": "kama flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "600 ml Kefir",
+        "item": "kefir",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Sugar",
+        "item": "sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Honey",
+        "item": "honey",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 g Forest berries",
+        "item": "forest berries",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 ml Cream",
+        "item": "cream",
+        "qty": 100,
+        "unit": "ml",
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Whisk the kefir with the sugar and a pinch of salt until the sugar has dissolved.",
+      "Add the kama a little at a time, whisking; all at once it lumps, and the lumps never break up.",
+      "Leave it fifteen minutes for the flour to swell, then check the consistency and let it down with more kefir if needed.",
+      "Stir in the honey and divide between glasses.",
+      "Chill for an hour and serve with berries and, if you like, a spoon of whipped cream."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 310,
+      "proteinG": 12,
+      "carbsG": 52,
+      "fatG": 6,
+      "estimated": true
+    }
+  }
+}

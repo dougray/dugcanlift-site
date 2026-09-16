@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-guinness-beef-stew",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IE",
+    "nativeName": "Beef and Guinness stew",
+    "summary": "Beef braised three hours in dark stout with onion and root vegetables.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      20,
+      12,
+      8,
+      125,
+      47,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Beef and stout stew",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef chuck",
+        "item": "beef chuck",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "500 ml Stout",
+        "item": "stout",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Flour",
+        "item": "flour",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4
+      },
+      {
+        "rawText": "700 g Potatoes",
+        "item": "potatoes",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "2 Parsnips",
+        "item": "parsnips",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "400 ml Beef stock",
+        "item": "beef stock",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 sprigs Thyme",
+        "item": "thyme",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tbsp Honey",
+        "item": "honey",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pat the beef dry, season it and dust it with flour on all sides.",
+      "Brown the meat in batches in hot oil to a dark crust and lift it out.",
+      "Soften the onion in the same fat, add the tomato paste and cook it three minutes.",
+      "Pour in the stout, bring it up and scrape everything caught on the bottom; that is where the flavour is.",
+      "Return the meat, add the stock, thyme and bay and braise covered at 160 °C for two hours.",
+      "Add the carrot, parsnip and potato and braise forty-five minutes more.",
+      "Stir in the honey, taste for the balance against the bitterness and serve with soda bread."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 52,
+      "carbsG": 52,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

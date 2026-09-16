@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-zuercher-geschnetzeltes",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CH",
+    "nativeName": "Zürcher Geschnetzeltes",
+    "summary": "Veal strips in a creamy mushroom sauce with white wine, served with rösti.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      10,
+      10,
+      8,
+      10,
+      5,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Zürcher Geschnetzeltes",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Veal",
+        "item": "veal",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in strips"
+      },
+      {
+        "rawText": "300 g Mushrooms",
+        "item": "mushrooms",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Shallots",
+        "item": "shallots",
+        "qty": 3
+      },
+      {
+        "rawText": "150 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Cream",
+        "item": "cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Veal stock",
+        "item": "veal stock",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tbsp Flour",
+        "item": "flour",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "800 g Potatoes for rösti",
+        "item": "potatoes for rösti",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the veal into fine strips across the grain and pat them dry.",
+      "Heat a pan with butter and sear the meat in batches for thirty seconds, moving it onto a plate.",
+      "Fry the shallot and mushrooms in the same pan until their water has gone.",
+      "Stir in the flour, cook it a minute and add the wine, reducing it by half.",
+      "Add the stock and cream and reduce the sauce to a coating consistency, about eight minutes.",
+      "Return the meat with its collected juices, warm it a minute without boiling, and add lemon.",
+      "Scatter with parsley and serve with rösti set alongside rather than under the meat."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 46,
+      "carbsG": 38,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

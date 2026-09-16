@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pique-macho",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BO",
+    "nativeName": "Pique macho",
+    "summary": "A mountain of chips with beef, sausage, egg and fiery locoto chillies.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      25,
+      12,
+      5,
+      5,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pique-macho.jpg",
+      "author": "fabulousfabs",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pique macho",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Beef sirloin",
+        "item": "beef sirloin",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "diced"
+      },
+      {
+        "rawText": "1.2 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in batons"
+      },
+      {
+        "rawText": "300 g Frankfurters",
+        "item": "frankfurters",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Locoto or jalapeño",
+        "item": "locoto or jalapeño",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Mustard",
+        "item": "mustard",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Ketchup",
+        "item": "ketchup",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the potatoes into thick batons and soak them in cold water for twenty minutes.",
+      "Dry the potatoes and fry them twice: at 150 °C until soft, then at 190 °C until crisp.",
+      "Sear the diced beef over a high flame in batches for two minutes each and set it aside.",
+      "Fry the sliced sausages until browned and add the onion and pepper for five minutes.",
+      "Return the meat to the pan, add the tomatoes and mustard and warm it three minutes.",
+      "Fry the eggs with runny yolks and cut the locoto into thin rings.",
+      "Pile the chips on a platter, top with the meat and vegetables, the eggs and the locoto rings, and drizzle with mayonnaise and ketchup."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 980,
+      "proteinG": 48,
+      "carbsG": 68,
+      "fatG": 58,
+      "estimated": true
+    }
+  }
+}

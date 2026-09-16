@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kacamak",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ME",
+    "nativeName": "Kačamak",
+    "summary": "Maize porridge with potato, beaten with cheese and kajmak until it pulls into threads.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      15,
+      6,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kacamak.jpg",
+      "author": "Ssofija",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kačamak",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "300 g Maize flour",
+        "item": "maize flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 g Young salted cheese",
+        "item": "young salted cheese",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Kajmak",
+        "item": "kajmak",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "200 ml Milk",
+        "item": "milk",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the cut potatoes in salted water for twenty minutes, until completely soft.",
+      "Without draining, rain in the maize flour in a thin stream, stirring constantly.",
+      "Cook on a low heat for fifteen minutes, stirring with a wooden paddle; the porridge catches quickly.",
+      "Mash the potato in the pot together with the porridge until uniform.",
+      "Work in the crumbled cheese and kajmak, adding hot milk, and beat with the paddle for five minutes.",
+      "Turn it into a bowl, make a hollow and pour in melted butter. Serve at once."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 24,
+      "carbsG": 58,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

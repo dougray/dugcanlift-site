@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-palak-paneer",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "पालक पनीर",
+    "summary": "Spinach blanched and blended, with cubes of paneer. Spinach must not be stewed or it goes brown.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      10,
+      10,
+      8,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/palak-paneer.jpg",
+      "author": "Lopanayak",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Palak paneer",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Spinach",
+        "item": "spinach",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 g Paneer",
+        "item": "paneer",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "in 2 cm cubes"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomato",
+        "item": "tomato",
+        "qty": 2
+      },
+      {
+        "rawText": "20 g Ginger",
+        "item": "ginger",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Green chilli",
+        "item": "green chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Garam masala",
+        "item": "garam masala",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Cream",
+        "item": "cream",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Ghee",
+        "item": "ghee",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Drop the spinach into boiling water for ninety seconds and move it straight into iced water. Squeeze it out and blend it with the chilli to a purée.",
+      "Soak the paneer in hot salted water for ten minutes, then drain it.",
+      "Fry the cumin seeds in the ghee until they crackle, add the onion and cook it gold, then the ginger and garlic for a minute.",
+      "Add the tomatoes and cook seven minutes, until they break down and the fat starts separating at the edges.",
+      "Stir in the spinach purée, garam masala and salt, and warm it for exactly a minute. Add the paneer and cream and take it off the heat."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 22,
+      "carbsG": 16,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

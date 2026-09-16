@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-casado",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CR",
+    "nativeName": "Casado",
+    "summary": "A lunch plate of rice, beans, salad, plantain and meat, each in its own sector.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      22,
+      14,
+      12,
+      8,
+      6,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/casado.jpg",
+      "author": "Grendelkhan",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Casado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Chicken breast",
+        "item": "chicken breast",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "400 g Black beans",
+        "item": "black beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "cooked"
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "ripe"
+      },
+      {
+        "rawText": "300 g Chayote or courgette",
+        "item": "chayote or courgette",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "2 Carrot",
+        "item": "carrot",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Cabbage",
+        "item": "cabbage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Salsa Lizano",
+        "item": "salsa lizano",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Lime",
+        "item": "lime",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Marinate the chicken in lime juice, garlic, Salsa Lizano, salt and pepper for twenty minutes.",
+      "Cook the rice loose and warm the beans with a spoon of their liquid.",
+      "Dice the chayote and carrot small and stew them with garlic for ten minutes; that is the picadillo.",
+      "Fry the chicken over medium heat, six minutes a side.",
+      "Fry the ripe plantain slices to a caramel colour.",
+      "Toss the shredded cabbage with tomato, coriander, lime juice and salt.",
+      "Build the plate in sectors: rice, beans, chicken, picadillo, salad, plantain — unmixed."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 740,
+      "proteinG": 48,
+      "carbsG": 92,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

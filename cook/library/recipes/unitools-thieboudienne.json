@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-thieboudienne",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SN",
+    "nativeName": "Ceebu jën",
+    "summary": "Rice cooked in the tomato broth from the fish, with herb-stuffed fish and vegetables. Senegal's national dish.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      6,
+      12,
+      27,
+      14,
+      32,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/thieboudienne.jpg",
+      "author": "Dormeroom1",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Thieboudienne",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Grouper or sea bream",
+        "item": "grouper or sea bream",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "700 g Broken rice",
+        "item": "broken rice",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "60 g Parsley",
+        "item": "parsley",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Tomato paste",
+        "item": "tomato paste",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Cassava",
+        "item": "cassava",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Cabbage",
+        "item": "cabbage",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Aubergines",
+        "item": "aubergines",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Okra",
+        "item": "okra",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 tbsp Tamarind",
+        "item": "tamarind",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pound the parsley, garlic, chilli and salt into the rof paste and press it into slashes cut in the fish.",
+      "Fry the fish three minutes a side and set it aside.",
+      "In the same oil fry the onion until soft, add the tomato paste and cook five minutes, until it darkens.",
+      "Add two litres of water, the tamarind and the vegetables and cook twenty-five minutes.",
+      "Return the fish to the pot for ten minutes, then lift it and the vegetables out and keep them warm.",
+      "Add the rinsed rice to the remaining broth — twice as much liquid as rice — and cook covered for thirty minutes without stirring.",
+      "Turn the rice onto a large platter with the fish and vegetables on top. Share out the caught layer from the bottom separately."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 92,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

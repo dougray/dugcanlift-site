@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-boorsok",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KG",
+    "nativeName": "Боорсок",
+    "summary": "Kyrgyz fried dough diamonds, hollow inside, for tea and the dastarkhan.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      17,
+      15,
+      62,
+      10,
+      25,
+      8,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Boorsok",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "700 g Flour",
+        "item": "flour",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "350 ml Warm milk",
+        "item": "warm milk",
+        "qty": 350,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "40 g Sugar",
+        "item": "sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "900 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 900,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with the sugar in the warm milk and leave it fifteen minutes, until it foams.",
+      "Knead a soft dough from the flour, sponge, egg, melted butter and salt.",
+      "Let it rise somewhere warm for an hour, until doubled.",
+      "Knock the dough back and roll it out to exactly a centimetre thick.",
+      "Cut it into four-centimetre diamonds and let them rest twenty minutes.",
+      "Heat the oil to 180 °C and lower the diamonds in in small batches.",
+      "Fry them a minute and a half a side, turning with a slotted spoon, to golden puffs."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 7,
+      "carbsG": 42,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

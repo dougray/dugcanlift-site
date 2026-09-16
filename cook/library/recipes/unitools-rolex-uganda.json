@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rolex-uganda",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UG",
+    "nativeName": "Rolex",
+    "summary": "A vegetable omelette rolled in a chapati. Kampala street food, the name a slur of \"rolled eggs\".",
+    "category": "breakfast",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      15,
+      15,
+      12,
+      5,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rolex-uganda.jpg",
+      "author": "Zahara5555",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rolex",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "240 ml Warm water",
+        "item": "warm water",
+        "qty": 240,
+        "unit": "ml"
+      },
+      {
+        "rawText": "8 Eggs",
+        "item": "eggs",
+        "qty": 8
+      },
+      {
+        "rawText": "200 g Cabbage",
+        "item": "cabbage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "finely shredded"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a soft dough from the flour, warm water, a spoon of oil and salt and rest it twenty minutes.",
+      "Roll a ball thin, brush it with oil, roll it into a rope, coil it like a snail and roll it out again.",
+      "Cook the chapatis over medium heat, a minute and a half a side, and keep them under a cloth.",
+      "Shred the cabbage, carrot, onion, tomatoes and chilli as fine as you can.",
+      "Beat the eggs with the vegetables, salt and pepper; the vegetables belong inside the omelette, not on top.",
+      "Pour a portion of egg into the pan, let it set and lay a chapati on top, pressing it down.",
+      "Flip the two together, slide them onto a board omelette up and roll it tight."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 20,
+      "carbsG": 52,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

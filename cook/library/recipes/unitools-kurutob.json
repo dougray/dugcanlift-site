@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kurutob",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TJ",
+    "nativeName": "Қурутоб",
+    "summary": "Flaky fatir bread soaked in reconstituted dried qurut, under fried onion and fresh vegetables.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      6,
+      12,
+      5,
+      6,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kurutob.jpg",
+      "author": "Ibrahim Rustamov",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Qurutob",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "200 g Qurut",
+        "item": "qurut",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "or 500 g thick yoghurt"
+      },
+      {
+        "rawText": "400 g Fatir flatbread",
+        "item": "fatir flatbread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Cucumbers",
+        "item": "cucumbers",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "20 g Purple basil",
+        "item": "purple basil",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the qurut with hot water for twenty minutes and rub it by hand into an even liquid.",
+      "Pass it through a sieve to remove any grains. The liquid should be like thin soured cream.",
+      "Slice the onion into rings and fry it in oil until golden, ten minutes.",
+      "Tear the fatir into large pieces into a wide dish.",
+      "Pour the qurut over the bread and leave it five minutes to soak.",
+      "Top with the fried onion and its oil, then the tomato, cucumber and herbs."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 18,
+      "carbsG": 50,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

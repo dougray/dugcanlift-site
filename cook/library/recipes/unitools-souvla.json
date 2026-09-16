@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-souvla",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CY",
+    "nativeName": "Σούβλα",
+    "summary": "Large pieces of pork or lamb on a spit, turning slowly over coals for two hours.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      32,
+      30,
+      10,
+      125,
+      6,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/souvla.jpg",
+      "author": "Jorge-11",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Souvla",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2.5 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 2.5,
+        "unit": "kg",
+        "grams": 2500,
+        "note": "in 200 g pieces"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Cypriot pita",
+        "item": "cypriot pita",
+        "qty": 6
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the meat into large pieces of about two hundred grams, keeping the fat; it is needed.",
+      "Salt and pepper them generously all over and leave them half an hour at room temperature.",
+      "Light the coals and rake them to the sides, leaving the centre clear. Direct heat under the meat is not wanted.",
+      "Thread the pieces onto the spit, leaving a centimetre between them.",
+      "Turn the spit slowly and continuously for two hours. The meat should darken gradually rather than crust at once.",
+      "Dust with oregano ten minutes before the end and squeeze lemon over.",
+      "Take it off, cut it coarsely and serve in pita with onion, tomato and parsley."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 130,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 52,
+      "carbsG": 28,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-koshari",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EG",
+    "nativeName": "كشري",
+    "summary": "Rice, lentils and pasta in one bowl under a vinegary tomato sauce and fried onion.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      20,
+      18,
+      12,
+      20,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/koshari.jpg",
+      "author": "Basma",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Koshari",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Brown lentils",
+        "item": "brown lentils",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Small pasta",
+        "item": "small pasta",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "cooked"
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4,
+        "note": "in thin rings"
+      },
+      {
+        "rawText": "800 g Tinned tomatoes",
+        "item": "tinned tomatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 tbsp White vinegar",
+        "item": "white vinegar",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onion in the oil over medium heat for twenty-five minutes to a deep brown, stirring. Drain it on paper; it crisps as it cools.",
+      "Boil the lentils for twenty minutes to soft but not collapsing, and drain.",
+      "Cook the rice in the onion oil: fry it two minutes, add water at one and a half to one and cook covered for fifteen minutes.",
+      "Boil the pasta and drain it. For the sauce, fry the garlic in a spoon of oil to gold, pour in the vinegar and let it reduce by half.",
+      "Add the tomatoes, cumin and chilli and cook twenty minutes to a thick sauce. Season.",
+      "Build it in the bowl in layers: rice, lentils, pasta, chickpeas, sauce, fried onion. The mixing happens at the table."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 22,
+      "carbsG": 100,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

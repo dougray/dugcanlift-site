@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-belgian-waffles",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BE",
+    "nativeName": "Gaufre de Liège",
+    "summary": "Dense yeasted waffles from a stiff dough with pearl sugar that caramelises on the outside.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      12,
+      15,
+      92,
+      8,
+      18,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/belgian-waffles.jpg",
+      "author": "No machine-readable author provided. Jrenier assumed (based on copyright claims).",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Liège waffles",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "180 ml Milk",
+        "item": "milk",
+        "qty": 180,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "250 g Butter",
+        "item": "butter",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "softened"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "60 g Brown sugar",
+        "item": "brown sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "250 g Pearl sugar",
+        "item": "pearl sugar",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm milk and leave it ten minutes, until it foams.",
+      "Knead a dough from the flour, yeast mixture, eggs, brown sugar, vanilla, cinnamon and salt.",
+      "Work in the softened butter in stages, kneading until the dough is smooth and elastic.",
+      "Let it rise somewhere warm for an hour and a half, until doubled.",
+      "Work the pearl sugar in by hand, distributing it evenly but without long kneading.",
+      "Divide the dough into ten lumps and rest them fifteen minutes.",
+      "Bake them in the iron three minutes each, to a deep gold with a caramel crust."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 7,
+      "carbsG": 60,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

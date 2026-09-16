@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-soto-ayam",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ID",
+    "nativeName": "Soto ayam",
+    "summary": "A yellow chicken broth on turmeric and lemongrass, with noodles, egg and fried shallot.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      12,
+      12,
+      5,
+      22,
+      15,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Soto ayam",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "whole"
+      },
+      {
+        "rawText": "8 Shallots",
+        "item": "shallots",
+        "qty": 8
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 Candlenuts or macadamia",
+        "item": "candlenuts or macadamia",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "6 Kaffir lime leaves",
+        "item": "kaffir lime leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "150 g Glass noodles",
+        "item": "glass noodles",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5,
+        "note": "boiled"
+      },
+      {
+        "rawText": "200 g Bean sprouts",
+        "item": "bean sprouts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Cabbage",
+        "item": "cabbage",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken in two litres of water for forty minutes, skimming for the first ten.",
+      "Slice half the shallots into thin rings, deep-fry them crisp and drain them on paper.",
+      "Pound the remaining shallot, garlic, turmeric, ginger and nuts into a bumbu paste.",
+      "Fry the paste in oil for five minutes with the bruised lemongrass and lime leaves.",
+      "Transfer the paste into the broth, season and simmer twenty minutes.",
+      "Lift out the chicken and shred it, soak the noodles and blanch the sprouts and cabbage.",
+      "Divide the noodles, chicken, vegetables and half an egg between bowls, ladle over the broth and top with fried shallot."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 44,
+      "carbsG": 42,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

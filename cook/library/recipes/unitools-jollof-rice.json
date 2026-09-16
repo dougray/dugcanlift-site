@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jollof-rice",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NG",
+    "nativeName": "Jollof rice",
+    "summary": "Rice cooked in a thick sauce of tomato, pepper and onion. The sauce is reduced dark before the rice goes in.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      6,
+      5,
+      25,
+      5,
+      27,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/jollof-rice.jpg",
+      "author": "Noahalorwu",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jollof rice",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "rinsed"
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Red peppers",
+        "item": "red peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Curry powder",
+        "item": "curry powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Dried thyme",
+        "item": "dried thyme",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "600 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Blend the tomatoes, peppers, one onion and the scotch bonnet until smooth.",
+      "Fry the second onion in the oil until soft, add the tomato paste and cook five minutes, until it darkens.",
+      "Pour in the purée and reduce it for twenty-five minutes over medium heat, stirring. It darkens, thickens and the oil begins separating at the edges.",
+      "Add the curry powder, thyme, bay and stock, season and bring it to the boil.",
+      "Stir in the rinsed rice once, cover with foil and a lid, and cook on the lowest heat for twenty-five minutes. Do not lift the lid or stir.",
+      "Take it off and let it stand ten minutes. Fork it through from the bottom up, lifting the lower layer."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 10,
+      "carbsG": 80,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

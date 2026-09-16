@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shakshuka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IL",
+    "nativeName": "שקשוקה",
+    "summary": "Eggs poached in a thick sauce of tomato and pepper with cumin and paprika.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      2,
+      15,
+      7,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shakshuka.jpg",
+      "author": "Calliopejen1",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shakshuka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Tinned tomatoes",
+        "item": "tinned tomatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "2 Red peppers",
+        "item": "red peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Smoked paprika",
+        "item": "smoked paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Harissa",
+        "item": "harissa",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Olive oil",
+        "item": "olive oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Feta and coriander, to taste",
+        "item": "feta and coriander"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onion and peppers in the oil for ten minutes, until the pepper is soft and sweet.",
+      "Add the garlic, cumin, paprika and harissa and warm them for a minute — to the smell, not to burning.",
+      "Pour in the tomatoes, crush them and simmer for fifteen minutes. The sauce is ready when a spoon leaves a track on the bottom.",
+      "Make hollows with a spoon and break an egg into each. Cover and give it five to seven minutes: the whites set, the yolks stay loose.",
+      "Scatter over the feta and coriander and serve it in the pan with bread."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 18,
+      "carbsG": 18,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

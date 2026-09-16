@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-silpancho",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BO",
+    "nativeName": "Silpancho",
+    "summary": "A plate-sized breaded steak over rice and potatoes, topped with a fried egg and raw salsa.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      8,
+      10,
+      10,
+      8,
+      5,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/silpancho.jpg",
+      "author": "Mashi Rosas",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Silpancho",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "thin cuts for pounding"
+      },
+      {
+        "rawText": "200 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "300 g Rice",
+        "item": "rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "boiled and sliced"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Red onion",
+        "item": "red onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Beetroot",
+        "item": "beetroot",
+        "qty": 1,
+        "note": "boiled"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Pound the meat under film to three or four millimetres. Work from the centre outwards or it tears.",
+      "Season and press into breadcrumbs with the flat of your hand. No egg wash is used here.",
+      "Dice the tomato, onion and beetroot small, mix with the parsley, salt and a spoon of oil.",
+      "Fry the boiled potato slices until golden and keep them warm.",
+      "Fry the steaks a minute and a half a side in hot oil; meat this thin cooks instantly.",
+      "Fry the eggs, leaving the yolks runny.",
+      "Build it: rice, potato, the steak across the whole plate, the egg, and the raw salsa over the top."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 810,
+      "proteinG": 42,
+      "carbsG": 82,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

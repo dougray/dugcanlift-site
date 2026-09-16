@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastel-de-nata",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PT",
+    "nativeName": "Pastel de nata",
+    "summary": "Flaky pastry cases of custard baked in extreme heat until the surface blisters black.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      10,
+      6,
+      15,
+      20,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pastel-de-nata.jpg",
+      "author": "fw42 from Germany",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastel de nata",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "400 g Puff pastry",
+        "item": "puff pastry",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Double cream",
+        "item": "double cream",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 ml Water",
+        "item": "water",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Plain flour",
+        "item": "plain flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "6 Egg yolks",
+        "item": "egg yolks",
+        "qty": 6
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Lemon peel",
+        "item": "lemon peel",
+        "qty": 1
+      }
+    ],
+    "steps": [
+      "Boil the sugar and water to 100 °C and take it off. Separately bring the milk, cream, cinnamon and lemon peel to just below boiling.",
+      "Whisk the flour into a little cold milk until smooth and stir it into the hot mixture. Cook, stirring, to the thickness of soured cream.",
+      "Pour the hot syrup into the milk base in a thin stream, take it off the heat and stir in the yolks. Strain it and cool completely.",
+      "Roll the pastry into a tight log, cut two-centimetre discs and press each into a tin with your thumbs, taking the walls above the rim.",
+      "Heat the oven as high as it goes, at least 250 °C. Fill the cases three-quarters full and bake twelve to fifteen minutes, until the tops blister black."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 290,
+      "proteinG": 4,
+      "carbsG": 33,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

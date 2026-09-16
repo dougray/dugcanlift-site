@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fish-and-chips",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GB",
+    "nativeName": "Fish and chips",
+    "summary": "Cod in beer batter with twice-fried chips. The batter lives on cold and on the gas in the beer.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      5,
+      5,
+      12,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fish-and-chips.jpg",
+      "author": "Matthias Meckel",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fish and chips",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Cod fillet",
+        "item": "cod fillet",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in 200 g pieces"
+      },
+      {
+        "rawText": "1 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in 1.5 cm batons"
+      },
+      {
+        "rawText": "200 g Plain flour",
+        "item": "plain flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "50 g Cornflour",
+        "item": "cornflour",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "300 ml Lager",
+        "item": "lager",
+        "qty": 300,
+        "unit": "ml",
+        "note": "ice cold"
+      },
+      {
+        "rawText": "1 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "Malt vinegar, to taste",
+        "item": "malt vinegar"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the cut potatoes of their starch, dry them thoroughly and fry at 140 °C for six minutes. They should turn soft but stay pale. Set them aside to cool.",
+      "Mix the flour, cornflour and baking powder. Pour in the ice-cold beer and whisk only a few strokes — lumps are fine, an over-mixed batter turns tough.",
+      "Dry the fish, dust it in plain flour and shake off the excess. Without that the batter slides off in the oil.",
+      "Heat the oil to 190 °C. Dip the fish, let the excess run off and lower it in, holding it for a couple of seconds so it does not stick to the bottom. Fry six minutes.",
+      "Lift the fish out and finish the chips in the same oil for three minutes, until gold. Salt them at once, while hot."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 890,
+      "proteinG": 46,
+      "carbsG": 88,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

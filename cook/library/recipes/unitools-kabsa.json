@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kabsa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SA",
+    "nativeName": "كبسة",
+    "summary": "Rice with chicken in a spiced broth with dried lime and tomato. The centrepiece of the Saudi table.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      12,
+      15,
+      32,
+      12,
+      25,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kabsa.jpg",
+      "author": "Miansari66",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kabsa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Chicken",
+        "item": "chicken",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "600 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Dried lime",
+        "item": "dried lime",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tbsp Kabsa baharat",
+        "item": "kabsa baharat",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 6
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "60 g Raisins",
+        "item": "raisins",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "60 g Almonds",
+        "item": "almonds",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and soak it twenty minutes.",
+      "Fry the onion in ghee until golden, then add the garlic, cardamom and cinnamon.",
+      "Brown the chicken on all sides, then add the tomato paste, tomatoes, carrot and baharat.",
+      "Pierce the dried limes, drop them in, add water and simmer thirty minutes.",
+      "Lift out the chicken, pat it dry and put it under the grill for ten minutes, to a browned skin.",
+      "Add the rice to the broth at one and a half times its volume in liquid, season, and cook twenty minutes covered.",
+      "Fry the almonds and raisins in ghee, mound the rice on a platter, set the chicken on it and scatter the nuts over."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 44,
+      "carbsG": 78,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

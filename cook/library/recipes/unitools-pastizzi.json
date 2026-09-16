@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastizzi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MT",
+    "nativeName": "Pastizzi",
+    "summary": "Flaky pastries filled with ricotta or mushy peas. Maltese street food on every corner.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      42,
+      40,
+      6,
+      30,
+      20,
+      20,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pastizzi.jpg",
+      "author": "Renata Apan",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastizzi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Water",
+        "item": "water",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 g Lard or margarine",
+        "item": "lard or margarine",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "500 g Ricotta",
+        "item": "ricotta",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "250 g Yellow split peas",
+        "item": "yellow split peas",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water and salt, work it ten minutes and rest it half an hour.",
+      "Boil the split peas with the onion for forty minutes until completely soft, mash them and season.",
+      "Mix the ricotta with the eggs, parsley, salt and pepper.",
+      "Roll the dough very thin, spread it with fat, roll it up and chill it twenty minutes.",
+      "Cut the roll into pieces and flatten each into a round; the layers give the flakiness.",
+      "Add the filling and seal them: ricotta as an open-topped boat, peas as a closed diamond.",
+      "Bake at 220 °C for thirty minutes, to a deep gold, and serve hot."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 14,
+      "carbsG": 40,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-iskender-kebab",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "İskender kebap",
+    "summary": "Slices of döner over pieces of pide, under tomato sauce, melted butter and yoghurt.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      7,
+      17,
+      12,
+      10,
+      6,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/iskender-kebab.jpg",
+      "author": "Garrett Ziegler",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "İskender kebab",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Lamb",
+        "item": "lamb",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "400 g Pide flatbread",
+        "item": "pide flatbread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 ml Tomato passata",
+        "item": "tomato passata",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "300 ml Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Red pepper paste",
+        "item": "red pepper paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Green peppers",
+        "item": "green peppers",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Slice the lamb very thin, season it and leave it twenty minutes.",
+      "Fry the onion and garlic in oil, add the pepper paste and warm it a minute.",
+      "Add the passata and oregano and cook the sauce fifteen minutes to thicken it.",
+      "Cut the pide into cubes and dry them in the oven at 180 °C for eight minutes.",
+      "Sear the lamb slices over a very high flame in batches, a minute and a half each.",
+      "Spread the bread on the plates, spoon over some of the sauce, then the meat and the rest of the sauce.",
+      "Melt the butter until it sizzles and pour it over the meat. Put the yoghurt at the side and serve with fried peppers."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 46,
+      "carbsG": 52,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

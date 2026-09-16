@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-vori-vori",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PY",
+    "nativeName": "Vori vori",
+    "summary": "Chicken soup with corn-and-cheese dumplings, Paraguayan winter food.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      15,
+      45,
+      8,
+      8,
+      15,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/vori-vori.jpg",
+      "author": "Overkill53",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Vori vori",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "300 g Corn flour",
+        "item": "corn flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "250 g Fresh salty cheese",
+        "item": "fresh salty cheese",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "grated"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Sweet pepper",
+        "item": "sweet pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Annatto",
+        "item": "annatto",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the chicken pieces with the annatto on every side.",
+      "Add the onion, pepper, tomatoes and carrot and stew until the vegetables soften.",
+      "Pour in two litres of water, salt it and simmer forty minutes over a low heat.",
+      "Mix the corn flour with the grated cheese, egg, oregano and a pinch of salt.",
+      "Add a couple of spoons of hot broth and work it into a firm dough that holds its shape.",
+      "Roll walnut-sized balls, compacting each between your palms.",
+      "Drop the balls into the boiling broth, leave them five minutes unstirred and cook twenty. Scatter with parsley."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 38,
+      "carbsG": 46,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

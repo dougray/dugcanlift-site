@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-waakye",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GH",
+    "nativeName": "Waakye",
+    "summary": "Rice and black-eyed beans cooked with sorghum leaves, which turn it deep red.",
+    "category": "main",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      47,
+      6,
+      22,
+      12,
+      10,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "fixed",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/waakye.jpg",
+      "author": "daSupremo",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Waakye",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Black-eyed beans",
+        "item": "black-eyed beans",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "10 g Dried sorghum leaves",
+        "item": "dried sorghum leaves",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "1 pinch Baking soda",
+        "item": "baking soda",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "2 Plantain",
+        "item": "plantain",
+        "qty": 2,
+        "note": "ripe, to serve"
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6,
+        "note": "boiled, to serve"
+      },
+      {
+        "rawText": "150 g Gari",
+        "item": "gari",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "to serve"
+      },
+      {
+        "rawText": "100 g Shito sauce",
+        "item": "shito sauce",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the sorghum leaves and boil them in a litre and a half of water for ten minutes; the water turns deep red.",
+      "Take the leaves out, add a pinch of soda and the beans and cook forty-five minutes, until nearly done.",
+      "Rinse the rice until the water runs clear and add it to the pot. The liquid should stand a finger above the rice.",
+      "Salt it, cover and cook twenty minutes on a low heat without stirring.",
+      "Take it off the heat, leave it covered ten minutes, then fluff it with a fork.",
+      "Fry slices of ripe plantain until caramel-coloured.",
+      "Serve with egg, gari, shito and plantain, all on one plate."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 18,
+      "carbsG": 96,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

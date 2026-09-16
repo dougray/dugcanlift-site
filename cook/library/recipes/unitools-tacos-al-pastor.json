@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tacos-al-pastor",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "nativeName": "Tacos al pastor",
+    "summary": "Pork in a marinade of dried chillies and pineapple, seared to caramelised edges, in a corn tortilla.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      18,
+      5,
+      120,
+      15,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tacos-al-pastor.jpg",
+      "author": "Larry Miller",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tacos al pastor",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "sliced thin"
+      },
+      {
+        "rawText": "4 Dried guajillo chillies",
+        "item": "dried guajillo chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Dried ancho chillies",
+        "item": "dried ancho chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Pineapple",
+        "item": "pineapple",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "30 g Achiote paste",
+        "item": "achiote paste",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30,
+        "note": "or a teaspoon of ground annatto"
+      },
+      {
+        "rawText": "60 ml White vinegar",
+        "item": "white vinegar",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Mexican oregano",
+        "item": "mexican oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "12 Corn tortillas",
+        "item": "corn tortillas",
+        "qty": 12
+      },
+      {
+        "rawText": "Onion and coriander, to taste",
+        "item": "onion and coriander"
+      },
+      {
+        "rawText": "Lime, to taste",
+        "item": "lime"
+      }
+    ],
+    "steps": [
+      "Seed the chillies and toast them in a dry pan until they smell — twenty seconds a side, no longer, or they turn bitter. Cover with boiling water for fifteen minutes.",
+      "Blend the softened chillies with half the pineapple, the achiote, vinegar, garlic, cumin and oregano to a smooth paste. Season it.",
+      "Coat the pork in the marinade and leave it at least two hours, ideally overnight. Do not go past a day: the pineapple will soften the meat to mush.",
+      "Get a pan searing hot and cook the meat in batches, two minutes a side. Do not stir until dark edges appear.",
+      "Sear the rest of the pineapple in the same pan and dice it. Chop the meat roughly, warm the tortillas twenty seconds a side and build: meat, pineapple, onion, coriander, lime."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 610,
+      "proteinG": 36,
+      "carbsG": 55,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

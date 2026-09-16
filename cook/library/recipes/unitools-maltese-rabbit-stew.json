@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-maltese-rabbit-stew",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MT",
+    "nativeName": "Stuffat tal-fenek",
+    "summary": "Rabbit stewed in red wine with garlic and bay. The national dish of Malta.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      15,
+      10,
+      65,
+      27,
+      12,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/maltese-rabbit-stew.jpg",
+      "author": "Chattacha",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Maltese rabbit stew",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Rabbit",
+        "item": "rabbit",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "jointed"
+      },
+      {
+        "rawText": "500 ml Dry red wine",
+        "item": "dry red wine",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Bay leaves",
+        "item": "bay leaves",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "200 g Peas",
+        "item": "peas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the jointed rabbit with the wine, half the garlic and the bay leaves and refrigerate for a day.",
+      "Lift out the meat, dry it and brown it in olive oil. Keep the marinade.",
+      "Fry the onion and remaining garlic until soft, add the tomato paste and cook three minutes.",
+      "Return the meat, pour in the marinade, season and stew covered for an hour on a low heat.",
+      "Add the potato and carrot and stew twenty-five minutes more.",
+      "Add the peas for the last ten minutes.",
+      "Ladle off some of the sauce and dress spaghetti with it as a first course. The meat follows."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 105,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 44,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

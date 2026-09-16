@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sopa-paraguaya",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PY",
+    "nativeName": "Sopa paraguaya",
+    "summary": "A dense corn and cheese bake with onion which, despite its name, is eaten with a fork.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      12,
+      8,
+      6,
+      8,
+      4,
+      72
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sopa-paraguaya.jpg",
+      "author": "Aterovi",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sopa paraguaya",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "400 g Corn flour",
+        "item": "corn flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 g Paraguayan cheese or brined white cheese",
+        "item": "paraguayan cheese or brined white cheese",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "400 ml Milk",
+        "item": "milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5
+      },
+      {
+        "rawText": "150 g Lard or butter",
+        "item": "lard or butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "200 g Sweetcorn",
+        "item": "sweetcorn",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "kernels"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Slice the onion thin and sweat it in the fat over a low heat for twenty minutes, until soft and sweet.",
+      "Pour the milk over the onion, take it off the heat and cool it to lukewarm.",
+      "Crumble the cheese and mix it with the corn flour and the sweetcorn kernels.",
+      "Stir in the onion and milk mixture and the yolks, salting cautiously; the cheese is salty already.",
+      "Whip the whites to firm peaks and fold them in with a spatula in three additions.",
+      "Spread the mixture into a greased tin in a four-centimetre layer.",
+      "Bake at 190 °C for fifty minutes, to a deep golden crust. Rest it twenty minutes before cutting."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 22,
+      "carbsG": 42,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

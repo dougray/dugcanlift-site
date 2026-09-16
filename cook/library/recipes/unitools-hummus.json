@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hummus",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IL",
+    "nativeName": "חומוס",
+    "summary": "Chickpeas whipped with tahini, lemon and iced water to a cream. The skins come off.",
+    "category": "snack",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      90,
+      10,
+      5,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/hummus.jpg",
+      "author": "Silar",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hummus",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "250 g Dried chickpeas",
+        "item": "dried chickpeas",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "150 g Tahini",
+        "item": "tahini",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1,
+        "note": "juiced"
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 ml Iced water",
+        "item": "iced water",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Olive oil, to taste",
+        "item": "olive oil"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Drain the soaked chickpeas, cover with fresh water and the bicarbonate and boil for an hour or ninety minutes, until they collapse. Skim off the foam and the floating skins.",
+      "Drain, keeping a cup of the cooking water. Rub the chickpeas between your palms under cold water and the remaining skins float free.",
+      "Blend the tahini with the garlic, lemon juice and salt — it pales and thickens. Add the iced water and blend again: it turns light and aerated.",
+      "Add the warm chickpeas with the cumin and blend for at least three minutes, loosening with the cooking water. Three minutes is not an exaggeration; that is where the texture comes from.",
+      "Spread it on a plate, sweep a channel round it with the back of a spoon, flood it with olive oil and dust with cumin."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 12,
+      "carbsG": 26,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

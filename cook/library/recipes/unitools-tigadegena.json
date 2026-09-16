@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tigadegena",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ML",
+    "nativeName": "Tigadèguèna",
+    "summary": "Meat in a thick peanut sauce with vegetables. The Malian Sunday lunch.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      7,
+      42,
+      5,
+      5,
+      32,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tigadegena.jpg",
+      "author": "Akouete",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tigadegena",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "900 g Beef or lamb",
+        "item": "beef or lamb",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "350 g Peanut butter",
+        "item": "peanut butter",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "unsweetened"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "300 g Cabbage",
+        "item": "cabbage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 Aubergines",
+        "item": "aubergines",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "450 g Rice",
+        "item": "rice",
+        "qty": 450,
+        "unit": "g",
+        "grams": 450,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the meat in oil, add the onion and fry until soft.",
+      "Stir in the tomato paste and cook five minutes, until it darkens.",
+      "Add a litre and a half of water, season and cook forty minutes.",
+      "Slacken the peanut butter with two ladles of the broth until smooth and lump-free.",
+      "Pour the paste into the pot in a thin stream, stirring continuously.",
+      "Add the vegetables in large pieces and the whole chilli and stew thirty minutes, stirring.",
+      "Wait for the peanut oil to rise to the surface, remove the chilli and serve with rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 44,
+      "carbsG": 54,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

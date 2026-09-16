@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rice-and-peas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JM",
+    "nativeName": "Rice and peas",
+    "summary": "Rice cooked with red beans in coconut milk, with thyme and a whole scotch bonnet.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      60,
+      8,
+      8,
+      5,
+      22,
+      12,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rice-and-peas.jpg",
+      "author": "File:Rice and Peas.png: Whispyhistory conversion to jpg: Hike395",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rice and peas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "250 g Red kidney beans",
+        "item": "red kidney beans",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "6 sprigs Thyme",
+        "item": "thyme",
+        "qty": 6,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "6 Allspice berries",
+        "item": "allspice berries",
+        "qty": 6
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the soaked beans in a litre and a half of water for an hour, until soft.",
+      "Add the coconut milk, garlic, spring onion, thyme and allspice and bring it to the boil.",
+      "Rinse the rice until the water runs clear, add it to the pot and level it with a spoon.",
+      "Lay the whole scotch bonnet on top, season, and check that the liquid covers the rice by a finger.",
+      "Cover and cook twenty minutes on a low heat, without lifting the lid once.",
+      "Take it off the heat and let it stand covered for ten minutes.",
+      "Remove the chilli and the thyme sprigs, fluff the rice with a fork and serve."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 95,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 13,
+      "carbsG": 76,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-char-kway-teow",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MY",
+    "nativeName": "Char kway teow",
+    "summary": "Wide rice noodles seared over a very high flame with prawns, egg and bean sprouts.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      8,
+      12,
+      3,
+      2,
+      2,
+      3,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/char-kway-teow.jpg",
+      "author": "Elizetang",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Char kway teow",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "400 g Wide rice noodles",
+        "item": "wide rice noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "fresh"
+      },
+      {
+        "rawText": "200 g Prawns",
+        "item": "prawns",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Cockles or squid",
+        "item": "cockles or squid",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "80 g Chinese sausage",
+        "item": "chinese sausage",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Bean sprouts",
+        "item": "bean sprouts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "60 g Garlic chives",
+        "item": "garlic chives",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Dark soy sauce",
+        "item": "dark soy sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Light soy sauce",
+        "item": "light soy sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Sambal",
+        "item": "sambal",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Lard",
+        "item": "lard",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Separate the fresh noodles into individual strips by hand, trying not to tear them.",
+      "Set everything out beside the hob — the cooking takes four minutes and there will be no time to fetch anything.",
+      "Heat the wok until it smokes, melt the lard and fry the garlic and sausage for twenty seconds.",
+      "Add the prawns and cockles and cook thirty seconds, without stirring constantly.",
+      "Push everything to the side, break the eggs into the centre, let them set for ten seconds and break them up.",
+      "Add the noodles, both soy sauces, the sambal and sugar and toss them for a minute and a half.",
+      "Throw in the sprouts and chives, toss for twenty seconds and serve immediately."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 36,
+      "carbsG": 84,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

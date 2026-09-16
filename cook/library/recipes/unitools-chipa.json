@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chipa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PY",
+    "nativeName": "Chipá",
+    "summary": "Bread rings of cassava starch and cheese, with no wheat and no yeast.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      6,
+      5,
+      8,
+      12,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chipa.jpg",
+      "author": "Ekem at English Wikipedia",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chipa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Cassava starch",
+        "item": "cassava starch",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Paraguayan cheese or brined white cheese",
+        "item": "paraguayan cheese or brined white cheese",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "120 g Lard or butter",
+        "item": "lard or butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "120 ml Milk",
+        "item": "milk",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Aniseed",
+        "item": "aniseed",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 220 °C in advance; the dough has to go into a hot one.",
+      "Beat the softened fat with the eggs and salt until smooth.",
+      "Work in the grated cheese and the aniseed, rubbing the mass with your hands until the cheese is evenly distributed.",
+      "Add the starch a little at a time, with the milk, until the dough is firm and pliable.",
+      "Roll ropes and join the ends into rings about eight centimetres across.",
+      "Bake twenty-five minutes, to browned patches. Serve warm."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 14,
+      "carbsG": 44,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

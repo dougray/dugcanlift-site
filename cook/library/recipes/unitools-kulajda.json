@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kulajda",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CZ",
+    "nativeName": "Kulajda",
+    "summary": "A creamy mushroom soup with dill, potato and a poached egg, sharpened with vinegar.",
+    "category": "soup",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      12,
+      12,
+      4,
+      8,
+      5,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kulajda.jpg",
+      "author": "Radek Schenk",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kulajda",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Wild mushrooms",
+        "item": "wild mushrooms",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "300 ml Soured cream",
+        "item": "soured cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Dill",
+        "item": "dill",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5
+      },
+      {
+        "rawText": "3 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the diced potato in a litre and a half of water with the caraway and bay for fifteen minutes.",
+      "Fry the sliced mushrooms in butter until their water has gone and add them to the pot.",
+      "Cook them together ten minutes so the mushrooms give their flavour to the broth.",
+      "Whisk the soured cream with the flour until smooth and lump-free.",
+      "Take the soup off the heat, stir in the cream mixture, return it to a low flame and warm it five minutes without boiling.",
+      "Add the vinegar, sugar, salt, pepper and most of the dill and taste for the balance of sour against creamy.",
+      "Poach the eggs in acidulated water and set one into each bowl, scattered with the remaining dill."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 14,
+      "carbsG": 34,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

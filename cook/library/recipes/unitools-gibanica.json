@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gibanica",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RS",
+    "nativeName": "Gibanica",
+    "summary": "A pie of crumpled filo sheets in a cheese and egg custard, baked to browned ridges.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      4,
+      3,
+      6,
+      20,
+      8,
+      62
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gibanica",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "500 g Filo pastry",
+        "item": "filo pastry",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 g Brined white cheese",
+        "item": "brined white cheese",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Curd cheese",
+        "item": "curd cheese",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "400 ml Kefir",
+        "item": "kefir",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Sparkling water",
+        "item": "sparkling water",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Mash both cheeses with a fork and mix them with the eggs, kefir, soured cream and half the oil.",
+      "Stir in the sparkling water; it lightens the custard and keeps it from setting dense.",
+      "Taste the custard for salt: brined cheese varies, and it has to be adjusted rather than measured.",
+      "Oil the tin and lay two whole filo sheets flat on the bottom, uncrumpled.",
+      "Dip each remaining sheet in the custard, crumple it like a concertina and lay it in the tin.",
+      "Pour the remaining custard over, cover with two whole sheets and brush them with oil.",
+      "Bake at 190 °C for fifty minutes, sprinkle it with water and cover it with a cloth for ten minutes."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 22,
+      "carbsG": 32,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

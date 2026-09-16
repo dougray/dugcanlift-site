@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-arroz-con-pollo-cubano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CU",
+    "nativeName": "Arroz con pollo a la cubana",
+    "summary": "Chicken with rice cooked in beer and saffron, with peas, peppers and olives.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      35,
+      15,
+      20,
+      7,
+      8,
+      22,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/arroz-con-pollo-cubano.jpg",
+      "author": "Kobako",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Arroz con pollo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "500 g Medium-grain rice",
+        "item": "medium-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "350 ml Pale beer",
+        "item": "pale beer",
+        "qty": 350,
+        "unit": "ml"
+      },
+      {
+        "rawText": "700 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "200 ml Tomato sauce",
+        "item": "tomato sauce",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 g Peas",
+        "item": "peas",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "80 g Olives",
+        "item": "olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with salt, pepper, cumin, oregano, garlic and lime juice and leave it half an hour.",
+      "Brown the chicken in olive oil on all sides and lift it out.",
+      "Sweat the onion, pepper and garlic in the same oil for twenty minutes, until completely soft; that is the sofrito.",
+      "Add the tomato sauce and the saffron steeped in a spoon of warm water and cook five minutes.",
+      "Return the chicken, add the beer and stock, bring it up and season.",
+      "Add the rice in an even layer, cover and cook twenty minutes on a low heat without stirring.",
+      "Scatter the peas and olives over the top, cover and let it stand ten minutes before serving."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 44,
+      "carbsG": 78,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

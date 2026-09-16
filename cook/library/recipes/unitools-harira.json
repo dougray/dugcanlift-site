@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-harira",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MA",
+    "nativeName": "حريرة",
+    "summary": "A thick soup of lentils, chickpeas and tomato, bound with a flour slurry and finished with lemon.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      60,
+      20,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/harira.jpg",
+      "author": "Interstates",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Harira",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Lamb",
+        "item": "lamb",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "in small dice"
+      },
+      {
+        "rawText": "150 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "100 g Green lentils",
+        "item": "green lentils",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "grated"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Celery",
+        "item": "celery",
+        "qty": 2
+      },
+      {
+        "rawText": "60 g Coriander and parsley",
+        "item": "coriander and parsley",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tsp Ground ginger",
+        "item": "ground ginger",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "4 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Vermicelli",
+        "item": "vermicelli",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Lemon, to taste",
+        "item": "lemon"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the lamb with the onion, ginger and cinnamon for five minutes, add the chopped celery and herbs and give it two more.",
+      "Add the grated tomato and the chickpeas, pour in two litres of water and simmer for an hour, until the chickpeas are soft.",
+      "Add the lentils and give it twenty minutes more.",
+      "Whisk the flour into a cup of cold water until completely smooth and pour it in as a thin stream, stirring without stopping. Cook five minutes: the soup thickens and turns matt.",
+      "Add the vermicelli and cook until done. Serve with lemon and dates — that pairing is not accidental: sweet and sour at once."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 22,
+      "carbsG": 46,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-misir-wat",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ET",
+    "nativeName": "ምስር ወጥ",
+    "summary": "Red lentils in a berbere sauce. A fasting dish eaten in Ethiopia on fast days all year round.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      4,
+      6,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Misir wat",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "300 g Red lentils",
+        "item": "red lentils",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "rinsed"
+      },
+      {
+        "rawText": "600 g Onions",
+        "item": "onions",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "2 tbsp Berbere",
+        "item": "berbere",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "900 ml Water",
+        "item": "water",
+        "qty": 900,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cook the onion dry in a pot for thirty minutes over medium heat, stirring, until it becomes a dark paste.",
+      "Pour in the oil, add the garlic and ginger and cook three minutes.",
+      "Stir in the berbere and tomato paste and fry five minutes: the mixture darkens and turns fragrant.",
+      "Add the lentils, pour in the water and simmer twenty-five minutes, stirring, until the lentils fall apart.",
+      "Season at the end, cook it down to a porridge-thick stew and serve with injera or flatbread."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 20,
+      "carbsG": 48,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

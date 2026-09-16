@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sancocho-panameno",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PA",
+    "nativeName": "Sancocho de gallina",
+    "summary": "Chicken soup with ñame root and culantro. Panama's cure for a hangover and for a cold.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      15,
+      62,
+      15,
+      25,
+      5,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sancocho-panameno.jpg",
+      "author": "Daguerreroa",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Panamanian sancocho",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "free-range, in pieces"
+      },
+      {
+        "rawText": "800 g Ñame yam",
+        "item": "ñame yam",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "40 g Culantro or coriander",
+        "item": "culantro or coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Corn cobs",
+        "item": "corn cobs",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "350 g Rice",
+        "item": "rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with salt, garlic, oregano and lime juice and leave it twenty minutes.",
+      "Cover the chicken with three litres of cold water, bring it up and skim.",
+      "Add the onion and half the culantro and simmer an hour.",
+      "Peel the ñame, cut it into large pieces and add it to the pot with the corn.",
+      "Cook twenty-five minutes, until the ñame is soft.",
+      "Mash a couple of pieces of ñame in the broth so the soup thickens.",
+      "Stir in the remaining culantro, season and serve with a separate plate of white rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 40,
+      "carbsG": 62,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

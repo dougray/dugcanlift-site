@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-moros-y-cristianos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CU",
+    "nativeName": "Moros y cristianos",
+    "summary": "Rice cooked in the liquid from black beans, which darkens it and gives it all their flavour.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      60,
+      15,
+      3,
+      5,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/moros-y-cristianos.jpg",
+      "author": "Sarang",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Moros y cristianos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Black beans",
+        "item": "black beans",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "400 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Green pepper",
+        "item": "green pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Oregano",
+        "item": "oregano",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Boil the beans in three litres of water with the bay for an hour, to nearly done. Do not drain: the liquor is the base of the dish.",
+      "Fry the onion and pepper in the olive oil for fifteen minutes until soft, adding the garlic, cumin and oregano for a minute.",
+      "Measure the bean liquor: two parts liquid to one part rice by volume. Top up with water if there is not enough.",
+      "Combine the rice, beans, liquor, half the sofrito and the vinegar, season and bring it to the boil.",
+      "Lower the heat, cover and cook twenty minutes without lifting the lid. Let it stand ten minutes and fork the rest of the sofrito through."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 460,
+      "proteinG": 15,
+      "carbsG": 76,
+      "fatG": 11,
+      "estimated": true
+    }
+  }
+}

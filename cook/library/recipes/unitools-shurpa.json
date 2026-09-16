@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shurpa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UZ",
+    "nativeName": "Shorva",
+    "summary": "A clear mutton soup with coarsely cut vegetables and a mound of herbs in the bowl.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      22,
+      42,
+      22,
+      27,
+      7,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shurpa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Mutton on the bone",
+        "item": "mutton on the bone",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "6 Potatoes",
+        "item": "potatoes",
+        "qty": 6,
+        "note": "whole"
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Chickpeas",
+        "item": "chickpeas",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "1 tsp Cumin seed",
+        "item": "cumin seed",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Purple basil",
+        "item": "purple basil",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 Chilli",
+        "item": "chilli",
+        "qty": 1
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the mutton with three litres of cold water and bring it slowly to the boil.",
+      "Skim for the first twenty minutes, never letting the broth bubble hard.",
+      "Add the chickpeas and simmer forty minutes.",
+      "Add the carrots halved lengthways and the onion in quarters and cook twenty minutes.",
+      "Add the potatoes whole, the tomatoes and the peppers and cook twenty-five minutes more.",
+      "Add the cumin, salt and the whole chilli and take it off the heat after five minutes.",
+      "Divide the meat and vegetables between bowls, ladle over the broth and pile chopped herbs on top."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 38,
+      "carbsG": 38,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

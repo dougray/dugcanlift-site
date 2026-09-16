@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-borscht",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RU",
+    "summary": "A beetroot soup on beef stock where acid holds both the colour and the flavour. The beetroot is braised separately, never boiled in the pot.",
+    "category": "soup",
+    "difficulty": "medium",
+    "stepMinutes": [
+      90,
+      20,
+      8,
+      10,
+      12,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/borscht.jpg",
+      "author": "liz west from Boxborough, MA",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Borscht",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Beef on the bone",
+        "item": "beef on the bone",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "2 Beetroot",
+        "item": "beetroot",
+        "qty": 2,
+        "note": "coarsely grated"
+      },
+      {
+        "rawText": "300 g Cabbage",
+        "item": "cabbage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "shredded"
+      },
+      {
+        "rawText": "4 Potatoes",
+        "item": "potatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Vinegar, 9%",
+        "item": "vinegar, 9%",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Bay leaf",
+        "item": "bay leaf",
+        "qty": 2
+      },
+      {
+        "rawText": "Sour cream, to taste",
+        "item": "sour cream"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the meat with cold water, bring it to the boil and skim. Simmer for an hour and a half at a bare tremble — a rolling boil turns the stock cloudy.",
+      "Braise the beetroot in a pan with a spoon of oil, the tomato paste and the vinegar, covered, for about twenty minutes. The vinegar is what keeps the colour.",
+      "Separately fry the onion and carrot until soft and golden.",
+      "Lift the meat out, pull it into pieces and return it to the stock. Add the potatoes and give them ten minutes — before any acid reaches the pot.",
+      "Add the cabbage, then after five minutes the beetroot and the fried vegetables. Give it five minutes more, add the bay and garlic and take it straight off the heat.",
+      "Let it stand covered for at least twenty minutes. Serve with sour cream, which softens the acid and pulls the flavours together."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 18,
+      "carbsG": 30,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

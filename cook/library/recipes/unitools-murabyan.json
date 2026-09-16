@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-murabyan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KW",
+    "nativeName": "مربيان",
+    "summary": "Kuwaiti rice with prawns in a broth of their own shells, with dill and dried lime.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      25,
+      22,
+      14,
+      8,
+      17,
+      17
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Murabyan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Prawns",
+        "item": "prawns",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "shell-on"
+      },
+      {
+        "rawText": "500 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "80 g Dill",
+        "item": "dill",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Dried lime",
+        "item": "dried lime",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Bizar spice mix",
+        "item": "bizar spice mix",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the prawns and keep the shells and heads.",
+      "Fry the shells in a spoon of ghee for five minutes, cover with a litre of water and simmer twenty minutes. Strain.",
+      "Rinse the rice and soak it twenty minutes.",
+      "Fry the onion in ghee until golden, then add the garlic, turmeric and bizar.",
+      "Add the tomatoes, the pierced limes and half the dill, pour in the prawn broth and season.",
+      "Add the rice, cover and cook fifteen minutes on a low heat without opening it.",
+      "Lay the prawns and the rest of the dill on top, cover and give it five minutes. Rest ten and serve."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 660,
+      "proteinG": 46,
+      "carbsG": 80,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

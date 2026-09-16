@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-plokkfiskur",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IS",
+    "nativeName": "Plokkfiskur",
+    "summary": "Flaked boiled fish mashed with potato in a white sauce. Icelandic home cooking made from leftovers.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      15,
+      2,
+      8,
+      7,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Plokkfiskur",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Cod",
+        "item": "cod",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "fillet"
+      },
+      {
+        "rawText": "700 g Potatoes",
+        "item": "potatoes",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "40 g Flour",
+        "item": "flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "500 ml Milk",
+        "item": "milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Mustard",
+        "item": "mustard",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "200 g Rye bread",
+        "item": "rye bread",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "to serve"
+      },
+      {
+        "rawText": "20 g Chives",
+        "item": "chives",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins until tender, peel them and cut them into large pieces.",
+      "Poach the cod in salted water for eight minutes, lift it out and flake it by hand, removing bones and skin.",
+      "Fry the onion in butter until soft, stir in the flour and cook it two minutes, stirring.",
+      "Pour in the milk in a thin stream, whisking continuously, and bring the sauce to the thickness of cream.",
+      "Stir in the mustard, salt and pepper, add the fish and potato and warm everything through for five minutes.",
+      "Mash with a fork to a coarse, uneven texture in which the pieces are still recognisable, and scatter with chives."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 38,
+      "carbsG": 42,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}
