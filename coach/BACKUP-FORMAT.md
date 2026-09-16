@@ -37,7 +37,21 @@ platform already stores, which is why a browser backup restores on a phone.
 `exercises[]` of `id`, `name`, `equipment`, `note`, `sets[]` of `id`,
 `weightLb`, `reps`, `rpe`, `durationSec`, `distanceMeters`.
 
-**`routines[]`** — saved templates, where the client has them. Web has none yet.
+**`routines[]`** — saved templates: `id`, `name`, `folder`, `createdAt` (epoch
+ms), and `exercises[]` of `id`, `name`, `equipment`, `targetSets`, `targetReps`,
+`targetWeightLb`, `targetRpe`, `targetDurationSec`, `targetDistanceMeters`,
+`note`. Written by LIFT for Android and the browser build. Every `target*` field
+is optional, and absent means not prescribed, never zero.
+
+**`outdoor[]`** — finished GPS runs, walks and hikes: `id`, `activityType`
+(`RUN` | `WALK` | `HIKE`), `startedAtEpochMs`, `endedAtEpochMs`,
+`distanceMeters`, `elevationGainMeters`, and `routePoints[]` of `latitude`,
+`longitude`, `altitudeMeters` (`null` when the device reported none),
+`recordedAtEpochMs`, `horizontalAccuracyMeters`. Field names are LIFT for
+Android's own storage. Only the browser build writes this section so far; the
+phone apps keep their routes in their own stores and Health, and preserve the
+section untouched like any other they do not store. A recording still in
+progress is never written.
 
 **`goal`** — `calories`, `proteinG`, `fatG`, `carbsG`, `fiberG`.
 

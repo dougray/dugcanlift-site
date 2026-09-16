@@ -318,13 +318,46 @@
   <div id="session-list"></div>
 
   <button class="wide" id="train-start">Start workout</button>
+
+  <h2>Outdoor</h2>
+  <div id="outdoor-section"></div>
 </section>
 
 </main>
 
+<!-- Recording a run, walk or hike. Full screen, because the screen has to stay
+     on and in front for the browser to keep reading GPS. -->
+<div id="recording" class="overlay hidden" role="dialog" aria-labelledby="rec-title">
+  <p class="muted">Recording</p>
+  <div class="big" id="rec-title"></div>
+  <canvas id="rec-canvas" class="route"></canvas>
+  <div class="stats">
+    <div><div class="muted small">Time</div><div class="stat" id="rec-time">0:00</div></div>
+    <div><div class="muted small">Distance</div><div class="stat" id="rec-distance"></div></div>
+    <div><div class="muted small">Pace</div><div class="stat" id="rec-pace"></div></div>
+  </div>
+  <p class="muted" id="rec-status" aria-live="polite"></p>
+  <button class="wide" id="rec-finish">Finish</button>
+  <button class="wide ghost" id="rec-discard">Discard</button>
+  <p class="muted small">Keep LIFT open on screen until you finish. A browser stops reading GPS
+    when the phone locks or you switch apps, and the route pauses until you come back.</p>
+</div>
+
+<!-- One finished activity. -->
+<div id="review" class="overlay hidden" role="dialog" aria-labelledby="review-title">
+  <button class="ghost" id="review-close">Done</button>
+  <div class="big" id="review-title"></div>
+  <p class="muted" id="review-date"></p>
+  <canvas id="review-canvas" class="route"></canvas>
+  <div id="review-stats"></div>
+  <button class="wide ghost" id="review-delete">Delete</button>
+</div>
+
 <script src="foods.js"></script>
 <script src="food-amount.js"></script>
 <script src="backup.js"></script>
+<script src="routines.js"></script>
+<script src="outdoor.js"></script>
 <script src="jsqr.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
