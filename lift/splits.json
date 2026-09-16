@@ -69,6 +69,45 @@
         { "name": "Romanian Deadlift", "equipment": "Barbell", "sets": 3, "reps": 8 },
         { "name": "Plank", "equipment": "Body Only", "sets": 3, "durationSec": 45 }
       ]
+    },
+    {
+      "folder": "Mobility & Recovery",
+      "name": "Mobility",
+      "exercises": [
+        { "name": "World's Greatest Stretch", "equipment": "", "sets": 2, "durationSec": 45 },
+        { "name": "Cat Stretch", "equipment": "", "sets": 2, "durationSec": 45 },
+        { "name": "Standing Hip Circles", "equipment": "Body Only", "sets": 2, "durationSec": 30 },
+        { "name": "Kneeling Hip Flexor", "equipment": "", "sets": 2, "durationSec": 45 },
+        { "name": "90/90 Hamstring", "equipment": "Body Only", "sets": 2, "durationSec": 45 },
+        { "name": "Round The World Shoulder Stretch", "equipment": "Other", "sets": 2, "durationSec": 30 },
+        { "name": "Child's Pose", "equipment": "", "sets": 1, "durationSec": 60 }
+      ]
+    },
+    {
+      "folder": "Mobility & Recovery",
+      "name": "Active Rest",
+      "exercises": [
+        { "name": "Trail Running/Walking", "equipment": "", "sets": 1, "durationSec": 1200 },
+        { "name": "Cat Stretch", "equipment": "", "sets": 1, "durationSec": 60 },
+        { "name": "Hug Knees To Chest", "equipment": "", "sets": 1, "durationSec": 60 },
+        { "name": "Child's Pose", "equipment": "", "sets": 1, "durationSec": 60 }
+      ]
+    },
+    {
+      "folder": "Running",
+      "name": "Short Run",
+      "exercises": [
+        { "name": "World's Greatest Stretch", "equipment": "", "sets": 1, "durationSec": 60 },
+        { "name": "Trail Running/Walking", "equipment": "", "sets": 1, "durationSec": 1200 }
+      ]
+    },
+    {
+      "folder": "Running",
+      "name": "Long Run",
+      "exercises": [
+        { "name": "World's Greatest Stretch", "equipment": "", "sets": 1, "durationSec": 60 },
+        { "name": "Trail Running/Walking", "equipment": "", "sets": 1, "durationSec": 3600 }
+      ]
     }
   ]
 }
