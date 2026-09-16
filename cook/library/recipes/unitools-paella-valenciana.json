@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-paella-valenciana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Paella valenciana",
+    "summary": "Rice in a wide pan with chicken, rabbit and beans. It is never stirred once, and the crust on the bottom depends on that.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      6,
+      10,
+      null,
+      18,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/paella-valenciana.jpg",
+      "author": "Jan Harenburg",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Paella valenciana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "320 g Bomba rice, or another short grain",
+        "item": "bomba rice, or another short grain",
+        "qty": 320,
+        "unit": "g",
+        "grams": 320
+      },
+      {
+        "rawText": "400 g Chicken, in pieces",
+        "item": "chicken, in pieces",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Rabbit, in pieces",
+        "item": "rabbit, in pieces",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "chicken will do instead"
+      },
+      {
+        "rawText": "200 g Flat green beans",
+        "item": "flat green beans",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Large white beans",
+        "item": "large white beans",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "cooked"
+      },
+      {
+        "rawText": "1 Tomato",
+        "item": "tomato",
+        "qty": 1,
+        "note": "grated"
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 sprig Rosemary",
+        "item": "rosemary",
+        "qty": 1,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "900 ml Chicken stock or water",
+        "item": "chicken stock or water",
+        "qty": 900,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Heat the oil in a wide pan and brown the chicken and rabbit on every side. This is not a five-minute job: it takes a good quarter of an hour, and there is no point rushing it — the flavour of the whole dish is laid down here.",
+      "Push the meat to the edges, put the green beans in the middle and fry them for a couple of minutes. Add the grated tomato and the paprika and cook until the tomato darkens and stops smelling raw.",
+      "Pour in the stock, add the rosemary, saffron and white beans, salt it noticeably harder than feels right and let it boil for ten minutes. This is the last moment you can correct the seasoning.",
+      "Scatter the rice in an even layer and level it once with a spoon. After that do not touch the pan again — no stirring, no smoothing.",
+      "Cook on a high flame for ten minutes, then drop to medium for another eight, until the stock is gone. The rice should be showing above the surface.",
+      "Turn the heat up for half a minute and listen: the moment the sound turns from bubbling to a dry crackle, take it off. That is the socarrat. Cover with a cloth and let it stand for five minutes."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 38,
+      "carbsG": 62,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

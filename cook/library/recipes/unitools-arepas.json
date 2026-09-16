@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-arepas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CO",
+    "nativeName": "Arepas",
+    "summary": "Cakes of precooked corn flour, griddled and split open to be stuffed.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      9,
+      8,
+      8,
+      12,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/arepas.jpg",
+      "author": "David Adam Kess",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Arepas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "250 g Precooked corn flour",
+        "item": "precooked corn flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "320 ml Warm water",
+        "item": "warm water",
+        "qty": 320,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Fresh white cheese",
+        "item": "fresh white cheese",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "grated"
+      },
+      {
+        "rawText": "30 g Butter",
+        "item": "butter",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the salt in the warm water and stir in the flour by hand. Add the butter and cheese.",
+      "Knead for three minutes and let it stand five. The dough should stop sticking and roll into a ball easily.",
+      "Shape cakes ten centimetres across and a centimetre and a half thick. Smooth the edges with wet fingers; cracks widen in the pan.",
+      "Griddle them with a drop of oil for four minutes a side, to a firm crust.",
+      "Finish them at 180 °C for ten minutes. A done arepa sounds hollow when tapped.",
+      "Split them hot lengthways, not all the way through, and stuff them: cheese, avocado, stewed meat or egg."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 12,
+      "carbsG": 52,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

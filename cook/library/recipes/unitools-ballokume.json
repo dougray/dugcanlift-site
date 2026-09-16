@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ballokume",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AL",
+    "nativeName": "Ballokume",
+    "summary": "Cornmeal biscuits from Elbasan, beaten by hand in a wooden bowl for the spring festival.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      12,
+      7,
+      12,
+      16,
+      15,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ballokume.jpg",
+      "author": "Beseni2022",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ballokume",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 14,
+    "ingredients": [
+      {
+        "rawText": "600 g Cornmeal",
+        "item": "cornmeal",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "coarse"
+      },
+      {
+        "rawText": "300 g Butter",
+        "item": "butter",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "softened"
+      },
+      {
+        "rawText": "400 g Sugar",
+        "item": "sugar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "6 Egg yolks",
+        "item": "egg yolks",
+        "qty": 6
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Beat the softened butter with the sugar with a wooden spoon for twenty minutes, to a pale fluffy mass.",
+      "Add the yolks one at a time, still beating in the same direction.",
+      "Add the vanilla, salt and soda and beat five minutes more.",
+      "Work in the cornmeal a little at a time, to a firm but pliable dough.",
+      "Rest the dough fifteen minutes so the meal takes up the moisture.",
+      "Shape walnut-sized balls and set them well apart on parchment.",
+      "Bake at 170 °C for twenty minutes, to a pale gold edge, and cool them on the tray."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 4,
+      "carbsG": 52,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

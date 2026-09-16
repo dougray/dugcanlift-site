@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-whitebait-fritters",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NZ",
+    "nativeName": "Whitebait fritters",
+    "summary": "Whitebait bound with egg and fried as a thin cake, with lemon and nothing else.",
+    "category": "snack",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      6,
+      4,
+      3,
+      3,
+      3,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Whitebait fritters",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Whitebait",
+        "item": "whitebait",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 Lemons",
+        "item": "lemons",
+        "qty": 2
+      },
+      {
+        "rawText": "4 slices White bread",
+        "item": "white bread",
+        "qty": 4,
+        "unit": "slice",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rinse the whitebait in cold water and drain it in a sieve for ten minutes.",
+      "Pat the whitebait dry with a cloth; excess water stops the fritter setting.",
+      "Whisk the eggs with the flour, salt and pepper until smooth and lump-free.",
+      "Fold the whitebait into the egg mixture gently, taking care not to crush it.",
+      "Melt the butter in a pan over medium heat until it just sizzles.",
+      "Pour in a ladle of the mixture and spread it into a thin round a centimetre thick.",
+      "Fry a minute and a half a side and serve with lemon and buttered bread."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 32,
+      "carbsG": 12,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

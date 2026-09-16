@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ndizi-nyama",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TZ",
+    "nativeName": "Ndizi na nyama",
+    "summary": "Green bananas stewed with beef in coconut milk. A Chagga dish from the slopes of Kilimanjaro.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      7,
+      32,
+      12,
+      22,
+      7
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ndizi na nyama",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced"
+      },
+      {
+        "rawText": "8 Green bananas",
+        "item": "green bananas",
+        "qty": 8
+      },
+      {
+        "rawText": "400 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the beef, add the onion, garlic and ginger and fry until soft.",
+      "Add the tomatoes and curry powder and cook five minutes, until the tomatoes break down.",
+      "Add water level with the meat, season and stew thirty minutes, covered.",
+      "Peel the bananas under running water and cut them into thick rounds.",
+      "Add the bananas to the pot and cook twenty minutes, until tender.",
+      "Pour in the coconut milk and warm five minutes without letting it boil. Scatter with coriander."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 34,
+      "carbsG": 56,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

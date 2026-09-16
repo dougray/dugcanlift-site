@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pad-krapow-moo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TH",
+    "nativeName": "ผัดกะเพรา",
+    "summary": "Minced pork fried with chilli, garlic and holy basil. Five minutes from start to plate.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      3,
+      2,
+      1,
+      4,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pad-krapow-moo.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pad krapow",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "300 g Minced pork",
+        "item": "minced pork",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "coarsely minced"
+      },
+      {
+        "rawText": "40 g Holy basil",
+        "item": "holy basil",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "5 Thai chillies",
+        "item": "thai chillies",
+        "qty": 5
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Oyster sauce",
+        "item": "oyster sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Dark soy sauce",
+        "item": "dark soy sauce",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "300 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "4 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 4,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Pound the garlic and chillies to a rough paste in a mortar. A mortar gives a different result from a knife: the juices come out and reach the oil.",
+      "Mix the oyster, fish and soy sauces with the sugar in a cup — there will be no time once the pan is hot.",
+      "Heat the wok with two spoons of oil, throw in the paste and fry for twenty seconds, to the smell.",
+      "Add the pork and leave it alone for a minute, then break it up and fry two minutes more. Pour in the sauce and let it coat the meat.",
+      "Off the heat, stir in the basil — the residual heat wilts it in seconds. In the same pan fry the eggs in the rest of the oil until the edges go lacy."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 8,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 36,
+      "carbsG": 56,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

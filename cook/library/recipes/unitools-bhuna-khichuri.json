@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bhuna-khichuri",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BD",
+    "nativeName": "ভুনা খিচুড়ি",
+    "summary": "Rice and lentils fried before the water goes in. Bengali food for a rainy day.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      10,
+      10,
+      7,
+      5,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bhuna-khichuri.jpg",
+      "author": "Nilanjan Sasmal",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bhuna khichuri",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 g Moong dal",
+        "item": "moong dal",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "5 Green chillies",
+        "item": "green chillies",
+        "qty": 5
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "5 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 5
+      },
+      {
+        "rawText": "80 g Ghee",
+        "item": "ghee",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 Potatoes",
+        "item": "potatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dry-roast the moong dal for five minutes, to a nutty smell, and rinse it.",
+      "Rinse the rice and dry it. Wet rice will not toast; it steams in its own water.",
+      "Heat the ghee, brown the potatoes and lift them out.",
+      "In the same ghee fry the bay, cinnamon and cardamom, then the onion and ginger until golden.",
+      "Add the rice and dal with the turmeric and cumin and toast them five minutes, stirring.",
+      "Add boiling water at twice the volume of the grain, return the potatoes, season and add the whole chillies.",
+      "Cover and cook twenty minutes on a low heat, then let it stand ten minutes without opening it."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 18,
+      "carbsG": 78,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

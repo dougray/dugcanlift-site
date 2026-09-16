@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pollo-guisado-dominicano",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DO",
+    "nativeName": "Pollo guisado dominicano",
+    "summary": "Chicken braised in caramelised sugar with vegetables, the Dominican weekday lunch.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      65,
+      6,
+      15,
+      7,
+      27,
+      22,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pollo guisado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Bell peppers",
+        "item": "bell peppers",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "60 g Olives",
+        "item": "olives",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Wash the chicken with lime juice, rub it with oregano, garlic, salt and pepper and leave it an hour.",
+      "Melt the sugar in the oil over medium heat to a dark amber, without stirring with a spoon.",
+      "Put the chicken pieces into the caramel and brown them on all sides.",
+      "Add the onion, pepper and tomato paste and cook five minutes, stirring.",
+      "Add a cup of water, cover and stew twenty-five minutes on a low heat.",
+      "Add the potato in large pieces and stew twenty minutes more, until tender.",
+      "Stir in the olives and coriander, reduce the sauce to a coating consistency and serve with white rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 55,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 46,
+      "carbsG": 62,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

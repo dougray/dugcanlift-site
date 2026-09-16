@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-makroud",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DZ",
+    "nativeName": "مقروض",
+    "summary": "Semolina diamonds with a date filling, fried and steeped in honey.",
+    "category": "dessert",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      32,
+      10,
+      20,
+      20,
+      12,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/makroud.jpg",
+      "author": "Touzrimounir",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Makroud",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 14,
+    "ingredients": [
+      {
+        "rawText": "600 g Semolina",
+        "item": "semolina",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "medium grain"
+      },
+      {
+        "rawText": "180 ml Olive oil",
+        "item": "olive oil",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "180 ml Warm water",
+        "item": "warm water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Dates",
+        "item": "dates",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "pitted"
+      },
+      {
+        "rawText": "2 tsp Ground cinnamon",
+        "item": "ground cinnamon",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Orange zest",
+        "item": "orange zest",
+        "qty": 1
+      },
+      {
+        "rawText": "40 ml Orange blossom water",
+        "item": "orange blossom water",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Honey",
+        "item": "honey",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "700 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Rub the semolina with the olive oil and salt by hand until it is damp all through.",
+      "Leave the mixture half an hour so the grain takes up the oil and swells.",
+      "Add the warm water with the orange blossom water a little at a time, gathering the dough without kneading.",
+      "Steam the dates soft and pound them with the cinnamon and zest into a smooth paste.",
+      "Roll the dough into a strip, lay a rope of date paste down the centre and close the edges over it.",
+      "Press the strip flat and cut it on the diagonal into four-centimetre diamonds.",
+      "Deep-fry at 170 °C until golden and drop them hot into cold honey for five minutes."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 5,
+      "carbsG": 66,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

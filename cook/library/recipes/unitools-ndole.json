@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ndole",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CM",
+    "nativeName": "Ndolé",
+    "summary": "Bitter leaves with peanut paste, meat and prawns. The national dish of Cameroon.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      27,
+      15,
+      42,
+      17,
+      12,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ndole.jpg",
+      "author": "Coco lago",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ndolé",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "700 g Bitterleaf or spinach",
+        "item": "bitterleaf or spinach",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "300 g Peanuts",
+        "item": "peanuts",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "raw, shelled"
+      },
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced"
+      },
+      {
+        "rawText": "300 g Prawns",
+        "item": "prawns",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "50 g Dried shrimp",
+        "item": "dried shrimp",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 g Ginger",
+        "item": "ginger",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "120 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Plantain",
+        "item": "plantain",
+        "qty": 3,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the leaves in salted water for ten minutes, wring them out and repeat twice more with fresh water.",
+      "Boil the peanuts twenty minutes until soft and blend them with water into a thick paste.",
+      "Brown the beef, then add the onion, garlic, ginger and chilli.",
+      "Add water and the dried shrimp and stew forty minutes, until the meat is tender.",
+      "Stir in the peanut paste and cook fifteen minutes, stirring; it catches easily.",
+      "Add the drained leaves and the fresh prawns and stew ten minutes more.",
+      "Serve with fried plantain or boiled cassava."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 42,
+      "carbsG": 34,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

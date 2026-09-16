@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fahsa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "YE",
+    "nativeName": "فحسة",
+    "summary": "Boiling lamb stew in a stone bowl, topped with frothy fenugreek hulba.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      90,
+      15,
+      12,
+      25,
+      15,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fahsa.jpg",
+      "author": "SharabSalam",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fahsa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Lamb",
+        "item": "lamb",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "meat with a little bone"
+      },
+      {
+        "rawText": "60 g Ground fenugreek",
+        "item": "ground fenugreek",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "3 Green chilli",
+        "item": "green chilli",
+        "qty": 3
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tbsp Hawaij spice mix",
+        "item": "hawaij spice mix",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Lemon",
+        "item": "lemon",
+        "qty": 1
+      },
+      {
+        "rawText": "5 Flatbreads",
+        "item": "flatbreads",
+        "qty": 5,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cover the ground fenugreek with cold water and leave it six hours, changing the water twice.",
+      "Simmer the lamb with the onion and salt for an hour and a half, keeping the broth.",
+      "Break the meat into small pieces and return it to the strained broth.",
+      "Pound the garlic, chilli and coriander into a sahawiq paste in a mortar.",
+      "Add the tomatoes, hawaij and half the paste to the stew and reduce it to a thick body.",
+      "Drain the fenugreek and whip it with a spoon of cold water into a white froth.",
+      "Ladle the stew into scorching bowls, spoon the froth over and serve it boiling with flatbread."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 30,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

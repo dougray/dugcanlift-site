@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-judd-mat-gaardebounen",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LU",
+    "nativeName": "Judd mat Gaardebounen",
+    "summary": "Smoked pork collar, soaked and boiled, with broad beans in a cream sauce. Luxembourg's national dish.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      15,
+      85,
+      30,
+      10,
+      12,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/judd-mat-gaardebounen.jpg",
+      "author": "Jpatokal",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Judd mat Gaardebounen",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Smoked pork collar",
+        "item": "smoked pork collar",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "1 kg Broad beans",
+        "item": "broad beans",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in the pod"
+      },
+      {
+        "rawText": "150 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "diced"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 sprigs Savory",
+        "item": "savory",
+        "qty": 2,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "800 g Potatoes",
+        "item": "potatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "to serve"
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the meat in cold water for four hours, changing the water twice.",
+      "Cover it with fresh water, bring it up, boil ten minutes and drain.",
+      "Cover it again, add the bay leaves and simmer an hour and twenty, until tender. Keep the broth.",
+      "Pod the beans, scald them for a minute and slip the skin off each one.",
+      "Render the bacon, fry the onion in its fat, stir in the flour and cook two minutes.",
+      "Add two ladles of the broth and the cream, then the savory and the beans, and stew ten minutes.",
+      "Cut the meat into thick slices and serve with the beans and boiled potatoes."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 740,
+      "proteinG": 48,
+      "carbsG": 46,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

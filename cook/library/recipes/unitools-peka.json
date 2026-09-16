@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-peka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HR",
+    "nativeName": "Ispod peke",
+    "summary": "Meat and potatoes under an iron bell buried in embers, three hours untouched.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      32,
+      12,
+      8,
+      10,
+      90,
+      85
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Peka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2 kg Lamb or veal",
+        "item": "lamb or veal",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "1.5 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in large wedges"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Carrots",
+        "item": "carrots",
+        "qty": 3
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 sprigs Rosemary",
+        "item": "rosemary",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "250 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Olive oil",
+        "item": "olive oil",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Build a fire of hardwood and let it burn down to substantial embers, about an hour.",
+      "Rub the meat with salt, pepper, garlic and rosemary and leave it half an hour.",
+      "Spread the potatoes, onion, carrot and tomatoes over the tray in one layer.",
+      "Lay the meat over the vegetables, pour on the olive oil and wine and add the bay leaves.",
+      "Cover with the bell and bury it in embers completely, until no metal shows.",
+      "Cook an hour and a half, then lift the bell, turn the potatoes and baste everything with the juices from the tray.",
+      "Replace the bell and embers and give it another hour and twenty. Serve straight from the tray."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 820,
+      "proteinG": 54,
+      "carbsG": 48,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

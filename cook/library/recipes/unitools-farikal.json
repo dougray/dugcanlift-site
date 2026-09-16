@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-farikal",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NO",
+    "nativeName": "Fårikål",
+    "summary": "Mutton and cabbage in layers with whole peppercorns. Four ingredients and two hours.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      10,
+      2,
+      120,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/farikal.jpg",
+      "author": "Jarvin",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fårikål",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Mutton on the bone",
+        "item": "mutton on the bone",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "1.5 kg White cabbage",
+        "item": "white cabbage",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in large wedges"
+      },
+      {
+        "rawText": "2 tbsp Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "optional, for body"
+      },
+      {
+        "rawText": "500 ml Water",
+        "item": "water",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 kg Boiled potatoes",
+        "item": "boiled potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Lay a layer of meat fat side down in the pot, season it and scatter peppercorns over.",
+      "Add a layer of cabbage, more salt and pepper, and a dusting of flour if you want body. Alternate the layers until everything is used.",
+      "Pour the water down the side; it should reach halfway up, no higher.",
+      "Bring it to the boil, cover and cook two hours on the lowest heat. Do not stir: the layers are meant to stay layers.",
+      "It is done when the meat comes away from the bone. Serve with boiled potatoes, spooning broth from the pot over."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 130,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 46,
+      "carbsG": 34,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-nacatamal",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NI",
+    "nativeName": "Nacatamal",
+    "summary": "A large tamal of corn dough with pork, rice and potato, boiled in a banana leaf.",
+    "category": "breakfast",
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      10,
+      20,
+      12,
+      35,
+      25,
+      180
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/nacatamal.jpg",
+      "author": "MiguelRamirez77",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Nacatamal",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "800 g Masa harina",
+        "item": "masa harina",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "1 kg Pork",
+        "item": "pork",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "250 g Lard",
+        "item": "lard",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "150 g Rice",
+        "item": "rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "soaked"
+      },
+      {
+        "rawText": "500 g Potatoes",
+        "item": "potatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "sliced"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Achiote",
+        "item": "achiote",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Sour orange or lime",
+        "item": "sour orange or lime",
+        "qty": 3
+      },
+      {
+        "rawText": "20 g Fresh mint",
+        "item": "fresh mint",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "16 Olives",
+        "item": "olives",
+        "qty": 16
+      },
+      {
+        "rawText": "16 Banana leaves",
+        "item": "banana leaves",
+        "qty": 16
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Marinate the pork overnight in sour orange juice, achiote, garlic, salt and pepper.",
+      "Soak the rice two hours and drain it.",
+      "Slake the masa harina with warm water, add the melted lard, achiote and salt, and work it fifteen minutes until smooth.",
+      "Pass the banana leaves over a flame so they turn pliable.",
+      "On a leaf place a large spoon of dough, then pork, rice, potato slices, onion, pepper, tomato, an olive and a mint leaf.",
+      "Wrap in two leaves into a tight parcel and tie it crosswise with string.",
+      "Boil them in a large pot for three hours, topping up with boiling water as it goes."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 30,
+      "carbsG": 64,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

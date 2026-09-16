@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-avgolemono",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GR",
+    "nativeName": "Αυγολέμονο",
+    "summary": "Chicken soup with rice, thickened with egg beaten into lemon juice.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      47,
+      18,
+      12,
+      5,
+      6,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/avgolemono.jpg",
+      "author": "robin.norwood",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Avgolemono",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.3 kg Chicken",
+        "item": "chicken",
+        "qty": 1.3,
+        "unit": "kg",
+        "grams": 1300,
+        "note": "whole"
+      },
+      {
+        "rawText": "120 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Celery",
+        "item": "celery",
+        "qty": 2
+      },
+      {
+        "rawText": "20 g Dill",
+        "item": "dill",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "30 ml Olive oil",
+        "item": "olive oil",
+        "qty": 30,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cover the chicken with two and a half litres of cold water, bring it up and skim.",
+      "Add the onion, carrot and celery and simmer forty-five minutes.",
+      "Lift out the chicken, strain the broth and return it to the heat. Cook the rice in it for fifteen minutes.",
+      "Pull the meat into threads, discarding skin and bones.",
+      "Whisk the eggs with the lemon juice to an even froth in a separate bowl.",
+      "Ladle hot broth into the egg and lemon mixture, whisking without stopping, until the bowl warms up.",
+      "Pour the mixture back into the pot off the heat, return the meat and warm it through without boiling."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 65,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 38,
+      "carbsG": 28,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

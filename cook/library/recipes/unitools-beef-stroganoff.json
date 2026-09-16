@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-beef-stroganoff",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RU",
+    "nativeName": "Бефстроганов",
+    "summary": "Beef cut into strips and seared hard, in a soured cream sauce with onion.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      10,
+      8,
+      10,
+      6,
+      4,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/beef-stroganoff.jpg",
+      "author": "jimmyweee",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Beef Stroganoff",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Beef fillet",
+        "item": "beef fillet",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in strips across the grain"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "300 g Mushrooms",
+        "item": "mushrooms",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "300 ml Soured cream",
+        "item": "soured cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Mustard",
+        "item": "mustard",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Flour",
+        "item": "flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Beef stock",
+        "item": "beef stock",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "30 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 30,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the beef across the grain into centimetre strips, pat them dry and pepper them.",
+      "Heat a pan hard and sear the beef in batches for ninety seconds, without turning it often.",
+      "Lift out the meat and fry the mushrooms over a high flame until their water has gone.",
+      "Add the butter and onion and fry until soft and golden.",
+      "Stir in the flour, cook it a minute and add the stock, stirring until smooth.",
+      "Take the pan off the heat, stir in the soured cream and mustard, and season.",
+      "Return the meat with its juices, warm it a minute without boiling and scatter with parsley."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 44,
+      "carbsG": 14,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

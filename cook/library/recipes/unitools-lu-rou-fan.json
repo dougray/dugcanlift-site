@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lu-rou-fan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TW",
+    "nativeName": "滷肉飯",
+    "summary": "Minced pork belly braised in soy sauce with spices, spooned over white rice.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      12,
+      12,
+      5,
+      95,
+      5,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lu-rou-fan.jpg",
+      "author": "Jzest",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lu rou fan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Pork belly",
+        "item": "pork belly",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "6 Shallots",
+        "item": "shallots",
+        "qty": 6
+      },
+      {
+        "rawText": "100 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Dark soy sauce",
+        "item": "dark soy sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 ml Shaoxing wine",
+        "item": "shaoxing wine",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Rock sugar",
+        "item": "rock sugar",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tsp Five-spice powder",
+        "item": "five-spice powder",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Star anise",
+        "item": "star anise",
+        "qty": 2
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4,
+        "note": "boiled, to serve"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Bok choy",
+        "item": "bok choy",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dice the belly into one-centimetre cubes, keeping the fat with the meat.",
+      "Fry the sliced shallots in oil to a deep golden crisp and set half aside for serving.",
+      "In the same oil brown the pork, rendering some of its fat, for ten minutes.",
+      "Add the wine, let it cook off for a minute, then add both soy sauces, the sugar, spices and garlic.",
+      "Add water level with the meat, bring it up and braise covered for ninety minutes on the lowest heat.",
+      "Add the boiled eggs to the sauce for the last twenty minutes; they take on the colour and flavour.",
+      "Serve over rice with half an egg, blanched greens and the fried shallots on top."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 32,
+      "carbsG": 62,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

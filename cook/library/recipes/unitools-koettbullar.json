@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-koettbullar",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SE",
+    "nativeName": "Köttbullar",
+    "summary": "Meatballs on a panade of bread and cream, in a cream sauce, with lingonberry and mashed potato.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      10,
+      6,
+      15,
+      6,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/koettbullar.jpg",
+      "author": "Number55",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Köttbullar",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Minced beef",
+        "item": "minced beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 g Minced pork",
+        "item": "minced pork",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "60 g White bread",
+        "item": "white bread",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "crusts removed"
+      },
+      {
+        "rawText": "300 ml Cream",
+        "item": "cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "0.5 tsp Ground allspice",
+        "item": "ground allspice",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 ml Beef stock",
+        "item": "beef stock",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Plain flour",
+        "item": "plain flour",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Lingonberry jam, to taste",
+        "item": "lingonberry jam"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Soak the bread in a hundred millilitres of the cream for ten minutes and mash it to a paste.",
+      "Fry the onion in butter until soft and cool it completely: warm onion starts cooking the meat.",
+      "Mix both minces with the panade, onion, egg, allspice and salt, and work it for five minutes until tacky.",
+      "Roll walnut-sized balls with wet hands and fry them in butter in batches, shaking the pan so they roll and colour evenly.",
+      "In the same pan whisk the flour into the remaining fat, pour in the stock and the rest of the cream, add the soy and cook five minutes to a sauce.",
+      "Return the meatballs to the sauce and warm them through for five minutes. Serve with mashed potato, lingonberry and pickled cucumber."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 38,
+      "carbsG": 24,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

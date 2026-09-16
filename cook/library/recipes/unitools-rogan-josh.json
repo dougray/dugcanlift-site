@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rogan-josh",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "रोगन जोश",
+    "summary": "Kashmiri lamb in a yoghurt sauce with Kashmiri chilli, red from the chilli rather than from heat.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      3,
+      12,
+      3,
+      12,
+      5,
+      85,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rogan-josh.jpg",
+      "author": "Spice Eats",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rogan josh",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1 kg Lamb on the bone",
+        "item": "lamb on the bone",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "400 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 400,
+        "unit": "ml",
+        "note": "whisked"
+      },
+      {
+        "rawText": "3 tbsp Kashmiri chilli powder",
+        "item": "kashmiri chilli powder",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Ground fennel",
+        "item": "ground fennel",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ground dry ginger",
+        "item": "ground dry ginger",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Asafoetida",
+        "item": "asafoetida",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "3 Black cardamom",
+        "item": "black cardamom",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "5 Cloves",
+        "item": "cloves",
+        "qty": 5
+      },
+      {
+        "rawText": "100 g Ghee",
+        "item": "ghee",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "400 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Warm the cardamom, cinnamon and cloves in the ghee until fragrant, one minute.",
+      "Add the asafoetida and the meat straight after, and brown it for ten minutes.",
+      "Take the pan off the heat and stir in the Kashmiri chilli; over a flame it burns in seconds and turns bitter.",
+      "Return it to a low heat and add the whisked yoghurt a ladle at a time, stirring between each.",
+      "Add the fennel and dry ginger, season, and pour in a cup of hot water.",
+      "Braise covered for an hour and twenty on a low heat, until the meat comes away from the bone.",
+      "Uncover and reduce the sauce until oil rises to the surface. Serve with rice."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 46,
+      "carbsG": 44,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

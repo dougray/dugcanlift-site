@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jerk-chicken",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JM",
+    "nativeName": "Jerk chicken",
+    "summary": "Chicken in a marinade of scotch bonnet and allspice, smoked over pimento wood.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      15,
+      480,
+      15,
+      90,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/jerk-chicken.jpg",
+      "author": "Marie from Malang, East Java, Indonesia",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jerk chicken",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.6 kg Chicken, jointed",
+        "item": "chicken, jointed",
+        "qty": 1.6,
+        "unit": "kg",
+        "grams": 1600
+      },
+      {
+        "rawText": "3 Scotch bonnet chillies",
+        "item": "scotch bonnet chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Allspice berries",
+        "item": "allspice berries",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "6 Spring onions",
+        "item": "spring onions",
+        "qty": 6
+      },
+      {
+        "rawText": "8 sprigs Thyme",
+        "item": "thyme",
+        "qty": 8,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "60 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Brown sugar",
+        "item": "brown sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Nutmeg and cinnamon",
+        "item": "nutmeg and cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 60,
+        "unit": "ml"
+      }
+    ],
+    "steps": [
+      "Blend the chillies, allspice, spring onion, thyme, ginger, garlic, soy, lime juice, sugar, nutmeg and oil into a thick paste.",
+      "Cut deep slashes into the chicken down to the bone and rub the marinade in with gloved hands, filling the cuts.",
+      "Refrigerate for at least eight hours, better a full day.",
+      "Bank the coals to one side of the grill and throw soaked allspice berries and wood chips on them. Put the chicken on the far side, away from direct heat.",
+      "Cook covered at 150-160 °C for an hour and a half, turning every half hour and adding more chips.",
+      "For the last ten minutes move it over direct heat for colour. Serve with lime and festival bread."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 48,
+      "carbsG": 10,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

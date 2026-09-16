@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hangi-style-chicken",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NZ",
+    "nativeName": "Hāngī",
+    "summary": "Chicken and root vegetables wrapped and baked with smoked salt — a home version of the Māori earth oven.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      32,
+      15,
+      5,
+      10,
+      5,
+      120,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/hangi-style-chicken.jpg",
+      "author": "Einalem",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hāngī-style chicken",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.8 kg Chicken",
+        "item": "chicken",
+        "qty": 1.8,
+        "unit": "kg",
+        "grams": 1800,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "800 g Sweet potato",
+        "item": "sweet potato",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "700 g Potatoes",
+        "item": "potatoes",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "600 g Pumpkin",
+        "item": "pumpkin",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "400 g Cabbage",
+        "item": "cabbage",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Smoked salt",
+        "item": "smoked salt",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tbsp Smoking wood chips",
+        "item": "smoking wood chips",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Black pepper",
+        "item": "black pepper",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with smoked salt and pepper and leave it half an hour.",
+      "Cut the sweet potato, potato and pumpkin into large pieces and the cabbage into quarters.",
+      "Wrap the wood chips in foil, pierce it in a few places and put the packet at the bottom of a deep tray.",
+      "Lay the vegetables on a rack above the chips, the chicken over them, season and dot with butter.",
+      "Seal the tray tightly with two layers of foil; no steam may escape.",
+      "Bake at 160 °C for two hours without opening it.",
+      "Take off the foil and let the chicken colour for ten minutes at 200 °C."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 150,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 44,
+      "carbsG": 58,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

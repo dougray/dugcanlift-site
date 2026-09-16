@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ravitoto",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MG",
+    "nativeName": "Ravitoto sy henakisoa",
+    "summary": "Pounded cassava leaves stewed with pork and coconut milk.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      8,
+      6,
+      60,
+      12,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ravitoto.jpg",
+      "author": "lovarakotomalala",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ravitoto",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "700 g Pounded cassava leaves",
+        "item": "pounded cassava leaves",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "700 g Pork belly",
+        "item": "pork belly",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "300 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the pork in large pieces on all sides.",
+      "Add the onion, garlic and ginger and fry until soft.",
+      "Stir in the cassava leaves, add water to the same level and season.",
+      "Stew covered for an hour on a low heat, stirring every fifteen minutes.",
+      "Uncover and drive off the excess liquid; the dish should be thick rather than soupy.",
+      "Add the coconut milk and warm it five minutes without boiling. Serve with rice."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 85,
+    "nutritionPerServing": {
+      "calories": 700,
+      "proteinG": 32,
+      "carbsG": 38,
+      "fatG": 48,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-roesti",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CH",
+    "nativeName": "Rösti",
+    "summary": "A potato cake of coarsely grated potato fried crisp on both sides. The potatoes are boiled the day before.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      20,
+      8,
+      5,
+      3,
+      12,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/roesti.jpg",
+      "author": "Benutzer:Mussklprozz",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rösti",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Waxy potatoes",
+        "item": "waxy potatoes",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "boiled the day before"
+      },
+      {
+        "rawText": "60 g Clarified butter",
+        "item": "clarified butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "100 g Smoked bacon",
+        "item": "smoked bacon",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "optional"
+      },
+      {
+        "rawText": "100 g Grated Gruyère",
+        "item": "grated gruyère",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "optional"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins for twenty minutes, to the point where a knife meets resistance. Cool them completely and leave them overnight in the fridge.",
+      "Peel them and grate them coarsely straight into a bowl. Do not rinse and do not squeeze.",
+      "Season, and if you are using them, fold in the fried bacon and onion and the cheese.",
+      "Heat half the butter in a pan, spread the mixture in an even layer and press it once with the spatula.",
+      "Fry over medium heat for twelve minutes without touching it. Shake the pan now and then: the rösti should slide as one piece.",
+      "Cover with a plate, invert it, add the rest of the butter and fry the second side for ten minutes."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 48,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

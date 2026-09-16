@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-poutine",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CA",
+    "nativeName": "Poutine",
+    "summary": "Chips with cheese curds under hot gravy. The Québécois street classic.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      8,
+      6,
+      17,
+      15,
+      10,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/poutine.jpg",
+      "author": "Camelia.boban",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Poutine",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "300 g Cheddar cheese curds",
+        "item": "cheddar cheese curds",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "40 g Butter",
+        "item": "butter",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Flour",
+        "item": "flour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "400 ml Beef stock",
+        "item": "beef stock",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Chicken stock",
+        "item": "chicken stock",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Worcestershire sauce",
+        "item": "worcestershire sauce",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cider vinegar",
+        "item": "cider vinegar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the potatoes into one-centimetre batons and soak them twenty minutes in cold water to lose the surface starch.",
+      "Dry the batons thoroughly. Wet potato spits in the fryer and never crusts.",
+      "Melt the butter, stir in the flour and cook the roux to a nutty brown, four minutes.",
+      "Add both stocks, the Worcestershire sauce and the vinegar and simmer the gravy fifteen minutes, until thick.",
+      "Fry the potatoes at 150 °C for six minutes, until soft, and drain them on a rack.",
+      "Bring the oil to 190 °C and fry them a second time for three minutes, to a crisp shell. Salt them.",
+      "Pile the chips into a bowl, scatter the curds over them and pour on the boiling gravy. Serve at once."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 26,
+      "carbsG": 74,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

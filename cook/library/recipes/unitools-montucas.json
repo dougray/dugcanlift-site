@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-montucas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HN",
+    "nativeName": "Montucas",
+    "summary": "Fresh-corn tamales with chicken, steamed in corn husks.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      25,
+      15,
+      40,
+      18,
+      30,
+      80
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Montucas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "10 Fresh corn",
+        "item": "fresh corn",
+        "qty": 10,
+        "note": "on the cob, husks kept"
+      },
+      {
+        "rawText": "800 g Chicken thighs",
+        "item": "chicken thighs",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 g Lard",
+        "item": "lard",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Sweet pepper",
+        "item": "sweet pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tsp Annatto",
+        "item": "annatto",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "80 g Olives",
+        "item": "olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "40 g Capers",
+        "item": "capers",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Sugar",
+        "item": "sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Strip the husks from the cobs whole and rinse them in warm water.",
+      "Cut off the kernels and grind them in a blender with the juice they release.",
+      "Beat the lard with salt and sugar and work in the corn mass until even.",
+      "Simmer the chicken until tender, pull it into threads and keep the broth.",
+      "Fry the onion, pepper and tomatoes with the annatto and add the chicken, olives and capers.",
+      "Spoon dough onto a husk, add filling, fold it over and tuck the ends under.",
+      "Stand the parcels upright in a pot and steam them an hour and a quarter."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 28,
+      "carbsG": 46,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

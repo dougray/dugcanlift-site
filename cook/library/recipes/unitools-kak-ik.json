@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kak-ik",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GT",
+    "nativeName": "Kak'ik",
+    "summary": "A red turkey soup with charred chillies and spices, a dish of the Q'eqchi' Maya.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      90,
+      10,
+      15,
+      6,
+      8,
+      28,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kak-ik.jpg",
+      "author": "Hermann Luyken",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kak'ik",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "2 kg Turkey",
+        "item": "turkey",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "in pieces, on the bone"
+      },
+      {
+        "rawText": "6 Guajillo chillies",
+        "item": "guajillo chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "3 Cobanero chillies",
+        "item": "cobanero chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "500 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Tomatillos",
+        "item": "tomatillos",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Coriander seeds",
+        "item": "coriander seeds",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Achiote",
+        "item": "achiote",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Mace",
+        "item": "mace",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Samat or coriander",
+        "item": "samat or coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Mint",
+        "item": "mint",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "6 Corn tamalitos",
+        "item": "corn tamalitos",
+        "qty": 6,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the turkey with an onion in three litres of water for ninety minutes, skimming.",
+      "Seed the chillies and char them on a dry pan for ten seconds a side.",
+      "Char the tomatoes, tomatillos, onion and garlic on the same pan until blackened in patches.",
+      "Toast the coriander, achiote and mace on a dry pan until fragrant.",
+      "Blend everything with two ladles of the broth to a smooth red mass.",
+      "Strain the mass through a sieve into the pot with the turkey and cook twenty-five minutes.",
+      "Add the samat and mint for the last five minutes and serve with corn tamalitos."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 120,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 52,
+      "carbsG": 32,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

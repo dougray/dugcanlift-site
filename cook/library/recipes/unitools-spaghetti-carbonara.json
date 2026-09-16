@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-spaghetti-carbonara",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Spaghetti alla carbonara",
+    "summary": "Pasta from four ingredients: guanciale, eggs, pecorino and pepper. There is no cream in it and never was.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      8,
+      3,
+      9,
+      1,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/spaghetti-carbonara.jpg",
+      "author": "Amin",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Spaghetti carbonara",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "200 g Spaghetti",
+        "item": "spaghetti",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Guanciale",
+        "item": "guanciale",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "cut into short strips; pancetta works"
+      },
+      {
+        "rawText": "3 Egg yolks",
+        "item": "egg yolks",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Whole egg",
+        "item": "whole egg",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Pecorino romano",
+        "item": "pecorino romano",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "1 tsp Black pepper",
+        "item": "black pepper",
+        "qty": 1,
+        "unit": "tsp",
+        "note": "coarsely ground"
+      },
+      {
+        "rawText": "Salt for the water, to taste",
+        "item": "salt for the water"
+      }
+    ],
+    "steps": [
+      "Bring a large pot of water to the boil and salt it properly — this is the only salt in the dish, since the cheese and the guanciale bring their own.",
+      "Put the guanciale into a cold pan and turn the heat to medium. The fat should render gradually and the pieces turn golden and crisp at the edges, about 6 to 8 minutes.",
+      "While the fat renders, beat the yolks, the whole egg, the grated pecorino and the pepper into a thick paste. Let it sit at room temperature so it does not seize when it meets hot pasta.",
+      "Cook the spaghetti a minute short of the packet time. Before draining, save a cup of the cooking water — the sauce will not come together without it.",
+      "Take the pan off the heat, add the pasta and toss it through the fat. Let the pan cool for twenty seconds — it should be warm, not hot.",
+      "Pour in the egg mixture and stir hard, adding pasta water a spoonful at a time until the sauce turns glossy and coats every strand. Serve immediately."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 32,
+      "carbsG": 62,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

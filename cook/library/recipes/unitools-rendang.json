@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rendang",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ID",
+    "nativeName": "Rendang",
+    "summary": "Beef simmered in coconut milk for four hours, until the milk turns to oil and starts frying the meat.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      20,
+      12,
+      5,
+      150,
+      60,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rendang.jpg",
+      "author": "S Kartika",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Rendang",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef shin",
+        "item": "beef shin",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in large cubes"
+      },
+      {
+        "rawText": "1.2 l Coconut milk",
+        "item": "coconut milk",
+        "qty": 1.2,
+        "unit": "l"
+      },
+      {
+        "rawText": "8 Shallots",
+        "item": "shallots",
+        "qty": 8
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "10 Dried chillies",
+        "item": "dried chillies",
+        "qty": 10
+      },
+      {
+        "rawText": "40 g Galangal",
+        "item": "galangal",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "20 g Fresh turmeric",
+        "item": "fresh turmeric",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "3 Lemongrass",
+        "item": "lemongrass",
+        "qty": 3
+      },
+      {
+        "rawText": "6 Kaffir lime leaves",
+        "item": "kaffir lime leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "60 g Toasted coconut",
+        "item": "toasted coconut",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the dried chillies in boiling water for fifteen minutes, then blend them with the shallot, garlic, galangal, ginger and turmeric to a smooth paste.",
+      "Toast the coconut in a dry pan until deep brown and pound it to an oily paste — this is kerisik, and it brings the nutty depth.",
+      "Fry the paste in a wide pot for five minutes, add the meat, coconut milk, bruised lemongrass and lime leaves, and bring it to the boil.",
+      "Simmer uncovered for two and a half hours, stirring every twenty minutes. The sauce gradually thickens and darkens.",
+      "Stir in the kerisik and carry on over medium heat for another hour, stirring more and more often. The milk splits, the oil separates and the meat begins to fry.",
+      "It is done when the meat is dark brown and nearly dry and the oil runs clear. Season and let it rest."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 46,
+      "carbsG": 14,
+      "fatG": 52,
+      "estimated": true
+    }
+  }
+}

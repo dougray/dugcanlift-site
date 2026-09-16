@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-poulet-moambe",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CD",
+    "nativeName": "Poulet moambé",
+    "summary": "Chicken in a sauce of palm fruit pulp. The national dish of the Congo.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      22,
+      15,
+      10,
+      22,
+      32,
+      7,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/poulet-moambe.jpg",
+      "author": "Adriao",
+      "license": "CC BY 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Poulet moambé",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "800 g Palm fruit pulp",
+        "item": "palm fruit pulp",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "tinned"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "2 Pili-pili chilli",
+        "item": "pili-pili chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Aubergines",
+        "item": "aubergines",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Spinach",
+        "item": "spinach",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Rub the chicken with salt, pepper, garlic and lemon juice and leave it twenty minutes.",
+      "Brown the chicken in oil on all sides and lift it out.",
+      "Fry the onion with the ginger until soft, add the palm pulp and let it down with a cup of water.",
+      "Cook the sauce twenty minutes, stirring, until a layer of red oil rises to the surface.",
+      "Return the chicken, add the aubergine and the whole pili-piri and stew thirty minutes.",
+      "Stir in the spinach for the last five minutes and remove the chilli.",
+      "Serve with rice or with fufu made from cassava."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 44,
+      "carbsG": 44,
+      "fatG": 42,
+      "estimated": true
+    }
+  }
+}

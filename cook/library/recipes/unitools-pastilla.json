@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastilla",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MA",
+    "nativeName": "البسطيلة",
+    "summary": "A layered pie of pigeon or chicken with almonds and cinnamon, dusted with icing sugar.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      65,
+      20,
+      12,
+      15,
+      12,
+      12,
+      48
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pastilla.jpg",
+      "author": "Krista",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastilla",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Chicken",
+        "item": "chicken",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "400 g Warqa or filo pastry",
+        "item": "warqa or filo pastry",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 g Almonds",
+        "item": "almonds",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 tsp Ground ginger",
+        "item": "ground ginger",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tbsp Orange blossom water",
+        "item": "orange blossom water",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Braise the chicken with the onion, saffron, ginger, coriander and a little water for an hour, until tender.",
+      "Lift out the meat, shred it, and reduce the sauce with the onion to a thick paste.",
+      "Beat the eggs into the hot paste and stir over a low heat to coarse curds, then cool it.",
+      "Fry the almonds golden, cool them and grind them with half the icing sugar and a spoon of cinnamon.",
+      "Line a tin with overlapping sheets of pastry, buttering each, with a generous overhang.",
+      "Layer in the egg and onion mass, then the meat, then the almond layer, and sprinkle with orange blossom water.",
+      "Fold the edges in, cover with two more sheets, brush with butter and bake at 190 °C for forty minutes. Dust with icing sugar and cinnamon."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 38,
+      "carbsG": 46,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

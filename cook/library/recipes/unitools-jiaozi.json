@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jiaozi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CN",
+    "nativeName": "饺子",
+    "summary": "Pork and cabbage dumplings, fried and then steamed in the same covered pan.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      18,
+      10,
+      30,
+      4,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/jiaozi.jpg",
+      "author": "David Pursehouse from Kawasaki, Japan",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jiaozi dumplings",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 ml Warm water",
+        "item": "warm water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Minced pork",
+        "item": "minced pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "fatty"
+      },
+      {
+        "rawText": "400 g Chinese cabbage",
+        "item": "chinese cabbage",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "finely shredded"
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "20 g Ginger",
+        "item": "ginger",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "2 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "80 ml Cold stock",
+        "item": "cold stock",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Black vinegar for dipping, to taste",
+        "item": "black vinegar for dipping"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour and warm water for eight minutes and rest it under film for half an hour.",
+      "Salt the shredded cabbage and leave it fifteen minutes, then squeeze it dry by hand.",
+      "Work the pork with the ginger, soy and sesame oil in one direction, trickling in the stock until the mass turns tacky. Fold in the cabbage and spring onion.",
+      "Roll eight-centimetre rounds, thinner at the edge and thicker in the middle. Add filling and pleat one side shut.",
+      "Heat the oil in a pan, set the dumplings in seam up and fry three minutes to a golden base.",
+      "Pour in a hundred millilitres of water and cover at once. After seven minutes take the lid off and let the water go, back to a crisp base."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 26,
+      "carbsG": 62,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

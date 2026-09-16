@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-satsivi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "GE",
+    "nativeName": "საცივი",
+    "summary": "Turkey or chicken in a cold walnut sauce with garlic and spices. The Georgian New Year table.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      85,
+      20,
+      20,
+      10,
+      12,
+      20,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/satsivi.jpg",
+      "author": "Lesya Dolyk",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Satsivi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2 kg Turkey or chicken",
+        "item": "turkey or chicken",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000
+      },
+      {
+        "rawText": "700 g Walnuts",
+        "item": "walnuts",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Khmeli suneli",
+        "item": "khmeli suneli",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Marigold petals",
+        "item": "marigold petals",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "0.5 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "0.5 tsp Ground cloves",
+        "item": "ground cloves",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Simmer the bird in salted water for an hour, lift it out and roast it at 200 °C for twenty minutes to colour.",
+      "Strain the broth, skim the fat and soften the finely chopped onion in it.",
+      "Grind the walnuts twice and press the released oil out by hand into a separate cup.",
+      "Crush the garlic with salt and the spices and work it into the walnut mass.",
+      "Let the walnut mass down with warm broth to the thickness of pouring cream and stir it into the onion.",
+      "Warm the sauce twenty minutes on the lowest heat without letting it boil, and stir in the vinegar.",
+      "Joint the bird, cover it with the sauce and chill it at least six hours. Drizzle the walnut oil over before serving."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 46,
+      "carbsG": 16,
+      "fatG": 58,
+      "estimated": true
+    }
+  }
+}

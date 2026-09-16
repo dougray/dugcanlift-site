@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-asado-argentino",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AR",
+    "nativeName": "Asado",
+    "summary": "Beef on a grate over wood embers, for hours, with nothing but coarse salt.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      45,
+      15,
+      25,
+      10,
+      120,
+      42,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/asado-argentino.jpg",
+      "author": "",
+      "license": "Attribution"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Asado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2.5 kg Beef short ribs",
+        "item": "beef short ribs",
+        "qty": 2.5,
+        "unit": "kg",
+        "grams": 2500,
+        "note": "cut across the bone"
+      },
+      {
+        "rawText": "1.5 kg Flank or skirt",
+        "item": "flank or skirt",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "800 g Chorizo sausages",
+        "item": "chorizo sausages",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "500 g Morcilla",
+        "item": "morcilla",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "100 g Coarse salt",
+        "item": "coarse salt",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "80 g Parsley",
+        "item": "parsley",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80,
+        "note": "for the chimichurri"
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Dried oregano",
+        "item": "dried oregano",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "100 ml Red wine vinegar",
+        "item": "red wine vinegar",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Olive oil",
+        "item": "olive oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "500 g Bread",
+        "item": "bread",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Light the firewood to one side of the grate and let it burn down to embers, about forty minutes.",
+      "Mix the parsley, garlic, oregano, vinegar, oil and chilli flakes; the chimichurri needs an hour to stand.",
+      "Rake a thin layer of embers under part of the grate and lay on the sausages; they go first.",
+      "Salt the ribs coarsely all over and lay them bone side down over a moderate heat.",
+      "Cook the ribs bone down for two hours, adjusting the embers so a palm can stay above the grate for seven seconds.",
+      "Turn the ribs and give them forty minutes meat side down, for a crust.",
+      "Add the flank for the last twenty minutes, rest the meat ten and serve it with the chimichurri."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 210,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 62,
+      "carbsG": 18,
+      "fatG": 62,
+      "estimated": true
+    }
+  }
+}

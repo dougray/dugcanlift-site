@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dolma-azerbaijani",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AZ",
+    "nativeName": "Yarpaq dolması",
+    "summary": "Vine leaves with lamb, rice and mint, cooked under a weight, with garlic matsoni.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      32,
+      12,
+      12,
+      45,
+      12,
+      6,
+      60
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/dolma-azerbaijani.jpg",
+      "author": "Violetamyftari",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Azerbaijani dolma",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Vine leaves",
+        "item": "vine leaves",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "minced"
+      },
+      {
+        "rawText": "150 g Rice",
+        "item": "rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "50 g Fresh mint",
+        "item": "fresh mint",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "30 g Dill",
+        "item": "dill",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 g Ghee",
+        "item": "ghee",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "400 ml Matsoni or yoghurt",
+        "item": "matsoni or yoghurt",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "0.5 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Scald fresh leaves for a minute; soak preserved ones half an hour in cold water.",
+      "Rinse the rice and mix it with the mince, finely chopped onion, salt, pepper and cinnamon.",
+      "Chop all the herbs fine and work them into the filling; their volume should be obvious.",
+      "Put a teaspoon of filling on each leaf, tuck in the sides and roll it into a tight cylinder a finger thick.",
+      "Line the bottom of the pot with torn leaves and pack the dolma in tight layers, seam down.",
+      "Dot the top with ghee, add water level with the top layer and cover with a weighted plate.",
+      "Cook an hour on a low heat and serve with matsoni whisked with crushed garlic and salt."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 26,
+      "carbsG": 40,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

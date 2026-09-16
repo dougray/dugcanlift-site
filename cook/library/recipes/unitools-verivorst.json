@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-verivorst",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EE",
+    "nativeName": "Verivorst",
+    "summary": "Blood sausage with pearl barley and marjoram, baked and served with lingonberry jam.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      40,
+      18,
+      25,
+      12,
+      25,
+      12,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/verivorst.jpg",
+      "author": "Pikk de Päkk",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Verivorst",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "700 ml Pig's blood",
+        "item": "pig's blood",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Pearl barley",
+        "item": "pearl barley",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "250 g Pork fat",
+        "item": "pork fat",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250,
+        "note": "diced"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Marjoram",
+        "item": "marjoram",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground allspice",
+        "item": "ground allspice",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 g Sausage casings",
+        "item": "sausage casings",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "about 3 metres"
+      },
+      {
+        "rawText": "300 g Lingonberry jam",
+        "item": "lingonberry jam",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "to serve"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the barley in salted water for forty minutes, to half done, and drain it.",
+      "Render the pork fat to crackling, add the onion and fry it golden.",
+      "Cool both the barley and the fat with onion completely, or the blood sets when they meet.",
+      "Strain the blood through a sieve and mix it with the barley, fat, marjoram, allspice and salt.",
+      "Rinse the casings and fill them two-thirds full, leaving room for the barley to swell.",
+      "Tie the sausages every twenty centimetres and prick them in several places with a needle.",
+      "Bake at 180 °C for forty-five minutes, dotted with butter, and serve with lingonberry jam."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 26,
+      "carbsG": 42,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

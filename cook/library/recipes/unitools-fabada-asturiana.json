@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fabada-asturiana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Fabada asturiana",
+    "summary": "Large white fabes beans stewed with chorizo, morcilla and cured pork.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      15,
+      150,
+      8,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fabada-asturiana.jpg",
+      "author": "Juan J. Martínez from Valencia, España",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fabada asturiana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Fabes beans",
+        "item": "fabes beans",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "250 g Chorizo",
+        "item": "chorizo",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "200 g Morcilla",
+        "item": "morcilla",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Cured pork belly",
+        "item": "cured pork belly",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Ham bone",
+        "item": "ham bone",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "1 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 ml Olive oil",
+        "item": "olive oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the beans twelve hours in cold water and drain them.",
+      "Put the beans, cured meats, onion, garlic and olive oil in a pot and cover with cold water by three fingers.",
+      "Bring it up, skim, and drop the heat until the surface barely trembles.",
+      "Cook two and a half hours, adding half a cup of cold water every thirty minutes.",
+      "Lift out the onion and garlic, crush them with the saffron and paprika and return them to the pot.",
+      "Salt it at the very end and let it stand half an hour before serving.",
+      "Lift out the meats, slice them and serve them on a separate platter, with the beans in a tureen."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 780,
+      "proteinG": 38,
+      "carbsG": 56,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-luqaimat",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AE",
+    "nativeName": "لقيمات",
+    "summary": "Crisp balls of yeasted batter in date syrup. The Ramadan sweet of the Gulf.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      4,
+      6,
+      62,
+      8,
+      18,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Luqaimat",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Flour",
+        "item": "flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "50 g Cornflour",
+        "item": "cornflour",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "100 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "280 ml Warm water",
+        "item": "warm water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "200 ml Date syrup",
+        "item": "date syrup",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Steep the saffron in a spoon of warm water and leave it.",
+      "Mix the flour, cornflour, yeast, sugar, cardamom and salt.",
+      "Add the yoghurt, warm water and saffron infusion and whisk to a smooth loose batter.",
+      "Leave it somewhere warm for an hour; the batter should rise and bubble.",
+      "Heat the oil to 170 °C and drop the batter in by the teaspoon, dipping it in water each time.",
+      "Fry in batches for three to four minutes, moving them with a slotted spoon, to a deep gold.",
+      "Drain on paper, pour over the date syrup and scatter with sesame. Serve at once."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 6,
+      "carbsG": 64,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

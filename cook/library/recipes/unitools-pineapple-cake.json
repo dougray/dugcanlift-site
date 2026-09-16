@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pineapple-cake",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TW",
+    "nativeName": "鳳梨酥",
+    "summary": "Squares of shortcrust with a dense filling of reduced pineapple and winter melon.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      25,
+      25,
+      60,
+      20,
+      15,
+      35,
+      40
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pineapple-cake.jpg",
+      "author": "Mk2010",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pineapple cake",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 16,
+    "ingredients": [
+      {
+        "rawText": "1 kg Pineapple",
+        "item": "pineapple",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "peeled"
+      },
+      {
+        "rawText": "500 g Winter melon",
+        "item": "winter melon",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "150 g Sugar",
+        "item": "sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "80 g Maltose syrup",
+        "item": "maltose syrup",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "300 g Flour",
+        "item": "flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "40 g Milk powder",
+        "item": "milk powder",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 g Grated hard cheese",
+        "item": "grated hard cheese",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "60 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 Egg yolks",
+        "item": "egg yolks",
+        "qty": 2
+      },
+      {
+        "rawText": "40 g Cornflour",
+        "item": "cornflour",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Grate the pineapple and winter melon coarsely and press out the juice through muslin.",
+      "Reduce the pressed juice separately by half; it goes back into the filling as a concentrate.",
+      "Cook the pulp with the sugar and maltose on a low heat for an hour, stirring every five minutes.",
+      "Add the reduced juice and cook the filling until a spatula leaves a trail on the pan.",
+      "Beat the butter with the icing sugar, yolks, milk powder, cheese and salt, and work in the flour and cornflour.",
+      "Chill the dough half an hour, divide it into balls and flatten each in your palm.",
+      "Wrap a ball of filling in the dough, press it into a square mould and bake at 170 °C for twenty-five minutes, turning it halfway."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 4,
+      "carbsG": 46,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

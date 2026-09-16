@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pastelitos-hondurenos",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HN",
+    "nativeName": "Pastelitos de perro",
+    "summary": "Fried corn turnovers with meat and potato under a cabbage salad.",
+    "category": "snack",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      25,
+      12,
+      10,
+      15,
+      18,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pastelitos",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Masa harina",
+        "item": "masa harina",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "400 ml Warm water",
+        "item": "warm water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "400 g Minced beef",
+        "item": "minced beef",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "300 g Potatoes",
+        "item": "potatoes",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Annatto",
+        "item": "annatto",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "300 g Cabbage",
+        "item": "cabbage",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "50 ml Vinegar",
+        "item": "vinegar",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 ml Tomato sauce",
+        "item": "tomato sauce",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "700 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the mince with the onion and annatto, add the finely diced potato and stew until soft.",
+      "Season the filling and cool it completely.",
+      "Shred the cabbage finely and pickle it in vinegar with salt for half an hour.",
+      "Mix the masa with warm water and salt to a pliable dough that does not stick to your hands.",
+      "Press a ball of dough between two sheets of film into a thin round.",
+      "Put a spoon of filling on one half, fold it over and seal the edge with a fork.",
+      "Deep-fry at 180 °C for three minutes a side and serve with the cabbage and sauce."
+    ],
+    "prepMinutes": 55,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 20,
+      "carbsG": 52,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-key-lime-pie",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "US",
+    "nativeName": "Key lime pie",
+    "summary": "A condensed milk and lime filling on a cracker crumb base, set by acid rather than heat.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      15,
+      5,
+      5,
+      5,
+      18,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/key-lime-pie.jpg",
+      "author": "Louiemantia",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Key lime pie",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "250 g Graham crackers or digestives",
+        "item": "graham crackers or digestives",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "110 g Butter",
+        "item": "butter",
+        "qty": 110,
+        "unit": "g",
+        "grams": 110,
+        "note": "melted"
+      },
+      {
+        "rawText": "50 g Sugar",
+        "item": "sugar",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "400 g Condensed milk",
+        "item": "condensed milk",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "4 Egg yolks",
+        "item": "egg yolks",
+        "qty": 4
+      },
+      {
+        "rawText": "8 Limes",
+        "item": "limes",
+        "qty": 8
+      },
+      {
+        "rawText": "300 ml Double cream",
+        "item": "double cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Crush the crackers to fine crumbs and mix them with the melted butter, sugar and a pinch of salt.",
+      "Press the crumbs into a tin, working them up the sides, and bake at 175 °C for ten minutes.",
+      "Beat the yolks with the zest of two limes until pale, about three minutes.",
+      "Add the condensed milk and beat three minutes more, until the mixture thickens.",
+      "Pour in the lime juice in a thin stream with the mixer running; the mixture thickens in the bowl.",
+      "Pour the filling into the base and bake at 160 °C for fifteen minutes, until the edges set and the centre still wobbles.",
+      "Cool it and chill it four hours, then top with cream whipped with the icing sugar."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 8,
+      "carbsG": 56,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

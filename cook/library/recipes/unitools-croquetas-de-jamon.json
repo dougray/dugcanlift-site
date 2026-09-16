@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-croquetas-de-jamon",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ES",
+    "nativeName": "Croquetas de jamón",
+    "summary": "A thick béchamel with ham, chilled until firm, breadcrumbed and deep-fried.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      6,
+      5,
+      15,
+      240,
+      20,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/croquetas-de-jamon.jpg",
+      "author": "Anagoria",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ham croquetas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "150 g Serrano ham",
+        "item": "serrano ham",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 tbsp Olive oil",
+        "item": "olive oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "0.5 Onion",
+        "item": "onion",
+        "qty": 0.5,
+        "note": "very finely chopped"
+      },
+      {
+        "rawText": "100 g Plain flour",
+        "item": "plain flour",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "700 ml Milk",
+        "item": "milk",
+        "qty": 700,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "1 pinch Nutmeg",
+        "item": "nutmeg",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "2 Eggs for coating",
+        "item": "eggs for coating",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Breadcrumbs",
+        "item": "breadcrumbs",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "700 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Melt the butter with the olive oil, soften the onion until translucent, add the ham and warm it for a minute so the fat renders into the pan.",
+      "Add the flour and cook, stirring, for four or five minutes, until it smells nutty and just begins to colour.",
+      "Add the warm milk a ladle at a time, stirring smooth before the next goes in. Cook for ten minutes more, until the mixture pulls away from the sides.",
+      "Season with nutmeg and salt, spread into a dish two centimetres deep, press cling film onto the surface and chill for at least four hours.",
+      "Shape cylinders with wet hands and coat in egg then breadcrumbs. For a sturdier shell, do the coating twice.",
+      "Deep-fry at 180 °C for two minutes in small batches. A crowded pan drops the temperature and the croquetas drink oil instead of crisping."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 18,
+      "carbsG": 34,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

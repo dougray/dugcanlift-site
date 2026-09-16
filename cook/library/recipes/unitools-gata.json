@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gata",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AM",
+    "nativeName": "Գաթա",
+    "summary": "A layered sweet bread with khoriz, a dry filling of flour, butter and sugar.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      14,
+      62,
+      12,
+      25,
+      20,
+      12,
+      45
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gata.jpg",
+      "author": "Rita Willaert from 9890 Gavere, Belgium",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gata",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour for the dough",
+        "item": "flour for the dough",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Butter",
+        "item": "butter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 ml Soured cream",
+        "item": "soured cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "250 g Flour for the filling",
+        "item": "flour for the filling",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "150 g Butter for the filling",
+        "item": "butter for the filling",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Egg yolk",
+        "item": "egg yolk",
+        "qty": 1,
+        "note": "for glazing"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, softened butter, soured cream, yeast and salt and work it ten minutes.",
+      "Wrap the dough in film and chill it an hour.",
+      "Rub the filling flour with the cold butter, sugar and vanilla to a damp crumb.",
+      "Roll the dough into a rectangle, brush it with butter, fold it in three and chill it twenty minutes.",
+      "Repeat the rolling and folding once more, then roll it out a centimetre thick.",
+      "Spread the filling over half the sheet, fold the other half over and seal the edges.",
+      "Score a pattern with a fork, brush with yolk and bake at 180 °C for forty minutes, to a deep gold."
+    ],
+    "prepMinutes": 75,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 7,
+      "carbsG": 62,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

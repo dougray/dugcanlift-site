@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-colcannon",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IE",
+    "nativeName": "Colcannon",
+    "summary": "Mashed potato with cabbage and spring onion, a lake of melted butter in the centre.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      25,
+      10,
+      10,
+      10,
+      8,
+      5,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/colcannon.jpg",
+      "author": "Alison Cassidy",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Colcannon",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Potatoes",
+        "item": "potatoes",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "floury variety"
+      },
+      {
+        "rawText": "500 g Cabbage or kale",
+        "item": "cabbage or kale",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "8 Spring onions",
+        "item": "spring onions",
+        "qty": 8
+      },
+      {
+        "rawText": "250 ml Milk",
+        "item": "milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 ml Cream",
+        "item": "cream",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Boil the potatoes in their skins in salted water until completely soft, twenty-five minutes.",
+      "Warm the milk and cream with the sliced spring onion until hot and leave it to infuse ten minutes.",
+      "Shred the cabbage and cook it in half the butter for eight minutes, until soft.",
+      "Peel the potatoes hot and mash them with a masher, never a blender.",
+      "Strain the hot milk into the mash and work it smooth, then season.",
+      "Fold in the cooked cabbage and the infused spring onion from the milk.",
+      "Mound it up, make a well in the centre and put the remaining butter into it."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 42,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

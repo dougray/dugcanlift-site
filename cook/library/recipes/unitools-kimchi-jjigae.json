@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kimchi-jjigae",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KR",
+    "nativeName": "김치찌개",
+    "summary": "A stew of over-fermented kimchi with pork and tofu. The older the kimchi, the better it works.",
+    "category": "soup",
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      5,
+      3,
+      20,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kimchi-jjigae.jpg",
+      "author": "한국농수산식품유통공사",
+      "license": "KOGL Type 1"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kimchi jjigae",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Over-fermented kimchi",
+        "item": "over-fermented kimchi",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "with its liquid"
+      },
+      {
+        "rawText": "300 g Pork belly",
+        "item": "pork belly",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "sliced"
+      },
+      {
+        "rawText": "300 g Tofu",
+        "item": "tofu",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "in thick slabs"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Gochugaru flakes",
+        "item": "gochugaru flakes",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Gochujang",
+        "item": "gochujang",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "700 ml Water or anchovy stock",
+        "item": "water or anchovy stock",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 Spring onion",
+        "item": "spring onion",
+        "qty": 3
+      },
+      {
+        "rawText": "1 tbsp Sesame oil",
+        "item": "sesame oil",
+        "qty": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Fry the pork in the sesame oil over medium heat until the fat has rendered and the meat has colour, about five minutes.",
+      "Add the kimchi and fry for five minutes, until the edges darken. This step takes the raw edge off the acidity and rounds the flavour out.",
+      "Stir in the gochugaru, gochujang and garlic, pour in the kimchi liquid and the water, and bring it to the boil.",
+      "Simmer for twenty minutes, add the onion and tofu and give it five more. Do not stir the tofu; it falls apart.",
+      "Off the heat, scatter over the spring onion and serve it in the pot, with a separate bowl of rice."
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 470,
+      "proteinG": 28,
+      "carbsG": 16,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

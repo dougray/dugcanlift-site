@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-dal-bhat",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NP",
+    "nativeName": "दाल भात",
+    "summary": "Lentil soup with rice and a vegetable tarkari. Nepal's everyday meal, eaten twice a day for a lifetime.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      32,
+      20,
+      2,
+      2,
+      3,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/dal-bhat.jpg",
+      "author": "Gaurav Dhwaj Khadka",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Dal bhat",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "250 g Yellow lentils",
+        "item": "yellow lentils",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Ghee",
+        "item": "ghee",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ajwain seeds",
+        "item": "ajwain seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Dried chillies",
+        "item": "dried chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "500 g Potato and cauliflower",
+        "item": "potato and cauliflower",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "200 g Spinach or mustard greens",
+        "item": "spinach or mustard greens",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the lentils and boil them in a litre of water with the turmeric for thirty minutes, until they collapse completely. Skim for the first five minutes.",
+      "Start the rice. While it cooks, fry the onion, add the potato and cauliflower with a little turmeric and water, and cook fifteen minutes: that is the tarkari.",
+      "Fry the greens with garlic over a high flame for two minutes; they should stay bright.",
+      "For the jhaneko, heat the ghee and throw in the ajwain, cumin, dried chilli and garlic, frying twenty seconds to the smell.",
+      "Pour the sizzling spiced fat straight into the dal — it hisses. Stir, season and serve at once.",
+      "Build the plate: rice in the middle, dal in a small bowl, tarkari and greens around it, achar at the edge."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 22,
+      "carbsG": 98,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

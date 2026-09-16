@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pad-thai",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TH",
+    "nativeName": "ผัดไทย",
+    "summary": "Rice noodles fried with tamarind, fish sauce and palm sugar. The whole thing takes four minutes.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      3,
+      3,
+      2,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pad-thai.jpg",
+      "author": "Kgbo",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pad thai",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 2,
+    "ingredients": [
+      {
+        "rawText": "200 g Rice noodles, 5 mm",
+        "item": "rice noodles, 5 mm",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Prawns",
+        "item": "prawns",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Firm tofu",
+        "item": "firm tofu",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "diced"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Palm sugar",
+        "item": "palm sugar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Shallot",
+        "item": "shallot",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Bean sprouts",
+        "item": "bean sprouts",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "50 g Garlic chives",
+        "item": "garlic chives",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "50 g Peanuts",
+        "item": "peanuts",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "roughly chopped"
+      },
+      {
+        "rawText": "Lime, to taste",
+        "item": "lime"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Soak the noodles in warm water for twenty minutes. They should bend but still feel firm when you bite one.",
+      "Dissolve the palm sugar in the tamarind and fish sauce, warming them together for a minute. Taste it: sour, salty and sweet should all land equally.",
+      "Get the wok hot, fry the tofu until crisp, add the garlic and shallot, then after half a minute the prawns. Cook until pink and push them to the side.",
+      "Break the eggs into the cleared space, let them set and break them up with the spatula. Add the drained noodles and pour in the sauce.",
+      "Fry, tossing constantly, for two minutes until the noodles drink the sauce and soften. Add the sprouts and chives, toss once and take it off."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 34,
+      "carbsG": 82,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

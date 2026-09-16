@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tahdig",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IR",
+    "nativeName": "ته‌دیگ",
+    "summary": "Rice with a golden crust on the bottom of the pot, made from rice, potato or flatbread.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      10,
+      5,
+      8,
+      3,
+      50,
+      3
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tahdig.jpg",
+      "author": "Tamorlan",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tahdig",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "soaked an hour"
+      },
+      {
+        "rawText": "2 Potato",
+        "item": "potato",
+        "qty": 2,
+        "note": "in 5 mm rounds"
+      },
+      {
+        "rawText": "3 tbsp Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the rice until the water runs clear and soak it in salted water for an hour. That removes surplus starch and lets the grains grow longer.",
+      "Boil the rice in plenty of salted water for five to seven minutes: a grain should bend but snap under pressure. Drain and rinse with warm water.",
+      "Grind the saffron and steep it in two spoons of hot water. Mix a couple of spoons of the rice with the yoghurt and saffron: this becomes the crust.",
+      "Heat the fat in the pot, lay the potato rounds edge to edge, spread the rice and yoghurt mixture over them and pile the rest of the rice on top in a mound.",
+      "Make five holes down to the base with the handle of a spoon for the steam to travel. Pour melted butter over.",
+      "Cover with a lid wrapped in a cloth, five minutes on a high flame and forty-five on the lowest. Do not lift the lid.",
+      "Stand the base of the pot in cold water for a minute and the crust releases. Invert it onto a plate in one movement."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 8,
+      "carbsG": 66,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-hoppers",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LK",
+    "nativeName": "Appa",
+    "summary": "Thin bowl-shaped pancakes from fermented rice batter with coconut milk, often with an egg.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      8,
+      10,
+      6,
+      10,
+      8,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/hoppers.jpg",
+      "author": "Paul Joseph from vancouver, bc, canada",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Hoppers",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Rice flour",
+        "item": "rice flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "250 ml Warm water",
+        "item": "warm water",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "6 Eggs",
+        "item": "eggs",
+        "qty": 6,
+        "note": "optional"
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2,
+        "note": "for the sambol"
+      },
+      {
+        "rawText": "2 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "2 tbsp Maldive fish",
+        "item": "maldive fish",
+        "qty": 2,
+        "unit": "tbsp",
+        "note": "for the sambol"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in the warm water and leave it ten minutes, until it foams.",
+      "Mix the rice flour with the yeast mixture and half the coconut milk to a smooth batter.",
+      "Cover it and leave it to ferment overnight at room temperature, about eight hours.",
+      "In the morning stir in the remaining coconut milk and salt; the batter should be as thin as pouring cream.",
+      "Mix the finely chopped onion, chilli flakes, Maldive fish, lime juice and salt; that is lunu miris.",
+      "Heat a small wok, oil it and pour in a ladle of batter, swirling the pan immediately.",
+      "Break an egg into the centre, cover and cook three minutes to crisp edges. Serve with the lunu miris."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 10,
+      "carbsG": 50,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

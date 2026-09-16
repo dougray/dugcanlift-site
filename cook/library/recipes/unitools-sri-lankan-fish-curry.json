@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sri-lankan-fish-curry",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "LK",
+    "nativeName": "Malu kariya",
+    "summary": "Fish in a coconut curry soured with goraka and built on roasted curry powder.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      22,
+      18,
+      10,
+      3,
+      6,
+      14,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sri Lankan fish curry",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "900 g Tuna or mackerel",
+        "item": "tuna or mackerel",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "3 Goraka or tamarind",
+        "item": "goraka or tamarind",
+        "qty": 3
+      },
+      {
+        "rawText": "500 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Roasted curry powder",
+        "item": "roasted curry powder",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Chilli powder",
+        "item": "chilli powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "15 Curry leaves",
+        "item": "curry leaves",
+        "qty": 15
+      },
+      {
+        "rawText": "1 Pandan leaf",
+        "item": "pandan leaf",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Fenugreek seeds",
+        "item": "fenugreek seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Red rice",
+        "item": "red rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the goraka in a cup of warm water for twenty minutes and keep the water.",
+      "Rub the fish with salt, turmeric and half the curry powder and leave it fifteen minutes.",
+      "Fry the onion, garlic, ginger, curry leaves, pandan, cinnamon and fenugreek until fragrant.",
+      "Add the remaining curry powder and chilli and warm them a minute without letting them scorch.",
+      "Add the thinned coconut milk with the goraka water and bring it to the boil.",
+      "Lay the fish steaks in a single layer, add the goraka and cook twelve minutes, rocking the pan.",
+      "Add the thick coconut milk and warm it five minutes without boiling. Serve with red rice."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 48,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

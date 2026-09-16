@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-butter-tarts",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CA",
+    "nativeName": "Butter tarts",
+    "summary": "Shortcrust tartlets with a butter, sugar and syrup filling, runny or set.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      32,
+      15,
+      8,
+      8,
+      8,
+      25
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/butter-tarts.jpg",
+      "author": "Rob Campbell from Toronto, ON, Canada",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Butter tarts",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "300 g Flour",
+        "item": "flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "180 g Butter for the pastry",
+        "item": "butter for the pastry",
+        "qty": 180,
+        "unit": "g",
+        "grams": 180,
+        "note": "cold"
+      },
+      {
+        "rawText": "80 ml Iced water",
+        "item": "iced water",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "200 g Brown sugar",
+        "item": "brown sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "120 ml Maple syrup",
+        "item": "maple syrup",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vinegar",
+        "item": "vinegar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 g Raisins",
+        "item": "raisins",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Rub the flour into the cold butter to a coarse crumb and bring the dough together with iced water.",
+      "Wrap it in film and chill it half an hour, without long kneading.",
+      "Roll the pastry and line muffin tins with it, taking the sides right to the top.",
+      "Melt the butter and stir in the sugar, maple syrup, vinegar, vanilla and salt.",
+      "Cool the mixture to lukewarm and only then whisk in the eggs; in a hot one they scramble.",
+      "Divide the raisins between the cases and fill them two-thirds with the mixture, no higher.",
+      "Bake at 200 °C for eighteen minutes for a runny filling, or twenty-two for a set one."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 22,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 4,
+      "carbsG": 48,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

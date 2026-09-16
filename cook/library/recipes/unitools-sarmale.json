@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-sarmale",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RO",
+    "nativeName": "Sarmale",
+    "summary": "Cabbage rolls in soured leaves with pork and rice, braised three hours under a layer of shredded cabbage.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      15,
+      8,
+      35,
+      12,
+      180
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/sarmale.jpg",
+      "author": "Andrei",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Sarmale",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "1 Whole soured cabbage",
+        "item": "whole soured cabbage",
+        "qty": 1
+      },
+      {
+        "rawText": "800 g Minced pork",
+        "item": "minced pork",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "150 g Short-grain rice",
+        "item": "short-grain rice",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "uncooked"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "300 g Smoked ribs",
+        "item": "smoked ribs",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tsp Savory and thyme",
+        "item": "savory and thyme",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 Bay leaves",
+        "item": "bay leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "60 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Soured cream and polenta, to taste",
+        "item": "soured cream and polenta"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Take the cabbage apart into leaves and pare down the thick ribs. Rinse leaves that are too sour; soak overly salty ones for twenty minutes.",
+      "Fry the finely chopped onion in the oil until soft, add the tomato paste and cook two minutes. Cool it completely.",
+      "Mix the pork with the rice, the cooled onion, savory, salt and pepper.",
+      "Put a tablespoon of filling on each leaf, roll it up and tuck the ends in with a finger. The rolls should come out small, about two fingers wide.",
+      "Line the pot with shredded cabbage and the ribs, pack the rolls in tight layers with bay between them, and cover with the remaining cabbage and leaves.",
+      "Add water to the level of the top layer and cook three hours on the lowest heat or at 150 °C in the oven."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 30,
+      "carbsG": 32,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

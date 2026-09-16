@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-risalamande",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "DK",
+    "nativeName": "Risalamande",
+    "summary": "A cold rice pudding with whipped cream and almonds, under a hot cherry sauce.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      65,
+      30,
+      15,
+      5,
+      10,
+      10,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/risalamande.jpg",
+      "author": "Lorie Shaull",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Risalamande",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "200 g Pudding rice",
+        "item": "pudding rice",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 l Milk",
+        "item": "milk",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "500 ml Double cream",
+        "item": "double cream",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Almonds",
+        "item": "almonds",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "blanched"
+      },
+      {
+        "rawText": "80 g Sugar",
+        "item": "sugar",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "1 Vanilla",
+        "item": "vanilla",
+        "qty": 1
+      },
+      {
+        "rawText": "500 g Cherries",
+        "item": "cherries",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "stoned"
+      },
+      {
+        "rawText": "80 g Sugar for the sauce",
+        "item": "sugar for the sauce",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Sherry",
+        "item": "sherry",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Rinse the rice, cover it with the milk, vanilla and salt and cook an hour on the lowest heat, stirring.",
+      "Cool the rice completely; stand the bowl in cold water and stir so no skin forms.",
+      "Scald the almonds, slip off the skins and chop them coarsely, keeping one whole.",
+      "Stir the chopped almonds, sugar and sherry into the cold rice.",
+      "Whip the cream to soft peaks and fold it in with a spatula in three additions, without knocking it down.",
+      "Hide the whole almond in the mixture and chill the pudding at least three hours.",
+      "Cook the cherries with sugar for ten minutes, thicken with slaked cornflour and serve the sauce hot."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 11,
+      "carbsG": 54,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

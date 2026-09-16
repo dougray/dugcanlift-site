@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-manti-turkish",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "Mantı",
+    "summary": "Tiny lamb dumplings, boiled and served under garlic yoghurt and paprika butter.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      45,
+      8,
+      25,
+      40,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/manti-turkish.jpg",
+      "author": "Kızılkum",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Turkish mantı",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "180 ml Water",
+        "item": "water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Lamb",
+        "item": "lamb",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "minced"
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1,
+        "note": "grated"
+      },
+      {
+        "rawText": "500 ml Thick yoghurt",
+        "item": "thick yoghurt",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Dried mint",
+        "item": "dried mint",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Sumac",
+        "item": "sumac",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, eggs, water and salt and work it fifteen minutes.",
+      "Cover it and rest it forty minutes, or the dough springs back as you roll it.",
+      "Mix the mince with the grated onion, salt and pepper and squeeze out the excess juice.",
+      "Roll the dough a millimetre thick and cut it into two-centimetre squares.",
+      "Put a knife-tip of filling on each square and pinch the four corners up into a knot.",
+      "Boil the mantı in salted water for eight minutes and drain, keeping a ladle of the water.",
+      "Whisk the yoghurt with the garlic, plate the mantı, spoon the yoghurt over and pour on the paprika and mint butter."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 28,
+      "carbsG": 62,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

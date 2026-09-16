@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-malabi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IL",
+    "nativeName": "מלבי",
+    "summary": "A milk pudding set with cornflour and rose water, under a sweet syrup and nuts.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      8,
+      5,
+      5,
+      5,
+      6,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Malabi",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1 l Milk",
+        "item": "milk",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "70 g Cornflour",
+        "item": "cornflour",
+        "qty": 70,
+        "unit": "g",
+        "grams": 70
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tbsp Rose water",
+        "item": "rose water",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Raspberry or pomegranate syrup",
+        "item": "raspberry or pomegranate syrup",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Pistachios",
+        "item": "pistachios",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "40 g Desiccated coconut",
+        "item": "desiccated coconut",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "60 g Peanuts",
+        "item": "peanuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      }
+    ],
+    "steps": [
+      "Slake the cornflour in a cup of cold milk until completely dissolved and lump-free.",
+      "Heat the rest of the milk with the cream and sugar until hot, without letting it boil.",
+      "Pour in the starch mixture in a thin stream, whisking without stopping.",
+      "Cook over medium heat for five minutes, until the mixture thickens to the body of double cream.",
+      "Take it off the heat, stir in the rose water and pour it straight into glasses.",
+      "Press film onto the surface so no skin forms and chill for four hours.",
+      "Before serving pour over the syrup and scatter with chopped pistachios, peanuts and coconut."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 8,
+      "carbsG": 48,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lamingtons",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AU",
+    "nativeName": "Lamingtons",
+    "summary": "Cubes of sponge dipped in chocolate icing and rolled in desiccated coconut.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      8,
+      30,
+      20,
+      10,
+      6,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lamingtons.jpg",
+      "author": "Coastal.culture.vulture",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lamingtons",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "250 g Flour",
+        "item": "flour",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "200 g Sugar",
+        "item": "sugar",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Eggs",
+        "item": "eggs",
+        "qty": 4
+      },
+      {
+        "rawText": "120 ml Milk",
+        "item": "milk",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "50 g Cocoa powder",
+        "item": "cocoa powder",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "150 ml Hot milk",
+        "item": "hot milk",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 g Desiccated coconut",
+        "item": "desiccated coconut",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Beat the butter and sugar pale, add the eggs one at a time, then the vanilla.",
+      "Fold in the sifted flour with the baking powder and salt, alternating with the milk.",
+      "Pour into a square tin and bake at 180 °C for twenty-eight minutes, until a skewer comes out clean.",
+      "Cool it completely and leave the sponge uncovered overnight.",
+      "Cut it into five-centimetre cubes.",
+      "Whisk the icing sugar with the cocoa and hot milk to a thin icing that runs off a spoon in a stream.",
+      "Dip each cube on two forks, let it drain and roll it in coconut. Leave them to set for an hour."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 5,
+      "carbsG": 56,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

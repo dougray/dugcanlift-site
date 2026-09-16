@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-adobo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PH",
+    "nativeName": "Adobo",
+    "summary": "Chicken braised in soy sauce with vinegar, garlic and bay. The vinegar is left unstirred for the first ten minutes.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      30,
+      10,
+      12,
+      25,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/adobo.jpg",
+      "author": "Joy D. Ganaden",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chicken adobo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Chicken thighs",
+        "item": "chicken thighs",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000
+      },
+      {
+        "rawText": "120 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "120 ml Cane or rice vinegar",
+        "item": "cane or rice vinegar",
+        "qty": 120,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 cloves Garlic",
+        "item": "garlic",
+        "qty": 10,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Bay leaves",
+        "item": "bay leaves",
+        "qty": 4
+      },
+      {
+        "rawText": "1 tsp Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tbsp Cane sugar",
+        "item": "cane sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "200 ml Water",
+        "item": "water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "400 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      }
+    ],
+    "steps": [
+      "Marinate the chicken in the soy with the crushed garlic and peppercorns for thirty minutes.",
+      "Lift the chicken out, dry it and brown it skin down. Keep the marinade.",
+      "Pour in the marinade, water and vinegar, add the bay and sugar. Bring it to the boil and neither stir nor cover for ten minutes.",
+      "Cover and simmer for twenty-five minutes, turning the chicken once.",
+      "Uncover and reduce the sauce for five to ten minutes, spooning it over the chicken. Serve with rice."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 580,
+      "proteinG": 44,
+      "carbsG": 42,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

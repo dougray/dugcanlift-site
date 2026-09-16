@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-momo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NP",
+    "nativeName": "मम:",
+    "summary": "Nepali steamed dumplings of buffalo or chicken with an achar of charred tomato.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      12,
+      15,
+      35,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/momo.jpg",
+      "author": "Kushal Goyal",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Momo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "200 ml Cold water",
+        "item": "cold water",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Beef or chicken",
+        "item": "beef or chicken",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "300 g Onion",
+        "item": "onion",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "25 g Ginger",
+        "item": "ginger",
+        "qty": 25,
+        "unit": "g",
+        "grams": 25
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "20 g Coriander",
+        "item": "coriander",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tsp Timur pepper",
+        "item": "timur pepper",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 g Tomatoes for the achar",
+        "item": "tomatoes for the achar",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "3 Dried chillies",
+        "item": "dried chillies",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tbsp Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, cold water and a pinch of salt for eight minutes and rest it under film for half an hour.",
+      "Mix the chopped meat with the onion, ginger, garlic, coriander, timur, a spoon of oil and salt. Do not work it to a paste; pieces should remain.",
+      "Char the tomatoes over a flame until blackened, toast the chillies and sesame in a dry pan, and blend everything with salt into a sauce.",
+      "Roll eight-centimetre rounds, thinner at the edges. Add a spoon of filling and pleat all the way round, twisting the top shut.",
+      "Oil the steamer and cook the momo ten minutes over a fierce steam, keeping them from touching."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 30,
+      "carbsG": 62,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

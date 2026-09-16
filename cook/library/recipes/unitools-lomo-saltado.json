@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lomo-saltado",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PE",
+    "nativeName": "Lomo saltado",
+    "summary": "Beef seared in a wok with onion and tomato, served with both chips and rice at once.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      5,
+      2,
+      2,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed",
+      "linear"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lomo-saltado.jpg",
+      "author": "WikiHes",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lomo saltado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef sirloin",
+        "item": "beef sirloin",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "in strips"
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2,
+        "note": "in thick wedges"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3,
+        "note": "in wedges"
+      },
+      {
+        "rawText": "1 Ají amarillo",
+        "item": "ají amarillo",
+        "qty": 1
+      },
+      {
+        "rawText": "4 tbsp Soy sauce",
+        "item": "soy sauce",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Red wine vinegar",
+        "item": "red wine vinegar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "600 g Chips",
+        "item": "chips",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "400 g Cooked rice",
+        "item": "cooked rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "Coriander, to taste",
+        "item": "coriander"
+      },
+      {
+        "rawText": "3 tbsp Neutral oil",
+        "item": "neutral oil",
+        "qty": 3,
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      "Marinate the beef in the soy, vinegar and garlic for fifteen minutes, then pat it dry: a wet surface will not scorch.",
+      "Heat the pan until it smokes and sear the beef in two batches, ninety seconds each, leaving it alone for the first forty seconds. Set it aside.",
+      "In the same pan fry the onion and ají for ninety seconds — the onion should stay crisp inside.",
+      "Return the beef, pour in what is left of the marinade, add the tomatoes and warm through for half a minute. Take it off and stir in the coriander.",
+      "Serve with hot chips — some tossed into the pan so they take up the sauce — and a separate helping of rice."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 76,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chakalaka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZA",
+    "nativeName": "Chakalaka",
+    "summary": "A spicy vegetable relish of carrot, pepper and beans with curry. For a braai, for pap, or on its own.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      7,
+      2,
+      6,
+      9,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chakalaka.jpg",
+      "author": "philipp from cape town, south africa",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chakalaka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "4 Carrots",
+        "item": "carrots",
+        "qty": 4,
+        "note": "grated"
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3,
+        "note": "mixed colours"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "400 g Baked beans",
+        "item": "baked beans",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "chopped"
+      },
+      {
+        "rawText": "1 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Chilli",
+        "item": "chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "20 g Ginger",
+        "item": "ginger",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grate the carrots coarsely and cut the peppers and onions into thin strips.",
+      "Fry the onion with the garlic, ginger and chilli in oil until soft, five minutes.",
+      "Add the curry powder and paprika and warm them a minute; the spices need to open up in the oil.",
+      "Add the peppers and carrot and cook five minutes over a high heat, stirring.",
+      "Add the tomatoes, season and cook seven minutes, until the sauce thickens.",
+      "Stir in the beans, warm them three minutes and take the pan off. The vegetables should still have bite."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 220,
+      "proteinG": 8,
+      "carbsG": 26,
+      "fatG": 10,
+      "estimated": true
+    }
+  }
+}

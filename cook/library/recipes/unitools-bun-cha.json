@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bun-cha",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VN",
+    "nativeName": "Bún chả",
+    "summary": "Charcoal-grilled pork in a warm sweet-sour broth, with rice vermicelli and herbs.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      25,
+      12,
+      22,
+      10,
+      2,
+      6,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bun-cha.jpg",
+      "author": "stuart_spivack",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bún chả",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Pork belly",
+        "item": "pork belly",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "400 g Minced pork",
+        "item": "minced pork",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "400 g Rice vermicelli",
+        "item": "rice vermicelli",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "100 ml Fish sauce",
+        "item": "fish sauce",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 tbsp Sugar",
+        "item": "sugar",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Shallots",
+        "item": "shallots",
+        "qty": 4
+      },
+      {
+        "rawText": "200 g Green papaya or daikon",
+        "item": "green papaya or daikon",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Chillies",
+        "item": "chillies",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Mint, perilla, coriander",
+        "item": "mint, perilla, coriander",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "200 g Lettuce",
+        "item": "lettuce",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 tsp Black pepper",
+        "item": "black pepper",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Marinate the belly slices and the mince separately in fish sauce, sugar, shallot, garlic and pepper for an hour.",
+      "Shape the mince into flat patties a centimetre thick; they cook fast and evenly.",
+      "Slice the papaya and carrot thin and pickle them in vinegar with sugar for twenty minutes.",
+      "Mix the fish sauce, sugar, lime juice, water, garlic and chilli and warm it through; that is the nước chấm.",
+      "Boil the vermicelli two minutes, rinse it in cold water and divide it between plates.",
+      "Grill the belly and the patties over coals, three minutes a side, to caramelised edges.",
+      "Drop the hot meat straight into the warm sauce with the pickles and serve with the noodles, lettuce and herbs."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 720,
+      "proteinG": 42,
+      "carbsG": 66,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kuwaiti-darabeel",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "KW",
+    "nativeName": "درابيل",
+    "summary": "Kuwaiti buns of date paste and cardamom, rolled into spirals.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      18,
+      62,
+      8,
+      15,
+      12,
+      50
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed",
+      "damped",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Darabeel",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Warm milk",
+        "item": "warm milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "8 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 8,
+        "unit": "g",
+        "grams": 8
+      },
+      {
+        "rawText": "60 g Sugar",
+        "item": "sugar",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "1 Egg",
+        "item": "egg",
+        "qty": 1
+      },
+      {
+        "rawText": "400 g Date paste",
+        "item": "date paste",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "2 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "40 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with the sugar in the warm milk and leave it ten minutes, until it foams.",
+      "Steep the saffron in a spoon of hot water and knead a dough with the flour, egg, half the butter and cardamom.",
+      "Let the dough rise somewhere warm for an hour, until doubled.",
+      "Warm the date paste with the remaining butter and cardamom until soft.",
+      "Roll the dough into a rectangle half a centimetre thick and spread the date paste over it.",
+      "Roll it up tight and cut it into two-centimetre rounds.",
+      "Set them cut side up, prove them twenty minutes and bake at 180 °C for twenty-five minutes."
+    ],
+    "prepMinutes": 95,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 7,
+      "carbsG": 62,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-garudhiya",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MV",
+    "nativeName": "ގަރުދިޔަ",
+    "summary": "A clear broth of fresh tuna, cooked in water with salt and almost nothing else.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      10,
+      6,
+      22,
+      4,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Garudhiya",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Fresh tuna",
+        "item": "fresh tuna",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "10 Curry leaves",
+        "item": "curry leaves",
+        "qty": 10
+      },
+      {
+        "rawText": "1 Pandan leaf",
+        "item": "pandan leaf",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "4 Chillies",
+        "item": "chillies",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Limes",
+        "item": "limes",
+        "qty": 3
+      },
+      {
+        "rawText": "400 g Rice",
+        "item": "rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the tuna into large pieces and rinse them under cold water.",
+      "Cover with a litre and a half of cold water, salt it and bring it up.",
+      "Skim for the first five minutes; the clarity of the broth depends on it.",
+      "Add the curry leaves and pandan and cook twenty minutes on the lowest heat.",
+      "Remove the leaves, check the salt and take it off the heat.",
+      "Serve with rice, sliced onion, chilli and lime, each person adding them to their own bowl."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 44,
+      "carbsG": 46,
+      "fatG": 6,
+      "estimated": true
+    }
+  }
+}

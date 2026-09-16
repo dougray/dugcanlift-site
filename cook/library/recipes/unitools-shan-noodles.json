@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-shan-noodles",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MM",
+    "nativeName": "ရှမ်းခေါက်ဆွဲ",
+    "summary": "Rice noodles with a tomato and chicken sauce, pickled greens and ground peanuts.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      3,
+      10,
+      27,
+      6,
+      8,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/shan-noodles.jpg",
+      "author": "Mx. Granger",
+      "license": "CC0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Shan noodles",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Rice noodles",
+        "item": "rice noodles",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "500 g Minced chicken",
+        "item": "minced chicken",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "5 Shallots",
+        "item": "shallots",
+        "qty": 5
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Paprika",
+        "item": "paprika",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "150 g Pickled mustard greens",
+        "item": "pickled mustard greens",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "80 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the sliced shallot in oil until deep gold and set half aside for serving.",
+      "Add the garlic, paprika and turmeric and warm them a minute, until fragrant.",
+      "Add the minced chicken and fry it, breaking up lumps, until it whitens.",
+      "Add the chopped tomatoes and fish sauce and stew twenty-five minutes to a thick paste.",
+      "Grind the peanuts to a coarse crumb, keeping a few whole.",
+      "Boil the rice noodles, rinse them and divide them between bowls.",
+      "Spoon the sauce over the noodles and top with peanuts, fried shallot, pickled greens and coriander."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 36,
+      "carbsG": 68,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-empanadas-argentinas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "AR",
+    "nativeName": "Empanadas argentinas",
+    "summary": "Pastries of chopped beef, onion and egg. The filling is chilled cold, or the dough will not seal.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      5,
+      240,
+      8,
+      25,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/empanadas-argentinas.jpg",
+      "author": "E4024",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Argentinian empanadas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Beef",
+        "item": "beef",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "4 Onions",
+        "item": "onions",
+        "qty": 4,
+        "note": "finely diced"
+      },
+      {
+        "rawText": "4 Spring onion",
+        "item": "spring onion",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Eggs",
+        "item": "eggs",
+        "qty": 3,
+        "note": "hard-boiled and chopped"
+      },
+      {
+        "rawText": "80 g Green olives",
+        "item": "green olives",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "2 tsp Sweet paprika",
+        "item": "sweet paprika",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Chilli flakes",
+        "item": "chilli flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "24 Empanada discs",
+        "item": "empanada discs",
+        "qty": 24
+      },
+      {
+        "rawText": "3 tbsp Lard or oil",
+        "item": "lard or oil",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onion in the lard over medium heat for fifteen minutes, until soft and translucent, without letting it colour.",
+      "Add the chopped beef, paprika, cumin and chilli and cook five minutes: the meat should only lose its pink, no more.",
+      "Season, take it off the heat and cool it completely, then refrigerate for at least four hours.",
+      "Fold the chopped egg, olives and spring onion into the cold filling.",
+      "Put a tablespoon of filling on each disc, wet the rim, fold it over and crimp it into the plaited repulgue, folding the corners over one another.",
+      "Brush with yolk and bake at 220 °C for twenty minutes, until browned."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 26,
+      "carbsG": 42,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

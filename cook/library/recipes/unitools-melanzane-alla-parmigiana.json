@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-melanzane-alla-parmigiana",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Melanzane alla parmigiana",
+    "summary": "Layers of fried aubergine with tomato sauce, mozzarella and parmesan, baked to a crust.",
+    "category": "main",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      35,
+      8,
+      25,
+      20,
+      12,
+      12,
+      62
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Melanzane alla parmigiana",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Aubergines",
+        "item": "aubergines",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "800 g Tinned tomatoes",
+        "item": "tinned tomatoes",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "400 g Mozzarella",
+        "item": "mozzarella",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "150 g Parmesan",
+        "item": "parmesan",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "30 g Basil",
+        "item": "basil",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "3 cloves Garlic",
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove"
+      },
+      {
+        "rawText": "200 ml Olive oil",
+        "item": "olive oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Slice the aubergines lengthways half a centimetre thick, salt them and press them under a weight for half an hour.",
+      "Pat the slices completely dry; wet ones spit in the oil and never crust.",
+      "Fry the aubergine in batches in olive oil, two minutes a side, and drain them on a rack.",
+      "Fry the garlic, add the tomatoes and cook the sauce twenty minutes to thicken, salting at the end.",
+      "Slice the mozzarella and leave it on paper to drain for ten minutes.",
+      "Layer it: sauce, aubergine, mozzarella, parmesan, basil — four times over.",
+      "Bake at 190 °C for forty minutes and let it stand twenty before cutting."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 24,
+      "carbsG": 24,
+      "fatG": 36,
+      "estimated": true
+    }
+  }
+}

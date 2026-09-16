@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mucenici",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MD",
+    "nativeName": "Mucenici",
+    "summary": "Yeast figures of eight glazed with honey and walnuts for the day of the Forty Martyrs.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      20,
+      78,
+      18,
+      15,
+      55,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mucenici.jpg",
+      "author": "Defy the wind",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mucenici",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "280 ml Warm milk",
+        "item": "warm milk",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 Eggs",
+        "item": "eggs",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Honey",
+        "item": "honey",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "200 g Walnuts",
+        "item": "walnuts",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "ground"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with a spoon of sugar in the warm milk and leave it to foam.",
+      "Knead a dough from the flour, sponge, eggs, sugar, zest, vanilla, salt and softened butter.",
+      "Let it rise somewhere warm for an hour and a quarter, until doubled.",
+      "Divide the dough into twelve and roll each into a forty-centimetre rope.",
+      "Twist each rope into a figure of eight, joining the ends, and set it on a tray.",
+      "Prove them thirty minutes and bake at 180 °C for twenty minutes, until golden.",
+      "Brush the hot mucenici with honey and cover them thickly with ground walnuts."
+    ],
+    "prepMinutes": 100,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 9,
+      "carbsG": 60,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

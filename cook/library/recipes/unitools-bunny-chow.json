@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-bunny-chow",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "ZA",
+    "nativeName": "Bunny chow",
+    "summary": "Half a white loaf hollowed out and filled with lamb curry.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      4,
+      12,
+      65,
+      27,
+      12,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/bunny-chow.jpg",
+      "author": "Luke Comins",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bunny chow",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "900 g Lamb",
+        "item": "lamb",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900,
+        "note": "on the bone, in pieces"
+      },
+      {
+        "rawText": "2 White loaf",
+        "item": "white loaf",
+        "qty": 2,
+        "note": "loaves"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "3 tbsp Ginger garlic paste",
+        "item": "ginger garlic paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Durban curry powder",
+        "item": "durban curry powder",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "15 Curry leaves",
+        "item": "curry leaves",
+        "qty": 15
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "4 Cardamom pods",
+        "item": "cardamom pods",
+        "qty": 4
+      },
+      {
+        "rawText": "400 g Potatoes",
+        "item": "potatoes",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "80 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "200 g Carrot salad",
+        "item": "carrot salad",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Fry the onion in oil until deep gold and add the cinnamon, cardamom and curry leaves.",
+      "Stir in the ginger garlic paste and the curry powder and cook them two minutes.",
+      "Add the lamb and brown it, turning it through the spices.",
+      "Add the chopped tomatoes, season and stew covered for an hour on a low heat.",
+      "Add the potato in large pieces and stew twenty-five minutes more.",
+      "Uncover and reduce the sauce until a spoon leaves a trail in it.",
+      "Halve the loaves, pull out the crumb, fill them with the curry and set the crumb on top."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 880,
+      "proteinG": 48,
+      "carbsG": 82,
+      "fatG": 40,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-haleem",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PK",
+    "nativeName": "حلیم",
+    "summary": "Meat, wheat and pulses cooked down and beaten into one smooth thick mass over six hours.",
+    "category": "main",
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      25,
+      20,
+      190,
+      190,
+      45,
+      12
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/haleem.jpg",
+      "author": "Halt123halt",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Haleem",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Beef on the bone",
+        "item": "beef on the bone",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500
+      },
+      {
+        "rawText": "300 g Whole wheat",
+        "item": "whole wheat",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300,
+        "note": "soaked overnight"
+      },
+      {
+        "rawText": "100 g Pearl barley",
+        "item": "pearl barley",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "150 g Chana dal",
+        "item": "chana dal",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "100 g Red lentils",
+        "item": "red lentils",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "5 Onions",
+        "item": "onions",
+        "qty": 5
+      },
+      {
+        "rawText": "3 tbsp Ginger garlic paste",
+        "item": "ginger garlic paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Garam masala",
+        "item": "garam masala",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Chilli powder",
+        "item": "chilli powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "250 g Ghee",
+        "item": "ghee",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "60 g Ginger",
+        "item": "ginger",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "to serve, in matchsticks"
+      },
+      {
+        "rawText": "6 Green chillies",
+        "item": "green chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Soak the wheat overnight and the chana dal and barley for four hours, then rinse them.",
+      "Fry three onions in ghee until deep brown and set half aside for serving.",
+      "Brown the meat with the remaining onion, the ginger garlic paste and all the spices.",
+      "Cover with water and braise three hours, until the meat starts falling into threads.",
+      "Boil the wheat, barley and both dals in a separate pot for three hours, until completely broken down.",
+      "Remove the bones, combine the two and beat with a wooden masher for forty minutes, until uniform.",
+      "Serve with the fried onion, ginger, chilli, coriander and lemon scattered on top."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 360,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 42,
+      "carbsG": 58,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-banh-mi",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VN",
+    "nativeName": "Bánh mì",
+    "summary": "A French baguette with Vietnamese filling: pâté, pork, pickled vegetables and coriander in one sandwich.",
+    "category": "snack",
+    "difficulty": "easy",
+    "stepMinutes": [
+      60,
+      26,
+      5,
+      null
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/banh-mi.jpg",
+      "author": "nsaum75¡שיחת!‎",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Bánh mì",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "4 Baguettes",
+        "item": "baguettes",
+        "qty": 4,
+        "note": "short, about 20 cm"
+      },
+      {
+        "rawText": "400 g Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "120 g Chicken liver pâté",
+        "item": "chicken liver pâté",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "4 tbsp Mayonnaise",
+        "item": "mayonnaise",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Carrot",
+        "item": "carrot",
+        "qty": 1,
+        "note": "julienned"
+      },
+      {
+        "rawText": "200 g Daikon",
+        "item": "daikon",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200,
+        "note": "julienned"
+      },
+      {
+        "rawText": "100 ml Rice vinegar",
+        "item": "rice vinegar",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tbsp Sugar",
+        "item": "sugar",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Fish sauce",
+        "item": "fish sauce",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 Cucumber",
+        "item": "cucumber",
+        "qty": 1,
+        "note": "in long strips"
+      },
+      {
+        "rawText": "Coriander, to taste",
+        "item": "coriander"
+      },
+      {
+        "rawText": "Fresh chilli, to taste",
+        "item": "fresh chilli"
+      }
+    ],
+    "steps": [
+      "Stir the vinegar, sugar and a pinch of salt into 100 ml of warm water until dissolved. Pour it over the carrot and daikon and leave for an hour at room temperature.",
+      "Marinate the pork in fish sauce with a spoon of sugar for twenty minutes, then sear it over a high flame for three minutes a side, until the edges caramelise.",
+      "Warm the baguettes at 200 °C for five minutes so the crust crisps again. Split them lengthways, not all the way through.",
+      "Spread pâté on one half and mayonnaise on the other. Layer in the pork, the drained pickles, cucumber, coriander and chilli. Press it shut with your palm and serve at once."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 15,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 28,
+      "carbsG": 58,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

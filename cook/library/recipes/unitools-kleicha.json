@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kleicha",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IQ",
+    "nativeName": "كليجة",
+    "summary": "Biscuits of date paste and cardamom, rolled into a log and cut into slices.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      12,
+      10,
+      14,
+      62,
+      10,
+      15,
+      28
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kleicha",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "250 g Ghee",
+        "item": "ghee",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "150 ml Milk",
+        "item": "milk",
+        "qty": 150,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "5 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "500 g Date paste",
+        "item": "date paste",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 tsp Ground cardamom",
+        "item": "ground cardamom",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Mahlab",
+        "item": "mahlab",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Ground fennel",
+        "item": "ground fennel",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Nigella seeds",
+        "item": "nigella seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Egg yolk",
+        "item": "egg yolk",
+        "qty": 1,
+        "note": "for glazing"
+      },
+      {
+        "rawText": "30 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm milk and leave it ten minutes, until it foams.",
+      "Rub the flour with the melted ghee, mahlab, fennel, nigella and salt.",
+      "Add the yeast mixture and knead a soft dough, working it ten minutes.",
+      "Cover it and rest it an hour at room temperature.",
+      "Work the date paste with a spoon of ghee and the cardamom until pliable.",
+      "Roll the dough into a rectangle, spread the paste in a thin layer and roll it into a tight log.",
+      "Cut the log into centimetre slices, brush them with yolk, scatter with sesame and bake at 180 °C for twenty minutes."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 6,
+      "carbsG": 56,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

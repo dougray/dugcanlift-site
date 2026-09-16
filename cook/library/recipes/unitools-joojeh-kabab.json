@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-joojeh-kabab",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IR",
+    "nativeName": "جوجه کباب",
+    "summary": "Chicken in a saffron marinade with onion juice and lemon, grilled over coals.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      17,
+      12,
+      6,
+      15,
+      25,
+      16,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Joojeh kabab",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Boneless chicken thigh",
+        "item": "boneless chicken thigh",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "3 Lemons",
+        "item": "lemons",
+        "qty": 3
+      },
+      {
+        "rawText": "150 ml Yoghurt",
+        "item": "yoghurt",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "80 g Butter",
+        "item": "butter",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "6 Tomatoes",
+        "item": "tomatoes",
+        "qty": 6,
+        "note": "to serve"
+      },
+      {
+        "rawText": "500 g Basmati rice",
+        "item": "basmati rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tbsp Sumac",
+        "item": "sumac",
+        "qty": 1,
+        "unit": "tbsp",
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Grind the saffron with a pinch of sugar and steep it in three spoons of warm water for fifteen minutes.",
+      "Grate the onions finely and squeeze the juice through muslin, discarding the pulp.",
+      "Mix the onion juice, half the saffron infusion, the juice of two lemons, the yoghurt, oil, salt and pepper.",
+      "Cut the chicken into four-centimetre pieces, coat it in the marinade and refrigerate it eight hours.",
+      "Thread the pieces onto flat skewers packed tight and get the coals to an even strong heat.",
+      "Grill eight minutes a side, turning the skewer every two minutes.",
+      "Mix the melted butter with the remaining saffron and brush the kebabs before serving. Serve with rice, tomatoes and sumac."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 48,
+      "carbsG": 52,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

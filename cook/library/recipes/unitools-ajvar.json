@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ajvar",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RS",
+    "nativeName": "Ајвар",
+    "summary": "A relish of roasted red pepper and aubergine, cooked down in oil to a thick paste.",
+    "category": "sauce",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      22,
+      180,
+      15,
+      60,
+      32
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ajvar.jpg",
+      "author": "Off-shell",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ajvar",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "3 kg Fleshy red peppers",
+        "item": "fleshy red peppers",
+        "qty": 3,
+        "unit": "kg",
+        "grams": 3000
+      },
+      {
+        "rawText": "600 g Aubergines",
+        "item": "aubergines",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "250 ml Neutral oil",
+        "item": "neutral oil",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Roast the peppers and aubergines at 220 °C or over a flame until blistered black all over.",
+      "Pile them hot into a covered pot for twenty minutes: the steam lifts the skin by itself.",
+      "Peel and seed them and leave the flesh in a colander for two or three hours. Do not press: the water should drain on its own.",
+      "Put it through a mincer or chop it by hand — not a blender: what is wanted is a coarse texture rather than a purée.",
+      "Reduce it in a pot with half the oil over a low flame for an hour, stirring every ten minutes.",
+      "Add the garlic, vinegar, salt and the rest of the oil and cook another half hour, until the oil starts separating. Pack it hot into sterilised jars."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 180,
+      "proteinG": 2,
+      "carbsG": 11,
+      "fatG": 15,
+      "estimated": true
+    }
+  }
+}

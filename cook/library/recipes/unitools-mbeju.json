@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-mbeju",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "PY",
+    "nativeName": "Mbejú",
+    "summary": "A starch and cheese flatbread set in a dry pan without a drop of water.",
+    "category": "bread",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      4,
+      8,
+      6,
+      6,
+      4,
+      6,
+      22
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/mbeju.jpg",
+      "author": "Patty P",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Mbejú",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Cassava starch",
+        "item": "cassava starch",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "350 g Fresh salty cheese",
+        "item": "fresh salty cheese",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "grated"
+      },
+      {
+        "rawText": "120 g Lard or butter",
+        "item": "lard or butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "100 ml Milk",
+        "item": "milk",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 g Corn flour",
+        "item": "corn flour",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Mix the cassava starch with the corn flour and salt in a wide bowl.",
+      "Rub the soft fat into the dry mix with your fingers until it looks like damp sand.",
+      "Work in the grated cheese, still rubbing the mixture by hand.",
+      "Add the milk a spoon at a time, until the crumb just holds when squeezed in your fist.",
+      "Heat a dry pan over medium without adding a drop of oil.",
+      "Tip in a centimetre of crumb and press it down with a spatula across the whole surface.",
+      "Cook it five minutes, flip it with a plate and colour the second side."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 460,
+      "proteinG": 14,
+      "carbsG": 48,
+      "fatG": 24,
+      "estimated": true
+    }
+  }
+}

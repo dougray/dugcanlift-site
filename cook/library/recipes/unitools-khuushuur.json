@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-khuushuur",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MN",
+    "nativeName": "Хуушуур",
+    "summary": "Mongolian fried lamb pasties, flat and crisp, made for Naadam.",
+    "category": "snack",
+    "difficulty": "medium",
+    "stepMinutes": [
+      14,
+      32,
+      25,
+      8,
+      20,
+      25,
+      35
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/khuushuur.jpg",
+      "author": "Sivserver",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Khuushuur",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "220 ml Water",
+        "item": "water",
+        "qty": 220,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "fatty"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "150 ml Broth or water",
+        "item": "broth or water",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Cabbage",
+        "item": "cabbage",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "optional"
+      },
+      {
+        "rawText": "500 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead an unleavened dough from the flour, water and salt and work it ten minutes to smoothness.",
+      "Cover the dough and rest it thirty minutes.",
+      "Chop the lamb fine by knife, fat and all, and mix it with the onion and garlic.",
+      "Pour the broth into the filling and work it to a loose but not runny mass.",
+      "Divide the dough into balls and roll each into a twelve-centimetre round.",
+      "Put filling on one half, fold it over and crimp the edge tightly and evenly.",
+      "Fry them in a centimetre of oil, three minutes a side, to a blistered crust."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 28,
+      "carbsG": 52,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ruisleipa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "FI",
+    "nativeName": "Ruisleipä",
+    "summary": "A dense sourdough rye bread, sour and with almost no wheat flour in it.",
+    "category": "bread",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      15,
+      6,
+      12,
+      185,
+      12,
+      65,
+      65
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ruisleipä",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "900 g Rye flour",
+        "item": "rye flour",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900
+      },
+      {
+        "rawText": "200 g Rye sourdough starter",
+        "item": "rye sourdough starter",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "700 ml Warm water",
+        "item": "warm water",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "20 g Salt",
+        "item": "salt",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "30 g Rye malt",
+        "item": "rye malt",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 tbsp Caraway seeds",
+        "item": "caraway seeds",
+        "qty": 1,
+        "unit": "tbsp",
+        "note": "optional"
+      }
+    ],
+    "steps": [
+      "Mix the starter with half the water and half the flour and leave it overnight at room temperature.",
+      "In the morning take two hundred grams of the sponge back into a jar; that is the starter for next time.",
+      "Stir in the remaining flour, water, salt, malt and caraway with a wooden spoon until even.",
+      "Cover it and let it rise three hours; the dough roughly doubles and cracks appear on the surface.",
+      "Turn the dough into greased tins with wet hands, smoothing the top with a wet spoon.",
+      "Let it prove an hour and prick the top in several places with a fork.",
+      "Bake at 250 °C for fifteen minutes, then at 180 °C for forty-five more, and rest it a day before cutting."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 240,
+      "proteinG": 7,
+      "carbsG": 48,
+      "fatG": 2,
+      "estimated": true
+    }
+  }
+}

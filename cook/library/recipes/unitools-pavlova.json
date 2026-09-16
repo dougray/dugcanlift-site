@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pavlova",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NZ",
+    "nativeName": "Pavlova",
+    "summary": "A meringue with a crisp shell and a marshmallow centre, under whipped cream and kiwifruit.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      6,
+      10,
+      3,
+      3,
+      6,
+      90,
+      12
+    ],
+    "ingredientScaling": [
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pavlova.jpg",
+      "author": "Hazel Fowler",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pavlova",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "6 Egg whites",
+        "item": "egg whites",
+        "qty": 6
+      },
+      {
+        "rawText": "350 g Caster sugar",
+        "item": "caster sugar",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350
+      },
+      {
+        "rawText": "2 tsp Cornflour",
+        "item": "cornflour",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp White vinegar",
+        "item": "white vinegar",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "400 ml Double cream",
+        "item": "double cream",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Kiwifruit",
+        "item": "kiwifruit",
+        "qty": 4
+      },
+      {
+        "rawText": "250 g Berries",
+        "item": "berries",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 Passionfruit",
+        "item": "passionfruit",
+        "qty": 2
+      }
+    ],
+    "steps": [
+      "Whisk room-temperature egg whites to soft peaks in a scrupulously dry, grease-free bowl.",
+      "Add the sugar a spoonful at a time, still whisking, until the meringue is stiff and glossy.",
+      "Rub some between your fingers: if you feel sugar grains, keep going, or the shell will weep syrup.",
+      "Fold in the cornflour, vinegar and vanilla with a spatula, in three movements at most.",
+      "Shape a twenty-two centimetre circle on parchment, raising the edges and leaving a hollow in the middle.",
+      "Bake at 120 °C for ninety minutes, then turn the oven off and leave the pavlova inside until completely cold.",
+      "Whip the cream, spoon it into the hollow and top with kiwifruit, berries and passionfruit pulp just before serving."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 4,
+      "carbsG": 52,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

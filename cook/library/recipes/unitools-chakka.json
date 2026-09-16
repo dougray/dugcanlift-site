@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chakka",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TJ",
+    "nativeName": "Чакка",
+    "summary": "Strained cultured cheese with herbs and garlic, the Tajik spread for flatbread.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      8,
+      6,
+      10,
+      5,
+      12,
+      6,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chakka.jpg",
+      "author": "Kliek",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chakka",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 l Katyk or full-fat kefir",
+        "item": "katyk or full-fat kefir",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "50 g Coriander",
+        "item": "coriander",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "40 g Dill",
+        "item": "dill",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "30 g Purple basil",
+        "item": "purple basil",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "50 g Spring onion",
+        "item": "spring onion",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "40 ml Oil",
+        "item": "oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "4 Flatbread",
+        "item": "flatbread",
+        "qty": 4,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Line a colander with two layers of close-woven cloth and pour in the katyk.",
+      "Knot the corners of the cloth and hang the bundle over a bowl somewhere cold.",
+      "Leave it draining a full day, until the mass is as firm as soft curd.",
+      "Pound the garlic with a pinch of salt into a smooth paste.",
+      "Chop the coriander, dill, basil and spring onion as fine as you can.",
+      "Fold the herbs and garlic into the strained mass with a spatula, without mashing it.",
+      "Salt it, smooth it in a bowl, press a hollow with a spoon and pour the oil into it."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 220,
+      "proteinG": 12,
+      "carbsG": 10,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

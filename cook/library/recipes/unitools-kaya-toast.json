@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kaya-toast",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SG",
+    "nativeName": "Kaya toast",
+    "summary": "Toasted bread with kaya coconut egg jam and cold butter, with soft-boiled eggs.",
+    "category": "breakfast",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      8,
+      6,
+      40,
+      20,
+      6,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kaya-toast.jpg",
+      "author": "Pinklily08",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kaya toast",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "8 slices White bread",
+        "item": "white bread",
+        "qty": 8,
+        "unit": "slice"
+      },
+      {
+        "rawText": "4 Eggs for the kaya",
+        "item": "eggs for the kaya",
+        "qty": 4
+      },
+      {
+        "rawText": "250 ml Coconut milk",
+        "item": "coconut milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 g Sugar",
+        "item": "sugar",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "3 Pandan leaves",
+        "item": "pandan leaves",
+        "qty": 3
+      },
+      {
+        "rawText": "120 g Butter",
+        "item": "butter",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120,
+        "note": "cold"
+      },
+      {
+        "rawText": "8 Eggs to serve",
+        "item": "eggs to serve",
+        "qty": 8
+      },
+      {
+        "rawText": "4 tsp Dark soy sauce",
+        "item": "dark soy sauce",
+        "qty": 4,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp White pepper",
+        "item": "white pepper",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Knot the pandan leaves and warm them with the coconut milk until hot, without boiling.",
+      "Whisk the eggs with the sugar until it dissolves and strain the mixture through a fine sieve.",
+      "Pour the warm coconut milk into the eggs in a thin stream, stirring without stopping.",
+      "Cook the mixture over a water bath for forty minutes, stirring with a wooden spoon, to the thickness of jam.",
+      "Remove the pandan leaves and cool the kaya completely; it thickens further.",
+      "Boil the eggs exactly six minutes and serve them in a bowl with soy sauce and white pepper.",
+      "Toast the bread crisp, spread it with kaya and lay a cold slice of butter between two pieces."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 18,
+      "carbsG": 42,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

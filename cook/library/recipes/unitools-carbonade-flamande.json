@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-carbonade-flamande",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BE",
+    "nativeName": "Carbonade flamande",
+    "summary": "Beef braised in dark beer with onion and a slice of mustard-spread bread that thickens the sauce.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      20,
+      5,
+      3,
+      180,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/carbonade-flamande.jpg",
+      "author": "Jiel Beaumadier",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Carbonade flamande",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef shoulder",
+        "item": "beef shoulder",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "800 g Onions",
+        "item": "onions",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "sliced"
+      },
+      {
+        "rawText": "500 ml Dark Belgian beer",
+        "item": "dark belgian beer",
+        "qty": 500,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 slices Slice of bread",
+        "item": "slice of bread",
+        "qty": 2,
+        "unit": "slice"
+      },
+      {
+        "rawText": "2 tbsp Mustard",
+        "item": "mustard",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Apple or dark syrup",
+        "item": "apple or dark syrup",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Wine vinegar",
+        "item": "wine vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 sprigs Thyme and bay",
+        "item": "thyme and bay",
+        "qty": 4,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "60 g Butter",
+        "item": "butter",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Dry the meat and brown it in butter in batches until dark. Set it aside.",
+      "In the same fat sweat the onion for twenty minutes until soft and gold: it gives the sauce its sweetness and body.",
+      "Return the meat, pour in the beer and add the syrup, vinegar, thyme and bay. The liquid should nearly cover the meat.",
+      "Spread the bread with mustard and lay it mustard side down on top of the meat. Do not stir it in.",
+      "Cover and cook three hours on the lowest heat or at 150 °C in the oven. The bread dissolves on its own.",
+      "Stir the sauce, check the balance of sweet and sour and serve with chips."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 180,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 48,
+      "carbsG": 32,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

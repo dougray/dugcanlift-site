@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-tsuivan",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MN",
+    "nativeName": "Цуйван",
+    "summary": "Home-made noodles steamed directly over the meat, then tossed through it.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      20,
+      8,
+      15,
+      5,
+      22,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/tsuivan.jpg",
+      "author": "Marcin Konsek",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Tsuivan",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "400 g Flour",
+        "item": "flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "180 ml Water",
+        "item": "water",
+        "qty": 180,
+        "unit": "ml"
+      },
+      {
+        "rawText": "500 g Mutton",
+        "item": "mutton",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500,
+        "note": "in strips"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "250 g Cabbage",
+        "item": "cabbage",
+        "qty": 250,
+        "unit": "g",
+        "grams": 250
+      },
+      {
+        "rawText": "2 Potato",
+        "item": "potato",
+        "qty": 2
+      },
+      {
+        "rawText": "80 g Mutton fat or oil",
+        "item": "mutton fat or oil",
+        "qty": 80,
+        "unit": "g",
+        "grams": 80
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, water and salt and rest it thirty minutes.",
+      "Roll it thin, brush with fat, roll it up and cut across into half-centimetre strips.",
+      "Separate the strips by hand and spread them on a board so they do not stick.",
+      "Sear the mutton in the fat over a high heat, then add the onion, carrot, potato and cabbage.",
+      "Add a cup of water, season and bring it to the boil.",
+      "Lay the noodles in an even layer over the meat without stirring, cover and hold twenty minutes on a low heat.",
+      "Take the lid off, add the garlic and toss everything together. Serve at once."
+    ],
+    "prepMinutes": 50,
+    "cookMinutes": 45,
+    "nutritionPerServing": {
+      "calories": 660,
+      "proteinG": 32,
+      "carbsG": 72,
+      "fatG": 28,
+      "estimated": true
+    }
+  }
+}

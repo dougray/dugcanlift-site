@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-buuz",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MN",
+    "nativeName": "Бууз",
+    "summary": "Large steamed dumplings of chopped mutton. The centrepiece of the Mongolian lunar new year.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      50,
+      25,
+      8,
+      20,
+      25,
+      6,
+      18
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/buuz.jpg",
+      "author": "Mizu_Basyo",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Buuz",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "280 ml Water",
+        "item": "water",
+        "qty": 280,
+        "unit": "ml"
+      },
+      {
+        "rawText": "800 g Mutton",
+        "item": "mutton",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "chopped by hand"
+      },
+      {
+        "rawText": "150 g Mutton fat",
+        "item": "mutton fat",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Knead a stiff dough from the flour, water and salt and rest it under film for forty minutes.",
+      "Chop the mutton and fat by hand into pieces the size of a pea.",
+      "Mix the meat with the finely chopped onion, garlic, salt, pepper and a quarter cup of water.",
+      "Roll ten-centimetre rounds, leaving the middle thicker than the edges.",
+      "Put a spoon of filling in and pleat the edges around, leaving an opening at the top.",
+      "Grease the steamer rack with fat and set the buuz on it, not touching one another.",
+      "Steam eighteen minutes. The dough turns translucent and broth collects inside."
+    ],
+    "prepMinutes": 70,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 30,
+      "carbsG": 48,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

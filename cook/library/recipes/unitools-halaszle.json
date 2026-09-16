@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-halaszle",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HU",
+    "nativeName": "Halászlé",
+    "summary": "A fiery red fisherman's soup on paprika, made from river fish in a cauldron.",
+    "category": "soup",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      65,
+      12,
+      60,
+      15,
+      5,
+      8,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/halaszle.jpg",
+      "author": "User:Themightyquill",
+      "license": "CC BY-SA 2.5"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Halászlé",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.5 kg Carp",
+        "item": "carp",
+        "qty": 1.5,
+        "unit": "kg",
+        "grams": 1500,
+        "note": "in steaks"
+      },
+      {
+        "rawText": "800 g Small river fish",
+        "item": "small river fish",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "for the broth"
+      },
+      {
+        "rawText": "800 g Onions",
+        "item": "onions",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "4 tbsp Sweet ground paprika",
+        "item": "sweet ground paprika",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Hot paprika",
+        "item": "hot paprika",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Hot cherry pepper",
+        "item": "hot cherry pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Tomato",
+        "item": "tomato",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "150 g Roe or milt",
+        "item": "roe or milt",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150,
+        "note": "optional"
+      },
+      {
+        "rawText": "400 g White bread",
+        "item": "white bread",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Cut the carp into steaks, salt them and chill them an hour; the salt firms the flesh.",
+      "Put the small fish, heads, backbones and all the sliced onion into the cauldron and cover with water.",
+      "Cook an hour over medium heat, until the fish and onion have completely broken down.",
+      "Press the broth through a sieve, working the flesh through, and return it to the cauldron. Discard the bones.",
+      "Take the cauldron off the fire and stir in both paprikas until the colour is even.",
+      "Return it to the fire, add the tomato, pepper and the hot chilli and bring it up.",
+      "Lower in the carp steaks and the roe and cook twelve minutes, only rocking the cauldron. Serve with white bread."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 46,
+      "carbsG": 38,
+      "fatG": 14,
+      "estimated": true
+    }
+  }
+}

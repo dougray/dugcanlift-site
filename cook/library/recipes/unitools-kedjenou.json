@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kedjenou",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "CI",
+    "nativeName": "Kedjenou",
+    "summary": "Chicken cooked in a sealed clay pot without water. An Ivorian dish of slow heat.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      2,
+      6,
+      82,
+      5,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kedjenou.jpg",
+      "author": "Serein",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kedjenou",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1.4 kg Chicken",
+        "item": "chicken",
+        "qty": 1.4,
+        "unit": "kg",
+        "grams": 1400,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "3 Onions",
+        "item": "onions",
+        "qty": 3
+      },
+      {
+        "rawText": "5 Tomatoes",
+        "item": "tomatoes",
+        "qty": 5
+      },
+      {
+        "rawText": "200 g African aubergines",
+        "item": "african aubergines",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "1 Bell pepper",
+        "item": "bell pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "5 cloves Garlic",
+        "item": "garlic",
+        "qty": 5,
+        "unit": "clove"
+      },
+      {
+        "rawText": "30 g Ginger",
+        "item": "ginger",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Scotch bonnet",
+        "item": "scotch bonnet",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Bay leaves",
+        "item": "bay leaves",
+        "qty": 2
+      },
+      {
+        "rawText": "3 sprigs Thyme",
+        "item": "thyme",
+        "qty": 3,
+        "unit": "sprig"
+      },
+      {
+        "rawText": "400 g Attiéké or rice",
+        "item": "attiéké or rice",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the onion, tomatoes, aubergines and pepper into large pieces.",
+      "Put the chicken and all the vegetables into the pot with the garlic, ginger, thyme, bay, salt and pepper.",
+      "Lay the whole scotch bonnet on top, uncut.",
+      "Cover it and seal the join with a rope of flour-and-water dough, or wrap it in foil.",
+      "Set it over the lowest heat or in a 160 °C oven for an hour and twenty.",
+      "Every fifteen minutes shake the pot, holding the lid down. Do not open it once.",
+      "Break the seal, remove the chilli and serve with attiéké or rice."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 44,
+      "carbsG": 42,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

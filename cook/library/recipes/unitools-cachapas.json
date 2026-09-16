@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-cachapas",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "VE",
+    "nativeName": "Cachapas",
+    "summary": "Thick pancakes of ground fresh corn, folded around a soft white cheese.",
+    "category": "breakfast",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      10,
+      4,
+      4,
+      3,
+      2
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/cachapas.jpg",
+      "author": "Rjcastillo",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Cachapas",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "800 g Sweetcorn",
+        "item": "sweetcorn",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800,
+        "note": "kernels from 6-8 cobs"
+      },
+      {
+        "rawText": "300 g Soft white cheese",
+        "item": "soft white cheese",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "80 ml Milk",
+        "item": "milk",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "50 g Butter",
+        "item": "butter",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Cut the kernels from the cobs and blend them with the milk, sugar and salt to a coarse but pourable purée.",
+      "Let the batter stand ten minutes. The starch swells and the pancakes hold together.",
+      "Heat a pan to medium, butter it and pour in a ladle of batter, spreading it into a circle a centimetre thick.",
+      "Cook four minutes, until the edges dry and the underside is mottled, flip and give it three more.",
+      "Lay butter and cheese on the hot cachapa, fold it over and press it with a spatula.",
+      "Serve at once. A cooled cachapa loses its softness and turns into a dense cake."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 25,
+    "nutritionPerServing": {
+      "calories": 430,
+      "proteinG": 16,
+      "carbsG": 48,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

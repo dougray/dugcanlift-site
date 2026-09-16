@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-asida-sudanese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SD",
+    "nativeName": "عصيدة",
+    "summary": "A stiff porridge of sorghum or wheat, served with stewed meat in a dried okra sauce.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      42,
+      10,
+      12,
+      8,
+      17,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Asida with mulah",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "400 g Sorghum or wheat flour",
+        "item": "sorghum or wheat flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "600 g Lamb",
+        "item": "lamb",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "diced"
+      },
+      {
+        "rawText": "60 g Ground dried okra",
+        "item": "ground dried okra",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Peanut butter",
+        "item": "peanut butter",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Brown the meat with the onion and garlic, then add the tomato paste and coriander.",
+      "Add water, season and stew forty minutes, until the meat is tender.",
+      "Stir in the peanut butter and rain in the ground okra in a thin stream, stirring constantly.",
+      "Cook the sauce ten minutes; it turns thick and stringy.",
+      "Bring a litre of salted water to the boil, set a cup aside and rain in the flour, working it with a stick.",
+      "Work it fifteen minutes, adding the reserved water, until the mass is dense and smooth.",
+      "Turn the asida onto a platter with a wet spoon, make a hollow and pour the mulah into it."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 70,
+    "nutritionPerServing": {
+      "calories": 640,
+      "proteinG": 32,
+      "carbsG": 72,
+      "fatG": 26,
+      "estimated": true
+    }
+  }
+}

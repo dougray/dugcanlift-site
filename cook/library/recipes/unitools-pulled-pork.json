@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pulled-pork",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "US",
+    "nativeName": "Pulled pork",
+    "summary": "Pork shoulder smoked ten hours at low heat and pulled into threads.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      12,
+      10,
+      60,
+      360,
+      15,
+      260
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pulled-pork.jpg",
+      "author": "Thogru",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pulled pork",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "4 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 4,
+        "unit": "kg",
+        "grams": 4000,
+        "note": "bone-in"
+      },
+      {
+        "rawText": "4 tbsp Smoked paprika",
+        "item": "smoked paprika",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "4 tbsp Brown sugar",
+        "item": "brown sugar",
+        "qty": 4,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Mustard powder",
+        "item": "mustard powder",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Garlic powder",
+        "item": "garlic powder",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cayenne",
+        "item": "cayenne",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "3 tbsp Mustard",
+        "item": "mustard",
+        "qty": 3,
+        "unit": "tbsp",
+        "note": "as a binder for the rub"
+      },
+      {
+        "rawText": "250 ml Cider vinegar",
+        "item": "cider vinegar",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "250 ml Apple juice",
+        "item": "apple juice",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Hickory or apple wood chips",
+        "item": "hickory or apple wood chips",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "10 Buns",
+        "item": "buns",
+        "qty": 10,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Mix the paprika, sugar, mustard and garlic powders, cayenne, salt and black pepper.",
+      "Smear the shoulder with mustard as a binder and coat it all over in the dry rub.",
+      "Leave the meat in the fridge overnight, covered with film.",
+      "Bring the smoker or oven to 110 °C and take the meat out an hour ahead so it warms up.",
+      "Smoke it fat side up for six hours, spritzing with the vinegar and apple juice mix every hour.",
+      "When the internal temperature reaches 75 °C and stalls, wrap the meat in foil and return it to the heat.",
+      "Hold it to 95 °C inside, about four hours more, rest it an hour still wrapped, and pull it apart by hand."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 600,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 48,
+      "carbsG": 22,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

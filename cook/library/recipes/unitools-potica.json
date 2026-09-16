@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-potica",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SI",
+    "nativeName": "Potica",
+    "summary": "A yeasted roll with a walnut filling, coiled into a ring. Slovenian baking for every celebration.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      18,
+      82,
+      15,
+      20,
+      45,
+      62
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/potica.jpg",
+      "author": "SaraKHintz",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Potica",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "700 g Flour",
+        "item": "flour",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700
+      },
+      {
+        "rawText": "300 ml Milk",
+        "item": "milk",
+        "qty": 300,
+        "unit": "ml",
+        "note": "warm"
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "150 g Butter",
+        "item": "butter",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "4 Egg yolks",
+        "item": "egg yolks",
+        "qty": 4
+      },
+      {
+        "rawText": "120 g Sugar",
+        "item": "sugar",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "600 g Walnuts",
+        "item": "walnuts",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "ground"
+      },
+      {
+        "rawText": "200 ml Cream",
+        "item": "cream",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "3 tbsp Honey",
+        "item": "honey",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Rum",
+        "item": "rum",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Lemon zest",
+        "item": "lemon zest",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast in the warm milk with a spoon of sugar and leave it ten minutes, until it foams.",
+      "Knead a dough from the flour, the yeast mixture, yolks, sugar, softened butter, zest and salt. Work it fifteen minutes.",
+      "Leave it somewhere warm for an hour and twenty, until it has doubled.",
+      "Warm the cream with the honey, pour it over the ground walnuts, add the rum and cinnamon and cool it to lukewarm.",
+      "Roll the dough into a rectangle three millimetres thick and spread the filling, leaving two centimetres clear at the edges.",
+      "Roll it up tightly from the long side, lay it in a ring tin seam down and let it prove forty minutes.",
+      "Prick the roll in several places with a skewer and bake at 170 °C for an hour, to a deep gold."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 560,
+      "proteinG": 12,
+      "carbsG": 58,
+      "fatG": 32,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-chebakia",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MA",
+    "nativeName": "الشباكية",
+    "summary": "Flower-shaped biscuits deep-fried and steeped in honey with sesame.",
+    "category": "dessert",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "hard",
+    "stepMinutes": [
+      18,
+      8,
+      18,
+      62,
+      25,
+      35,
+      40
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/chebakia.jpg",
+      "author": "El Mono Español",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Chebakia",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 10,
+    "ingredients": [
+      {
+        "rawText": "600 g Flour",
+        "item": "flour",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "200 g Sesame seeds",
+        "item": "sesame seeds",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Almonds",
+        "item": "almonds",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "1 tbsp Aniseed",
+        "item": "aniseed",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Cinnamon",
+        "item": "cinnamon",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 pinch Saffron",
+        "item": "saffron",
+        "qty": 1,
+        "unit": "pinch"
+      },
+      {
+        "rawText": "60 ml Orange blossom water",
+        "item": "orange blossom water",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tbsp Vinegar",
+        "item": "vinegar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "800 g Honey",
+        "item": "honey",
+        "qty": 800,
+        "unit": "g",
+        "grams": 800
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Toast a hundred and fifty grams of the sesame and the almonds in a dry pan and grind them to a coarse paste.",
+      "Mix the flour with the nut paste, aniseed, cinnamon, saffron, yeast and salt.",
+      "Add the melted butter, orange blossom water, vinegar and warm water and knead fifteen minutes to a smooth dough.",
+      "Rest the dough an hour under film.",
+      "Roll it thin, cut it into rectangles and make four lengthways slits in each.",
+      "Thread your fingers through alternate slits and twist each piece into a flower, pinching the ends.",
+      "Fry at 165 °C for four minutes to golden, drop them straight into warm honey for five minutes and scatter with sesame."
+    ],
+    "prepMinutes": 90,
+    "cookMinutes": 60,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 8,
+      "carbsG": 66,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

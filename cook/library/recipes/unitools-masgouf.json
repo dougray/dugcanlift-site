@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-masgouf",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IQ",
+    "nativeName": "مسكوف",
+    "summary": "River fish butterflied and cooked standing beside an open fire. A Baghdad dish from the banks of the Tigris.",
+    "category": "main",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      30,
+      15,
+      60,
+      12,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/masgouf.jpg",
+      "author": "Hill93",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Masgouf",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 kg Carp",
+        "item": "carp",
+        "qty": 2,
+        "unit": "kg",
+        "grams": 2000,
+        "note": "whole, split along the back"
+      },
+      {
+        "rawText": "100 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tbsp Tamarind paste",
+        "item": "tamarind paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Onion",
+        "item": "onion",
+        "qty": 2
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "1 tbsp Curry powder",
+        "item": "curry powder",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cut the fish along the back without separating the belly, gut it and open it out like a book. Leave the spine in.",
+      "Mix the oil, turmeric, tamarind, curry powder, salt and pepper and paint the flesh with it. Leave the skin alone.",
+      "Leave the fish half an hour at room temperature; cold, it cooks unevenly.",
+      "Light the fire and let it settle to a steady flame. Stand the fish upright, flesh towards the fire, half a metre away.",
+      "Cook for an hour, turning as needed. The flesh should whiten and dry at the edges without scorching.",
+      "Move the fish skin down onto the coals, lay the onion and tomato over it and give it ten more minutes.",
+      "Serve it on the board, with flatbread, lemon and raw onion."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 75,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 52,
+      "carbsG": 8,
+      "fatG": 27,
+      "estimated": true
+    }
+  }
+}

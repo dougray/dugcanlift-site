@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-lahmacun",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TR",
+    "nativeName": "Lahmacun",
+    "summary": "A paper-thin flatbread with lamb and pepper paste, baked three minutes in a screaming oven.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      70,
+      8,
+      8,
+      40,
+      15,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/lahmacun.jpg",
+      "author": "No machine-readable author provided. Rainer Zenz assumed (based on copyright claims).",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Lahmacun",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "400 g Plain flour",
+        "item": "plain flour",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "240 ml Warm water",
+        "item": "warm water",
+        "qty": 240,
+        "unit": "ml"
+      },
+      {
+        "rawText": "5 g Dried yeast",
+        "item": "dried yeast",
+        "qty": 5,
+        "unit": "g",
+        "grams": 5
+      },
+      {
+        "rawText": "400 g Minced lamb",
+        "item": "minced lamb",
+        "qty": 400,
+        "unit": "g",
+        "grams": 400
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Red pepper",
+        "item": "red pepper",
+        "qty": 1
+      },
+      {
+        "rawText": "1 Tomato",
+        "item": "tomato",
+        "qty": 1
+      },
+      {
+        "rawText": "2 tbsp Biber salçası pepper paste",
+        "item": "biber salçası pepper paste",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "1 tsp Pul biber flakes",
+        "item": "pul biber flakes",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "Lemon and herbs to serve, to taste",
+        "item": "lemon and herbs to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Knead a dough from the flour, water, yeast and salt for eight minutes and prove it an hour.",
+      "Blend the onion, pepper and tomato and press the purée through a sieve: the spare water is not wanted.",
+      "Mix the lamb with the vegetable purée, the pepper paste, chopped parsley, flakes and salt. It should be as thick as a pâté.",
+      "Heat the oven with a stone at full power for forty minutes.",
+      "Roll the balls of dough paper-thin, twenty-five centimetres across, and spread the topping thinly right to the edges.",
+      "Bake on the stone three or four minutes. The edges should colour and the middle stay soft: a lahmacun is rolled up to eat."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 20,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 22,
+      "carbsG": 48,
+      "fatG": 16,
+      "estimated": true
+    }
+  }
+}

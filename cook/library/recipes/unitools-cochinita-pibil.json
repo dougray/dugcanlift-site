@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-cochinita-pibil",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "MX",
+    "nativeName": "Cochinita pibil",
+    "summary": "Pork in an achiote and sour orange marinade, baked in banana leaves.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      10,
+      6,
+      12,
+      12,
+      8,
+      240,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Cochinita pibil",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "2.5 kg Pork shoulder",
+        "item": "pork shoulder",
+        "qty": 2.5,
+        "unit": "kg",
+        "grams": 2500,
+        "note": "in large pieces"
+      },
+      {
+        "rawText": "100 g Achiote paste",
+        "item": "achiote paste",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "4 Oranges",
+        "item": "oranges",
+        "qty": 4
+      },
+      {
+        "rawText": "2 Grapefruit",
+        "item": "grapefruit",
+        "qty": 2
+      },
+      {
+        "rawText": "2 Limes",
+        "item": "limes",
+        "qty": 2
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "1 tbsp Mexican oregano",
+        "item": "mexican oregano",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "6 Banana leaves",
+        "item": "banana leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "3 Red onions",
+        "item": "red onions",
+        "qty": 3,
+        "note": "for pickling"
+      },
+      {
+        "rawText": "2 Habanero",
+        "item": "habanero",
+        "qty": 2
+      },
+      {
+        "rawText": "16 Corn tortillas",
+        "item": "corn tortillas",
+        "qty": 16
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Slake the achiote paste with the juice of two oranges, the grapefruit and the lime to a thin slurry.",
+      "Add the crushed garlic, oregano, cumin, salt and pepper and mix it smooth.",
+      "Coat the pork in the marinade, working it in by hand, and refrigerate overnight.",
+      "Pass the banana leaves over a flame and line a deep dish with them, overlapping and with an overhang.",
+      "Put in the pork with its marinade, fold the leaves over and seal the dish with two layers of foil.",
+      "Bake at 150 °C for four hours without opening it.",
+      "Pickle the sliced red onion with the habanero in the juice of the remaining oranges. Shred the meat and serve with tortillas."
+    ],
+    "prepMinutes": 35,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 680,
+      "proteinG": 46,
+      "carbsG": 36,
+      "fatG": 38,
+      "estimated": true
+    }
+  }
+}

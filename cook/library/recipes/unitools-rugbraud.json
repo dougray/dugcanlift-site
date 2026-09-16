@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-rugbraud",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IS",
+    "nativeName": "Rúgbrauð",
+    "summary": "A sweet dark rye bread baked in a sealed tin for twelve hours at a low temperature.",
+    "category": "bread",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      6,
+      8,
+      8,
+      6,
+      8,
+      725,
+      20
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/rugbraud.jpg",
+      "author": "No machine-readable author provided. Sten assumed (based on copyright claims).",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Icelandic rye bread",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "500 g Rye flour",
+        "item": "rye flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "200 g Wheat flour",
+        "item": "wheat flour",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "600 ml Milk",
+        "item": "milk",
+        "qty": 600,
+        "unit": "ml"
+      },
+      {
+        "rawText": "150 ml Golden syrup or treacle",
+        "item": "golden syrup or treacle",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 g Brown sugar",
+        "item": "brown sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "2 tsp Baking powder",
+        "item": "baking powder",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Bicarbonate of soda",
+        "item": "bicarbonate of soda",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "to serve"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Mix both flours with the sugar, baking powder, bicarbonate and salt in a large bowl.",
+      "Warm the milk with the syrup until the syrup dissolves.",
+      "Pour the liquid into the dry ingredients and stir with a spoon to an even thick batter.",
+      "Grease a tin, pour in the batter and fill it two-thirds full.",
+      "Seal the tin with two layers of foil and tie it with string so no steam escapes.",
+      "Stand the tin in a deep tray of water and bake at 100 °C for twelve hours.",
+      "Cool it completely in the tin and rest it a day before cutting. Serve with butter."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 720,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 7,
+      "carbsG": 66,
+      "fatG": 4,
+      "estimated": true
+    }
+  }
+}

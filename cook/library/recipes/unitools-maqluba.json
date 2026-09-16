@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-maqluba",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "JO",
+    "nativeName": "مقلوبة",
+    "summary": "Rice with meat and fried vegetables cooked in one pot and turned out whole onto a platter.",
+    "category": "main",
+    "difficulty": "medium",
+    "stepMinutes": [
+      40,
+      22,
+      30,
+      20,
+      12,
+      45,
+      14
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/maqluba.jpg",
+      "author": "Arafataslan",
+      "license": "Public domain"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Maqluba",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Chicken",
+        "item": "chicken",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "in pieces"
+      },
+      {
+        "rawText": "500 g Long-grain rice",
+        "item": "long-grain rice",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Aubergines",
+        "item": "aubergines",
+        "qty": 3
+      },
+      {
+        "rawText": "500 g Cauliflower",
+        "item": "cauliflower",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "3 Potatoes",
+        "item": "potatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "1 tbsp Baharat",
+        "item": "baharat",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tsp Turmeric",
+        "item": "turmeric",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 Cinnamon stick",
+        "item": "cinnamon stick",
+        "qty": 1
+      },
+      {
+        "rawText": "60 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "200 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Simmer the chicken with the onion, cinnamon and baharat for forty minutes. Lift out the meat and strain the broth.",
+      "Soak the rice in warm water for twenty minutes and rinse until the water runs clear.",
+      "Slice the aubergines into rounds, salt them and leave fifteen minutes, then pat dry and fry until browned.",
+      "Fry the cauliflower florets and potato slices until golden and drain them on paper.",
+      "Lay the potato on the bottom of the pot, aubergine up the sides, then chicken, cauliflower and rice on top. Do not press it down.",
+      "Pour in hot broth to a finger above the rice, bring it up and cook covered on a low heat for forty minutes.",
+      "Take it off the heat, rest it ten minutes, cover with a platter and invert in one movement. Scatter with pine nuts."
+    ],
+    "prepMinutes": 45,
+    "cookMinutes": 90,
+    "nutritionPerServing": {
+      "calories": 690,
+      "proteinG": 34,
+      "carbsG": 72,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-fattoush",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SY",
+    "nativeName": "فتوش",
+    "summary": "A salad of vegetables and herbs with fried pieces of flatbread and sumac.",
+    "category": "salad",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      3,
+      12,
+      6,
+      5,
+      3
+    ],
+    "ingredientScaling": [
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/fattoush.jpg",
+      "author": "Arousing Appetites",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Fattoush",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "2 Pita bread",
+        "item": "pita bread",
+        "qty": 2,
+        "note": "stale"
+      },
+      {
+        "rawText": "4 Tomatoes",
+        "item": "tomatoes",
+        "qty": 4
+      },
+      {
+        "rawText": "3 Cucumbers",
+        "item": "cucumbers",
+        "qty": 3
+      },
+      {
+        "rawText": "8 Radishes",
+        "item": "radishes",
+        "qty": 8
+      },
+      {
+        "rawText": "200 g Romaine lettuce",
+        "item": "romaine lettuce",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "4 Spring onions",
+        "item": "spring onions",
+        "qty": 4
+      },
+      {
+        "rawText": "40 g Parsley",
+        "item": "parsley",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "20 g Fresh mint",
+        "item": "fresh mint",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "2 tbsp Sumac",
+        "item": "sumac",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 tbsp Pomegranate molasses",
+        "item": "pomegranate molasses",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "2 Lemon",
+        "item": "lemon",
+        "qty": 2
+      },
+      {
+        "rawText": "80 ml Olive oil",
+        "item": "olive oil",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 cloves Garlic",
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Tear the bread by hand into two-finger pieces and fry them in olive oil until browned.",
+      "Drain the bread on paper and dust it with half the sumac while it is still hot.",
+      "Cut the tomatoes, cucumbers and radishes into large uneven pieces; the salad should be rough rather than neat.",
+      "Tear the lettuce by hand and chop the herbs and spring onion.",
+      "Whisk a dressing from the lemon juice, pomegranate molasses, crushed garlic, the remaining sumac, oil and salt.",
+      "Toss the vegetables in the dressing, add the bread and serve at once."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 280,
+      "proteinG": 6,
+      "carbsG": 26,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

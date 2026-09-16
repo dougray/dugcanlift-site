@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-crni-rizot",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "HR",
+    "nativeName": "Crni rižot",
+    "summary": "Risotto with cuttlefish and its own ink. The ink goes in at the end, or it turns bitter.",
+    "category": "main",
+    "diets": [
+      "pescatarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      5,
+      27,
+      4,
+      18,
+      5,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/crni-rizot.jpg",
+      "author": "Sumit Surai",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Black risotto",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Cuttlefish",
+        "item": "cuttlefish",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "in rings"
+      },
+      {
+        "rawText": "3 tbsp Cuttlefish ink",
+        "item": "cuttlefish ink",
+        "qty": 3,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "320 g Arborio rice",
+        "item": "arborio rice",
+        "qty": 320,
+        "unit": "g",
+        "grams": 320
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "150 ml Dry white wine",
+        "item": "dry white wine",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 l Fish stock",
+        "item": "fish stock",
+        "qty": 1,
+        "unit": "l"
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "20 g Parsley",
+        "item": "parsley",
+        "qty": 20,
+        "unit": "g",
+        "grams": 20
+      },
+      {
+        "rawText": "60 ml Olive oil",
+        "item": "olive oil",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the onion and garlic in olive oil until soft, add the cuttlefish and cook five minutes; it releases water.",
+      "Add half the wine and the tomato paste and stew covered for twenty-five minutes, topping up with stock, until the cuttlefish softens.",
+      "Add the rice and toast it two minutes, until the grains turn translucent at the edges. Pour in the rest of the wine.",
+      "Add hot stock a ladle at a time, stirring, for eighteen minutes. Each addition goes in when the last has nearly been absorbed.",
+      "Five minutes before the end stir in the ink. The risotto turns black within seconds.",
+      "Off the heat, beat in a spoon of olive oil and the parsley, cover for two minutes and serve."
+    ],
+    "prepMinutes": 25,
+    "cookMinutes": 50,
+    "nutritionPerServing": {
+      "calories": 540,
+      "proteinG": 34,
+      "carbsG": 62,
+      "fatG": 18,
+      "estimated": true
+    }
+  }
+}

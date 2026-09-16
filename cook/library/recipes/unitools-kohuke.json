@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-kohuke",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EE",
+    "nativeName": "Kohuke",
+    "summary": "A curd bar in chocolate glaze, the Estonian dessert from the fridge.",
+    "category": "dessert",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      15,
+      8,
+      8,
+      15,
+      15,
+      12,
+      15
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/kohuke.jpg",
+      "author": "MOs810",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Kohuke",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 12,
+    "ingredients": [
+      {
+        "rawText": "600 g Curd cheese",
+        "item": "curd cheese",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "dry"
+      },
+      {
+        "rawText": "100 g Butter",
+        "item": "butter",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "softened"
+      },
+      {
+        "rawText": "120 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 120,
+        "unit": "g",
+        "grams": 120
+      },
+      {
+        "rawText": "1 tsp Vanilla",
+        "item": "vanilla",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "60 ml Cream",
+        "item": "cream",
+        "qty": 60,
+        "unit": "ml"
+      },
+      {
+        "rawText": "300 g Dark chocolate",
+        "item": "dark chocolate",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "30 g Coconut oil",
+        "item": "coconut oil",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "60 g Raisins",
+        "item": "raisins",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60,
+        "note": "optional"
+      },
+      {
+        "rawText": "1 pinch Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Push the curd through a fine sieve twice, until not a single grain remains.",
+      "Beat the softened butter with the icing sugar, vanilla and salt until fluffy.",
+      "Combine the curd with the butter mixture and work in the cream to the body of a firm cream.",
+      "Fold in the raisins and shape twelve finger-sized bars.",
+      "Lay the bars on parchment and freeze them two hours, until solid.",
+      "Melt the chocolate with the coconut oil over a water bath until smooth and cool it to lukewarm.",
+      "Dip the frozen bars on two forks, let them drain and set them on parchment to harden."
+    ],
+    "prepMinutes": 40,
+    "cookMinutes": 10,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 12,
+      "carbsG": 24,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

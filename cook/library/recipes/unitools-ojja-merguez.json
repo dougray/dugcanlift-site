@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ojja-merguez",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TN",
+    "nativeName": "Ojja bel merguez",
+    "summary": "A fiery tomato stew with merguez lamb sausages and eggs stirred into the sauce.",
+    "category": "main",
+    "difficulty": "easy",
+    "stepMinutes": [
+      10,
+      8,
+      4,
+      17,
+      5,
+      5,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ojja with merguez",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "500 g Merguez sausages",
+        "item": "merguez sausages",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "600 g Tomatoes",
+        "item": "tomatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600
+      },
+      {
+        "rawText": "3 Bell peppers",
+        "item": "bell peppers",
+        "qty": 3
+      },
+      {
+        "rawText": "6 cloves Garlic",
+        "item": "garlic",
+        "qty": 6,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 tbsp Harissa",
+        "item": "harissa",
+        "qty": 2,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "1 tbsp Tomato paste",
+        "item": "tomato paste",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "5 Eggs",
+        "item": "eggs",
+        "qty": 5
+      },
+      {
+        "rawText": "1 tsp Ground caraway",
+        "item": "ground caraway",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "50 ml Olive oil",
+        "item": "olive oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "30 g Parsley",
+        "item": "parsley",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 Baguette",
+        "item": "baguette",
+        "qty": 1,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Fry the merguez in olive oil until browned all over and lift them onto a plate.",
+      "In the same fat fry the sliced pepper and the garlic until soft.",
+      "Stir in the harissa, tomato paste and caraway and cook them two minutes.",
+      "Add the chopped tomatoes, season and cook fifteen minutes to thicken.",
+      "Return the sausages, cut into pieces, and warm them three minutes.",
+      "Drop the heat to its lowest, break in the eggs and stir with a spatula for three minutes into a creamy mass.",
+      "Scatter with parsley and serve straight from the pan with baguette."
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 34,
+      "carbsG": 22,
+      "fatG": 44,
+      "estimated": true
+    }
+  }
+}

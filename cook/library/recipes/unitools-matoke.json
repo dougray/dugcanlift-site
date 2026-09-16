@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-matoke",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "UG",
+    "nativeName": "Matoke",
+    "summary": "Green bananas steamed in banana leaves and mashed to a purée. The staple of the Buganda table.",
+    "category": "side",
+    "diets": [
+      "gluten-free",
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      8,
+      6,
+      10,
+      85,
+      14,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Matoke",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 5,
+    "ingredients": [
+      {
+        "rawText": "12 Green matoke bananas",
+        "item": "green matoke bananas",
+        "qty": 12
+      },
+      {
+        "rawText": "6 Banana leaves",
+        "item": "banana leaves",
+        "qty": 6
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "2 Tomatoes",
+        "item": "tomatoes",
+        "qty": 2
+      },
+      {
+        "rawText": "100 g Peanut paste",
+        "item": "peanut paste",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100,
+        "note": "for the sauce"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Peel the bananas with oiled hands; their sap stains the skin black.",
+      "Pass the banana leaves over a flame for ten seconds so they turn pliable.",
+      "Line the bottom of the pot with the leaf ribs; they keep the parcel off the water.",
+      "Wrap the bananas in the leaves into a tight parcel and set it on that platform.",
+      "Add water two fingers deep, cover and steam for an hour and twenty, topping up with boiling water.",
+      "Without unwrapping, press the parcel through the leaves into an even purée and return it to the steam for ten minutes.",
+      "Serve with peanut sauce or stewed beef, straight onto the leaf."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 80,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 6,
+      "carbsG": 62,
+      "fatG": 10,
+      "estimated": true
+    }
+  }
+}

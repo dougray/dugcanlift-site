@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gua-bao",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "TW",
+    "nativeName": "刈包",
+    "summary": "A steamed folded bun with braised pork belly, pickled greens and peanut sugar.",
+    "category": "snack",
+    "difficulty": "hard",
+    "stepMinutes": [
+      12,
+      18,
+      95,
+      75,
+      45,
+      8,
+      10
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gua-bao.jpg",
+      "author": "LeoAlmighty",
+      "license": "CC BY 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gua bao",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "250 ml Warm milk",
+        "item": "warm milk",
+        "qty": 250,
+        "unit": "ml"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "50 g Sugar",
+        "item": "sugar",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50
+      },
+      {
+        "rawText": "900 g Pork belly",
+        "item": "pork belly",
+        "qty": 900,
+        "unit": "g",
+        "grams": 900
+      },
+      {
+        "rawText": "100 ml Soy sauce",
+        "item": "soy sauce",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "40 g Rock sugar",
+        "item": "rock sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "80 ml Shaoxing wine",
+        "item": "shaoxing wine",
+        "qty": 80,
+        "unit": "ml"
+      },
+      {
+        "rawText": "2 Star anise",
+        "item": "star anise",
+        "qty": 2
+      },
+      {
+        "rawText": "200 g Pickled mustard greens",
+        "item": "pickled mustard greens",
+        "qty": 200,
+        "unit": "g",
+        "grams": 200
+      },
+      {
+        "rawText": "100 g Roasted peanuts",
+        "item": "roasted peanuts",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with a spoon of sugar in the warm milk and leave it ten minutes.",
+      "Knead a dough from the flour, yeast mixture, remaining sugar, oil and salt, working it fifteen minutes.",
+      "Blanch the belly two minutes, rinse it and braise it in the soy, wine, sugar and star anise for ninety minutes.",
+      "Let the dough rise an hour, roll it into ovals and fold each in half with a strip of parchment inside.",
+      "Prove the buns thirty minutes and steam them for twelve.",
+      "Pound the peanuts with two spoons of sugar into a coarse crumb.",
+      "Open a bun and lay in a slice of belly, the pickled greens, the peanut crumb and coriander."
+    ],
+    "prepMinutes": 120,
+    "cookMinutes": 100,
+    "nutritionPerServing": {
+      "calories": 620,
+      "proteinG": 26,
+      "carbsG": 52,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

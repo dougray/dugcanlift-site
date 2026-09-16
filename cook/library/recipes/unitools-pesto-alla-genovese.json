@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-pesto-alla-genovese",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IT",
+    "nativeName": "Pesto alla genovese",
+    "summary": "Basil ground with garlic and pine nuts. No heat and no blender — a mortar and a cool room.",
+    "category": "sauce",
+    "diets": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      5,
+      2,
+      8,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/pesto-alla-genovese.jpg",
+      "author": "Ɱ",
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Pesto alla genovese",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "60 g Basil leaves",
+        "item": "basil leaves",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "30 g Pine nuts",
+        "item": "pine nuts",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "1 clove Garlic",
+        "item": "garlic",
+        "qty": 1,
+        "unit": "clove"
+      },
+      {
+        "rawText": "50 g Parmesan",
+        "item": "parmesan",
+        "qty": 50,
+        "unit": "g",
+        "grams": 50,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "25 g Pecorino",
+        "item": "pecorino",
+        "qty": 25,
+        "unit": "g",
+        "grams": 25,
+        "note": "finely grated"
+      },
+      {
+        "rawText": "100 ml Extra virgin olive oil",
+        "item": "extra virgin olive oil",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 pinch Coarse salt",
+        "item": "coarse salt",
+        "qty": 1,
+        "unit": "pinch"
+      }
+    ],
+    "steps": [
+      "Wash the basil and dry it completely: any water stops the oil binding to the leaves. Chill the mortar and pestle in the fridge.",
+      "Pound the garlic with the coarse salt to a paste. The salt works as an abrasive; without it the garlic just slides around.",
+      "Add the pine nuts and work them to a cream, then add the basil a handful at a time. The movement is a pressing circle rather than a pounding: the leaves are crushed against the wall, not smashed.",
+      "Work in both cheeses, then trickle the oil in while still grinding. The sauce should come together thick and even."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "nutritionPerServing": {
+      "calories": 340,
+      "proteinG": 8,
+      "carbsG": 3,
+      "fatG": 34,
+      "estimated": true
+    }
+  }
+}

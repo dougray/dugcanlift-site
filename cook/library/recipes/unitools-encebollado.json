@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-encebollado",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "EC",
+    "nativeName": "Encebollado",
+    "summary": "A tuna soup with cassava and pickled onion. Ecuadorians eat it for breakfast and treat it as a hangover cure.",
+    "category": "soup",
+    "diets": [
+      "gluten-free",
+      "pescatarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      16,
+      5,
+      17,
+      22,
+      8,
+      4
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/encebollado.jpg",
+      "author": "Ministerio de Turismo Ecuador from Ecuador",
+      "license": "CC BY-SA 2.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Encebollado",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "700 g Tuna",
+        "item": "tuna",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "fresh, in one piece"
+      },
+      {
+        "rawText": "700 g Cassava",
+        "item": "cassava",
+        "qty": 700,
+        "unit": "g",
+        "grams": 700,
+        "note": "peeled, in batons"
+      },
+      {
+        "rawText": "2 Red onion",
+        "item": "red onion",
+        "qty": 2,
+        "note": "thinly sliced"
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "3 Lime",
+        "item": "lime",
+        "qty": 3
+      },
+      {
+        "rawText": "2 tsp Ground cumin",
+        "item": "ground cumin",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "30 g Coriander",
+        "item": "coriander",
+        "qty": 30,
+        "unit": "g",
+        "grams": 30
+      },
+      {
+        "rawText": "4 cloves Garlic",
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt and pepper, to taste",
+        "item": "salt and pepper"
+      }
+    ],
+    "steps": [
+      "Cure the onion in the juice of two limes with salt and leave it at least fifteen minutes.",
+      "Fry the garlic and tomatoes with the cumin for five minutes, add a litre and a half of water and bring it up.",
+      "Lower in the tuna whole and poach it fifteen minutes on a low heat. Fish does not tolerate a hard boil.",
+      "Lift out the fish, strain the broth and return it to the heat. Cook the cassava in it for twenty minutes, until soft.",
+      "Flake the tuna coarsely, discarding the dark parts, and return it to the pot for two minutes.",
+      "Ladle it out and top with the cured onion and its juice and coriander. Serve with a wedge of lime."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 40,
+    "nutritionPerServing": {
+      "calories": 420,
+      "proteinG": 40,
+      "carbsG": 42,
+      "fatG": 11,
+      "estimated": true
+    }
+  }
+}

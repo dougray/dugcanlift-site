@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-ciorba-de-burta",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "RO",
+    "nativeName": "Ciorbă de burtă",
+    "summary": "A sour tripe soup in a creamy garlic broth, thickened with egg yolks.",
+    "category": "soup",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      20,
+      10,
+      245,
+      20,
+      8,
+      8,
+      8
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/ciorba-de-burta.jpg",
+      "author": "Sacha47",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Ciorbă de burtă",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "1.2 kg Beef tripe",
+        "item": "beef tripe",
+        "qty": 1.2,
+        "unit": "kg",
+        "grams": 1200,
+        "note": "cleaned"
+      },
+      {
+        "rawText": "500 g Beef bones",
+        "item": "beef bones",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "2 Carrots",
+        "item": "carrots",
+        "qty": 2
+      },
+      {
+        "rawText": "150 g Celeriac",
+        "item": "celeriac",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 Onion",
+        "item": "onion",
+        "qty": 1
+      },
+      {
+        "rawText": "12 cloves Garlic",
+        "item": "garlic",
+        "qty": 12,
+        "unit": "clove"
+      },
+      {
+        "rawText": "4 Egg yolks",
+        "item": "egg yolks",
+        "qty": 4
+      },
+      {
+        "rawText": "300 ml Cream",
+        "item": "cream",
+        "qty": 300,
+        "unit": "ml"
+      },
+      {
+        "rawText": "100 ml Vinegar",
+        "item": "vinegar",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "10 Black peppercorns",
+        "item": "black peppercorns",
+        "qty": 10
+      },
+      {
+        "rawText": "2 Hot pepper",
+        "item": "hot pepper",
+        "qty": 2,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rinse the tripe several times in cold water, rub it with salt and rinse it again.",
+      "Boil the tripe in water with half the vinegar for ten minutes and throw away that first water.",
+      "Cover it with fresh water along with the bones and root vegetables and simmer four hours.",
+      "Lift out the tripe, cut it into fine strips and return it to the strained broth.",
+      "Crush the garlic with salt into a paste and let it down with a ladle of the broth.",
+      "Whisk the yolks with the cream and ladle in hot broth, stirring without stopping.",
+      "Pour the mixture into the pot off the heat, add the garlic and the remaining vinegar, and warm it through without boiling."
+    ],
+    "prepMinutes": 30,
+    "cookMinutes": 240,
+    "nutritionPerServing": {
+      "calories": 480,
+      "proteinG": 38,
+      "carbsG": 12,
+      "fatG": 30,
+      "estimated": true
+    }
+  }
+}

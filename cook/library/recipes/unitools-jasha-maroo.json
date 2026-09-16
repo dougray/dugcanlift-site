@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-jasha-maroo",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "BT",
+    "nativeName": "ཇ་ཤ་མ་རུ།",
+    "summary": "Chopped chicken in a thin broth with ginger, garlic and chilli. Bhutanese everyday cooking.",
+    "category": "main",
+    "diets": [
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      15,
+      6,
+      2,
+      7,
+      5,
+      20,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "linear",
+      "fixed"
+    ]
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Jasha maroo",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 4,
+    "ingredients": [
+      {
+        "rawText": "1 kg Chicken",
+        "item": "chicken",
+        "qty": 1,
+        "unit": "kg",
+        "grams": 1000,
+        "note": "chopped through the bone"
+      },
+      {
+        "rawText": "60 g Ginger",
+        "item": "ginger",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "8 cloves Garlic",
+        "item": "garlic",
+        "qty": 8,
+        "unit": "clove"
+      },
+      {
+        "rawText": "2 Onions",
+        "item": "onions",
+        "qty": 2
+      },
+      {
+        "rawText": "3 Tomatoes",
+        "item": "tomatoes",
+        "qty": 3
+      },
+      {
+        "rawText": "6 Green chillies",
+        "item": "green chillies",
+        "qty": 6
+      },
+      {
+        "rawText": "40 g Coriander",
+        "item": "coriander",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40
+      },
+      {
+        "rawText": "50 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "rawText": "350 g Red rice",
+        "item": "red rice",
+        "qty": 350,
+        "unit": "g",
+        "grams": 350,
+        "note": "to serve"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Chop the chicken through the bone into pieces about the size of a matchbox.",
+      "Pound the ginger and garlic to a coarse paste.",
+      "Fry the onion in oil until soft, add the paste and cook it two minutes.",
+      "Add the chicken and fry five minutes, until it whitens all over.",
+      "Add the tomatoes and chillies, pour in water a finger above and season.",
+      "Simmer twenty minutes; the broth should stay thin.",
+      "Stir in the coriander and serve in deep bowls with red rice."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 35,
+    "nutritionPerServing": {
+      "calories": 520,
+      "proteinG": 42,
+      "carbsG": 40,
+      "fatG": 22,
+      "estimated": true
+    }
+  }
+}

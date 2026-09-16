@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-puff-puff",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "NG",
+    "nativeName": "Puff puff",
+    "summary": "Yeasted balls of loose batter, deep-fried crisp outside and airy within.",
+    "category": "snack",
+    "diets": [
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      62,
+      8,
+      12,
+      18,
+      5
+    ],
+    "ingredientScaling": [
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped",
+      "damped",
+      "fixed",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/puff-puff.jpg",
+      "author": "Afrolems ; cropped by Off-shell",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Puff puff",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 8,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "10 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 10,
+        "unit": "g",
+        "grams": 10
+      },
+      {
+        "rawText": "100 g Sugar",
+        "item": "sugar",
+        "qty": 100,
+        "unit": "g",
+        "grams": 100
+      },
+      {
+        "rawText": "400 ml Warm water",
+        "item": "warm water",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "rawText": "0.5 tsp Nutmeg",
+        "item": "nutmeg",
+        "qty": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1.5 l Oil for frying",
+        "item": "oil for frying",
+        "qty": 1.5,
+        "unit": "l"
+      },
+      {
+        "rawText": "40 g Icing sugar",
+        "item": "icing sugar",
+        "qty": 40,
+        "unit": "g",
+        "grams": 40,
+        "note": "to serve"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast and sugar in the warm water and leave it ten minutes, until it foams.",
+      "Whisk in the flour, nutmeg and salt to a smooth loose batter without lumps.",
+      "Cover it and leave it somewhere warm for an hour; it should double and bubble all over.",
+      "Heat the oil to 170 °C and test with a drop of batter; it should surface within two seconds.",
+      "Take batter in your palm and squeeze a ball out between thumb and forefinger straight into the oil.",
+      "Fry three minutes, turning them with a slotted spoon, to an even golden brown.",
+      "Drain them on paper and serve warm, dusted with icing sugar."
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 6,
+      "carbsG": 48,
+      "fatG": 12,
+      "estimated": true
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-samosa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "IN",
+    "nativeName": "समोसा",
+    "summary": "Triangles of potato and pea in a ghee-rich pastry. Fried on a moderate flame, never a fierce one.",
+    "category": "snack",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "stepMinutes": [
+      8,
+      35,
+      12,
+      20,
+      15,
+      30
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "linear",
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "damped",
+      "linear",
+      "fixed"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/samosa.jpg",
+      "author": "Gaurav Dhwaj Khadka",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Samosa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "300 g Plain flour",
+        "item": "plain flour",
+        "qty": 300,
+        "unit": "g",
+        "grams": 300
+      },
+      {
+        "rawText": "60 g Ghee for the dough",
+        "item": "ghee for the dough",
+        "qty": 60,
+        "unit": "g",
+        "grams": 60
+      },
+      {
+        "rawText": "1 tsp Ajwain seeds",
+        "item": "ajwain seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "100 ml Cold water",
+        "item": "cold water",
+        "qty": 100,
+        "unit": "ml"
+      },
+      {
+        "rawText": "600 g Potatoes",
+        "item": "potatoes",
+        "qty": 600,
+        "unit": "g",
+        "grams": 600,
+        "note": "boiled"
+      },
+      {
+        "rawText": "150 g Peas",
+        "item": "peas",
+        "qty": 150,
+        "unit": "g",
+        "grams": 150
+      },
+      {
+        "rawText": "1 tsp Cumin seeds",
+        "item": "cumin seeds",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 tsp Ground coriander",
+        "item": "ground coriander",
+        "qty": 2,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Amchur or lemon juice",
+        "item": "amchur or lemon juice",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "1 tsp Garam masala",
+        "item": "garam masala",
+        "qty": 1,
+        "unit": "tsp"
+      },
+      {
+        "rawText": "2 Green chilli",
+        "item": "green chilli",
+        "qty": 2
+      },
+      {
+        "rawText": "700 ml Oil for frying",
+        "item": "oil for frying",
+        "qty": 700,
+        "unit": "ml"
+      },
+      {
+        "rawText": "Salt, to taste",
+        "item": "salt"
+      }
+    ],
+    "steps": [
+      "Rub the ghee into the flour with the ajwain and salt until it looks like damp sand: squeezed in a fist it should hold its shape.",
+      "Add cold water a little at a time to a firm, tight dough — stiffer than a dumpling dough. Cover it and rest it half an hour.",
+      "Fry the cumin in a spoon of oil, add the chilli, spices, peas and coarsely crushed potato. Warm it five minutes and cool it.",
+      "Divide the dough into balls, roll each into an oval and cut it in half. Form a cone from each half, wetting the straight edge.",
+      "Fill the cone, pinch the top firmly shut and set it seam up. A weak seam opens in the oil.",
+      "Lower them into oil at 150 °C and fry twelve to fifteen minutes, raising it to 180 °C at the end. The pastry should carry fine blisters rather than large ones."
+    ],
+    "prepMinutes": 60,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 380,
+      "proteinG": 8,
+      "carbsG": 44,
+      "fatG": 20,
+      "estimated": true
+    }
+  }
+}

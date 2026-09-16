@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "unitools-gurasa",
+  "source": {
+    "id": "unitools",
+    "name": "UniTools World Recipes",
+    "version": "2.0.0",
+    "url": "https://theunitools.com/en/data",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "UniTools — theunitools.com",
+    "generatedAt": "2026-09-02"
+  },
+  "catalogue": {
+    "country": "SD",
+    "nativeName": "قراصة",
+    "summary": "A thick Sudanese pan bread, served with meat stew or sauce.",
+    "category": "bread",
+    "diets": [
+      "vegan",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "stepMinutes": [
+      12,
+      8,
+      3,
+      62,
+      5,
+      25,
+      6
+    ],
+    "ingredientScaling": [
+      "linear",
+      "linear",
+      "damped",
+      "damped",
+      "linear",
+      "damped"
+    ],
+    "photo": {
+      "url": "https://theunitools.com/recipes/gurasa.jpg",
+      "author": "Zahraswaty",
+      "license": "CC BY-SA 4.0"
+    }
+  },
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Gurasa",
+    "sourceURL": "https://theunitools.com/en/data",
+    "sourceAuthor": "UniTools — theunitools.com",
+    "servings": 6,
+    "ingredients": [
+      {
+        "rawText": "500 g Flour",
+        "item": "flour",
+        "qty": 500,
+        "unit": "g",
+        "grams": 500
+      },
+      {
+        "rawText": "550 ml Warm water",
+        "item": "warm water",
+        "qty": 550,
+        "unit": "ml"
+      },
+      {
+        "rawText": "7 g Dry yeast",
+        "item": "dry yeast",
+        "qty": 7,
+        "unit": "g",
+        "grams": 7
+      },
+      {
+        "rawText": "1 tbsp Sugar",
+        "item": "sugar",
+        "qty": 1,
+        "unit": "tbsp"
+      },
+      {
+        "rawText": "40 ml Vegetable oil",
+        "item": "vegetable oil",
+        "qty": 40,
+        "unit": "ml"
+      },
+      {
+        "rawText": "1 tsp Salt",
+        "item": "salt",
+        "qty": 1,
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      "Dissolve the yeast with the sugar in the warm water and leave it ten minutes, until it foams.",
+      "Whisk in the flour and salt to a smooth, loose batter without lumps.",
+      "Add the oil and beat another minute, until the batter goes glossy.",
+      "Cover it and leave it warm for an hour, until bubbles break the surface.",
+      "Heat a dry pan over medium and pour in a ladle of batter.",
+      "Cover it and cook five minutes, until the top sets and turns matt.",
+      "Lift it out without turning it and stack the breads under a cloth."
+    ],
+    "prepMinutes": 80,
+    "cookMinutes": 30,
+    "nutritionPerServing": {
+      "calories": 320,
+      "proteinG": 9,
+      "carbsG": 56,
+      "fatG": 7,
+      "estimated": true
+    }
+  }
+}
