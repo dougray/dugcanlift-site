@@ -836,7 +836,18 @@ function renderFood() {
     head.appendChild(el('span', null, `${totals(forMeal).calories} kcal`));
     out.appendChild(head);
     forMeal.forEach((e) => {
-      const row = el('div', 'entry');
+      const row = el('div', 'entry editable');
+      // The row opens the entry for editing; the x still deletes.
+      row.tabIndex = 0;
+      row.setAttribute('role', 'button');
+      row.setAttribute('aria-label', `Edit ${e.name}`);
+      row.onclick = () => openFoodEdit(e.id);
+      row.onkeydown = (ev) => {
+        if (ev.target === row && (ev.key === 'Enter' || ev.key === ' ')) {
+          ev.preventDefault();
+          openFoodEdit(e.id);
+        }
+      };
       const info = el('div');
       const amount = FoodAmount.amountText(e, servingUnitKey());
       info.appendChild(el('div', null, amount ? `${e.name} - ${amount}` : e.name));
@@ -851,8 +862,11 @@ function renderFood() {
       // any delete wrote a stale array over storage, losing every entry
       // logged since. Nothing is published by value now, and in-place
       // mutation keeps it that way.
-      x.onclick = () => {
+      x.setAttribute('aria-label', `Delete ${e.name}`);
+      x.onclick = (ev) => {
+        ev.stopPropagation();
         const i = food.findIndex((f) => f.id === e.id);
+        if (e.id === editingFoodId) closeFoodForm();
         if (i !== -1) food.splice(i, 1);
         save(KEY.food, food);
         render();
@@ -928,7 +942,30 @@ function renderRecipeWeightEach() {
     + `${FoodAmount.trim(unit.fromGrams(grams / count))} ${unit.abbreviation} each`;
 }
 
+/* The entry being edited, or null when the form is adding one. An edit
+ * replaces the entry in place -- same id, date and loggedAt -- rather than
+ * pushing a copy, which is all the recent chips can do. */
+let editingFoodId = null;
+
+function editingFood() {
+  return editingFoodId ? food.find((f) => f.id === editingFoodId) || null : null;
+}
+
+/** A weighed entry edits by weight; an older serving-based one by servings. */
+function editingByServings() {
+  const e = editingFood();
+  return !!e && !(Number(e.amountGrams) > 0);
+}
+
+function closeFoodForm() {
+  $('#food-form').classList.add('hidden');
+  editingFoodId = null;
+}
+
 function openFoodForm(prefill) {
+  editingFoodId = null;
+  $('#f-title').textContent = 'Add food';
+  $('#f-save').textContent = 'Save';
   $('#food-form').classList.remove('hidden');
   $('#food-search').classList.add('hidden');
   formMeal = guessMeal();
@@ -956,14 +993,87 @@ function openFoodForm(prefill) {
   renderFoodPreview();
 }
 
+function openFoodEdit(id) {
+  const e = food.find((f) => f.id === id);
+  if (!e) return;
+  openFoodForm(null);
+  editingFoodId = id;
+  $('#f-title').textContent = 'Edit entry';
+  $('#f-save').textContent = 'Save changes';
+  formMeal = mealOf(e);
+
+  $('#f-name').value = e.name;
+  // Blank where the entry has no value -- never a zero it did not have.
+  const show = (v) => (v == null || v === '' || !isFinite(Number(v)) ? '' : v);
+  const per100 = FoodAmount.per100From(e);
+  const values = per100 || e;
+  $('#f-amount').value = per100
+    ? FoodAmount.trim(FoodAmount.UNITS[servingUnitKey()].fromGrams(Number(e.amountGrams)))
+    : (e.servings || 1);
+  $('#f-cal').value = show(values.calories);
+  $('#f-p').value = show(values.proteinG);
+  $('#f-f').value = show(values.fatG);
+  $('#f-c').value = show(values.carbsG);
+  $('#f-fib').value = show(values.fiberG);
+
+  renderMealChips();
+  renderFoodUnit(null);
+  renderFoodPreview();
+  $('#f-name').focus();
+}
+
+/** The macro fields as typed, null where blank. Read as decimals: an entry
+ *  opened for editing can carry 12.5 g, and truncating it would change a
+ *  value nobody touched. */
+function typedMacros() {
+  const read = (sel) => {
+    const raw = $(sel).value.trim();
+    const n = parseFloat(raw);
+    return raw === '' || !isFinite(n) ? null : n;
+  };
+  return {
+    calories: read('#f-cal'), proteinG: read('#f-p'), fatG: read('#f-f'),
+    carbsG: read('#f-c'), fiberG: read('#f-fib'),
+  };
+}
+
+/** What saving the edit form would write, or null if it cannot be saved. */
+function editedFields() {
+  const e = editingFood();
+  if (!e) return null;
+  if (editingByServings()) {
+    return FoodAmount.editServings(e, typedMacros(), parseFloat($('#f-amount').value));
+  }
+  const grams = FoodAmount.editedGrams(e, $('#f-amount').value, servingUnitKey());
+  const out = FoodAmount.editWeighed(e, typedMacros(), grams);
+  return out && { servings: 1, amountGrams: grams, ...out };
+}
+
 /* The macro fields are always per 100 g, and say so. Leaving them as a bare
  * "Calories" is how someone logs 100 g of chicken as a whole breast. */
 function renderFoodUnit(prefill) {
+  const byServings = editingByServings();
+  $('#f-mode').classList.toggle('hidden', byServings);
+  $('#f-mode-label').classList.toggle('hidden', byServings);
+  if (byServings) {
+    $('#f-amount-label').textContent = 'Servings';
+    $('#f-cal-label').textContent = 'Calories (per serving)';
+    $('#f-p-label').textContent = 'Protein (g/serving)';
+    $('#f-f-label').textContent = 'Fat (g/serving)';
+    $('#f-c-label').textContent = 'Carbs (g/serving)';
+    $('#f-fib-label').textContent = 'Fiber (g/serving)';
+    $('#f-basis-note').textContent = 'This entry was logged by the serving, '
+      + 'so it stays that way: macros for one serving, then how many you had.';
+    return;
+  }
   chips($('#f-mode'),
     [{ label: 'Grams', u: 'grams' }, { label: 'Ounces', u: 'ounces' }],
     (i) => i.u === (settings.servingUnit || 'grams'),
     (i) => {
-      const before = amountInGrams();
+      const editing = editingFood();
+      const before = editing
+        ? FoodAmount.editedGrams(editing, $('#f-amount').value, servingUnitKey())
+        : amountInGrams();
       settings.servingUnit = i.u;
       save(KEY.settings, settings);
       // Carry the weight across the unit change rather than reinterpreting
@@ -1008,6 +1118,17 @@ function renderFoodPreview() {
   const box = $('#f-preview');
   if (!box) return;
 
+  if (editingFood()) {
+    const f = editedFields();
+    if (!f) { box.textContent = ''; return; }
+    const total = (field) => mul(f, field);
+    const amount = FoodAmount.amountText(f, servingUnitKey());
+    box.textContent = `${amount || '1 serving'} = ${total('calories')} kcal`
+      + ` - P ${total('proteinG')} - F ${total('fatG')}`
+      + ` - C ${total('carbsG')} - Fib ${total('fiberG')}`;
+    return;
+  }
+
   const grams = amountInGrams();
   const calories = parseInt($('#f-cal').value, 10);
   if (grams == null || isNaN(calories)) {
@@ -1049,10 +1170,29 @@ function renderMealChips() {
 });
 
 $('#food-add').onclick = () => openFoodForm(null);
-$('#f-cancel').onclick = () => $('#food-form').classList.add('hidden');
+$('#f-cancel').onclick = closeFoodForm;
 
 $('#f-save').onclick = () => {
   const name = $('#f-name').value.trim();
+
+  if (editingFoodId) {
+    const i = food.findIndex((f) => f.id === editingFoodId);
+    if (i === -1) { closeFoodForm(); render(); return; }
+    const fields = editedFields();
+    if (!name || !fields) return;
+    // In place, keeping id, date, loggedAt and anything else the entry
+    // carries -- a backup from the phone can hold keys this form never shows.
+    const updated = { ...food[i], ...fields, name, meal: formMeal };
+    FoodAmount.FIELDS.forEach((field) => {
+      if (updated[field] === undefined) delete updated[field];
+    });
+    food[i] = updated;
+    save(KEY.food, food);
+    closeFoodForm();
+    render();
+    return;
+  }
+
   const calories = parseInt($('#f-cal').value, 10);
   const grams = amountInGrams();
   if (!name || isNaN(calories) || grams == null) return;
@@ -1077,7 +1217,7 @@ $('#f-save').onclick = () => {
     date: foodDate, loggedAt: Date.now(), meal: formMeal,
   });
   save(KEY.food, food);
-  $('#food-form').classList.add('hidden');
+  closeFoodForm();
   render();
 };
 
@@ -1085,7 +1225,7 @@ $('#f-save').onclick = () => {
 
 $('#food-search-open').onclick = () => {
   $('#food-search').classList.remove('hidden');
-  $('#food-form').classList.add('hidden');
+  closeFoodForm();
   $('#fs-query').focus();
 };
 $('#fs-cancel').onclick = () => $('#food-search').classList.add('hidden');
