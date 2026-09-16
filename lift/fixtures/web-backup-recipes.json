@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "app": "lift",
+ "saved": "2026-09-16",
+ "data": {
+  "goal": null,
+  "food": null,
+  "workouts": null,
+  "settings": {
+   "focus": "BODYBUILDING"
+  },
+  "steps": {},
+  "coach": {
+   "email": "",
+   "you": "",
+   "id": "",
+   "weeks": 8,
+   "itemised": false
+  },
+  "profile": null,
+  "weights": {},
+  "recipes": [
+   {
+    "id": "a7991786-a81d-438b-8f2a-5e5b822c865a",
+    "importedAt": 1789568865359,
+    "name": "Beef Chilli",
+    "servings": 4,
+    "ingredients": [
+     {
+      "rawText": "500 g lean beef mince",
+      "item": "lean beef mince",
+      "qty": 500,
+      "unit": "g",
+      "grams": 500
+     },
+     {
+      "rawText": "2 tins chopped tomatoes",
+      "item": "tins chopped tomatoes",
+      "qty": 2,
+      "unit": "\u0000count",
+      "grams": null
+     },
+     {
+      "rawText": "1 tbsp olive oil",
+      "item": "olive oil",
+      "qty": 1,
+      "unit": "tbsp",
+      "grams": null
+     },
+     {
+      "rawText": "salt to taste"
+     }
+    ],
+    "steps": [
+     "Brown the beef",
+     "Simmer for an hour"
+    ],
+    "nutritionPerServing": {
+     "calories": 520,
+     "proteinG": 38,
+     "carbsG": 30,
+     "fatG": 24,
+     "fiberG": 9
+    }
+   }
+  ],
+  "plan": [
+   {
+    "id": "4601600a-ae05-4e47-9d68-279195ec24da",
+    "recipeId": "a7991786-a81d-438b-8f2a-5e5b822c865a",
+    "recipeName": "Beef Chilli",
+    "date": "2026-09-17",
+    "meal": "DINNER",
+    "servings": 2,
+    "snapshotNutrition": {
+     "calories": 520,
+     "proteinG": 38,
+     "carbsG": 30,
+     "fatG": 24,
+     "fiberG": 9
+    },
+    "loggedFoodEntryId": null
+   }
+  ]
+ }
+}
