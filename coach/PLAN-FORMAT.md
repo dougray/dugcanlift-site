@@ -78,12 +78,17 @@ invent dates to do it.
 | `n` | name |
 | `s` | how many servings the recipe makes |
 | `u` | `[kcal, protein, carbs, fat, fibre]` **per serving** |
+| `ux` | `[saturatedFatG, sugarG, sodiumMg]` **per serving**, trailing nulls trimmed; omitted when none is known |
 | `i` | ingredient lines, exactly as typed |
 | `t` | method steps |
 
 Only recipes this plan actually uses are inlined, and only these fields. That
 is what keeps a week inside a link an email client will not mangle — a plan for
 two meals off one recipe comes to about 280 characters.
+
+`ux` is a key of its own rather than more positions in `u`, because a decoder
+already in use reads `u` by position and would take a sixth number for
+something else. A receiver that doesn't know `ux` ignores it.
 
 **`u` is omitted entirely when the coach did not enter macros.** It must never
 be sent as zeros. A zero here becomes a zero-calorie dinner in the client's day
