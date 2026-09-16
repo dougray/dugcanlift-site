@@ -144,4 +144,4 @@ be updated and the date above revised.
 
 ## Contact
 
-Questions: privacy@dugcanlift.com
+Questions: [{{ site.email }}](mailto:{{ site.email }})
