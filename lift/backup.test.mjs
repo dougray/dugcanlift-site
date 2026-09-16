@@ -86,3 +86,23 @@ test('recipes and the plan are written', () => {
   assert.deepEqual(data.recipes, [{ id: 'r' }]);
   assert.deepEqual(data.plan, [{ id: 'm' }]);
 });
+
+// MARK: - Interop with the Android build
+
+// Written by LIFT Android's own BackupStore.build -- never regenerate it here.
+const android = JSON.parse(readFileSync('lift/fixtures/android-backup-recipes.json', 'utf8'));
+
+test("Android's recipes and both planned meals restore", () => {
+  const recipes = [];
+  const plan = [];
+  assert.equal(LiftBackup.addMissing(recipes, android.data.recipes), 1);
+  assert.equal(LiftBackup.addMissingPlan(plan, android.data.plan, recipes), 2,
+    'the servings meal and the gram-based meal both point at the restored recipe');
+  assert.equal(recipes[0].totalWeightGrams, 600);
+  assert.equal(plan.find((m) => m.amountGrams).amountGrams, 250);
+});
+
+test("Android's sections this build does not store are preserved", () => {
+  // Android writes `routines`; the browser has none yet.
+  assert.deepEqual(Object.keys(LiftBackup.unknownSections(android.data)), ['routines']);
+});
