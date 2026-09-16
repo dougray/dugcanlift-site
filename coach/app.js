@@ -1560,6 +1560,56 @@ let cookSection = 'recipes';
 let editingRecipeId = null;
 let planClientId = null;
 
+/* A recipe's weight unit is the coach's display preference: grams or ounces,
+ * never a volume, because a cup of oil and a cup of flour are not the same
+ * mass. Kept apart from `settings.unit`, which is for a client's bodyweight.
+ * The model is always grams. Same factor as LIFT web's food-amount.js and
+ * ServingUnit in the iOS and Android builds. */
+const RECIPE_WEIGHT_UNITS = {
+  grams: { key: 'grams', label: 'Grams', abbreviation: 'g',
+           toGrams: (v) => v, fromGrams: (g) => g },
+  ounces: { key: 'ounces', label: 'Ounces', abbreviation: 'oz',
+            toGrams: (v) => v * 28.3495, fromGrams: (g) => g / 28.3495 },
+};
+const recipeWeightUnit = () => RECIPE_WEIGHT_UNITS[settings.recipeWeightUnit] || RECIPE_WEIGHT_UNITS.grams;
+const roundOne = (v) => Math.round(v * 10) / 10;
+
+/* The typed weight in grams, or null when blank or not a positive number. Null
+ * is a real answer: an unweighed recipe keeps planning by servings. */
+function recipeWeightGrams() {
+  const typed = parseFloat($('#r-weight').value);
+  if (!isFinite(typed) || typed <= 0) return null;
+  return recipeWeightUnit().toGrams(typed);
+}
+
+/* Unit chips. Switching carries the weight across through grams rather than
+ * relabelling the number, so 1200 g becomes 42.3 oz and never 1200 oz. */
+function renderRecipeWeightUnit() {
+  chipRow($('#r-weight-mode'),
+    Object.values(RECIPE_WEIGHT_UNITS),
+    (u) => u.key === recipeWeightUnit().key,
+    (u) => {
+      const before = recipeWeightGrams();
+      settings.recipeWeightUnit = u.key;
+      save(KEY.settings, settings);
+      if (before) $('#r-weight').value = roundOne(recipeWeightUnit().fromGrams(before));
+      renderRecipeWeightUnit();
+    });
+  $('#r-weight-label').textContent = `Total weight (${recipeWeightUnit().abbreviation})`;
+  renderRecipeWeightEach();
+}
+
+/* "4 servings · 300 g each", when both numbers are known. */
+function renderRecipeWeightEach() {
+  const grams = recipeWeightGrams();
+  const count = parseFloat($('#r-servings').value);
+  const out = $('#r-weight-each');
+  if (!grams || !(count > 0)) { out.textContent = ''; return; }
+  const unit = recipeWeightUnit();
+  out.textContent = `${count} serving${count === 1 ? '' : 's'} \u00B7 `
+    + `${roundOne(unit.fromGrams(grams / count))} ${unit.abbreviation} each`;
+}
+
 function renderCook() {
   chipRow($('#cook-sections'),
     [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' }, { label: 'Shopping', v: 'shopping' }],
@@ -1637,6 +1687,11 @@ function openRecipeForm(id) {
   const r = id ? recipeById(id) : null;
   $('#r-name').value = r ? r.name : '';
   $('#r-servings').value = r ? r.servings : 4;
+  // Grams on the recipe, the coach's preferred unit on screen.
+  $('#r-weight').value = r && r.totalWeightGrams > 0
+    ? roundOne(recipeWeightUnit().fromGrams(r.totalWeightGrams))
+    : '';
+  renderRecipeWeightUnit();
   $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
   $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
   const n = r && r.nutritionPerServing;
@@ -1715,6 +1770,9 @@ $('#r-save').onclick = () => {
     ingredients: lines('#r-ingredients').map(parseIngredient),
     steps: lines('#r-steps'),
     nutritionPerServing: nutrition,
+    // Written even when null, so clearing the field on an existing recipe
+    // clears it -- the spread over the old recipe would otherwise keep it.
+    totalWeightGrams: recipeWeightGrams(),
   };
 
   if (editingRecipeId) {
@@ -2612,6 +2670,9 @@ function applyTally() {
     + `${num(ingredientTally.calories)} kcal for the whole recipe, `
     + `${num(ingredientTally.calories / servings)} a serving.`;
 }
+
+$('#r-weight').addEventListener('input', renderRecipeWeightEach);
+$('#r-servings').addEventListener('input', renderRecipeWeightEach);
 
 ['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((selector) => {
   // A field the coach edits stops being ours to fill in.

@@ -146,6 +146,13 @@
     <label for="r-servings">Servings</label>
     <input type="number" id="r-servings" inputmode="decimal" value="4">
 
+    <label for="r-weight" id="r-weight-label">Total weight (g)</label>
+    <p class="muted">The whole finished dish. Optional &mdash; with it, a serving
+      has a weight your client can put on a scale, which a count never gives them.</p>
+    <div class="chips" id="r-weight-mode"></div>
+    <input type="number" id="r-weight" inputmode="decimal" placeholder="&mdash;">
+    <p class="muted" id="r-weight-each"></p>
+
     <label for="ing-query">Look an ingredient up</label>
     <p class="muted">Ingredients come from USDA FoodData Central, bundled and
       searched offline. Packaged looks up brands and barcodes on Open Food Facts,
