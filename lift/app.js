@@ -10,7 +10,8 @@ const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', s
               coach: 'lift.coach', profile: 'lift.profile', weights: 'lift.weights',
               ext: 'lift.ext', unknownData: 'lift.unknownData',
               recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
-              training: 'lift.training', templates: 'lift.templates' };
+              training: 'lift.training', templates: 'lift.templates',
+              routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording' };
 
 function load(key, fallback) {
   try {
@@ -49,6 +50,24 @@ let training = load(KEY.training, []);
 /* Workout templates a coach has sent without booking a day for them. Yours to
  * start whenever; a prescription in `training` is for a named date. */
 let templates = load(KEY.templates, []);
+/* Your own routines, in LIFT for Android's shape (see routines.js). Before this
+ * build had routines, an Android backup's `routines` section was kept aside as
+ * an unknown section so a re-save would not lose it. The first run of this
+ * build adopts them, so a restore done months ago still turns up. */
+let routines = load(KEY.routines, null);
+if (!Array.isArray(routines)) {
+  const kept = load(KEY.unknownData, {});
+  routines = Array.isArray(kept.routines) ? kept.routines.filter((r) => r && Array.isArray(r.exercises)) : [];
+  if (kept.routines !== undefined) {
+    delete kept.routines;
+    save(KEY.unknownData, kept);
+  }
+  save(KEY.routines, routines);
+}
+/* Finished runs, walks and hikes, routes stored compactly (see outdoor.js). A
+ * recording in progress lives apart under KEY.recording, written on every kept
+ * fix, so a reload or a crash mid-run keeps the route so far. */
+let outdoor = load(KEY.outdoor, []);
 let shoppingTicks = load(KEY.shopping, []);
 // Who to send logs to, and who they are from. See "send to coach" below.
 let coach = load(KEY.coach, { email: '', you: '', id: '', weeks: 8, itemised: false });
@@ -435,9 +454,14 @@ function renderHome() {
   const training = $('#today-training');
   training.innerHTML = '';
   const todays = sessionsFor(today);
-  if (!todays.length) {
+  const todaysOutdoor = outdoorOn(today);
+  if (!todays.length && !todaysOutdoor.length) {
     training.appendChild(el('p', 'muted', 'Nothing logged today.'));
   } else {
+    todaysOutdoor.forEach((a) => {
+      training.appendChild(el('div', null, outdoorLabel(a.activityType)));
+      training.appendChild(el('p', 'muted', outdoorSummary(a)));
+    });
     todays.forEach((s) => {
       training.appendChild(el('div', null, s.name || 'Workout'));
       training.appendChild(el('p', 'muted',
@@ -1409,6 +1433,8 @@ function renderTrain() {
     (i) => { settings.focus = i.k; save(KEY.settings, settings); render(); });
 
   renderPrescribed();
+  renderRoutines();
+  renderOutdoor();
 
   const f = currentFocus();
   const out = $('#session-list');
@@ -1457,6 +1483,12 @@ function renderTrain() {
     const addEx = el('button', 'ghost wide', 'Add exercise');
     addEx.onclick = () => openExercisePicker(session);
     card.appendChild(addEx);
+
+    if ((session.exercises || []).length) {
+      const keep = el('button', 'ghost wide', 'Save as routine');
+      keep.onclick = () => saveAsRoutine(session);
+      card.appendChild(keep);
+    }
 
     const del = el('button', 'ghost wide', 'Delete workout');
     del.onclick = () => {
@@ -1551,6 +1583,454 @@ $('#train-start').onclick = () => {
   save(KEY.workouts, workouts);
   render();
 };
+
+
+/* ---------------- routines ----------------
+ *
+ * Starter splits come from splits.json, the same file LIFT for iOS and Android
+ * bundle. Adding one copies it into your routines, where it is yours to start
+ * or delete; the rules are in routines.js. A routine starts on the day Train is
+ * showing, as a workout with its sets already laid out.
+ */
+
+let starterRoutines = null;
+let startersError = false;
+
+async function loadStarterRoutines() {
+  if (starterRoutines || startersError) return;
+  try {
+    const response = await fetch('splits.json');
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    starterRoutines = LiftRoutines.parseStarters(await response.json(), uid, Date.now());
+  } catch (e) {
+    // Costs the starter list and nothing else; writing your own still works.
+    startersError = true;
+  }
+  if (currentTab === 'train') renderRoutines();
+}
+
+function startRoutine(routine) {
+  workouts.push(LiftRoutines.toSession(routine, trainDate, uid, Date.now()));
+  save(KEY.workouts, workouts);
+  render();
+  const list = $('#session-list');
+  if (list.lastElementChild) list.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function saveAsRoutine(session) {
+  const name = prompt('Name this routine', session.name || '');
+  if (name === null) return;
+  routines.push(LiftRoutines.fromSession(session, name, '', uid, Date.now()));
+  save(KEY.routines, routines);
+  render();
+}
+
+function routineRow(routine, button) {
+  const row = el('div', 'entry');
+  const info = el('div');
+  info.appendChild(el('div', null, routine.name));
+  info.appendChild(el('div', 'muted',
+    `${routine.exercises.length} ${routine.exercises.length === 1 ? 'exercise' : 'exercises'} - ${LiftRoutines.setCount(routine)} sets`));
+  row.appendChild(info);
+  row.appendChild(button);
+  return row;
+}
+
+function renderRoutines() {
+  const wrap = $('#routine-list');
+  wrap.innerHTML = '';
+  if (!starterRoutines && !startersError) loadStarterRoutines();
+
+  if (routines.length) {
+    const card = el('div', 'card');
+    card.appendChild(el('strong', null, 'Your routines'));
+    LiftRoutines.byFolder(routines).forEach((group) => {
+      const head = el('div', 'mealhead');
+      head.appendChild(el('span', null, group.folder));
+      head.appendChild(el('span', null, String(group.routines.length)));
+      card.appendChild(head);
+      group.routines.forEach((routine) => {
+        const go = el('button', 'ghost', 'Start');
+        go.onclick = () => startRoutine(routine);
+        const row = routineRow(routine, go);
+        const drop = el('button', 'x', '×');
+        drop.setAttribute('aria-label', `Delete ${routine.name}`);
+        drop.onclick = () => {
+          if (!confirm(`Delete the routine "${routine.name}"? Workouts you already logged from it stay.`)) return;
+          routines = routines.filter((r) => r.id !== routine.id);
+          save(KEY.routines, routines);
+          render();
+        };
+        row.appendChild(drop);
+        card.appendChild(row);
+      });
+    });
+    wrap.appendChild(card);
+  }
+
+  const unclaimed = (starterRoutines || []).filter((s) => !LiftRoutines.alreadySaved(s, routines));
+  if (unclaimed.length) {
+    // Closed until asked for: open, ten starters push the day's own workout
+    // off the bottom of a phone screen.
+    const card = el('details', 'card starters');
+    card.appendChild(el('summary', null, `Starter routines (${unclaimed.length})`));
+    LiftRoutines.byFolder(unclaimed).forEach((group) => {
+      const head = el('div', 'mealhead');
+      head.appendChild(el('span', null, group.folder));
+      card.appendChild(head);
+      group.routines.forEach((starter) => {
+        const add = el('button', 'ghost', 'Add');
+        add.onclick = () => {
+          routines.push(LiftRoutines.copyOf(starter, uid, Date.now()));
+          save(KEY.routines, routines);
+          render();
+        };
+        const row = routineRow(starter, add);
+        row.firstChild.appendChild(el('div', 'muted small clamp', starter.exercises.map((e) => e.name).join(', ')));
+        card.appendChild(row);
+      });
+    });
+    wrap.appendChild(card);
+  }
+}
+
+/* ---------------- outdoor ----------------
+ *
+ * GPS runs, walks and hikes, recorded by the browser. The rules -- which fixes
+ * to keep, distance, bests, drawing -- are outdoor.js, shared in spirit with
+ * LIFT for iOS and Android and tested by node.
+ *
+ * A browser is not a phone app here, and the card says so: it only reads GPS
+ * while the page is on screen. Locking the phone or switching apps pauses the
+ * route, so the recording screen asks for a wake lock to keep the screen on,
+ * and tells you when the signal has gone quiet.
+ *
+ * The route is a line on a plain canvas rather than a street map. A map means
+ * sending your location to a tile server on every run, and this app sends
+ * nothing anywhere you did not ask it to.
+ */
+
+const outdoorLabel = (type) => (LiftOutdoor.TYPES.find((t) => t.key === type) || { label: 'Outdoor' }).label;
+const outdoorOn = (day) => outdoor
+  .filter((a) => dateKey(new Date(a.startedAtEpochMs)) === day)
+  .sort((a, b) => a.startedAtEpochMs - b.startedAtEpochMs);
+const distanceUnit = () => (settings.distanceUnit === 'kilometers' ? 'kilometers' : 'miles');
+const activityDate = (ms) => new Date(ms).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+
+function outdoorPace(a) {
+  const pace = LiftOutdoor.paceSecondsPerMeter(a);
+  return pace && a.distanceMeters >= LiftOutdoor.MINIMUM_PACE_DISTANCE_METERS
+    ? LiftOutdoor.paceText(pace, distanceUnit()) : '—';
+}
+
+function outdoorSummary(a) {
+  const ms = LiftOutdoor.durationMs(a);
+  return `${LiftOutdoor.distanceText(a.distanceMeters, distanceUnit())} - ${ms != null ? LiftOutdoor.durationText(ms) : '—'}`;
+}
+
+function statGrid(parent, stats) {
+  const grid = el('div', 'stats');
+  stats.forEach(([label, value]) => {
+    const cell = el('div');
+    cell.appendChild(el('div', 'muted small', label));
+    cell.appendChild(el('div', 'stat', value));
+    grid.appendChild(cell);
+  });
+  parent.appendChild(grid);
+}
+
+/** Draws a route at the canvas's own width and the given width:height. */
+function drawRoute(canvas, route, aspect, emptyText) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth || canvas.parentElement.clientWidth;
+  const h = Math.round(w / aspect);
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  if (!route || route.length < 2) {
+    ctx.fillStyle = LiftAppearance.cssColor('var(--muted)');
+    ctx.font = '15px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(emptyText || 'No route recorded', w / 2, h / 2);
+    return;
+  }
+
+  const pts = LiftOutdoor.project(route, w, h);
+  const accent = LiftAppearance.cssColor('var(--accent)');
+  ctx.strokeStyle = accent;
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+  ctx.stroke();
+
+  const dot = (p, r, color) => { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill(); };
+  dot(pts[0], 5, LiftAppearance.cssColor('var(--accent-2)'));
+  dot(pts[pts.length - 1], 6, accent);
+}
+
+function renderOutdoor() {
+  const wrap = $('#outdoor-section');
+  wrap.innerHTML = '';
+  const unit = distanceUnit();
+
+  // Start, and the day's activities.
+  const card = el('div', 'card');
+  const head = el('div', 'cardhead');
+  head.appendChild(el('span', 'muted', 'Record a route'));
+  const units = el('div', 'chips');
+  chips(units, [{ label: 'mi', v: 'miles' }, { label: 'km', v: 'kilometers' }],
+    (i) => i.v === unit,
+    (i) => { settings.distanceUnit = i.v; save(KEY.settings, settings); render(); });
+  head.appendChild(units);
+  card.appendChild(head);
+
+  const buttons = el('div', 'row');
+  LiftOutdoor.TYPES.forEach((type) => {
+    const b = el('button', null, type.label);
+    b.onclick = () => startRecording(type.key);
+    buttons.appendChild(b);
+  });
+  card.appendChild(buttons);
+
+  if (!navigator.geolocation) {
+    card.appendChild(el('p', 'muted', "This browser can't read your location, so it can't record a route."));
+    buttons.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+  }
+
+  outdoorOn(trainDate).forEach((a) => {
+    const row = el('button', 'entry linkrow');
+    row.appendChild(el('div', null, outdoorLabel(a.activityType)));
+    row.appendChild(el('span', 'muted', outdoorSummary(a)));
+    row.onclick = () => openReview(a.id);
+    card.appendChild(row);
+  });
+  wrap.appendChild(card);
+
+  // The newest route, whatever day Train is showing.
+  const last = LiftOutdoor.lastRoute(outdoor);
+  if (last) {
+    const lastCard = el('button', 'card linkcard');
+    lastCard.appendChild(el('strong', 'cardtitle', 'Last route'));
+    const canvas = el('canvas', 'route');
+    lastCard.appendChild(canvas);
+    const line = el('div', 'routeline');
+    line.appendChild(el('span', null, outdoorLabel(last.activityType)));
+    line.appendChild(el('span', 'muted', activityDate(last.startedAtEpochMs)));
+    lastCard.appendChild(line);
+    statGrid(lastCard, [
+      ['Distance', LiftOutdoor.distanceText(last.distanceMeters, unit)],
+      ['Time', LiftOutdoor.durationText(LiftOutdoor.durationMs(last))],
+      ['Pace', outdoorPace(last)],
+    ]);
+    lastCard.onclick = () => openReview(last.id);
+    wrap.appendChild(lastCard);
+    drawRoute(canvas, last.route, 2);
+  }
+
+  const bestsCard = el('div', 'card');
+  bestsCard.appendChild(el('strong', 'cardtitle', 'Personal bests'));
+  const bests = LiftOutdoor.bests(outdoor);
+  if (!bests.length) {
+    bestsCard.appendChild(el('p', 'muted',
+      'Your last route and your best distance, time and pace show up here after your first run, walk or hike.'));
+  }
+  bests.forEach((b) => {
+    bestsCard.appendChild(el('div', 'besthead', `${b.label} - ${b.count} ${b.count === 1 ? 'activity' : 'activities'}`));
+    statGrid(bestsCard, [
+      ['Farthest', b.longestDistanceMeters != null ? LiftOutdoor.distanceText(b.longestDistanceMeters, unit) : '—'],
+      ['Longest', b.longestDurationMs != null ? LiftOutdoor.durationText(b.longestDurationMs) : '—'],
+      ['Fastest pace', b.fastestPaceSecondsPerMeter != null ? LiftOutdoor.paceText(b.fastestPaceSecondsPerMeter, unit) : '—'],
+    ]);
+  });
+  wrap.appendChild(bestsCard);
+}
+
+/* ---- recording ---- */
+
+let recording = load(KEY.recording, null);
+let geoWatch = null;
+let wakeLock = null;
+let recordTimer = null;
+let lastFixAt = 0;
+let gpsProblem = '';
+
+async function holdScreenOn() {
+  try {
+    if (navigator.wakeLock && !wakeLock) {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => { wakeLock = null; });
+    }
+  } catch (e) {
+    // Low battery mode or an old browser. The warning on screen still applies.
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  // A wake lock is released whenever the page is hidden; take it back.
+  if (recording && document.visibilityState === 'visible') holdScreenOn();
+});
+
+function startRecording(type) {
+  if (recording) { showRecording(); return; }
+  recording = { id: uid(), activityType: type, startedAtEpochMs: Date.now(), route: [] };
+  save(KEY.recording, recording);
+  showRecording();
+}
+
+function showRecording() {
+  $('#recording').classList.remove('hidden');
+  $('#rec-title').textContent = outdoorLabel(recording.activityType);
+  $('#rec-finish').textContent = `Finish ${outdoorLabel(recording.activityType).toLowerCase()}`;
+  gpsProblem = '';
+  lastFixAt = 0;
+  holdScreenOn();
+
+  if (geoWatch === null && navigator.geolocation) {
+    geoWatch = navigator.geolocation.watchPosition(onFix, onFixError,
+      { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
+  }
+  clearInterval(recordTimer);
+  recordTimer = setInterval(updateRecording, 1000);
+  updateRecording();
+}
+
+function onFix(position) {
+  if (!recording) return;
+  lastFixAt = Date.now();
+  gpsProblem = position.coords.accuracy > LiftOutdoor.MAX_ACCURACY_METERS
+    ? `Weak GPS signal (${Math.round(position.coords.accuracy)} m). Waiting for a better fix.` : '';
+  const route = recording.route;
+  const point = LiftOutdoor.acceptFix(route[route.length - 1] || null, position.coords,
+    position.timestamp || Date.now(), recording.startedAtEpochMs);
+  if (point) {
+    route.push(point);
+    save(KEY.recording, recording);
+  }
+  updateRecording();
+}
+
+function onFixError(error) {
+  gpsProblem = error.code === 1
+    ? 'Location is turned off for this site. Allow it in your browser settings to record a route.'
+    : 'Looking for GPS...';
+  updateRecording();
+}
+
+function updateRecording() {
+  if (!recording) return;
+  const elapsed = Date.now() - recording.startedAtEpochMs;
+  const metres = LiftOutdoor.totalDistanceMeters(recording.route);
+  const unit = distanceUnit();
+  $('#rec-time').textContent = LiftOutdoor.durationText(elapsed);
+  $('#rec-distance').textContent = LiftOutdoor.distanceText(metres, unit);
+  $('#rec-pace').textContent = metres >= 100
+    ? LiftOutdoor.paceText((elapsed / 1000) / metres, unit) : '—';
+
+  let status = gpsProblem;
+  if (!status && !recording.route.length) status = 'Waiting for GPS...';
+  if (!status && lastFixAt && Date.now() - lastFixAt > 20000) {
+    status = 'No GPS update for a while. Keep LIFT open on screen.';
+  }
+  $('#rec-status').textContent = status;
+  drawRoute($('#rec-canvas'), recording.route, 1, 'Waiting for GPS...');
+}
+
+function stopWatching() {
+  if (geoWatch !== null && navigator.geolocation) navigator.geolocation.clearWatch(geoWatch);
+  geoWatch = null;
+  clearInterval(recordTimer);
+  recordTimer = null;
+  if (wakeLock) wakeLock.release().catch(() => {});
+  wakeLock = null;
+  $('#recording').classList.add('hidden');
+}
+
+$('#rec-finish').onclick = () => {
+  if (!recording) return;
+  const route = recording.route;
+  if (route.length < 2 && !confirm('No route was recorded. Save the time anyway?')) return;
+  const activity = {
+    id: recording.id,
+    activityType: recording.activityType,
+    startedAtEpochMs: recording.startedAtEpochMs,
+    endedAtEpochMs: Date.now(),
+    distanceMeters: Math.round(LiftOutdoor.totalDistanceMeters(route) * 10) / 10,
+    elevationGainMeters: Math.round(LiftOutdoor.elevationGainMeters(route) * 10) / 10,
+    route,
+  };
+  outdoor.push(activity);
+  save(KEY.outdoor, outdoor);
+  recording = null;
+  localStorage.removeItem(KEY.recording);
+  stopWatching();
+  trainDate = dateKey(new Date(activity.startedAtEpochMs));
+  render();
+  openReview(activity.id);
+};
+
+$('#rec-discard').onclick = () => {
+  if (!recording || !confirm('Discard this recording? The route so far is lost.')) return;
+  recording = null;
+  localStorage.removeItem(KEY.recording);
+  stopWatching();
+  render();
+};
+
+/* ---- reviewing one ---- */
+
+let reviewingId = null;
+
+function openReview(id) {
+  const a = outdoor.find((x) => x.id === id);
+  if (!a) return;
+  reviewingId = id;
+  const unit = distanceUnit();
+  $('#review').classList.remove('hidden');
+  $('#review-title').textContent = outdoorLabel(a.activityType);
+  $('#review-date').textContent = new Date(a.startedAtEpochMs).toLocaleString(undefined,
+    { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  const stats = $('#review-stats');
+  stats.innerHTML = '';
+  const climb = unit === 'kilometers'
+    ? `${Math.round(a.elevationGainMeters || 0)} m` : `${Math.round((a.elevationGainMeters || 0) * 3.28084)} ft`;
+  statGrid(stats, [
+    ['Distance', LiftOutdoor.distanceText(a.distanceMeters, unit)],
+    ['Time', LiftOutdoor.durationText(LiftOutdoor.durationMs(a))],
+    ['Pace', outdoorPace(a)],
+  ]);
+  statGrid(stats, [['Climb', climb], ['GPS points', String((a.route || []).length)], ['', '']]);
+  window.scrollTo(0, 0);
+  drawRoute($('#review-canvas'), a.route, 1);
+}
+
+$('#review-close').onclick = () => { reviewingId = null; $('#review').classList.add('hidden'); };
+$('#review-delete').onclick = () => {
+  const a = outdoor.find((x) => x.id === reviewingId);
+  if (!a || !confirm(`Delete this ${outdoorLabel(a.activityType).toLowerCase()}? It can't be undone.`)) return;
+  outdoor = outdoor.filter((x) => x.id !== reviewingId);
+  save(KEY.outdoor, outdoor);
+  reviewingId = null;
+  $('#review').classList.add('hidden');
+  render();
+};
+
+// A recording survives a reload: pick it back up, and keep adding to the route.
+if (recording && recording.id && Array.isArray(recording.route)) {
+  showRecording();
+} else {
+  recording = null;
+}
+
+LiftAppearance.onChange(() => {
+  if (recording) updateRecording();
+  if (reviewingId) openReview(reviewingId);
+});
 
 /* ---------------- send to coach ---------------- */
 
@@ -1863,6 +2343,9 @@ function render() {
 function saveBackup() {
   const stored = {};
   LiftBackup.STORED.forEach((k) => { stored[k] = load(KEY[k], null); });
+  // Routes are compact in storage and spelled out in the file, in LIFT for
+  // Android's field names. See outdoor.js.
+  stored.outdoor = outdoor.map(LiftOutdoor.toBackup);
   // Sections a newer client wrote that this build does not store go back out
   // as they came in -- the same promise `ext` makes, for the same reason.
   const data = LiftBackup.buildData(stored, load(KEY.unknownData, {}));
@@ -1930,7 +2413,9 @@ function loadBackup(file) {
       const added = addMissing(food, incoming.food) + addMissing(workouts, incoming.workouts)
         + addMissing(recipes, arrivingRecipes)
         // After recipes, so a meal whose recipe came in this same file keeps it.
-        + LiftBackup.addMissingPlan(plan, incoming.plan, recipes);
+        + LiftBackup.addMissingPlan(plan, incoming.plan, recipes)
+        + addMissing(routines, (incoming.routines || []).filter((r) => r && Array.isArray(r.exercises)))
+        + addMissing(outdoor, (incoming.outdoor || []).map(LiftOutdoor.fromBackup).filter(Boolean));
       fillGaps(steps, incoming.steps);
       fillGaps(weights, incoming.weights);
       if (!goal && incoming.goal) goal = incoming.goal;
@@ -1948,6 +2433,8 @@ function loadBackup(file) {
       save(KEY.settings, settings);
       save(KEY.recipes, recipes);
       save(KEY.plan, plan);
+      save(KEY.routines, routines);
+      save(KEY.outdoor, outdoor);
 
       render();
       alert(added
