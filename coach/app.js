@@ -1888,8 +1888,21 @@ function openRecipeForm(id) {
   $('#ing-results').innerHTML = '';
   $('#ing-tally').textContent = '';
 
-  $('#recipe-form').classList.remove('hidden');
-  $('#r-name').focus();
+  // Any in-flight import costing belongs to the form it opened, not this one.
+  importRun++;
+  showRecipeForm();
+}
+
+/* Unhides the editor and brings it on screen. Every way in needs both: the
+ * form sits below the recipe list at every width, so a form that is only
+ * unhidden -- or only filled -- can be a full list's height out of sight. The
+ * import once filled it without opening it at all, and a recipe it found was
+ * invisible unless the coach happened to have pressed New recipe first. */
+function showRecipeForm() {
+  const form = $('#recipe-form');
+  form.classList.remove('hidden');
+  form.scrollIntoView({ block: 'start' });
+  $('#r-name').focus({ preventScroll: true });
 }
 
 $('#recipe-new').onclick = () => openRecipeForm(null);
@@ -2898,6 +2911,8 @@ renderIngredientSources();
 const MEALDB = 'https://www.themealdb.com/api/json/v1/1';
 
 let importedHits = [];
+let importRun = 0;
+const SERVINGS_UNSTATED = ' TheMealDB does not say how many this serves; set it before sending.';
 
 function mealToRecipe(meal) {
   const ingredients = [];
@@ -2943,30 +2958,41 @@ async function searchMealDb(query) {
   }
 }
 
-/* Fills the recipe form from an import, then costs what it can.
+/* Opens a fresh recipe form filled from an import, then costs what it can.
  *
- * Servings are left at whatever the form had: TheMealDB does not say how many
- * a recipe feeds, and guessing four would silently divide every macro by a
- * number nobody chose. */
+ * Always a new recipe: openRecipeForm(null) clears the id, so importing while
+ * an existing recipe is open can never overwrite it on Save, and clears every
+ * macro and its typed flag, so nothing from that recipe leaks into this one.
+ *
+ * Servings are 1: TheMealDB does not say how many a recipe feeds, and the
+ * form's default of four would silently divide every macro by a number nobody
+ * chose. The same rule Paste a recipe and Coach iOS follow. */
 async function useImportedRecipe(index) {
   const recipe = importedHits[index];
   if (!recipe) return;
 
+  // Panel first: hiding it after the form scrolled into view would pull the
+  // form up past the top of the screen.
+  $('#import-panel').classList.add('hidden');
+  openRecipeForm(null);
+
   $('#r-name').value = recipe.name;
+  $('#r-servings').value = 1;
   $('#r-ingredients').value = recipe.ingredients.join('\n');
   $('#r-steps').value = recipe.steps.join('\n');
-  $('#import-panel').classList.add('hidden');
-
-  ingredientTally = null;
-  ['#r-cal', '#r-p', '#r-c', '#r-f', '#r-fib'].forEach((s) => { $(s).dataset.typed = ''; $(s).value = ''; });
 
   const note = $('#ing-tally');
   note.textContent = 'Costing the ingredients…';
 
+  const run = ++importRun;
   await loadFoodLibrary();
+  // The first load of the ingredient database takes a moment. If the coach
+  // cancelled, or opened another recipe, meanwhile, these macros are not theirs.
+  if (run !== importRun || editingRecipeId !== null
+      || $('#recipe-form').classList.contains('hidden')) return;
   if (foodLibraryError) {
     note.textContent = `Imported. Could not load the ingredient database (${foodLibraryError}),`
-      + ' so the macros are blank.';
+      + ' so the macros are blank.' + SERVINGS_UNSTATED;
     return;
   }
 
@@ -3000,6 +3026,7 @@ async function useImportedRecipe(index) {
     note.textContent = 'Imported. None of the ingredients could be weighed automatically — '
       + 'look them up above, or type the macros in.';
   }
+  note.textContent += SERVINGS_UNSTATED;
 }
 
 $('#import-open').onclick = () => {
@@ -3038,8 +3065,10 @@ $('#rp-go').onclick = () => {
     return;
   }
 
-  openRecipeForm(null);
+  // Panel first, as with the import: hiding it after the form scrolled into
+  // view would pull the form up past the top of the screen.
   $('#rp-panel').classList.add('hidden');
+  openRecipeForm(null);
 
   $('#r-name').value = parsed.name || '';
   $('#r-ingredients').value = parsed.ingredientLines.join('\n');

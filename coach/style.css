@@ -78,6 +78,9 @@ h2 {
   margin: 24px 0 8px;
 }
 
+/* Clears the sticky tab row when app.js scrolls the recipe editor into view. */
+#recipe-form { scroll-margin-top: 64px; }
+
 nav {
   display: flex;
   border-bottom: 1px solid var(--rule);
