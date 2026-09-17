@@ -11,7 +11,7 @@ hide_title: true
 Apple Watch app, the Wear OS watch app, and the web app at
 [dugcanlift.com/lift](/lift/)
 
-Last updated: 16 September 2026
+Last updated: 17 September 2026
 
 Coach, the app a trainer uses to read what you send, has
 [its own privacy policy](/coach/privacy/).
@@ -60,13 +60,12 @@ hike you started. It does not track you at any other time, and the route stays
 on your device unless you send it (see Send to Coach below) or save it to
 Health Connect or Apple Health.
 
-- **Android** asks for precise location, and optionally background location.
-  GPS starts when you start a recording and stops when you stop it. Background
-  location lets a recording carry on if your phone locks or you switch apps;
-  you can decline it and still record, but the recording stops if you lock the
-  phone or leave the app. While recording, Android requires a foreground
-  service, shown as the ongoing "Recording your route" notification — which is
-  what the notifications permission is for.
+- **Android** asks for precise location while you use the app, and never for
+  background ("Allow all the time") location. GPS starts when you start a
+  recording and stops when you stop it. A recording carries on if your phone
+  locks or you switch apps because it runs as a foreground service, shown as
+  the ongoing "Recording your route" notification — which is what the
+  notifications permission is for.
 - **iPhone** asks for location access including "Always", so that a recording
   keeps going with the phone locked in your pocket. GPS runs only while the
   recording screen is open: it starts when that screen opens and stops when you
