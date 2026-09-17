@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-16T10:02:06.418674+00:00",
+  "last_updated": "2026-09-17T10:05:06.597018+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -27,9 +27,8 @@
       "category": "Protein",
       "url": "https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs",
       "servings": 38,
-      "price": 51.97,
-      "cost_per_serving": 1.368,
-      "error": null
+      "price": null,
+      "error": "503 Server Error: Service Unavailable for url: https://nutricost.com/products/nutricost-whey-protein-concentrate-powder-5-lbs"
     },
     {
       "name": "MRE Lite Whole Food Protein (2lb)",
