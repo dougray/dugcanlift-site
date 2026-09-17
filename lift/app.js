@@ -3228,17 +3228,20 @@ function logPlannedMeal(id) {
   if (!m || m.loggedFoodEntryId || !m.snapshotNutrition) return;
 
   const n = m.snapshotNutrition;
+  // A snapshot missing a macro rounded to NaN, which JSON stores as null in a
+  // field every reader treats as a number -- LIFT Android crashed restoring it.
+  const whole = (v) => (Number.isFinite(v) ? Math.round(v) : 0);
   const entry = {
     id: uid(),
     name: m.recipeName,
     // Food entries store macros per serving and multiply by servings, so the
     // per-serving snapshot passes through unscaled.
     servings: m.servings,
-    calories: Math.round(n.calories),
-    proteinG: Math.round(n.proteinG),
-    fatG: Math.round(n.fatG),
-    carbsG: Math.round(n.carbsG),
-    fiberG: Math.round(n.fiberG || 0),
+    calories: whole(n.calories),
+    proteinG: whole(n.proteinG),
+    fatG: whole(n.fatG),
+    carbsG: whole(n.carbsG),
+    fiberG: whole(n.fiberG),
     date: m.date,
     loggedAt: Date.now(),
     meal: m.meal,
