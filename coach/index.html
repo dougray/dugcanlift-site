@@ -43,6 +43,10 @@
   </div>
 </section>
 
+<!-- Roster and Client are two tabs on a phone and one list/detail view from
+     1024px up; see "large screens" in style.css. -->
+<div id="people">
+
 <!-- ---------------- ROSTER ---------------- -->
 <section id="roster" class="tab active">
 
@@ -71,48 +75,76 @@
 
 <!-- ---------------- CLIENT ---------------- -->
 <section id="client" class="tab">
-  <div id="client-head"></div>
-
-  <h2>Week by week</h2>
-  <div class="card scroll-x" id="client-weeks"></div>
-
-  <h2>Training volume</h2>
-  <div class="card">
-    <canvas id="chart-volume" height="150"></canvas>
-    <div class="legend" id="legend-volume"></div>
+  <!-- Only ever shown beside the roster, when no client is open. -->
+  <div id="client-empty" class="card hidden">
+    <p class="big">No client open.</p>
+    <p class="muted">Pick someone from the roster to see their week.</p>
   </div>
 
-  <h2>Fuel against goal</h2>
-  <div class="card">
-    <div id="client-fuel-stats"></div>
-    <canvas id="chart-fuel" height="150"></canvas>
-    <div class="legend" id="legend-fuel"></div>
+  <!-- Each heading travels with its card in a .panel, so a wide screen can
+       lay the panels out as a grid without splitting a title from its card. -->
+  <div id="client-body" class="panels">
+    <div class="panel span-all" id="client-head"></div>
+
+    <div class="panel span-all">
+      <h2>Week by week</h2>
+      <div class="card scroll-x" id="client-weeks"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Training volume</h2>
+      <div class="card">
+        <canvas id="chart-volume" height="150"></canvas>
+        <div class="legend" id="legend-volume"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Fuel against goal</h2>
+      <div class="card">
+        <div id="client-fuel-stats"></div>
+        <canvas id="chart-fuel" height="150"></canvas>
+        <div class="legend" id="legend-fuel"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Bodyweight</h2>
+      <div class="card" id="client-weight"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Lift progression</h2>
+      <div id="lift-chips" class="chips"></div>
+      <div class="card" id="lift-card"></div>
+    </div>
+
+    <div class="panel span-all">
+      <h2 id="client-outdoor-heading" class="hidden">Outdoor</h2>
+      <div id="client-outdoor"></div>
+    </div>
+
+    <div class="panel span-all">
+      <h2>Sessions</h2>
+      <div id="session-log"></div>
+
+      <button class="wide ghost" id="client-remove">Remove this client</button>
+    </div>
   </div>
-
-  <h2>Bodyweight</h2>
-  <div class="card" id="client-weight"></div>
-
-  <h2>Lift progression</h2>
-  <div id="lift-chips" class="chips"></div>
-  <div class="card" id="lift-card"></div>
-
-  <h2 id="client-outdoor-heading" class="hidden">Outdoor</h2>
-  <div id="client-outdoor"></div>
-
-  <h2>Sessions</h2>
-  <div id="session-log"></div>
-
-  <button class="wide ghost" id="client-remove">Remove this client</button>
 </section>
+
+</div>
 
 <!-- ---------------- COOK ---------------- -->
 <section id="cook" class="tab">
   <div class="chips" id="cook-sections"></div>
 
   <div id="cook-recipes">
-    <button class="wide" id="recipe-new">New recipe</button>
-    <button class="wide ghost" id="import-open">Import a recipe</button>
-    <button class="wide ghost" id="rp-open">Paste a recipe</button>
+    <div class="actions">
+      <button class="wide" id="recipe-new">New recipe</button>
+      <button class="wide ghost" id="import-open">Import a recipe</button>
+      <button class="wide ghost" id="rp-open">Paste a recipe</button>
+    </div>
 
     <div id="rp-panel" class="card hidden">
       <strong>Paste a recipe</strong>
@@ -254,7 +286,9 @@
   <div class="chips" id="train-sections"></div>
 
   <div id="train-workouts">
-    <button class="wide" id="workout-new">New workout</button>
+    <div class="actions">
+      <button class="wide" id="workout-new">New workout</button>
+    </div>
     <div id="workout-list"></div>
   </div>
 
@@ -301,52 +335,64 @@
 
 <!-- ---------------- CONNECT ---------------- -->
 <section id="connect" class="tab">
-  <h2>Appearance</h2>
-  <div class="card">
-    <div class="chips" id="appearance-mode"></div>
-    <p class="muted">System follows your device's light or dark setting.</p>
-  </div>
-
-  <h2>Your details</h2>
-  <div class="card">
-    <p class="muted">Only used to write the invite below. Stays on this device.</p>
-    <label for="coach-name">Your name</label>
-    <input type="text" id="coach-name" placeholder="Doug Copeland">
-    <label for="coach-email">The address clients send logs to</label>
-    <input type="text" id="coach-email" inputmode="email" placeholder="you@example.com">
-  </div>
-
-  <h2>Invite a client</h2>
-  <div class="card">
-    <p class="muted">Send this to a client once. After that it's one tap on
-      their end, every time.</p>
-    <pre id="invite-text"></pre>
-    <div class="row">
-      <button id="invite-copy">Copy invite</button>
-      <button class="ghost" id="invite-email">Email it</button>
+  <div class="panels">
+    <div class="panel">
+      <h2>Appearance</h2>
+      <div class="card">
+        <div class="chips" id="appearance-mode"></div>
+        <p class="muted">System follows your device's light or dark setting.</p>
+      </div>
     </div>
-  </div>
 
-  <h2>How it works</h2>
-  <div class="card">
-    <ol class="steps">
-      <li>Your client taps <b>Send to Coach</b> in LIFT.</li>
-      <li>Their mail app opens already filled in — they just hit Send.</li>
-      <li>You get <b>“LIFT log from …”</b> with a button and a 7-day summary.</li>
-      <li>Tap the button. Their log opens here.</li>
-    </ol>
-    <p class="muted">The log travels inside the link itself, in the part after
-      the <code>#</code> that browsers never send to a server. Nothing is stored
-      online and there is no account — their numbers go from their phone, through
-      your inbox, to this device.</p>
-  </div>
+    <div class="panel">
+      <h2>Your details</h2>
+      <div class="card">
+        <p class="muted">Only used to write the invite below. Stays on this device.</p>
+        <label for="coach-name">Your name</label>
+        <input type="text" id="coach-name" placeholder="Doug Copeland">
+        <label for="coach-email">The address clients send logs to</label>
+        <input type="text" id="coach-email" inputmode="email" placeholder="you@example.com">
+      </div>
+    </div>
 
-  <h2>This device</h2>
-  <div class="card">
-    <p class="muted" id="storage-note"></p>
-    <button class="wide ghost" id="backup-save">Save a backup file</button>
-    <button class="wide ghost" id="backup-load">Restore from a backup file</button>
-    <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
+    <div class="panel">
+      <h2>Invite a client</h2>
+      <div class="card">
+        <p class="muted">Send this to a client once. After that it's one tap on
+          their end, every time.</p>
+        <pre id="invite-text"></pre>
+        <div class="row">
+          <button id="invite-copy">Copy invite</button>
+          <button class="ghost" id="invite-email">Email it</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="panel">
+      <h2>How it works</h2>
+      <div class="card">
+        <ol class="steps">
+          <li>Your client taps <b>Send to Coach</b> in LIFT.</li>
+          <li>Their mail app opens already filled in — they just hit Send.</li>
+          <li>You get <b>“LIFT log from …”</b> with a button and a 7-day summary.</li>
+          <li>Tap the button. Their log opens here.</li>
+        </ol>
+        <p class="muted">The log travels inside the link itself, in the part after
+          the <code>#</code> that browsers never send to a server. Nothing is stored
+          online and there is no account — their numbers go from their phone, through
+          your inbox, to this device.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>This device</h2>
+      <div class="card">
+        <p class="muted" id="storage-note"></p>
+        <button class="wide ghost" id="backup-save">Save a backup file</button>
+        <button class="wide ghost" id="backup-load">Restore from a backup file</button>
+        <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
+      </div>
+    </div>
   </div>
 </section>
 
