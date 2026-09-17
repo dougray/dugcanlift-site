@@ -461,8 +461,18 @@ function legend(node, series) {
 let currentTab = 'roster';
 let openClientId = null;
 
+/* From 1024px up, Roster and Client are one list/detail view: the roster in a
+ * left column, the open client beside it. style.css does the layout off the
+ * same width; this only decides what to render. It is a width, never a device
+ * check -- an iPad in split view and a narrow desktop window are both phones
+ * here, and a folding phone opened flat is not. */
+const splitView = window.matchMedia('(min-width: 1024px)');
+
 function showTab(name) {
   currentTab = name;
+  // style.css reads this to show the roster beside a client, and the client
+  // pane beside the roster, when the split view is on.
+  document.body.dataset.tab = name;
   document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
   $('#' + name).classList.add('active');
   document.querySelectorAll('#tabs button').forEach((b) =>
@@ -552,6 +562,7 @@ function renderRoster() {
     }
 
     row.appendChild(metrics);
+    if (client.id === openClientId) row.classList.add('selected');
     row.onclick = () => openClient(client.id);
     list.appendChild(row);
   });
@@ -567,7 +578,18 @@ function currentClient() {
 
 function renderClient() {
   const client = currentClient();
-  if (!client) { showTab('roster'); return; }
+  if (!client) {
+    // Beside the roster there is nowhere to go back to: say so in place.
+    if (splitView.matches) {
+      $('#client-empty').classList.remove('hidden');
+      $('#client-body').classList.add('hidden');
+      return;
+    }
+    showTab('roster');
+    return;
+  }
+  $('#client-empty').classList.add('hidden');
+  $('#client-body').classList.remove('hidden');
   const unit = unitFor(client);
 
   renderClientHead(client, unit);
@@ -633,6 +655,7 @@ function renderOutdoor(client, unit) {
   const route = client.lastRoute;
   const bests = client.outdoorBests;
   const heading = $('#client-outdoor-heading');
+  let drawRouteAfter = null;
 
   if (!route && !bests && !recent.length) {
     heading.classList.add('hidden');
@@ -657,7 +680,10 @@ function renderOutdoor(client, unit) {
     ]);
     card.appendChild(el('p', 'muted small', 'The first and last 200 m are left off by the client\'s app.'));
     node.appendChild(card);
-    drawRoute(canvas, route.points, 2);
+    // Drawn once every outdoor card is in: on a wide screen the cards share a
+    // grid, and the route card is only full width until its neighbours arrive.
+    // Measured any earlier, the map is drawn for a card twice its final width.
+    drawRouteAfter = () => drawRoute(canvas, route.points, 2);
   }
 
   if (bests) {
@@ -689,6 +715,8 @@ function renderOutdoor(client, unit) {
     });
     node.appendChild(card);
   }
+
+  if (drawRouteAfter) drawRouteAfter();
 }
 
 function renderClientHead(client, unit) {
@@ -1304,8 +1332,12 @@ function sampleClient() {
 /* ---------------- render ---------------- */
 
 function render() {
-  if (currentTab === 'roster') renderRoster();
-  else if (currentTab === 'client') renderClient();
+  document.body.dataset.tab = currentTab;
+  if (currentTab === 'roster' || currentTab === 'client') {
+    if (splitView.matches) { renderRoster(); renderClient(); }
+    else if (currentTab === 'roster') renderRoster();
+    else renderClient();
+  }
   else if (currentTab === 'cook') renderCook();
   else if (currentTab === 'train') renderTrain();
   else if (currentTab === 'connect') renderConnect();
@@ -1396,13 +1428,34 @@ $('#backup-file').onchange = (e) => {
   e.target.value = '';
 };
 
-// Charts are sized from the element's rendered width, so they need redrawing
-// when that width changes.
+// Charts and the route map are canvases sized from their card's rendered
+// width, so they need redrawing when that width changes. Watching the client
+// pane rather than the window catches every cause: a rotation, a desktop
+// window dragged wider, and a card moving into or out of a two-column grid.
+// Only a change in width redraws -- a pane growing taller as it renders must
+// not loop back into another render.
 let resizeTimer = null;
-window.addEventListener('resize', () => {
+let clientPaneWidth = 0;
+const clientPaneVisible = () =>
+  currentTab === 'client' || (currentTab === 'roster' && splitView.matches);
+const redrawClient = () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => { if (currentTab === 'client') renderClient(); }, 150);
-});
+  resizeTimer = setTimeout(() => { if (clientPaneVisible()) renderClient(); }, 150);
+};
+if ('ResizeObserver' in window) {
+  new ResizeObserver((entries) => {
+    const width = Math.round(entries[0].contentRect.width);
+    if (!width || width === clientPaneWidth) return;
+    clientPaneWidth = width;
+    redrawClient();
+  }).observe($('#client-body'));
+} else {
+  window.addEventListener('resize', redrawClient);
+}
+
+// Crossing 1024px turns two tabs into one view or back again, which changes
+// what is on screen, not just its size.
+splitView.addEventListener('change', render);
 
 // A link tapped while the app is already open changes the fragment without
 // reloading the page.

@@ -462,3 +462,183 @@ canvas.route {
   text-overflow: ellipsis;
 }
 .besthead { font-weight: 700; margin-top: 14px; }
+
+/* ---------------- large screens ----------------
+ *
+ * Everything above is the phone, and nothing below changes it: every rule here
+ * sits behind a min-width media query or a container query, and containers
+ * only exist from 700px up. Widths, never user agents -- an iPad in split
+ * view is a phone, a folding phone opened flat is a tablet, and an installed
+ * PWA window is whatever size it has been dragged to.
+ *
+ *   700px   the tabs become containers; cards go to grids when their tab is
+ *           wide enough (640px for two columns, 1000px for a 7-day week)
+ *   1024px  the tab row becomes a sidebar, and Roster and Client become one
+ *           list/detail view (app.js `splitView` reads the same width)
+ *   1600px  content stops growing and centres
+ *
+ * The same structure as Coach iOS (sidebar, roster list/detail) and Coach
+ * Android (navigation rail, list/detail). */
+
+@media (min-width: 700px) {
+  /* Container queries below size cards to the tab they sit in, not the
+     window: beside the roster, a client page is half the width it is alone. */
+  .tab { container-type: inline-size; }
+
+  /* Forms and pickers are read top to bottom; past this they are all line. */
+  #recipe-form, #workout-form, #exercise-picker, #picker, #session-picker,
+  #send-one, #rp-panel, #import-panel, #incoming { max-width: 760px; }
+}
+
+@container (min-width: 640px) {
+  /* A heading travels with its card. Cards in a row keep their own heights:
+     stretched to match, a chart-only card was mostly empty surface beside
+     one with stats above its chart. Grid items do not collapse margins, so
+     the heading gives up the 8px the card below it already adds. */
+  .panels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  .panels > .panel { min-width: 0; }
+  .panels > .panel > h2 { margin-top: 16px; }
+  .panels > .span-all { grid-column: 1 / -1; }
+  /* An empty lift-chip row still pads 4px, which set its card below the
+     one beside it. */
+  .panels .chips:empty { display: none; }
+
+  /* Readable line lengths inside a wide card. */
+  .panels .card p, .panels .statline { max-width: 42rem; }
+  #client-head .statline { max-width: 36rem; }
+  #client-remove { width: auto; padding-inline: 28px; }
+
+  /* Last route | Personal bests, and anything left over full width. */
+  #client-outdoor {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  #client-outdoor > .card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0 12px; }
+  .actions > button.wide { display: inline-block; width: auto; }
+
+  /* A client picker and two send buttons do not need the whole width. */
+  #plan-client, #tplan-client { max-width: 420px; }
+  #plan-send-card > button.wide, #tplan-send-card > button.wide {
+    display: inline-block;
+    width: auto;
+    margin-right: 8px;
+  }
+
+  #recipe-list, #workout-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    column-gap: 16px;
+    margin-top: 12px;
+  }
+  #recipe-list > p, #workout-list > p { grid-column: 1 / -1; }
+  #recipe-list > .card { cursor: pointer; }
+
+  #cook-shopping {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    max-width: 1000px;
+  }
+  #cook-shopping > p { grid-column: 1 / -1; }
+}
+
+/* The week as a week: seven columns once each day gets ~135px. Below that it
+   stays the list, which reads better than seven slivers. */
+@container (min-width: 1000px) {
+  #plan-days, #tplan-days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 10px;
+  }
+  #plan-days > .card, #tplan-days > .card { padding: 12px; }
+  #plan-days .planrow { flex-direction: column; align-items: flex-start; gap: 6px; }
+  #plan-days .planrow > span:first-child { flex: none; }
+  #plan-days .planmeal { flex: none; gap: 6px; }
+  #tplan-days .statline { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-columns: 208px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  header { grid-column: 1; grid-row: 1; padding: 24px 20px 0; }
+
+  nav {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: none;
+    margin-top: 20px;
+    padding: 0 12px;
+    top: 16px;
+  }
+
+  nav button {
+    flex: none;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: none;
+    border-radius: 8px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+  }
+
+  nav button.active,
+  body[data-tab="client"] nav button[data-tab="roster"] {
+    color: var(--accent);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--card-border);
+  }
+
+  /* Client is not a place of its own here; it is the right half of Roster. */
+  nav button[data-tab="client"] { display: none; }
+
+  main {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 0;
+    padding: 16px 32px 64px;
+    border-left: 1px solid var(--rule);
+  }
+
+  #people {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  body[data-tab="roster"] #client,
+  body[data-tab="client"] #roster { display: block; }
+
+  /* The list keeps its place while a long client page scrolls past it. */
+  #roster {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 24px;
+  }
+
+  .client-row { cursor: pointer; }
+  .client-row.selected { box-shadow: inset 0 0 0 2px var(--accent-2); }
+}
