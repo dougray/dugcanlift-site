@@ -400,3 +400,202 @@ canvas.route {
 .overlay .stat { font-size: 22px; }
 #review-close { float: right; }
 
+
+/* ---------------- large screens ----------------
+ *
+ * Everything above is the phone, and nothing below changes it: every rule here
+ * sits behind a min-width media query or a container query, and containers
+ * only exist from 700px up. Widths, never user agents -- an iPad in split
+ * view is a phone, a folding phone opened flat is a tablet, and an installed
+ * PWA window is whatever size it has been dragged to.
+ *
+ *   700px   the tabs become containers; forms, pickers and the full-screen
+ *           recording and review stop growing. Cards go to grids when their
+ *           tab is wide enough (640px for two columns, 1000px for a 7-day week)
+ *   1024px  the tab row becomes a sidebar, and the recipe list and its editor
+ *           sit side by side
+ *   1600px  content stops growing and centres
+ *
+ * The same breakpoints and structure as Coach web. The wrappers these rules
+ * lay out (.panels, .panel, .panel-stack, .cols, .col, #cook-library) are
+ * plain blocks on a phone: no padding, border or margin, so the margins inside
+ * them collapse exactly as they did before the wrappers existed.
+ *
+ * Canvases are drawn at their element's width, so app.js redraws them when
+ * that width changes ("canvases follow their width"). */
+
+@media (min-width: 700px) {
+  /* Container queries below size cards to the tab they sit in, not the
+     window: beside the sidebar, a tab is narrower than the window. */
+  .tab { container-type: inline-size; }
+
+  /* Forms and pickers are read top to bottom; past this they are all line. */
+  #recipe-form, #picker, #exercise-picker, #food-search, #food-form,
+  #calc > .card { max-width: 760px; }
+
+  /* Recording and reviewing a route are full screen, and the route is drawn
+     square: at a desktop window's width it would be taller than the window. */
+  .overlay {
+    padding-left: max(calc(env(safe-area-inset-left) + 16px), calc((100% - 560px) / 2));
+    padding-right: max(calc(env(safe-area-inset-right) + 16px), calc((100% - 560px) / 2));
+  }
+}
+
+@container (min-width: 640px) {
+  /* Home. A heading travels with its card. Cards in a row keep their own
+     heights: stretched to match, a short card is mostly empty surface beside
+     a tall one. Grid items do not collapse margins, so the heading gives up
+     the 8px the card above it already adds. */
+  .panels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  .panels > .panel, .panels > .panel-stack { min-width: 0; }
+  .panels > .panel > h2,
+  .panel-stack > .panel:first-child > h2 { margin-top: 16px; }
+  .panels > .span-all { grid-column: 1 / -1; }
+  /* An empty chip row still pads 4px, which set its card below the one
+     beside it. */
+  .panels .chips:empty { display: none; }
+  #open-calc { display: inline-block; width: auto; padding-inline: 28px; }
+
+  /* Readable line lengths inside a wide card. */
+  .panels .card p { max-width: 42rem; }
+
+  /* Food and Train: two columns, each read top to bottom. Food keeps the
+     day's totals and its forms beside the day's list; Train keeps the day's
+     workouts beside Outdoor. Each column is a container of its own, so what
+     sits in it sizes to the column. */
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  .cols > .col { min-width: 0; container-type: inline-size; }
+  .cols > .col > h2:first-child { margin-top: 8px; }
+  .cols > .col > .chips:first-child { margin-top: 8px; }
+  .cols > .col > #food-list > .mealhead:first-child { margin-top: 8px; }
+
+  /* Buttons that were a phone's full width need not be a desktop's. */
+  #train-start, #recipe-new {
+    display: inline-block;
+    width: auto;
+    padding-inline: 28px;
+  }
+
+  /* Record a route above, then Last route | Personal bests. */
+  #outdoor-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    align-items: start;
+  }
+  #outdoor-section > * { min-width: 0; }
+  #outdoor-section > .card:first-child,
+  #outdoor-section > .card:last-child:nth-child(even) { grid-column: 1 / -1; }
+
+  /* Cook. */
+  #recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    column-gap: 16px;
+    margin-top: 12px;
+  }
+  #recipe-list > p { grid-column: 1 / -1; }
+  #recipe-list > .card, #cook-shopping > .card { cursor: pointer; }
+
+  #cook-shopping {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    max-width: 1000px;
+  }
+  #cook-shopping > p, #cook-shopping > button { grid-column: 1 / -1; }
+  #cook-shopping > button.wide { justify-self: start; width: auto; padding-inline: 28px; }
+}
+
+/* The week as a week: seven columns once each day gets ~135px. Below that it
+   stays the list, which reads better than seven slivers. */
+@container (min-width: 1000px) {
+  #cook-plan {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: 10px;
+    align-items: start;
+  }
+  #cook-plan > p { grid-column: 1 / -1; }
+  #cook-plan > .card { padding: 12px; min-width: 0; }
+  #cook-plan .planrow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  #cook-plan .planmeal { gap: 6px; }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-columns: 208px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  header { grid-column: 1; grid-row: 1; padding: 24px 20px 0; }
+
+  nav {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: none;
+    margin-top: 20px;
+    padding: 0 12px;
+    top: 16px;
+  }
+
+  nav button {
+    flex: none;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: none;
+    border-radius: 8px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+  }
+
+  nav button.active {
+    color: var(--accent);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--card-border);
+  }
+
+  main {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 0;
+    padding: 16px 32px 64px;
+    border-left: 1px solid var(--rule);
+  }
+
+  button, .chip, summary { cursor: pointer; }
+
+  /* The recipe list and the recipe open in the editor, side by side. The
+     editor keeps its place while a long list scrolls past it. */
+  #cook-library:has(> #recipe-form:not(.hidden)) {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 24px;
+    align-items: start;
+  }
+  #cook-library:has(> #recipe-form:not(.hidden)) > #recipe-form {
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

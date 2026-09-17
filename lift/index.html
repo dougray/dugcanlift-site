@@ -32,24 +32,39 @@
 
 <!-- ---------------- HOME ---------------- -->
 <section id="home" class="tab active">
-  <div id="goal-summary"></div>
+  <!-- Each heading travels with its card in a .panel, so a wide screen can lay
+       the panels out as a grid without splitting a title from its card. On a
+       phone the wrappers change nothing. See "large screens" in style.css. -->
+  <div class="panels">
+  <div class="panel span-all" id="goal-summary"></div>
 
+  <div class="panel">
   <h2>Steps</h2>
   <div class="card" id="today-steps"></div>
+  </div>
 
+  <div class="panel">
   <h2>Training</h2>
   <div class="card" id="today-training"></div>
+  </div>
 
+  <div class="panel">
   <h2>Fuel so far today</h2>
   <div class="card" id="today-fuel"></div>
+  </div>
 
+  <div class="panel">
   <h2>Last 7 days workouts</h2>
   <div class="card" id="week-training"></div>
+  </div>
 
+  <div class="panel">
   <h2>Exercise progression</h2>
   <div id="progress-chips" class="chips"></div>
   <div class="card" id="progress-card"></div>
+  </div>
 
+  <div class="panel">
   <h2>Last 7 days fueling</h2>
   <div class="card">
     <div id="week-fuel-stats"></div>
@@ -60,9 +75,13 @@
     <canvas id="chart-macros" height="150"></canvas>
     <div class="legend" id="legend-macros"></div>
   </div>
+  </div>
 
+  <div class="panel span-all">
   <button class="wide ghost" id="open-calc">Set / recalculate my goal</button>
+  </div>
 
+  <div class="panel">
   <h2>Coach</h2>
   <div class="card" id="coach-card">
     <div id="coach-setup">
@@ -90,13 +109,20 @@
       <button class="wide ghost" id="coach-change">Change these details</button>
     </div>
   </div>
+  </div>
 
+  <!-- One grid cell, so the short Appearance card does not leave a hole beside
+       the tall Coach card. -->
+  <div class="panel-stack">
+  <div class="panel">
   <h2>Appearance</h2>
   <div class="card">
     <div class="chips" id="appearance-mode"></div>
     <p class="muted">System follows your device's light or dark setting.</p>
   </div>
+  </div>
 
+  <div class="panel">
   <h2>Your data</h2>
   <div class="card">
     <p class="muted">Everything you log lives in this browser and nowhere else.
@@ -117,11 +143,17 @@
       <button class="wide ghost" id="watch-scan-cancel">Cancel</button>
     </div>
   </div>
+  </div>
+  </div>
+  </div>
 </section>
 
 <!-- ---------------- COOK ---------------- -->
 <section id="cook" class="tab">
   <div class="chips" id="cook-sections"></div>
+
+  <!-- The recipe list and its editor: one list/detail view on a wide screen. -->
+  <div id="cook-library">
 
   <!-- recipes -->
   <div id="cook-recipes">
@@ -195,6 +227,8 @@
     <button class="wide ghost hidden" id="r-delete">Delete recipe</button>
   </div>
 
+  </div>
+
   <!-- plan -->
   <div id="cook-plan" class="hidden"></div>
 
@@ -262,6 +296,9 @@
     <button id="food-next">Next</button>
   </div>
 
+  <!-- The day's totals and the forms beside the day's list on a wide screen. -->
+  <div class="cols">
+  <div class="col">
   <div class="card" id="food-summary"></div>
 
   <div class="row">
@@ -322,8 +359,13 @@
     </div>
   </div>
 
+  </div>
+
+  <div class="col">
   <div id="recent-chips" class="chips"></div>
   <div id="food-list"></div>
+  </div>
+  </div>
 </section>
 
 <!-- ---------------- TRAIN ---------------- -->
@@ -337,6 +379,9 @@
   <h2>Focus</h2>
   <div class="chips" id="focus-chips"></div>
 
+  <!-- The day's training beside Outdoor on a wide screen. -->
+  <div class="cols">
+  <div class="col">
   <div class="card hidden" id="exercise-picker">
     <strong>Add an exercise</strong>
     <input type="text" id="ex-query" inputmode="search" placeholder="Squat, bench, hamstrings…">
@@ -350,9 +395,13 @@
   <div id="session-list"></div>
 
   <button class="wide" id="train-start">Start workout</button>
+  </div>
 
+  <div class="col">
   <h2>Outdoor</h2>
   <div id="outdoor-section"></div>
+  </div>
+  </div>
 </section>
 
 </main>
