@@ -1379,13 +1379,26 @@ $('#empty-demo').onclick = () => {
   render();
 };
 
+/* Remove this client: the client, their days, and the meals planned and
+ * sessions booked for them. What goes is counted and worded by
+ * client-removal.js, which node can test; this handler only asks and saves.
+ * Leaving the meals and sessions behind left them in no week, sendable from
+ * nowhere, and in every backup -- see that file. */
 $('#client-remove').onclick = () => {
   const client = currentClient();
   if (!client) return;
-  if (!confirm(`Remove ${client.name} and everything they have sent you? `
-             + 'This cannot be undone from here.')) return;
-  clients = clients.filter((c) => c.id !== client.id);
+  const stores = { clients, plans, sessions };
+  const impact = CoachClientRemoval.impact(client.id, stores);
+  if (!impact) return;
+  if (!confirm(CoachClientRemoval.confirmationPrompt(impact))) return;
+
+  const after = CoachClientRemoval.remove(client.id, stores);
+  clients = after.clients;
+  plans = after.plans;
+  sessions = after.sessions;
   persist();
+  save(COOK_KEY.plans, plans);
+  save(TRAIN_KEY.sessions, sessions);
   openClientId = null;
   $('#tab-client').disabled = true;
   showTab('roster');
