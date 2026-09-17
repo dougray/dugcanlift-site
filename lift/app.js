@@ -340,6 +340,10 @@ const CHART = {
 function drawChart(canvas, series, labels) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth;
+  // Remembered so a change in the card's width can draw it again as it was.
+  // See "canvases follow their width" below.
+  canvas.drawnWidth = w;
+  canvas.redraw = () => drawChart(canvas, series, labels);
   // Scaling for the display below overwrites the height attribute, so the
   // height the markup asked for is remembered the first time through. Reading
   // the attribute every time would multiply it by the pixel ratio on every
@@ -1951,6 +1955,8 @@ function drawRoute(canvas, route, aspect, emptyText) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth || canvas.parentElement.clientWidth;
   const h = Math.round(w / aspect);
+  canvas.drawnWidth = canvas.clientWidth;
+  canvas.redraw = () => drawRoute(canvas, route, aspect, emptyText);
   canvas.width = w * dpr;
   canvas.height = h * dpr;
   canvas.style.height = h + 'px';
@@ -1985,6 +1991,7 @@ function renderOutdoor() {
   const wrap = $('#outdoor-section');
   wrap.innerHTML = '';
   const unit = distanceUnit();
+  let drawRouteAfter = null;
 
   // Start, and the day's activities.
   const card = el('div', 'card');
@@ -2037,7 +2044,10 @@ function renderOutdoor() {
     ]);
     lastCard.onclick = () => openReview(last.id);
     wrap.appendChild(lastCard);
-    drawRoute(canvas, last.route, 2);
+    // Drawn once every outdoor card is in: on a wide screen the cards share a
+    // grid, and the route card is only full width until its neighbours arrive.
+    // Measured any earlier, the map is drawn for a card twice its final width.
+    drawRouteAfter = () => drawRoute(canvas, last.route, 2);
   }
 
   const bestsCard = el('div', 'card');
@@ -2056,6 +2066,8 @@ function renderOutdoor() {
     ]);
   });
   wrap.appendChild(bestsCard);
+
+  if (drawRouteAfter) drawRouteAfter();
 }
 
 /* ---- recording ---- */
@@ -2712,6 +2724,44 @@ function renderAppearance() {
 }
 LiftAppearance.onChange(() => { renderAppearance(); render(); });
 renderAppearance();
+
+/* ---------------- canvases follow their width ----------------
+ *
+ * Charts and route maps are canvases drawn at their element's width at the
+ * time, so they need drawing again when that width changes: a rotation, a
+ * desktop window dragged wider, a fold opened, or a card moving into or out of
+ * a two-column grid (see "large screens" in style.css). Watching the content
+ * and the two full-screen overlays rather than the window catches every one.
+ *
+ * Only a change in width counts, and each canvas redraws itself from what it
+ * was last drawn with -- nothing re-renders, so an open form or a half-typed
+ * field is left alone. A canvas already drawn at its current width is skipped,
+ * so a pane growing taller as it renders cannot loop back into another draw. */
+let canvasTimer = null;
+const observedWidths = new WeakMap();
+const redrawCanvases = () => {
+  clearTimeout(canvasTimer);
+  canvasTimer = setTimeout(() => {
+    document.querySelectorAll('canvas').forEach((canvas) => {
+      const w = canvas.clientWidth;
+      if (canvas.redraw && w && w !== canvas.drawnWidth) canvas.redraw();
+    });
+  }, 150);
+};
+if ('ResizeObserver' in window) {
+  const watcher = new ResizeObserver((entries) => {
+    let changed = false;
+    entries.forEach((entry) => {
+      const width = Math.round(entry.contentRect.width);
+      if (width && width !== observedWidths.get(entry.target)) changed = true;
+      observedWidths.set(entry.target, width);
+    });
+    if (changed) redrawCanvases();
+  });
+  [$('main'), $('#recording'), $('#review')].forEach((node) => watcher.observe(node));
+} else {
+  window.addEventListener('resize', redrawCanvases);
+}
 
 render();
 
