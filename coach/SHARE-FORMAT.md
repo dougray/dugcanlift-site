@@ -88,8 +88,87 @@ Only days with something on them are included.
 
 **Set** — `[weightLb, reps, rpe, durationSec, distanceMeters, flags]`, trailing
 nulls trimmed, so an ordinary set is just `[185, 5, 8]`. `flags` is a bitfield;
-bit 0 = warmup. A field that is `null` was not recorded: a sled push has no
-reps, a plank has no weight.
+bit 0 = warmup, bits 1-2 = side. A field that is `null` was not recorded: a sled
+push has no reps, a plank has no weight.
+
+#### `flags`
+
+| Bits | Meaning |
+|---|---|
+| 0 | warmup |
+| 1-2 | side: `0` both, `1` left, `2` right |
+
+Read the side with `(flags >> 1) & 3`, and the warmup bit with `flags & 1` —
+**mask, never compare.** A build that tested `flags === 1` for warmup was
+correct while warmup was the only bit; a left-side working set now sends `2`
+and a left-side warmup sends `3`, and a comparison calls the first a working
+set by luck and the second a working set wrongly.
+
+`3` in bits 1-2 is never written. Like `0` it reads as both, so a bit added
+later cannot quietly turn a two-sided set into a left one.
+
+**Not every encoder can produce every value.** LIFT for Android has no warmup
+flag on its set model at all, so it only ever writes bits 1-2 and its `flags`
+is one of `0`, `2`, `4`. The combined values — `3` (warmup, left) and `5`
+(warmup, right) — are legal and only the iPhone and the browser can currently
+send them. A decoder must handle all of them anyway; it must not infer the
+platform from the byte.
+
+**Side goes in the byte that already exists rather than a seventh position**,
+and that choice is the point. The tuple stays six fields long, so a decoder
+written before per-limb logging reads the same weight, reps, RPE, seconds and
+metres it always did — the volume and the top set in a coach's week are right,
+it simply cannot say which limb. That is the correct way for this to degrade. A
+seventh position would have been dropped whole by decoders already in the
+field, and with it nothing; a longer tuple in `f` is exactly why saturated fat,
+sugar and sodium travel in keys of their own further down this file.
+
+**Absent is "both", forever.** A set with no side is a two-sided lift, or a
+single-arm lift whose sides nobody recorded. Every set logged before this
+existed is that, and no decoder should ever backfill a guess from an exercise
+name: a left-arm row and a right-arm row are two different lifts to group and
+chart (see `x` above — side joins name and equipment in the identity for the
+same reason equipment joined it), but a set that never said which is not one of
+them.
+
+**Tolerating the bits is not enough; Coach must group on side.** Measured
+against a Coach build that predates them: volume, set counts and the week
+summary all decode exactly right, because those only need weight and reps. The
+per-lift estimated-1RM chart does not — it merges the two limbs into one
+series and zig-zags between them, set for set, which is precisely the bug
+`"name|equipment"` was introduced to fix for a cable pulldown against a machine
+one. A decoder that reads the bits and then charts as before has a *worse*
+chart than one that ignores them, because the sides are now genuinely
+interleaved. Side belongs in the grouping key.
+
+### The imbalance figure
+
+Coach shows a gap between a client's sides, and so do all three LIFT builds.
+It is one rule, so the apps print the same number from the same log — LIFT
+web's `lift/sides.js` is the reference implementation:
+
+- Take each side's **estimated 1RM per session** (Epley, best working set of
+  that session) across whatever window the chart is showing.
+- A side's figure is the **mean of its last three sessions** — not its best
+  day, which rewards one good session forever, and not its latest, which moves
+  ten points when someone trains tired. Either reading gets taken as a finding.
+- The gap is `(strong − weak) / strong`, and it is shown **only when both
+  sides have at least three sessions** in that window.
+- The **trend** — widening, closing or steady — compares that figure against
+  the same mean over the window's *first* three sessions, and needs **four
+  sessions a side**: with exactly three the two ends are the same sessions, so
+  "steady" would be arithmetic rather than an observation. Under half a
+  percentage point of movement is steady; that much is noise in an estimate
+  built out of an estimate.
+
+**Tracked and shown, never targeted**, the same discipline saturated fat,
+sugar and sodium are held to below: no threshold, no colour, no prompt to fix
+anything. A gap of a few per cent is ordinary in most people, an app is not
+qualified to say what one person's means, and a trainer is.
+
+Warmups are not marked per side in practice, and nothing requires it: warmups
+are already excluded from progression everywhere, so a warmup's side changes no
+number. The bits are there if an encoder sets them.
 
 **Itemized food** — `[foodIndex, servings, kcal, protein, fat, carbs, fiber, meal]`,
 where the macro numbers are **per serving** (multiply by `servings`), matching

@@ -175,3 +175,41 @@ test('a file with no ext restores exactly as before', () => {
   assert.deepEqual(LiftBackup.recipesWithIosDetails([{ id: 'r', nutritionPerServing: { calories: 1 } }], {}),
     [{ id: 'r', nutritionPerServing: { calories: 1 } }]);
 });
+
+// MARK: - Sides
+
+// The browser stores a workout in the backup file's own shape, so writing a
+// backup and reading one are the same rule: `side: "left" | "right"` on a set,
+// omitted when both. See coach/BACKUP-FORMAT.md and lift/sides.js.
+
+const workoutWith = (id, sets) => ({
+  id, date: '2026-09-20', name: 'Legs', startedAt: 1,
+  exercises: [{ id: `${id}-e`, name: 'Bulgarian Split Squat', equipment: 'Dumbbell', sets }],
+});
+
+test('a set keeps its side through a backup, and an unsided one grows no field', () => {
+  const stored = {
+    workouts: [workoutWith('w1', [
+      { id: 's1', weightLb: 60, reps: 8, side: 'left' },
+      { id: 's2', weightLb: 60, reps: 8, side: 'right' },
+      { id: 's3', weightLb: 135, reps: 5 },
+    ])],
+  };
+  const file = JSON.parse(JSON.stringify({ data: LiftBackup.buildData(stored, {}) }));
+  const sets = file.data.workouts[0].exercises[0].sets;
+  assert.deepEqual(sets.map((s) => s.side), ['left', 'right', undefined]);
+  assert.equal('side' in sets[2], false, 'both is absent, never written out');
+
+  const restored = [];
+  LiftBackup.addMissing(restored, file.data.workouts);
+  assert.deepEqual(restored[0].exercises[0].sets.map((s) => s.side), ['left', 'right', undefined]);
+});
+
+test('a backup written before sides existed restores with none, and is not rewritten', () => {
+  const old = workoutWith('w2', [{ id: 's1', weightLb: 225, reps: 3 }]);
+  const restored = [];
+  assert.equal(LiftBackup.addMissing(restored, [old]), 1);
+  const set = restored[0].exercises[0].sets[0];
+  assert.equal('side' in set, false);
+  assert.deepEqual(Object.keys(set), ['id', 'weightLb', 'reps']);
+});

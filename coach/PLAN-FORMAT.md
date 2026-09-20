@@ -140,6 +140,20 @@ trailing nulls trimmed. Sharing the ordering is deliberate: a prescription and
 the log that answers it are the same shape, so nothing has to be transposed to
 compare what was asked for against what was done.
 
+**Prescriptions stay two-sided.** SHARE-FORMAT's set tuple gained a side in
+bits 1-2 of its `flags` byte, and BACKUP-FORMAT gained a named `side` field,
+but nothing changes here: a plan prescribes three sets of a Bulgarian split
+squat, and the lifter chooses which leg each logged set was, on their own
+phone, when they do it. That is where the information actually is. A coach
+writing "3 × 8 left, 3 × 8 right" would be prescribing bookkeeping, and the
+log answers the prescription either way because a two-sided prescription is
+satisfied by sets on both sides.
+
+If per-side prescription is ever wanted, it is the same two bits in the same
+place — a `flags` position appended to the set tuple, `0` both, `1` left, `2`
+right — and Coach's plan editor grows an L/R/both control per prescribed set.
+Until then a decoder reading a five-field tuple is reading the whole thing.
+
 Every field is optional, because a prescription is often partial. `[null, 5]`
 is "five reps, you pick the weight". `[225, 5]` is "225 for five, however it
 feels". A conditioning piece is `[null, null, null, 600, 1600]`.
