@@ -310,6 +310,17 @@ canvas { width: 100%; display: block; }
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
 
+/* Add set, and the exercise's own left/right toggle beside it. They wrap
+   rather than push: at 375px an exercise card is 311px wide, and a row that
+   refuses to break is how a page ends up wider than the phone holding it. */
+.exercise-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.exercise-actions .chip { padding: 8px 12px; }
+
 #watch-scan-video {
   width: 100%;
   border-radius: 8px;
