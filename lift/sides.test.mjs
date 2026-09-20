@@ -35,14 +35,32 @@ test('a set is never marked both; that is what leaving it off means', () => {
 
 test('names that read unilateral are pre-ticked', () => {
   ['Bulgarian Split Squat', 'Single-Arm Dumbbell Row', 'One Arm Overhead Press',
-    'Walking Lunge', 'Pistol Squat', 'Step-Up', 'Single Leg Deadlift',
-    'Unilateral Leg Press'].forEach((name) => {
+    'Walking Lunge', 'Reverse Lunges', 'Pistol Squat', 'Step-Up', 'Step Ups',
+    'Single Leg Deadlift', 'Unilateral Leg Press'].forEach((name) => {
+    assert.equal(S.looksUnilateral(name), true, name);
+  });
+});
+
+test('punctuation and case are not part of the name', () => {
+  // The same normalisation LIFT for Android runs: anything that is not a
+  // letter or a digit is a space, so one term covers every spelling of it.
+  ['SINGLE_ARM ROW', 'single-arm row', 'Single Arm Row', '1 Arm Row',
+    '1-Arm Dumbbell Row', '1 Leg Romanian Deadlift'].forEach((name) => {
     assert.equal(S.looksUnilateral(name), true, name);
   });
 });
 
 test('ordinary two-sided lifts are not', () => {
-  ['Barbell Bench Press', 'Back Squat', 'Deadlift', 'Lat Pulldown', 'Plank']
+  ['Barbell Bench Press', 'Back Squat', 'Deadlift', 'Lat Pulldown', 'Plank',
+    'Leg Press', 'Arm Curl', 'Armed Forces Press']
+    .forEach((name) => assert.equal(S.looksUnilateral(name), false, name));
+});
+
+test('a term inside a longer word is not that term', () => {
+  // Why the terms are matched as whole words and both numbers of each are
+  // listed, rather than looked for anywhere in the name: a substring rule
+  // ticks a cold plunge for "lunge" and a stepmill for "step up".
+  ['Cold Plunge', 'Stepmill', 'Plunger Press', 'Bulgarianesque']
     .forEach((name) => assert.equal(S.looksUnilateral(name), false, name));
 });
 
