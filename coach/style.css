@@ -220,6 +220,18 @@ button:disabled { opacity: 0.4; }
 
 .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
+/* A full-width chip is a row, not a pill: the ingredient and recipe pickers
+ * draw results as one, and an ingredient or dish name can be long. Left as
+ * nowrap the row's text is wider than the card, which makes the page wider
+ * than the phone -- and a mobile browser answers that by zooming out until the
+ * whole app is shrunken. Wrap instead. Fixed in LIFT web the same way. */
+.chip.wide {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+  line-height: 1.35;
+}
+
 .datenav {
   display: flex;
   align-items: center;
