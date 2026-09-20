@@ -75,6 +75,10 @@
   var UNILATERAL_TERMS = [
     'single arm', 'one arm', '1 arm', 'single handed',
     'single leg', 'one leg', '1 leg', 'single limb',
+    // "One-Legged Deadlift" is the same lift as "One-Leg Deadlift"; whole-word
+    // matching does not see the shorter term inside the longer word, so both
+    // spellings are listed. Android's list carries these too.
+    'one legged', 'single legged', 'one armed', 'single armed',
     'bulgarian', 'split squat', 'split squats',
     'pistol', 'pistols', 'lunge', 'lunges',
     'step up', 'step ups', 'stepup', 'stepups',
