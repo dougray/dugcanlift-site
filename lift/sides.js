@@ -63,12 +63,29 @@
     return v === LEFT ? 'L' : v === RIGHT ? 'R' : '';
   }
 
-  var UNILATERAL = [
-    'single-arm', 'single arm', 'one-arm', 'one arm',
-    'single-leg', 'single leg', 'one-leg', 'one leg',
-    'bulgarian', 'split squat', 'pistol', 'lunge', 'step-up', 'step up',
+  /* Names that usually mean one limb at a time, as LIFT for Android's
+   * `PerSideLogging.UNILATERAL_TERMS` lists them, term for term.
+   *
+   * Matched as whole words against a name with everything that is not a letter
+   * or a digit turned into a space, so "Single-Arm", "Single Arm", "single_arm"
+   * and "1-Arm" are one term. Both the singular and the plural are listed
+   * rather than matched by prefix, because a plain substring rule fires on the
+   * inside of a longer word: "lunge" ticks a cold plunge, and "step" would tick
+   * a stepmill. */
+  var UNILATERAL_TERMS = [
+    'single arm', 'one arm', '1 arm', 'single handed',
+    'single leg', 'one leg', '1 leg', 'single limb',
+    'bulgarian', 'split squat', 'split squats',
+    'pistol', 'pistols', 'lunge', 'lunges',
+    'step up', 'step ups', 'stepup', 'stepups',
     'unilateral',
   ];
+
+  /** Letters and digits only, single-spaced, padded so a term matches as whole words. */
+  function normaliseName(name) {
+    var cleaned = String(name == null ? '' : name).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ');
+    return ' ' + cleaned.trim() + ' ';
+  }
 
   /**
    * Whether a name reads as a lift with a side to it. A guess, and only ever
@@ -76,10 +93,13 @@
    * "unilateral" field, plenty of one-armed work is not named for it ("Dumbbell
    * Row"), and plenty of people do a lunge with a barbell on their back and
    * count it as one set. The lifter's own choice is what sticks.
+   *
+   * It is allowed to be wrong in both directions. It decides where a toggle
+   * starts and nothing else, and it never reads or writes a set.
    */
   function looksUnilateral(name) {
-    var n = String(name || '').toLowerCase();
-    return UNILATERAL.some(function (word) { return n.indexOf(word) !== -1; });
+    var padded = normaliseName(name);
+    return UNILATERAL_TERMS.some(function (term) { return padded.indexOf(' ' + term + ' ') !== -1; });
   }
 
   /** How many of these sets are left, right and unmarked. */
