@@ -11,7 +11,8 @@ const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', s
               ext: 'lift.ext', unknownData: 'lift.unknownData',
               recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
               training: 'lift.training', templates: 'lift.templates',
-              routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording' };
+              routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording',
+              perSide: 'lift.perSide' };
 
 function load(key, fallback) {
   try {
@@ -75,6 +76,16 @@ let coach = load(KEY.coach, { email: '', you: '', id: '', weeks: 8, itemised: fa
 // number, and so a saved weight becomes a real datapoint on a real date.
 let profile = load(KEY.profile, null);
 let weights = load(KEY.weights, {});
+/* Which exercises are logged left and right separately, by `matchKey`. The
+ * choice, not the sets: a set carries its own side (see sides.js), and an
+ * exercise with none is an exercise logged the way it always was.
+ *
+ * Deliberately not in the backup. It is a preference about this device's
+ * screen, not a record of training, and inventing a section the other two
+ * clients do not write would put a name in a shared format that nothing else
+ * agrees on. A restored log still shows its sides, because the sets carry
+ * them -- see perSideOn. */
+let perSide = load(KEY.perSide, {});
 
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
 
@@ -284,6 +295,39 @@ function mealOf(entry) {
 }
 
 const matchKey = (name, equipment) => `${(name || '').trim()}|${(equipment || '').trim()}`.toLowerCase();
+
+/* ---------------- left and right ----------------
+ *
+ * The rules are in sides.js so node tests them; this is where the app asks.
+ * A set with no side is both, and always was, so nothing logged before this
+ * is touched, rewritten or asked about on load. */
+
+const perSideKey = (ex) => matchKey(ex.name, ex.equipment);
+
+/**
+ * Whether this exercise logs left and right separately. The lifter's own
+ * choice wins; with none made, an exercise that already has sided sets keeps
+ * showing them (a restored backup arrives that way), and a name that reads
+ * unilateral is pre-ticked. Everything else is off, and off is the app as it
+ * has always been.
+ */
+function perSideOn(ex) {
+  const stored = perSide[perSideKey(ex)];
+  if (typeof stored === 'boolean') return stored;
+  return LiftSides.anySided(ex.sets || []) || LiftSides.looksUnilateral(ex.name);
+}
+
+function setPerSide(ex, on) {
+  perSide[perSideKey(ex)] = on;
+  save(KEY.perSide, perSide);
+}
+
+/* Which side the next set goes on, until one is logged. Cleared then, so the
+ * offer goes back to whichever side is behind and Add set keeps alternating
+ * on its own. Never stored: it is a half-finished tap, not a preference. */
+const sideChoice = {};
+
+const chosenSide = (ex) => sideChoice[ex.id] || LiftSides.nextSide(ex.sets || []);
 
 /* ---------------- tiny DOM helpers ---------------- */
 
@@ -597,30 +641,50 @@ function renderProgress() {
     .filter((h) => (h.ex.sets || []).length)
     .slice(-10);
 
-  const topWeight = (ex) => {
-    const ws = (ex.sets || []).map((s) => s.weightLb).filter((v) => v != null);
+  /* Every measure takes a list of sets rather than the exercise, so the same
+   * one can be asked about one side. */
+  const topWeightIn = (sets) => {
+    const ws = sets.map((s) => s.weightLb).filter((v) => v != null);
     return ws.length ? Math.max(...ws) : null;
   };
-  // Epley: reliable to about five reps, optimistic beyond ten.
-  const e1rm = (ex) => {
-    const vals = (ex.sets || [])
-      .filter((s) => s.weightLb != null && s.reps > 0)
-      .map((s) => s.weightLb * (1 + s.reps / 30));
-    return vals.length ? Math.max(...vals) : null;
-  };
+  const topWeight = (ex) => topWeightIn(ex.sets || []);
+  // Epley: reliable to about five reps, optimistic beyond ten. In sides.js,
+  // where the imbalance maths reads it too.
+  const e1rm = (ex) => LiftSides.e1rm(ex.sets || []);
 
   const chosen = options.find((o) => matchKey(o.name, o.equipment) === selectedExercise);
   card.appendChild(el('h3', null, chosen.equipment ? `${chosen.name} (${chosen.equipment})` : chosen.name));
 
-  const sumOf = (ex, key) => (ex.sets || []).reduce((t, st) => t + (st[key] || 0), 0);
+  const sumIn = (sets, key) => sets.reduce((t, st) => t + (st[key] || 0), 0);
+  const sumOf = (ex, key) => sumIn(ex.sets || [], key);
   // A session that logged none of this metric is a gap in the line, not a zero:
   // drawChart skips null and would otherwise draw a dive to the axis.
   const scaled = (ex, key, divisor) => {
     const total = sumOf(ex, key);
     return total ? total / divisor : null;
   };
-  const exVolume = (ex) => (ex.sets || [])
+  const volumeIn = (sets) => sets
     .reduce((t, st) => t + ((st.weightLb || 0) * (st.reps || 0)), 0);
+  const exVolume = (ex) => volumeIn(ex.sets || []);
+
+  /* Left and right are different lifts wherever sets are grouped -- the same
+   * rule equipment already follows, and the reason a cable pulldown and a
+   * machine pulldown are not one line. Merged, the two sides average into a
+   * zig-zag that is neither of them, and the one question this chart is open
+   * to answer -- is my left catching up -- cannot be asked of it.
+   *
+   * Sets logged before the toggle went on carry no side and are in neither
+   * line. They are still in the stats above, which are the exercise. */
+  const sided = history.some((h) => LiftSides.anySided(h.ex.sets || []));
+  const setsOn = (ex, side) => LiftSides.onSide(ex.sets || [], side);
+  // Left is the accent colour in every mode, so the two lines never swap
+  // meaning when the focus does.
+  const bySide = (label, measure) => [
+    { label: `${label} L`, color: CHART.weight,
+      values: history.map((h) => measure(setsOn(h.ex, LiftSides.LEFT)) || null) },
+    { label: `${label} R`, color: CHART.e1rm,
+      values: history.map((h) => measure(setsOn(h.ex, LiftSides.RIGHT)) || null) },
+  ];
 
   const weights = history.map((h) => topWeight(h.ex)).filter((v) => v != null);
   const rms = history.map((h) => e1rm(h.ex)).filter((v) => v != null);
@@ -645,7 +709,7 @@ function renderProgress() {
     statline(card, 'Best volume', volumes.length ? `${Math.round(best(volumes))} lb` : '-');
     statline(card, 'Most recent', volumes.length ? `${Math.round(volumes[volumes.length - 1])} lb` : '-');
     statline(card, 'Best weight', weights.length ? `${Math.round(best(weights))} lb` : '-');
-    series = [
+    series = sided ? bySide('Volume', volumeIn) : [
       { label: 'Volume', color: CHART.volume, values: history.map((h) => exVolume(h.ex) || null) },
     ];
   } else if (f.chart === 'work') {
@@ -653,7 +717,7 @@ function renderProgress() {
     statline(card, 'Longest', times.length ? clock(best(times)) : '-');
     statline(card, 'Most recent', times.length ? clock(times[times.length - 1]) : '-');
     statline(card, 'Total reps', String(history.reduce((t, h) => t + sumOf(h.ex, 'reps'), 0) || '-'));
-    series = [
+    series = sided ? bySide('Time (min)', (sets) => sumIn(sets, 'durationSec') / 60) : [
       { label: 'Working time (min)', color: CHART.time,
         values: history.map((h) => scaled(h.ex, 'durationSec', 60)) },
     ];
@@ -667,7 +731,7 @@ function renderProgress() {
     // axis legibly here, but Android's LineChart prints its shared maximum as
     // the axis label, where one number over two units is simply wrong -- and
     // the two apps charting endurance differently is worse than one fewer line.
-    series = [
+    series = sided ? bySide('Distance (km)', (sets) => sumIn(sets, 'distanceMeters') / 1000) : [
       { label: 'Distance (km)', color: CHART.distance,
         values: history.map((h) => scaled(h.ex, 'distanceMeters', 1000)) },
     ];
@@ -675,11 +739,13 @@ function renderProgress() {
     statline(card, 'Best weight', weights.length ? `${Math.round(best(weights))} lb` : '-');
     statline(card, 'Most recent', weights.length ? `${Math.round(weights[weights.length - 1])} lb` : '-');
     statline(card, 'Best est. 1RM', rms.length ? `${Math.round(best(rms))} lb` : '-');
-    series = [
+    series = sided ? bySide('Est. 1RM', LiftSides.e1rm) : [
       { label: 'Top weight', color: CHART.weight, values: history.map((h) => topWeight(h.ex)) },
       { label: 'Est. 1RM', color: CHART.e1rm, values: history.map((h) => e1rm(h.ex)) },
     ];
   }
+
+  if (sided) renderImbalance(card, history);
 
   const canvas = el('canvas');
   canvas.setAttribute('height', '150');
@@ -688,6 +754,41 @@ function renderProgress() {
   card.appendChild(lg);
   requestAnimationFrame(() => drawChart(canvas, series, history.map((h) => shortLabel(h.date))));
   legend(lg, series);
+}
+
+/* The imbalance between two sides, over the sessions the chart is showing --
+ * the same window, so the number and the lines tell one story.
+ *
+ * Tracked and shown, never targeted, the same discipline saturated fat, sugar
+ * and sodium are held to: no goal, no threshold, no colour, no advice. A gap
+ * of ten percent is ordinary in most people, this app is not qualified to say
+ * what yours means, and a trainer is. The maths is in sides.js. */
+const TREND_TEXT = {
+  widening: 'The gap is widening across these sessions.',
+  closing: 'The gap is closing across these sessions.',
+  steady: 'The gap has held steady across these sessions.',
+};
+
+function renderImbalance(card, history) {
+  const rms = (side) => history.map((h) => LiftSides.e1rm(LiftSides.onSide(h.ex.sets || [], side)));
+  const gap = LiftSides.imbalance(rms(LiftSides.LEFT), rms(LiftSides.RIGHT));
+
+  if (!gap.enough) {
+    // Timed or bodyweight work has no estimated 1RM on either side, and an
+    // "imbalance -" line under it would be a promise this lift cannot keep.
+    if (!gap.sessions.left && !gap.sessions.right) return;
+    statline(card, 'Imbalance', '-');
+    card.appendChild(el('p', 'muted',
+      `Needs ${LiftSides.MIN_SESSIONS} sessions on each side to say `
+      + `(L ${gap.sessions.left} \u00b7 R ${gap.sessions.right} so far).`));
+    return;
+  }
+
+  const percent = Math.round(gap.percent * 100);
+  statline(card, 'Imbalance', gap.strong
+    ? `${percent}% - ${gap.strong === LiftSides.LEFT ? 'left' : 'right'} stronger`
+    : 'Even');
+  if (gap.trend) card.appendChild(el('p', 'muted', TREND_TEXT[gap.trend]));
 }
 
 function renderWeekFuel(week) {
@@ -1669,6 +1770,13 @@ function renderTrain() {
       const block = el('div', 'exercise');
       block.appendChild(el('h3', null, ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name));
 
+      // Left and right, when this exercise is logged that way. "L 3 · R 2"
+      // under the name is the whole point of the counts: a side you skipped
+      // is invisible in a list of sets and obvious here.
+      const sided = perSideOn(ex);
+      const counts = sided ? LiftSides.countsLabel(ex.sets || []) : '';
+      if (counts) block.appendChild(el('p', 'muted', counts));
+
       const prev = lastPerformed(ex, session);
       if (prev) block.appendChild(el('p', 'muted', 'Last time: ' + prev.sets.map(formatSet).join('   ')));
 
@@ -1685,9 +1793,38 @@ function renderTrain() {
         block.appendChild(row);
       });
 
+      /* One tap more than a normal set, not two: the side is already picked
+       * -- whichever has fewer sets so far -- and Add set logs it there. */
+      if (sided) {
+        const picker = el('div', 'chips');
+        chips(picker, [{ label: 'L', v: LiftSides.LEFT }, { label: 'R', v: LiftSides.RIGHT }],
+          (i) => i.v === chosenSide(ex),
+          (i) => { sideChoice[ex.id] = i.v; render(); });
+        block.appendChild(picker);
+      }
+
+      const actions = el('div', 'exercise-actions');
       const add = el('button', 'ghost', 'Add set');
-      add.onclick = () => addSetPrompt(ex, f);
-      block.appendChild(add);
+      add.onclick = () => addSetPrompt(ex, f, sided ? chosenSide(ex) : null);
+      actions.appendChild(add);
+
+      /* The choice itself, offered on every exercise because the bundled list
+       * cannot say which lifts have a side and a name only guesses. Off, this
+       * is the only thing on the screen that was not here before.
+       *
+       * "Per side" rather than "L / R": beside the L and R chips it would
+       * read as a third side to log on, which is the one thing it is not. */
+      const toggle = el('button', 'chip' + (sided ? ' on' : ''), 'Per side');
+      toggle.title = sided ? 'Log both sides as one set' : 'Log left and right separately';
+      toggle.setAttribute('aria-pressed', sided ? 'true' : 'false');
+      toggle.onclick = () => {
+        setPerSide(ex, !sided);
+        delete sideChoice[ex.id];
+        render();
+      };
+      actions.appendChild(toggle);
+      block.appendChild(actions);
+
       card.appendChild(block);
     });
 
@@ -1724,9 +1861,18 @@ function lastPerformed(ex, currentSession) {
   return found || null;
 }
 
-function addSetPrompt(ex, f) {
-  const last = (ex.sets || [])[ex.sets.length - 1] || {};
+function addSetPrompt(ex, f, side) {
+  /* What to prefill from. On a side, the last set on that same side, so each
+   * side carries its own numbers forward -- and, when there is not one yet,
+   * the last set of any side, which is the "same as last" shortcut: the
+   * second side starts from the first side's set, because most people match
+   * the reps and adjust the weight. */
+  const sets = ex.sets || [];
+  const sameSide = side ? LiftSides.onSide(sets, side) : sets;
+  const last = sameSide[sameSide.length - 1] || sets[sets.length - 1] || {};
   const set = { id: uid() };
+  // Both is absent, never written out, and never defaulted to left.
+  if (side) set.side = side;
   if (f.weight) {
     const v = prompt('Weight (lb)', last.weightLb != null ? last.weightLb : '');
     if (v === null) return;
@@ -1757,6 +1903,8 @@ function addSetPrompt(ex, f) {
   if (empty) return;
   ex.sets = ex.sets || [];
   ex.sets.push(set);
+  // Back to offering whichever side is behind now.
+  delete sideChoice[ex.id];
   save(KEY.workouts, workouts);
   render();
 }
@@ -1784,6 +1932,10 @@ function formatSet(s) {
       : `${s.durationSec}s`);
   }
   if (s.distanceMeters != null) parts.push(`${s.distanceMeters} m`);
+  // "185 x 5 L". Nothing is added for a set with no side: that is every set
+  // logged before this, and most of them after it.
+  const side = LiftSides.label(s);
+  if (side) parts.push(side);
   return parts.length ? parts.join(' ') : '-';
 }
 
@@ -2321,14 +2473,12 @@ function buildPayload(weeks, itemised) {
       day.fo = settings.focus;
       day.w = exercises.map((ex) => {
         const index = indexIn(exerciseDict, `${(ex.name || '').trim()}|${(ex.equipment || '').trim()}`);
-        const sets = (ex.sets || []).map((set) => {
-          const tuple = [
-            set.weightLb ?? null, set.reps ?? null, set.rpe ?? null,
-            set.durationSec ?? null, set.distanceMeters ?? null, 0,
-          ];
-          while (tuple.length && !tuple[tuple.length - 1]) tuple.pop();
-          return tuple;
-        });
+        /* Trailing nulls trimmed, so an ordinary set is still `[185, 5]`.
+         * `flags` carries the side in bits 1-2 and a warmup in bit 0 -- the
+         * warmup coming from a set restored off a phone, which this build has
+         * no way to record itself and used to drop on the way out. See
+         * sides.js, and SHARE-FORMAT.md. */
+        const sets = (ex.sets || []).map((set) => LiftSides.encodeSet(set));
         return [index, sets];
       });
     }

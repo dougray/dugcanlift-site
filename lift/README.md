@@ -2,6 +2,30 @@
 
 A progressive web app for tracking food and training, served from `/lift/`.
 
+## Left and right (`sides.js`)
+
+A set may record a side. **Absent means both**, which is what every set logged
+before this meant, so nothing in a browser is migrated, rewritten or asked
+about on load -- and "both" is never written out, nor a side defaulted to left.
+Whether an exercise is logged per side is the lifter's own choice, kept by
+`matchKey` under `lift.perSide` and pre-ticked when the name reads unilateral.
+It is deliberately not in the backup: it is a preference about this screen, not
+a record of training, and the sets carry their own sides, so a restored log
+still shows them.
+
+`sides.js` holds the rules -- the flags bits, the grouping key, and the
+imbalance maths -- so `node --test lift/` checks them rather than an eye. The
+imbalance figure is `(strong - weak) / strong` on estimated 1RM, over the same
+window the chart draws, and it appears only once both sides have three sessions
+in it. Tracked and shown, never targeted: no goal, no threshold, no colour and
+no advice, the same discipline saturated fat, sugar and sodium are held to.
+
+On the wire: the share link's set tuple carries the side in `flags` bits 1-2
+(0 both, 1 left, 2 right) beside the warmup bit, so a decoder that has never
+heard of sides still reads the weight and the reps; a backup carries the named
+field `side: "left" | "right"`, omitted when both; plan links are unchanged.
+See `coach/SHARE-FORMAT.md` and `coach/BACKUP-FORMAT.md`.
+
 ## Watch import (`watch-scan.js`)
 
 `watch-scan.js` reads food logs off an Apple Watch by QR code. The watch has
