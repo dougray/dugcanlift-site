@@ -188,6 +188,18 @@ button:disabled { opacity: 0.4; }
 
 .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
+/* A full-width chip is a row, not a pill: the exercise picker draws each result
+ * as one, and some names run to "Bent Over Dumbbell Rear Delt Raise With Head
+ * On Bench". Left as nowrap they were ~550px of text in a 311px card, which
+ * made the page wider than the phone -- so the browser zoomed out to fit and
+ * the whole app came back shrunken until you pinched it back. Wrap instead. */
+.chip.wide {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+  line-height: 1.35;
+}
+
 .datenav {
   display: flex;
   align-items: center;
