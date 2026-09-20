@@ -56,6 +56,13 @@ test('ordinary two-sided lifts are not', () => {
     .forEach((name) => assert.equal(S.looksUnilateral(name), false, name));
 });
 
+test('the -ed spellings count too, as in One-Legged Deadlift', () => {
+  for (const name of ['Kettlebell One-Legged Deadlift', 'One-Legged Cable Kickback',
+                      'Single-Legged Press', 'One-Armed Row']) {
+    assert.equal(S.looksUnilateral(name), true, name);
+  }
+});
+
 test('a term inside a longer word is not that term', () => {
   // Why the terms are matched as whole words and both numbers of each are
   // listed, rather than looked for anywhere in the name: a substring rule
