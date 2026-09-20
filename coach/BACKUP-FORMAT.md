@@ -35,7 +35,29 @@ platform already stores, which is why a browser backup restores on a phone.
 
 **`workouts[]`** — `id`, `date`, `name`, `note`, `startedAt` (epoch ms), and
 `exercises[]` of `id`, `name`, `equipment`, `note`, `sets[]` of `id`,
-`weightLb`, `reps`, `rpe`, `durationSec`, `distanceMeters`.
+`weightLb`, `reps`, `rpe`, `durationSec`, `distanceMeters`, `side`.
+
+**`side` is `"left"` or `"right"`, and is omitted entirely when both.** Not
+`"both"`, not `null`, not a bit — absent. A set with no `side` was performed
+with both limbs, which is what every set written before per-limb logging
+means, so an older file restores correctly with no migration and no guessing.
+A reader that does not know the field ignores it and still restores the weight
+and the reps; a reader that does must treat an unrecognised string as both
+rather than failing the import, the same leniency this file asks for
+everywhere else.
+
+Named rather than packed into a number, unlike SHARE-FORMAT's `flags` bits,
+and for the same reason `outdoor[]`'s bests are objects here: a share link is
+squeezed into a URL that has to fit in a text message, and a backup is a file
+a person opens, three platforms read, and a fourth may carry through without
+understanding (see **A client MUST preserve an `ext` block it does not
+understand**). A field you can read with your eyes survives that; a bitfield
+survives it only as long as someone remembers to document it.
+
+`side` is part of the identity of a lift for grouping and charting — name,
+equipment *and* side, since a left-arm row and a right-arm row are no more the
+same lift than a cable pulldown and a machine pulldown are. It is not part of
+the identity of a *record*: sets still match on `id` when restoring.
 
 **`routines[]`** — saved templates: `id`, `name`, `folder`, `createdAt` (epoch
 ms), and `exercises[]` of `id`, `name`, `equipment`, `targetSets`, `targetReps`,
