@@ -313,9 +313,19 @@ function exerciseIndex(client) {
   const map = new Map();
   dayKeys(client).forEach((key) => {
     (client.days[key].exercises || []).forEach((ex) => {
+      // Name and equipment, not side: a lift's two limbs share one chip so
+      // that they share one card, which is what makes an imbalance figure
+      // possible at all. Side joins the key one level down, on the series
+      // inside that card (CoachSides.splitSessions).
       const id = `${ex.name}|${ex.equipment}`.toLowerCase();
       if (!map.has(id)) {
-        map.set(id, { id, label: ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name, days: [] });
+        map.set(id, {
+          id,
+          name: ex.name,
+          equipment: ex.equipment,
+          label: ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name,
+          days: [],
+        });
       }
       map.get(id).days.push({ key, ex });
     });
@@ -925,58 +935,121 @@ function renderLifts(client, unit) {
   });
 
   const lift = lifts.find((l) => l.id === openLiftId);
-  const points = lift.days.map(({ key, ex }) => {
-    const best = ex.sets.map(estimatedOneRepMax).filter(Boolean);
-    const heaviest = ex.sets.filter((s) => !s.warmup && s.weightLb)
+
+  /* One session's sets, as a point on a line. Epley on the best working set,
+   * which is `estimatedOneRepMax` -- the same rule that has always drawn this
+   * chart, so the imbalance figure below and the lines above are read off the
+   * same numbers. */
+  const summarise = (sets) => {
+    const best = sets.map(estimatedOneRepMax).filter(Boolean);
+    const heaviest = sets.filter((s) => !s.warmup && s.weightLb)
       .sort((a, b) => b.weightLb - a.weightLb)[0];
     return {
-      key,
       e1rm: best.length ? Math.max(...best) : null,
       top: heaviest || null,
-      sets: ex.sets.filter((s) => !s.warmup).length,
+      sets: sets.filter((s) => !s.warmup).length,
     };
-  });
+  };
 
-  const withE1rm = points.filter((p) => p.e1rm != null);
-  if (withE1rm.length >= 2) {
+  /* Left, right and unmarked as separate series, keyed name|equipment|side.
+   * Reading the side bits and then charting as before is worse than ignoring
+   * them, because the two limbs are genuinely interleaved and the line
+   * zig-zags between them set for set -- the same bug `name|equipment` was
+   * introduced to fix for a cable pulldown against a machine one. */
+  const series = CoachSides.splitSessions(lift.name, lift.equipment,
+    lift.days.map(({ key, ex }) => ({ key, sets: ex.sets })), summarise);
+  const sided = series.length > 1 || (series[0] && series[0].side !== null);
+  const seriesColour = (side) => (
+    side === CoachSides.LEFT ? CHART.e1rm
+      : side === CoachSides.RIGHT ? 'var(--accent)'
+        : sided ? 'var(--muted)' : CHART.e1rm);
+
+  series.forEach((s) => {
+    const withE1rm = s.points.filter((p) => p.e1rm != null);
+    if (withE1rm.length < 2) return;
     const first = withE1rm[0], last = withE1rm[withE1rm.length - 1];
     const delta = deltaText(fromLb(last.e1rm - first.e1rm, unit), unit);
     const row = el('div', 'statline');
     row.appendChild(el('span', null,
-      `Estimated 1RM since ${shortDate(first.key)}`));
+      `${sided ? s.label + ' e' : 'E'}stimated 1RM since ${shortDate(first.key)}`));
     row.appendChild(el('span', 'delta ' + delta.cls, delta.text));
     card.appendChild(row);
+  });
+
+  /* The gap between the sides, and whether it is moving. Shown, never
+   * targeted: no threshold, no colour, no advice. A two-sided lift has no
+   * sides and no figure. */
+  const left = series.find((s) => s.side === CoachSides.LEFT);
+  const right = series.find((s) => s.side === CoachSides.RIGHT);
+  if (left && right) {
+    const result = CoachSides.imbalance(
+      left.points.map((p) => p.e1rm), right.points.map((p) => p.e1rm));
+    const lines = CoachSides.imbalanceLines(result);
+    statline(card, 'Imbalance', lines.headline);
+    card.appendChild(el('p', 'muted', lines.detail));
   }
 
-  const best = points.filter((p) => p.top)
+  const allPoints = series.flatMap((s) => s.points);
+  const best = allPoints.filter((p) => p.top)
     .sort((a, b) => b.top.weightLb - a.top.weightLb)[0];
   if (best) {
+    const mark = CoachSides.label(best.side);
     statline(card, 'Heaviest set',
-      `${weightText(best.top.weightLb, unit)} × ${best.top.reps} on ${shortDate(best.key)}`);
+      `${weightText(best.top.weightLb, unit)} × ${best.top.reps}${mark ? ' ' + mark : ''}`
+      + ` on ${shortDate(best.key)}`);
   }
 
-  if (withE1rm.length >= 2) {
+  // One x-axis for every series, so the two limbs line up session for session
+  // and a day trained on one side alone leaves a gap in the other's line
+  // rather than a zero.
+  const labels = lift.days.map((d) => d.key);
+  const plotted = series
+    .map((s) => {
+      const byKey = new Map(s.points.map((p) => [p.key, p]));
+      return {
+        label: sided ? s.label : 'e1RM',
+        color: seriesColour(s.side),
+        zoom: true,
+        values: labels.map((k) => {
+          const point = byKey.get(k);
+          return point && point.e1rm != null ? Math.round(fromLb(point.e1rm, unit)) : null;
+        }),
+      };
+    })
+    .filter((s) => s.values.filter((v) => v != null).length >= 2);
+
+  if (plotted.length) {
     const canvas = el('canvas');
     canvas.setAttribute('height', '130');
     card.appendChild(canvas);
-    drawChart(canvas, [{
-      label: 'e1RM', color: CHART.e1rm, zoom: true,
-      values: points.map((p) => (p.e1rm == null ? null : Math.round(fromLb(p.e1rm, unit)))),
-    }], points.map((p) => p.key));
+    drawChart(canvas, plotted, labels);
+    if (sided) {
+      // Built here rather than sitting in index.html, because the card is
+      // rebuilt from empty on every render and a lift with no sides has no
+      // legend to show.
+      const legendRow = el('div', 'legend');
+      legend(legendRow, plotted);
+      card.appendChild(legendRow);
+    }
   }
 
-  const recent = points.slice(-6).reverse().map((p) => [
-    shortDate(p.key),
-    p.sets,
-    p.top ? `${num(fromLb(p.top.weightLb, unit))} × ${p.top.reps}` : null,
-    p.e1rm ? num(fromLb(p.e1rm, unit)) : null,
-  ]);
+  // Up to six sessions per side, newest first, so two limbs get six each
+  // rather than three.
+  const recent = series.flatMap((s) => s.points.slice(-6))
+    .sort((a, b) => a.key.localeCompare(b.key)).reverse()
+    .map((p) => [
+      shortDate(p.key),
+      ...(sided ? [CoachSides.longLabel(p.side)] : []),
+      p.sets,
+      p.top ? `${num(fromLb(p.top.weightLb, unit))} × ${p.top.reps}` : null,
+      p.e1rm ? num(fromLb(p.e1rm, unit)) : null,
+    ]);
   const wrap = el('div', 'scroll-x');
-  table(wrap, ['Date', 'Sets', 'Top set', `e1RM ${unit}`], recent);
+  table(wrap, ['Date', ...(sided ? ['Side'] : []), 'Sets', 'Top set', `e1RM ${unit}`], recent);
   card.appendChild(wrap);
 }
 
-/** How a set reads back: "185 × 5 @8", "400 m in 1:30", "12 reps". */
+/** How a set reads back: "185 × 5 L", "185 × 5 @8", "400 m in 1:30". */
 function setText(set, unit) {
   const bits = [];
   if (set.weightLb != null && set.reps != null) {
@@ -990,6 +1063,14 @@ function setText(set, unit) {
   if (set.durationSec != null) {
     const m = Math.floor(set.durationSec / 60);
     bits.push(m ? `${m}:${pad2(set.durationSec % 60)}` : `${set.durationSec}s`);
+  }
+  // The side rides on the first bit -- "185 × 5 L", not "185 × 5 · L" -- so
+  // it reads as part of the set rather than as another measurement of it. A
+  // set with no side says nothing: absent is both, and always has been.
+  const mark = CoachSides.label(set);
+  if (mark) {
+    if (bits.length) bits[0] += ` ${mark}`;
+    else bits.push(mark);
   }
   if (set.rpe != null) bits.push(`@${set.rpe}`);
   if (set.warmup) bits.push('warm-up');
@@ -1029,6 +1110,10 @@ function renderSessions(client, unit) {
     (day.exercises || []).forEach((ex) => {
       const block = el('div', 'exercise');
       block.appendChild(el('h3', null, ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name));
+      // "L 3 · R 2" when any set is sided, so a missed side is obvious at a
+      // glance. Empty, and absent, for an ordinary two-sided lift.
+      const counts = CoachSides.countsLabel(ex.sets);
+      if (counts) block.appendChild(el('div', 'setline muted', counts));
       ex.sets.forEach((set, i) => {
         const line = el('div', 'setline');
         line.appendChild(el('b', null, `${i + 1}. `));
@@ -1198,6 +1283,13 @@ function saveBackup() {
   // which meant every recipe and workout a coach had ever written was absent
   // from their own backup -- silently, while the Connect tab told them a
   // backup was enough to survive clearing site data.
+  //
+  // `side` is a named field here, not SHARE-FORMAT's flags bits: a backup is
+  // read by people and by three Coach builds, and has to survive a reader that
+  // does not know the field. Normalised on the way out so the file never
+  // carries a spelling this app would not read back, and omitted entirely when
+  // a set is two-sided -- absent is how "both" is written (BACKUP-FORMAT.md).
+  clients.forEach(CoachSides.normaliseClient);
   const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions };
   const blob = new Blob([JSON.stringify(payload, null, 1)],
     { type: 'application/json' });
@@ -1248,6 +1340,11 @@ function loadBackup(file) {
       // Restoring adds to the roster rather than replacing it, so pulling an
       // old backup onto a working device can't lose the newer clients on it.
       parsed.clients.forEach((client) => {
+        // A side another app spelt differently -- "Both", "L", null, a field
+        // from a format nobody here knows -- reads as both rather than
+        // failing the import, and a file written before per-limb logging has
+        // no `side` anywhere and restores exactly as it always did.
+        CoachSides.normaliseClient(client);
         const existing = clients.find((c) => c.id === client.id);
         if (!existing) clients.push(client);
         else Object.assign(existing.days, client.days);
@@ -1298,6 +1395,26 @@ function sampleClient() {
           ],
         };
       });
+
+      // One unilateral lift on lower days, so the two-series chart and the
+      // imbalance figure are visible before a real client has sent anything.
+      // The left side starts 15 lb down and closes to 5 -- an ordinary gap
+      // doing an ordinary thing, which is the whole point of showing it
+      // without a threshold or a colour attached.
+      if (back % 2) {
+        const top = Math.round((95 * (0.88 + progress * 0.12)) / 5) * 5;
+        const deficit = Math.round((15 - progress * 10) / 5) * 5;
+        day.exercises.push({
+          name: 'Bulgarian Split Squat',
+          equipment: 'Dumbbell',
+          // Alternating, the way it is actually logged.
+          sets: [0, 1, 2].flatMap(() => ['left', 'right'].map((side) => ({
+            weightLb: side === 'left' ? top - deficit : top,
+            reps: 8, rpe: 8, durationSec: null, distanceM: null,
+            warmup: false, side,
+          }))),
+        });
+      }
     }
 
     if (back % 9 !== 0) {   // a couple of missed days, because that is real

@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v19';
+const CACHE = 'coach-v20';
 
 const SHELL = [
   '/coach/',
@@ -15,6 +15,7 @@ const SHELL = [
   '/coach/appearance.js',
   '/coach/route.js',
   '/coach/nutrients.js',
+  '/coach/sides.js',
   '/coach/recipe-nutrition.js',
   '/coach/share-import.js',
   '/coach/client-removal.js',

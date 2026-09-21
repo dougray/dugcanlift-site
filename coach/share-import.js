@@ -4,21 +4,31 @@
  * link turns into -- including saturated fat, sugar and sodium, whose rules
  * live in nutrients.js -- without a DOM (share-import.test.mjs).
  *
- * Needs CoachRoute (route.js) and CoachNutrients (nutrients.js) loaded first.
+ * Needs CoachRoute (route.js), CoachNutrients (nutrients.js) and CoachSides
+ * (sides.js) loaded first.
  */
 (function (global) {
   'use strict';
 
   function expandSet(tuple) {
     const [weightLb, reps, rpe, durationSec, distanceM, flags] = tuple;
-    return {
+    const set = {
       weightLb: weightLb ?? null,
       reps: reps ?? null,
       rpe: rpe ?? null,
       durationSec: durationSec ?? null,
       distanceM: distanceM ?? null,
+      // Bit 0, masked. A left-side warmup arrives as 3 and a right-side one as
+      // 5, so `flags === 1` would read the first as a working set by luck and
+      // the second as one by mistake (SHARE-FORMAT.md "flags").
       warmup: !!((flags || 0) & 1),
     };
+    // Bits 1-2. Absent is both, always, and both is never written out -- a set
+    // with no side is a two-sided lift or one whose side nobody recorded, and
+    // neither is ever guessed at from the exercise's name.
+    const side = global.CoachSides.sideFromFlags(flags);
+    if (side) set.side = side;
+    return set;
   }
 
   function expandDay(raw, dictExercises, dictFoods, meals) {

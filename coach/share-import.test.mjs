@@ -6,7 +6,7 @@ import { inflateRawSync } from 'node:zlib';
 // Loaded the way the browser loads them, in index.html's order. Run from the
 // repo root: node --test coach/
 const shim = { window: {} };
-['route.js', 'nutrients.js', 'recipe-nutrition.js', 'share-import.js'].forEach((file) => {
+['route.js', 'nutrients.js', 'sides.js', 'recipe-nutrition.js', 'share-import.js'].forEach((file) => {
   new Function('window', readFileSync(`coach/${file}`, 'utf8')).call(shim, shim.window);
 });
 const { expandDay } = shim.window.CoachShareImport;
