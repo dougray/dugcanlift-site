@@ -62,3 +62,27 @@ can rebind, and a snapshot taken once at load time would go stale the moment
 that happened, while `watch-scan.js` kept writing into the abandoned array.
 `addFoodEntries` closes over the live binding and does the whole write
 (push, save, render) itself instead.
+
+## Road Food (`road-food.js`, `road-food.json`)
+
+Macro-friendly picks at fast-food chains and gas stations, ranked against what
+is left of today. The rules -- fits at or under what is left, a separate "A
+little over" group up to 10% over, protein per 100 kcal, lower sodium on a tie,
+no-goal mode, six-month staleness -- are in `road-food.js` and tested by
+`road-food.test.mjs`. What is left comes from `remainingFor(day)` in `app.js`,
+the same function Home and Food use for "kcal left".
+
+`road-food.json` is the curated file from `dugcanlift-kit/data/road-food.json`,
+copied here unchanged. It is fetched when Road Food first opens and then kept by
+the service worker, cache-first -- so **replacing it needs a `CACHE` bump in
+`sw.js`**, or installed copies keep the old menus. It is deliberately not in
+`SHELL`: install would fail outright while the file is absent.
+
+`fixtures/road-food-sample.json` is a hand-made fixture with fake names ("Sample
+Burger Co") for development only; it is excluded from the Jekyll build.
+
+Rules may be plain strings (every chain) or `{ "text", "kinds": [...] }`,
+matched against a chain's optional `kind`; the gas-station screen shows only
+rules whose kinds include `"snacks"`. No location of any kind: you pick the
+chain. Recently used chains are kept on this device under `lift.roadRecent`,
+not in the backup.

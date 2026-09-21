@@ -424,6 +424,30 @@ canvas.route {
 #review-close { float: right; }
 
 
+/* ---------------- road food ---------------- */
+
+.roadnav { margin: 16px 0 8px; }
+.roadnav button { padding: 8px 16px; }
+
+/* Chain and item names can be long ("...Club Sandwich With Extra Toppings"),
+   and a flex child will not shrink below its longest word unless told to --
+   which is how a page ends up wider than the phone. See .chip.wide. */
+.roadname { overflow-wrap: anywhere; }
+.roaditem > div { min-width: 0; }
+.roaditem { align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--rule); }
+.roaditem:first-child { border-top: none; padding-top: 0; }
+.roaditem:last-child { padding-bottom: 0; }
+.roaditem .chip { flex: none; padding: 6px 14px; }
+.roadfit { font-size: 19px; font-weight: 700; }
+button.roadchain { margin: 8px 0; box-shadow: inset 0 0 0 1px var(--card-border); }
+button.roadchain .roadname { font-weight: 700; }
+button.roadchain .muted { margin: 2px 0 0; }
+#road a { color: var(--accent); }
+.roadrules { margin: 0; padding-left: 20px; }
+.roadrules li { margin: 4px 0; }
+/* Meal and category chips wrap instead of scrolling: four short labels. */
+.chips.roadwrap { flex-wrap: wrap; }
+
 /* ---------------- large screens ----------------
  *
  * Everything above is the phone, and nothing below changes it: every rule here
@@ -519,6 +543,14 @@ canvas.route {
   #outdoor-section > * { min-width: 0; }
   #outdoor-section > .card:first-child,
   #outdoor-section > .card:last-child:nth-child(even) { grid-column: 1 / -1; }
+
+  /* Road Food: the chains as a grid of cards. */
+  .roadgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+    column-gap: 12px;
+  }
+  #road-body > p { max-width: 760px; }
 
   /* Cook. */
   #recipe-list {

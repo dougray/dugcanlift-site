@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "chains": [
+    {
+      "id": "sample-burger-co",
+      "name": "Sample Burger Co",
+      "kind": "burgers",
+      "checkedOn": "2026-09-20",
+      "source": "https://example.com/sample-burger-co/nutrition",
+      "items": [
+        { "id": "sample-burger-co-grilled-test-sandwich", "name": "Grilled Test Sandwich", "serving": "1 sandwich",
+          "kcal": 370, "proteinG": 34, "fatG": 10, "carbsG": 37, "fiberG": 2,
+          "saturatedFatG": 2, "sugarG": 8, "sodiumMg": 930,
+          "modification": "Hold the placeholder sauce to save 60 kcal" },
+        { "id": "sample-burger-co-double-fake-patty", "name": "Double Fake Patty, No Bun", "serving": "2 patties",
+          "kcal": 480, "proteinG": 40, "fatG": 34, "carbsG": 2, "fiberG": 0,
+          "saturatedFatG": 14, "sugarG": 1, "sodiumMg": 700 },
+        { "id": "sample-burger-co-extraordinarily-long", "name": "Extraordinarily Long Placeholder Grilled Chicken Club Sandwich With Extra Imaginary Toppings Supercalifragilisticexpialidocious", "serving": "1 sandwich",
+          "kcal": 690, "proteinG": 45, "fatG": 30, "carbsG": 58, "fiberG": 3,
+          "saturatedFatG": 9, "sugarG": 11, "sodiumMg": 1650 },
+        { "id": "sample-burger-co-side-salad", "name": "Sample Side Salad", "serving": "1 salad",
+          "kcal": 120, "proteinG": 6, "fatG": 7, "carbsG": 9, "fiberG": 3, "sodiumMg": 190 },
+        { "id": "sample-burger-co-mystery-wrap", "name": "Mystery Wrap (protein not listed)", "serving": "1 wrap",
+          "kcal": 410, "fatG": 16, "carbsG": 44 },
+        { "id": "sample-burger-co-diet-test-cola", "name": "Diet Test Cola", "serving": "20 fl oz",
+          "kcal": 0, "proteinG": 0, "fatG": 0, "carbsG": 0, "sugarG": 0, "sodiumMg": 40 },
+        { "id": "sample-burger-co-test-protein-shake", "name": "Test Protein Shake", "serving": "12 fl oz",
+          "kcal": 160, "proteinG": 30, "fatG": 3, "carbsG": 5, "fiberG": 1, "sugarG": 2, "sodiumMg": 260 }
+      ]
+    },
+    {
+      "id": "example-chicken-shack",
+      "name": "Example Chicken Shack",
+      "kind": "chicken",
+      "checkedOn": "2025-12-01",
+      "source": "https://example.com/example-chicken-shack/nutrition",
+      "items": [
+        { "id": "example-chicken-shack-grilled-nuggets", "name": "Grilled Pretend Nuggets", "serving": "12 pieces",
+          "kcal": 200, "proteinG": 38, "fatG": 5, "carbsG": 2, "fiberG": 0,
+          "saturatedFatG": 1, "sugarG": 1, "sodiumMg": 720 },
+        { "id": "example-chicken-shack-fried-sandwich", "name": "Fried Pretend Sandwich", "serving": "1 sandwich",
+          "kcal": 700, "proteinG": 28, "fatG": 42, "carbsG": 50, "fiberG": 2,
+          "saturatedFatG": 12, "sugarG": 7, "sodiumMg": 1900 }
+      ]
+    },
+    {
+      "id": "fictional-taco-stand",
+      "name": "Fictional Taco Stand",
+      "kind": "mexican",
+      "checkedOn": "2026-06-01",
+      "source": "https://example.com/fictional-taco-stand/nutrition",
+      "items": [
+        { "id": "fictional-taco-stand-bowl", "name": "Double Protein Test Bowl", "serving": "1 bowl",
+          "kcal": 620, "proteinG": 62, "fatG": 20, "carbsG": 48, "fiberG": 12,
+          "saturatedFatG": 6, "sugarG": 5, "sodiumMg": 1500,
+          "modification": "Skip the imaginary sour cream to save 110 kcal" }
+      ]
+    }
+  ],
+  "snacks": [
+    { "id": "snack-sample-jerky", "category": "jerky", "name": "Sample Beef Jerky", "barcode": "0000000000001", "serving": "1 oz",
+      "kcal": 80, "proteinG": 13, "fatG": 1, "carbsG": 5, "saturatedFatG": 0.5, "sugarG": 4, "sodiumMg": 590,
+      "checkedOn": "2026-09-20", "source": "https://example.com/fdc/sample-jerky" },
+    { "id": "snack-sample-bar", "category": "protein bars", "name": "Placeholder Protein Bar", "barcode": "0000000000002", "serving": "1 bar",
+      "kcal": 200, "proteinG": 20, "fatG": 7, "carbsG": 22, "fiberG": 10, "saturatedFatG": 3, "sugarG": 1, "sodiumMg": 180,
+      "checkedOn": "2026-09-20", "source": "https://example.com/fdc/sample-bar" },
+    { "id": "snack-sample-cheese", "category": "string cheese", "name": "Test String Cheese", "barcode": "0000000000003", "serving": "1 stick",
+      "kcal": 80, "proteinG": 7, "fatG": 6, "carbsG": 1, "saturatedFatG": 3.5, "sodiumMg": 200,
+      "checkedOn": "2026-09-20", "source": "https://example.com/fdc/sample-cheese" }
+  ],
+  "rules": [
+    "Grilled over fried",
+    "Double the protein instead of a bigger bun",
+    "Sauces and dressings on the side",
+    "Skip the sugary drink",
+    "A side salad or fruit instead of fries",
+    { "text": "Ask for a bowl instead of a tortilla", "kinds": ["mexican"] }
+  ]
+}
