@@ -304,12 +304,47 @@
     return out;
   }
 
+  /** "Left", "Right", "Both" -- the same words Coach web's sides.js uses. */
+  function longLabel(side) {
+    var v = of(side);
+    return v === LEFT ? 'Left' : v === RIGHT ? 'Right' : 'Both';
+  }
+
+  /**
+   * What the progression card prints: a short headline for the statline's
+   * value and a quieter line saying what it was measured over. A port of Coach
+   * web's `imbalanceLines`, word for word, so every app that shows this figure
+   * words it the same way. Two pieces rather than one sentence so the headline
+   * stays short enough not to widen a 375px screen, and so "not enough yet"
+   * says what is missing instead of nothing.
+   *
+   * Stated and nothing more: no threshold, no colour, no advice. The percentage
+   * is rounded to one decimal with a trailing .0 dropped -- "5%", "4.5%".
+   */
+  function imbalanceLines(result) {
+    if (!result) return null;
+    if (!result.enough) {
+      return {
+        headline: '\u2014',
+        detail: 'Needs ' + MIN_SESSIONS + ' sessions a side \u00b7 '
+          + result.sessions.left + ' left, ' + result.sessions.right + ' right so far',
+      };
+    }
+    var pct = Math.round(result.percent * 1000) / 10;
+    return {
+      headline: result.strong ? longLabel(result.strong) + ' ahead by ' + pct + '%' : 'Sides level',
+      detail: 'Mean estimated 1RM of the last ' + MIN_SESSIONS + ' sessions each'
+        + (result.trend ? ' \u00b7 gap ' + result.trend : ''),
+    };
+  }
+
   global.LiftSides = {
     LEFT: LEFT,
     RIGHT: RIGHT,
     MIN_SESSIONS: MIN_SESSIONS,
     of: of,
     label: label,
+    longLabel: longLabel,
     looksUnilateral: looksUnilateral,
     countsIn: countsIn,
     anySided: anySided,
@@ -323,5 +358,6 @@
     decodeSet: decodeSet,
     e1rm: e1rm,
     imbalance: imbalance,
+    imbalanceLines: imbalanceLines,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

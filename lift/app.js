@@ -778,32 +778,19 @@ function renderProgress() {
  * and sodium are held to: no goal, no threshold, no colour, no advice. A gap
  * of ten percent is ordinary in most people, this app is not qualified to say
  * what yours means, and a trainer is. The maths is in sides.js. */
-const TREND_TEXT = {
-  widening: 'The gap is widening across these sessions.',
-  closing: 'The gap is closing across these sessions.',
-  steady: 'The gap has held steady across these sessions.',
-};
-
 function renderImbalance(card, history) {
   const rms = (side) => history.map((h) => LiftSides.e1rm(LiftSides.onSide(h.ex.sets || [], side)));
   const gap = LiftSides.imbalance(rms(LiftSides.LEFT), rms(LiftSides.RIGHT));
 
-  if (!gap.enough) {
-    // Timed or bodyweight work has no estimated 1RM on either side, and an
-    // "imbalance -" line under it would be a promise this lift cannot keep.
-    if (!gap.sessions.left && !gap.sessions.right) return;
-    statline(card, 'Imbalance', '-');
-    card.appendChild(el('p', 'muted',
-      `Needs ${LiftSides.MIN_SESSIONS} sessions on each side to say `
-      + `(L ${gap.sessions.left} \u00b7 R ${gap.sessions.right} so far).`));
-    return;
-  }
+  // Timed or bodyweight work has no estimated 1RM on either side, and an
+  // "Imbalance —" line under it would be a promise this lift cannot keep.
+  if (!gap.enough && !gap.sessions.left && !gap.sessions.right) return;
 
-  const percent = Math.round(gap.percent * 100);
-  statline(card, 'Imbalance', gap.strong
-    ? `${percent}% - ${gap.strong === LiftSides.LEFT ? 'left' : 'right'} stronger`
-    : 'Even');
-  if (gap.trend) card.appendChild(el('p', 'muted', TREND_TEXT[gap.trend]));
+  // The words are sides.js's, shared with Coach web, Coach iOS and Coach
+  // Android, so a lifter and their trainer read the same sentence.
+  const lines = LiftSides.imbalanceLines(gap);
+  statline(card, 'Imbalance', lines.headline);
+  card.appendChild(el('p', 'muted', lines.detail));
 }
 
 function renderWeekFuel(week) {
