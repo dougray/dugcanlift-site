@@ -75,5 +75,6 @@ include:
 exclude:
   - vendor
   - lift/watch-scan.test.mjs
+  - lift/road-food.test.mjs
   - lift/fixtures/
   - lift/README.md
