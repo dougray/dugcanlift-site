@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v36';
+const CACHE = 'lift-v37';
 
 const SHELL = [
   '/lift/',
@@ -19,6 +19,7 @@ const SHELL = [
   '/lift/routines.js',
   '/lift/sides.js',
   '/lift/outdoor.js',
+  '/lift/road-food.js',
   '/lift/splits.json',
   '/lift/jsqr.js',
   '/lift/watch-scan.js',
@@ -58,8 +59,10 @@ self.addEventListener('fetch', (event) => {
 
   // The ingredient database is 718 KB, so it is not in the install bundle —
   // but it is cached the first time it is actually used, which is what makes
-  // the lookup work in a gym with no signal.
-  if (url.pathname === '/lift/foods.json') {
+  // the lookup work in a gym with no signal. Road Food's menus are the same:
+  // fetched when Road Food first opens, then kept for the interstate. Both are
+  // cache-first, so a new copy of either reaches people only with a CACHE bump.
+  if (url.pathname === '/lift/foods.json' || url.pathname === '/lift/road-food.json') {
     event.respondWith(
       caches.match(event.request).then((hit) => hit || fetch(event.request).then((response) => {
         if (response.ok) {

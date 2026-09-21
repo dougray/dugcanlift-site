@@ -12,7 +12,7 @@ const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', s
               recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
               training: 'lift.training', templates: 'lift.templates',
               routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording',
-              perSide: 'lift.perSide' };
+              perSide: 'lift.perSide', roadRecent: 'lift.roadRecent' };
 
 function load(key, fallback) {
   try {
@@ -210,6 +210,19 @@ function totals(list) {
     carbsG:   acc.carbsG   + mul(e, 'carbsG'),
     fiberG:   acc.fiberG   + mul(e, 'fiberG'),
   }), { calories: 0, proteinG: 0, fatG: 0, carbsG: 0, fiberG: 0 });
+}
+
+/* What is left of the goal on a day: the "kcal left" Home and Food show, and
+ * what Road Food ranks against. One place, so the three can never disagree.
+ * Negative when the day is over. Null with no goal set. */
+function remainingFor(day) {
+  if (!goal) return null;
+  const eaten = totals(entriesFor(day));
+  return {
+    calories: goal.calories - eaten.calories,
+    proteinG: (goal.proteinG || 0) - eaten.proteinG,
+    eaten,
+  };
 }
 
 /* Saturated fat, sugar and sodium for a day, under the macros: plain rows, no
@@ -472,8 +485,10 @@ function showTab(name) {
   currentTab = name;
   document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
   $('#' + name).classList.add('active');
+  // Road Food is reached from Food and belongs to it, so Food stays lit.
+  const lit = name === 'road' ? 'food' : name;
   document.querySelectorAll('#tabs button').forEach((b) =>
-    b.classList.toggle('active', b.dataset.tab === name));
+    b.classList.toggle('active', b.dataset.tab === lit));
   $('#tabs').style.display = (name === 'calc') ? 'none' : 'flex';
   window.scrollTo(0, 0);
   render();
@@ -501,7 +516,7 @@ function renderHome() {
     b.onclick = () => showTab('calc');
     card.appendChild(b);
   } else {
-    const remaining = goal.calories - eaten.calories;
+    const remaining = remainingFor(today).calories;
     card.appendChild(el('div', 'big', remaining >= 0 ? `${remaining} kcal left` : `${-remaining} kcal over`));
     card.appendChild(el('p', 'muted', `${eaten.calories} of ${goal.calories}`));
     bar(card, 'Protein', eaten.proteinG, goal.proteinG);
@@ -917,7 +932,7 @@ function renderFood() {
   const sum = $('#food-summary');
   sum.innerHTML = '';
   if (goal) {
-    const remaining = goal.calories - t.calories;
+    const remaining = remainingFor(foodDate).calories;
     sum.appendChild(el('div', 'big', remaining >= 0 ? `${remaining} kcal left` : `${-remaining} kcal over`));
     sum.appendChild(el('p', 'muted', `${t.calories} of ${goal.calories}`));
     bar(sum, 'Protein', t.proteinG, goal.proteinG);
@@ -1520,6 +1535,323 @@ function parseProduct(p) {
     per100: per100 || null,
     ...values,
   };
+}
+
+/* ---------------- road food ----------------
+ *
+ * Macro-friendly picks at fast-food chains and gas stations, ranked against
+ * what is left of today. The ranking, the 10% "a little over" band, the
+ * six-month staleness line and the entry shape are road-food.js, where node
+ * tests them; this is the screen.
+ *
+ * road-food.json is fetched the first time Road Food opens, not at launch, and
+ * the service worker keeps it from then on, so the list works on an interstate
+ * with no signal. It is curated by hand from each chain's own published
+ * nutrition (see the file's `source` and `checkedOn` per chain).
+ *
+ * No location, of any kind: you pick the chain. The recently used chains are
+ * remembered on this device only, under KEY.roadRecent, and are deliberately
+ * not in the backup -- a convenience about this screen, not a record. */
+
+const ROAD_DB = 'road-food.json';
+let roadData = null;
+let roadLoading = null;
+let roadError = null;
+// { kind: 'picker' } | { kind: 'chain', id } | { kind: 'snacks', category }
+let roadView = { kind: 'picker' };
+let roadMeal = 'LUNCH';
+let roadNote = '';
+
+function loadRoadFood() {
+  if (roadData) return Promise.resolve(roadData);
+  if (!roadLoading) {
+    roadLoading = fetch(ROAD_DB)
+      .then((response) => {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then((raw) => {
+        if (!raw || !Array.isArray(raw.chains)) throw new Error('not a Road Food file');
+        roadData = {
+          chains: raw.chains.filter((c) => c && c.id && Array.isArray(c.items)),
+          snacks: Array.isArray(raw.snacks) ? raw.snacks.filter(Boolean) : [],
+          rules: Array.isArray(raw.rules) ? raw.rules : [],
+        };
+        roadError = null;
+        return roadData;
+      })
+      .catch((e) => {
+        // Cleared so opening Road Food again tries again, once there is signal.
+        roadError = e;
+        roadLoading = null;
+        throw e;
+      });
+  }
+  return roadLoading;
+}
+
+function openRoadFood() {
+  roadView = { kind: 'picker' };
+  roadMeal = guessMeal();
+  roadNote = '';
+  showTab('road');
+  loadRoadFood().then(render, render);
+}
+
+$('#road-open').onclick = openRoadFood;
+$('#road-back').onclick = () => {
+  if (roadView.kind === 'picker') { showTab('food'); return; }
+  roadView = { kind: 'picker' };
+  roadNote = '';
+  render();
+  window.scrollTo(0, 0);
+};
+
+const roadDate = (key) => {
+  const [y, m, d] = String(key).split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+};
+
+const roadRecent = () => {
+  const r = load(KEY.roadRecent, []);
+  return Array.isArray(r) ? r : [];
+};
+
+function openRoadChain(id) {
+  save(KEY.roadRecent, LiftRoadFood.remember(roadRecent(), id, 5));
+  roadView = { kind: 'chain', id };
+  roadNote = '';
+  render();
+  window.scrollTo(0, 0);
+}
+
+function renderRoad() {
+  const body = $('#road-body');
+  body.innerHTML = '';
+  $('#road-back').textContent = roadView.kind === 'picker' ? 'Back to Food' : 'All chains';
+
+  if (!roadData) {
+    const card = el('div', 'card');
+    if (roadError) {
+      card.appendChild(el('p', null, 'Road Food could not load its list.'));
+      card.appendChild(el('p', 'muted', roadError.message === 'HTTP 404'
+        ? 'The list is not on the site yet.'
+        : 'It needs a connection the first time it opens, then it works offline. '
+          + `(${roadError.message})`));
+      const retry = el('button', 'wide ghost', 'Try again');
+      retry.onclick = () => { roadError = null; render(); loadRoadFood().then(render, render); };
+      card.appendChild(retry);
+    } else {
+      card.appendChild(el('p', 'muted', 'Loading the menus...'));
+    }
+    body.appendChild(card);
+    return;
+  }
+
+  if (roadView.kind === 'chain') {
+    const chain = roadData.chains.find((c) => c.id === roadView.id);
+    if (chain) { renderRoadPlace(body, chain, false); return; }
+    roadView = { kind: 'picker' };
+  }
+  if (roadView.kind === 'snacks') { renderRoadPlace(body, null, true); return; }
+  renderRoadPicker(body);
+}
+
+function roadChainCard(chain) {
+  const b = el('button', 'linkcard roadchain');
+  b.appendChild(el('div', 'roadname', chain.name));
+  const count = chain.items.length;
+  b.appendChild(el('p', 'muted small',
+    `${count} ${count === 1 ? 'item' : 'items'}` + (chain.checkedOn ? ` · checked ${roadDate(chain.checkedOn)}` : '')));
+  b.onclick = () => openRoadChain(chain.id);
+  return b;
+}
+
+function renderRoadPicker(body) {
+  body.appendChild(el('div', 'big', 'Road Food'));
+  body.appendChild(el('p', 'muted', 'Pick where you are stopping. The list is ranked against what is '
+    + 'left of today, and works with no signal once it has loaded.'));
+
+  const grid = el('div', 'roadgrid');
+  if (roadData.snacks.length) {
+    const gas = el('button', 'linkcard roadchain');
+    gas.appendChild(el('div', 'roadname', 'Gas station'));
+    const cats = [...new Set(roadData.snacks.map((s) => s.category).filter(Boolean))];
+    gas.appendChild(el('p', 'muted small', cats.length ? titleCase(cats.join(', ')) : 'Snacks'));
+    gas.onclick = () => { roadView = { kind: 'snacks', category: '' }; roadNote = ''; render(); window.scrollTo(0, 0); };
+    grid.appendChild(gas);
+  }
+  body.appendChild(grid);
+
+  const { recent, rest } = LiftRoadFood.orderChains(roadData.chains, roadRecent());
+  if (recent.length) {
+    body.appendChild(el('h2', null, 'Recent'));
+    const g = el('div', 'roadgrid');
+    recent.forEach((c) => g.appendChild(roadChainCard(c)));
+    body.appendChild(g);
+  }
+  if (rest.length) {
+    body.appendChild(el('h2', null, recent.length ? 'All chains' : 'Chains'));
+    const g = el('div', 'roadgrid');
+    rest.forEach((c) => g.appendChild(roadChainCard(c)));
+    body.appendChild(g);
+  }
+  body.appendChild(el('p', 'muted small', 'Numbers come from each chain’s own published nutrition, checked by '
+    + 'hand, and each place shows the date they were checked. LIFT never asks where you are.'));
+}
+
+/* The line at the top of a chain: what the list is ranked against, in words. */
+function roadFitLine(card, remaining, ranked) {
+  if (!remaining) {
+    card.appendChild(el('div', 'roadfit', 'No goal set'));
+    card.appendChild(el('p', 'muted', 'So this is ranked by protein per 100 kcal alone, with nothing '
+      + 'left out. Set a goal on Home and it will rank against what is left of your day.'));
+    return;
+  }
+  const kcal = Math.max(0, remaining.calories);
+  const protein = remaining.proteinG > 0 ? ` · ${remaining.proteinG} g protein` : ' · protein goal met';
+  card.appendChild(el('div', 'roadfit', `Fits your remaining ${kcal} kcal${protein}`));
+  card.appendChild(el('p', 'muted', 'Most protein per 100 kcal first; lower sodium breaks a tie. '
+    + 'Anything more than 10% over what is left is not shown.'));
+  if (!ranked.fits.length && !ranked.over.length) {
+    card.appendChild(el('p', null, remaining.calories <= 0
+      ? 'Today’s calories are used, so nothing here fits what is left.'
+      : 'Nothing here fits what is left today.'));
+  }
+}
+
+function roadRow(item, placeName) {
+  const row = el('div', 'entry roaditem');
+  const info = el('div');
+  info.appendChild(el('div', 'roadname', item.name));
+  const macro = (label, v) => (v == null ? null : `${label} ${Math.round(v)} g`);
+  const parts = [
+    item.kcal == null ? 'kcal not listed' : `${Math.round(item.kcal)} kcal`,
+    item.proteinG == null ? 'protein not listed' : macro('P', item.proteinG),
+    macro('C', item.carbsG), macro('F', item.fatG), macro('Fib', item.fiberG),
+  ].filter(Boolean);
+  info.appendChild(el('div', 'muted', parts.join(' · ')));
+  const density = LiftRoadFood.proteinPer100(item);
+  const about = [];
+  if (density != null && isFinite(density) && item.kcal > 0) about.push(`${Math.round(density * 10) / 10} g protein per 100 kcal`);
+  if (item.serving) about.push(item.serving);
+  if (about.length) info.appendChild(el('div', 'muted small', about.join(' · ')));
+  // Shown, never targeted: plain text, no colour, no threshold.
+  const extras = LiftNutrients.entryLine(LiftRoadFood.entryFor(item));
+  if (extras) info.appendChild(el('div', 'muted small', extras));
+  if (item.modification) info.appendChild(el('div', 'muted small', item.modification));
+  if (item.barcode) info.appendChild(el('div', 'muted small', `Barcode ${item.barcode}`));
+  row.appendChild(info);
+
+  const log = el('button', 'chip', 'Log');
+  log.setAttribute('aria-label', `Log ${item.name}`);
+  // Nothing to log without a calorie figure; every entry in LIFT has one.
+  log.disabled = item.kcal == null;
+  log.onclick = () => {
+    const entry = LiftRoadFood.entryFor(item, placeName, {
+      id: uid(), date: todayKey(), loggedAt: Date.now(), meal: roadMeal,
+    });
+    food.push(entry);
+    save(KEY.food, food);
+    const left = remainingFor(todayKey());
+    roadNote = `Logged ${item.name} to ${MEAL_LABEL[roadMeal]}.`
+      + (left ? ` ${left.calories >= 0 ? `${left.calories} kcal left` : `${-left.calories} kcal over`} today.` : '');
+    render();
+  };
+  row.appendChild(log);
+  return row;
+}
+
+function renderRoadPlace(body, chain, isSnacks) {
+  const items = isSnacks
+    ? roadData.snacks.filter((s) => !roadView.category || s.category === roadView.category)
+    : chain.items;
+
+  body.appendChild(el('div', 'big roadname', isSnacks ? 'Gas station' : chain.name));
+
+  // When the numbers were checked, in plain view. A gas-station view mixes
+  // products, so it shows the oldest date among what is on screen.
+  const dates = isSnacks ? items.map((s) => s.checkedOn).filter(Boolean).sort() : [chain.checkedOn].filter(Boolean);
+  const checkedOn = dates[0];
+  const when = el('p', 'muted');
+  when.textContent = checkedOn ? `Checked on ${roadDate(checkedOn)}` : 'No check date on file for these numbers.';
+  const source = isSnacks ? null : chain.source;
+  if (source && /^https:\/\//.test(source)) {
+    when.appendChild(document.createTextNode(' · '));
+    const a = el('a', null, 'source');
+    a.href = source;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    when.appendChild(a);
+  }
+  body.appendChild(when);
+  if (checkedOn && LiftRoadFood.isStale(checkedOn, todayKey())) {
+    body.appendChild(el('p', null, 'These numbers are more than six months old. Menus change, so '
+      + 'check them against the board before you count on them.'));
+  }
+
+  if (isSnacks) {
+    const cats = [...new Set(roadData.snacks.map((s) => s.category).filter(Boolean))];
+    const row = el('div', 'chips roadwrap');
+    chips(row, [{ label: 'All', c: '' }, ...cats.map((c) => ({ label: titleCase(c), c }))],
+      (i) => i.c === (roadView.category || ''),
+      (i) => { roadView = { kind: 'snacks', category: i.c }; render(); });
+    body.appendChild(row);
+  }
+
+  const remaining = remainingFor(todayKey());
+  const ranked = LiftRoadFood.rank(items, remaining);
+  const fit = el('div', 'card');
+  roadFitLine(fit, remaining, ranked);
+  body.appendChild(fit);
+
+  if (roadNote) {
+    const note = el('p', 'muted', roadNote);
+    note.setAttribute('role', 'status');
+    body.appendChild(note);
+  }
+
+  const cols = el('div', 'cols');
+  const main = el('div', 'col');
+  const side = el('div', 'col');
+  cols.appendChild(main);
+  cols.appendChild(side);
+  body.appendChild(cols);
+
+  main.appendChild(el('label', null, 'Log to'));
+  const meals = el('div', 'chips roadwrap');
+  chips(meals, MEALS.map((m) => ({ label: MEAL_LABEL[m], m })), (i) => i.m === roadMeal,
+    (i) => { roadMeal = i.m; render(); });
+  main.appendChild(meals);
+
+  const placeName = isSnacks ? '' : chain.name;
+  if (ranked.fits.length) {
+    const list = el('div', 'card');
+    ranked.fits.forEach((item) => list.appendChild(roadRow(item, placeName)));
+    main.appendChild(list);
+  }
+  if (ranked.over.length) {
+    main.appendChild(el('h2', null, 'A little over'));
+    main.appendChild(el('p', 'muted small', 'Within 10% of what is left.'));
+    const list = el('div', 'card');
+    ranked.over.forEach((item) => list.appendChild(roadRow(item, placeName)));
+    main.appendChild(list);
+  }
+
+  // The ordering rules: right after a menu changes, when the numbers are not.
+  // Plain rules are about restaurants; a gas station gets only the ones
+  // written for it.
+  const rules = isSnacks
+    ? LiftRoadFood.rulesFor(roadData.rules.filter((r) => r && Array.isArray(r.kinds)), 'snacks')
+    : LiftRoadFood.rulesFor(roadData.rules, chain.kind);
+  if (rules.length) {
+    side.appendChild(el('h2', null, 'Ordering'));
+    const card = el('div', 'card');
+    const ul = el('ul', 'roadrules');
+    rules.forEach((r) => ul.appendChild(el('li', null, r)));
+    card.appendChild(ul);
+    side.appendChild(card);
+  }
 }
 
 /* ---------------- train ---------------- */
@@ -2713,6 +3045,7 @@ function render() {
   else if (currentTab === 'food') renderFood();
   else if (currentTab === 'cook') renderCook();
   else if (currentTab === 'train') renderTrain();
+  else if (currentTab === 'road') renderRoad();
 }
 
 /* ---------------- backup ---------------- */

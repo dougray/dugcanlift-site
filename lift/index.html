@@ -305,6 +305,7 @@
     <button id="food-add">Add food</button>
     <button class="ghost" id="food-search-open">Search</button>
   </div>
+  <button class="wide ghost" id="road-open">Road Food</button>
 
   <div class="card hidden" id="food-search">
     <p class="muted">Searches Open Food Facts, relayed through a small proxy on
@@ -366,6 +367,16 @@
   <div id="food-list"></div>
   </div>
   </div>
+</section>
+
+<!-- ---------------- ROAD FOOD ----------------
+     Reached from Food. Chains and gas-station snacks ranked against what is
+     left of today; built by renderRoad in app.js. -->
+<section id="road" class="tab">
+  <div class="roadnav">
+    <button class="ghost" id="road-back">Back to Food</button>
+  </div>
+  <div id="road-body"></div>
 </section>
 
 <!-- ---------------- TRAIN ---------------- -->
@@ -441,6 +452,7 @@
 <script src="routines.js"></script>
 <script src="sides.js"></script>
 <script src="outdoor.js"></script>
+<script src="road-food.js"></script>
 <script src="jsqr.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
