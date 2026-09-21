@@ -21,11 +21,21 @@ Cook's week shows all seven days at once instead of one long list. In Coach, the
 roster sits beside the client you have open, so switching clients is a tap
 rather than a trip back.
 
+<figure style="margin:1.5rem 0;">
+  <img src="/assets/images/blog/2026-09-20/coach-ipad-roster.png" alt="LIFT Coach on an iPad: the roster on the left, the open client's charts filling the rest" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Coach on an iPad: the roster stays beside the client you have open.</figcaption>
+</figure>
+
 **Nothing about it checks what device you own.** It is all measured width. An
 iPad in a narrow Split View window is a phone as far as the app is concerned,
 and gets the phone layout. Turn an Android phone sideways and it gets the wide
 one. That also means a foldable is handled without anyone having to special-case
 foldables.
+
+<figure style="margin:1.5rem 0;">
+  <img src="/assets/images/blog/2026-09-20/lift-ipad-home.png" alt="LIFT on an iPad in landscape: a sidebar down the left, and the day's cards in two columns" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">LIFT on an iPad. The tabs become a sidebar, and the day's cards sit two across instead of stacked.</figcaption>
+</figure>
 
 **Phone screens are pixel-identical to before.** Not "basically the same" —
 compared screenshot against screenshot, at every view, in light and dark. The
@@ -47,8 +57,10 @@ obvious, and the second side pre-fills from the first.
 **Progression then charts each side on its own line**, with how far apart they
 are and whether the gap is closing:
 
-> **Right ahead by 5%**
-> Mean estimated 1RM of the last 3 sessions each · gap closing
+<figure style="margin:1.5rem 0;">
+  <img src="/assets/images/blog/2026-09-20/per-limb-progression.png" alt="A lift's progression card showing two lines, one per side, and an imbalance of 7% with the right side stronger" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Eight sessions of split squats. Two lines, and the gap between them is closing.</figcaption>
+</figure>
 
 **What it will not do is tell you what that means.** No target, no colour, no
 warning. A 10% difference is ordinary in most people, and an app that decides
