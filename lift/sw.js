@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v37';
+const CACHE = 'lift-v38';
 
 const SHELL = [
   '/lift/',
