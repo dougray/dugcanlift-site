@@ -284,6 +284,56 @@ test('bodyweight work with no estimated 1RM never reaches a percentage', () => {
   assert.equal(out.enough, false);
 });
 
+// MARK: - The words
+//
+// Identical to Coach web's `imbalanceLines` (coach/sides.js) and its tests, and
+// to Coach iOS, Coach Android, LIFT iOS and LIFT Android: six apps, one sentence.
+
+test('the lines say what is missing rather than nothing', () => {
+  const notYet = S.imbalanceLines(S.imbalance([100], [100, 100, 100]));
+  assert.equal(notYet.headline, '\u2014');
+  assert.equal(notYet.detail, 'Needs 3 sessions a side \u00b7 1 left, 3 right so far');
+
+  const twoEach = S.imbalanceLines(S.imbalance([100, 102], [120, 118]));
+  assert.equal(twoEach.detail, 'Needs 3 sessions a side \u00b7 2 left, 2 right so far');
+
+  const ahead = S.imbalanceLines(S.imbalance([80, 80, 80, 95, 95, 95], [100, 100, 100, 100, 100, 100]));
+  assert.equal(ahead.headline, 'Right ahead by 5%');
+  assert.equal(ahead.detail, 'Mean estimated 1RM of the last 3 sessions each \u00b7 gap closing');
+
+  assert.equal(S.imbalanceLines(S.imbalance([100, 100, 100], [100, 100, 100])).headline, 'Sides level');
+
+  // Tracked and shown, never targeted.
+  const text = [notYet, ahead].map((l) => `${l.headline} ${l.detail}`).join(' ').toLowerCase();
+  ['should', 'fix', 'warning', 'target', 'too ', 'concern'].forEach((word) => {
+    assert.equal(text.includes(word), false, `"${word}" has no business in this card`);
+  });
+});
+
+test('the headline names the strong side, to one decimal with a trailing .0 dropped', () => {
+  // 120 vs 100: 16.666...% -> 16.7%
+  assert.equal(S.imbalanceLines(S.imbalance([120, 120, 120], [100, 100, 100])).headline,
+    'Left ahead by 16.7%');
+  // 95.5 vs 100: 4.5%
+  assert.equal(S.imbalanceLines(S.imbalance([95.5, 95.5, 95.5], [100, 100, 100])).headline,
+    'Right ahead by 4.5%');
+  // 90 vs 100: exactly 10%, never "10.0%"
+  assert.equal(S.imbalanceLines(S.imbalance([90, 90, 90], [100, 100, 100])).headline,
+    'Right ahead by 10%');
+});
+
+test('every trend has its clause, and no trend has none', () => {
+  const detail = (l, r) => S.imbalanceLines(S.imbalance(l, r)).detail;
+  const hundreds = [100, 100, 100, 100, 100, 100];
+  assert.equal(detail([96, 96, 96, 80, 80, 80], hundreds),
+    'Mean estimated 1RM of the last 3 sessions each \u00b7 gap widening');
+  assert.equal(detail([90, 90, 90, 90], [100, 100, 100, 100]),
+    'Mean estimated 1RM of the last 3 sessions each \u00b7 gap steady');
+  // Three sessions each: nothing to compare, so no clause at all.
+  assert.equal(detail([90, 90, 90], [100, 100, 100]),
+    'Mean estimated 1RM of the last 3 sessions each');
+});
+
 test('estimated 1RM is Epley on the best set of that side', () => {
   const sets = [
     { weightLb: 100, reps: 10, side: 'left' },
