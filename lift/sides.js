@@ -29,8 +29,10 @@
  *                Named rather than packed because a backup is read by humans
  *                and by three platforms, and has to survive a reader that does
  *                not know the field.
- *   plan link    unchanged in v1: a coach prescribes as before and the lifter
- *                chooses sides when logging.
+ *   plan link    the same bits in a sixth set-tuple position, and `b: 1` on an
+ *                exercise done each side (coach/PLAN-FORMAT.md "Sides"). What a
+ *                prescription asks of each side, and which side to offer next
+ *                against it, is the "a coach's prescription" block below.
  */
 (function (global) {
   'use strict';
@@ -219,6 +221,101 @@
     return set;
   }
 
+  /* ---------------- a coach's prescription ----------------
+   *
+   * A plan can say an exercise is done each side -- every prescribed set on
+   * both, so "3 x 8 each side" is six sets, three a side -- and that a set is
+   * for one side only, once. These read what a prescription asks for against
+   * what has been logged. They suggest; the log records what happened, and
+   * progression, the imbalance figure and volume never read a prescription.
+   *
+   * `prescribed` is the exercise's prescribed sets, each with an optional
+   * `side`; `eachSide` is the exercise flag. */
+
+  /** Whether this prescription says anything about sides at all. */
+  function prescribesSides(prescribed, eachSide) {
+    return !!eachSide || anySided(prescribed);
+  }
+
+  /**
+   * Sets asked for per side, and two-sided ones. An each-side set counts once
+   * on each side; a named set once on its own side. Each side plus one extra
+   * left set is left 4, right 3.
+   */
+  function prescribedTargets(prescribed, eachSide) {
+    var out = { left: 0, right: 0, both: 0 };
+    (prescribed || []).forEach(function (s) {
+      var side = of(s);
+      if (side) out[side] += 1;
+      else if (eachSide) { out.left += 1; out.right += 1; }
+      else out.both += 1;
+    });
+    return out;
+  }
+
+  /** The sided sets in the order the coach wrote them: an each-side set is
+   *  left then right, a named set its own side. Two-sided sets have no place. */
+  function prescribedOrder(prescribed, eachSide) {
+    var order = [];
+    (prescribed || []).forEach(function (s) {
+      var side = of(s);
+      if (side) order.push({ side: side, set: s });
+      else if (eachSide) order.push({ side: LEFT, set: s }, { side: RIGHT, set: s });
+    });
+    return order;
+  }
+
+  /**
+   * The side of the next prescribed set nothing logged has filled yet, or null
+   * when every sided set is filled (the caller then offers whichever side is
+   * behind, as it always has). Logged sets fill prescribed ones side by side,
+   * in order, so three lefts logged first leave the first right unfilled.
+   */
+  function nextPrescribedSide(prescribed, eachSide, sets) {
+    var have = countsIn(sets);
+    var used = { left: 0, right: 0 };
+    var order = prescribedOrder(prescribed, eachSide);
+    for (var i = 0; i < order.length; i++) {
+      var side = order[i].side;
+      if (used[side] >= have[side]) return side;
+      used[side] += 1;
+    }
+    return null;
+  }
+
+  /** The prescribed set the next set on `side` answers, to prefill it from,
+   *  or null once that side's prescription is used up. */
+  function prescribedSetFor(prescribed, eachSide, sets, side) {
+    var want = of(side);
+    if (!want) return null;
+    var mine = prescribedOrder(prescribed, eachSide)
+      .filter(function (o) { return o.side === want; });
+    var next = mine[countsIn(sets)[want]];
+    return next ? next.set : null;
+  }
+
+  /**
+   * "L 0/3 · R 0/3": logged against asked, per side. Over is shown as over --
+   * "L 4/3" -- because it is what happened and the coach should see it. A side
+   * the plan does not ask for appears only once something is logged on it, and
+   * two-sided sets are counted when there are any. Empty when the plan says
+   * nothing about sides, so the caller keeps its plain "L 3 · R 2".
+   */
+  function targetsLabel(prescribed, eachSide, sets) {
+    var t = prescribedTargets(prescribed, eachSide);
+    if (!t.left && !t.right) return '';
+    var c = countsIn(sets);
+    var parts = [];
+    [[LEFT, 'L'], [RIGHT, 'R']].forEach(function (pair) {
+      var side = pair[0];
+      if (t[side]) parts.push(pair[1] + ' ' + c[side] + '/' + t[side]);
+      else if (c[side]) parts.push(pair[1] + ' ' + c[side]);
+    });
+    if (t.both) parts.push(c.both + '/' + t.both + ' both');
+    else if (c.both) parts.push(c.both + ' both');
+    return parts.join(' \u00b7 ');
+  }
+
   /* ---------------- imbalance ---------------- */
 
   /** Epley, best set: reliable to about five reps, optimistic past ten. */
@@ -356,6 +453,11 @@
     sideFromFlags: sideFromFlags,
     encodeSet: encodeSet,
     decodeSet: decodeSet,
+    prescribesSides: prescribesSides,
+    prescribedTargets: prescribedTargets,
+    nextPrescribedSide: nextPrescribedSide,
+    prescribedSetFor: prescribedSetFor,
+    targetsLabel: targetsLabel,
     e1rm: e1rm,
     imbalance: imbalance,
     imbalanceLines: imbalanceLines,
