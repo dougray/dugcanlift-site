@@ -340,7 +340,19 @@ function setPerSide(ex, on) {
  * on its own. Never stored: it is a half-finished tap, not a preference. */
 const sideChoice = {};
 
-const chosenSide = (ex) => sideChoice[ex.id] || LiftSides.nextSide(ex.sets || []);
+/* With a coach's prescription on the exercise, the offer starts on the side
+ * the next unfilled prescribed set names; past the prescription, or with none,
+ * on whichever side is behind. Either way the lifter can change it. */
+const chosenSide = (ex) => sideChoice[ex.id]
+  || LiftSides.nextPrescribedSide(ex.prescribed, ex.eachSide, ex.sets || [])
+  || LiftSides.nextSide(ex.sets || []);
+
+/* A named set on a lift not logged per side -- one right-arm set in a bench
+ * session -- still needs somewhere to be logged on that side. Until it is,
+ * the L / R choice shows for this exercise, with Both beside it, without
+ * changing the lifter's per-side preference for the lift. */
+const pendingNamedSide = (ex) => !perSideOn(ex) && !!ex.prescribed
+  && LiftSides.nextPrescribedSide(ex.prescribed, ex.eachSide, ex.sets || []) !== null;
 
 /* ---------------- tiny DOM helpers ---------------- */
 
@@ -1974,7 +1986,9 @@ function formatPrescription(set) {
       : `${set.durationSec}s`);
   }
   if (set.rpe != null) parts.push(`@${set.rpe}`);
-  return parts.join(' ') || 'as written';
+  // "30 x 8 L" for a set the coach put on one side.
+  const side = LiftSides.label(set);
+  return (parts.join(' ') || 'as written') + (side ? ` ${side}` : '');
 }
 
 /* The coach's session for this day, shown above your own log rather than
@@ -1997,6 +2011,13 @@ function renderPrescribed() {
       const block = el('div', 'exercise');
       block.appendChild(el('h3', null,
         exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+      // Each side: the sets are listed once and done on both, so say so and
+      // say what that comes to -- "Each side · L 4 · R 3" for the seven-set
+      // case, where the extra left set is listed with its L.
+      if (exercise.eachSide) {
+        const t = LiftSides.prescribedTargets(exercise.sets, true);
+        block.appendChild(el('p', 'muted', `Each side \u00b7 L ${t.left} \u00b7 R ${t.right}`));
+      }
       exercise.sets.forEach((set, i) => {
         block.appendChild(el('div', 'muted', `${i + 1}.  ${formatPrescription(set)}`));
       });
@@ -2092,8 +2113,13 @@ function renderTrain() {
       // Left and right, when this exercise is logged that way. "L 3 · R 2"
       // under the name is the whole point of the counts: a side you skipped
       // is invisible in a list of sets and obvious here.
-      const sided = perSideOn(ex);
-      const counts = sided ? LiftSides.countsLabel(ex.sets || []) : '';
+      const perSide = perSideOn(ex);
+      const pending = pendingNamedSide(ex);
+      const sided = perSide || pending;
+      // Against the coach's prescription when there is one with sides in it,
+      // "L 1/3 · R 0/3", and "L 4/3" when over; otherwise the plain count.
+      const counts = LiftSides.targetsLabel(ex.prescribed, ex.eachSide, ex.sets || [])
+        || (sided ? LiftSides.countsLabel(ex.sets || []) : '');
       if (counts) block.appendChild(el('p', 'muted', counts));
 
       const prev = lastPerformed(ex, session);
@@ -2116,7 +2142,9 @@ function renderTrain() {
        * -- whichever has fewer sets so far -- and Add set logs it there. */
       if (sided) {
         const picker = el('div', 'chips');
-        chips(picker, [{ label: 'L', v: LiftSides.LEFT }, { label: 'R', v: LiftSides.RIGHT }],
+        const options = [{ label: 'L', v: LiftSides.LEFT }, { label: 'R', v: LiftSides.RIGHT }];
+        if (!perSide) options.unshift({ label: 'Both', v: 'both' });
+        chips(picker, options,
           (i) => i.v === chosenSide(ex),
           (i) => { sideChoice[ex.id] = i.v; render(); });
         block.appendChild(picker);
@@ -2124,7 +2152,7 @@ function renderTrain() {
 
       const actions = el('div', 'exercise-actions');
       const add = el('button', 'ghost', 'Add set');
-      add.onclick = () => addSetPrompt(ex, f, sided ? chosenSide(ex) : null);
+      add.onclick = () => addSetPrompt(ex, f, sided ? LiftSides.of(chosenSide(ex)) : null);
       actions.appendChild(add);
 
       /* The choice itself, offered on every exercise because the bundled list
@@ -2133,11 +2161,13 @@ function renderTrain() {
        *
        * "Per side" rather than "L / R": beside the L and R chips it would
        * read as a third side to log on, which is the one thing it is not. */
-      const toggle = el('button', 'chip' + (sided ? ' on' : ''), 'Per side');
-      toggle.title = sided ? 'Log both sides as one set' : 'Log left and right separately';
-      toggle.setAttribute('aria-pressed', sided ? 'true' : 'false');
+      // The preference itself, not whether L / R happens to be showing: a
+      // named set from the coach shows them without switching this on.
+      const toggle = el('button', 'chip' + (perSide ? ' on' : ''), 'Per side');
+      toggle.title = perSide ? 'Log both sides as one set' : 'Log left and right separately';
+      toggle.setAttribute('aria-pressed', perSide ? 'true' : 'false');
       toggle.onclick = () => {
-        setPerSide(ex, !sided);
+        setPerSide(ex, !perSide);
         delete sideChoice[ex.id];
         render();
       };
@@ -2188,7 +2218,11 @@ function addSetPrompt(ex, f, side) {
    * the reps and adjust the weight. */
   const sets = ex.sets || [];
   const sameSide = side ? LiftSides.onSide(sets, side) : sets;
-  const last = sameSide[sameSide.length - 1] || sets[sets.length - 1] || {};
+  // A coach's prescription for this side comes first: the next set it asks
+  // for on this side is what the lifter is about to do.
+  const asked = ex.prescribed
+    ? LiftSides.prescribedSetFor(ex.prescribed, ex.eachSide, sets, side) : null;
+  const last = asked || sameSide[sameSide.length - 1] || sets[sets.length - 1] || {};
   const set = { id: uid() };
   // Both is absent, never written out, and never defaulted to left.
   if (side) set.side = side;
@@ -2206,15 +2240,15 @@ function addSetPrompt(ex, f, side) {
     if (v !== '') set.reps = parseInt(v, 10);
   }
   if (f.rpe) {
-    const v = prompt('RPE (optional)', '');
+    const v = prompt('RPE (optional)', asked && asked.rpe != null ? asked.rpe : '');
     if (v) set.rpe = parseFloat(v);
   }
   if (f.time) {
-    const v = prompt('Time (mm:ss or seconds)', '');
+    const v = prompt('Time (mm:ss or seconds)', asked && asked.durationSec != null ? asked.durationSec : '');
     if (v) set.durationSec = parseDuration(v);
   }
   if (f.dist) {
-    const v = prompt('Distance (m)', '');
+    const v = prompt('Distance (m)', asked && asked.distanceMeters != null ? asked.distanceMeters : '');
     if (v) set.distanceMeters = parseFloat(v);
   }
   const empty = ['weightLb', 'reps', 'rpe', 'durationSec', 'distanceMeters']
@@ -3906,17 +3940,36 @@ function importTraining(payload) {
       name: exercise.n || 'Exercise',
       equipment: exercise.q || '',
       note: exercise.c || '',
-      // [weightLb, reps, rpe, durationSec, distanceMeters], trailing nulls
-      // trimmed by the sender. Missing is unprescribed, not zero.
-      sets: (exercise.s || []).map((tuple) => ({
-        weightLb: tuple[0] ?? null,
-        reps: tuple[1] ?? null,
-        rpe: tuple[2] ?? null,
-        durationSec: tuple[3] ?? null,
-        distanceMeters: tuple[4] ?? null,
-      })),
+      // `b: 1` is each side: every set is done on both. Absent (or anything
+      // else) is today's meaning.
+      ...(Number(exercise.b) === 1 ? { eachSide: true } : {}),
+      // [weightLb, reps, rpe, durationSec, distanceMeters, flags], only
+      // trailing nulls trimmed by the sender. Missing is unprescribed, not
+      // zero. flags bits 1-2 name a side, masked, never compared; no sixth
+      // position, or 0 or 3 in those bits, is both.
+      sets: (exercise.s || []).map((tuple) => {
+        const set = {
+          weightLb: tuple[0] ?? null,
+          reps: tuple[1] ?? null,
+          rpe: tuple[2] ?? null,
+          durationSec: tuple[3] ?? null,
+          distanceMeters: tuple[4] ?? null,
+        };
+        const side = LiftSides.sideFromFlags(tuple[5]);
+        if (side) set.side = side;
+        return set;
+      }),
     })),
   });
+
+  // An each-side exercise turns on "Left and right separately" for that lift
+  // when the plan is accepted, if it is not on already. The lifter can turn it
+  // back off; that choice is theirs from then on.
+  incoming.forEach((raw) => (raw.e || []).forEach((exercise) => {
+    if (Number(exercise.b) === 1) {
+      setPerSide({ name: exercise.n || 'Exercise', equipment: exercise.q || '' }, true);
+    }
+  }));
 
   // Workouts with no day booked for them are a library send: file them for
   // later rather than inventing a date the coach did not choose.
@@ -3971,7 +4024,17 @@ function startPrescribed(prescription) {
       name: exercise.name,
       equipment: exercise.equipment,
       note: exercise.note || '',
-      sets: exercise.sets.map((set) => {
+      // A prescription with sides in it is kept on the exercise, so the header
+      // can count against it ("L 0/3 · R 0/3") and Add set can offer the side
+      // and the numbers of the next set it asks for. Its sided sets are logged
+      // one at a time, as they are done, rather than pre-filled: a pre-filled
+      // left set is a claim nobody made yet. Two-sided sets of an exercise
+      // that is not each side are copied in as they always were.
+      ...(LiftSides.prescribesSides(exercise.sets, exercise.eachSide) ? {
+        prescribed: exercise.sets.map((set) => ({ ...set })),
+        ...(exercise.eachSide ? { eachSide: true } : {}),
+      } : {}),
+      sets: exercise.sets.filter((set) => !exercise.eachSide && !LiftSides.of(set)).map((set) => {
         const copy = { id: uid() };
         // Only fields the coach actually prescribed. An unprescribed weight
         // must stay blank rather than arriving as a zero to be deleted.
