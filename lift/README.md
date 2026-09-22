@@ -23,8 +23,22 @@ no advice, the same discipline saturated fat, sugar and sodium are held to.
 On the wire: the share link's set tuple carries the side in `flags` bits 1-2
 (0 both, 1 left, 2 right) beside the warmup bit, so a decoder that has never
 heard of sides still reads the weight and the reps; a backup carries the named
-field `side: "left" | "right"`, omitted when both; plan links are unchanged.
-See `coach/SHARE-FORMAT.md` and `coach/BACKUP-FORMAT.md`.
+field `side: "left" | "right"`, omitted when both. See `coach/SHARE-FORMAT.md`
+and `coach/BACKUP-FORMAT.md`.
+
+A coach's plan can carry sides too (`coach/PLAN-FORMAT.md` "Sides"): `b: 1` on
+an exercise done each side, and the same flags bits in a sixth set position for
+a set on one side. Accepting an each-side exercise turns per-side logging on for
+that lift. A started session keeps the prescription on the exercise
+(`prescribed`, `eachSide`): the header counts against it -- `L 0/3 · R 0/3`,
+and `L 4/3` when over, never capped -- the L / R offer starts on the side the
+next unfilled prescribed set names, and Add set prefills from that set. Sided
+sets are logged as they are done rather than pre-filled; two-sided sets are
+copied in as before. A named set on a lift not logged per side shows L / R
+(with Both) only until it is logged, without touching the per-side preference.
+Progression, imbalance and volume read the log, never the plan.
+`plan-sides.test.mjs` also pins how a build without any of this reads such a
+plan: as ordinary two-sided sets, weights and reps intact.
 
 ## Watch import (`watch-scan.js`)
 
