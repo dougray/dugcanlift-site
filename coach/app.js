@@ -1290,6 +1290,10 @@ function saveBackup() {
   // carries a spelling this app would not read back, and omitted entirely when
   // a set is two-sided -- absent is how "both" is written (BACKUP-FORMAT.md).
   clients.forEach(CoachSides.normaliseClient);
+  // A prescription's sides follow the same rule: `eachSide: true` on an
+  // exercise done each side, omitted when not, and `side` on a set that names
+  // one, omitted when both. See prescriptions.js.
+  workouts.forEach(CoachPrescriptions.normaliseWorkout);
   const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions };
   const blob = new Blob([JSON.stringify(payload, null, 1)],
     { type: 'application/json' });
@@ -1317,6 +1321,9 @@ function restoreLibrary(parsed) {
     if (!Array.isArray(parsed[key])) return;
     let n = 0;
     parsed[key].forEach((item) => {
+      // A workout from a file written before sides has neither field and
+      // restores as it always did; an unknown side string reads as both.
+      if (key === 'workouts') CoachPrescriptions.normaliseWorkout(item);
       if (item && item.id && !target.some((existing) => existing.id === item.id)) {
         target.push(item);
         n += 1;
@@ -1653,18 +1660,9 @@ const recipeById = (id) => recipes.find((r) => r.id === id);
 
 /* ---------------- plan link ---------------- */
 
-const bytesToB64url = (bytes) => {
-  let bin = '';
-  bytes.forEach((b) => { bin += String.fromCharCode(b); });
-  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-};
-
-async function deflate(text) {
-  if (typeof CompressionStream === 'undefined') return null;
-  const stream = new Blob([text]).stream()
-    .pipeThrough(new CompressionStream('deflate-raw'));
-  return new Uint8Array(await new Response(stream).arrayBuffer());
-}
+/* The envelope -- deflate-raw and base64url, or 'u' for uncompressed where
+ * the browser has no CompressionStream -- lives in prescriptions.js as
+ * `pack`, beside the workout encoding, so node can run the whole encoder. */
 
 /* Builds the link for one client's week.
  *
@@ -1702,15 +1700,10 @@ async function encodePlan(clientId) {
     const w = workoutById(id);
     if (!w) return;
     workoutIndex[id] = inlineWorkouts.length;
-    inlineWorkouts.push({
-      n: w.name,
-      e: (w.exercises || []).map((exercise) => ({
-        n: exercise.name,
-        ...(exercise.equipment ? { q: exercise.equipment } : {}),
-        s: (exercise.sets || []).map(setTuple),
-        ...(exercise.note ? { c: exercise.note } : {}),
-      })),
-    });
+    // Sides ride as `b: 1` on an each-side exercise and a sixth tuple
+    // position on a set that names one; both are absent otherwise, so a plan
+    // with neither is the same bytes it always was. See prescriptions.js.
+    inlineWorkouts.push(CoachPrescriptions.workoutWire(w));
   });
 
   const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
@@ -1732,13 +1725,9 @@ async function encodePlan(clientId) {
       .map((k) => ({ d: k.date, x: workoutIndex[k.workoutId] }));
   }
 
-  const json = JSON.stringify(payload);
-  const packed = await deflate(json);
   // 'u' is the uncompressed fallback the decoder already understands, for
   // browsers without CompressionStream.
-  const body = packed
-    ? 'z' + bytesToB64url(packed)
-    : 'u' + bytesToB64url(new TextEncoder().encode(json));
+  const body = await CoachPrescriptions.pack(JSON.stringify(payload));
   return `${LIFT_URL}#1${body}`;
 }
 
@@ -1763,22 +1752,11 @@ async function encodeLibrary(clientId, { recipeIds = [], workoutIds = [] }) {
     .map((r) => CoachRecipeNutrition.planRecipe(r, CoachNutrients.row));
   if (inlineRecipes.length) payload.r = inlineRecipes;
 
-  const inlineWorkouts = workoutIds.map(workoutById).filter(Boolean).map((w) => ({
-    n: w.name,
-    e: (w.exercises || []).map((exercise) => ({
-      n: exercise.name,
-      ...(exercise.equipment ? { q: exercise.equipment } : {}),
-      s: (exercise.sets || []).map(setTuple),
-      ...(exercise.note ? { c: exercise.note } : {}),
-    })),
-  }));
+  const inlineWorkouts = workoutIds.map(workoutById).filter(Boolean)
+    .map(CoachPrescriptions.workoutWire);
   if (inlineWorkouts.length) payload.w = inlineWorkouts;
 
-  const json = JSON.stringify(payload);
-  const packed = await deflate(json);
-  const body = packed
-    ? 'z' + bytesToB64url(packed)
-    : 'u' + bytesToB64url(new TextEncoder().encode(json));
+  const body = await CoachPrescriptions.pack(JSON.stringify(payload));
   return `${LIFT_URL}#1${body}`;
 }
 
@@ -2384,37 +2362,9 @@ const titleCase = (text) => (text || '').replace(/\b[a-z]/g, (c) => c.toUpperCas
 
 /* ---------------- prescriptions ---------------- */
 
-/** How a prescribed set reads back: "225 × 5 @8", "5 reps", "10:00 · 1600 m". */
-function prescriptionText(set) {
-  const bits = [];
-  if (set.weightLb != null && set.reps != null) bits.push(`${num(set.weightLb)} × ${set.reps}`);
-  else if (set.reps != null) bits.push(`${set.reps} reps`);
-  else if (set.weightLb != null) bits.push(`${num(set.weightLb)} lb`);
-  if (set.distanceM != null) bits.push(`${num(set.distanceM)} m`);
-  if (set.durationSec != null) {
-    const minutes = Math.floor(set.durationSec / 60);
-    bits.push(minutes ? `${minutes}:${pad2(set.durationSec % 60)}` : `${set.durationSec}s`);
-  }
-  if (set.rpe != null) bits.push(`@${set.rpe}`);
-  return bits.join(' · ') || 'as written';
-}
-
-/** "3 × 5 @ 225" when every set matches, otherwise each set spelled out. */
-function exerciseSummary(exercise) {
-  const sets = exercise.sets || [];
-  if (!sets.length) return 'no sets yet';
-  const first = JSON.stringify(sets[0]);
-  const uniform = sets.every((s) => JSON.stringify(s) === first);
-  return uniform && sets.length > 1
-    ? `${sets.length} × ${prescriptionText(sets[0])}`
-    : sets.map(prescriptionText).join(', ');
-}
-
-const setTuple = (set) => {
-  const values = [set.weightLb, set.reps, set.rpe, set.durationSec, set.distanceM];
-  while (values.length && values[values.length - 1] == null) values.pop();
-  return values.map((v) => (v == null ? null : v));
-};
+/** One line per exercise: "3 × 225 × 5", "3 × 30 × 8 each side + 1 L".
+ *  The rules, and the tests, are in prescriptions.js. */
+const exerciseSummary = (exercise) => CoachPrescriptions.summary(exercise);
 
 /* ---------------- TRAIN views ---------------- */
 
@@ -2511,12 +2461,75 @@ function closeWorkoutForm() {
   renderTrain();
 }
 
+/* ---------------- sides in the editor ----------------
+ *
+ * "Each side" is per exercise and means every set is done on both sides, so
+ * "3 × 8 each side" stays three rows. It starts ticked when the name reads
+ * unilateral -- LIFT's own guess, CoachSides.looksUnilateral -- and once the
+ * coach has ticked or unticked it for a lift, that choice is what the next
+ * copy of the lift starts with. Kept in settings, keyed like LIFT keys its
+ * per-side preference (name|equipment), so it rides in a backup.
+ *
+ * A set naming a side is the asymmetric case, and the Both / L / R control
+ * that sets it stays out of sight until the exercise is each side or the coach
+ * asks for it with "Set a side" -- so a bench press editor looks exactly as it
+ * always did. */
+
+const eachSideKey = (exercise) =>
+  `${(exercise.name || '').trim()}|${(exercise.equipment || '').trim()}`.toLowerCase();
+
+function eachSideDefault(exercise) {
+  const chosen = (settings.eachSide || {})[eachSideKey(exercise)];
+  return typeof chosen === 'boolean' ? chosen : CoachSides.looksUnilateral(exercise.name);
+}
+
+function setEachSide(exercise, on) {
+  if (on) exercise.eachSide = true;
+  else delete exercise.eachSide;
+  settings.eachSide = { ...(settings.eachSide || {}), [eachSideKey(exercise)]: on };
+  saveSettings();
+}
+
+/* Exercises whose coach tapped "Set a side". Not stored: once a set names a
+ * side the control stays because of that, and an untouched tap is nothing. */
+const sidesAsked = new WeakSet();
+
+const showsSides = (exercise) => exercise.eachSide === true
+  || CoachSides.anySided(exercise.sets) || sidesAsked.has(exercise);
+
+const SIDE_CHOICES = [
+  { v: null, label: 'Both', name: 'Both sides' },
+  { v: 'left', label: 'L', name: 'Left' },
+  { v: 'right', label: 'R', name: 'Right' },
+];
+
+/** Both / L / R for one set: three buttons in a group, the pressed one filled. */
+function sideControl(set, setNumber, onChange) {
+  const group = cookEl('div', 'seg');
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', `Side for set ${setNumber}`);
+  const current = CoachSides.of(set);
+  SIDE_CHOICES.forEach((choice) => {
+    const button = cookEl('button', null, choice.label);
+    button.type = 'button';
+    button.setAttribute('aria-label', choice.name);
+    button.setAttribute('aria-pressed', String(current === choice.v));
+    button.onclick = () => {
+      if (choice.v) set.side = choice.v;
+      else delete set.side;
+      onChange();
+    };
+    group.appendChild(button);
+  });
+  return group;
+}
+
 /* The set editor.
  *
  * Every field is optional on purpose: "five reps, you pick the weight" is a
  * real prescription, and so is a ten-minute row with no reps at all. Blank
  * means unprescribed, never zero. */
-function renderWorkoutEditor() {
+function renderWorkoutEditor(focusAfter) {
   const wrap = $('#w-exercises');
   wrap.innerHTML = '';
   if (!workoutDraft) return;
@@ -2535,9 +2548,33 @@ function renderWorkoutEditor() {
     head.appendChild(remove);
     card.appendChild(head);
 
-    const table = cookEl('table', 'grid');
+    // What the exercise asks for, in words: "3 × 30 × 8 each side + 1 L".
+    // Kept current as the numbers are typed, not only on the next render.
+    const summary = cookEl('p', 'muted', exerciseSummary(exercise));
+    const resummarise = () => { summary.textContent = exerciseSummary(exercise); };
+    card.appendChild(summary);
+
+    const each = exercise.eachSide === true;
+    const toggle = cookEl('button', 'chip' + (each ? ' on' : ''), 'Each side');
+    toggle.type = 'button';
+    toggle.setAttribute('aria-pressed', String(each));
+    toggle.title = each
+      ? 'Every set is done on both sides'
+      : 'Count these sets once for each side';
+    toggle.onclick = () => {
+      setEachSide(exercise, !each);
+      renderWorkoutEditor({ exercise: exerciseIndex, control: 'each' });
+    };
+    toggle.dataset.focus = `${exerciseIndex}:each`;
+    const sideRow = cookEl('div', 'chips');
+    sideRow.appendChild(toggle);
+    card.appendChild(sideRow);
+
+    const sided = showsSides(exercise);
+    const table = cookEl('table', 'grid sets');
     const header = cookEl('tr');
-    ['Set', 'lb', 'Reps', 'RPE', ''].forEach((h) => header.appendChild(cookEl('th', null, h)));
+    ['Set', 'lb', 'Reps', 'RPE', ...(sided ? ['Side'] : []), '']
+      .forEach((h) => header.appendChild(cookEl('th', h === 'Side' ? 'side-col' : null, h)));
     table.appendChild(header);
 
     exercise.sets.forEach((set, setIndex) => {
@@ -2555,10 +2592,27 @@ function renderWorkoutEditor() {
         input.oninput = () => {
           const raw = input.value.trim();
           set[field] = raw === '' ? null : parseFloat(raw);
+          resummarise();
         };
         cell.appendChild(input);
         row.appendChild(cell);
       });
+
+      // The side control sits in its own column where there is room for one,
+      // and on a line of its own under the set at phone width, where a fifth
+      // column would squeeze the numbers to nothing. Only one of the two is
+      // ever displayed (style.css), so only one is ever in the tab order.
+      const sideFor = () => {
+        const control = sideControl(set, setIndex + 1, () =>
+          renderWorkoutEditor({ exercise: exerciseIndex, control: `side${setIndex}` }));
+        control.dataset.focus = `${exerciseIndex}:side${setIndex}`;
+        return control;
+      };
+      if (sided) {
+        const cell = cookEl('td', 'side-col');
+        cell.appendChild(sideFor());
+        row.appendChild(cell);
+      }
 
       const last = cookEl('td');
       const drop = cookEl('button', 'chip', '×');
@@ -2566,6 +2620,17 @@ function renderWorkoutEditor() {
       last.appendChild(drop);
       row.appendChild(last);
       table.appendChild(row);
+
+      if (sided) {
+        row.classList.add('has-side-sub');
+        const sub = cookEl('tr', 'side-sub');
+        sub.appendChild(cookEl('td'));
+        const cell = cookEl('td');
+        cell.colSpan = 4;
+        cell.appendChild(sideFor());
+        sub.appendChild(cell);
+        table.appendChild(sub);
+      }
     });
 
     const scroll = cookEl('div', 'scroll-x');
@@ -2582,7 +2647,19 @@ function renderWorkoutEditor() {
       });
       renderWorkoutEditor();
     };
-    card.appendChild(addSet);
+    const actions = cookEl('div', 'chips');
+    actions.appendChild(addSet);
+    if (!sided) {
+      const ask = cookEl('button', 'chip', 'Set a side');
+      ask.type = 'button';
+      ask.title = 'Mark a set as left or right only';
+      ask.onclick = () => {
+        sidesAsked.add(exercise);
+        renderWorkoutEditor({ exercise: exerciseIndex, control: 'side0' });
+      };
+      actions.appendChild(ask);
+    }
+    card.appendChild(actions);
 
     const note = document.createElement('input');
     note.type = 'text';
@@ -2593,6 +2670,16 @@ function renderWorkoutEditor() {
 
     wrap.appendChild(card);
   });
+
+  // A tap re-renders the editor, which would drop keyboard focus onto the
+  // page. Put it back on the control that was used, or its replacement.
+  if (focusAfter) {
+    const target = [...wrap.querySelectorAll(`[data-focus="${focusAfter.exercise}:${focusAfter.control}"]`)]
+      .find((node) => node.offsetParent !== null);
+    const button = target && (target.matches('button') ? target
+      : target.querySelector('[aria-pressed="true"]') || target.querySelector('button'));
+    if (button) button.focus({ preventScroll: true });
+  }
 }
 
 /* ---------------- exercise picker ---------------- */
@@ -2637,14 +2724,18 @@ function renderExercisePicker() {
     row.textContent = `${hit.name} — ${hit.muscle}`
       + (hit.equipment ? `, ${hit.equipment}` : '');
     row.onclick = () => {
-      workoutDraft.exercises.push({
+      const exercise = {
         name: hit.name,
         equipment: titleCase(hit.equipment),
         note: '',
         // One set to start, so there is something to edit rather than an
         // exercise with nothing under it.
         sets: [{ weightLb: null, reps: null, rpe: null, durationSec: null, distanceM: null }],
-      });
+      };
+      // Pre-ticked when the name reads unilateral, or as the coach last left
+      // this lift. Absent when not, as it is stored and sent.
+      if (eachSideDefault(exercise)) exercise.eachSide = true;
+      workoutDraft.exercises.push(exercise);
       $('#exercise-picker').classList.add('hidden');
       renderWorkoutEditor();
     };

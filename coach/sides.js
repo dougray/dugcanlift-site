@@ -4,9 +4,11 @@
  * (coach/SHARE-FORMAT.md "The imbalance figure" names it as such). Same
  * function shapes, same thresholds, so the two apps print the same number from
  * the same log. What is missing from this copy is only the half Coach has no
- * use for: Coach never logs a set, so it never picks the next side, never
- * guesses whether a name reads as unilateral, and never writes side bits into
- * a share link. It reads them.
+ * use for: Coach never logs a set, so it never picks the next side and never
+ * writes side bits into a share link. It reads them. The one guess it does
+ * make is LIFT's own, `looksUnilateral`, ported term for term: the plan
+ * editor pre-ticks "Each side" with it, exactly as LIFT pre-ticks per-side
+ * logging, so a coach and a client see the same exercises start ticked.
  *
  * A set may record a side: left, right, or both. **Absent means both**, which
  * is what every set logged before this existed already meant, so nothing
@@ -36,8 +38,9 @@
  *   backup file  a named field, `side: "left" | "right"`, omitted when both.
  *                An unrecognised value reads as both rather than failing the
  *                import, which is the leniency that file asks for everywhere.
- *   plan link    unchanged in v1: a coach prescribes as before and the lifter
- *                chooses sides when logging.
+ *   plan link    the same bits in a sixth set-tuple position, plus `b: 1` on
+ *                an exercise done each side. prescriptions.js writes both;
+ *                PLAN-FORMAT.md "Sides" has the rules.
  */
 (function (global) {
   'use strict';
@@ -90,6 +93,40 @@
   function onSide(sets, side) {
     var want = of(side);
     return (sets || []).filter(function (s) { return of(s) === want; });
+  }
+
+  /* Names that usually mean one limb at a time -- LIFT web's
+   * `UNILATERAL_TERMS` (lift/sides.js), which is LIFT for Android's
+   * `PerSideLogging.UNILATERAL_TERMS`, term for term. Port changes from there;
+   * do not add a term here alone, or a coach and a client would disagree
+   * about which exercises start ticked.
+   *
+   * Matched as whole words against a name with everything that is not a letter
+   * or a digit turned into a space, so "Single-Arm", "Single Arm" and "1-Arm"
+   * are one term, and "lunge" does not tick a cold plunge. */
+  var UNILATERAL_TERMS = [
+    'single arm', 'one arm', '1 arm', 'single handed',
+    'single leg', 'one leg', '1 leg', 'single limb',
+    'one legged', 'single legged', 'one armed', 'single armed',
+    'bulgarian', 'split squat', 'split squats',
+    'pistol', 'pistols', 'lunge', 'lunges',
+    'step up', 'step ups', 'stepup', 'stepups',
+    'unilateral',
+  ];
+
+  function normaliseName(name) {
+    var cleaned = String(name == null ? '' : name).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ');
+    return ' ' + cleaned.trim() + ' ';
+  }
+
+  /**
+   * Whether a name reads as a lift with a side to it. A guess, used only to
+   * decide where the plan editor's "Each side" toggle starts; the coach's own
+   * choice is what sticks.
+   */
+  function looksUnilateral(name) {
+    var padded = normaliseName(name);
+    return UNILATERAL_TERMS.some(function (term) { return padded.indexOf(' ' + term + ' ') !== -1; });
   }
 
   /** How many of these sets are left, right and unmarked. */
@@ -329,6 +366,7 @@
     anySided: anySided,
     countsLabel: countsLabel,
     sideFromFlags: sideFromFlags,
+    looksUnilateral: looksUnilateral,
     normaliseSet: normaliseSet,
     normaliseClient: normaliseClient,
     splitSessions: splitSessions,

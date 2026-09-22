@@ -121,6 +121,12 @@ four-serving recipe buys half the ingredients and logs half the calories.
       "q": "Barbell",
       "s": [[225, 5, 8], [225, 5, 8], [245, 3, 9]],
       "c": "Belt on the last set."
+    },
+    {
+      "n": "Bulgarian Split Squat",
+      "q": "Dumbbell",
+      "b": 1,
+      "s": [[40, 8], [40, 8], [40, 8], [40, 8, null, null, null, 2]]
     }
   ]
 }
@@ -131,32 +137,73 @@ four-serving recipe buys half the ingredients and logs half the calories.
 | `n` | template name, e.g. "Lower A" |
 | `e` | prescribed exercises, in the order they are to be done |
 
-Within an exercise: `n` name, `q` equipment, `c` an optional coaching note, and
-`s` the prescribed sets.
+Within an exercise: `n` name, `q` equipment, `b` each side (see Sides), `c`
+an optional coaching note, and `s` the prescribed sets. Coach writes the keys
+in that order.
 
-**A set is `[weightLb, reps, rpe, durationSec, distanceMeters]`** — the same
-order and the same units as a set in SHARE-FORMAT, minus the flags byte, with
-trailing nulls trimmed. Sharing the ordering is deliberate: a prescription and
-the log that answers it are the same shape, so nothing has to be transposed to
-compare what was asked for against what was done.
+**A set is `[weightLb, reps, rpe, durationSec, distanceMeters, flags]`** — the
+same order and the same units as a set in SHARE-FORMAT. `flags` is present
+only on a set that names a side (see Sides); every other set is the five-field
+tuple it has always been. Only trailing nulls are trimmed. Sharing the
+ordering is deliberate: a prescription and the log that answers it are the
+same shape, so nothing has to be transposed to compare what was asked for
+against what was done.
 
-**Prescriptions stay two-sided.** SHARE-FORMAT's set tuple gained a side in
-bits 1-2 of its `flags` byte, and BACKUP-FORMAT gained a named `side` field,
-but nothing changes here: a plan prescribes three sets of a Bulgarian split
-squat, and the lifter chooses which leg each logged set was, on their own
-phone, when they do it. That is where the information actually is. A coach
-writing "3 × 8 left, 3 × 8 right" would be prescribing bookkeeping, and the
-log answers the prescription either way because a two-sided prescription is
-satisfied by sets on both sides.
+#### Sides
 
-If per-side prescription is ever wanted, it is the same two bits in the same
-place — a `flags` position appended to the set tuple, `0` both, `1` left, `2`
-right — and Coach's plan editor grows an L/R/both control per prescribed set.
-Until then a decoder reading a five-field tuple is reading the whole thing.
+**Symmetric work is not written as per-side rows.** A coach writing "3 × 8
+left, 3 × 8 right" for a split squat would be prescribing bookkeeping, and a
+plan that doubled every single-limb set would be twice as long to say the same
+thing. The lifter records which side each logged set was, on their own phone,
+when they do it (SHARE-FORMAT's `flags` bits 1-2). Two small rules cover what
+that leaves out, and neither turns one set into two rows:
+
+1. **An exercise can be each side: `b: 1`.** Every prescribed set is done on
+   both sides. "3 × 8, each side" stays three tuples; LIFT expects six sets,
+   three a side, and turns per-side logging on for that lift when the plan is
+   accepted. `b` is omitted when the exercise is not each side — never sent as
+   `0` — and anything other than `1` reads as not.
+2. **A set can name a side: a sixth position, `flags`.** The same bits as
+   SHARE-FORMAT: bits 1-2 are `0` both, `1` left, `2` right. For the asymmetric
+   cases only — an extra set on the left, rehab side only. A set that names a
+   side is done on that side once, whether or not its exercise is each side.
+   Bit 0 (SHARE-FORMAT's warmup bit) is unused here and written `0`: a coach
+   does not prescribe warmups as flagged sets.
+
+Combined, each side with one extra set marked left is "3 × 8 each side, plus
+one more on the left": seven sets, three right and four left.
+
+```json
+{ "n": "Bulgarian Split Squat", "q": "Dumbbell", "b": 1,
+  "s": [[40, 8], [40, 8], [40, 8], [40, 8, null, null, null, 2]] }
+```
+
+- **Mask, never compare.** Read the side as `(flags >> 1) & 3`. `3` in those
+  bits is never written and reads as both, and so does a missing, non-numeric
+  or zero `flags`. A reader that tests `flags === 2` would misread a set the
+  day bit 0 means something.
+- **A both-sides set writes no sixth position at all.** Only trailing nulls are
+  trimmed, so a left-side conditioning piece is
+  `[null, null, null, 600, 1600, 2]` — trimming the leading nulls would slide
+  the distance into the weight slot.
+- **Every plan written before this is byte-for-byte unchanged**, and `v` stays
+  `1`: both additions are optional, and absent means what it always meant.
+- **Old decoders degrade correctly, and this is checked.** A LIFT build that
+  has never heard of `b` or a sixth position ignores both and shows the sets
+  as ordinary two-sided sets, with the right weights, reps and count.
+  `lift/plan-sides.test.mjs` in the site repo pins that for LIFT web, against
+  `coach/fixtures/web-plan-per-side.txt`, a link Coach web's own encoder
+  wrote. The iOS and Android decoders check the same fixture.
+- **Tracked and prescribed, never judged.** A coach writing an extra left set
+  is making a coaching decision. The apps carry it and show whether it was
+  done — LIFT's header reads `L 3/4 · R 3/3`, and `L 5/4` when over, never
+  capped — and nothing comments on it. Progression, the imbalance figure and
+  volume read the log, never the plan.
 
 Every field is optional, because a prescription is often partial. `[null, 5]`
 is "five reps, you pick the weight". `[225, 5]` is "225 for five, however it
-feels". A conditioning piece is `[null, null, null, 600, 1600]`.
+feels". A conditioning piece is `[null, null, null, 600, 1600]`, and the same
+piece on the left side only is `[null, null, null, 600, 1600, 2]`.
 
 **Sets are listed individually rather than as "3 × 5".** Coaches ramp, and a
 count-and-tuple shape cannot say 225/225/245 without special cases.
