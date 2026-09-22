@@ -59,6 +59,12 @@ equipment *and* side, since a left-arm row and a right-arm row are no more the
 same lift than a cable pulldown and a machine pulldown are. It is not part of
 the identity of a *record*: sets still match on `id` when restoring.
 
+A logged exercise that LIFT web started from a coach's per-side prescription
+also carries `prescribed` (the prescribed sets, each with an optional `side`)
+and `eachSide: true` — what the header counts the sets against. Informational:
+a reader that does not know them ignores them and loses only the "L 1/3"
+target, never a set.
+
 **`routines[]`** — saved templates: `id`, `name`, `folder`, `createdAt` (epoch
 ms), and `exercises[]` of `id`, `name`, `equipment`, `targetSets`, `targetReps`,
 `targetWeightLb`, `targetRpe`, `targetDurationSec`, `targetDistanceMeters`,
@@ -136,6 +142,21 @@ own to hand over.
 week's shop, keyed by item name, and restoring last month's ticks would show
 this week's list as already bought. The list itself is not stored anywhere; it
 is derived from `plan[]` and `recipes[]`, so it rebuilds on restore.
+
+## The Coach backup's workouts
+
+The Coach apps write a different file (`lift-coach-*.json`, not `app: "lift"`),
+but its workout templates use this file's spellings for sides, so a template
+reads the same in both. In `workouts[].exercises[]`:
+
+- **`eachSide: true`** on an exercise done each side — every prescribed set on
+  both sides (PLAN-FORMAT.md "Sides"). Omitted when false; never `false`.
+- **`side: "left" | "right"`** on a prescribed set for one side only. Omitted
+  when both — not `"both"`, not `null`.
+
+A file written before these restores unchanged. An unrecognised `side` string
+reads as both, and an `eachSide` that is anything but `true` as not, rather
+than failing the import.
 
 ## Unknown sections
 

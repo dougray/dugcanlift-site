@@ -220,6 +220,44 @@ button:disabled { opacity: 0.4; }
 
 .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
+/* Both / L / R for one prescribed set: a compact segmented control, sized to
+ * sit in a table row beside the number fields. The pressed segment is filled
+ * with the accent, the same way a chip that is on is. */
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.seg button {
+  background: none;
+  color: var(--text);
+  border-radius: 0;
+  padding: 8px 11px;
+  min-width: 36px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.seg button:focus-visible, .chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.seg button:focus-visible { outline-color: var(--text); outline-offset: -4px; }
+
+/* Phone width: the side control goes on a line under its set rather than in a
+ * fifth column. From 700px there is room, and it moves into the row. */
+table.grid .side-col { display: none; }
+table.grid tr.has-side-sub td { border-bottom: none; }
+table.grid tr.side-sub td { padding-top: 0; text-align: left; }
+@media (min-width: 700px) {
+  table.grid .side-col { display: table-cell; }
+  table.grid tr.side-sub { display: none; }
+  table.grid tr.has-side-sub td { border-bottom: 1px solid var(--rule); }
+  table.grid tr.has-side-sub:nth-last-child(2) td { border-bottom: none; }
+}
+
 /* A full-width chip is a row, not a pill: the ingredient and recipe pickers
  * draw results as one, and an ingredient or dish name can be long. Left as
  * nowrap the row's text is wider than the card, which makes the page wider
@@ -399,6 +437,14 @@ table.grid th {
 table.grid th:first-child, table.grid td:first-child { text-align: left; }
 table.grid tr:last-child td { border-bottom: none; }
 table.grid td.under { color: var(--accent); }
+
+/* The prescription editor's number fields. At phone width the card sits
+ * inside the form's card, and the general 12px input padding plus the grid's
+ * 10px cell padding left each field about 12px of text -- "40" read as "4".
+ * Tighter here, and centred, so a three-digit weight shows whole at 375px. */
+table.grid.sets td { padding: 7px 4px; }
+table.grid.sets td:first-child { padding-left: 0; }
+table.grid.sets input[type=number] { padding: 10px 4px; text-align: center; min-width: 3.2em; }
 
 .pill {
   display: inline-block;
