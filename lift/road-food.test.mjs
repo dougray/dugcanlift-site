@@ -106,6 +106,82 @@ test('density, not grams: a small high-protein item beats a big one', () => {
   assert.equal(R.proteinPer100(item('x', 0, 5)), Infinity);
 });
 
+// MARK: - A coach's picks
+
+const withId = (id, kcal, proteinG, sodiumMg) => ({ id, name: id, kcal, proteinG, sodiumMg });
+
+test("picks go to the top of a group and change nothing underneath", () => {
+  const items = [
+    withId('a', 300, 15, 500),   // 5 per 100
+    withId('b', 200, 30, 400),   // 15
+    withId('c', 640, 40, 1000),  // 6.25
+    withId('d', 100, 2, 200),    // 2
+  ];
+  const remaining = { calories: 640, proteinG: 55 };
+  const plain = R.rank(items, remaining);
+  assert.deepEqual(names(plain.fits), ['b', 'c', 'a', 'd']);
+
+  const picked = R.withPicks(R.rank(items, remaining), ['a', 'd']);
+  assert.deepEqual(names(picked.fits), ['a', 'd', 'b', 'c']);
+  assert.equal(picked.count, 2);
+  assert.deepEqual(Object.keys(picked.picked).sort(), ['a', 'd']);
+  // Within each part, the nutrition order is exactly what it was: the picks
+  // in their own order, then everything else in theirs.
+  assert.deepEqual(names(picked.fits).slice(0, 2), names(plain.fits).filter((n) => n === 'a' || n === 'd'));
+  assert.deepEqual(names(picked.fits).slice(2), names(plain.fits).filter((n) => n !== 'a' && n !== 'd'));
+  assert.equal(picked.mode, 'goal');
+});
+
+test('an id the bundled data does not have is skipped silently, never a row', () => {
+  const items = [withId('a', 300, 15, 500), withId('b', 200, 30, 400)];
+  const picked = R.withPicks(R.rank(items, { calories: 640 }), ['gone-2019', 'a', '', null, 7]);
+  assert.deepEqual(names(picked.fits), ['a', 'b']);
+  assert.equal(picked.count, 1, 'only what is here is counted, so no card promises a missing row');
+  assert.equal(picked.fits.length, 2, 'nothing is added for an id nothing knows');
+});
+
+test('no picks at all leaves the ranking exactly as it was', () => {
+  const items = [withId('a', 300, 15, 500), withId('b', 200, 30, 400), withId('c', 700, 60, 100)];
+  const remaining = { calories: 640, proteinG: 55 };
+  const plain = R.rank(items, remaining);
+  [[], null, undefined].forEach((ids) => {
+    const picked = R.withPicks(R.rank(items, remaining), ids);
+    assert.deepEqual(names(picked.fits), names(plain.fits));
+    assert.deepEqual(names(picked.over), names(plain.over));
+    assert.equal(picked.count, 0);
+  });
+});
+
+test('a pick that is a little over stays a little over: the fit rule is the day talking', () => {
+  const items = [withId('fits', 300, 15, 500), withId('over', 700, 60, 100)];
+  const picked = R.withPicks(R.rank(items, { calories: 640 }), ['over']);
+  assert.deepEqual(names(picked.fits), ['fits']);
+  assert.deepEqual(names(picked.over), ['over'], 'floated to the top of its own group, not out of it');
+  assert.equal(picked.count, 1);
+});
+
+test('an item too far over is hidden whether or not it was picked', () => {
+  const items = [withId('fits', 300, 15, 500), withId('way-over', 2000, 60, 100)];
+  const picked = R.withPicks(R.rank(items, { calories: 640 }), ['way-over']);
+  assert.deepEqual(names(picked.fits), ['fits']);
+  assert.deepEqual(names(picked.over), []);
+  assert.equal(picked.count, 0, 'a pick nobody can see is not counted as shown');
+});
+
+test('with no goal the picks lead the one ranked list', () => {
+  const items = [withId('a', 500, 10, 100), withId('b', 200, 40, 900), withId('c', 400, 30, 300)];
+  const picked = R.withPicks(R.rank(items, null), ['a']);
+  assert.equal(picked.mode, 'noGoal');
+  assert.deepEqual(names(picked.fits), ['a', 'b', 'c']);
+});
+
+test('pickCount counts a place without drawing its list', () => {
+  const items = [withId('a', 1, 1, 1), withId('b', 1, 1, 1)];
+  assert.equal(R.pickCount(items, ['b', 'gone']), 1);
+  assert.equal(R.pickCount(items, []), 0);
+  assert.equal(R.pickCount([], ['a']), 0);
+});
+
 // MARK: - How old the numbers are
 
 test('six calendar months is the line, and a missing date is said to be missing', () => {
