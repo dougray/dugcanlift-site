@@ -75,8 +75,12 @@
   };
   var dayOf = function (key) { return parseKey(key).getDate(); };
 
-  /** "Mon 13" -- the month is on the head line above it. */
-  var dayLabel = function (key) { return weekdayName(key) + ' ' + dayOf(key); };
+  /** "Mon 13 Oct". The head line above carries the range, but a day row is
+   * read on its own -- and two sends in different months sit one above the
+   * other, where a bare "Mon 13" says nothing about which. */
+  var dayLabel = function (key) {
+    return weekdayName(key) + ' ' + dayOf(key) + ' ' + monthName(key);
+  };
   /** "13 Oct" -- for the by-lift view, where rows cross weeks. */
   var dayMonth = function (key) { return dayOf(key) + ' ' + monthName(key); };
 
