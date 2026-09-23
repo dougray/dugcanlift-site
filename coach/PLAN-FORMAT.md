@@ -8,6 +8,10 @@ from a coach to their client.
 Implemented by Coach (encode) and the web build of LIFT (decode). The Android
 and iOS builds do not read plan links yet — they have no deep-link handling.
 
+**This file lives in the `dugcanlift-coach` repo.** The copy at
+`dugcanlift-site/coach/PLAN-FORMAT.md` is a deploy artefact, overwritten by the
+next `./deploy.sh`; edit this one.
+
 ## The link
 
 ```
@@ -60,6 +64,7 @@ format exists in this shape.
 | `m` | the planned meals |
 | `w` | workout templates used by this plan, inlined |
 | `k` | the scheduled sessions |
+| `rf` | road picks: Road Food item ids this coach is happy with |
 
 `r`/`m` and `w`/`k` are independent. A link may carry meals, training, or both;
 a coach who plans only training sends a payload with no `r` or `m` at all.
@@ -217,6 +222,47 @@ count-and-tuple shape cannot say 225/225/245 without special cases.
 
 One template can be scheduled on several days; that is the normal case for a
 programme that repeats a week.
+
+### Road picks (`rf`)
+
+```json
+{ "rf": ["wendys-large-chili", "chickfila-8-ct-grilled-nuggets",
+         "snack-jack-links-original-beef-jerky"] }
+```
+
+A flat list of Road Food item ids: the items at the chains and the gas station
+a coach is happy with for this client. Road Food is the curated file every
+client bundles (`road-food.json`, from `dugcanlift-kit/data/`), and its item
+ids are stable for exactly this.
+
+A pick says "this fits how I want you eating on the road". It says nothing
+about calories or macros — LIFT already ranks Road Food against what is left of
+the day, and a pick must not put a tick in front of that arithmetic.
+
+- **Ids, and items only.** There is no chain id and no "all of Wendy's" on the
+  wire. Coach's "Pick all" ticks the items a coach could see when they ticked
+  them, so a chain that gains an item next quarter does not gain a pick nobody
+  looked at.
+- **Omitted when there are none.** Never `[]`, and never `null`.
+- **Nothing is filtered on the way out.** The coach's copy of the file and the
+  client's are two builds of two apps, updated at different times, so only the
+  receiver can say what it has. It **silently skips an id it does not know** —
+  an item withdrawn since the plan was sent shows no row, no gap and no error.
+- **What arrives replaces what the client holds; a plan with no `rf` changes
+  nothing.** A link carrying picks is the coach's current answer, whole. A link
+  without the key is silent about picks rather than a retraction, because
+  "absent" is also what every older Coach and every library send says. The
+  client's own app is where picks are cleared.
+- **At the client's end** the picks sort to the top of that place's list,
+  named as the coach's. Nothing is re-ranked underneath them, nothing that fits
+  is hidden, and nothing anywhere judges what was eaten against them — the same
+  discipline saturated fat, sugar and the imbalance figure are held to.
+- **Old decoders degrade correctly, and this is checked.** `rf` is purely
+  additive, so `v` stays `1`: a LIFT build that has never heard of it reads the
+  meals and the training exactly as before and ignores the key.
+  `lift/plan-road-picks.test.mjs` in the site repo pins that against
+  `coach/fixtures/web-plan-road-picks.txt`, a link Coach web's own encoder
+  wrote, and `coach/road-picks.test.mjs` pins the encoding side here.
 
 ## Addressing
 

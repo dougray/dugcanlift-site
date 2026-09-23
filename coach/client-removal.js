@@ -15,6 +15,13 @@
  * list is derived from plans and recipes on every render (BACKUP-FORMAT.md,
  * "Shopping-list ticks are absent by design too"), so removing a client's
  * meals removes their list.
+ *
+ * Road picks go too, for the reason the meals do: they are a list made for one
+ * client, keyed by that client's id, and with the client gone they can be
+ * neither seen nor sent while still riding in every backup. They are not in
+ * the confirmation sentence, which is Android's word for word and was written
+ * before road picks existed; when Coach for Android gains them, the sentence
+ * gains a clause in both places at once, not here alone.
  */
 (function (global) {
   'use strict';
@@ -53,10 +60,10 @@
    *  Android's title line, then its body. One dialog, naming the client. */
   const confirmationPrompt = (imp) => `Remove ${imp.clientName}?\n\n${confirmationText(imp)}`;
 
-  /** The three stores as they should be after the removal, as new arrays for
-   *  the caller to save. A meal or session belonging to nobody (`clientId`
-   *  null) is not this client's and stays. `removed` is false, and the stores
-   *  come back untouched, when the client is not here. */
+  /** The stores as they should be after the removal, as new values for the
+   *  caller to save. A meal or session belonging to nobody (`clientId` null)
+   *  is not this client's and stays. `removed` is false, and the stores come
+   *  back untouched, when the client is not here. */
   function remove(clientId, stores) {
     const counted = impact(clientId, stores);
     if (!counted) {
@@ -66,7 +73,16 @@
         clients: stores.clients,
         plans: stores.plans,
         sessions: stores.sessions,
+        roadPicks: stores.roadPicks,
       };
+    }
+    // Road picks are a map keyed by client id, not rows carrying one, so the
+    // client's key is dropped rather than the list filtered. A copy, so the
+    // caller's own object is not changed before they decide to save it.
+    const picks = {};
+    const from = stores.roadPicks;
+    if (from && typeof from === 'object') {
+      Object.keys(from).forEach((id) => { if (id !== clientId) picks[id] = from[id]; });
     }
     return {
       removed: true,
@@ -76,6 +92,7 @@
         .filter((p) => !p || p.clientId !== clientId),
       sessions: (Array.isArray(stores.sessions) ? stores.sessions : [])
         .filter((k) => !k || k.clientId !== clientId),
+      roadPicks: picks,
     };
   }
 
