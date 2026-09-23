@@ -194,6 +194,37 @@ test('six calendar months is the line, and a missing date is said to be missing'
   assert.equal(R.isStale('2026-02-30', '2026-09-20'), null);
 });
 
+test("the warning keys off the chain's own document date, and falls back to when it was read", () => {
+  // Burger King: a NOVEMBER 2022 chart read this morning. The day it was read
+  // says nothing about how old the numbers are, so it is not what is measured.
+  assert.equal(R.ageDate({ publishedOn: '2022-11', checkedOn: '2026-09-23' }), '2022-11');
+  assert.equal(R.isStale(R.ageDate({ publishedOn: '2022-11', checkedOn: '2026-09-23' }), '2026-09-23'), true);
+  // A chain whose document states no date is exactly as it was before this:
+  // the day a person read it is all there is to go on.
+  assert.equal(R.ageDate({ checkedOn: '2026-09-20' }), '2026-09-20');
+  assert.equal(R.isStale(R.ageDate({ checkedOn: '2026-09-20' }), '2026-09-23'), false);
+  assert.equal(R.isStale(R.ageDate({ checkedOn: '2025-12-01' }), '2026-09-23'), true);
+  // A fresh document read long ago is not stale, and a stale document read
+  // this morning is: the document is the fact, not the reading.
+  assert.equal(R.isStale(R.ageDate({ publishedOn: '2026-09-02', checkedOn: '2025-01-01' }), '2026-09-23'), false);
+  // Neither date is no date, which the screen says in its own words.
+  assert.equal(R.ageDate({}), null);
+  assert.equal(R.ageDate(null), null);
+});
+
+test('a month-only document date is read as the first of that month', () => {
+  // "NOVEMBER 2022" is all Burger King's chart says, so no day is invented:
+  // the first of the month can only make a document look older, never fresher.
+  assert.equal(R.parseDocDay('2022-11').getTime(), new Date(2022, 10, 1).getTime());
+  assert.equal(R.parseDocDay('2021-03-29').getTime(), new Date(2021, 2, 29).getTime());
+  assert.equal(R.isStale('2026-03', '2026-09-01'), false, 'exactly six months is not over');
+  assert.equal(R.isStale('2026-03', '2026-09-02'), true);
+  assert.equal(R.parseDocDay('2022-13'), null);
+  assert.equal(R.parseDocDay('2022'), null);
+  assert.equal(R.parseDocDay(undefined), null);
+  assert.equal(R.isStale('2022-13', '2026-09-23'), null);
+});
+
 // MARK: - Rules, picker, logging
 
 test('plain rules apply everywhere; kinded ones only to their kind', () => {
@@ -236,4 +267,35 @@ test('the sample fixture uses only obviously fake names, in the spec shape', () 
   assert.ok(data.chains.every((c) => /^(Sample|Example|Fictional) /.test(c.name)));
   assert.ok(data.chains.every((c) => c.id && c.checkedOn && c.source && Array.isArray(c.items)));
   assert.ok(Array.isArray(data.snacks) && Array.isArray(data.rules));
+  // One chain of each kind, so the sample shows all three states: a document
+  // dated to the day, one that names only a month, and one that states none.
+  const by = (id) => data.chains.find((c) => c.id === id);
+  assert.equal(by('sample-burger-co').publishedOn, '2026-09-02');
+  assert.equal(by('fictional-taco-stand').publishedOn, '2024-10');
+  assert.equal('publishedOn' in by('example-chicken-shack'), false);
+  // And the month-only one is old on its document date while its checked date
+  // is recent, which is the whole point of the field.
+  assert.equal(R.isStale(R.ageDate(by('fictional-taco-stand')), '2026-09-23'), true);
+  assert.equal(R.isStale(by('fictional-taco-stand').checkedOn, '2026-09-23'), false);
+});
+
+test('every chain in the curated file states a usable pair of dates', () => {
+  const data = JSON.parse(readFileSync('lift/road-food.json', 'utf8'));
+  for (const c of data.chains) {
+    assert.ok(R.parseDocDay(c.checkedOn), `${c.id} has no usable checkedOn`);
+    if ('publishedOn' in c) {
+      assert.ok(R.parseDocDay(c.publishedOn), `${c.id} has an unusable publishedOn`);
+      assert.ok(R.parseDocDay(c.publishedOn) <= R.parseDocDay(c.checkedOn),
+        `${c.id} claims a document published after it was read`);
+    }
+  }
+  // The three charts this field exists for.
+  const by = (id) => data.chains.find((c) => c.id === id);
+  assert.equal(by('burgerking').publishedOn, '2022-11');
+  assert.equal(by('whataburger').publishedOn, '2021-03-29');
+  assert.equal(by('chipotle').publishedOn, '2024-10');
+  for (const id of ['burgerking', 'whataburger', 'chipotle']) {
+    assert.equal(R.isStale(by(id).checkedOn, '2026-09-23'), false, `${id} looks fresh by checkedOn alone`);
+    assert.equal(R.isStale(R.ageDate(by(id)), '2026-09-23'), true, `${id} should be old by its own chart`);
+  }
 });

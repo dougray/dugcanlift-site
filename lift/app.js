@@ -1630,6 +1630,15 @@ const roadDate = (key) => {
   return new Date(y, m - 1, d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 };
 
+// A document's own date, as precise as the document was: "Mar 29, 2021" for a
+// chart that gives a day, "Nov 2022" for one that names only a month. Never
+// more precise than that, so no day is invented for the reader.
+const roadDocDate = (key) => {
+  const p = String(key).split('-').map(Number);
+  if (p.length > 2) return roadDate(key);
+  return new Date(p[0], p[1] - 1, 1).toLocaleDateString(undefined, { year: 'numeric', month: 'short' });
+};
+
 const roadRecent = () => {
   const r = load(KEY.roadRecent, []);
   return Array.isArray(r) ? r : [];
@@ -1683,6 +1692,7 @@ function roadChainCard(chain) {
   b.appendChild(el('p', 'muted small',
     `${count} ${count === 1 ? 'item' : 'items'}`
     + (picked ? ` · ${picked} picked for you` : '')
+    + (chain.publishedOn ? ` · published ${roadDocDate(chain.publishedOn)}` : '')
     + (chain.checkedOn ? ` · checked ${roadDate(chain.checkedOn)}` : '')));
   b.onclick = () => openRoadChain(chain.id);
   return b;
@@ -1746,7 +1756,8 @@ function renderRoadPicker(body) {
     body.appendChild(g);
   }
   body.appendChild(el('p', 'muted small', 'Numbers come from each chain’s own published nutrition, checked by '
-    + 'hand, and each place shows the date they were checked. LIFT never asks where you are.'));
+    + 'hand, and each place shows when the chain published them and when they were checked. '
+    + 'LIFT never asks where you are.'));
 }
 
 /* The line at the top of a chain: what the list is ranked against, in words. */
@@ -1821,12 +1832,18 @@ function renderRoadPlace(body, chain, isSnacks) {
 
   body.appendChild(el('div', 'big roadname', isSnacks ? 'Gas station' : chain.name));
 
-  // When the numbers were checked, in plain view. A gas-station view mixes
-  // products, so it shows the oldest date among what is on screen.
+  // What the chain published, and when a person last read it: two different
+  // facts, both on screen. A gas-station view mixes products, so it shows the
+  // oldest date among what is on screen, and no snack states a date of its own.
   const dates = isSnacks ? items.map((s) => s.checkedOn).filter(Boolean).sort() : [chain.checkedOn].filter(Boolean);
   const checkedOn = dates[0];
+  const publishedOn = isSnacks ? null : chain.publishedOn;
   const when = el('p', 'muted');
-  when.textContent = checkedOn ? `Checked on ${roadDate(checkedOn)}` : 'No check date on file for these numbers.';
+  when.textContent = publishedOn && checkedOn
+    ? `Published ${roadDocDate(publishedOn)} · checked ${roadDate(checkedOn)}`
+    : publishedOn ? `Published ${roadDocDate(publishedOn)}`
+      : checkedOn ? `Checked on ${roadDate(checkedOn)}`
+        : 'No check date on file for these numbers.';
   const source = isSnacks ? null : chain.source;
   if (source && /^https:\/\//.test(source)) {
     when.appendChild(document.createTextNode(' · '));
@@ -1837,9 +1854,16 @@ function renderRoadPlace(body, chain, isSnacks) {
     when.appendChild(a);
   }
   body.appendChild(when);
-  if (checkedOn && LiftRoadFood.isStale(checkedOn, todayKey())) {
-    body.appendChild(el('p', null, 'These numbers are more than six months old. Menus change, so '
-      + 'check them against the board before you count on them.'));
+  // The warning keys off the chain's own document date when it states one, and
+  // the day a person read it when it does not -- a 2021 chart read yesterday is
+  // old, whoever read it and whenever.
+  const aged = LiftRoadFood.ageDate({ publishedOn: publishedOn, checkedOn: checkedOn });
+  if (aged && LiftRoadFood.isStale(aged, todayKey())) {
+    body.appendChild(el('p', null, publishedOn
+      ? `These numbers are from the chain's chart dated ${roadDocDate(publishedOn)}. Menus change, so `
+        + 'check them against the board before you count on them.'
+      : 'These numbers are more than six months old. Menus change, so '
+        + 'check them against the board before you count on them.'));
   }
 
   if (isSnacks) {
