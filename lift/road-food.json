@@ -203,6 +203,260 @@
       ]
     },
     {
+      "id": "burgerking",
+      "name": "Burger King",
+      "kind": "burgers",
+      "checkedOn": "2026-09-23",
+      "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+      "items": [
+        {
+          "id": "burgerking-hamburger",
+          "name": "Hamburger",
+          "serving": "1 sandwich",
+          "kcal": 250,
+          "proteinG": 13,
+          "fatG": 10,
+          "carbsG": 29,
+          "fiberG": 1,
+          "saturatedFatG": 4,
+          "sugarG": 7,
+          "sodiumMg": 560
+        },
+        {
+          "id": "burgerking-cheeseburger",
+          "name": "Cheeseburger",
+          "serving": "1 sandwich",
+          "kcal": 290,
+          "proteinG": 15,
+          "fatG": 13,
+          "carbsG": 30,
+          "fiberG": 1,
+          "saturatedFatG": 6,
+          "sugarG": 7,
+          "sodiumMg": 780,
+          "modification": "Hold the cheese to save 40 kcal"
+        },
+        {
+          "id": "burgerking-double-hamburger",
+          "name": "Double Hamburger",
+          "serving": "1 sandwich",
+          "kcal": 360,
+          "proteinG": 22,
+          "fatG": 17,
+          "carbsG": 29,
+          "fiberG": 1,
+          "saturatedFatG": 7,
+          "sugarG": 7,
+          "sodiumMg": 590
+        },
+        {
+          "id": "burgerking-double-cheeseburger",
+          "name": "Double Cheeseburger",
+          "serving": "1 sandwich",
+          "kcal": 400,
+          "proteinG": 24,
+          "fatG": 21,
+          "carbsG": 30,
+          "fiberG": 1,
+          "saturatedFatG": 9,
+          "sugarG": 7,
+          "sodiumMg": 810,
+          "modification": "Hold the cheese to save 40 kcal"
+        },
+        {
+          "id": "burgerking-bacon-double-cheeseburger",
+          "name": "Bacon Double Cheeseburger",
+          "serving": "1 sandwich",
+          "kcal": 440,
+          "proteinG": 27,
+          "fatG": 24,
+          "carbsG": 30,
+          "fiberG": 1,
+          "saturatedFatG": 11,
+          "sugarG": 7,
+          "sodiumMg": 970
+        },
+        {
+          "id": "burgerking-chicken-fries-9-pc",
+          "name": "Chicken Fries (9 pc)",
+          "serving": "9 pieces, no dipping sauce",
+          "kcal": 260,
+          "proteinG": 15,
+          "fatG": 13,
+          "carbsG": 20,
+          "fiberG": 1,
+          "saturatedFatG": 3,
+          "sugarG": 0,
+          "sodiumMg": 780
+        },
+        {
+          "id": "burgerking-chicken-nuggets-10-pc",
+          "name": "Chicken Nuggets (10 pc)",
+          "serving": "10 pieces, no dipping sauce",
+          "kcal": 480,
+          "proteinG": 22,
+          "fatG": 31,
+          "carbsG": 30,
+          "fiberG": 2,
+          "saturatedFatG": 6,
+          "sugarG": 0,
+          "sodiumMg": 1220
+        },
+        {
+          "id": "burgerking-classic-royal-crispy-chicken-sandwich",
+          "name": "Classic Royal Crispy Chicken Sandwich",
+          "serving": "1 sandwich",
+          "kcal": 600,
+          "proteinG": 31,
+          "fatG": 31,
+          "carbsG": 54,
+          "fiberG": 9,
+          "saturatedFatG": 5,
+          "sugarG": 9,
+          "sodiumMg": 1330
+        },
+        {
+          "id": "burgerking-fat-free-milk",
+          "name": "Fat Free Milk",
+          "serving": "8 fl oz",
+          "kcal": 90,
+          "proteinG": 9,
+          "fatG": 0,
+          "carbsG": 13,
+          "fiberG": 0,
+          "saturatedFatG": 0,
+          "sugarG": 12,
+          "sodiumMg": 125
+        }
+      ]
+    },
+    {
+      "id": "whataburger",
+      "name": "Whataburger",
+      "kind": "burgers",
+      "checkedOn": "2026-09-23",
+      "source": "https://wbimageserver.whataburger.com/Nutrition.pdf",
+      "items": [
+        {
+          "id": "whataburger-garden-salad-with-grilled-chicken",
+          "name": "Garden Salad with Grilled Chicken",
+          "serving": "1 salad, dressing listed separately",
+          "kcal": 290,
+          "proteinG": 34,
+          "fatG": 12,
+          "carbsG": 12,
+          "fiberG": 6,
+          "saturatedFatG": 7,
+          "sugarG": 4,
+          "sodiumMg": 770
+        },
+        {
+          "id": "whataburger-cobb-salad-with-grilled-chicken",
+          "name": "Cobb Salad with Grilled Chicken",
+          "serving": "1 salad, dressing listed separately",
+          "kcal": 430,
+          "proteinG": 44,
+          "fatG": 23,
+          "carbsG": 10,
+          "fiberG": 3,
+          "saturatedFatG": 11,
+          "sugarG": 3,
+          "sodiumMg": 1160
+        },
+        {
+          "id": "whataburger-chicken-fajita-taco",
+          "name": "#16 Chicken Fajita Taco",
+          "serving": "1 taco",
+          "kcal": 340,
+          "proteinG": 29,
+          "fatG": 11,
+          "carbsG": 31,
+          "fiberG": 3,
+          "saturatedFatG": 3.5,
+          "sugarG": 1,
+          "sodiumMg": 1200
+        },
+        {
+          "id": "whataburger-grilled-chicken-melt",
+          "name": "Grilled Chicken Melt",
+          "serving": "1 sandwich",
+          "kcal": 390,
+          "proteinG": 33,
+          "fatG": 11,
+          "carbsG": 39,
+          "fiberG": 3,
+          "saturatedFatG": 4,
+          "sugarG": 6,
+          "sodiumMg": 1330
+        },
+        {
+          "id": "whataburger-whatachickn-bites-4",
+          "name": "Whatachick'n Bites (4)",
+          "serving": "4 pieces, from the kids' menu",
+          "kcal": 260,
+          "proteinG": 20,
+          "fatG": 12,
+          "carbsG": 16,
+          "fiberG": 1,
+          "saturatedFatG": 1.5,
+          "sugarG": 0,
+          "sodiumMg": 520
+        },
+        {
+          "id": "whataburger-whatachickn-bites-6",
+          "name": "#14 Whatachick'n Bites (6)",
+          "serving": "6 pieces",
+          "kcal": 390,
+          "proteinG": 30,
+          "fatG": 19,
+          "carbsG": 25,
+          "fiberG": 2,
+          "saturatedFatG": 2.5,
+          "sugarG": 1,
+          "sodiumMg": 780
+        },
+        {
+          "id": "whataburger-whatachickn-bites-9",
+          "name": "#15 Whatachick'n Bites (9)",
+          "serving": "9 pieces",
+          "kcal": 580,
+          "proteinG": 45,
+          "fatG": 28,
+          "carbsG": 37,
+          "fiberG": 3,
+          "saturatedFatG": 4,
+          "sugarG": 1,
+          "sodiumMg": 1160
+        },
+        {
+          "id": "whataburger-grilled-chicken-sandwich",
+          "name": "#11 Grilled Chicken Sandwich with Whatasauce",
+          "serving": "1 sandwich",
+          "kcal": 430,
+          "proteinG": 32,
+          "fatG": 14,
+          "carbsG": 44,
+          "fiberG": 4,
+          "saturatedFatG": 3.5,
+          "sugarG": 10,
+          "sodiumMg": 1030
+        },
+        {
+          "id": "whataburger-double-meat-whataburger-jr",
+          "name": "#8 Double Meat Whataburger Jr.",
+          "serving": "1 sandwich",
+          "kcal": 420,
+          "proteinG": 23,
+          "fatG": 20,
+          "carbsG": 37,
+          "fiberG": 2,
+          "saturatedFatG": 6,
+          "sugarG": 6,
+          "sodiumMg": 870
+        }
+      ]
+    },
+    {
       "id": "chickfila",
       "name": "Chick-fil-A",
       "kind": "chicken",
@@ -425,6 +679,133 @@
           "saturatedFatG": 6,
           "sugarG": 0,
           "sodiumMg": 540
+        }
+      ]
+    },
+    {
+      "id": "chipotle",
+      "name": "Chipotle",
+      "kind": "mexican",
+      "checkedOn": "2026-09-23",
+      "source": "https://www.chipotle.com/content/dam/chipotle/menu/nutrition/US-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+      "items": [
+        {
+          "id": "chipotle-chicken",
+          "name": "Chicken",
+          "serving": "4 oz",
+          "kcal": 180,
+          "proteinG": 32,
+          "fatG": 7,
+          "carbsG": 0,
+          "fiberG": 0,
+          "saturatedFatG": 3,
+          "sugarG": 0,
+          "sodiumMg": 310,
+          "modification": "Double chicken is this row twice"
+        },
+        {
+          "id": "chipotle-barbacoa",
+          "name": "Barbacoa",
+          "serving": "4 oz",
+          "kcal": 170,
+          "proteinG": 24,
+          "fatG": 7,
+          "carbsG": 2,
+          "fiberG": 1,
+          "saturatedFatG": 2.5,
+          "sugarG": 0,
+          "sodiumMg": 530
+        },
+        {
+          "id": "chipotle-steak",
+          "name": "Steak",
+          "serving": "4 oz",
+          "kcal": 150,
+          "proteinG": 21,
+          "fatG": 6,
+          "carbsG": 1,
+          "fiberG": 1,
+          "saturatedFatG": 2.5,
+          "sugarG": 0,
+          "sodiumMg": 330
+        },
+        {
+          "id": "chipotle-carnitas",
+          "name": "Carnitas",
+          "serving": "4 oz",
+          "kcal": 210,
+          "proteinG": 23,
+          "fatG": 12,
+          "carbsG": 0,
+          "fiberG": 0,
+          "saturatedFatG": 7,
+          "sugarG": 0,
+          "sodiumMg": 450
+        },
+        {
+          "id": "chipotle-sofritas",
+          "name": "Sofritas",
+          "serving": "4 oz",
+          "kcal": 150,
+          "proteinG": 8,
+          "fatG": 10,
+          "carbsG": 9,
+          "fiberG": 3,
+          "saturatedFatG": 1.5,
+          "sugarG": 5,
+          "sodiumMg": 560
+        },
+        {
+          "id": "chipotle-black-beans",
+          "name": "Black Beans",
+          "serving": "4 oz",
+          "kcal": 130,
+          "proteinG": 8,
+          "fatG": 1.5,
+          "carbsG": 22,
+          "fiberG": 7,
+          "saturatedFatG": 0,
+          "sugarG": 2,
+          "sodiumMg": 210
+        },
+        {
+          "id": "chipotle-supergreens-salad-mix",
+          "name": "Supergreens Salad Mix",
+          "serving": "3 oz",
+          "kcal": 15,
+          "proteinG": 1,
+          "fatG": 0,
+          "carbsG": 3,
+          "fiberG": 2,
+          "saturatedFatG": 0,
+          "sugarG": 1,
+          "sodiumMg": 15
+        },
+        {
+          "id": "chipotle-fajita-vegetables",
+          "name": "Fajita Vegetables",
+          "serving": "2 oz",
+          "kcal": 20,
+          "proteinG": 1,
+          "fatG": 0,
+          "carbsG": 5,
+          "fiberG": 1,
+          "saturatedFatG": 0,
+          "sugarG": 2,
+          "sodiumMg": 150
+        },
+        {
+          "id": "chipotle-cilantro-lime-brown-rice",
+          "name": "Cilantro-Lime Brown Rice",
+          "serving": "4 oz",
+          "kcal": 210,
+          "proteinG": 4,
+          "fatG": 6,
+          "carbsG": 36,
+          "fiberG": 2,
+          "saturatedFatG": 0,
+          "sugarG": 0,
+          "sodiumMg": 190
         }
       ]
     },
@@ -1312,6 +1693,12 @@
       "text": "Grilled nuggets or a grilled sandwich. A nugget count is easy to size to what you have left.",
       "kinds": [
         "chicken"
+      ]
+    },
+    {
+      "text": "A bowl instead of a burrito, and double the meat rather than more rice, beans or a tortilla.",
+      "kinds": [
+        "mexican"
       ]
     },
     {
