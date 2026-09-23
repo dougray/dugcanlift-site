@@ -439,6 +439,9 @@ canvas.route {
 .roaditem:last-child { padding-bottom: 0; }
 .roaditem .chip { flex: none; padding: 6px 14px; }
 .roadfit { font-size: 19px; font-weight: 700; }
+/* A coach's pick, said in words above the numbers. Weight, not colour: this
+   is a label on what a coach marked, not a verdict on the food. */
+.roadpick { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 2px; }
 button.roadchain { margin: 8px 0; box-shadow: inset 0 0 0 1px var(--card-border); }
 button.roadchain .roadname { font-weight: 700; }
 button.roadchain .muted { margin: 2px 0 0; }

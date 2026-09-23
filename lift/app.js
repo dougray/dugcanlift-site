@@ -12,7 +12,8 @@ const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', s
               recipes: 'lift.recipes', plan: 'lift.plan', shopping: 'lift.shopping',
               training: 'lift.training', templates: 'lift.templates',
               routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording',
-              perSide: 'lift.perSide', roadRecent: 'lift.roadRecent' };
+              perSide: 'lift.perSide', roadRecent: 'lift.roadRecent',
+              roadPicks: 'lift.roadPicks' };
 
 function load(key, fallback) {
   try {
@@ -1557,6 +1558,24 @@ let roadData = null;
 let roadLoading = null;
 let roadError = null;
 // { kind: 'picker' } | { kind: 'chain', id } | { kind: 'snacks', category }
+/* What a coach marked in their own app and sent in the plan link: item ids,
+ * and their name for the label. Stored whole, replaced whole by the next plan
+ * that carries any (coach/PLAN-FORMAT.md "Road picks"). A plan with no picks
+ * in it says nothing about them rather than retracting them, so clearing is
+ * something this phone does, on this screen.
+ *
+ * An id this copy of road-food.json does not have is skipped everywhere,
+ * silently: an item withdrawn since the plan was sent is not a broken row. */
+let roadPicks = load(KEY.roadPicks, null);
+
+const roadPickIds = () => (roadPicks && Array.isArray(roadPicks.ids) ? roadPicks.ids : []);
+const roadPickWho = () => (roadPicks && typeof roadPicks.from === 'string' && roadPicks.from.trim()
+  ? roadPicks.from.trim() : '');
+/* "Doug's picks" when the coach named themselves, "Your coach's picks"
+ * otherwise. One place, so the label and the heading cannot drift. */
+const roadPicksLabel = (suffix) => (roadPickWho()
+  ? `${roadPickWho()}’s ${suffix}` : `Your coach’s ${suffix}`);
+
 let roadView = { kind: 'picker' };
 let roadMeal = 'LUNCH';
 let roadNote = '';
@@ -1660,8 +1679,11 @@ function roadChainCard(chain) {
   const b = el('button', 'linkcard roadchain');
   b.appendChild(el('div', 'roadname', chain.name));
   const count = chain.items.length;
+  const picked = LiftRoadFood.pickCount(chain.items, roadPickIds());
   b.appendChild(el('p', 'muted small',
-    `${count} ${count === 1 ? 'item' : 'items'}` + (chain.checkedOn ? ` · checked ${roadDate(chain.checkedOn)}` : '')));
+    `${count} ${count === 1 ? 'item' : 'items'}`
+    + (picked ? ` · ${picked} picked for you` : '')
+    + (chain.checkedOn ? ` · checked ${roadDate(chain.checkedOn)}` : '')));
   b.onclick = () => openRoadChain(chain.id);
   return b;
 }
@@ -1671,12 +1693,40 @@ function renderRoadPicker(body) {
   body.appendChild(el('p', 'muted', 'Pick where you are stopping. The list is ranked against what is '
     + 'left of today, and works with no signal once it has loaded.'));
 
+  // What a coach marked, if a plan brought any. Only what this copy of the
+  // file still has is counted -- an id it does not know is skipped, so the
+  // card can be empty even when picks are stored, and then it is not drawn.
+  const picks = roadPickIds();
+  const everything = roadData.chains.reduce((all, c) => all.concat(c.items || []), [])
+    .concat(roadData.snacks);
+  const pickedTotal = LiftRoadFood.pickCount(everything, picks);
+  if (pickedTotal) {
+    const card = el('div', 'card');
+    card.appendChild(el('div', 'roadfit', roadPicksLabel('picks')));
+    const places = roadData.chains.filter((c) => LiftRoadFood.pickCount(c.items, picks)).length
+      + (LiftRoadFood.pickCount(roadData.snacks, picks) ? 1 : 0);
+    card.appendChild(el('p', 'muted',
+      `${pickedTotal} ${pickedTotal === 1 ? 'item' : 'items'} at `
+      + `${places} ${places === 1 ? 'place' : 'places'}, at the top of those lists. `
+      + 'The ranking underneath them is unchanged.'));
+    const clear = el('button', 'ghost wide', 'Clear these picks');
+    clear.onclick = () => {
+      roadPicks = null;
+      save(KEY.roadPicks, roadPicks);
+      render();
+    };
+    card.appendChild(clear);
+    body.appendChild(card);
+  }
+
   const grid = el('div', 'roadgrid');
   if (roadData.snacks.length) {
     const gas = el('button', 'linkcard roadchain');
     gas.appendChild(el('div', 'roadname', 'Gas station'));
     const cats = [...new Set(roadData.snacks.map((s) => s.category).filter(Boolean))];
-    gas.appendChild(el('p', 'muted small', cats.length ? titleCase(cats.join(', ')) : 'Snacks'));
+    const gasPicked = LiftRoadFood.pickCount(roadData.snacks, roadPickIds());
+    gas.appendChild(el('p', 'muted small', (cats.length ? titleCase(cats.join(', ')) : 'Snacks')
+      + (gasPicked ? ` · ${gasPicked} picked for you` : '')));
     gas.onclick = () => { roadView = { kind: 'snacks', category: '' }; roadNote = ''; render(); window.scrollTo(0, 0); };
     grid.appendChild(gas);
   }
@@ -1719,10 +1769,13 @@ function roadFitLine(card, remaining, ranked) {
   }
 }
 
-function roadRow(item, placeName) {
+function roadRow(item, placeName, isPick) {
   const row = el('div', 'entry roaditem');
   const info = el('div');
   info.appendChild(el('div', 'roadname', item.name));
+  // Said in words, in the same muted type as the numbers: no colour, no
+  // badge, and nothing at all on the items a coach did not pick.
+  if (isPick) info.appendChild(el('div', 'roadpick', roadPicksLabel('pick')));
   const macro = (label, v) => (v == null ? null : `${label} ${Math.round(v)} g`);
   const parts = [
     item.kcal == null ? 'kcal not listed' : `${Math.round(item.kcal)} kcal`,
@@ -1799,9 +1852,16 @@ function renderRoadPlace(body, chain, isSnacks) {
   }
 
   const remaining = remainingFor(todayKey());
-  const ranked = LiftRoadFood.rank(items, remaining);
+  // Ranked first, then the coach's picks floated to the top of each group.
+  // Nothing about the ranking changes: the same items fit, in the same order
+  // among themselves, and the same ones are left out.
+  const ranked = LiftRoadFood.withPicks(LiftRoadFood.rank(items, remaining), roadPickIds());
   const fit = el('div', 'card');
   roadFitLine(fit, remaining, ranked);
+  if (ranked.count) {
+    fit.appendChild(el('p', 'muted', `${roadPicksLabel('picks')} are first, marked. `
+      + 'Nothing else is moved, and nothing that fits is hidden.'));
+  }
   body.appendChild(fit);
 
   if (roadNote) {
@@ -1826,14 +1886,16 @@ function renderRoadPlace(body, chain, isSnacks) {
   const placeName = isSnacks ? '' : chain.name;
   if (ranked.fits.length) {
     const list = el('div', 'card');
-    ranked.fits.forEach((item) => list.appendChild(roadRow(item, placeName)));
+    ranked.fits.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id])));
     main.appendChild(list);
   }
   if (ranked.over.length) {
     main.appendChild(el('h2', null, 'A little over'));
     main.appendChild(el('p', 'muted small', 'Within 10% of what is left.'));
     const list = el('div', 'card');
-    ranked.over.forEach((item) => list.appendChild(roadRow(item, placeName)));
+    // A pick that is over stays over: the pick is about the food, and what is
+    // left of the day is the client's own arithmetic.
+    ranked.over.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id])));
     main.appendChild(list);
   }
 
@@ -3925,6 +3987,32 @@ function importPlan(payload) {
   return added;
 }
 
+/* Takes in a coach's road picks.
+ *
+ * `rf` is a flat list of Road Food item ids and replaces whatever was stored,
+ * whole -- it is the coach's current answer. A plan with no `rf` says nothing
+ * about picks rather than retracting them: that is what every older Coach and
+ * every "here is a recipe" send also looks like. Clearing is done on the Road
+ * Food screen, on this phone.
+ *
+ * Nothing is checked against road-food.json here. An id this build does not
+ * have is skipped where the list is drawn, so a file that gains the item back
+ * shows the pick again rather than having thrown it away on arrival. */
+function importRoadPicks(payload) {
+  const ids = (Array.isArray(payload.rf) ? payload.rf : [])
+    .filter((id) => typeof id === 'string' && id.trim())
+    .map((id) => id.trim());
+  const unique = [...new Set(ids)];
+  if (!unique.length) return 0;
+  roadPicks = {
+    ids: unique,
+    from: typeof payload.n === 'string' ? payload.n : '',
+    at: Date.now(),
+  };
+  save(KEY.roadPicks, roadPicks);
+  return unique.length;
+}
+
 /* Takes in the training half of a plan.
  *
  * A prescribed session replaces whatever the coach previously sent for that
@@ -4092,6 +4180,7 @@ async function checkForIncomingPlan() {
   // Naming both halves is what makes a client running an older build notice
   // that the training never arrived. See "Changing this" in PLAN-FORMAT.md.
   const workoutCount = (payload.w || []).length;
+  const pickCount = (payload.rf || []).length;
   const holds = [];
   if (meals) {
     holds.push(`${meals} meal${meals === 1 ? '' : 's'} and `
@@ -4103,6 +4192,10 @@ async function checkForIncomingPlan() {
   if (sessionCount) holds.push(`${sessionCount} session${sessionCount === 1 ? '' : 's'}`);
   else if (workoutCount) {
     holds.push(`${workoutCount} workout${workoutCount === 1 ? '' : 's'} to keep`);
+  }
+  // Named like the other halves, so a plan that is only picks is not silent.
+  if (pickCount) {
+    holds.push(`${pickCount} Road Food ${pickCount === 1 ? 'pick' : 'picks'}`);
   }
   if (!holds.length) return;
 
@@ -4120,6 +4213,7 @@ async function checkForIncomingPlan() {
 
   const addedMeals = importPlan(payload);
   const addedSessions = importTraining(payload);
+  const addedPicks = importRoadPicks(payload);
 
   const took = [];
   if (addedMeals) took.push(`${addedMeals} meal${addedMeals === 1 ? '' : 's'}`);
@@ -4129,7 +4223,15 @@ async function checkForIncomingPlan() {
       ? `${addedSessions} session${addedSessions === 1 ? '' : 's'}`
       : `${addedSessions} workout${addedSessions === 1 ? '' : 's'}`);
   }
-  alert(`Added ${took.join(' and ')}.`);
+  if (addedPicks) took.push(`${addedPicks} Road Food ${addedPicks === 1 ? 'pick' : 'picks'}`);
+  alert(`Added ${took.length > 2
+    ? `${took.slice(0, -1).join(', ')} and ${took[took.length - 1]}`
+    : took.join(' and ')}.`);
+  // Picks on their own belong on the screen that shows them.
+  if (!addedMeals && !addedSessions && !recipeCount && !workoutCount && addedPicks) {
+    openRoadFood();
+    return;
+  }
   showTab(addedMeals || (recipeCount && !workoutCount) ? 'cook' : 'train');
 }
 
