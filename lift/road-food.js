@@ -169,13 +169,37 @@
   }
 
   /**
-   * Whether `checkedOn` is more than six calendar months before `today`
-   * (both "YYYY-MM-DD"). Calendar months, through Date, not 182 days: "six
-   * months old" is what the screen says, so it is what gets measured. Null
-   * when the date is missing or not a date, which the screen also says.
+   * A document's own date as a local date, or null. `publishedOn` is only as
+   * precise as the document is, so it may be "2022-11" where the chart says
+   * only "NOVEMBER 2022"; a month-only date is read as the first of that
+   * month, which can only make a document look older, never fresher.
    */
-  function isStale(checkedOn, today) {
-    var checked = parseDay(checkedOn);
+  function parseDocDay(text) {
+    var s = String(text || '');
+    return parseDay(/^\d{4}-\d{2}$/.test(s) ? s + '-01' : s);
+  }
+
+  /**
+   * The date the "these numbers are old" warning keys off: the document's own
+   * date when the chain states one, and the day a person read it when it does
+   * not. Different facts -- `publishedOn` is when the chain wrote the chart,
+   * `checkedOn` is when someone read it -- and only the first can say a chart
+   * is from 2021.
+   */
+  function ageDate(chain) {
+    if (!chain) return null;
+    return chain.publishedOn || chain.checkedOn || null;
+  }
+
+  /**
+   * Whether `day` is more than six calendar months before `today`. Calendar
+   * months, through Date, not 182 days: "six months old" is what the screen
+   * says, so it is what gets measured. `day` is "YYYY-MM-DD", or "YYYY-MM"
+   * for a document that names only a month. Null when the date is missing or
+   * not a date, which the screen also says.
+   */
+  function isStale(day, today) {
+    var checked = parseDocDay(day);
     var now = parseDay(today);
     if (!checked || !now) return null;
     var limit = new Date(checked.getFullYear(), checked.getMonth() + 6, checked.getDate());
@@ -256,6 +280,8 @@
     proteinPer100: proteinPer100,
     rank: rank,
     isStale: isStale,
+    parseDocDay: parseDocDay,
+    ageDate: ageDate,
     withPicks: withPicks,
     pickCount: pickCount,
     rulesFor: rulesFor,
