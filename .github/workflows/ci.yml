@@ -27,12 +27,15 @@ jobs:
         with:
           node-version: "24"
 
+      # The files are listed by glob rather than as "lift/", because node 24
+      # reads a bare directory as a module to load and fails; node 26 walks it.
+      # Spelling out the files works on both.
       - name: LIFT web
-        run: node --test lift/
+        run: node --test lift/*.test.mjs
 
       # coach/ is a deploy artifact: dugcanlift-coach's deploy.sh rsyncs it in,
       # tests and all. Running it here is not duplicated work -- it is the only
       # thing that looks at the copy actually served from this domain, and it
       # carries the same road-food.sha256 check as every other copy.
       - name: LIFT Coach, as deployed
-        run: node --test coach/
+        run: node --test coach/*.test.mjs
