@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 
 // Loaded the way the browser loads it, in index.html's order. Run from the
@@ -13,6 +14,26 @@ const P = shim.window.CoachPrescriptions;
 
 // The bundled file itself, the same bytes LIFT has.
 const DATA = JSON.parse(readFileSync('coach/road-food.json', 'utf8'));
+
+/* ---------------- the bundled data ---------------- */
+
+// Coach's copy fell three chains behind LIFT's on 2026-09-23 -- Burger King,
+// Whataburger and Chipotle reached five app repos and not this one, so a coach
+// could not pick at a place their client could see. Nothing here would have
+// caught it: every other check passes just as happily on an old copy. This one
+// reads the file as BYTES, never a re-encoded string, because the contract is
+// over the file itself.
+test("the bundled road-food.json is the kit's file, byte for byte", () => {
+  const sum = readFileSync('coach/road-food.sha256', 'utf8').trim();
+  assert.match(sum, /^[0-9a-f]{64}$/, 'coach/road-food.sha256 should be one bare sha256 and nothing else');
+  const actual = createHash('sha256').update(readFileSync('coach/road-food.json')).digest('hex');
+  assert.equal(actual, sum,
+    'coach/road-food.json does not match coach/road-food.sha256.\n' +
+    'Copy dugcanlift-kit/data/road-food.json AND data/road-food.sha256 over together,\n' +
+    'and bump CACHE in coach/sw.js. Never edit either file here, and never re-write the\n' +
+    'checksum by hand: the kit writes it (node data/validate-road-food.mjs --write-checksum)\n' +
+    'and the other five app repos pin the same one.');
+});
 
 /* ---------------- the stored list ---------------- */
 
