@@ -110,14 +110,14 @@ test('a booked day the client logged reads "logged"', () => {
   const r = run([{ d: '2026-10-12', x: 0 }],
     [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5]])] }],
     { '2026-10-12': { name: 'Lower A', exercises: [logged('Back Squat', 'Barbell', [set(225, 5)])] } });
-  assert.equal(day(r, 0).text, 'Mon 12 · Lower A · logged');
+  assert.equal(day(r, 0).text, 'Mon 12 Oct · Lower A · logged');
   assert.deepEqual(r.groups[0].counts, { booked: 1, logged: 1, notLogged: 0, outside: 0, other: 0 });
 });
 
 test('a booked day with nothing logged reads "not logged", never "missed"', () => {
   const r = run([{ d: '2026-10-12', x: 0 }],
     [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5]])] }], {});
-  assert.equal(day(r, 0).text, 'Mon 12 · Lower A · not logged');
+  assert.equal(day(r, 0).text, 'Mon 12 Oct · Lower A · not logged');
   assert.equal(r.groups[0].head, 'Booked 1 day, 12 Oct · logged 0');
 });
 
@@ -125,7 +125,7 @@ test('a booked day outside the window the client sent is never called "not logge
   const r = run([{ d: '2026-10-12', x: 0 }],
     [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5]])] }], {},
     { coverage: ['2026-09-01', '2026-10-05'] });
-  assert.equal(day(r, 0).text, 'Mon 12 · Lower A · outside the log they sent');
+  assert.equal(day(r, 0).text, 'Mon 12 Oct · Lower A · outside the log they sent');
   assert.equal(r.groups[0].head, 'Booked 1 day, 12 Oct · no log covering them');
   assert.equal(PlanLog.lines(r).join(' ').includes('not logged'), false);
 });
@@ -141,9 +141,9 @@ test('a logged day inside the span with no booking reads "not booked"', () => {
     [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5]])] }],
     { '2026-10-13': { name: 'Upper B', exercises: [logged('Bench Press', 'Barbell', [set(185, 5)])] } });
   assert.deepEqual(r.groups[0].days.map((d) => d.text), [
-    'Mon 12 · Lower A · not logged',
-    'Tue 13 · Upper B · not booked',
-    'Fri 16 · Lower A · not logged',
+    'Mon 12 Oct · Lower A · not logged',
+    'Tue 13 Oct · Upper B · not booked',
+    'Fri 16 Oct · Lower A · not logged',
   ]);
   assert.equal(r.groups[0].counts.other, 1);
   assert.match(r.groups[0].head, /1 other day logged$/);
