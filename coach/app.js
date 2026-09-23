@@ -18,6 +18,10 @@ const KEY = { clients: 'coach.clients', settings: 'coach.settings' };
 const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans',
                    roadPicks: 'coach.roadPicks' };
 const TRAIN_KEY = { workouts: 'coach.workouts', sessions: 'coach.sessions' };
+// What was actually sent, per client, so a plan is still there after it has
+// left. Beside the others for the same reason: the backup and the Connect
+// tab's storage note both need every key. See plan-log.js.
+const PLAN_KEY = { sentPlans: 'coach.sentPlans' };
 
 function load(key, fallback) {
   try {
@@ -46,6 +50,17 @@ function save(key, value) {
  * that point it only makes every read harder. */
 let clients = load(KEY.clients, []);
 let settings = load(KEY.settings, { name: '', email: '', unit: null });
+
+/* One row per send: the plan payload as JSON exactly as encoded, with the
+ * canonical hash of it. Coach built the link fresh on every render and handed
+ * it straight to the clipboard, so editing "Lower A" after sending left the
+ * store no longer saying what the client got -- and the client page could
+ * never put what was booked beside what came back. See plan-log.js.
+ *
+ * Declared up here with the roster rather than down in COOK beside the plans
+ * it records, because the client page reads it and render() can run at module
+ * scope before the COOK section is evaluated. */
+let sentPlans = load(PLAN_KEY.sentPlans, []);
 
 const persist = () => save(KEY.clients, clients);
 
@@ -610,6 +625,7 @@ function renderClient() {
   renderBodyweight(client, unit);
   renderLifts(client, unit);
   renderOutdoor(client, unit);
+  renderBooked(client, unit);
   renderSessions(client, unit);
 }
 
@@ -1078,6 +1094,145 @@ function setText(set, unit) {
   return bits.join(' · ') || '—';
 }
 
+/* ---------------- booked ----------------
+ *
+ * What the coach booked, beside what the client logged. The rules -- which
+ * day joins which, which lift answers which, and every sentence on screen --
+ * are plan-log.js, which node tests; this draws what it returns and decides
+ * nothing of its own.
+ *
+ * It sits here, above Sessions and below the summary cards, because Train is
+ * where a coach writes and the client page is where a coach reads, and this
+ * is reading. Absent entirely for a client never sent a plan: plans sent
+ * before this existed cannot be reconstructed, and a line saying so is a line
+ * every coach reads once and never again.
+ *
+ * **Counting, never grading.** Every day row is the same weight and the same
+ * colour, whichever of the four states it is in. The nearest precedent in
+ * this file goes the other way -- the Weeks table puts an `.under` class on a
+ * protein average below 90% of goal -- and this deliberately does not follow
+ * it. A macro goal is a number on a dial; a booked day nobody logged is a
+ * person's week.
+ */
+
+let bookedMode = 'day';
+
+function bookedSets(parent, row) {
+  const line = el('div', 'setline');
+  line.appendChild(el('b', null, row.label + ' '));
+  row.groups.forEach((group) => {
+    const span = el('span', 'sidegroup');
+    if (group.label) span.appendChild(el('b', null, group.label + ' '));
+    span.appendChild(document.createTextNode(group.text));
+    line.appendChild(span);
+  });
+  // "each side" is a clause on what was asked for, not a set: the groups
+  // above are three rows and this is what makes them six.
+  if (row.suffix) line.appendChild(document.createTextNode(row.suffix));
+  parent.appendChild(line);
+}
+
+function bookedExercise(parent, ex) {
+  const block = el('div', 'exercise');
+  block.appendChild(el('h3', null, ex.title));
+  if (ex.sideLine) block.appendChild(el('div', 'setline muted', ex.sideLine));
+  if (ex.countLine) block.appendChild(el('div', 'setline muted', ex.countLine));
+  if (ex.asked) bookedSets(block, ex.asked);
+  if (ex.logged) bookedSets(block, ex.logged);
+  if (ex.substitution) block.appendChild(el('div', 'setline muted', ex.substitution));
+  parent.appendChild(block);
+}
+
+function bookedAlsoLogged(parent, list) {
+  if (!list.length) return;
+  const block = el('div', 'exercise');
+  block.appendChild(el('h3', null, 'Also logged'));
+  list.forEach((ex) => block.appendChild(el('div', 'setline', ex.text)));
+  parent.appendChild(block);
+}
+
+function bookedDay(parent, day) {
+  const has = day.exercises.length || day.alsoLogged.length;
+  if (!has) {
+    // A day with nothing under it is the same line in the same weight, just
+    // without a disclosure triangle.
+    parent.appendChild(el('div', 'bookedday flat', day.text));
+    return;
+  }
+  const details = el('details', 'session booked');
+  const summary = el('summary');
+  summary.appendChild(el('div', 'bookedday', day.text));
+  details.appendChild(summary);
+  const body = el('div', 'body');
+  day.exercises.forEach((ex) => bookedExercise(body, ex));
+  bookedAlsoLogged(body, day.alsoLogged);
+  details.appendChild(body);
+  parent.appendChild(details);
+}
+
+function renderBooked(client, unit) {
+  const node = $('#client-booked');
+  const heading = $('#client-booked-heading');
+  const modes = $('#client-booked-modes');
+  node.innerHTML = '';
+
+  const result = CoachPlanLog.compare({
+    clientId: client.id,
+    sentPlans,
+    days: client.days,
+    coverage: client.coverage,
+    unit,
+    weeks: 8,
+  });
+
+  if (!result.groups.length) {
+    heading.classList.add('hidden');
+    modes.classList.add('hidden');
+    modes.innerHTML = '';
+    return;
+  }
+  heading.classList.remove('hidden');
+  modes.classList.remove('hidden');
+  chipRow(modes,
+    [{ label: 'By day', v: 'day' }, { label: 'By lift', v: 'lift' }],
+    (i) => i.v === bookedMode,
+    (i) => { bookedMode = i.v; renderBooked(client, unit); });
+
+  if (bookedMode === 'lift') {
+    result.byLift.forEach((lift) => {
+      const card = el('div', 'card');
+      card.appendChild(el('strong', 'cardtitle', lift.title));
+      lift.entries.forEach((entry) => {
+        const ex = entry.exercise;
+        const block = el('div', 'exercise');
+        block.appendChild(el('h3', null, entry.when));
+        // A day with nothing logged against this lift says so in the rule's
+        // own words -- "not logged" on a day the client sent, "outside the
+        // log they sent" on a day they did not.
+        if (ex.state !== 'logged') block.appendChild(el('div', 'setline', ex.title));
+        if (ex.sideLine) block.appendChild(el('div', 'setline muted', ex.sideLine));
+        if (ex.countLine) block.appendChild(el('div', 'setline muted', ex.countLine));
+        if (ex.asked) bookedSets(block, ex.asked);
+        if (ex.logged) bookedSets(block, ex.logged);
+        if (ex.substitution) block.appendChild(el('div', 'setline muted', ex.substitution));
+        card.appendChild(block);
+      });
+      node.appendChild(card);
+    });
+  } else {
+    result.groups.forEach((group) => {
+      const card = el('div', 'card');
+      card.appendChild(el('strong', 'cardtitle', group.head));
+      group.days.forEach((day) => bookedDay(card, day));
+      node.appendChild(card);
+    });
+  }
+
+  // Permanently, whatever is above it: Coach knows what it put on a
+  // clipboard and nothing after that.
+  node.appendChild(el('p', 'muted small', result.footer));
+}
+
 function renderSessions(client, unit) {
   const node = $('#session-log');
   node.innerHTML = '';
@@ -1201,7 +1356,7 @@ function renderConnect() {
     } catch (e) { return []; }
   };
   const keys = [KEY.clients, COOK_KEY.recipes, COOK_KEY.plans, COOK_KEY.roadPicks,
-    TRAIN_KEY.workouts, TRAIN_KEY.sessions];
+    TRAIN_KEY.workouts, TRAIN_KEY.sessions, PLAN_KEY.sentPlans];
   const bytes = keys.reduce(
     (total, key) => total + new Blob([localStorage.getItem(key) || '']).size, 0);
   const recipeCount = stored(COOK_KEY.recipes).length;
@@ -1298,8 +1453,12 @@ function saveBackup() {
   // Road picks are a map of client id to item ids, not a list of rows with
   // ids of their own, so they are written as they are stored rather than
   // merged by id on the way back in. See restoreLibrary.
+  // Sent plans ride as rows with ids of their own, so they merge by id the
+  // way recipes and workouts do. Omitted when there are none, so a coach who
+  // has never sent a plan writes the file they always did.
   const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions,
     roadPicks };
+  if (sentPlans.length) payload.sentPlans = sentPlans;
   const blob = new Blob([JSON.stringify(payload, null, 1)],
     { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -1353,6 +1512,14 @@ function restoreLibrary(parsed) {
     if (picked) added.push(`${picked} road pick${picked === 1 ? '' : 's'}`);
     save(COOK_KEY.roadPicks, roadPicks);
   }
+
+  // Sent plans: rows with ids, merged by id and never deleted by an older
+  // file -- the library half's rule. A file written before sent plans existed
+  // has no key at all and changes nothing.
+  const sent = CoachPlanLog.mergeBackup(sentPlans, parsed.sentPlans);
+  sentPlans = sent.rows;
+  if (sent.added) added.push(`${sent.added} sent plan${sent.added === 1 ? '' : 's'}`);
+  save(PLAN_KEY.sentPlans, sentPlans);
 
   save(COOK_KEY.recipes, recipes);
   save(COOK_KEY.plans, plans);
@@ -1534,7 +1701,7 @@ $('#empty-demo').onclick = () => {
 $('#client-remove').onclick = () => {
   const client = currentClient();
   if (!client) return;
-  const stores = { clients, plans, sessions, roadPicks };
+  const stores = { clients, plans, sessions, roadPicks, sentPlans };
   const impact = CoachClientRemoval.impact(client.id, stores);
   if (!impact) return;
   if (!confirm(CoachClientRemoval.confirmationPrompt(impact))) return;
@@ -1544,10 +1711,12 @@ $('#client-remove').onclick = () => {
   plans = after.plans;
   sessions = after.sessions;
   roadPicks = after.roadPicks;
+  sentPlans = after.sentPlans;
   persist();
   save(COOK_KEY.plans, plans);
   save(TRAIN_KEY.sessions, sessions);
   save(COOK_KEY.roadPicks, roadPicks);
+  save(PLAN_KEY.sentPlans, sentPlans);
   openClientId = null;
   $('#tab-client').disabled = true;
   showTab('roster');
@@ -1684,6 +1853,7 @@ let plans = load(COOK_KEY.plans, []);
  * the spec keeps them stable for exactly this. See road-picks.js. */
 let roadPicks = load(COOK_KEY.roadPicks, {});
 
+
 const LIFT_URL = 'https://www.dugcanlift.com/lift/';
 
 const recipeById = (id) => recipes.find((r) => r.id === id);
@@ -1746,6 +1916,51 @@ function loadRoadFood() {
  * inside a link an email client will not mangle.
  */
 async function encodePlan(clientId) {
+  const payload = planPayload(clientId);
+  if (!payload) return null;
+  // 'u' is the uncompressed fallback the decoder already understands, for
+  // browsers without CompressionStream.
+  const body = await CoachPrescriptions.pack(JSON.stringify(payload));
+  return `${LIFT_URL}#1${body}`;
+}
+
+/* The same link, recorded as it goes.
+ *
+ * Every way of sending a plan goes through here, and `encodePlan` alone stays
+ * side-effect-free -- the size note under the buttons re-encodes on every
+ * render, and recording from there would file a plan nobody sent.
+ *
+ * Recorded when the coach asks for the link, not when a client receives one:
+ * the clipboard and a mail app are both past where this page can see, and no
+ * platform sees into either. A plan a coach copied and did not send may be
+ * recorded, which is the accepted cost; the card says so in its own words and
+ * never claims the link arrived. An abandoned copy is re-copied identically a
+ * moment later, and the hash reads that as one plan rather than two. */
+async function sendPlan(clientId) {
+  const payload = planPayload(clientId);
+  if (!payload) return null;
+  const body = await CoachPrescriptions.pack(JSON.stringify(payload));
+  await recordSentPlan(clientId, payload);
+  return `${LIFT_URL}#1${body}`;
+}
+
+async function recordSentPlan(clientId, payload) {
+  try {
+    sentPlans = CoachPlanLog.record(sentPlans, {
+      id: newId(),
+      clientId,
+      sentAt: Math.floor(Date.now() / 1000),
+      payloadHash: await CoachPlanLog.hash(payload),
+      payload,
+    });
+    save(PLAN_KEY.sentPlans, sentPlans);
+  } catch (e) {
+    // A record that cannot be written must never stop a plan being sent.
+    console.warn('could not record the sent plan', e);
+  }
+}
+
+function planPayload(clientId) {
   const client = clients.find((c) => c.id === clientId);
   const mine = plans.filter((p) => p.clientId === clientId);
   const myTraining = sessions.filter((k) => k.clientId === clientId);
@@ -1808,10 +2023,7 @@ async function encodePlan(clientId) {
   // and it skips an id it does not know. See PLAN-FORMAT.md "Road picks".
   if (picks) payload.rf = picks;
 
-  // 'u' is the uncompressed fallback the decoder already understands, for
-  // browsers without CompressionStream.
-  const body = await CoachPrescriptions.pack(JSON.stringify(payload));
-  return `${LIFT_URL}#1${body}`;
+  return payload;
 }
 
 /* Builds a link carrying a recipe or a workout on its own, with nothing
@@ -2346,7 +2558,7 @@ async function updatePlanSize() {
 }
 
 $('#plan-copy').onclick = async () => {
-  const link = await encodePlan(planClientId);
+  const link = await sendPlan(planClientId);
   if (!link) return;
   try {
     await navigator.clipboard.writeText(link);
@@ -2358,7 +2570,7 @@ $('#plan-copy').onclick = async () => {
 };
 
 $('#plan-mail').onclick = async () => {
-  const link = await encodePlan(planClientId);
+  const link = await sendPlan(planClientId);
   if (!link) return;
   mailPlan(planClientId, link);
 };
@@ -3185,7 +3397,7 @@ $('#w-delete').onclick = () => {
 };
 
 $('#tplan-copy').onclick = async () => {
-  const link = await encodePlan(trainClientId);
+  const link = await sendPlan(trainClientId);
   if (!link) { alert('Nothing planned for this client yet.'); return; }
   try {
     await navigator.clipboard.writeText(link);
@@ -3197,7 +3409,7 @@ $('#tplan-copy').onclick = async () => {
 };
 
 $('#tplan-mail').onclick = async () => {
-  const link = await encodePlan(trainClientId);
+  const link = await sendPlan(trainClientId);
   if (!link) { alert('Nothing planned for this client yet.'); return; }
   mailPlan(trainClientId, link);
 };

@@ -745,3 +745,24 @@ canvas.route {
 
 .roadpicktext { flex: 1; }
 .roadpicktext .muted { font-size: 14px; }
+
+/* Booked -- what the coach sent, beside what the client logged.
+ *
+ * No colour anywhere in here, and no emphasis on an absence: a day nobody
+ * logged reads in exactly the same weight as one they did. The Weeks table's
+ * `.under` is the precedent this deliberately does not follow -- a macro
+ * average is a number on a dial, and a booked day is a person's week. */
+.bookedday { font-size: 16px; }
+.session.booked > summary { padding: 12px 16px; }
+/* A day with nothing under it is the same line without a disclosure
+   triangle, so the four states sit at one weight. */
+.bookedday.flat { background: var(--surface); border-radius: 12px;
+  margin: 8px 0; padding: 12px 16px; }
+/* Left and right read as two blocks of sets, not one run-on line. */
+.sidegroup + .sidegroup { margin-left: 18px; }
+/* On a phone the two sides do not fit beside each other, and a run-on wrap
+   puts "R" at the end of the left side's last line. The second side gets its
+   own line instead; the first stays beside its Logged label. */
+@media (max-width: 560px) {
+  .sidegroup + .sidegroup { display: block; margin-left: 0; }
+}

@@ -177,6 +177,47 @@ older backup must never delete newer work — and a client it has none for takes
 the file's list. Removing a client takes their picks with them, the same way it
 takes the meals and sessions made for them.
 
+## The Coach backup's sent plans
+
+The Coach file also carries `sentPlans`, the record of what each client was
+actually sent. Coach built a plan link fresh on every render and handed it
+straight to the clipboard, so once a workout template was edited the store no
+longer said what the client got.
+
+```json
+{ "sentPlans": [ {
+  "id": "3f2a…",
+  "clientId": "a1b2c3d4",
+  "sentAt": 1760745600,
+  "payloadHash": "9c1f…",
+  "payload": { "v": 1, "t": "plan", "l": "a1b2c3d4", "w": [], "k": [] }
+} ] }
+```
+
+- **`payload`** is the plan payload as PLAN-FORMAT.md describes it, stored
+  exactly as it was encoded — the payload, not the fragment, which would need
+  inflating on every read and would become unreadable under a future `v`. The
+  whole payload, not the training half: `r`, `m` and `rf` cost almost nothing.
+- **`sentAt`** is epoch seconds, and **`payloadHash`** is SHA-256 over the
+  payload's canonical form — every object's keys sorted at every depth, arrays
+  left in their order. A send whose hash matches this client's newest send
+  replaces that row rather than adding one, keeping its `id`, so an abandoned
+  share and the one that followed it are one plan in every file.
+- Kept to the newest **26 rows per client**. A backup must not grow without
+  limit.
+- Omitted entirely when there are none.
+
+**Restoring merges by id and never deletes** — the library half's rule, not the
+roster's: an older backup must not remove a send this device made since. Ids
+compare case-insensitively like every other id in this file. The 26-row cap is
+applied after the merge, so restoring two files cannot leave a client with more
+rows than sending would. A file written before sent plans existed has no key at
+all and changes nothing. Removing a client takes their sent plans with them,
+the same way it takes the meals, sessions and picks made for them.
+
+Nothing about the client is in it. A sent plan is what the coach wrote and
+sent; the log the client sent back is `clients[].days`, as it always was.
+
 ## Unknown sections
 
 **A client MUST preserve a `data` section it does not understand**, exactly as it

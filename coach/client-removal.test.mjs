@@ -29,6 +29,11 @@ const stores = () => ({
     jordan: ['wendys-large-chili', 'snack-jack-links-original-beef-jerky'],
     sam: ['subway-oven-roasted-turkey-6-inch'],
   },
+  // Sent plans are rows carrying a client id, like the meals and sessions.
+  sentPlans: [
+    { id: 'sp1', clientId: 'jordan', sentAt: 100, payloadHash: 'h1', payload: { v: 1 } },
+    { id: 'sp2', clientId: 'sam', sentAt: 200, payloadHash: 'h2', payload: { v: 1 } },
+  ],
 });
 
 test('impact counts the client\'s days, meals and sessions', () => {
@@ -53,6 +58,10 @@ test('removing a client with meals and sessions takes exactly theirs', () => {
   // m4 belongs to nobody, not to Jordan, so it stays.
   assert.deepEqual(after.plans.map((p) => p.id), ['m3', 'm4']);
   assert.deepEqual(after.sessions.map((k) => k.id), ['s2']);
+  // The record of what was sent to them goes too: it is addressed to one
+  // person, shows on no screen once they are gone, and would otherwise ride
+  // in every backup from now on.
+  assert.deepEqual(after.sentPlans.map((p) => p.id), ['sp2']);
 });
 
 test('the other client keeps their day, their meal and their session', () => {
@@ -89,6 +98,7 @@ test('removing a client who is not here changes nothing', () => {
   assert.equal(after.clients, before.clients);
   assert.equal(after.plans, before.plans);
   assert.equal(after.sessions, before.sessions);
+  assert.equal(after.sentPlans, before.sentPlans);
 });
 
 test('a backup written afterwards mentions neither the meals nor the sessions', () => {
@@ -97,11 +107,13 @@ test('a backup written afterwards mentions neither the meals nor the sessions', 
     v: 2, clients: after.clients, settings: {},
     recipes: [{ id: 'chili', name: 'Chili' }],
     plans: after.plans, workouts: [{ id: 'push', name: 'Push' }], sessions: after.sessions,
+    sentPlans: after.sentPlans,
   });
 
   assert.equal(file.includes('jordan'), false);
   assert.equal(file.includes('m1'), false);
   assert.equal(file.includes('s1'), false);
+  assert.equal(file.includes('sp1'), false);
   // The coach's own library is untouched by any of it.
   assert.equal(JSON.parse(file).recipes.length, 1);
   assert.equal(JSON.parse(file).workouts.length, 1);
@@ -144,4 +156,33 @@ test('a client who is not here changes no picks, and missing picks are not an er
   assert.deepEqual(after.roadPicks, stores().roadPicks);
   const noPicks = { ...stores(), roadPicks: undefined };
   assert.deepEqual(remove('jordan', noPicks).roadPicks, {});
+});
+
+/* ---------------- sent plans ---------------- */
+
+test("a removal takes the client's sent plans and leaves everyone else's", () => {
+  const after = remove('jordan', stores());
+  assert.deepEqual(after.sentPlans.map((p) => p.id), ['sp2']);
+  // A row belonging to nobody is not this client's and stays.
+  const orphan = stores();
+  orphan.sentPlans.push({ id: 'sp0', clientId: null, payload: { v: 1 } });
+  assert.deepEqual(remove('jordan', orphan).sentPlans.map((p) => p.id), ['sp2', 'sp0']);
+});
+
+test('a store with no sent plans at all is not an error', () => {
+  const none = { ...stores(), sentPlans: undefined };
+  assert.deepEqual(remove('jordan', none).sentPlans, []);
+});
+
+test('the confirmation sentence is unchanged by any of this', () => {
+  // Three Coach builds pin this sentence word for word, and it was written
+  // before sent plans existed. It gains a clause in all three at once or in
+  // none -- the call road picks already made.
+  const imp = { clientName: 'Jordan Reyes', loggedDays: 2, plannedMeals: 2, bookedSessions: 1 };
+  const text = confirmationText(imp).toLowerCase();
+  // "booked session" is Android's own clause and belongs there; what must
+  // not appear is a clause about the plans Coach sent or the picks it holds.
+  ['sent plan', 'plan you sent', 'road pick'].forEach((clause) => {
+    assert.equal(text.includes(clause), false, `the sentence gained "${clause}"`);
+  });
 });
