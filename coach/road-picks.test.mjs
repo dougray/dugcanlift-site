@@ -77,6 +77,23 @@ test('nothing is filtered against this app\'s own copy of the file on the way ou
 
 /* ---------------- against the bundled file ---------------- */
 
+test('the bundled file carries each chain\'s own document date, where its document states one', () => {
+  // Coach shows no staleness of its own - it never reads either date - but the
+  // file is the same bytes LIFT reads, and LIFT warns from `publishedOn`. A
+  // copy that lost the field here would be a copy that had drifted.
+  const by = (id) => DATA.chains.find((c) => c.id === id);
+  assert.equal(by('burgerking').publishedOn, '2022-11');
+  assert.equal(by('whataburger').publishedOn, '2021-03-29');
+  assert.equal(by('chipotle').publishedOn, '2024-10');
+  // Blank stays blank: a chain whose document states no date has no key at all.
+  assert.equal('publishedOn' in by('sonic'), false);
+  assert.equal('publishedOn' in by('quiktrip'), false);
+  for (const c of DATA.chains) {
+    assert.match(c.checkedOn, /^\d{4}-\d{2}-\d{2}$/, `${c.id} checkedOn`);
+    if ('publishedOn' in c) assert.match(c.publishedOn, /^\d{4}-\d{2}(-\d{2})?$/, `${c.id} publishedOn`);
+  }
+});
+
 test('every id in the bundled file is unique: the ids are the whole contract', () => {
   const all = R.catalogue(DATA).map((e) => e.id);
   assert.equal(new Set(all).size, all.length);

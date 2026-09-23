@@ -206,6 +206,7 @@
       "id": "burgerking",
       "name": "Burger King",
       "kind": "burgers",
+      "publishedOn": "2022-11",
       "checkedOn": "2026-09-23",
       "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
       "items": [
@@ -334,6 +335,7 @@
       "id": "whataburger",
       "name": "Whataburger",
       "kind": "burgers",
+      "publishedOn": "2021-03-29",
       "checkedOn": "2026-09-23",
       "source": "https://wbimageserver.whataburger.com/Nutrition.pdf",
       "items": [
@@ -599,6 +601,7 @@
       "id": "popeyes",
       "name": "Popeyes",
       "kind": "chicken",
+      "publishedOn": "2026-08",
       "checkedOn": "2026-09-20",
       "source": "https://plk-use1-prod.sites.rbictg.com/nutrition/PLK_Nutrition.pdf",
       "items": [
@@ -686,6 +689,7 @@
       "id": "chipotle",
       "name": "Chipotle",
       "kind": "mexican",
+      "publishedOn": "2024-10",
       "checkedOn": "2026-09-23",
       "source": "https://www.chipotle.com/content/dam/chipotle/menu/nutrition/US-Nutrition-Facts-Paper-Menu-3-2025.pdf",
       "items": [
@@ -813,6 +817,7 @@
       "id": "subway",
       "name": "Subway",
       "kind": "sandwiches",
+      "publishedOn": "2026-01",
       "checkedOn": "2026-09-20",
       "source": "https://media.subway.com/dam/urn:aaid:aem:2278372c-147b-42f2-8edc-7d8d94d1f07e/original/as/us-nutrition-en.pdf",
       "items": [
@@ -1039,6 +1044,7 @@
       "id": "panera",
       "name": "Panera Bread",
       "kind": "coffee",
+      "publishedOn": "2026-09-02",
       "checkedOn": "2026-09-20",
       "source": "https://www.panerabread.com/content/dam/panerabread/documents/c8-26-nutrition-guide.pdf",
       "items": [
