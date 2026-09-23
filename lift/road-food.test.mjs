@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 // Loaded the way the browser loads it, like sides.test.mjs does.
 const shim = { window: {} };
@@ -298,4 +299,48 @@ test('every chain in the curated file states a usable pair of dates', () => {
     assert.equal(R.isStale(by(id).checkedOn, '2026-09-23'), false, `${id} looks fresh by checkedOn alone`);
     assert.equal(R.isStale(R.ageDate(by(id)), '2026-09-23'), true, `${id} should be old by its own chart`);
   }
+});
+
+// MARK: - The copies are the same bytes
+
+// road-food.json is curated once in dugcanlift-kit/data/ and copied byte for
+// byte into five app repos. Nothing used to check that they matched: every
+// repo said so in prose, and the shape checks above pass just as happily on a
+// copy three chains behind, so nothing here would ever say it had. Item ids are
+// the contract a coach's road picks travel on, and an id the receiving build
+// does not have is skipped in silence, by design.
+//
+// So the kit writes the sha256 of the bytes to road-food.sha256, and that file
+// is copied across with the JSON. Hashing the bytes here catches both ways the
+// copy can rot: taking the JSON without the hash, and editing the JSON here.
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+
+// Read as bytes, never as a decoded string: the contract is over the file, and
+// a re-encoded string is not guaranteed to be the same bytes.
+const pinned = (jsonPath, sumPath) => {
+  const sum = readFileSync(sumPath, 'utf8').trim();
+  assert.match(sum, /^[0-9a-f]{64}$/, `${sumPath} should be one bare sha256 and nothing else`);
+  return { sum, actual: sha256(readFileSync(jsonPath)) };
+};
+
+test('the bundled road-food.json is the kit\'s file, byte for byte', () => {
+  const { sum, actual } = pinned('lift/road-food.json', 'lift/road-food.sha256');
+  assert.equal(actual, sum,
+    'lift/road-food.json does not match lift/road-food.sha256.\n' +
+    'Copy dugcanlift-kit/data/road-food.json AND data/road-food.sha256 over together.\n' +
+    'Never edit either file here, and never re-write the checksum by hand: the kit\'s\n' +
+    'validator writes it (node data/validate-road-food.mjs --write-checksum) and the\n' +
+    'other four app repos pin the same one.');
+});
+
+test('the sample fixture is the same bytes the other apps hold', () => {
+  // The fixture is shared too: dugcanlift-lift's src/debug asset, lift-ios's
+  // Tests/Fixtures copy and the inline copy in RoadFoodSample.swift are all
+  // meant to be these exact bytes.
+  const { sum, actual } = pinned('lift/fixtures/road-food-sample.json', 'lift/fixtures/road-food-sample.sha256');
+  assert.equal(actual, sum,
+    'lift/fixtures/road-food-sample.json does not match its checksum.\n' +
+    'The fixture is shared with dugcanlift-lift and lift-ios. Change it in all three,\n' +
+    'and re-write all three checksums:\n' +
+    "  shasum -a 256 lift/fixtures/road-food-sample.json | cut -d' ' -f1 > lift/fixtures/road-food-sample.sha256");
 });

@@ -103,8 +103,29 @@ the service worker, cache-first -- so **replacing it needs a `CACHE` bump in
 `sw.js`**, or installed copies keep the old menus. It is deliberately not in
 `SHELL`: install would fail outright while the file is absent.
 
+`road-food.sha256` is the kit's checksum of those bytes, copied across with the
+JSON, and `road-food.test.mjs` hashes the file and asserts it matches. That is
+the only thing standing between this copy and the four others: the shape checks
+pass just as happily on a copy three chains behind, so nothing else here would
+ever say the file had fallen behind.
+
+**When that test fails**, copy `road-food.json` *and* `road-food.sha256` from
+`dugcanlift-kit/data/` together, and bump `CACHE` in `sw.js`. Never edit either
+file here, and never re-write the checksum by hand to make the test pass -- the
+kit writes it (`node data/validate-road-food.mjs --write-checksum`) and the
+other four app repos pin the same one, so a hand-written hash only moves the
+failure somewhere further away.
+
 `fixtures/road-food-sample.json` is a hand-made fixture with fake names ("Sample
-Burger Co") for development only; it is excluded from the Jekyll build.
+Burger Co") for development only; it is excluded from the Jekyll build. It is
+shared too -- `dugcanlift-lift`'s debug asset, `lift-ios`'s `Tests/Fixtures`
+copy and the inline copy in `RoadFoodSample.swift` are meant to be these exact
+bytes -- so `road-food-sample.sha256` pins it the same way. Changing the fixture
+means changing it in all three repos and re-writing all three checksums:
+
+```sh
+shasum -a 256 lift/fixtures/road-food-sample.json | cut -d' ' -f1 > lift/fixtures/road-food-sample.sha256
+```
 
 Rules may be plain strings (every chain) or `{ "text", "kinds": [...] }`,
 matched against a chain's optional `kind`; the gas-station screen shows only
