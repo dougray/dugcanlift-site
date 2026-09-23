@@ -86,6 +86,17 @@ no-goal mode, six-month staleness -- are in `road-food.js` and tested by
 `road-food.test.mjs`. What is left comes from `remainingFor(day)` in `app.js`,
 the same function Home and Food use for "kcal left".
 
+Each chain carries two dates. `checkedOn` is the day a person read its chart;
+`publishedOn` is the date **the document states about itself**, optional and
+only as precise as the document is -- `"2021-03-29"` where Whataburger's chart
+says "as of March 29, 2021", `"2022-11"` where Burger King's says only
+"NOVEMBER 2022". Both are on screen ("Published Nov 2022 · checked Sep 23,
+2026"), because what a chain published and when someone read it are different
+facts. The staleness warning keys off `publishedOn` when a chain has one and
+`checkedOn` when it does not, still at six calendar months, and says which
+chart is old: "These numbers are from the chain's chart dated Nov 2022." A
+chain with no `publishedOn` reads exactly as it did before the field existed.
+
 `road-food.json` is the curated file from `dugcanlift-kit/data/road-food.json`,
 copied here unchanged. It is fetched when Road Food first opens and then kept by
 the service worker, cache-first -- so **replacing it needs a `CACHE` bump in
