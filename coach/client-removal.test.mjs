@@ -24,6 +24,11 @@ const stores = () => ({
     { id: 's1', clientId: 'jordan', date: '2026-09-16', workoutId: 'push', workoutName: 'Push' },
     { id: 's2', clientId: 'sam', date: '2026-09-16', workoutId: 'push', workoutName: 'Push' },
   ],
+  // Road picks are a map, one list of item ids per client.
+  roadPicks: {
+    jordan: ['wendys-large-chili', 'snack-jack-links-original-beef-jerky'],
+    sam: ['subway-oven-roasted-turkey-6-inch'],
+  },
 });
 
 test('impact counts the client\'s days, meals and sessions', () => {
@@ -122,4 +127,21 @@ test('the confirmation says whose, what goes and what stays', () => {
 test('the prompt names the client above the body', () => {
   const imp = { clientName: 'Jordan Reyes', loggedDays: 2, plannedMeals: 2, bookedSessions: 1 };
   assert.equal(confirmationPrompt(imp), `Remove Jordan Reyes?\n\n${confirmationText(imp)}`);
+});
+
+/* ---------------- road picks ---------------- */
+
+test("a removal takes the client's road picks and leaves everyone else's", () => {
+  const before = stores();
+  const after = remove('jordan', before);
+  assert.deepEqual(after.roadPicks, { sam: ['subway-oven-roasted-turkey-6-inch'] });
+  // The caller's own object is untouched until it saves what came back.
+  assert.ok(before.roadPicks.jordan, 'the stores passed in are not mutated');
+});
+
+test('a client who is not here changes no picks, and missing picks are not an error', () => {
+  const after = remove('nobody', stores());
+  assert.deepEqual(after.roadPicks, stores().roadPicks);
+  const noPicks = { ...stores(), roadPicks: undefined };
+  assert.deepEqual(remove('jordan', noPicks).roadPicks, {});
 });

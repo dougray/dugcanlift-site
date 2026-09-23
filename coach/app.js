@@ -15,7 +15,8 @@ const KEY = { clients: 'coach.clients', settings: 'coach.settings' };
 // Declared here, beside KEY, rather than down in their own sections: the
 // backup and the Connect tab's storage note both need every key, and both
 // can run before those sections are evaluated.
-const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans' };
+const COOK_KEY = { recipes: 'coach.recipes', plans: 'coach.plans',
+                   roadPicks: 'coach.roadPicks' };
 const TRAIN_KEY = { workouts: 'coach.workouts', sessions: 'coach.sessions' };
 
 function load(key, fallback) {
@@ -1199,7 +1200,7 @@ function renderConnect() {
       return Array.isArray(value) ? value : [];
     } catch (e) { return []; }
   };
-  const keys = [KEY.clients, COOK_KEY.recipes, COOK_KEY.plans,
+  const keys = [KEY.clients, COOK_KEY.recipes, COOK_KEY.plans, COOK_KEY.roadPicks,
     TRAIN_KEY.workouts, TRAIN_KEY.sessions];
   const bytes = keys.reduce(
     (total, key) => total + new Blob([localStorage.getItem(key) || '']).size, 0);
@@ -1294,7 +1295,11 @@ function saveBackup() {
   // exercise done each side, omitted when not, and `side` on a set that names
   // one, omitted when both. See prescriptions.js.
   workouts.forEach(CoachPrescriptions.normaliseWorkout);
-  const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions };
+  // Road picks are a map of client id to item ids, not a list of rows with
+  // ids of their own, so they are written as they are stored rather than
+  // merged by id on the way back in. See restoreLibrary.
+  const payload = { v: 2, clients, settings, recipes, plans, workouts, sessions,
+    roadPicks };
   const blob = new Blob([JSON.stringify(payload, null, 1)],
     { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -1331,6 +1336,24 @@ function restoreLibrary(parsed) {
     });
     if (n) added.push(`${n} ${noun}${n === 1 ? '' : 's'}`);
   });
+  // Road picks: one list per client, so "merge by id" has nothing to key on.
+  // A client this device already has picks for keeps them -- an older backup
+  // must never delete newer work -- and a client it has none for takes the
+  // file's. A file written before road picks has no key at all and changes
+  // nothing.
+  if (parsed.roadPicks && typeof parsed.roadPicks === 'object') {
+    let picked = 0;
+    Object.keys(parsed.roadPicks).forEach((clientId) => {
+      if (picksFor(clientId).length) return;
+      const list = CoachRoadPicks.normalise(parsed.roadPicks[clientId]);
+      if (!list.length) return;
+      roadPicks[clientId] = list;
+      picked += list.length;
+    });
+    if (picked) added.push(`${picked} road pick${picked === 1 ? '' : 's'}`);
+    save(COOK_KEY.roadPicks, roadPicks);
+  }
+
   save(COOK_KEY.recipes, recipes);
   save(COOK_KEY.plans, plans);
   save(TRAIN_KEY.workouts, workouts);
@@ -1511,7 +1534,7 @@ $('#empty-demo').onclick = () => {
 $('#client-remove').onclick = () => {
   const client = currentClient();
   if (!client) return;
-  const stores = { clients, plans, sessions };
+  const stores = { clients, plans, sessions, roadPicks };
   const impact = CoachClientRemoval.impact(client.id, stores);
   if (!impact) return;
   if (!confirm(CoachClientRemoval.confirmationPrompt(impact))) return;
@@ -1520,9 +1543,11 @@ $('#client-remove').onclick = () => {
   clients = after.clients;
   plans = after.plans;
   sessions = after.sessions;
+  roadPicks = after.roadPicks;
   persist();
   save(COOK_KEY.plans, plans);
   save(TRAIN_KEY.sessions, sessions);
+  save(COOK_KEY.roadPicks, roadPicks);
   openClientId = null;
   $('#tab-client').disabled = true;
   showTab('roster');
@@ -1654,9 +1679,59 @@ let recipes = load(COOK_KEY.recipes, []);
  * A plan is addressed, not broadcast. */
 let plans = load(COOK_KEY.plans, []);
 
+/* Road picks, per client: { clientId: [itemId, ...] }.
+ * Ids out of the bundled Road Food file, which LIFT has the same copy of --
+ * the spec keeps them stable for exactly this. See road-picks.js. */
+let roadPicks = load(COOK_KEY.roadPicks, {});
+
 const LIFT_URL = 'https://www.dugcanlift.com/lift/';
 
 const recipeById = (id) => recipes.find((r) => r.id === id);
+
+const picksFor = (clientId) => CoachRoadPicks.normalise((roadPicks || {})[clientId] || []);
+
+/* Stores one client's picks, dropping the key entirely when there are none:
+ * an empty list is how "no picks" is written here and on the wire. */
+function setPicksFor(clientId, ids) {
+  const list = CoachRoadPicks.normalise(ids);
+  if (list.length) roadPicks[clientId] = list;
+  else delete roadPicks[clientId];
+  save(COOK_KEY.roadPicks, roadPicks);
+}
+
+/* The Road Food file, fetched the first time the Road section is opened
+ * rather than at launch -- a coach who never marks a pick never pays for it.
+ * The same copy LIFT bundles, from dugcanlift-kit; never edited here. */
+let roadData = null;
+let roadLoading = null;
+let roadError = null;
+
+function loadRoadFood() {
+  if (roadData) return Promise.resolve(roadData);
+  if (!roadLoading) {
+    roadLoading = fetch('road-food.json')
+      .then((response) => {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then((raw) => {
+        if (!raw || !Array.isArray(raw.chains)) throw new Error('not a Road Food file');
+        roadData = {
+          chains: raw.chains.filter(Boolean),
+          snacks: Array.isArray(raw.snacks) ? raw.snacks.filter(Boolean) : [],
+        };
+        roadError = null;
+        return roadData;
+      })
+      .catch((e) => {
+        // Cleared so opening the section again tries again, once there is signal.
+        roadError = e;
+        roadLoading = null;
+        throw e;
+      });
+  }
+  return roadLoading;
+}
 
 /* ---------------- plan link ---------------- */
 
@@ -1674,9 +1749,11 @@ async function encodePlan(clientId) {
   const client = clients.find((c) => c.id === clientId);
   const mine = plans.filter((p) => p.clientId === clientId);
   const myTraining = sessions.filter((k) => k.clientId === clientId);
-  // Meals and training are independent: a coach who only programmes training
-  // still has a plan to send.
-  if (!client || (!mine.length && !myTraining.length)) return null;
+  // Road picks ride in the same link, and are a send of their own: a coach
+  // whose only answer this week is "these are fine on the road" has something
+  // to send. Meals and training stay independent of each other as before.
+  const picks = CoachRoadPicks.wire(picksFor(clientId));
+  if (!client || (!mine.length && !myTraining.length && !picks)) return null;
 
   const used = [...new Set(mine.map((m) => m.recipeId))];
   const index = {};
@@ -1724,6 +1801,12 @@ async function encodePlan(clientId) {
       .filter((k) => workoutIndex[k.workoutId] !== undefined)
       .map((k) => ({ d: k.date, x: workoutIndex[k.workoutId] }));
   }
+
+  // `rf` is a flat list of Road Food item ids, left out entirely when there
+  // are none. Nothing is dropped here for being absent from this app's copy
+  // of the file: the client's build is the only one that can say what it has,
+  // and it skips an id it does not know. See PLAN-FORMAT.md "Road picks".
+  if (picks) payload.rf = picks;
 
   // 'u' is the uncompressed fallback the decoder already understands, for
   // browsers without CompressionStream.
@@ -1876,17 +1959,20 @@ function renderRecipeWeightEach() {
 
 function renderCook() {
   chipRow($('#cook-sections'),
-    [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' }, { label: 'Shopping', v: 'shopping' }],
+    [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' },
+     { label: 'Shopping', v: 'shopping' }, { label: 'Road', v: 'road' }],
     (i) => i.v === cookSection,
     (i) => { cookSection = i.v; $('#recipe-form').classList.add('hidden'); renderCook(); });
 
   $('#cook-recipes').classList.toggle('hidden', cookSection !== 'recipes');
   $('#cook-plan').classList.toggle('hidden', cookSection !== 'plan');
   $('#cook-shopping').classList.toggle('hidden', cookSection !== 'shopping');
+  $('#cook-road').classList.toggle('hidden', cookSection !== 'road');
 
   if (cookSection === 'recipes') renderCookRecipes();
   if (cookSection === 'plan') renderCookPlan();
   if (cookSection === 'shopping') renderCookShopping();
+  if (cookSection === 'road') renderCookRoad();
 }
 
 function chipRow(container, items, isOn, onPick) {
@@ -2107,14 +2193,19 @@ function renderCookPlan() {
   select.value = planClientId;
   select.onchange = () => { planClientId = select.value; renderCook(); };
 
+  // Road picks travel in the same link, so a coach who has only marked those
+  // still has something to send.
+  const picked = picksFor(planClientId).length;
   $('#plan-note').textContent = recipes.length
     ? 'Plans go to this client only. Their app refuses a plan addressed to anyone else.'
-    : 'Write a recipe first — the plan is built from them.';
-  $('#plan-send-card').classList.toggle('hidden', !recipes.length);
+    : (picked
+      ? 'No recipes yet. The road picks you marked still go in the link.'
+      : 'Write a recipe first — the plan is built from them.');
+  $('#plan-send-card').classList.toggle('hidden', !recipes.length && !picked);
 
   const wrap = $('#plan-days');
   wrap.innerHTML = '';
-  if (!recipes.length) return;
+  if (!recipes.length) { updatePlanSize(); return; }
 
   const MEALS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
   cookWeek().forEach((day) => {
@@ -2214,10 +2305,13 @@ const RISKY_LINK_LENGTH = 16000;
 function planContents(clientId) {
   const meals = plans.filter((p) => p.clientId === clientId).length;
   const trained = sessions.filter((k) => k.clientId === clientId).length;
+  const picks = picksFor(clientId).length;
   const parts = [];
   if (meals) parts.push(`${meals} meal${meals === 1 ? '' : 's'}`);
   if (trained) parts.push(`${trained} session${trained === 1 ? '' : 's'}`);
-  return parts.join(' and ');
+  if (picks) parts.push(`${picks} road pick${picks === 1 ? '' : 's'}`);
+  if (parts.length < 3) return parts.join(' and ');
+  return `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`;
 }
 
 function mailPlan(clientId, link) {
@@ -2268,6 +2362,173 @@ $('#plan-mail').onclick = async () => {
   if (!link) return;
   mailPlan(planClientId, link);
 };
+
+/* ---------------- road picks ----------------
+ *
+ * The items a coach is happy with at the places a client stops on the road.
+ *
+ * In Cook, beside the week and the shopping list, rather than on the client's
+ * page: that page is a record of what a client did, and this is something the
+ * coach makes for them -- addressed to one person and sent in the same plan
+ * link as the rest of Cook. Train would have been the other candidate and is
+ * the wrong half of the app; this is food.
+ *
+ * A pick says "this fits how I want you eating on the road" and nothing about
+ * calories or macros: LIFT already ranks Road Food against what is left of the
+ * client's day, and a pick floats to the top of that list, labelled, without
+ * re-ranking the numbers underneath or hiding anything that fits. Nothing here
+ * or there judges what a client ate against what was picked.
+ */
+
+/* Which place cards are open, so ticking an item does not fold them all up
+ * when the section re-renders. */
+let roadOpenPlaces = {};
+
+function renderCookRoad() {
+  const select = $('#road-client');
+  const body = $('#road-body');
+  select.innerHTML = '';
+  body.innerHTML = '';
+
+  if (!clients.length) {
+    $('#road-note').textContent =
+      'No clients yet. Picks are made for one person, so add a client first.';
+    return;
+  }
+
+  clients.forEach((c) => {
+    const o = document.createElement('option');
+    o.value = c.id;
+    o.textContent = c.name;
+    select.appendChild(o);
+  });
+  if (!planClientId || !clients.some((c) => c.id === planClientId)) {
+    planClientId = clients[0].id;
+  }
+  select.value = planClientId;
+  select.onchange = () => { planClientId = select.value; renderCook(); };
+
+  $('#road-note').textContent = 'Marked here, sent with the plan link. In LIFT they '
+    + 'sit at the top of that place’s list, named as yours. The ranking underneath '
+    + 'is unchanged, and nothing that fits is hidden.';
+
+  if (!roadData) {
+    if (roadError) {
+      const card = cookEl('div', 'card');
+      card.appendChild(cookEl('p', null, 'The Road Food list could not load.'));
+      card.appendChild(cookEl('p', 'muted', `It is part of the app, so this is either a `
+        + `connection that dropped before it was cached or a bad install (${roadError.message}).`));
+      const retry = cookEl('button', 'ghost wide', 'Try again');
+      retry.onclick = () => { roadError = null; loadRoadFood().then(renderCook, renderCook); renderCook(); };
+      card.appendChild(retry);
+      body.appendChild(card);
+      return;
+    }
+    body.appendChild(cookEl('p', 'muted', 'Loading the Road Food list…'));
+    loadRoadFood().then(renderCook, renderCook);
+    return;
+  }
+
+  const ids = picksFor(planClientId);
+  const client = clients.find((c) => c.id === planClientId);
+  const summary = CoachRoadPicks.summary(ids, roadData);
+  const head = cookEl('div', 'card');
+  head.appendChild(cookEl('div', null, summary
+    ? `${summary} picked for ${client ? client.name : 'this client'}.`
+    : `Nothing picked for ${client ? client.name : 'this client'} yet.`));
+  const missing = CoachRoadPicks.missing(ids, roadData);
+  if (missing.length) {
+    // A pick for an item this copy of the file no longer lists. It still
+    // travels: the client's app is the one that knows what its own menus hold,
+    // and it skips what it cannot find rather than drawing a broken row.
+    head.appendChild(cookEl('p', 'muted',
+      `${missing.length} more ${missing.length === 1 ? 'pick is' : 'picks are'} not on the `
+      + 'menus this copy has. They still travel; an app skips what it cannot find.'));
+  }
+  if (ids.length) {
+    const clear = cookEl('button', 'ghost wide', 'Clear these picks');
+    clear.onclick = () => {
+      if (!confirm(`Clear every road pick for ${client ? client.name : 'this client'}?`)) return;
+      setPicksFor(planClientId, []);
+      renderCook();
+    };
+    head.appendChild(clear);
+  }
+  body.appendChild(head);
+
+  roadData.chains.forEach((chain) => {
+    body.appendChild(roadPlaceCard(chain.id, chain.name, chain.items || [], ids));
+  });
+  if (roadData.snacks.length) {
+    const snacks = roadData.snacks.slice().sort((a, b) =>
+      String(a.category || '').localeCompare(String(b.category || ''))
+      || String(a.name || '').localeCompare(String(b.name || '')));
+    body.appendChild(roadPlaceCard('snacks', 'Gas station', snacks, ids, true));
+  }
+}
+
+/* One place: a fold with its items, each a tick. Folded by default -- eight
+ * chains and twenty-two snacks is a scroll nobody asked for. */
+function roadPlaceCard(placeId, name, items, ids, showCategory) {
+  const card = cookEl('details', 'card roadplace');
+  card.open = !!roadOpenPlaces[placeId];
+  card.ontoggle = () => { roadOpenPlaces[placeId] = card.open; };
+
+  const head = document.createElement('summary');
+  head.appendChild(cookEl('span', null, name));
+  const picked = CoachRoadPicks.countIn(ids, items);
+  head.appendChild(cookEl('span', 'muted',
+    picked ? `${picked} of ${items.length} picked` : `${items.length} items`));
+  card.appendChild(head);
+
+  const all = cookEl('div', 'chips');
+  const pickAll = cookEl('button', 'chip', 'Pick all');
+  pickAll.onclick = () => {
+    setPicksFor(planClientId, CoachRoadPicks.toggleAll(picksFor(planClientId), items, true));
+    renderCook();
+  };
+  const none = cookEl('button', 'chip', 'Clear');
+  none.disabled = !picked;
+  none.onclick = () => {
+    setPicksFor(planClientId, CoachRoadPicks.toggleAll(picksFor(planClientId), items, false));
+    renderCook();
+  };
+  all.appendChild(pickAll);
+  all.appendChild(none);
+  card.appendChild(all);
+
+  items.forEach((item) => card.appendChild(roadPickRow(item, ids, showCategory)));
+  return card;
+}
+
+/* One item: the tick, the name, and the figures plainly. No colour, no
+ * threshold, nothing ranked -- the ranking is the client's app's job, against
+ * a day this screen knows nothing about. */
+function roadPickRow(item, ids, showCategory) {
+  const row = cookEl('label', 'roadpick');
+  const box = document.createElement('input');
+  box.type = 'checkbox';
+  box.checked = ids.indexOf(item.id) !== -1;
+  box.onchange = () => {
+    setPicksFor(planClientId, CoachRoadPicks.toggle(picksFor(planClientId), item.id, box.checked));
+    renderCook();
+  };
+  row.appendChild(box);
+
+  const text = cookEl('div', 'roadpicktext');
+  text.appendChild(cookEl('div', null, item.name));
+  // Blank stays blank: an item with no figure says so rather than showing 0.
+  const bits = [
+    item.kcal == null ? 'kcal not listed' : `${Math.round(item.kcal)} kcal`,
+    item.proteinG == null ? 'protein not listed' : `P ${Math.round(item.proteinG)} g`,
+  ];
+  if (item.serving) bits.push(item.serving);
+  if (showCategory && item.category) bits.unshift(item.category);
+  text.appendChild(cookEl('div', 'muted', bits.join(' · ')));
+  if (item.modification) text.appendChild(cookEl('div', 'muted', item.modification));
+  row.appendChild(text);
+  return row;
+}
 
 function renderCookShopping() {
   const wrap = $('#cook-shopping');

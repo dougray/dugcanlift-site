@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v21';
+const CACHE = 'coach-v22';
 
 const SHELL = [
   '/coach/',
@@ -20,6 +20,7 @@ const SHELL = [
   '/coach/recipe-nutrition.js',
   '/coach/share-import.js',
   '/coach/client-removal.js',
+  '/coach/road-picks.js',
   '/coach/app.js',
   '/coach/foods.js',
   '/coach/exercises.json',
@@ -58,7 +59,10 @@ self.addEventListener('fetch', (event) => {
   // The ingredient database is 634 KB, so it is not in the install bundle —
   // but it is cached the first time it is actually used, which is what makes
   // the lookup work in a gym with no signal.
-  if (url.pathname === '/coach/foods.json') {
+  // Road Food's menus are the same story, at 37 KB: fetched the first time
+  // the Road section is opened, then kept. Both are cache-first, so a new copy
+  // of either reaches a coach only with a CACHE bump.
+  if (url.pathname === '/coach/foods.json' || url.pathname === '/coach/road-food.json') {
     event.respondWith(
       caches.match(event.request).then((hit) => hit || fetch(event.request).then((response) => {
         if (response.ok) {

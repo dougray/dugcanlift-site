@@ -158,6 +158,25 @@ A file written before these restores unchanged. An unrecognised `side` string
 reads as both, and an `eachSide` that is anything but `true` as not, rather
 than failing the import.
 
+## The Coach backup's road picks
+
+The Coach file also carries `roadPicks`, the Road Food items a coach has marked
+for each client (PLAN-FORMAT.md "Road picks"):
+
+```json
+{ "roadPicks": { "a1b2c3d4": ["wendys-large-chili", "snack-rxbar-blueberry"] } }
+```
+
+An object keyed by client id, each value a list of item ids in the order they
+were ticked. It is omitted by a Coach old enough not to have picks, and a file
+without it changes nothing on restore.
+
+**Restoring is per client, not per id.** There are no rows with ids of their
+own to match on, so a client this device already has picks for keeps them — an
+older backup must never delete newer work — and a client it has none for takes
+the file's list. Removing a client takes their picks with them, the same way it
+takes the meals and sessions made for them.
+
 ## Unknown sections
 
 **A client MUST preserve a `data` section it does not understand**, exactly as it

@@ -703,3 +703,45 @@ canvas.route {
   .client-row { cursor: pointer; }
   .client-row.selected { box-shadow: inset 0 0 0 2px var(--accent-2); }
 }
+
+/* Road picks: one fold per place, one tick per item. The summary carries the
+   place and how many of its items are picked, so a coach can see the shape of
+   what they have marked without opening anything. */
+.roadplace > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.roadplace > summary .muted { font-weight: 400; font-size: 14px; }
+
+.roadplace > .chips { margin-top: 12px; }
+
+/* The whole row is the label, so the tap target is the item, not the box. */
+.roadpick {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 17px;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--text);
+  text-transform: none;
+}
+
+.roadpick input[type=checkbox] {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}
+
+.roadpicktext { flex: 1; }
+.roadpicktext .muted { font-size: 14px; }
