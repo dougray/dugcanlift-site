@@ -100,3 +100,24 @@ matched against a chain's optional `kind`; the gas-station screen shows only
 rules whose kinds include `"snacks"`. No location of any kind: you pick the
 chain. Recently used chains are kept on this device under `lift.roadRecent`,
 not in the backup.
+
+### A coach's picks
+
+A plan link can carry `rf`, a flat list of Road Food item ids a coach is happy
+with (`coach/PLAN-FORMAT.md` "Road picks"). They are stored under
+`lift.roadPicks` with the coach's name, replaced whole by the next plan that
+carries any; a plan with no `rf` says nothing about picks rather than
+retracting them, because that is also what every older Coach and every "here
+is a recipe" send looks like. Clearing them is done here, on the Road Food
+screen.
+
+What they do is **sort to the top of the list they are in, marked**
+(`withPicks` in `road-food.js`). Nothing else moves: the same items fit, in
+the same order among themselves, and an item more than 10% over what is left
+stays hidden whether or not it was picked -- the pick is about the food, and
+what is left of the day is your own arithmetic. A pick whose item this build's
+`road-food.json` does not have is **skipped silently**: an item withdrawn since
+the plan was sent is not a broken row, and it reappears if the item does.
+
+Shown, never targeted, like saturated fat and the imbalance figure: a label in
+words, no colour, no score, and nothing anywhere about what you ate instead.
