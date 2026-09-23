@@ -1,0 +1,63 @@
+{
+  "_comment": [
+    "A sent plan as Coach stores it -- one `sentPlans` row, the plan payload",
+    "exactly as PLAN-FORMAT.md describes it. Written by hand against that",
+    "document, never generated from the code that reads it: a fixture",
+    "regenerated from the code under test proves only that the code agrees",
+    "with itself. The same file is the one Coach iPhone and Coach Android",
+    "check their own port of plan-log.js against.",
+    "",
+    "It books four days: two the client logged, one they did not, and one",
+    "past the end of the window they sent. `r` and `m` are present and empty",
+    "because that is what this app's encodePlan writes for a training-only",
+    "week."
+  ],
+  "id": "sent-1",
+  "clientId": "client-fixture",
+  "sentAt": 1760745600,
+  "payloadHash": "",
+  "payload": {
+    "v": 1,
+    "t": "plan",
+    "l": "client-fixture",
+    "n": "Sam Coach",
+    "r": [],
+    "m": [],
+    "w": [
+      {
+        "n": "Lower A",
+        "e": [
+          { "n": "Back Squat", "q": "Barbell", "s": [[225, 5], [225, 5], [245, 3]] },
+          { "n": "Romanian Deadlift", "q": "Barbell", "s": [[185, 8], [185, 8], [185, 8], [185, 8]] },
+          { "n": "Chin-Up", "q": "Body only", "s": [[null, 5], [null, 5], [null, 5]] },
+          { "n": "Overhead Press", "q": "Barbell", "s": [[95, 8], [95, 8], [95, 8]] }
+        ]
+      },
+      {
+        "n": "Upper B",
+        "e": [
+          { "n": "Bench Press", "q": "Barbell", "s": [[185, 5], [185, 5], [185, 5]] }
+        ]
+      },
+      {
+        "n": "Lower B",
+        "e": [
+          { "n": "Bulgarian Split Squat", "q": "Dumbbell", "b": 1, "s": [[40, 8], [40, 8], [40, 8]] },
+          { "n": "Barbell Row", "q": "Barbell", "s": [[135, 8], [135, 8], [135, 8]] }
+        ]
+      },
+      {
+        "n": "Upper A",
+        "e": [
+          { "n": "Overhead Press", "q": "Barbell", "s": [[95, 8], [95, 8], [95, 8]] }
+        ]
+      }
+    ],
+    "k": [
+      { "d": "2026-10-12", "x": 0 },
+      { "d": "2026-10-14", "x": 1 },
+      { "d": "2026-10-16", "x": 2 },
+      { "d": "2026-10-17", "x": 3 }
+    ]
+  }
+}

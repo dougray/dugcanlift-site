@@ -22,6 +22,12 @@
  * the confirmation sentence, which is Android's word for word and was written
  * before road picks existed; when Coach for Android gains them, the sentence
  * gains a clause in both places at once, not here alone.
+ *
+ * The record of what was sent to this client goes with them for the same
+ * reason again, and is out of the sentence for the same reason again: a
+ * SentPlan is a payload addressed to one person, readable on no screen once
+ * they are gone, and still in every backup. It is a row carrying a clientId,
+ * so it filters exactly as the meals and sessions do.
  */
 (function (global) {
   'use strict';
@@ -74,6 +80,7 @@
         plans: stores.plans,
         sessions: stores.sessions,
         roadPicks: stores.roadPicks,
+        sentPlans: stores.sentPlans,
       };
     }
     // Road picks are a map keyed by client id, not rows carrying one, so the
@@ -93,6 +100,8 @@
       sessions: (Array.isArray(stores.sessions) ? stores.sessions : [])
         .filter((k) => !k || k.clientId !== clientId),
       roadPicks: picks,
+      sentPlans: (Array.isArray(stores.sentPlans) ? stores.sentPlans : [])
+        .filter((p) => !p || p.clientId !== clientId),
     };
   }
 
