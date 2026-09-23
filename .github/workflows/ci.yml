@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A newer push to the same branch supersedes the run in flight.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: node --test
+    # The browser code here is plain ES modules loaded into a shim, so the
+    # suites need node and nothing else -- no build, no browser, no install.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: "24"
+
+      # The files are listed by glob rather than as "lift/", because node 24
+      # reads a bare directory as a module to load and fails; node 26 walks it.
+      # Spelling out the files works on both.
+      - name: LIFT web
+        run: node --test lift/*.test.mjs
+
+      # coach/ is a deploy artifact: dugcanlift-coach's deploy.sh rsyncs it in,
+      # tests and all. Running it here is not duplicated work -- it is the only
+      # thing that looks at the copy actually served from this domain, and it
+      # carries the same road-food.sha256 check as every other copy.
+      - name: LIFT Coach, as deployed
+        run: node --test coach/*.test.mjs
