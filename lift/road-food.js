@@ -24,6 +24,12 @@
  *
  * Zero-calorie drinks are real items (drinks are in; combos are not). With no
  * protein they rank at the bottom of the fits group, where a diet soda belongs.
+ *
+ * A coach's road picks (`withPicks`) sort to the top of a group and change
+ * nothing else: not the order underneath them, not which items fit, not what
+ * is hidden. A pick is an opinion sitting beside the numbers, never in front
+ * of them, and a pick that is "a little over" stays in the little-over group
+ * where the arithmetic put it. See coach/PLAN-FORMAT.md "Road picks".
  */
 (function (global) {
   'use strict';
@@ -91,6 +97,65 @@
       else if (kcal * 10 <= left * 11) over.push(item);
     });
     return { mode: 'goal', fits: fits.sort(compare), over: over.sort(compare) };
+  }
+
+  /* ---------------- a coach's picks ---------------- */
+
+  /**
+   * `ids` as a lookup, keeping only what this copy of the data has.
+   *
+   * An id nothing here knows is **skipped, silently**: the coach's Road Food
+   * file and this one are two builds updated at different times, and an item
+   * withdrawn since the plan was sent must leave no row, no gap and no error.
+   */
+  function pickedIn(items, ids) {
+    var wanted = {};
+    (ids || []).forEach(function (id) { if (typeof id === 'string' && id) wanted[id] = true; });
+    var found = {};
+    (items || []).forEach(function (item) {
+      if (item && wanted[item.id]) found[item.id] = true;
+    });
+    return found;
+  }
+
+  /** A stable partition: the picked ones first, each part in the order it
+   *  already had. Sorting by a "picked" key would have done the same thing
+   *  and is not written that way on purpose -- Array.prototype.sort is stable
+   *  in every engine that matters, but the promise here is that the nutrition
+   *  order is untouched, and a partition cannot quietly stop keeping it. */
+  function pickedFirst(list, picked) {
+    var first = [];
+    var rest = [];
+    (list || []).forEach(function (item) {
+      (item && picked[item.id] ? first : rest).push(item);
+    });
+    return first.concat(rest);
+  }
+
+  /**
+   * A ranked result with the coach's picks floated to the top of each group.
+   *
+   * Returns the same { mode, fits, over } plus `picked`, the ids of the picks
+   * actually on screen, and `count`, how many that is. Nothing is added to a
+   * group and nothing is taken out: an item hidden for being more than 10%
+   * over is still hidden, picked or not, because the pick says nothing about
+   * calories and the fit rule is the client's own day talking.
+   */
+  function withPicks(ranked, ids) {
+    var all = (ranked.fits || []).concat(ranked.over || []);
+    var picked = pickedIn(all, ids);
+    return {
+      mode: ranked.mode,
+      fits: pickedFirst(ranked.fits, picked),
+      over: pickedFirst(ranked.over, picked),
+      picked: picked,
+      count: Object.keys(picked).length,
+    };
+  }
+
+  /** How many of `items` are picked -- for a chain card, which shows no list. */
+  function pickCount(items, ids) {
+    return Object.keys(pickedIn(items, ids)).length;
   }
 
   /* ---------------- how old the numbers are ---------------- */
@@ -191,6 +256,8 @@
     proteinPer100: proteinPer100,
     rank: rank,
     isStale: isStale,
+    withPicks: withPicks,
+    pickCount: pickCount,
     rulesFor: rulesFor,
     orderChains: orderChains,
     remember: remember,
