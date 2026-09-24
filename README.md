@@ -31,11 +31,19 @@ lives in `localStorage` keyed to this origin.
 
 ```bash
 bundle install
-bundle exec jekyll serve    # http://localhost:4000
-bundle exec jekyll build
+script/jekyll serve    # http://localhost:4000
+script/jekyll build
 ```
 
-Always go through `bundle exec`. The `github-pages` gem drives the build, so
+`script/jekyll` runs Jekyll under the Ruby in `.ruby-version` whatever shell
+you are in. In a terminal, `bundle exec jekyll` works too, because `rbenv init`
+in `~/.zshrc` puts the right `bundle` first. A script, a scheduled job or an
+agent's shell never reads `.zshrc`, gets Homebrew's `bundle` instead, and fails
+with "command not found: jekyll" or a bundler version mismatch — which reads as
+a broken site and is really a broken PATH. That cost an evening on
+2026-09-23.
+
+Always go through `bundle exec` (or `script/jekyll`). The `github-pages` gem drives the build, so
 plugins are limited to what GitHub Pages allows — an unsupported one works
 locally and silently no-ops once deployed.
 
