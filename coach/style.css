@@ -760,6 +760,9 @@ canvas.route {
   margin: 8px 0; padding: 12px 16px; }
 /* Left and right read as two blocks of sets, not one run-on line. */
 .sidegroup + .sidegroup { margin-left: 18px; }
+/* A booked dish and what the log holds at its meal are one row of two
+   lines; the gap is what keeps the next dish from reading as part of it. */
+.mealrow + .mealrow { margin-top: 10px; }
 /* On a phone the two sides do not fit beside each other, and a run-on wrap
    puts "R" at the end of the left side's last line. The second side gets its
    own line instead; the first stays beside its Logged label. */

@@ -1151,8 +1151,33 @@ function bookedAlsoLogged(parent, list) {
   parent.appendChild(block);
 }
 
+/* The meals a day booked, and what the log holds at each slot.
+ *
+ * Two separate statements, never one: the bold row is Coach's own record of
+ * what it booked, the muted row under it is what the client's log holds at
+ * that meal, and nothing anywhere says they are the same dish. The context
+ * line above them all is what stops "Nothing logged at lunch" being read as
+ * "they ate nothing" -- see plan-log.js's MEAL_NOTE, which sits under the
+ * card saying so in words.
+ */
+function bookedMeals(parent, day) {
+  if (!day.meals.length) return;
+  const block = el('div', 'exercise');
+  block.appendChild(el('h3', null, 'Meals'));
+  if (day.foodContext) block.appendChild(el('div', 'setline muted', day.foodContext));
+  day.meals.forEach((meal) => {
+    const row = el('div', 'mealrow');
+    const booked = el('div', 'setline');
+    booked.appendChild(el('b', null, meal.title));
+    row.appendChild(booked);
+    if (meal.logged) row.appendChild(el('div', 'setline muted', meal.logged));
+    block.appendChild(row);
+  });
+  parent.appendChild(block);
+}
+
 function bookedDay(parent, day) {
-  const has = day.exercises.length || day.alsoLogged.length;
+  const has = day.exercises.length || day.alsoLogged.length || day.meals.length;
   if (!has) {
     // A day with nothing under it is the same line in the same weight, just
     // without a disclosure triangle.
@@ -1166,6 +1191,7 @@ function bookedDay(parent, day) {
   const body = el('div', 'body');
   day.exercises.forEach((ex) => bookedExercise(body, ex));
   bookedAlsoLogged(body, day.alsoLogged);
+  bookedMeals(body, day);
   details.appendChild(body);
   parent.appendChild(details);
 }
@@ -1192,13 +1218,22 @@ function renderBooked(client, unit) {
     return;
   }
   heading.classList.remove('hidden');
-  modes.classList.remove('hidden');
-  chipRow(modes,
-    [{ label: 'By day', v: 'day' }, { label: 'By lift', v: 'lift' }],
-    (i) => i.v === bookedMode,
-    (i) => { bookedMode = i.v; renderBooked(client, unit); });
+  // By lift is about lifts. A send that booked only meals has none, so the
+  // chip would open an empty card -- one mode is no choice, so no chips.
+  const modeList = [{ label: 'By day', v: 'day' }];
+  if (result.byLift.length) modeList.push({ label: 'By lift', v: 'lift' });
+  const mode = result.byLift.length ? bookedMode : 'day';
+  if (modeList.length > 1) {
+    modes.classList.remove('hidden');
+    chipRow(modes, modeList,
+      (i) => i.v === mode,
+      (i) => { bookedMode = i.v; renderBooked(client, unit); });
+  } else {
+    modes.classList.add('hidden');
+    modes.innerHTML = '';
+  }
 
-  if (bookedMode === 'lift') {
+  if (mode === 'lift') {
     result.byLift.forEach((lift) => {
       const card = el('div', 'card');
       card.appendChild(el('strong', 'cardtitle', lift.title));
@@ -1228,6 +1263,8 @@ function renderBooked(client, unit) {
     });
   }
 
+  // What a meal row does not claim, once, under the card that has one.
+  if (result.mealFooter) node.appendChild(el('p', 'muted small', result.mealFooter));
   // Permanently, whatever is above it: Coach knows what it put on a
   // clipboard and nothing after that.
   node.appendChild(el('p', 'muted small', result.footer));
