@@ -22,9 +22,15 @@
     "After the day rows come the same lines grouped the other way, under a",
     "lift's heading rather than a day's -- the card's By lift view. A lift",
     "booked on a day nobody logged still appears there: shown only on the",
-    "weeks it was logged, a lift reads steadier than it was."
+    "weeks it was logged, a lift reads steadier than it was.",
+    "",
+    "This plan books no meals -- `m` is empty -- so `meals` is 0 and not one",
+    "line below changes. The counts gained `training` and `meals` when meals",
+    "were added to the card: a send that books both needs to say which of its",
+    "days the `logged` figure is out of."
   ],
-  "counts": { "booked": 4, "logged": 2, "notLogged": 1, "outside": 1, "other": 1 },
+  "counts": { "booked": 4, "training": 4, "logged": 2, "notLogged": 1, "outside": 1,
+              "other": 1, "meals": 0 },
   "dayStates": ["logged", "notLogged", "notBooked", "logged", "outside"],
   "lines": [
     "Booked 4 days, 12–17 Oct · logged 2 · 1 outside the log they sent · 1 other day logged",

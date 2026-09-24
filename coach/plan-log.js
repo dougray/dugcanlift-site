@@ -15,6 +15,17 @@
  *              sending left the store no longer saying what the client got.
  *   compare()  the plan against the log, per sent week and per booked day.
  *
+ * **Training is compared; meals are not matched.** A booked meal is a recipe
+ * in a slot on a day. What comes back is a day's food entries -- free-typed
+ * foods, barcode scans, a recipe logged as a meal -- with no id joining them
+ * to anything, names drawn from the client's own food dictionary, and
+ * itemisation a choice the client makes per send. Coach therefore says what
+ * it booked and what the log holds at that meal, and never that the two are
+ * the same dish. Matching a booked recipe to a logged entry by name would be
+ * right most of the time, and the times it was wrong it would tell a coach
+ * their client ate something they did not -- the one error this card exists
+ * to avoid. `MEAL_NOTE` says so on screen, once, permanently.
+ *
  * **Counting is allowed; grading is not.** This says how many days were booked
  * and how many were logged, side by side, and stops. There is no score, no
  * percentage, no colour on an absence, no roster column, nothing carried
@@ -95,6 +106,12 @@
   }
 
   var plural = function (n, one, many) { return n + ' ' + (n === 1 ? one : many); };
+
+  /** PLAN-FORMAT's `m.s`: 0 breakfast, 1 lunch, 2 dinner, 3 snack. The same
+   *  four words, in the same order, that SHARE-FORMAT's `f` meal position
+   *  indexes -- which is the only reason a booked slot and a logged entry can
+   *  be put on the same line at all. */
+  var MEAL_SLOTS = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
 
   /* ---------------- SentPlan ---------------- */
 
@@ -227,27 +244,91 @@
     return String(name == null ? '' : name).trim().toLowerCase();
   };
 
-  /** Every day a payload books, as { date, name, exercises }, pooled where a
-   *  payload books two sessions on one date -- SHARE-FORMAT gives a day one
-   *  `w` array, so the log has already merged two sessions into one before
-   *  Coach sees it, and the asked side has to be read the same way. */
+  /**
+   * Every day a payload books, as { date, name, workout, exercises, meals }.
+   *
+   * Training pools where a payload books two sessions on one date --
+   * SHARE-FORMAT gives a day one `w` array, so the log has already merged two
+   * sessions into one before Coach sees it, and the asked side has to be read
+   * the same way. Meals do not pool: two dishes at one dinner are two dishes,
+   * and a coach who booked both wants to see both.
+   *
+   * `r`/`m` and `w`/`k` are independent (PLAN-FORMAT). A day may book meals
+   * with no training, training with no meals, or both, and a library send --
+   * `r` or `w` with nothing scheduled -- books no day at all.
+   */
   function bookingsIn(payload) {
     var workouts = Array.isArray(payload && payload.w) ? payload.w : [];
     var booked = Array.isArray(payload && payload.k) ? payload.k : [];
+    var recipes = Array.isArray(payload && payload.r) ? payload.r : [];
+    var meals = Array.isArray(payload && payload.m) ? payload.m : [];
     var byDate = {};
+    var dayFor = function (date) {
+      return byDate[date] || (byDate[date] = {
+        date: date, names: [], exercises: [], meals: [], workout: false,
+      });
+    };
+
     booked.forEach(function (entry) {
       if (!entry || typeof entry.d !== 'string') return;
       var wire = workouts[entry.x];
       if (!wire) return;
       var workout = Prescriptions.decodeWorkout(wire);
-      var day = byDate[entry.d] || (byDate[entry.d] = { date: entry.d, names: [], exercises: [] });
+      var day = dayFor(entry.d);
+      day.workout = true;
       if (workout.name) day.names.push(workout.name);
       workout.exercises.forEach(function (ex) { day.exercises.push(ex); });
     });
+
+    meals.forEach(function (entry) {
+      if (!entry || typeof entry.d !== 'string') return;
+      // A booking whose recipe is not inlined indexes nothing, exactly as a
+      // session whose `x` misses `w` does. Skipped, not guessed at.
+      var recipe = recipes[entry.x];
+      if (!recipe) return;
+      var slot = Number(entry.s);
+      var label = MEAL_SLOTS[slot] || null;
+      var servings = Number(entry.q);
+      dayFor(entry.d).meals.push({
+        slot: label === null ? -1 : slot,
+        slotLabel: label,
+        name: String(recipe.n == null ? '' : recipe.n) || 'Recipe',
+        servings: servings > 0 ? servings : 1,
+      });
+    });
+
     return Object.keys(byDate).sort().map(function (date) {
       var day = byDate[date];
-      return { date: date, name: day.names.join(' · '), exercises: pool(day.exercises) };
+      // Breakfast, lunch, dinner, snack -- the order a day is eaten in, not
+      // the order the coach happened to book them. A slot Coach cannot read
+      // sorts last rather than being dropped.
+      var meals = day.meals.slice().sort(function (a, b) {
+        return (a.slot < 0 ? 9 : a.slot) - (b.slot < 0 ? 9 : b.slot);
+      }).map(mealBooking);
+      return {
+        date: date,
+        name: day.names.join(' · '),
+        workout: day.workout,
+        exercises: pool(day.exercises),
+        meals: meals,
+      };
     });
+  }
+
+  /** One booked meal, as Coach's own record of it: the slot it was booked
+   *  into, the dish, and how much of it. All three are what the coach wrote,
+   *  so all three can be said without reservation. Macros are deliberately
+   *  not here -- see `MEAL_NOTE`. */
+  function mealBooking(meal) {
+    return {
+      slot: meal.slot,
+      slotLabel: meal.slotLabel,
+      name: meal.name,
+      servings: meal.servings,
+      title: [meal.slotLabel, meal.name, plural(meal.servings, 'serving', 'servings')]
+        .filter(Boolean).join(' · '),
+      logged: null,
+    };
   }
 
   /** Exercises pooled by name|equipment, keeping first-seen order. The same
@@ -483,7 +564,82 @@
   var FOOTER = 'This is what you shared. Whether it arrived, and whether they '
     + 'opened it, only they know.';
 
+  /**
+   * The one line that keeps the meal rows honest, shown once under a card
+   * that has any, permanently.
+   *
+   * A booked meal is a dish in a slot. A logged day is a list of foods, named
+   * out of the client's own food dictionary, with no id joining the two. Coach
+   * therefore prints what it booked and what the log holds at that slot, side
+   * by side, and stops -- the same move the day rows make with `not logged`
+   * above `not booked`. The join is the trainer's, and this says so.
+   */
+  var MEAL_NOTE = 'A meal row says what the log holds at that meal. Whether it '
+    + 'was this dish, only they know.';
+
   var hasTraining = function (day) { return !!(day && day.exercises && day.exercises.length); };
+
+  var FOOD_TOTAL_KEYS = ['calories', 'proteinG', 'fatG', 'carbsG', 'fiberG'];
+
+  /**
+   * What a day's log can say about food at all, which is three different
+   * things and not two:
+   *
+   *   items   the client itemised: Coach can see each entry and the meal it
+   *           was stamped with, so it can say what the log holds at a slot.
+   *   totals  the client sent the day's totals and not what was in them.
+   *           Itemisation is a choice made per send (SHARE-FORMAT's `f` is
+   *           optional), so this is a client's privacy choice and not an
+   *           absence -- calling a booked dinner `not logged` here would
+   *           contradict it.
+   *   none    nothing at all, including a day opened and left empty, which
+   *           SHARE-FORMAT writes as `ft: [0,0,0,0,0]`.
+   */
+  function foodIn(day) {
+    var items = Array.isArray(day && day.food) ? day.food : [];
+    if (items.length) return { state: 'items', items: items };
+    var totals = (day && day.foodTotals) || null;
+    var any = totals && FOOD_TOTAL_KEYS.some(function (k) { return Number(totals[k]) > 0; });
+    return { state: any ? 'totals' : 'none', items: [] };
+  }
+
+  /**
+   * What Coach can see of a day's food, said once above that day's meal rows.
+   *
+   * It is here so `Nothing logged at lunch` cannot be read as `they ate
+   * nothing`: a day with seven foods on it, none of them stamped lunch, says
+   * both facts one above the other. `not tied to a meal` is the same guard
+   * for an entry the client's app recorded with no slot.
+   */
+  function foodContext(food) {
+    if (food.state === 'totals') return 'Food logged that day, not itemised';
+    if (food.state === 'none') return 'No food logged that day';
+    var loose = food.items.filter(function (e) { return !e.meal; }).length;
+    return plural(food.items.length, 'food', 'foods') + ' logged that day'
+      + (loose ? ' · ' + loose + ' not tied to a meal' : '');
+  }
+
+  /**
+   * What the log holds at one slot -- the entries the client stamped with it,
+   * named as they wrote them and in the order they logged them.
+   *
+   * Names are printed, never compared. A coach reading `Beef Chilli` under a
+   * booked `Beef Chilli` has made the join themselves, from the same two
+   * facts Coach has, and can see when it is not there; Coach asserting the
+   * match would be right most nights and, the nights it was wrong, would tell
+   * a coach their client ate something they did not.
+   *
+   * `null` when nothing can be said per slot: a day Coach cannot see inside,
+   * or a booking whose slot the payload did not give.
+   */
+  function slotLine(meal, food) {
+    if (food.state !== 'items' || !meal.slotLabel) return null;
+    var where = meal.slotLabel.toLowerCase();
+    var mine = food.items.filter(function (e) { return e.meal === meal.slotLabel; });
+    if (!mine.length) return 'Nothing logged at ' + where;
+    return 'Logged at ' + where + ' · '
+      + mine.map(function (e) { return e.name; }).join(' · ');
+  }
 
   /** Whether a date falls inside the window the client actually sent. A day
    *  with no log is not the same as a day the client did not send, and one of
@@ -493,10 +649,28 @@
     return key >= coverage[0] && key <= coverage[1];
   }
 
+  /**
+   * The head of one send.
+   *
+   * A send with no meals reads exactly as it always has --
+   * `Booked 4 days, 12–17 Oct · logged 2` -- so a training week's line, and
+   * the fixture that pins it, are unchanged.
+   *
+   * A send with meals says how many it booked, and then names what the
+   * `logged` figure counts: `logged 2` under `Booked 5 days` would read as
+   * two days of five when three of them booked no training at all. The meal
+   * count carries no logged figure beside it, because there is not one -- see
+   * `MEAL_NOTE`.
+   */
   function headLine(range, counts) {
     var head = 'Booked ' + plural(counts.booked, 'day', 'days') + ', ' + range;
+    if (counts.meals) head += ' · ' + plural(counts.meals, 'meal booked', 'meals booked');
     if (counts.outside === counts.booked) return head + ' · no log covering them';
-    head += ' · logged ' + counts.logged;
+    if (!counts.meals) head += ' · logged ' + counts.logged;
+    else if (counts.training) {
+      head += ' · ' + plural(counts.training, 'training day', 'training days')
+        + ', ' + counts.logged + ' logged';
+    }
     if (counts.outside) head += ' · ' + counts.outside + ' outside the log they sent';
     if (counts.other) head += ' · ' + plural(counts.other, 'other day logged', 'other days logged');
     return head;
@@ -533,11 +707,19 @@
       var bookedDates = {};
       booked.forEach(function (b) { bookedDates[b.date] = true; });
 
-      var counts = { booked: booked.length, logged: 0, notLogged: 0, outside: 0, other: 0 };
+      var counts = { booked: booked.length, training: 0, logged: 0, notLogged: 0,
+        outside: 0, other: 0, meals: 0 };
       var rows = booked.map(function (booking) {
         var day = days[booking.date];
+        var isCovered = covered(booking.date, coverage);
         var state;
-        if (!covered(booking.date, coverage)) { state = 'outside'; counts.outside += 1; }
+        if (booking.workout) counts.training += 1;
+        counts.meals += booking.meals.length;
+        if (!isCovered) { state = 'outside'; counts.outside += 1; }
+        // A day that booked no training gets no training verdict. `not logged`
+        // against a day nobody was asked to train would be Coach inventing a
+        // booking to hold against them.
+        else if (!booking.workout) { state = 'meals'; }
         else if (hasTraining(day)) { state = 'logged'; counts.logged += 1; }
         else { state = 'notLogged'; counts.notLogged += 1; }
 
@@ -546,14 +728,34 @@
           : { exercises: [], alsoLogged: [] };
 
         var word = state === 'logged' ? 'logged'
-          : state === 'notLogged' ? 'not logged' : 'outside the log they sent';
+          : state === 'notLogged' ? 'not logged'
+          : state === 'outside' ? 'outside the log they sent' : '';
+        var food = isCovered ? foodIn(day) : null;
+        var meals = booking.meals.map(function (meal) {
+          var out = mealBooking(meal);
+          out.logged = food ? slotLine(meal, food) : null;
+          return out;
+        });
+        var mealsClause = meals.length
+          ? plural(meals.length, 'meal booked', 'meals booked') : '';
+        // The training word hugs the session it judges; the meal clause
+        // follows it. A day that booked only meals has no session for it to
+        // hug, so what is left -- `outside the log they sent`, or nothing --
+        // goes last instead.
+        var head = booking.name
+          ? [dayLabel(booking.date), booking.name, word, mealsClause]
+          : [dayLabel(booking.date), mealsClause, word];
         return {
           key: booking.date,
           state: state,
           name: booking.name,
-          text: [dayLabel(booking.date), booking.name, word].filter(Boolean).join(' · '),
+          text: head.filter(Boolean).join(' · '),
           exercises: joined.exercises,
           alsoLogged: joined.alsoLogged,
+          meals: meals,
+          // Said once above the meal rows, so `Nothing logged at lunch` is
+          // read beside what the day's log does hold.
+          foodContext: meals.length && food ? foodContext(food) : null,
           // What this day booked, whatever became of it. The day view does not
           // draw these on a day nobody logged -- the row above already says so,
           // and reciting the prescription under it turns a fact into a list of
@@ -569,7 +771,12 @@
       // beside the bookings, saying nothing about cause: a session lifted the
       // day after the one it was booked for looks exactly like this, and so
       // does a session the client added themselves.
-      Object.keys(days).sort().forEach(function (key) {
+      //
+      // Only when this send booked training at all. A food plan booked no
+      // session for a logged one to be a displaced version of, and listing a
+      // client's own training under it as `not booked` would be Coach holding
+      // up work nobody set out to book.
+      if (counts.training) Object.keys(days).sort().forEach(function (key) {
         if (key < first || key > last || bookedDates[key]) return;
         if (!hasTraining(days[key])) return;
         counts.other += 1;
@@ -579,6 +786,8 @@
           name: days[key].name || '',
           text: [dayLabel(key), days[key].name || '', 'not booked'].filter(Boolean).join(' · '),
           exercises: [],
+          meals: [],
+          foodContext: null,
           booked: [],
           alsoLogged: loggedIn(days[key])
             .filter(function (ex) { return ex.sets.length; }).map(alsoLogged),
@@ -598,7 +807,15 @@
       });
     });
 
-    return { groups: groups, byLift: byLift(groups), footer: FOOTER };
+    var anyMeal = groups.some(function (g) { return g.counts.meals > 0; });
+    return {
+      groups: groups,
+      byLift: byLift(groups),
+      // Only when there is a meal row for it to be about. A training-only
+      // card is byte for byte what it was.
+      mealFooter: anyMeal ? MEAL_NOTE : null,
+      footer: FOOTER,
+    };
   }
 
   /**
@@ -658,6 +875,17 @@
           out.push('Also logged');
           day.alsoLogged.forEach(function (ex) { out.push(ex.text); });
         }
+        // Meals last, under the training they sit beside, in the order a day
+        // is eaten. Every sentence they can produce runs through here, so the
+        // line-discipline tests cover them exactly as they cover a lift.
+        if (day.meals.length) {
+          out.push('Meals');
+          if (day.foodContext) out.push(day.foodContext);
+          day.meals.forEach(function (meal) {
+            out.push(meal.title);
+            if (meal.logged) out.push(meal.logged);
+          });
+        }
       });
     });
     // The other way round. The same lines under a lift's heading rather than
@@ -679,6 +907,7 @@
         });
       });
     }
+    if (out.length && result.mealFooter) out.push(result.mealFooter);
     if (out.length) out.push(result.footer);
     return out;
   }
@@ -686,6 +915,8 @@
   global.CoachPlanLog = {
     CAP: CAP,
     FOOTER: FOOTER,
+    MEAL_NOTE: MEAL_NOTE,
+    MEAL_SLOTS: MEAL_SLOTS,
     canonical: canonical,
     hash: hash,
     record: record,
