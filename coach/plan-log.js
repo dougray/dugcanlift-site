@@ -704,8 +704,15 @@
 
       var first = booked[0].date;
       var last = booked[booked.length - 1].date;
-      var bookedDates = {};
-      booked.forEach(function (b) { bookedDates[b.date] = true; });
+      // Dates this send booked a SESSION for -- not merely booked. A send
+      // that books meals across a week puts a booking on every date, and
+      // testing against those below would swallow a session the client did on
+      // a day they were booked to eat: the row would read `1 meal booked` and
+      // say nothing about the training. Coach iOS and Android found this when
+      // a day became one row; web can reach it too, whenever a send carries
+      // both halves.
+      var trainedDates = {};
+      booked.forEach(function (b) { if (b.workout) trainedDates[b.date] = true; });
 
       var counts = { booked: booked.length, training: 0, logged: 0, notLogged: 0,
         outside: 0, other: 0, meals: 0 };
@@ -767,17 +774,17 @@
         };
       });
 
-      // A day inside this send's span that was trained and not booked. Shown
-      // beside the bookings, saying nothing about cause: a session lifted the
-      // day after the one it was booked for looks exactly like this, and so
-      // does a session the client added themselves.
+      // A day inside this send's span that was trained and that this send
+      // booked no session for. Shown beside the bookings, saying nothing about
+      // cause: a session lifted the day after the one it was booked for looks
+      // exactly like this, and so does a session the client added themselves.
       //
       // Only when this send booked training at all. A food plan booked no
       // session for a logged one to be a displaced version of, and listing a
       // client's own training under it as `not booked` would be Coach holding
       // up work nobody set out to book.
       if (counts.training) Object.keys(days).sort().forEach(function (key) {
-        if (key < first || key > last || bookedDates[key]) return;
+        if (key < first || key > last || trainedDates[key]) return;
         if (!hasTraining(days[key])) return;
         counts.other += 1;
         rows.push({
