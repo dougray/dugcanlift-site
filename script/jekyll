@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Runs Jekyll with the Ruby this site is pinned to (.ruby-version), from any
+# shell.
+#
+# Why this exists: `rbenv init` lives in ~/.zshrc, which only interactive
+# shells read. In an interactive terminal `bundle` is the rbenv shim and
+# everything works; in a script, a scheduled job or an agent's shell it is
+# whichever bundle is first on PATH -- Homebrew's or macOS's -- and the build
+# dies with "command not found: jekyll" or a bundler version mismatch. That
+# looks like a broken site and is really a broken PATH.
+#
+#   script/jekyll build
+#   script/jekyll serve
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+if command -v rbenv >/dev/null 2>&1; then
+  exec rbenv exec bundle exec jekyll "$@"
+fi
+
+# No rbenv: fall back to whatever bundle is on PATH and say so, rather than
+# failing in a way that reads as the site's fault.
+echo "script/jekyll: rbenv not found; using $(command -v bundle 2>/dev/null || echo 'no bundle on PATH')." >&2
+exec bundle exec jekyll "$@"
