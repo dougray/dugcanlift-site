@@ -307,6 +307,24 @@ canvas { width: 100%; display: block; }
 
 .result:last-child { border-bottom: none; }
 
+/* The coach's week beside your log -- see plan-log.js. The day rows are
+   button.linkrow, which already draws a rule between them. */
+.weeknav { display: flex; align-items: center; gap: 4px; margin: 2px 0; }
+.weeknav > div { flex: 1; font-weight: 700; }
+.weeknav button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  padding: 4px 6px;
+  font-size: 22px;
+  line-height: 1;
+}
+.planday { margin-bottom: 2px; }
+.planset { display: grid; grid-template-columns: 56px 1fr; gap: 8px; font-size: 15px; margin: 3px 0; }
+.planset-label { color: var(--muted); }
+.planset-group { display: inline-block; }
+.planset-group + .planset-group { margin-left: 14px; }
+
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
 

@@ -1942,6 +1942,13 @@ function renderRoadPlace(body, chain, isSnacks) {
 /* ---------------- train ---------------- */
 
 let trainDate = todayKey();
+/* The week the "what you were asked to do" card is showing, and the day of it
+ * it has open. Both null means "follow Train": the week containing the day on
+ * screen, with that day open. The card's own arrows set the first, a row sets
+ * the second, and the date nav clears both -- moving a day should not leave the
+ * card describing a week the rest of the screen has left. */
+let planWeekAnchor = null;
+let planWeekOpen = null;
 
 /* ---------------- exercise library ----------------
  *
@@ -2059,22 +2066,16 @@ $('#ex-query').addEventListener('input', () => {
   if (pickerSession) renderExercisePicker();
 });
 
-/** What a prescribed set asks for: "225 x 5 @8", "5 reps", "10:00 - 1600 m". */
+/** What a prescribed set asks for: "225 x 5 @8", "5 reps", "1600 m 10:00".
+ *
+ * The body comes from plan-log.js, which prints the asked and the logged rows
+ * of the week card with it: a set has to read the same way here and there, or
+ * the card would be comparing two different sentences. The side is added here
+ * because this list is flat -- the card groups its sets by side and would say
+ * it twice. */
 function formatPrescription(set) {
-  const parts = [];
-  if (set.weightLb != null && set.reps != null) parts.push(`${set.weightLb} x ${set.reps}`);
-  else if (set.reps != null) parts.push(`${set.reps} reps`);
-  else if (set.weightLb != null) parts.push(`${set.weightLb} lb`);
-  if (set.distanceMeters != null) parts.push(`${set.distanceMeters} m`);
-  if (set.durationSec != null) {
-    parts.push(set.durationSec >= 60
-      ? `${Math.floor(set.durationSec / 60)}:${String(set.durationSec % 60).padStart(2, '0')}`
-      : `${set.durationSec}s`);
-  }
-  if (set.rpe != null) parts.push(`@${set.rpe}`);
-  // "30 x 8 L" for a set the coach put on one side.
   const side = LiftSides.label(set);
-  return (parts.join(' ') || 'as written') + (side ? ` ${side}` : '');
+  return LiftPlanLog.setText(set) + (side ? ` ${side}` : '');
 }
 
 /* The coach's session for this day, shown above your own log rather than
@@ -2126,6 +2127,126 @@ function renderPrescribed() {
   });
 }
 
+/* ---------------- what you were asked to do, and what you did ----------------
+ *
+ * A coach's plan and your log have lived side by side on this device and been
+ * shown side by side nowhere: Train is one day at a time, so a booked
+ * Wednesday is invisible on Thursday, and Next is disabled past today, so a
+ * Friday that has not happened cannot be looked at at all. The card is a week
+ * for that reason, and the rules are in plan-log.js where node can test the
+ * sentences it produces rather than an eye on a screen.
+ *
+ * You are not being graded here. No score, no percentage, no streak, no colour
+ * on a day nothing was logged against, and nothing carried from one week to the
+ * next -- `LiftPlanLog.lines` is walked by the line-discipline tests so that
+ * stays true as the card grows.
+ */
+function resetPlanWeek() { planWeekAnchor = null; planWeekOpen = null; }
+
+/** One row of sets: "Asked   L 40 x 8 · 40 x 8   R 40 x 8" .
+ *
+ * Both the groups and the suffix, always. "each side" is a clause on the ask
+ * rather than a set of its own, and a row that drew the groups and dropped it
+ * would print a plan asking for half of what it asks for. */
+function planSetRow(row) {
+  const line = el('div', 'planset');
+  line.appendChild(el('span', 'planset-label', row.label));
+  const body = el('span');
+  row.groups.forEach((group) => {
+    const chunk = el('span', 'planset-group');
+    if (group.label) chunk.appendChild(el('b', null, `${group.label} `));
+    chunk.appendChild(document.createTextNode(group.text));
+    body.appendChild(chunk);
+  });
+  if (row.suffix) body.appendChild(document.createTextNode(row.suffix));
+  line.appendChild(body);
+  return line;
+}
+
+/** One day of the week, opened out: the lifts, what each asked for and what
+ *  came back, and anything logged that nothing asked for. */
+function planDayDetail(day) {
+  const detail = el('div', 'planday');
+  day.exercises.forEach((ex) => {
+    const block = el('div', 'exercise');
+    block.appendChild(el('h3', null, ex.title));
+    if (ex.sideLine) block.appendChild(el('p', 'muted', ex.sideLine));
+    if (ex.countLine) block.appendChild(el('p', 'muted', ex.countLine));
+    if (ex.asked) block.appendChild(planSetRow(ex.asked));
+    if (ex.logged) block.appendChild(planSetRow(ex.logged));
+    // Under the pair, where it says what the two rows above it are.
+    if (ex.substitution) block.appendChild(el('p', 'muted', ex.substitution));
+    detail.appendChild(block);
+  });
+  if (day.alsoLogged.length) {
+    const block = el('div', 'exercise');
+    block.appendChild(el('h3', null, 'Also logged'));
+    day.alsoLogged.forEach((ex) => block.appendChild(el('p', 'muted', ex.text)));
+    detail.appendChild(block);
+  }
+  return detail.childNodes.length ? detail : null;
+}
+
+function renderPlanWeek() {
+  const wrap = $('#plan-week');
+  wrap.innerHTML = '';
+
+  const week = LiftPlanLog.compare({
+    training, workouts, today: todayKey(), anchor: planWeekAnchor || trainDate,
+  });
+  // Nothing at all rather than an empty frame. Someone who has never been sent
+  // a plan should not meet this card by being told it has nothing for them,
+  // and a week of your own training held up against a plan nobody wrote would
+  // be the app inventing an expectation.
+  if (!week) return;
+
+  const card = el('div', 'card');
+  card.appendChild(el('p', 'muted', LiftPlanLog.sentBy(week, training)));
+
+  const nav = el('div', 'weeknav');
+  // The arrows move between weeks a coach actually booked, not one week at a
+  // time: a card that vanished on the way to an empty week would take its own
+  // arrows with it and leave no way back.
+  const step = (label, direction) => {
+    const target = LiftPlanLog.adjacentWeek(training, week.from, direction);
+    const b = el('button', null, label);
+    b.disabled = !target;
+    b.onclick = () => { planWeekAnchor = target; planWeekOpen = null; render(); };
+    return b;
+  };
+  nav.appendChild(step('\u2039', -1));
+  nav.appendChild(el('div', null, week.head));
+  nav.appendChild(step('\u203a', 1));
+  card.appendChild(nav);
+
+  // Exactly one day is open, and by default it is the day the rest of Train is
+  // showing -- so the card follows the screen rather than keeping a second idea
+  // of where you are.
+  const open = planWeekOpen
+    || (week.days.some((d) => d.key === trainDate) ? trainDate : null);
+
+  week.days.forEach((day) => {
+    const row = el('button', 'linkrow');
+    row.appendChild(el('div', null, day.text));
+    row.onclick = () => {
+      planWeekOpen = day.key;
+      // A day Train can show moves Train to it. A day that has not happened
+      // cannot be shown there, which is exactly why its prescription is
+      // printed here instead.
+      if (day.openable) { trainDate = day.key; planWeekAnchor = null; }
+      render();
+    };
+    card.appendChild(row);
+
+    if (day.key !== open) return;
+    const detail = planDayDetail(day);
+    if (detail) card.appendChild(detail);
+  });
+
+  card.appendChild(el('p', 'muted small', week.footer));
+  wrap.appendChild(card);
+}
+
 /* Templates a coach sent without a date on them. Shown on whatever day you are
  * looking at, because that is the point of them — you decide when. */
 function renderTemplates(wrap) {
@@ -2171,6 +2292,7 @@ function renderTrain() {
     (i) => { settings.focus = i.k; save(KEY.settings, settings); render(); });
 
   renderPrescribed();
+  renderPlanWeek();
   renderRoutines();
   renderOutdoor();
 
@@ -2378,8 +2500,8 @@ function formatSet(s) {
   return parts.length ? parts.join(' ') : '-';
 }
 
-$('#train-prev').onclick = () => { trainDate = shiftDate(trainDate, -1); render(); };
-$('#train-next').onclick = () => { trainDate = shiftDate(trainDate, 1); render(); };
+$('#train-prev').onclick = () => { trainDate = shiftDate(trainDate, -1); resetPlanWeek(); render(); };
+$('#train-next').onclick = () => { trainDate = shiftDate(trainDate, 1); resetPlanWeek(); render(); };
 $('#train-start').onclick = () => {
   workouts.push({ id: uid(), date: trainDate, name: '', note: '', exercises: [], startedAt: Date.now() });
   save(KEY.workouts, workouts);
@@ -4238,6 +4360,10 @@ async function checkForIncomingPlan() {
   const addedMeals = importPlan(payload);
   const addedSessions = importTraining(payload);
   const addedPicks = importRoadPicks(payload);
+  // A new plan brings the week card back to the day on screen: it was very
+  // likely parked on an older week, and the week that just arrived is the one
+  // being asked about.
+  resetPlanWeek();
 
   const took = [];
   if (addedMeals) took.push(`${addedMeals} meal${addedMeals === 1 ? '' : 's'}`);
