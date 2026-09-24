@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Your Coach's Picks, and What You Actually Did"
-date:   2026-09-23 21:30:00 -0500
+date:   2026-09-23 19:30:00 -0500
 ---
 
 Two things today, both about the gap between what a coach asks for and what
