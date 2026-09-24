@@ -497,6 +497,34 @@ test('a meals-only day is never called "not logged"', () => {
     { booked: 1, training: 0, logged: 0, notLogged: 0, outside: 0, other: 0, meals: 1 });
 });
 
+test('a session nobody booked is not swallowed by a meal booked that day', () => {
+  // Coach iOS and Android found this first: a send that books meals across a
+  // week puts a booking on every date, and the sweep for a session nobody
+  // booked skipped any booked date -- so a session the client did on a day
+  // they were booked to eat vanished, the row reading `1 meal booked` and
+  // saying nothing about the training at all. The test is training, not
+  // booking.
+  const r = PlanLog.compare({
+    clientId: 'c',
+    sentPlans: [
+      foodPlan([recipe('Beef Chilli')],
+        [meal('2026-10-12', DINNER, 0), meal('2026-10-13', DINNER, 0)],
+        [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5]])] }],
+        [{ d: '2026-10-12', x: 0 }]),
+    ],
+    days: {
+      '2026-10-13': { name: 'Conditioning', exercises: [logged('Row', 'Machine', [set(null, null)])] },
+    },
+    coverage: ['2026-10-01', '2026-10-31'],
+    unit: 'lb',
+    today: '2026-10-20',
+  });
+  const texts = r.groups[0].days.map((d) => d.text);
+  assert.ok(texts.some((t) => t.includes('Tue 13 Oct') && t.includes('not booked')),
+    'the session on a day booked for dinner was swallowed: ' + texts.join(' | '));
+  assert.equal(r.groups[0].counts.other, 1);
+});
+
 test('a booked meal names the slot, the dish and the servings, and no macros', () => {
   const r = runMeals([recipe('Beef Chilli')], [meal('2026-10-12', DINNER, 0, 2)], {});
   const m = day(r, 0).meals[0];
