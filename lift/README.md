@@ -40,6 +40,60 @@ Progression, imbalance and volume read the log, never the plan.
 `plan-sides.test.mjs` also pins how a build without any of this reads such a
 plan: as ordinary two-sided sets, weights and reps intact.
 
+## What you were asked to do, and what you did (`plan-log.js`)
+
+A coach's plan and your log have always been two separate claims -- `training`
+is what was sent, `workouts` is what happened -- and they were shown side by
+side nowhere. Train is one day at a time, so a booked Wednesday is invisible on
+Thursday, and **Next is disabled past today**, so a Friday that has not happened
+could not be looked at at all. That is why the card is a **week** rather than a
+marker on a day: the days a lifter cannot reach are the ones they most need to
+see mid-week.
+
+It sits on Train under the coach's own card for the day, runs **Monday to
+Sunday** around the day on screen (a fixed constant -- a rolling seven days
+would move a booked Tuesday out of "this week" overnight and describe the same
+plan two ways on two days), and has its own `‹ ›` to read the week either side.
+One day is open at a time, and by default it is the day Train is showing;
+tapping a row opens it, and moves Train to it when Train can show it.
+
+Four verdicts. `logged`, `not logged` and `not booked` are **Coach web's words,
+unchanged** (`coach/plan-log.js`), so a lifter and their coach describe the same
+week the same way. `to do` is this side's own, because only the person living
+the week has a day that has not happened yet, and calling one an absence would
+invent a failure out of a Wednesday. Coach's fourth state, `outside the log they
+sent`, cannot arise here -- the log is on the device -- and Coach's footer is a
+sentence about somebody else, so this card has its own.
+
+The join is the same as Coach's: days on date, exercises on `name|equipment`
+and then on name alone (the substitution, labelled), sets counted and never
+paired one to one. One thing this side has that Coach's does not is
+`startedSessionId`, which says which session a booking was started as -- used
+only to pick the right session out of a day that holds two, never to claim a
+session logged on one day answers a booking on another. A session lifted the day
+after the one it was booked for is a booked day with nothing logged **and** a
+session of its own, adjacent on screen, with nothing claimed about the two.
+
+Sides are `LiftSides.targetsLabel` -- the same `L 3/3 · R 2/3` the session
+header has shown since per-side prescriptions shipped, called with the same two
+arguments, so the card and the session cannot disagree. A day still ahead shows
+`Each side · L 4 · R 3` instead, the prescribed card's own sentence: `L 0/3` is
+true during a session and a nought nobody has had the chance to earn on a
+Friday.
+
+**Nothing new travels, nothing new is stored and nothing new is asked for.** No
+wire change, no new key, no new permission; the card reads `training` and
+`workouts` exactly as they already are.
+
+**You are not being graded.** No score, no percentage, no streak, no colour on a
+day nothing was logged against, nothing carried between weeks and nothing
+comparing anything. `lines()` flattens every sentence the card can produce so
+`plan-log.test.mjs` can hold the whole screen to that list rather than an eye
+holding one render of it. A week that books nothing is **no card at all** --
+never an empty frame explaining itself.
+
+`plan-log.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it changes.**
+
 ## Watch import (`watch-scan.js`)
 
 `watch-scan.js` reads food logs off an Apple Watch by QR code. The watch has
