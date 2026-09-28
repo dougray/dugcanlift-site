@@ -345,3 +345,48 @@ test('estimated 1RM is Epley on the best set of that side', () => {
   assert.equal(S.e1rm([{ durationSec: 60, side: 'left' }]), null);
   assert.equal(S.e1rm([]), null);
 });
+
+/* ---------------- said, not spelled ----------------
+ *
+ * `L 3/3 · R 2/3` is a letter, a slash and the name of a character read out.
+ * The spoken forms carry the same two counts in words; these pin that they
+ * cannot drift apart, because two functions that count separately eventually
+ * count differently.
+ */
+
+test('targetsSpoken says exactly what targetsLabel counts', () => {
+  const cases = [
+    [[{}, {}, {}], true, [{ side: 'left' }, { side: 'left' }, { side: 'left' },
+      { side: 'right' }, { side: 'right' }]],
+    [[{}, {}, {}], true, []],
+    [[{ side: 'left' }], false, [{ side: 'left' }, { side: 'left' }]],
+    [[{}, {}], false, [{}, {}]],
+    [[{}, { side: 'right' }], true, [{ side: 'right' }, {}]],
+  ];
+  cases.forEach(([prescribed, eachSide, sets]) => {
+    const label = S.targetsLabel(prescribed, eachSide, sets);
+    const spoken = S.targetsSpoken(prescribed, eachSide, sets);
+    // Both empty or both not: a line that is drawn must be a line that is said.
+    assert.equal(!label, !spoken, JSON.stringify({ label, spoken }));
+    if (!label) return;
+    // Every number in the drawn line, in order, is in the spoken one.
+    assert.deepEqual(spoken.match(/\d+/g), label.match(/\d+/g),
+      `${label} vs ${spoken}`);
+    assert.equal(/[·\/]/.test(spoken), false, spoken);
+    assert.equal(/\bL\b|\bR\b/.test(spoken), false, spoken);
+  });
+  assert.equal(S.targetsLabel([{}, {}, {}], true,
+    [{ side: 'left' }, { side: 'left' }, { side: 'left' }, { side: 'right' }, { side: 'right' }]),
+  'L 3/3 · R 2/3');
+  assert.equal(S.targetsSpoken([{}, {}, {}], true,
+    [{ side: 'left' }, { side: 'left' }, { side: 'left' }, { side: 'right' }, { side: 'right' }]),
+  'left 3 of 3, right 2 of 3');
+});
+
+test('countsSpoken says exactly what countsLabel counts', () => {
+  const sets = [{ side: 'left' }, { side: 'right' }, {}];
+  assert.equal(S.countsLabel(sets), 'L 1 · R 1 · 1 both');
+  assert.equal(S.countsSpoken(sets), 'left 1, right 1, 1 both');
+  assert.equal(S.countsLabel([{}, {}]), '');
+  assert.equal(S.countsSpoken([{}, {}]), '', 'nothing sided says nothing');
+});

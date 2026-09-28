@@ -336,6 +336,26 @@ canvas { width: 100%; display: block; }
   margin: 3px 0;
 }
 
+/* Drawn nowhere, announced everywhere. A card line built out of muted text
+   and `·` separators is a comma sighted and a fragment aloud, so the card
+   hides what it draws from a screen reader and puts one composed sentence
+   here instead -- see `saidAs` in app.js. Not `display: none`, which is
+   hidden from a screen reader too. */
+.sronly {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* The wrapper `saidAs` puts around the lines it hides. It must cost nothing:
+   `display: contents` leaves them exactly where they were, grid items in
+   `.bookedmeal` and `.planset` included, so the card is pixel for pixel what
+   it was before it could be read aloud. */
+.saidabove { display: contents; }
+
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
 
