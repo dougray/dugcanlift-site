@@ -2148,6 +2148,28 @@ function resetPlanWeek() { planWeekAnchor = null; planWeekOpen = null; }
  * Both the groups and the suffix, always. "each side" is a clause on the ask
  * rather than a set of its own, and a row that drew the groups and dropped it
  * would print a plan asking for half of what it asks for. */
+/* One block of the card, drawn as it always was and **said as one sentence**.
+ *
+ * `plan-log.js` composes the sentence; this only decides how a browser is
+ * told to use it. There is no attribute that means "read these five lines as
+ * one thing": `aria-label` on a plain `div` is not exposed, and `role="text"`
+ * is one engine's extension. What is universal is hiding the drawn lines from
+ * the accessibility tree and putting the sentence beside them in an element
+ * that takes no space -- so the card looks byte for byte the same and reads
+ * as English.
+ */
+function saidAs(parent, sentence, draw) {
+  if (sentence) parent.appendChild(el('span', 'sronly', sentence));
+  const shown = el('div', 'saidabove');
+  if (sentence) shown.setAttribute('aria-hidden', 'true');
+  draw(shown);
+  parent.appendChild(shown);
+}
+
+function saidLine(parent, cls, text, sentence) {
+  saidAs(parent, sentence, (into) => into.appendChild(el('p', cls, text)));
+}
+
 function planSetRow(row) {
   const line = el('div', 'planset');
   line.appendChild(el('span', 'planset-label', row.label));
@@ -2169,19 +2191,27 @@ function planDayDetail(day) {
   const detail = el('div', 'planday');
   day.exercises.forEach((ex) => {
     const block = el('div', 'exercise');
-    block.appendChild(el('h3', null, ex.title));
-    if (ex.sideLine) block.appendChild(el('p', 'muted', ex.sideLine));
-    if (ex.countLine) block.appendChild(el('p', 'muted', ex.countLine));
-    if (ex.asked) block.appendChild(planSetRow(ex.asked));
-    if (ex.logged) block.appendChild(planSetRow(ex.logged));
-    // Under the pair, where it says what the two rows above it are.
-    if (ex.substitution) block.appendChild(el('p', 'muted', ex.substitution));
+    // The heading stays a heading -- it is how a screen reader jumps between
+    // lifts -- and everything under it is one announcement, so the asked row
+    // and the logged row arrive as the comparison they are rather than as two
+    // lists of numbers two swipes apart.
+    const heading = el('h3', null, ex.title);
+    heading.setAttribute('aria-label', LiftPlanLog.plainly(ex.title));
+    block.appendChild(heading);
+    saidAs(block, ex.spokenDetail, (into) => {
+      if (ex.sideLine) into.appendChild(el('p', 'muted', ex.sideLine));
+      if (ex.countLine) into.appendChild(el('p', 'muted', ex.countLine));
+      if (ex.asked) into.appendChild(planSetRow(ex.asked));
+      if (ex.logged) into.appendChild(planSetRow(ex.logged));
+      // Under the pair, where it says what the two rows above it are.
+      if (ex.substitution) into.appendChild(el('p', 'muted', ex.substitution));
+    });
     detail.appendChild(block);
   });
   if (day.alsoLogged.length) {
     const block = el('div', 'exercise');
     block.appendChild(el('h3', null, 'Also logged'));
-    day.alsoLogged.forEach((ex) => block.appendChild(el('p', 'muted', ex.text)));
+    day.alsoLogged.forEach((ex) => saidLine(block, 'muted', ex.text, ex.spoken));
     detail.appendChild(block);
   }
   // What a coach booked for this day to eat, under the training it sits beside.
@@ -2192,8 +2222,12 @@ function planDayDetail(day) {
     block.appendChild(el('h3', null, 'Meals'));
     day.meals.forEach((meal) => {
       const row = el('div', 'bookedmeal');
-      row.appendChild(el('span', 'planset-label', meal.slotLabel));
-      row.appendChild(el('span', null, meal.detail));
+      // Two columns on screen, one sentence aloud: a slot read on its own is
+      // a word with no dish after it.
+      saidAs(row, meal.spokenTitle, (into) => {
+        into.appendChild(el('span', 'planset-label', meal.slotLabel));
+        into.appendChild(el('span', null, meal.detail));
+      });
       block.appendChild(row);
     });
     detail.appendChild(block);
@@ -2221,16 +2255,23 @@ function renderPlanWeek() {
   // The arrows move between weeks a coach actually booked, not one week at a
   // time: a card that vanished on the way to an empty week would take its own
   // arrows with it and leave no way back.
-  const step = (label, direction) => {
+  // An arrow's accessible name is its glyph unless it is given one, and `‹`
+  // is a quotation mark. Disabled is native, and said in the same breath so a
+  // reader is told the week has nowhere to go rather than only shown it.
+  const step = (label, name, direction) => {
     const target = LiftPlanLog.adjacentWeek(training, week.from, direction, plan);
     const b = el('button', null, label);
     b.disabled = !target;
+    b.setAttribute('aria-label', name);
+    b.setAttribute('aria-disabled', String(!target));
     b.onclick = () => { planWeekAnchor = target; planWeekOpen = null; render(); };
     return b;
   };
-  nav.appendChild(step('\u2039', -1));
-  nav.appendChild(el('div', null, week.head));
-  nav.appendChild(step('\u203a', 1));
+  nav.appendChild(step('\u2039', 'Previous booked week', -1));
+  const head = el('div', null, week.head);
+  head.setAttribute('aria-label', week.spokenHead);
+  nav.appendChild(head);
+  nav.appendChild(step('\u203a', 'Next booked week', 1));
   card.appendChild(nav);
 
   // Exactly one day is open, and by default it is the day the rest of Train is
@@ -2239,9 +2280,21 @@ function renderPlanWeek() {
   const open = planWeekOpen
     || (week.days.some((d) => d.key === trainDate) ? trainDate : null);
 
-  week.days.forEach((day) => {
+  week.days.forEach((day, index) => {
     const row = el('button', 'linkrow');
-    row.appendChild(el('div', null, day.text));
+    // One name for the row, not four fragments -- and the two things pressing
+    // it does. `aria-expanded` says which state it is in, which the card drew
+    // only by whether more lines followed; the hint says that opening a day
+    // Train can show also moves Train there, which nothing on screen said.
+    const detailId = `plan-week-day-${index}`;
+    row.setAttribute('aria-label', day.openable
+      ? `${day.spoken}. Opens this day on Train`
+      : day.spoken);
+    row.setAttribute('aria-expanded', String(day.key === open));
+    row.setAttribute('aria-controls', detailId);
+    const shown = el('div', null, day.text);
+    shown.setAttribute('aria-hidden', 'true');
+    row.appendChild(shown);
     row.onclick = () => {
       planWeekOpen = day.key;
       // A day Train can show moves Train to it. A day that has not happened
@@ -2254,7 +2307,10 @@ function renderPlanWeek() {
 
     if (day.key !== open) return;
     const detail = planDayDetail(day);
-    if (detail) card.appendChild(detail);
+    if (detail) {
+      detail.id = detailId;
+      card.appendChild(detail);
+    }
   });
 
   card.appendChild(el('p', 'muted small', week.footer));

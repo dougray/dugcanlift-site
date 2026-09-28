@@ -570,8 +570,11 @@ test('a week of booked meals states each one, in the order a day is eaten', () =
 test('a meal row is the slot, the dish and how much of it, and nothing else', () => {
   const r = run([], [], { plan: [meal(MON, 'DINNER', 'Beef Chilli', 2)], today: MON, anchor: MON });
   const row = day(r, 0).meals[0];
+  // `spokenTitle` is `title` said -- the same three facts with the `·`
+  // between them read as a comma, and no fourth fact.
   assert.deepEqual(Object.keys(row).sort(),
-    ['date', 'detail', 'name', 'servings', 'slot', 'slotLabel', 'title']);
+    ['date', 'detail', 'name', 'servings', 'slot', 'slotLabel', 'spokenTitle', 'title']);
+  assert.equal(row.spokenTitle, 'Dinner, Beef Chilli, 2 servings');
   // The whole line and its two columns cannot drift: the view draws the
   // columns and the tests read the line.
   assert.equal(row.title, `${row.slotLabel} · ${row.detail}`);
@@ -928,7 +931,7 @@ test('nothing here aggregates a week into a score', () => {
   // Counts hang off the week the card is looking at, and there is nothing
   // above them: no all-time figure, no trend, nothing carried to next week.
   assert.deepEqual(Object.keys(r).sort(),
-    ['counts', 'days', 'footer', 'from', 'head', 'range', 'to']);
+    ['counts', 'days', 'footer', 'from', 'head', 'range', 'spokenHead', 'to']);
   // `training` and `meals` are counts of what a coach wrote -- days that book a
   // session, and dishes booked. Neither carries a figure for what came back:
   // `logged` is that figure for training, and there is none for a meal.
@@ -1010,4 +1013,108 @@ test('the words a coach reads and the words a lifter reads are the same words', 
     "'serving', 'servings'", "out.push('Meals')"]
     .forEach((phrase) => assert.ok(coach.includes(phrase),
       `${phrase} is no longer Coach’s wording -- the two have drifted`));
+});
+
+/* ---------------- how it reads aloud ----------------
+ *
+ * The card is built out of short muted lines with `·` between their clauses,
+ * which is a comma sighted and a fragment aloud. `spokenLines` is the same
+ * card said, and these pin the rules rather than the strings.
+ */
+
+test('a day row is one sentence, not four fragments', () => {
+  const spoken = PlanLog.spokenLines(everyStateWithMeals());
+  assert.equal(spoken.some((l) => l.includes(' · ')), false, spoken.join(' | '));
+  assert.ok(spoken.includes('Monday 12 October, Lower A, logged, 2 meals booked'),
+    `no spoken day row: ${JSON.stringify(spoken.slice(0, 4))}`);
+});
+
+test('the date a day row says is the date it draws, in words', () => {
+  assert.equal(PlanLog.dayLabel('2026-09-28'), 'Mon 28 Sep');
+  assert.equal(PlanLog.spokenDayLabel('2026-09-28'), 'Monday 28 September');
+});
+
+test('a week is a range aloud, not an en dash', () => {
+  assert.equal(PlanLog.rangeText('2026-09-28', '2026-10-04'), '28 Sep–4 Oct');
+  assert.equal(PlanLog.spokenRange('2026-09-28', '2026-10-04'),
+    '28 September to 4 October');
+  assert.equal(PlanLog.spokenRange('2026-10-12', '2026-10-18'), '12 to 18 October');
+  assert.equal(PlanLog.spokenRange('2026-10-12', '2026-10-12'), '12 October');
+});
+
+test('the asked row and the logged row are one comparison, under the lift', () => {
+  const r = run([plan(MON, 'Lower A', [
+    asked('Back Squat', 'Barbell', [ask(225, 5), ask(225, 5), ask(245, 3)])])],
+    [session(MON, 'Lower A', [logged('Back Squat', 'Barbell', [did(225, 5), did(225, 5)])])]);
+  const ex0 = day(r, 0).exercises[0];
+  assert.equal(ex0.spoken,
+    'Back Squat (Barbell). Asked 3 sets, logged 2. '
+    + 'Asked 225 by 5, 225 by 5, 245 by 3. Logged 225 by 5, 225 by 5');
+  // ` x ` never reaches it: read literally it is the letter.
+  assert.equal(/ x /.test(ex0.spoken), false);
+});
+
+test('L 3/3 · R 2/3 is said as left 3 of 3, right 2 of 3', () => {
+  const r = run([plan(MON, 'Lower A', [
+    asked('Split Squat', 'Dumbbell', [ask(40, 8), ask(40, 8), ask(40, 8)],
+      { eachSide: true })])],
+    [session(MON, 'Lower A', [logged('Split Squat', 'Dumbbell', [
+      did(40, 8, { side: 'left' }), did(40, 8, { side: 'left' }),
+      did(40, 8, { side: 'left' }), did(40, 8, { side: 'right' }),
+      did(40, 8, { side: 'right' })])])]);
+  const ex0 = day(r, 0).exercises[0];
+  assert.equal(ex0.sideLine, 'L 3/3 · R 2/3', 'the drawn line is unchanged');
+  assert.equal(ex0.spokenSideLine, 'left 3 of 3, right 2 of 3');
+  assert.equal(ex0.logged.spoken,
+    'Logged left 40 by 8, 40 by 8, 40 by 8; right 40 by 8, 40 by 8');
+  // "each side" is a clause on the ask and is said, or the plan asks for half
+  // of what it asks for.
+  assert.ok(ex0.asked.spoken.endsWith(' each side'), ex0.asked.spoken);
+});
+
+test('a day still ahead says its each-side ask in words, not in noughts', () => {
+  const r = run([plan(FRI, 'Lower B', [
+    asked('Split Squat', 'Dumbbell', [ask(35, 10), ask(35, 10)], { eachSide: true })])], []);
+  const ahead = r.days.find((d) => d.key === FRI);
+  assert.equal(ahead.exercises[0].sideLine, 'Each side · L 2 · R 2');
+  assert.equal(ahead.exercises[0].spokenSideLine, 'Each side, left 2, right 2');
+});
+
+test('nothing a screen reader is handed changes what the card draws', () => {
+  // The spoken layer is labels, and the drawn lines keep their punctuation:
+  // the frozen list in "the card reads the same as it did" pins them exactly,
+  // and this is the guard that they were not quietly said instead of drawn.
+  const drawn = PlanLog.lines(everyStateWithMeals());
+  assert.ok(drawn.some((l) => l.includes(' · ')), 'the card still draws `·`');
+  assert.ok(drawn.some((l) => l.includes('L 3/3')), 'and still draws `L 3/3`');
+  assert.ok(drawn.some((l) => / x /.test(l)), 'and still draws ` x `');
+});
+
+test('nothing a screen reader is handed tells a lifter what to do', () => {
+  // The same discipline as the drawn lines, over the announced ones: a label
+  // is a sentence you read, and "not logged" must be as flat aloud as it is
+  // on screen.
+  [everyState(), everyStateWithMeals()].forEach((fixture) => {
+    const every = PlanLog.spokenLines(fixture).join(' · ').toLowerCase();
+    assert.ok(every.length > 400, 'the fixture should exercise the whole card');
+    FORBIDDEN.concat(FORBIDDEN_HERE).concat(FORBIDDEN_FOOD).forEach((word) => {
+      assert.equal(every.includes(word), false,
+        `"${word}" reached a screen reader: ${every}`);
+    });
+  });
+});
+
+test('the arrows have names, and say when they have nowhere to go', () => {
+  const source = readFileSync('lift/app.js', 'utf8');
+  const start = source.indexOf('function renderPlanWeek(');
+  assert.ok(start > 0, 'renderPlanWeek moved; re-point this test');
+  const body = source.slice(start, source.indexOf('\nfunction ', start + 1));
+  assert.ok(body.includes("'Previous booked week'"), 'a glyph is not a name');
+  assert.ok(body.includes("'Next booked week'"));
+  assert.ok(body.includes("aria-disabled"), 'grey is not a state');
+  // A row says what it is, that it opens, and -- where it does -- that
+  // opening it moves Train.
+  assert.ok(body.includes('aria-expanded'));
+  assert.ok(body.includes('Opens this day on Train'));
+  assert.ok(body.includes('day.spoken'), 'a row is named by its sentence');
 });

@@ -157,6 +157,59 @@
 
   var plural = function (n, one, many) { return n + ' ' + (n === 1 ? one : many); };
 
+  /* ---------------- how a line reads aloud ----------------
+   *
+   * Every line on this card is written with ` · ` between its clauses, which
+   * is a comma that takes no vertical space. Aloud it is not a comma: a
+   * screen reader either names the character or passes over it, and either
+   * way "Mon 28 Sep · Lower A · logged" arrives as three unrelated
+   * fragments. So every line that reaches a screen also carries a spoken
+   * form, composed here from the same parts the written one is composed
+   * from -- never by a regex over the finished string, which would have to
+   * guess whether the `x` in a name you typed is a multiplication sign.
+   *
+   * ` · ` becomes a comma, ` x ` becomes "by", `L`/`R` become
+   * "left"/"right", `3/3` becomes "3 of 3", and an abbreviated date becomes
+   * the words a person says. **Nothing else.** No word is added that the
+   * card does not draw: you are not being graded here, and a day nothing was
+   * logged against must be as flat aloud as it is on screen.
+   */
+
+  /** ` · ` is the only thing this may touch -- for the lines this file no
+   *  longer has the parts of by the time a view asks. */
+  var plainly = function (text) {
+    return String(text == null ? '' : text).split(' · ').join(', ');
+  };
+  var said = function (parts) { return parts.filter(Boolean).join(', '); };
+
+  var longMonth = function (key) {
+    return parseKey(key).toLocaleDateString(undefined, { month: 'long' });
+  };
+  var longWeekday = function (key) {
+    return parseKey(key).toLocaleDateString(undefined, { weekday: 'long' });
+  };
+
+  /** "Monday 28 September" -- `dayLabel` in the words a person says. The
+   *  locale is the reader's, as everywhere else here. */
+  function spokenDayLabel(key) {
+    return longWeekday(key) + ' ' + dayOf(key) + ' ' + longMonth(key);
+  }
+
+  /** "28 September to 4 October" -- the en dash in `rangeText` is a range
+   *  sighted and a dash aloud. */
+  function spokenRange(from, to) {
+    if (from === to) return dayOf(from) + ' ' + longMonth(from);
+    var a = parseKey(from), b = parseKey(to);
+    if (a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth()) {
+      return dayOf(from) + ' to ' + dayOf(to) + ' ' + longMonth(to);
+    }
+    return dayOf(from) + ' ' + longMonth(from) + ' to ' + dayOf(to) + ' ' + longMonth(to);
+  }
+
+  var sideWord = function (label) {
+    return label === 'L' ? 'left' : label === 'R' ? 'right' : label ? label.toLowerCase() : '';
+  };
+
   /* ---------------- the meals a coach booked ----------------
    *
    * `plan` is this device's planned meals -- the ones a coach sent and the ones
@@ -187,6 +240,8 @@
       servings: meal.servings,
       detail: detail,
       title: [meal.slotLabel, detail].filter(Boolean).join(' · '),
+      spokenTitle: said([meal.slotLabel, meal.name,
+        plural(meal.servings, 'serving', 'servings')]),
     };
   }
 
@@ -317,6 +372,24 @@
     return parts.join(' ') || 'as written';
   }
 
+  /** The same set, said. The `x` is the only difference that matters: it is
+   *  the letter, and "225 by 5" is what a lifter says out loud anyway. */
+  function spokenSetText(set) {
+    var s = set || {};
+    var parts = [];
+    if (s.weightLb != null && s.reps != null) parts.push(s.weightLb + ' by ' + s.reps);
+    else if (s.reps != null) parts.push(s.reps + ' reps');
+    else if (s.weightLb != null) parts.push(s.weightLb + ' lb');
+    if (s.distanceMeters != null) parts.push(s.distanceMeters + ' m');
+    if (s.durationSec != null) {
+      parts.push(s.durationSec >= 60
+        ? Math.floor(s.durationSec / 60) + ':' + pad2(s.durationSec % 60)
+        : s.durationSec + 's');
+    }
+    if (s.rpe != null) parts.push('@' + s.rpe);
+    return parts.join(' ') || 'as written';
+  }
+
   var SERIES = [Sides.LEFT, Sides.RIGHT, null];
 
   /**
@@ -331,7 +404,8 @@
     var list = sets || [];
     if (!Sides.anySided(list)) {
       return list.length
-        ? [{ label: '', text: list.map(setText).join(' · ') }]
+        ? [{ label: '', text: list.map(setText).join(' · '),
+             spoken: list.map(spokenSetText).join(', ') }]
         : [];
     }
     var groups = [];
@@ -341,6 +415,7 @@
       groups.push({
         label: side ? Sides.label(side) : 'Both',
         text: mine.map(setText).join(' · '),
+        spoken: mine.map(spokenSetText).join(', '),
       });
     });
     return groups;
@@ -348,6 +423,15 @@
 
   var groupsText = function (groups) {
     return groups.map(function (g) { return (g.label ? g.label + ' ' : '') + g.text; }).join('   ');
+  };
+
+  /** The groups said, one limb after the other. A semicolon between them,
+   *  because the sets inside a group are already separated by commas and
+   *  "right" has to land as a new column. */
+  var groupsSpoken = function (groups) {
+    return groups.map(function (g) {
+      return (g.label ? sideWord(g.label) + ' ' : '') + g.spoken;
+    }).join('; ');
   };
 
   /* ---------------- one exercise, asked against logged ---------------- */
@@ -374,6 +458,17 @@
       || null;
   }
 
+  /** The same line, said -- `sides.js`'s own spoken forms, called with the
+   *  same arguments in the same order, so the two can never disagree about a
+   *  side any more than the written ones can. */
+  function spokenSideLine(asked, logged) {
+    if (!logged) return null;
+    var loggedSets = logged.sets || [];
+    return Sides.targetsSpoken(asked.sets, asked.eachSide, loggedSets)
+      || (Sides.anySided(loggedSets) ? Sides.countsSpoken(loggedSets) : '')
+      || null;
+  }
+
   /**
    * What an each-side lift asks for, on a day nothing has been logged against
    * yet: "Each side · L 4 · R 3", the sentence the prescribed card has printed
@@ -390,6 +485,13 @@
     return 'Each side · L ' + t.left + ' · R ' + t.right;
   }
 
+  /** [askLine], said. */
+  function spokenAskLine(asked) {
+    if (!asked.eachSide) return null;
+    var t = Sides.prescribedTargets(asked.sets, true);
+    return 'Each side, left ' + t.left + ', right ' + t.right;
+  }
+
   /**
    * One lift's two rows.
    *
@@ -403,6 +505,7 @@
    */
   function pairLines(asked, logged, substituted, absentWord, recite) {
     var side = sideLine(asked, logged);
+    var spokenSide = spokenSideLine(asked, logged);
     var askedSets = asked.sets || [];
     var loggedSets = logged ? logged.sets : [];
     var lift = title(asked) + (asked.eachSide ? ' · each side' : '');
@@ -415,6 +518,7 @@
         ? 'Asked ' + equipmentWord(asked.equipment) + ' · logged ' + equipmentWord(logged.equipment)
         : null,
       sideLine: side || (recite ? askLine(asked) : null),
+      spokenSideLine: spokenSide || (recite ? spokenAskLine(asked) : null),
       countLine: null,
       asked: (logged || recite) && askedSets.length
         ? { label: 'Asked', groups: setGroups(askedSets) } : null,
@@ -427,10 +531,12 @@
     if (out.asked) {
       out.asked.suffix = asked.eachSide ? ' each side' : '';
       out.asked.text = groupsText(out.asked.groups) + out.asked.suffix;
+      out.asked.spoken = 'Asked ' + groupsSpoken(out.asked.groups) + out.asked.suffix;
     }
     if (out.logged) {
       out.logged.suffix = '';
       out.logged.text = groupsText(out.logged.groups);
+      out.logged.spoken = 'Logged ' + groupsSpoken(out.logged.groups);
     }
     // How many were asked for and how many came back, when they differ and
     // there is no side line already saying it per side.
@@ -439,6 +545,19 @@
         + ' · logged ' + loggedSets.length;
     }
     if (!logged && absentWord) out.title += ' · ' + absentWord;
+    // **The two rows are a comparison, and read apart they are two lists of
+    // numbers with nothing between them.** One announcement carrying the lift
+    // and both rows is what makes the relationship audible. `spokenDetail` is
+    // the same sentence without the lift's name, for a view that already
+    // announces the name as a heading and would otherwise say it twice.
+    out.spokenDetail = [
+      out.spokenSideLine,
+      plainly(out.countLine),
+      out.asked && out.asked.spoken,
+      out.logged && out.logged.spoken,
+      plainly(out.substitution),
+    ].filter(Boolean).join('. ');
+    out.spoken = [plainly(out.title), out.spokenDetail].filter(Boolean).join('. ');
     return out;
   }
 
@@ -489,6 +608,7 @@
       title: title(ex),
       state: 'alsoLogged',
       text: title(ex) + ' · ' + plural(ex.sets.length, 'set', 'sets'),
+      spoken: said([title(ex), plural(ex.sets.length, 'set', 'sets')]),
     };
   }
 
@@ -671,6 +791,10 @@
       var head = name
         ? [dayLabel(date), name, word, mealsClause]
         : [dayLabel(date), mealsClause, word];
+      // The same clauses, in the same order, with the date said in words --
+      // one sentence rather than four fragments. Built beside `text` rather
+      // than from it, so a clause can never be in one and not the other.
+      var spokenHead = [spokenDayLabel(date)].concat(head.slice(1));
       return {
         key: date,
         state: state,
@@ -680,6 +804,7 @@
         // here instead.
         openable: date <= today,
         text: head.filter(Boolean).join(' · '),
+        spoken: said(spokenHead),
         exercises: state === 'logged' ? joined.exercises
           : booking.exercises.map(function (ex) {
             return pairLines(ex, null, false, state === 'toDo' ? '' : word, state === 'toDo');
@@ -715,6 +840,7 @@
         openable: session.date <= today,
         text: [dayLabel(session.date), session.name || '', WORDS.notBooked]
           .filter(Boolean).join(' · '),
+        spoken: said([spokenDayLabel(session.date), session.name || '', WORDS.notBooked]),
         exercises: [],
         alsoLogged: loggedIn([session]).filter(function (ex) { return ex.sets.length; })
           .map(alsoLogged),
@@ -730,6 +856,9 @@
       range: rangeText(from, to),
       counts: counts,
       head: headLine(rangeText(from, to), counts),
+      // The same sentence, with the range said as a range: `28 Sep–4 Oct` is
+      // a dash and two abbreviations aloud.
+      spokenHead: plainly(headLine(spokenRange(from, to), counts)),
       days: rows,
       footer: FOOTER,
     };
@@ -818,6 +947,34 @@
     return out;
   }
 
+  /**
+   * Every sentence a screen reader can be handed, in the order it is read --
+   * `lines`, said.
+   *
+   * Its own list rather than a widening of `lines`, which the
+   * line-discipline tests already walk against strings they pin. This exists
+   * so they walk the announced sentences too: a label is a sentence you read,
+   * and nothing here grades you in either form.
+   */
+  function spokenLines(result) {
+    if (!result) return [];
+    var out = [result.spokenHead];
+    result.days.forEach(function (day) {
+      out.push(day.spoken);
+      day.exercises.forEach(function (ex) { out.push(ex.spoken); });
+      if (day.alsoLogged.length) {
+        out.push('Also logged');
+        day.alsoLogged.forEach(function (ex) { out.push(ex.spoken); });
+      }
+      if (day.meals.length) {
+        out.push('Meals');
+        day.meals.forEach(function (meal) { out.push(meal.spokenTitle); });
+      }
+    });
+    out.push(result.footer);
+    return out;
+  }
+
   global.LiftPlanLog = {
     FOOTER: FOOTER,
     WORDS: WORDS,
@@ -833,5 +990,9 @@
     adjacentWeek: adjacentWeek,
     sentBy: sentBy,
     lines: lines,
+    spokenLines: spokenLines,
+    spokenDayLabel: spokenDayLabel,
+    spokenRange: spokenRange,
+    plainly: plainly,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
