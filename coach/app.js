@@ -1117,6 +1117,29 @@ function setText(set, unit) {
 
 let bookedMode = 'day';
 
+/* One block of the card, drawn as it always was and **said as one
+ * sentence**.
+ *
+ * `plan-log.js` composes the sentence; this only decides how a browser is
+ * told to use it. There is no attribute that means "read these five lines as
+ * one thing": `aria-label` on a plain `div` is not exposed, and `role="text"`
+ * is one engine's extension. What is universal is hiding the drawn lines from
+ * the accessibility tree and putting the sentence beside them in an element
+ * that takes no space -- so the card looks byte for byte the same and reads
+ * as English.
+ */
+function saidLine(parent, cls, text, sentence) {
+  saidAs(parent, sentence, (into) => into.appendChild(el('div', cls, text)));
+}
+
+function saidAs(parent, sentence, draw) {
+  if (sentence) parent.appendChild(el('span', 'sronly', sentence));
+  const shown = el('div', 'saidabove');
+  if (sentence) shown.setAttribute('aria-hidden', 'true');
+  draw(shown);
+  parent.appendChild(shown);
+}
+
 function bookedSets(parent, row) {
   const line = el('div', 'setline');
   line.appendChild(el('b', null, row.label + ' '));
@@ -1132,14 +1155,24 @@ function bookedSets(parent, row) {
   parent.appendChild(line);
 }
 
+/* The heading stays a heading -- it is how a screen reader jumps between
+ * lifts -- and everything under it is one announcement, so "Asked 225 x 5 ..."
+ * and "Logged 225 x 5 ..." arrive as the comparison they are rather than as
+ * two lists of numbers a reader has to hold in their head. */
 function bookedExercise(parent, ex) {
   const block = el('div', 'exercise');
-  block.appendChild(el('h3', null, ex.title));
-  if (ex.sideLine) block.appendChild(el('div', 'setline muted', ex.sideLine));
-  if (ex.countLine) block.appendChild(el('div', 'setline muted', ex.countLine));
-  if (ex.asked) bookedSets(block, ex.asked);
-  if (ex.logged) bookedSets(block, ex.logged);
-  if (ex.substitution) block.appendChild(el('div', 'setline muted', ex.substitution));
+  const heading = el('h3', null, ex.title);
+  // The written title carries " · each side" and " · not logged"; the same
+  // clauses, said.
+  heading.setAttribute('aria-label', CoachPlanLog.plainly(ex.title));
+  block.appendChild(heading);
+  saidAs(block, ex.spokenDetail, (into) => {
+    if (ex.sideLine) into.appendChild(el('div', 'setline muted', ex.sideLine));
+    if (ex.countLine) into.appendChild(el('div', 'setline muted', ex.countLine));
+    if (ex.asked) bookedSets(into, ex.asked);
+    if (ex.logged) bookedSets(into, ex.logged);
+    if (ex.substitution) into.appendChild(el('div', 'setline muted', ex.substitution));
+  });
   parent.appendChild(block);
 }
 
@@ -1147,7 +1180,7 @@ function bookedAlsoLogged(parent, list) {
   if (!list.length) return;
   const block = el('div', 'exercise');
   block.appendChild(el('h3', null, 'Also logged'));
-  list.forEach((ex) => block.appendChild(el('div', 'setline', ex.text)));
+  list.forEach((ex) => saidLine(block, 'setline', ex.text, ex.spoken));
   parent.appendChild(block);
 }
 
@@ -1164,13 +1197,20 @@ function bookedMeals(parent, day) {
   if (!day.meals.length) return;
   const block = el('div', 'exercise');
   block.appendChild(el('h3', null, 'Meals'));
-  if (day.foodContext) block.appendChild(el('div', 'setline muted', day.foodContext));
+  if (day.foodContext) {
+    saidLine(block, 'setline muted', day.foodContext, day.spokenFoodContext);
+  }
   day.meals.forEach((meal) => {
     const row = el('div', 'mealrow');
-    const booked = el('div', 'setline');
-    booked.appendChild(el('b', null, meal.title));
-    row.appendChild(booked);
-    if (meal.logged) row.appendChild(el('div', 'setline muted', meal.logged));
+    // The booked row and the logged row stay two statements, said as two --
+    // the card exists to not claim they are the same dish, and one
+    // announcement joining them would claim exactly that.
+    saidAs(row, meal.spokenTitle, (into) => {
+      const booked = el('div', 'setline');
+      booked.appendChild(el('b', null, meal.title));
+      into.appendChild(booked);
+    });
+    if (meal.logged) saidLine(row, 'setline muted', meal.logged, meal.spokenLogged);
     block.appendChild(row);
   });
   parent.appendChild(block);
@@ -1181,12 +1221,18 @@ function bookedDay(parent, day) {
   if (!has) {
     // A day with nothing under it is the same line in the same weight, just
     // without a disclosure triangle.
-    parent.appendChild(el('div', 'bookedday flat', day.text));
+    saidAs(parent, day.spoken, (into) =>
+      into.appendChild(el('div', 'bookedday flat', day.text)));
     return;
   }
   const details = el('details', 'session booked');
   const summary = el('summary');
-  summary.appendChild(el('div', 'bookedday', day.text));
+  // One name for the row, not four fragments. `<details>` says open and
+  // closed by itself, which is why this card needs nothing added for that.
+  summary.setAttribute('aria-label', day.spoken);
+  const shown = el('div', 'bookedday', day.text);
+  shown.setAttribute('aria-hidden', 'true');
+  summary.appendChild(shown);
   details.appendChild(summary);
   const body = el('div', 'body');
   day.exercises.forEach((ex) => bookedExercise(body, ex));
@@ -1240,16 +1286,20 @@ function renderBooked(client, unit) {
       lift.entries.forEach((entry) => {
         const ex = entry.exercise;
         const block = el('div', 'exercise');
-        block.appendChild(el('h3', null, entry.when));
-        // A day with nothing logged against this lift says so in the rule's
-        // own words -- "not logged" on a day the client sent, "outside the
-        // log they sent" on a day they did not.
-        if (ex.state !== 'logged') block.appendChild(el('div', 'setline', ex.title));
-        if (ex.sideLine) block.appendChild(el('div', 'setline muted', ex.sideLine));
-        if (ex.countLine) block.appendChild(el('div', 'setline muted', ex.countLine));
-        if (ex.asked) bookedSets(block, ex.asked);
-        if (ex.logged) bookedSets(block, ex.logged);
-        if (ex.substitution) block.appendChild(el('div', 'setline muted', ex.substitution));
+        const when = el('h3', null, entry.when);
+        when.setAttribute('aria-label', entry.spokenWhen);
+        block.appendChild(when);
+        saidAs(block, ex.spoken, (into) => {
+          // A day with nothing logged against this lift says so in the rule's
+          // own words -- "not logged" on a day the client sent, "outside the
+          // log they sent" on a day they did not.
+          if (ex.state !== 'logged') into.appendChild(el('div', 'setline', ex.title));
+          if (ex.sideLine) into.appendChild(el('div', 'setline muted', ex.sideLine));
+          if (ex.countLine) into.appendChild(el('div', 'setline muted', ex.countLine));
+          if (ex.asked) bookedSets(into, ex.asked);
+          if (ex.logged) bookedSets(into, ex.logged);
+          if (ex.substitution) into.appendChild(el('div', 'setline muted', ex.substitution));
+        });
         card.appendChild(block);
       });
       node.appendChild(card);
@@ -1257,7 +1307,9 @@ function renderBooked(client, unit) {
   } else {
     result.groups.forEach((group) => {
       const card = el('div', 'card');
-      card.appendChild(el('strong', 'cardtitle', group.head));
+      const head = el('strong', 'cardtitle', group.head);
+      head.setAttribute('aria-label', group.spokenHead);
+      card.appendChild(head);
       group.days.forEach((day) => bookedDay(card, day));
       node.appendChild(card);
     });
@@ -2224,11 +2276,16 @@ function renderCook() {
   if (cookSection === 'road') renderCookRoad();
 }
 
+/* A chip is a button whose selected state is drawn in colour. Colour is not
+ * a state to a screen reader, so it says so -- `aria-pressed`, the spelling
+ * the per-side picker and the each-side toggle in this file already use. */
 function chipRow(container, items, isOn, onPick) {
   container.innerHTML = '';
   items.forEach((item) => {
     const b = document.createElement('button');
-    b.className = 'chip' + (isOn(item) ? ' on' : '');
+    const on = isOn(item);
+    b.className = 'chip' + (on ? ' on' : '');
+    b.setAttribute('aria-pressed', String(on));
     b.textContent = item.label;
     b.onclick = () => onPick(item);
     container.appendChild(b);

@@ -166,3 +166,11 @@ test('the road-picks fixture carries rf as a flat list of ids', async () => {
   assert.equal(R.missing(payload.rf, DATA).length, 1,
     'exactly one id the data does not have, so a decoder\'s skip rule is exercised');
 });
+
+/* ---------------- the copy is the kit's bytes ---------------- */
+
+// The README has always said this file is a verbatim copy of the kit's and
+// must not drift, and nothing checked it. The tests above check what the data
+// means -- ids resolve, the dated charts carry their dates -- and every one of
+// them passes just as happily on a copy several chains behind, so nothing here
+// would ever say it had.

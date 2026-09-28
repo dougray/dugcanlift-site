@@ -910,3 +910,123 @@ test('a lift nobody asked for that was all warmups is not "0 sets" on screen', (
     ] } });
   assert.deepEqual(day(r, 0).alsoLogged, [], 'working sets are the claim everywhere else');
 });
+
+/* ---------------- how it reads aloud ----------------
+ *
+ * The card is built out of short muted lines with `·` between their clauses,
+ * which is a comma sighted and a fragment aloud. `spokenLines` is the same
+ * card said, and these pin the rules rather than the strings: a day row is
+ * one sentence, an asked row and a logged row are one comparison, and `L 3/3`
+ * is not a sentence in any language.
+ */
+
+test('a day row is one sentence, not four fragments', async () => {
+  const r = await fixture();
+  const spoken = PlanLog.spokenLines(r);
+  assert.equal(spoken.includes(' · '), false);
+  assert.ok(spoken.some((l) => l === 'Monday 12 October, Lower A, logged'),
+    `no spoken day row: ${JSON.stringify(spoken.slice(0, 6))}`);
+});
+
+test('the date a day row says is the date it draws, in words', () => {
+  assert.equal(PlanLog.dayLabel('2026-09-21'), 'Mon 21 Sep');
+  assert.equal(PlanLog.spokenDayLabel('2026-09-21'), 'Monday 21 September');
+});
+
+test('a range is a range aloud, not an en dash', () => {
+  assert.equal(PlanLog.rangeText('2026-10-12', '2026-10-17'), '12–17 Oct');
+  assert.equal(PlanLog.spokenRange('2026-10-12', '2026-10-17'), '12 to 17 October');
+  assert.equal(PlanLog.spokenRange('2026-09-28', '2026-10-04'),
+    '28 September to 4 October');
+  assert.equal(PlanLog.spokenRange('2026-10-12', '2026-10-12'), '12 October');
+});
+
+test('the asked row and the logged row are one comparison, under the lift', () => {
+  const r = run([{ d: '2026-10-12', x: 0 }],
+    [{ n: 'Lower A', e: [ex('Back Squat', 'Barbell', [[225, 5], [225, 5], [245, 3]])] }],
+    { '2026-10-12': { exercises: [logged('Back Squat', 'Barbell',
+      [set(225, 5), set(225, 5)])] } });
+  const ex0 = day(r, 0).exercises[0];
+  // One string: a reader hears what was asked and what came back in one
+  // breath rather than two lists of numbers two swipes apart.
+  assert.equal(ex0.spoken,
+    'Back Squat (Barbell). Asked 3 sets, logged 2. '
+    + 'Asked 225 by 5, 225 by 5, 245 by 3. Logged 225 by 5, 225 by 5');
+  // And `×` never reaches it: read literally it is the name of a character.
+  assert.equal(ex0.spoken.includes('×'), false);
+});
+
+test('L 3/3 · R 2/3 is said as left 3 of 3, right 2 of 3', () => {
+  const r = run([{ d: '2026-10-12', x: 0 }],
+    [{ n: 'Lower A', e: [{ n: 'Split Squat', q: 'Dumbbell', b: 1,
+      s: [[40, 8], [40, 8], [40, 8]] }] }],
+    { '2026-10-12': { exercises: [logged('Split Squat', 'Dumbbell', [
+      set(40, 8, { side: 'left' }), set(40, 8, { side: 'left' }),
+      set(40, 8, { side: 'left' }), set(40, 8, { side: 'right' }),
+      set(40, 8, { side: 'right' })])] } });
+  const ex0 = day(r, 0).exercises[0];
+  assert.equal(ex0.sideLine, 'L 3/3 · R 2/3', 'the drawn line is unchanged');
+  assert.equal(ex0.spokenSideLine, 'left 3 of 3, right 2 of 3');
+  // The groups inside the logged row too -- "L 40 × 8" is the same column
+  // heading read literally.
+  assert.equal(ex0.logged.spoken,
+    'Logged left 40 by 8, 40 by 8, 40 by 8; right 40 by 8, 40 by 8');
+  // "each side" is a clause on the ask and is said, or the plan asks for half
+  // of what it asks for.
+  assert.ok(ex0.asked.spoken.endsWith(' each side'), ex0.asked.spoken);
+});
+
+test('sets logged with no side are still said, as the drawn line says them', () => {
+  const r = run([{ d: '2026-10-12', x: 0 }],
+    [{ n: 'Lower A', e: [{ n: 'Split Squat', q: 'Dumbbell', b: 1, s: [[40, 8]] }] }],
+    { '2026-10-12': { exercises: [logged('Split Squat', 'Dumbbell', [
+      set(40, 8, { side: 'left' }), set(40, 8)])] } });
+  assert.equal(day(r, 0).exercises[0].spokenSideLine,
+    'left 1 of 1, right 0 of 1, 1 both');
+});
+
+test('nothing a screen reader is handed changes what the card draws', async () => {
+  const r = await fixture();
+  const expected = JSON.parse(readFileSync('coach/fixtures/plan-log-expected.json', 'utf8'));
+  // The spoken layer is labels. The lines the fixture pins are untouched by
+  // it, which is the whole contract with Coach iPhone and Coach Android.
+  assert.deepEqual(PlanLog.lines(r), expected.lines);
+});
+
+test('nothing a screen reader is handed tells a coach what to do', async () => {
+  // The same discipline as the drawn lines, over the announced ones: an
+  // accessibility label is a sentence a coach reads, and "not logged" must be
+  // as flat aloud as it is on screen.
+  const training = PlanLog.spokenLines(await fixture());
+  const meals = PlanLog.spokenLines(mealFixture());
+  const every = training.concat(meals).join(' · ').toLowerCase();
+  assert.ok(every.length > 200, 'the fixture should exercise the whole card');
+  FORBIDDEN.forEach((word) => {
+    assert.equal(every.includes(word), false, `"${word}" reached a screen reader: ${every}`);
+  });
+});
+
+test('every line the card draws has a spoken form, and no line gains one', async () => {
+  // A spoken line per drawn line, in the same order: a view that reads
+  // `spoken` cannot then be missing a clause the drawn line has, and the
+  // spoken list cannot grow a sentence of its own. The two differ in count
+  // only where the pair is deliberately one announcement rather than five.
+  const r = mealFixture();
+  assert.ok(PlanLog.spokenLines(r).length > 10);
+  assert.ok(PlanLog.spokenLines(r).length <= PlanLog.lines(r).length);
+  PlanLog.spokenLines(r).forEach((line) => {
+    assert.equal(typeof line, 'string');
+    assert.ok(line.length > 0, 'an empty announcement is a row a reader skips');
+  });
+});
+
+test('the card hands the browser the spoken form rather than the drawn one', () => {
+  const source = readFileSync('coach/app.js', 'utf8');
+  const start = source.indexOf('function bookedExercise(');
+  assert.ok(start > 0, 'bookedExercise moved; re-point this test');
+  const body = source.slice(start, source.indexOf('\nfunction ', start + 1));
+  assert.ok(body.includes('ex.spokenDetail'), 'the pair must be announced as one');
+  assert.ok(readFileSync('coach/app.js', 'utf8').includes("aria-label', day.spoken"),
+    'a day row must be named by its sentence');
+  assert.ok(source.includes("aria-pressed"), 'a chip selected in colour says so');
+});
