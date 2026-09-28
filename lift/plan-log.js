@@ -45,6 +45,43 @@
  * `to do`. A booked day that has not happened yet is not an absence, and
  * calling it one would be the app inventing a failure out of a Wednesday.
  *
+ * **Meals are stated, never answered.** A coach can book meals as well as
+ * sessions (PLAN-FORMAT's `m`), and accepting a plan files them in `plan`
+ * beside the ones you place yourself. This card lists the ones a coach booked
+ * -- `Dinner · Beef Chilli · 2 servings` -- and says nothing whatever about
+ * what you ate. Coach's card does the other half as well: it names the foods
+ * the client stamped with that slot, above a count of the day's foods so
+ * `Nothing logged at lunch` cannot read as `they ate nothing`, under a note
+ * saying it cannot know whether the dish was the one it booked. None of that
+ * half is worth anything here. Your food log is on the Food screen, dated, and
+ * reading it back to you in the third person tells you nothing you did not
+ * already know -- and you are the one person who does not need telling whether
+ * they ate their dinner. So there is no `Nothing logged at lunch`, no food
+ * count above the rows, no macros beside a booked dish, no figure for meals
+ * eaten, and no meal footer: the note exists to disclaim a join Coach cannot
+ * make, and this card makes no claim to disclaim.
+ *
+ * What is left is the one thing no other screen gives you: the food booked for
+ * a day you cannot reach. Cook's plan shows seven days from today and Train
+ * shows one, so a dish booked for next Thursday is legible nowhere until you
+ * arrive at it, and a week of it that a coach sent reached no screen at all.
+ * `to do` carries that, as it does for a session.
+ *
+ * `loggedFoodEntryId` is deliberately not read. This device really does know a
+ * planned meal was logged -- you tapped "Log it" and the entry's id was stored
+ * against it -- so unlike Coach there would be no guessing in saying so. It is
+ * still not printed. The only thing it could add is a tick on some meal rows
+ * and a blank on the rest, which is a score with the numbers filed off, and
+ * the screen that can act on the answer (Cook's plan, with `Log it` beside the
+ * dish) already shows it where it is useful.
+ *
+ * Only a coach's meals, never your own. A dinner you planned yourself is yours
+ * to move, and holding it up on a card headed "your coach's plan" would be the
+ * app making an expectation out of your own note-taking -- the same reason a
+ * week nobody booked is no card at all. A week a coach booked no meals in
+ * reads exactly as it did before any of this: the count, the clause and the
+ * rows appear only where there is a booked meal to carry them.
+ *
  * Loaded after sides.js, whose side reading (`of`, `countsIn`, `anySided`)
  * and prescribed-side counting (`targetsLabel`) this reuses rather than
  * repeats -- the counts on this card are the same counts the session header
@@ -119,6 +156,71 @@
   }
 
   var plural = function (n, one, many) { return n + ' ' + (n === 1 ? one : many); };
+
+  /* ---------------- the meals a coach booked ----------------
+   *
+   * `plan` is this device's planned meals -- the ones a coach sent and the ones
+   * placed here, in one list, the coach's marked `fromCoach` exactly as a
+   * prescribed session is. The slot is stored as LIFT writes it, and read into
+   * the four words PLAN-FORMAT's `m.s` indexes in the same order, so a booked
+   * slot is named here the way Coach names it. */
+  var MEAL_SLOTS = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
+  var SLOT_LABELS = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
+
+  /**
+   * One booked meal: the slot, the dish and how much of it, which are the
+   * three things a coach wrote and so the three things that can be said
+   * without reservation. Macros are not here, and neither is anything about
+   * the food log -- see the head of this file.
+   *
+   * `title` is the whole line and `slotLabel` / `detail` are its two columns,
+   * so the view can align the slots without composing a second sentence of its
+   * own that could drift from the one the tests read.
+   */
+  function mealRow(meal) {
+    var detail = [meal.name, plural(meal.servings, 'serving', 'servings')].join(' · ');
+    return {
+      date: meal.date,
+      slot: meal.slot,
+      slotLabel: meal.slotLabel,
+      name: meal.name,
+      servings: meal.servings,
+      detail: detail,
+      title: [meal.slotLabel, detail].filter(Boolean).join(' · '),
+    };
+  }
+
+  /**
+   * The meals a coach booked, in the window given, breakfast to snack within
+   * each day -- the order a day is eaten in, not the order the coach happened
+   * to book them. Two dishes at one dinner are two dishes and both are shown;
+   * meals do not pool, as sessions on a date do, because a coach who booked
+   * both wants both eaten.
+   *
+   * A slot this build cannot read sorts last rather than being dropped: a dish
+   * a coach booked is a dish a coach booked, and hiding it would hide the plan.
+   * `from` and `to` are optional -- the arrows need every week a coach booked a
+   * meal in, not one week of them.
+   */
+  function bookedMeals(plan, from, to) {
+    return (plan || []).filter(function (m) {
+      return m && m.fromCoach && typeof m.date === 'string'
+        && (!from || m.date >= from) && (!to || m.date <= to);
+    }).map(function (m) {
+      var slot = MEAL_SLOTS.indexOf(String(m.meal == null ? '' : m.meal).toUpperCase());
+      var servings = Number(m.servings);
+      return {
+        date: m.date,
+        slot: slot,
+        slotLabel: slot < 0 ? '' : SLOT_LABELS[slot],
+        name: String(m.recipeName == null ? '' : m.recipeName).trim() || 'Recipe',
+        servings: servings > 0 ? servings : 1,
+      };
+    }).sort(function (a, b) {
+      if (a.date !== b.date) return a.date.localeCompare(b.date);
+      return (a.slot < 0 ? 9 : a.slot) - (b.slot < 0 ? 9 : b.slot);
+    }).map(mealRow);
+  }
 
   /* ---------------- reading the two halves ---------------- */
 
@@ -390,6 +492,17 @@
     };
   }
 
+  /** The name of the first session logged on a day that names itself, for a
+   *  row whose booking has no session of its own to take a name from. */
+  function loggedName(sessions) {
+    var found = '';
+    (sessions || []).forEach(function (s) {
+      if (found || !s || !loggedIn([s]).length) return;
+      found = s.name || '';
+    });
+    return found;
+  }
+
   /* ---------------- the card ---------------- */
 
   /**
@@ -415,7 +528,18 @@
    */
   function headLine(range, counts) {
     var head = 'Booked ' + plural(counts.booked, 'day', 'days') + ', ' + range;
-    if (counts.logged || counts.notLogged) head += ' · logged ' + counts.logged;
+    // What a coach booked, which is a count of their own writing. There is no
+    // figure beside it for meals eaten, in this line or anywhere else.
+    if (counts.meals) head += ' · ' + plural(counts.meals, 'meal booked', 'meals booked');
+    if (counts.logged || counts.notLogged) {
+      // `logged 1` under `Booked 5 days` would read as one day of five when
+      // three of them booked no session at all, so once meals are in the line
+      // the figure says what it counts. Coach's sentence, for the same reason.
+      head += counts.meals
+        ? ' · ' + plural(counts.training, 'training day', 'training days')
+          + ', ' + counts.logged + ' logged'
+        : ' · logged ' + counts.logged;
+    }
     if (counts.toDo) head += ' · ' + counts.toDo + ' to do';
     if (counts.other) head += ' · ' + plural(counts.other, 'other day logged', 'other days logged');
     return head;
@@ -454,7 +578,12 @@
     var training = (opts.training || []).filter(function (t) {
       return t && typeof t.date === 'string' && t.date >= from && t.date <= to;
     });
-    if (!training.length) return null;
+    var meals = bookedMeals(opts.plan, from, to);
+    // A plan is a plan whichever half of it arrived: `k` and `m` are
+    // independent (PLAN-FORMAT), and a send carrying only meals books days.
+    // Before this the card was absent for one, so a coach who sent a week of
+    // food reached no screen that said so past Cook's seven days from today.
+    if (!training.length && !meals.length) return null;
 
     var workouts = (opts.workouts || []).filter(function (w) {
       return w && typeof w.date === 'string' && w.date >= from && w.date <= to;
@@ -464,28 +593,61 @@
 
     var byDate = {};
     training.forEach(function (t) { (byDate[t.date] || (byDate[t.date] = [])).push(t); });
-    var bookedDates = Object.keys(byDate).sort();
+    var mealsByDate = {};
+    meals.forEach(function (m) { (mealsByDate[m.date] || (mealsByDate[m.date] = [])).push(m); });
+    // Every date this week books anything at all. A day may book a session
+    // with no meals, meals with no session, or both, and all three are one row
+    // -- this card opens one date at a time and Train navigates to a date, so
+    // a second row on the same day would open two details and go nowhere new.
+    var bookedOn = {};
+    Object.keys(byDate).concat(Object.keys(mealsByDate)).forEach(function (date) {
+      bookedOn[date] = true;
+    });
+    var bookedDates = Object.keys(bookedOn).sort();
 
-    var counts = { booked: bookedDates.length, logged: 0, notLogged: 0, toDo: 0, other: 0 };
+    var counts = { booked: bookedDates.length, training: 0, meals: 0,
+      logged: 0, notLogged: 0, toDo: 0, other: 0 };
     var rows = bookedDates.map(function (date) {
-      var booking = askedIn(byDate[date]);
+      var booked = byDate[date] || [];
+      var booking = askedIn(booked);
+      // Whether this day books a session at all. A day that books only meals
+      // gets no training verdict: `not logged` against a day nobody was asked
+      // to train would be the app inventing a booking to hold against you.
+      var booksTraining = booked.length > 0;
+      var dayMeals = mealsByDate[date] || [];
       var onDay = workouts.filter(function (w) { return w.date === date; });
       // The session this booking was started as, when it still exists: a day
       // with a booked session and an extra one of your own compares the right
       // half. Deleting that session falls back to the day, which is what every
       // session logged without pressing "Start this session" does anyway.
       var started = null;
-      (byDate[date] || []).forEach(function (t) {
+      booked.forEach(function (t) {
         if (!t.startedSessionId) return;
         onDay.forEach(function (w) { if (w.id === t.startedSessionId) started = w; });
       });
-      var mine = started ? [started] : onDay;
-      var extra = started ? onDay.filter(function (w) { return w !== started; }) : [];
+      var mine = !booksTraining ? [] : (started ? [started] : onDay);
+      var extra = !booksTraining ? onDay
+        : (started ? onDay.filter(function (w) { return w !== started; }) : []);
 
+      if (booksTraining) counts.training += 1;
+      counts.meals += dayMeals.length;
       var state;
-      if (loggedIn(mine).length) { state = 'logged'; counts.logged += 1; }
+      if (booksTraining) {
+        if (loggedIn(mine).length) { state = 'logged'; counts.logged += 1; }
+        else if (date >= today) { state = 'toDo'; counts.toDo += 1; }
+        else { state = 'notLogged'; counts.notLogged += 1; }
+      // A day booked for food that you trained anyway. The training was not
+      // booked, which is the same fact -- and Coach's same word -- as a day the
+      // plan says nothing about, and it is said on the row itself so a week
+      // read with every day shut still says which days you trained.
+      } else if (loggedIn(onDay).length) { state = 'notBooked'; counts.other += 1; }
+      // A day still ahead is a plan, whether it books a session, a dinner or
+      // both. `to do` is a fact about the calendar and needs no log to be true,
+      // which is why it is the one verdict a meals-only day can carry.
       else if (date >= today) { state = 'toDo'; counts.toDo += 1; }
-      else { state = 'notLogged'; counts.notLogged += 1; }
+      // A day in the past that booked food and nothing else. No word at all:
+      // there is no `not logged` for a meal, and no figure for one either.
+      else { state = 'meals'; }
 
       var joined = state === 'logged'
         ? joinExercises(booking.exercises, loggedIn(mine))
@@ -495,21 +657,37 @@
       loggedIn(extra).filter(function (ex) { return ex.sets.length; })
         .forEach(function (ex) { joined.alsoLogged.push(alsoLogged(ex)); });
 
-      var word = WORDS[state];
+      var word = WORDS[state] || '';
+      // A booking names itself. Only a day that books no session at all takes
+      // its name from what was logged on it, exactly as a `not booked` day of
+      // its own does -- a booked session with a blank name keeps its blank.
+      var name = booking.name || (booksTraining ? '' : loggedName(onDay));
+      var mealsClause = dayMeals.length
+        ? plural(dayMeals.length, 'meal booked', 'meals booked') : '';
+      // The training word hugs the session it judges; the meal clause follows
+      // it. A day that booked no session has no session for it to hug, so what
+      // is left -- `to do`, or nothing -- goes last instead. Coach's own rule,
+      // and its own sentence: a week described to a coach reads the same way.
+      var head = name
+        ? [dayLabel(date), name, word, mealsClause]
+        : [dayLabel(date), mealsClause, word];
       return {
         key: date,
         state: state,
-        name: booking.name,
+        name: name,
         // Past or today, so Train can be scrolled to it; a day still ahead
         // cannot be opened, which is the reason its prescription is printed
         // here instead.
         openable: date <= today,
-        text: [dayLabel(date), booking.name, word].filter(Boolean).join(' · '),
+        text: head.filter(Boolean).join(' · '),
         exercises: state === 'logged' ? joined.exercises
           : booking.exercises.map(function (ex) {
             return pairLines(ex, null, false, state === 'toDo' ? '' : word, state === 'toDo');
           }),
         alsoLogged: joined.alsoLogged,
+        // What a coach booked for this day to eat, and nothing about what was
+        // eaten. Empty on every day nobody booked a meal for.
+        meals: dayMeals,
       };
     });
 
@@ -518,7 +696,9 @@
     // the day after the one it was booked for looks exactly like this, and so
     // does a session added for its own sake.
     workouts.forEach(function (session) {
-      if (byDate[session.date]) return;
+      // Every date this send booked, meals included: a day booked for food and
+      // trained anyway is already the row above, with `not booked` on it.
+      if (bookedOn[session.date]) return;
       if (!loggedIn([session]).length) return;
       var existing = null;
       rows.forEach(function (r) { if (r.key === session.date && r.state === 'notBooked') existing = r; });
@@ -538,6 +718,8 @@
         exercises: [],
         alsoLogged: loggedIn([session]).filter(function (ex) { return ex.sets.length; })
           .map(alsoLogged),
+        // A day nobody booked booked no meal either, by definition.
+        meals: [],
       });
     });
     rows.sort(function (a, b) { return a.key.localeCompare(b.key); });
@@ -563,12 +745,17 @@
    * empty frame; and an arrow with nothing behind it is disabled rather than
    * hidden, so the row does not change shape as it is used.
    */
-  function adjacentWeek(training, fromMonday, direction) {
+  function adjacentWeek(training, fromMonday, direction, plan) {
     var weeks = {};
+    var mark = function (date) { weeks[weekOf(date)[0]] = true; };
     (training || []).forEach(function (t) {
       if (!t || typeof t.date !== 'string') return;
-      weeks[weekOf(t.date)[0]] = true;
+      mark(t.date);
     });
+    // Meals book weeks too. Without this a week a coach sent food for would be
+    // reachable only by standing in it, and the arrows would skip over a card
+    // that exists.
+    bookedMeals(plan).forEach(function (m) { mark(m.date); });
     var keys = Object.keys(weeks).sort().filter(function (k) {
       return direction < 0 ? k < fromMonday : k > fromMonday;
     });
@@ -578,12 +765,19 @@
 
   /** Who sent the week, for the one muted line above the head -- the same
    *  sentence the prescribed card has always opened with. */
-  function sentBy(result, training) {
+  function sentBy(result, training, plan) {
     var names = {};
-    (training || []).forEach(function (t) {
-      if (!t || t.date < result.from || t.date > result.to) return;
-      if (typeof t.fromCoach === 'string' && t.fromCoach.trim()) names[t.fromCoach.trim()] = true;
-    });
+    var add = function (row) {
+      if (!row || row.date < result.from || row.date > result.to) return;
+      if (typeof row.fromCoach === 'string' && row.fromCoach.trim()) {
+        names[row.fromCoach.trim()] = true;
+      }
+    };
+    (training || []).forEach(add);
+    // A week that booked only meals is signed by whoever sent it, like any
+    // other. A meal placed on this device carries no `fromCoach` at all, so the
+    // same test that keeps it off the card keeps its owner out of the name.
+    (plan || []).forEach(add);
     var list = Object.keys(names);
     return list.length ? 'From ' + list.join(' · ') : 'From your coach';
   }
@@ -613,6 +807,12 @@
         out.push('Also logged');
         day.alsoLogged.forEach(function (ex) { out.push(ex.text); });
       }
+      // Meals last, under the training they sit beside. One line each, and
+      // nothing under them: there is no second row about the food log.
+      if (day.meals.length) {
+        out.push('Meals');
+        day.meals.forEach(function (meal) { out.push(meal.title); });
+      }
     });
     out.push(result.footer);
     return out;
@@ -621,6 +821,8 @@
   global.LiftPlanLog = {
     FOOTER: FOOTER,
     WORDS: WORDS,
+    MEAL_SLOTS: MEAL_SLOTS,
+    bookedMeals: bookedMeals,
     weekOf: weekOf,
     rangeText: rangeText,
     dayLabel: dayLabel,
