@@ -324,6 +324,17 @@ canvas { width: 100%; display: block; }
 .planset-label { color: var(--muted); }
 .planset-group { display: inline-block; }
 .planset-group + .planset-group { margin-left: 14px; }
+/* A meal a coach booked, in the same two columns Cook's own plan rows use, so
+   Breakfast and Dinner line up with each other and the dish sits beside them.
+   Wider than .planset's label column, which holds "Asked" and not "Breakfast". */
+.bookedmeal {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: 15px;
+  margin: 3px 0;
+}
 
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
