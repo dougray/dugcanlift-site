@@ -92,6 +92,36 @@ comparing anything. `lines()` flattens every sentence the card can produce so
 holding one render of it. A week that books nothing is **no card at all** --
 never an empty frame explaining itself.
 
+**Meals are stated, never answered.** A coach can book meals as well as sessions
+(`coach/PLAN-FORMAT.md`'s `m`), and accepting a plan files them in `plan` beside
+the ones you place yourself. The card lists the ones a coach booked --
+`Dinner · Beef Chilli · 2 servings`, under `Meals`, with `2 meals booked` on the
+day row and `3 meals booked` in the head -- and says **nothing whatever about
+what you ate**. Coach's card does the other half too: it names the foods the
+client stamped with that slot, above a count of the day's foods so
+`Nothing logged at lunch` cannot read as `they ate nothing`, under a note saying
+it cannot know whether the dish was the one it booked. None of that half is
+here. Your food log is on the Food screen, dated, and reading it back to you in
+the third person tells you nothing you did not already know -- so no per-slot
+verdict, no food count, no macros beside a booked dish, no figure for meals
+eaten, and no meal footer. `loggedFoodEntryId` means this device really does
+know a planned meal was logged, and it is still not printed: a tick on some meal
+rows and a blank on the rest is a score with the numbers filed off, and Cook's
+own plan already shows it where `Log it` can act on it.
+
+What is left is the thing no other screen gives you: **the food booked for a day
+you cannot reach.** Cook's plan shows seven days from today and Train shows one,
+so a dish booked for next Thursday was legible nowhere until you arrived at it.
+`to do` carries a booked meal as it carries a session -- a dinner on Thursday is
+a plan, not an absence -- and a day in the past that booked only food carries no
+verdict at all, because there is no `not logged` for a meal. A **plan of meals
+with no training is now a card**, where before there was none. Only a coach's
+meals: a dinner you placed yourself is yours to move, and holding it up on a card
+headed "your coach's plan" would make an expectation out of your own
+note-taking. A week a coach booked no meals in reads exactly as it did before
+any of this, which `plan-log.test.mjs` pins line for line against the card as it
+shipped.
+
 `plan-log.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it changes.**
 
 ## Watch import (`watch-scan.js`)
