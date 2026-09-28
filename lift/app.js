@@ -2184,6 +2184,20 @@ function planDayDetail(day) {
     day.alsoLogged.forEach((ex) => block.appendChild(el('p', 'muted', ex.text)));
     detail.appendChild(block);
   }
+  // What a coach booked for this day to eat, under the training it sits beside.
+  // Stated and nothing more -- no verdict per slot, no macros, and nothing at
+  // all about what was logged. plan-log.js says at length why.
+  if (day.meals.length) {
+    const block = el('div', 'exercise');
+    block.appendChild(el('h3', null, 'Meals'));
+    day.meals.forEach((meal) => {
+      const row = el('div', 'bookedmeal');
+      row.appendChild(el('span', 'planset-label', meal.slotLabel));
+      row.appendChild(el('span', null, meal.detail));
+      block.appendChild(row);
+    });
+    detail.appendChild(block);
+  }
   return detail.childNodes.length ? detail : null;
 }
 
@@ -2192,7 +2206,7 @@ function renderPlanWeek() {
   wrap.innerHTML = '';
 
   const week = LiftPlanLog.compare({
-    training, workouts, today: todayKey(), anchor: planWeekAnchor || trainDate,
+    training, workouts, plan, today: todayKey(), anchor: planWeekAnchor || trainDate,
   });
   // Nothing at all rather than an empty frame. Someone who has never been sent
   // a plan should not meet this card by being told it has nothing for them,
@@ -2201,14 +2215,14 @@ function renderPlanWeek() {
   if (!week) return;
 
   const card = el('div', 'card');
-  card.appendChild(el('p', 'muted', LiftPlanLog.sentBy(week, training)));
+  card.appendChild(el('p', 'muted', LiftPlanLog.sentBy(week, training, plan)));
 
   const nav = el('div', 'weeknav');
   // The arrows move between weeks a coach actually booked, not one week at a
   // time: a card that vanished on the way to an empty week would take its own
   // arrows with it and leave no way back.
   const step = (label, direction) => {
-    const target = LiftPlanLog.adjacentWeek(training, week.from, direction);
+    const target = LiftPlanLog.adjacentWeek(training, week.from, direction, plan);
     const b = el('button', null, label);
     b.disabled = !target;
     b.onclick = () => { planWeekAnchor = target; planWeekOpen = null; render(); };
