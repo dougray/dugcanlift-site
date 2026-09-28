@@ -135,7 +135,6 @@
     return c.left <= c.right ? LEFT : RIGHT;
   }
 
-  /** "L 3 · R 2", so a missed side is obvious. Empty when nothing is sided. */
   /** "L" and "R" are a column heading, not a word. */
   var sideWord = function (side) { return side === LEFT ? 'left' : 'right'; };
 
@@ -162,7 +161,7 @@
     return parts.join(', ');
   }
 
-  /** [countsLabel], said. */
+  /** [countsLabel], said: "left 3, right 2, 1 both". */
   function countsSpoken(sets) {
     if (!anySided(sets)) return '';
     var c = countsIn(sets);
@@ -170,6 +169,7 @@
     return c.both ? text + ', ' + c.both + ' both' : text;
   }
 
+  /** "L 3 · R 2", so a missed side is obvious. Empty when nothing is sided. */
   function countsLabel(sets) {
     if (!anySided(sets)) return '';
     var c = countsIn(sets);
