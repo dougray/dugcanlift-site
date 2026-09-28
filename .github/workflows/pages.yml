@@ -35,11 +35,14 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # The Ruby in .ruby-version, and the lockfile as committed: `--deployment`
-      # fails the run rather than quietly resolving a different tree than the
-      # one a local build used.
+      # `3.3`, not .ruby-version. That file says 3.3.12, which this action has
+      # no build of on ubuntu-24.04 -- its 3.3 series stops at 3.3.10 -- so
+      # reading it fails the run outright. The minor series is what matters:
+      # inside it the committed Gemfile.lock decides every gem version, which
+      # is what the output actually depends on.
       - uses: ruby/setup-ruby@80740b3b13bf9857e28854481ca95a84e78a2bdf # v1.284.0
         with:
+          ruby-version: "3.3"
           bundler-cache: true
 
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
