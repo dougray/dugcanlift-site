@@ -1,0 +1,71 @@
+# Build and publish the site.
+#
+# This repository used to leave both to GitHub: Pages' own "legacy" builder
+# compiled the site with the version of Jekyll GitHub happened to be pinned
+# to, and the Gemfile here existed only so a local build could imitate it.
+# That pinning had no way out of GHSA-47m2-wp7j-p9vc -- `github-pages` pins
+# `jekyll-remote-theme`, which requires `rubyzip < 3.0`, and the fix is
+# rubyzip 3.4.0 -- so the build moved here and the Gemfile became the real
+# thing rather than an imitation of it.
+#
+# The point of that is only kept if the two stay the same: `bundle exec jekyll
+# build` below is what `script/jekyll build` runs locally, against the same
+# Gemfile.lock. Do not let this file grow a step that a local build does not
+# have.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: jekyll build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # The Ruby in .ruby-version, and the lockfile as committed: `--deployment`
+      # fails the run rather than quietly resolving a different tree than the
+      # one a local build used.
+      - uses: ruby/setup-ruby@80740b3b13bf9857e28854481ca95a84e78a2bdf # v1.284.0
+        with:
+          bundler-cache: true
+
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+
+      - name: Build
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build
+
+      # On a pull request the build above is the whole point: it says the site
+      # still compiles before anything is published. Only main uploads.
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        if: github.ref == 'refs/heads/main'
+
+  deploy:
+    name: deploy
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
