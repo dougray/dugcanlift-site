@@ -135,6 +135,40 @@
     return c.left <= c.right ? LEFT : RIGHT;
   }
 
+  /** "L" and "R" are a column heading, not a word. */
+  var sideWord = function (side) { return side === LEFT ? 'left' : 'right'; };
+
+  /**
+   * [targetsLabel], said: "left 3 of 3, right 2 of 3".
+   *
+   * Read out, `L 3/3 · R 2/3` is a letter, a slash and the name of a
+   * character -- and it is the line that says what one side of a person's
+   * body did. Built from the same two counts as the label rather than by
+   * picking the label apart, and `sides.test.mjs` pins that the two always
+   * carry the same numbers.
+   */
+  function targetsSpoken(prescribed, eachSide, sets) {
+    var t = prescribedTargets(prescribed, eachSide);
+    if (!t.left && !t.right) return '';
+    var c = countsIn(sets);
+    var parts = [];
+    [LEFT, RIGHT].forEach(function (side) {
+      if (t[side]) parts.push(sideWord(side) + ' ' + c[side] + ' of ' + t[side]);
+      else if (c[side]) parts.push(sideWord(side) + ' ' + c[side]);
+    });
+    if (t.both) parts.push(c.both + ' of ' + t.both + ' both');
+    else if (c.both) parts.push(c.both + ' both');
+    return parts.join(', ');
+  }
+
+  /** [countsLabel], said: "left 3, right 2, 1 both". */
+  function countsSpoken(sets) {
+    if (!anySided(sets)) return '';
+    var c = countsIn(sets);
+    var text = 'left ' + c.left + ', right ' + c.right;
+    return c.both ? text + ', ' + c.both + ' both' : text;
+  }
+
   /** "L 3 · R 2", so a missed side is obvious. Empty when nothing is sided. */
   function countsLabel(sets) {
     if (!anySided(sets)) return '';
@@ -447,6 +481,8 @@
     anySided: anySided,
     nextSide: nextSide,
     countsLabel: countsLabel,
+    countsSpoken: countsSpoken,
+    targetsSpoken: targetsSpoken,
     key: key,
     onSide: onSide,
     flagsOf: flagsOf,
