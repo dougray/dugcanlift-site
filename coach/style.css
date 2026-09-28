@@ -126,6 +126,21 @@ main { padding: 0 16px 64px; }
 
 .hidden { display: none !important; }
 
+/* Drawn nowhere, announced everywhere. A card line built out of muted text
+ * and `·` separators is a comma sighted and a fragment aloud, so the card
+ * hides what it draws from a screen reader and puts one composed sentence
+ * here instead -- see `saidAs` in app.js. Not `display: none`, which is
+ * hidden from a screen reader too. */
+.sronly {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 label {
   display: block;
   font-size: 13px;
@@ -763,6 +778,11 @@ canvas.route {
 /* A booked dish and what the log holds at its meal are one row of two
    lines; the gap is what keeps the next dish from reading as part of it. */
 .mealrow + .mealrow { margin-top: 10px; }
+/* The wrapper `saidAs` puts around the lines it hides from a screen reader.
+   It must cost nothing: `display: contents` leaves the lines exactly where
+   they were, so the card is pixel for pixel what it was before it could be
+   read aloud. */
+.saidabove { display: contents; }
 /* On a phone the two sides do not fit beside each other, and a run-on wrap
    puts "R" at the end of the left side's last line. The second side gets its
    own line instead; the first stays beside its Logged label. */
