@@ -184,8 +184,11 @@ more than 200 calories. None of them is in the list under a sandwich's name.
 
 - **The browser versions are live now**: [LIFT](/lift/) and [Coach](/coach/) —
   the week card, the booked meals, the spoken card, and the two new chains.
-- **LIFT for Android 1.15** is on the [install page](/lift/install/), with the
-  week card, the coach's name, the booking record, and Taco Bell and Sheetz.
-  **Coach for Android** is unchanged at 1.12.
-- **iPhone and iPad** builds carry the week card and the coach's name; they are
-  not on the App Store yet.
+- **LIFT for Android 1.16** and **Coach for Android 1.13** are on their install
+  pages ([LIFT](/lift/install/), [Coach](/coach/install/)). Between them they
+  carry everything above: the week card and the meals booked on it, the coach's
+  name, the booking record, the spoken card on both sides of the link, and Taco
+  Bell and Sheetz.
+- **iPhone and iPad** builds carry all of that bar the booking record, which a
+  log keeping one session a day has no use for; they are not on the App Store
+  yet.
