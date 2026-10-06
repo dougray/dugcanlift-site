@@ -2388,16 +2388,12 @@ function openRecipeForm(id) {
   $('#ing-results').innerHTML = '';
   $('#ing-tally').textContent = '';
 
-  // Any in-flight import costing belongs to the form it opened, not this one.
-  importRun++;
   showRecipeForm();
 }
 
 /* Unhides the editor and brings it on screen. Every way in needs both: the
  * form sits below the recipe list at every width, so a form that is only
- * unhidden -- or only filled -- can be a full list's height out of sight. The
- * import once filled it without opening it at all, and a recipe it found was
- * invisible unless the coach happened to have pressed New recipe first. */
+ * unhidden -- or only filled -- can be a full list's height out of sight. */
 function showRecipeForm() {
   const form = $('#recipe-form');
   form.classList.remove('hidden');
@@ -3684,151 +3680,16 @@ $('#ing-query').addEventListener('keydown', (e) => {
 
 renderIngredientSources();
 
-/* ---------------- recipe import ----------------
+/* Paste a recipe.
  *
- * TheMealDB carries recipes — name, ingredients, method — and no nutrition at
- * all. USDA carries nutrition and no recipes. So an import takes the shape of
- * the dish from one and costs it from the other.
+ * The way in for a recipe found anywhere else, and it touches no network at
+ * all: a browser may not fetch another site's page, so the address bar is no
+ * use and the text is.
  *
  * Only ingredients that convert to a weight get costed. Volume and vague units
  * are left alone and counted as unpriced, because pricing "2 tbsp olive oil"
  * means inventing a density, and the coach can see and fix a gap far more
  * easily than a plausible wrong number.
- */
-
-const MEALDB = 'https://www.themealdb.com/api/json/v1/1';
-
-let importedHits = [];
-let importRun = 0;
-const SERVINGS_UNSTATED = ' TheMealDB does not say how many this serves; set it before sending.';
-
-function mealToRecipe(meal) {
-  const ingredients = [];
-  for (let i = 1; i <= 20; i++) {
-    const name = (meal[`strIngredient${i}`] || '').trim();
-    if (!name) continue;
-    const measure = (meal[`strMeasure${i}`] || '').trim();
-    ingredients.push(measure ? `${measure} ${name}` : name);
-  }
-  const steps = (meal.strInstructions || '')
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  return { name: meal.strMeal || 'Imported recipe', ingredients, steps };
-}
-
-async function searchMealDb(query) {
-  const box = $('#import-results');
-  box.innerHTML = '';
-  box.appendChild(cookEl('p', 'muted', 'Searching…'));
-
-  try {
-    const response = await fetch(`${MEALDB}/search.php?s=${encodeURIComponent(query)}`);
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-    const data = await response.json();
-    importedHits = (data.meals || []).map(mealToRecipe);
-
-    box.innerHTML = '';
-    if (!importedHits.length) {
-      box.appendChild(cookEl('p', 'muted', 'Nothing found for that.'));
-      return;
-    }
-    importedHits.forEach((recipe, index) => {
-      const row = cookEl('button', 'chip wide',
-        `${recipe.name} — ${recipe.ingredients.length} ingredients`);
-      row.onclick = () => useImportedRecipe(index);
-      box.appendChild(row);
-    });
-  } catch (e) {
-    box.innerHTML = '';
-    box.appendChild(cookEl('p', 'muted', `Could not reach TheMealDB (${e.message}).`));
-  }
-}
-
-/* Opens a fresh recipe form filled from an import, then costs what it can.
- *
- * Always a new recipe: openRecipeForm(null) clears the id, so importing while
- * an existing recipe is open can never overwrite it on Save, and clears every
- * macro and its typed flag, so nothing from that recipe leaks into this one.
- *
- * Servings are 1: TheMealDB does not say how many a recipe feeds, and the
- * form's default of four would silently divide every macro by a number nobody
- * chose. The same rule Paste a recipe and Coach iOS follow. */
-async function useImportedRecipe(index) {
-  const recipe = importedHits[index];
-  if (!recipe) return;
-
-  // Panel first: hiding it after the form scrolled into view would pull the
-  // form up past the top of the screen.
-  $('#import-panel').classList.add('hidden');
-  openRecipeForm(null);
-
-  $('#r-name').value = recipe.name;
-  $('#r-servings').value = 1;
-  $('#r-ingredients').value = recipe.ingredients.join('\n');
-  $('#r-steps').value = recipe.steps.join('\n');
-
-  const note = $('#ing-tally');
-  note.textContent = 'Costing the ingredients…';
-
-  const run = ++importRun;
-  await loadFoodLibrary();
-  // The first load of the ingredient database takes a moment. If the coach
-  // cancelled, or opened another recipe, meanwhile, these macros are not theirs.
-  if (run !== importRun || editingRecipeId !== null
-      || $('#recipe-form').classList.contains('hidden')) return;
-  if (foodLibraryError) {
-    note.textContent = `Imported. Could not load the ingredient database (${foodLibraryError}),`
-      + ' so the macros are blank.' + SERVINGS_UNSTATED;
-    return;
-  }
-
-  const unpriced = [];
-  ingredientTally = emptyTally();
-
-  recipe.ingredients.forEach((line) => {
-    const parsed = parseIngredient(line);
-    const grams = gramsFor(parsed);
-    if (!grams || !parsed.item) { unpriced.push(line); return; }
-
-    const hit = searchFoodLibrary(parsed.item, 1)[0];
-    if (!hit) { unpriced.push(line); return; }
-
-    const contribution = foodContribution(hit, grams);
-    Object.keys(contribution).forEach((key) => { ingredientTally[key] += contribution[key]; });
-    ingredientTally.lines += 1;
-  });
-
-  applyTally();
-
-  // Say plainly how much of the dish is actually costed. A macro figure built
-  // from three of seventeen ingredients is worse than useless if it looks whole.
-  if (unpriced.length) {
-    note.textContent = (ingredientTally.lines
-      ? `${note.textContent} `
-      : 'Imported. ')
-      + `${unpriced.length} of ${recipe.ingredients.length} ingredients could not be `
-      + 'weighed automatically, so the total is short. Look them up above, or type the macros in.';
-  } else if (!ingredientTally.lines) {
-    note.textContent = 'Imported. None of the ingredients could be weighed automatically — '
-      + 'look them up above, or type the macros in.';
-  }
-  note.textContent += SERVINGS_UNSTATED;
-}
-
-$('#import-open').onclick = () => {
-  $('#import-panel').classList.remove('hidden');
-  $('#import-query').focus();
-};
-$('#import-cancel').onclick = () => $('#import-panel').classList.add('hidden');
-
-/* Paste a recipe.
- *
- * The third way in, and the only one that touches no network at all. It exists
- * because the search above needs a dish TheMealDB happens to know, and because
- * a recipe website cannot be read from here at all: a browser may not fetch
- * another site's page, so the address bar is no use and the text is.
  *
  * parseCaption (recipe-import.js) only PROPOSES a split. Nothing is saved here
  * -- it fills the recipe form and the coach checks it, which is the whole
@@ -3853,8 +3714,8 @@ $('#rp-go').onclick = () => {
     return;
   }
 
-  // Panel first, as with the import: hiding it after the form scrolled into
-  // view would pull the form up past the top of the screen.
+  // Panel first: hiding it after the form scrolled into view would pull the
+  // form up past the top of the screen.
   $('#rp-panel').classList.add('hidden');
   openRecipeForm(null);
 
@@ -3876,10 +3737,3 @@ $('#rp-go').onclick = () => {
     ? advice
     : advice + ' The text did not say how many this serves; set it before sending.';
 };
-$('#import-go').onclick = () => {
-  const query = $('#import-query').value.trim();
-  if (query) searchMealDb(query);
-};
-$('#import-query').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') { e.preventDefault(); $('#import-go').click(); }
-});

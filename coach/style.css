@@ -563,7 +563,7 @@ canvas.route {
 
   /* Forms and pickers are read top to bottom; past this they are all line. */
   #recipe-form, #workout-form, #exercise-picker, #picker, #session-picker,
-  #send-one, #rp-panel, #import-panel, #incoming { max-width: 760px; }
+  #send-one, #rp-panel, #incoming { max-width: 760px; }
 }
 
 @container (min-width: 640px) {
