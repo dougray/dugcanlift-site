@@ -148,7 +148,6 @@
   <div id="cook-recipes">
     <div class="actions">
       <button class="wide" id="recipe-new">New recipe</button>
-      <button class="wide ghost" id="import-open">Import a recipe</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
     </div>
 
@@ -164,19 +163,6 @@
       <p class="muted" id="rp-note"></p>
       <button id="rp-go">Read it</button>
       <button class="ghost wide" id="rp-cancel">Cancel</button>
-    </div>
-
-    <div id="import-panel" class="card hidden">
-      <strong>Import a recipe</strong>
-      <p class="muted">Searches TheMealDB for the dish, then costs the ingredients
-        it can weigh against USDA. It carries no nutrition of its own, so check
-        what comes back.</p>
-      <div class="row">
-        <input type="text" id="import-query" inputmode="search" placeholder="Beef chilli, katsu curry…">
-        <button id="import-go">Search</button>
-      </div>
-      <div id="import-results"></div>
-      <button class="ghost wide" id="import-cancel">Cancel</button>
     </div>
 
     <div id="recipe-list"></div>
