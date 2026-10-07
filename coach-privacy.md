@@ -10,7 +10,7 @@ hide_title: true
 **LIFT Coach** — the web app at [dugcanlift.com/coach](/coach/), the Android
 app, and the iPhone app
 
-Last updated: 16 September 2026
+Last updated: 7 October 2026
 
 LIFT itself, the app your clients log in, has
 [its own privacy policy](/app/privacy/).
@@ -82,8 +82,6 @@ Only things you do:
 
 ### Web
 
-- **TheMealDB** (`www.themealdb.com`) — when you search it for a dish to import,
-  the name you typed is sent to TheMealDB.
 - **Open Food Facts, through our relay** — when you look up an ingredient for a
   recipe, the ingredient you typed is sent to
   `https://lift-proxy.dugcanlift.workers.dev`, a small Cloudflare Worker that
