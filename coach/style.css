@@ -28,6 +28,10 @@
  * dark as text (3.39:1 on bg, 3.12:1 on surface). --accent-text is the accent
  * wherever it is read: 5.09:1 on bg and 4.69:1 on surface in dark; in light
  * the accent already passes as text, so the two are the same value.
+ * --accent-2-text does the same for the sage: #7c8b7a stays the fill, bar,
+ * chart-line and outline colour, and #879585 is the sage wherever it is read
+ * (5.46:1 on bg, 5.03:1 on surface, 4.54:1 on #2c2a27); light sage #56664f
+ * already passes as text, so in light the two are the same value.
  * --control-border outlines a field or a ghost button at 3:1 or better
  * against bg and surface; --rule stays the divider it was. */
 :root {
@@ -37,6 +41,7 @@
   --muted: #a39c8e;
   --accent: #c1442c;
   --accent-2: #7c8b7a;
+  --accent-2-text: #879585;
   --rule: #3a3733;
   --on-accent: #f7f1e8;
   --accent-text: #e0674d;
@@ -56,6 +61,7 @@
   --muted: #665e52;
   --accent: #b23c25;
   --accent-2: #56664f;
+  --accent-2-text: #56664f;
   --rule: #dcd3c5;
   --on-accent: #fffaf3;
   --accent-text: #b23c25;
@@ -74,6 +80,7 @@
     --muted: #665e52;
     --accent: #b23c25;
     --accent-2: #56664f;
+    --accent-2-text: #56664f;
     --rule: #dcd3c5;
     --on-accent: #fffaf3;
     --accent-text: #b23c25;
@@ -554,7 +561,7 @@ ol.steps li { margin: 8px 0; }
 
 code { background: var(--bg); padding: 1px 5px; border-radius: 4px; font-size: 14px; }
 
-.delta.up { color: var(--accent-2); }
+.delta.up { color: var(--accent-2-text); }
 .delta.down { color: var(--accent-text); }
 
 .client-row .metrics b.under { color: var(--accent-text); }
