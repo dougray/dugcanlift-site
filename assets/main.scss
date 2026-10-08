@@ -1,6 +1,28 @@
 ---
 ---
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap');
+/* Source Sans 3 (variable 200-900), self-hosted; SIL OFL 1.1, see /assets/fonts/OFL.txt.
+   latin + latin-ext only, from Google Fonts v20. */
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/assets/fonts/source-sans-3-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/assets/fonts/source-sans-3-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// The web fonts are requested from <head> (_includes/head.html) with a
+// preconnect, not by an @import here: an @import is only found after this
+// whole stylesheet has downloaded, which put two extra round trips in front
+// of the first paint on every page.
 @import "minima";
 
 :root {
@@ -11,6 +33,29 @@
   --dcl-accent: #c1442c;
   --dcl-accent-2: #7c8b7a;
   --dcl-rule: #3a3733;
+  // The accent is a fill. As text on these backgrounds it measures 3.39:1 on
+  // bg and 3.12:1 on surface, under AA for anything but large type, so text
+  // that wants the accent uses --dcl-accent-text (5.09:1 / 4.69:1). Text on
+  // an accent fill is --dcl-on-accent (4.53:1; 5.72:1 on the hover fill).
+  --dcl-accent-text: #e0674d;
+  --dcl-accent-hover: #a8391f;
+  --dcl-on-accent: #f7f1e8;
+  // Field and toggle outlines, 3.38:1 on surface. --dcl-rule is a divider
+  // and too faint (1.45:1) to show where a control is.
+  --dcl-control-border: #7a7368;
+  --dcl-hairline: rgba(255, 255, 255, 0.08);
+  --dcl-highlight: #f0b429;
+  --dcl-code-string: #b8a97a;
+  // Native popups and scrollbars draw dark to match, not light on a dark page.
+  color-scheme: dark;
+}
+
+// One focus ring for everything that can take focus, in place of whatever
+// minima and the browser each drew -- and the only one the fields have, now
+// that they no longer clear their outline.
+:focus-visible {
+  outline: 2px solid var(--dcl-text);
+  outline-offset: 2px;
 }
 
 .wrapper {
@@ -44,7 +89,7 @@ body {
 }
 
 a { color: var(--dcl-accent-2); }
-a:hover { color: var(--dcl-accent); }
+a:hover { color: var(--dcl-accent-text); }
 
 .site-header, .site-footer {
   background: var(--dcl-surface);
@@ -60,11 +105,11 @@ a:hover { color: var(--dcl-accent); }
   transition: color 0.15s ease;
 }
 .site-title:hover {
-  color: #F0B429 !important;
+  color: var(--dcl-highlight) !important;
 }
 
 .site-nav .page-link { color: var(--dcl-muted) !important; }
-.site-nav .page-link:hover { color: var(--dcl-accent) !important; }
+.site-nav .page-link:hover { color: var(--dcl-accent-text) !important; }
 
 .hero {
   position: relative;
@@ -131,7 +176,9 @@ a:hover { color: var(--dcl-accent); }
   background: var(--dcl-surface);
   border-left: 6px solid var(--dcl-accent);
   padding: 0.6rem 1rem;
-  width: var(--w, 100%);
+  // Every bar the same length: they are a plate motif, not a chart, and
+  // lengths that differed read as quantities they never measured.
+  width: 100%;
   animation: plate-in 0.5s ease-out backwards;
 }
 .plate-row:nth-child(1) { animation-delay: 0.05s; }
@@ -187,7 +234,7 @@ a:hover { color: var(--dcl-accent); }
   color: var(--dcl-text) !important;
   text-decoration: none;
 }
-.post-link:hover .post-title { color: var(--dcl-accent); }
+.post-link:hover .post-title { color: var(--dcl-accent-text); }
 
 .post-date {
   font-family: "JetBrains Mono", monospace;
@@ -211,6 +258,32 @@ a:hover { color: var(--dcl-accent); }
   padding: 0.1rem 0 0.1rem 1rem;
   margin: 1.5rem 0;
 }
+.card--accent { border-left-color: var(--dcl-accent); }
+
+// Screenshot rows. These were the same inline style copied onto ten figures
+// and thirty-odd images; one change to how a screenshot sits now happens here.
+// The images carry their own width/height so the text does not jump as they
+// load; `height: auto` keeps that ratio once CSS sets the width.
+.shots {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.shots--tight { gap: 0.75rem; }
+.shot-figure { margin: 1.5rem 0; }
+.shots-caption { text-align: center; }
+
+.shot { height: auto; border-radius: 12px; }
+.shot--phone { width: 220px; max-width: 44%; }
+.shot--phone-sm { width: 200px; max-width: 30%; }
+.shot--watch { width: 180px; max-width: 30%; border-radius: 22px; }
+.shot--step { width: 150px; max-width: 22%; border-radius: 10px; }
+.shot--wide { width: 100%; border: 1px solid var(--dcl-hairline); }
+
+.btn-row { margin: 1.5rem 0; }
 
 // Code blocks — override minima's light syntax theme
 .highlight, pre, code {
@@ -241,7 +314,7 @@ pre code {
 
 // Keep some syntax color distinction, just muted for dark bg
 .highlight .nt, .highlight .k { color: var(--dcl-accent-2); }
-.highlight .s, .highlight .s1, .highlight .s2 { color: #b8a97a; }
+.highlight .s, .highlight .s1, .highlight .s2 { color: var(--dcl-code-string); }
 
 .site-footer {
   background: var(--dcl-surface);
@@ -261,7 +334,7 @@ pre code {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--dcl-accent);
+  color: var(--dcl-accent-text);
   margin: 0 0 0.5rem;
 }
 
@@ -279,11 +352,11 @@ pre code {
 .footer-links { list-style: none; margin: 0; padding: 0; }
 .footer-links li { margin-bottom: 0.4rem; }
 .footer-links a { color: var(--dcl-text); text-decoration: none; font-size: 0.9rem; }
-.footer-links a:hover { color: var(--dcl-accent); }
+.footer-links a:hover { color: var(--dcl-accent-text); }
 
 .social-icons { list-style: none; display: flex; gap: 0.9rem; margin: 0; padding: 0; }
 .social-icons a { color: var(--dcl-muted); display: inline-flex; }
-.social-icons a:hover { color: var(--dcl-accent); }
+.social-icons a:hover { color: var(--dcl-accent-text); }
 
 .footer-bottom {
   border-top: 1px solid var(--dcl-rule);
@@ -327,13 +400,35 @@ pre code {
   .site-footer { padding-top: 1.5rem; }
 }
 
-.site-nav label[for="nav-trigger"] {
-  background: var(--dcl-accent) !important;
-  border-radius: 4px;
-}
+// The phone menu. minima's version is a hidden checkbox and a <label>, which
+// a keyboard cannot reach and a screen reader cannot name. _includes/header.html
+// draws a real <button> instead; this is the layout minima gave the label.
+// Without JavaScript the button stays hidden and the links simply show.
+.site-nav .nav-toggle { display: none; }
 
-.site-nav .menu-icon svg path {
-  fill: var(--dcl-bg) !important;
+@media screen and (max-width: 600px) {
+  .nav-js .site-nav .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: var(--dcl-accent);
+    cursor: pointer;
+  }
+  // minima paints the open menu's box in its light-theme white.
+  .site-nav { background-color: var(--dcl-surface); border-color: var(--dcl-rule); }
+  .site-nav .nav-toggle svg { display: block; fill: var(--dcl-on-accent); }
+  .nav-js .site-nav .trigger { clear: both; display: none; }
+  .nav-js .site-nav .nav-toggle[aria-expanded="true"] ~ .trigger {
+    display: block;
+    padding-bottom: 5px;
+  }
+  .site-nav .page-link { padding: 10px; }
 }
 
 .site-nav .trigger {
@@ -386,7 +481,7 @@ input[type="number"], input[type="text"], input[type="email"], select, textarea 
   box-sizing: border-box;
   width: 100%;
   background: var(--dcl-surface);
-  border: 1px solid var(--dcl-rule);
+  border: 1px solid var(--dcl-control-border);
   color: var(--dcl-text);
   padding: 0.6rem 0.75rem;
   border-radius: 4px;
@@ -401,7 +496,6 @@ textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-  outline: none;
   border-color: var(--dcl-accent);
 }
 
@@ -409,6 +503,24 @@ input:focus, select:focus, textarea:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+// A group of radios is a fieldset, so a screen reader says "Sex, Male,
+// radio" rather than "Male, radio". The legend looks like the other labels.
+.calc-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.calc-fieldset legend {
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--dcl-muted);
+  margin-bottom: 0.4rem;
 }
 
 .calc-toggle { display: flex; gap: 0.5rem; }
@@ -426,7 +538,7 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
   padding: 0.5rem;
   background: var(--dcl-surface);
-  border: 1px solid var(--dcl-rule);
+  border: 1px solid var(--dcl-control-border);
   border-radius: 4px;
   cursor: pointer;
   font-family: "Source Sans 3", sans-serif;
@@ -439,13 +551,21 @@ input:focus, select:focus, textarea:focus {
 
 .calc-toggle input:checked + label {
   background: var(--dcl-accent);
-  color: var(--dcl-bg);
+  color: var(--dcl-on-accent);
   border-color: var(--dcl-accent);
+}
+
+// The radio itself is clipped out of sight, so its focus is drawn on the
+// label it belongs to; otherwise tabbing in, and arrowing between choices,
+// shows nothing at all.
+.calc-toggle input:focus-visible + label {
+  outline: 2px solid var(--dcl-text);
+  outline-offset: 2px;
 }
 
 .btn, .calc-submit {
   background: var(--dcl-accent);
-  color: var(--dcl-bg) !important;
+  color: var(--dcl-on-accent) !important;
   border: none;
   padding: 0.75rem 1.5rem;
   font-family: "Oswald", sans-serif;
@@ -457,7 +577,9 @@ input:focus, select:focus, textarea:focus {
   font-size: 1rem;
 }
 
-.calc-submit:hover { background: #a8391f; }
+.btn:hover, .calc-submit:hover { background: var(--dcl-accent-hover); }
+.calc-submit--block { width: 100%; margin-top: 1rem; }
+.form-note { margin-top: 0.75rem; }
 
 .calc-results {
   margin-top: 3rem;
@@ -499,7 +621,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .tool-card:hover .tool-title {
-  color: var(--dcl-accent);
+  color: var(--dcl-accent-text);
 }
 
 .tool-title {

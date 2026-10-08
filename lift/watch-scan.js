@@ -375,6 +375,29 @@
       }).catch((e) => say(e.message));
     }
 
+    // jsqr.js is 257 KB of unminified decoder that only a watch scan needs,
+    // so it is fetched the first time someone taps "Scan from watch" rather
+    // than parsed on every launch. sw.js still precaches it, so a scan works
+    // offline exactly as before.
+    let decoderLoad = null;
+    function loadDecoder() {
+      if (window.jsQR) return Promise.resolve();
+      if (!decoderLoad) {
+        decoderLoad = new Promise((resolve, reject) => {
+          const script = window.document.createElement('script');
+          script.src = 'jsqr.js';
+          script.onload = () => resolve();
+          script.onerror = () => {
+            decoderLoad = null;
+            script.remove();
+            reject(new Error('The QR reader did not load. Check your connection and try again.'));
+          };
+          window.document.head.appendChild(script);
+        });
+      }
+      return decoderLoad;
+    }
+
     open.onclick = async () => {
       // Belt and suspenders against a second tap orphaning the first
       // session's MediaStream: stop() releases any stream/loop already
@@ -399,6 +422,13 @@
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         say('This browser cannot use the camera. Safari on iOS or Chrome will work.');
+        open.disabled = false;
+        return;
+      }
+      try {
+        await loadDecoder();
+      } catch (e) {
+        say(e.message);
         open.disabled = false;
         return;
       }

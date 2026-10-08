@@ -42,20 +42,20 @@ hide_title: true
   <p class="calc-sub">That "unknown source" warning is just Android being cautious about anything outside the Play Store — normal for pre-release testing, and only needs approving once.</p>
   <p class="calc-sub">The download comes straight from the <a href="https://github.com/dougray/dugcanlift-lift/releases/latest">latest LIFT release on GitHub</a>, which also lists what changed and a <a href="https://github.com/dougray/dugcanlift-lift/releases/latest/download/SHA256SUMS">SHA-256 checksum</a> for the file.</p>
 
-  <figure style="display:flex;gap:0.75rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
-    <img src="{{ '/assets/images/install/01-download.png' | relative_url }}" alt="Chrome asking whether to download lift-android.apk from dugcanlift.com anyway" style="width:150px;max-width:22%;height:auto;border-radius:10px;">
-    <img src="{{ '/assets/images/install/02-permission.png' | relative_url }}" alt="Android saying the phone is not currently allowed to install unknown apps from this source, with a Settings button" style="width:150px;max-width:22%;height:auto;border-radius:10px;">
-    <img src="{{ '/assets/images/install/03-allow.png' | relative_url }}" alt="The Install unknown apps settings screen with the Allow from this source switch" style="width:150px;max-width:22%;height:auto;border-radius:10px;">
-    <img src="{{ '/assets/images/install/04-installed.png' | relative_url }}" alt="Android confirming the app installed, showing the LIFT icon and an Open button" style="width:150px;max-width:22%;height:auto;border-radius:10px;">
+  <figure class="shots shots--tight">
+    <img src="{{ '/assets/images/install/01-download.webp' | relative_url }}" alt="Chrome asking whether to download lift-android.apk from dugcanlift.com anyway" width="320" height="720" class="shot shot--step" decoding="async">
+    <img src="{{ '/assets/images/install/02-permission.webp' | relative_url }}" alt="Android saying the phone is not currently allowed to install unknown apps from this source, with a Settings button" width="320" height="720" class="shot shot--step" decoding="async">
+    <img src="{{ '/assets/images/install/03-allow.webp' | relative_url }}" alt="The Install unknown apps settings screen with the Allow from this source switch" width="320" height="720" class="shot shot--step" decoding="async">
+    <img src="{{ '/assets/images/install/04-installed.webp' | relative_url }}" alt="Android confirming the app installed, showing the LIFT icon and an Open button" width="320" height="720" class="shot shot--step" decoding="async">
   </figure>
-  <p class="calc-sub" style="text-align:center;">The four screens you&rsquo;ll actually see, in order. All four want a tap; only the middle two are a permission, and you grant that once.</p>
+  <p class="calc-sub shots-caption">The four screens you&rsquo;ll actually see, in order. All four want a tap; only the middle two are a permission, and you grant that once.</p>
 
   <h3>What you get</h3>
   <p class="calc-sub">The app once it&rsquo;s in: your day against your goal, the food log grouped by meal, and a session being logged set by set. LIFT 1.16, on a phone.</p>
-  <figure style="display:flex;gap:1rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
-    <img src="{{ '/assets/images/android/lift-home.png' | relative_url }}" alt="The LIFT Android home screen showing 556 kcal left of a 2,400 goal, bars for protein, fat, carbs and fibre, a steps row and the day's Push A session" style="width:200px;max-width:30%;height:auto;border-radius:12px;">
-    <img src="{{ '/assets/images/android/lift-food.png' | relative_url }}" alt="The LIFT Android food log for a day, with the day's calories and macros above it and the entries grouped under Breakfast, Lunch, Dinner and Snack, each with its weight, calories, macros and saturated fat, sugar and sodium" style="width:200px;max-width:30%;height:auto;border-radius:12px;">
-    <img src="{{ '/assets/images/android/lift-train.png' | relative_url }}" alt="A Push A session open in the LIFT Android Train tab, reading 7 sets and 4640 lb volume, with Bench Press (Barbell) and Incline Press (Dumbbell) and every set's weight, reps and RPE" style="width:200px;max-width:30%;height:auto;border-radius:12px;">
+  <figure class="shots">
+    <img src="{{ '/assets/images/android/lift-home.webp' | relative_url }}" alt="The LIFT Android home screen showing 556 kcal left of a 2,400 goal, bars for protein, fat, carbs and fibre, a steps row and the day's Push A session" width="440" height="978" class="shot shot--phone-sm" decoding="async" loading="lazy">
+    <img src="{{ '/assets/images/android/lift-food.webp' | relative_url }}" alt="The LIFT Android food log for a day, with the day's calories and macros above it and the entries grouped under Breakfast, Lunch, Dinner and Snack, each with its weight, calories, macros and saturated fat, sugar and sodium" width="440" height="978" class="shot shot--phone-sm" decoding="async" loading="lazy">
+    <img src="{{ '/assets/images/android/lift-train.webp' | relative_url }}" alt="A Push A session open in the LIFT Android Train tab, reading 7 sets and 4640 lb volume, with Bench Press (Barbell) and Incline Press (Dumbbell) and every set's weight, reps and RPE" width="440" height="978" class="shot shot--phone-sm" decoding="async" loading="lazy">
   </figure>
 
   <h2>On a Wear OS watch</h2>
@@ -117,7 +117,7 @@ hide_title: true
     </table>
   </div>
 
-  <div class="card" style="border-left:3px solid var(--dcl-accent);">
+  <div class="card card--accent">
     <p class="calc-sub"><strong>Already have LIFT on Android?</strong>
       If you're on 1.1 or anything since, this one installs straight over the top
       &mdash; same signing key, so nothing to uninstall and your log stays where it
@@ -149,6 +149,6 @@ hide_title: true
 
   <h2>Make your voice heard</h2>
   <p class="calc-sub">This is the whole point of testing early — your feedback actually shapes what gets built next. Something confusing, broken, missing, or just annoying? I want to hear about it, even the small stuff.</p>
-  <p style="margin:1.5rem 0;"><a class="btn" href="{{ '/feedback/' | relative_url }}">Report a bug or request a feature</a></p>
+  <p class="btn-row"><a class="btn" href="{{ '/feedback/' | relative_url }}">Report a bug or request a feature</a></p>
   <p class="calc-sub">That form writes the email for you and sends nothing itself &mdash; you read it before it goes. Or mail <a href="mailto:{{ site.email }}">{{ site.email }}</a> directly, or send a DM on <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener">Instagram</a> and tell me what happened.</p>
 </div>

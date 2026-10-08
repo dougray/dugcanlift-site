@@ -50,13 +50,13 @@ hide_title: true
   </ol>
   <p class="calc-sub">A Coach icon shows up alongside your other apps. It's the fire cross with <strong>COACH</strong> across it — LIFT's says <strong>LIFT</strong>, so you can tell them apart if you run both.</p>
 
-  <figure style="display:flex;gap:1rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
-    <img src="{{ '/assets/images/coach/coach-roster.png' | relative_url }}" alt="The Coach roster, showing a client with their sessions, sets, weekly volume and how often they hit their protein goal" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
-    <img src="{{ '/assets/images/coach/coach-client.png' | relative_url }}" alt="A client's page in Coach, with their goal, this week's totals, and a week-by-week table of sessions, sets, volume and calories" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+  <figure class="shots">
+    <img src="{{ '/assets/images/coach/coach-roster.webp' | relative_url }}" alt="The Coach roster, showing a client with their sessions, sets, weekly volume and how often they hit their protein goal" width="440" height="841" class="shot shot--phone" decoding="async">
+    <img src="{{ '/assets/images/coach/coach-client.webp' | relative_url }}" alt="A client's page in Coach, with their goal, this week's totals, and a week-by-week table of sessions, sets, volume and calories" width="440" height="841" class="shot shot--phone" decoding="async">
   </figure>
   <p class="calc-sub">Those two are a phone. Coach is mostly a laptop tool though &mdash; the week-by-week table is the reason:</p>
-  <figure style="margin:1.5rem 0;">
-    <img src="{{ '/assets/images/web/coach-client.png' | relative_url }}" alt="Coach open in a desktop browser: the roster down the left, a client's profile and this week's totals, a week-by-week table of sessions, sets, volume, calories, protein and steps for eight weeks, and training-volume and fuel-against-goal charts below it" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+  <figure class="shot-figure">
+    <img src="{{ '/assets/images/web/coach-client.webp' | relative_url }}" alt="Coach open in a desktop browser: the roster down the left, a client's profile and this week's totals, a week-by-week table of sessions, sets, volume, calories, protein and steps for eight weeks, and training-volume and fuel-against-goal charts below it" width="800" height="544" class="shot shot--wide" decoding="async" loading="lazy">
   </figure>
   <p class="calc-sub">Eight weeks of a client on one screen, which is the view a phone can&rsquo;t really give you.</p>
 
@@ -283,6 +283,6 @@ hide_title: true
 
   <h2>Tell me what's missing</h2>
   <p class="calc-sub">This is the first version anyone but me has used, and it was built by someone who trains, not someone who coaches for a living. If something's in the wrong place, missing, or would only take one more column to be genuinely useful, I want to hear it.</p>
-  <p style="margin:1.5rem 0;"><a class="btn" href="{{ '/feedback/' | relative_url }}">Report a bug or request a feature</a></p>
+  <p class="btn-row"><a class="btn" href="{{ '/feedback/' | relative_url }}">Report a bug or request a feature</a></p>
   <p class="calc-sub">It writes the email for you and sends nothing itself. Or mail <a href="mailto:{{ site.email }}">{{ site.email }}</a> directly, or send a DM on <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener">Instagram</a>.</p>
 </div>

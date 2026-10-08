@@ -96,3 +96,10 @@ exclude:
   - lift/road-food.test.mjs
   - lift/fixtures/
   - lift/README.md
+  # Coach's copies of the same kind of thing. coach/ is rsynced in whole from
+  # the dugcanlift-coach repo by its deploy.sh, so they are left out here
+  # rather than there -- the two folders stay byte-identical.
+  - coach/parser-test.html
+  - coach/recipe-import-test.html
+  - coach/fixtures/
+  - coach/*.test.mjs

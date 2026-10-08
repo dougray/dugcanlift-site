@@ -11,15 +11,15 @@ hide_title: true
   <p class="calc-sub">Estimate your daily calories and macros based on your stats and goal. Uses the Mifflin-St Jeor formula — a solid, widely-used starting point. Track for a couple weeks and adjust based on how your actual weight responds.</p>
 
   <form id="macro-form" class="calc-form">
-    <div class="calc-row">
-      <label>Sex</label>
+    <fieldset class="calc-row calc-fieldset">
+      <legend>Sex</legend>
       <div class="calc-toggle">
         <input type="radio" name="sex" id="sex-male" value="male" checked>
         <label for="sex-male">Male</label>
         <input type="radio" name="sex" id="sex-female" value="female">
         <label for="sex-female">Female</label>
       </div>
-    </div>
+    </fieldset>
 
     <div class="calc-row">
       <label for="age">Age</label>
@@ -85,7 +85,7 @@ hide_title: true
   </form>
 
   <div id="calc-results" class="calc-results" hidden>
-    <h2 class="section-label">Your Numbers</h2>
+    <h2 class="section-label" id="calc-results-heading" tabindex="-1">Your Numbers</h2>
     <hr class="chalk-rule">
 
     <div class="plate-stats calc-plate-stats">
@@ -164,7 +164,12 @@ hide_title: true
     document.getElementById('result-fiber').textContent = fiberG + ' g';
 
     results.hidden = false;
-    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Focus lands on the heading so a keyboard or screen reader is taken to
+    // the numbers that just appeared; the scroll is instant for anyone who
+    // has asked for less motion.
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    results.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+    document.getElementById('calc-results-heading').focus({ preventScroll: true });
   });
 })();
 </script>
