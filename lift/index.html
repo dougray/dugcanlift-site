@@ -13,6 +13,7 @@
 <title>LIFT</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -422,9 +423,9 @@
 
 <!-- Recording a run, walk or hike. Full screen, because the screen has to stay
      on and in front for the browser to keep reading GPS. -->
-<div id="recording" class="overlay hidden" role="dialog" aria-labelledby="rec-title">
+<div id="recording" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rec-title">
   <p class="muted">Recording</p>
-  <div class="big" id="rec-title"></div>
+  <div class="big" id="rec-title" tabindex="-1"></div>
   <canvas id="rec-canvas" class="route"></canvas>
   <div class="stats">
     <div><div class="muted small">Time</div><div class="stat" id="rec-time">0:00</div></div>
@@ -439,9 +440,9 @@
 </div>
 
 <!-- One finished activity. -->
-<div id="review" class="overlay hidden" role="dialog" aria-labelledby="review-title">
+<div id="review" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="review-title">
   <button class="ghost" id="review-close">Done</button>
-  <div class="big" id="review-title"></div>
+  <div class="big" id="review-title" tabindex="-1"></div>
   <p class="muted" id="review-date"></p>
   <canvas id="review-canvas" class="route"></canvas>
   <div id="review-stats"></div>
@@ -457,7 +458,6 @@
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
 <script src="road-food.js"></script>
-<script src="jsqr.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
 </body>

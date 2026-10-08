@@ -4,12 +4,14 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v31';
+const CACHE = 'coach-v32';
 
 const SHELL = [
   '/coach/',
   '/coach/index.html',
   '/coach/style.css',
+  '/coach/fonts/source-sans-3-latin.woff2',
+  '/coach/fonts/source-sans-3-latin-ext.woff2',
   '/coach/parser.js',
   '/coach/recipe-import.js',
   '/coach/appearance.js',

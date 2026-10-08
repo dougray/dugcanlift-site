@@ -365,11 +365,38 @@ const el = (tag, cls, text) => {
   return n;
 };
 
-function chips(container, items, isOn, onPick) {
+/* A chip is a button whose selected state is drawn in colour. Colour is not
+ * a state to a screen reader, so it says so with `aria-pressed` -- the fix
+ * Coach's chipRow already has. A row of actions rather than choices (recent
+ * foods) passes { toggle: false } and is plain buttons.
+ *
+ * The row is named by the label or heading drawn just above it, as a group,
+ * so "Female, toggle button, pressed" is heard as part of "Sex". Picking a
+ * chip usually re-renders the row, which drops keyboard focus onto the page;
+ * it goes back to the chip that is now on. */
+let chipGroupSeq = 0;
+
+function chips(container, items, isOn, onPick, { toggle = true } = {}) {
   container.innerHTML = '';
+  const title = container.previousElementSibling;
+  if (title && /^(LABEL|H2|H3)$/.test(title.tagName) && !title.htmlFor) {
+    if (!title.id) title.id = `chips-title-${++chipGroupSeq}`;
+    container.setAttribute('role', 'group');
+    container.setAttribute('aria-labelledby', title.id);
+  }
   items.forEach((item) => {
-    const b = el('button', 'chip' + (isOn(item) ? ' on' : ''), item.label);
-    b.onclick = () => onPick(item);
+    const on = isOn(item);
+    const b = el('button', 'chip' + (on ? ' on' : ''), item.label);
+    b.type = 'button';
+    if (toggle) b.setAttribute('aria-pressed', String(on));
+    b.onclick = () => {
+      onPick(item);
+      if (!toggle || (document.activeElement && document.activeElement !== document.body)) return;
+      const box = container.isConnected ? container
+        : (container.id && document.getElementById(container.id));
+      const now = box && box.querySelector('[aria-pressed="true"]');
+      if (now) now.focus({ preventScroll: true });
+    };
     container.appendChild(b);
   });
 }
@@ -388,7 +415,7 @@ function bar(parent, name, eaten, target, unit = 'g') {
   top.appendChild(el('span', null, name));
   const over = target > 0 && eaten > target;
   const val = el('span', null, `${eaten} / ${target} ${unit}`);
-  if (over) val.style.color = 'var(--accent)';
+  if (over) val.style.color = 'var(--accent-text)';
   top.appendChild(val);
   wrap.appendChild(top);
   const track = el('div', 'bar-track');
@@ -954,7 +981,7 @@ function renderFood() {
       food.push({ ...item.e, id: uid(), date: foodDate, loggedAt: Date.now(), meal: guessMeal() });
       save(KEY.food, food);
       render();
-    });
+    }, { toggle: false });
 
   const out = $('#food-list');
   out.innerHTML = '';
@@ -2885,9 +2912,49 @@ function startRecording(type) {
   showRecording();
 }
 
+/* The recording and review screens cover the app. Marked aria-modal and with
+ * the page behind them made inert, a keyboard or screen reader can no longer
+ * wander off behind a run that is being recorded; focus goes to the screen's
+ * title on the way in and back to whatever opened it on the way out. Escape
+ * closes the review. It does not end a recording: that is Finish or Discard,
+ * on purpose. */
+const modalOpener = new Map();
+
+function setPageInert(on) {
+  ['header', '#tabs', 'main'].forEach((sel) => {
+    const node = $(sel);
+    if (node) node.inert = on;
+  });
+}
+
+function openModal(dialog, title) {
+  if (dialog.classList.contains('hidden')) {
+    const from = document.activeElement;
+    modalOpener.set(dialog, from && from !== document.body ? from : null);
+  }
+  dialog.classList.remove('hidden');
+  setPageInert(true);
+  title.focus({ preventScroll: true });
+}
+
+function closeModal(dialog) {
+  dialog.classList.add('hidden');
+  if (!document.querySelector('.overlay:not(.hidden)')) setPageInert(false);
+  const back = modalOpener.get(dialog);
+  modalOpener.delete(dialog);
+  if (back && back.isConnected && back.offsetParent !== null) back.focus({ preventScroll: true });
+}
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.key === 'Escape' && !$('#review').classList.contains('hidden')) {
+    ev.preventDefault();
+    $('#review-close').click();
+  }
+});
+
 function showRecording() {
-  $('#recording').classList.remove('hidden');
   $('#rec-title').textContent = outdoorLabel(recording.activityType);
+  openModal($('#recording'), $('#rec-title'));
   $('#rec-finish').textContent = `Finish ${outdoorLabel(recording.activityType).toLowerCase()}`;
   gpsProblem = '';
   lastFixAt = 0;
@@ -2950,7 +3017,7 @@ function stopWatching() {
   recordTimer = null;
   if (wakeLock) wakeLock.release().catch(() => {});
   wakeLock = null;
-  $('#recording').classList.add('hidden');
+  closeModal($('#recording'));
 }
 
 $('#rec-finish').onclick = () => {
@@ -2993,8 +3060,8 @@ function openReview(id) {
   if (!a) return;
   reviewingId = id;
   const unit = distanceUnit();
-  $('#review').classList.remove('hidden');
   $('#review-title').textContent = outdoorLabel(a.activityType);
+  openModal($('#review'), $('#review-title'));
   $('#review-date').textContent = new Date(a.startedAtEpochMs).toLocaleString(undefined,
     { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
   const stats = $('#review-stats');
@@ -3011,14 +3078,14 @@ function openReview(id) {
   drawRoute($('#review-canvas'), a.route, 1);
 }
 
-$('#review-close').onclick = () => { reviewingId = null; $('#review').classList.add('hidden'); };
+$('#review-close').onclick = () => { reviewingId = null; closeModal($('#review')); };
 $('#review-delete').onclick = () => {
   const a = outdoor.find((x) => x.id === reviewingId);
   if (!a || !confirm(`Delete this ${outdoorLabel(a.activityType).toLowerCase()}? It can't be undone.`)) return;
   outdoor = outdoor.filter((x) => x.id !== reviewingId);
   save(KEY.outdoor, outdoor);
   reviewingId = null;
-  $('#review').classList.add('hidden');
+  closeModal($('#review'));
   render();
 };
 
@@ -3271,7 +3338,7 @@ function updateLinkSize() {
       const kb = link.length / 1024;
       note.textContent = `About ${kb.toFixed(1)} KB of email.`
         + (kb > 16 ? ' That is long enough that some mail apps will break it — send a shorter window.' : '');
-      note.style.color = kb > 16 ? 'var(--accent)' : '';
+      note.style.color = kb > 16 ? 'var(--accent-text)' : '';
     } catch (e) {
       note.textContent = '';
     }
@@ -3737,7 +3804,12 @@ function renderRecipes() {
   }
 
   [...recipes].sort((a, b) => a.name.localeCompare(b.name)).forEach((r) => {
-    const card = el('div', 'card');
+    // A real button, drawn as the card it is (button.linkcard, as the Last
+    // route card): a clickable div left keyboard and switch users with no way
+    // to open, edit or delete a recipe. The muted lines are divs, not <p>s,
+    // because a button holds phrasing content only.
+    const card = el('button', 'card linkcard recipecard');
+    card.type = 'button';
     const head = el('div', 'statline');
     head.appendChild(el('strong', null, r.name));
     head.appendChild(el('span', 'muted', servingsLabel(r.servings)));
@@ -3746,12 +3818,12 @@ function renderRecipes() {
     // Deliberately not "0 kcal". An unknown that renders as zero becomes a
     // zero-calorie dinner in someone's day total.
     const n = r.nutritionPerServing;
-    card.appendChild(el('p', 'muted', n
+    card.appendChild(el('div', 'muted', n
       ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
       : 'Macros not set'));
 
     if ((r.ingredients || []).length) {
-      card.appendChild(el('p', 'muted',
+      card.appendChild(el('div', 'muted',
         `${r.ingredients.length} ingredient${r.ingredients.length === 1 ? '' : 's'}`));
     }
 
@@ -4056,27 +4128,45 @@ function renderShopping() {
     return;
   }
 
+  // Each line is a checkbox in a label, the way Coach's road picks are: the
+  // whole card still ticks on a tap, a keyboard reaches it, and a screen
+  // reader hears ticked or not -- which a strike-through alone never said.
   lines.forEach((line) => {
     const ticked = shoppingTicks.includes(line.key);
-    const card = el('div', 'card');
+    const card = el('label', 'card shopitem');
+    const box = el('input');
+    box.type = 'checkbox';
+    box.checked = ticked;
+    card.appendChild(box);
+
+    const text = el('div', 'shoptext');
     const label = el('div', null, line.displayName);
     if (ticked) label.style.textDecoration = 'line-through';
-    card.appendChild(label);
+    text.appendChild(label);
 
     if (Object.keys(line.amounts).length) {
-      card.appendChild(el('p', 'muted', amountsLabel(line.amounts)));
+      text.appendChild(el('div', 'muted', amountsLabel(line.amounts)));
     }
     // Ingredients that never parsed, verbatim, so nothing silently drops off
     // the list you shop from.
-    line.unparsed.forEach((raw) => card.appendChild(el('p', 'muted', raw)));
+    line.unparsed.forEach((raw) => text.appendChild(el('div', 'muted', raw)));
+    card.appendChild(text);
 
-    card.onclick = () => {
-      shoppingTicks = ticked
-        ? shoppingTicks.filter((k) => k !== line.key)
-        : [...shoppingTicks, line.key];
+    box.onchange = () => {
+      shoppingTicks = box.checked
+        ? [...shoppingTicks, line.key]
+        : shoppingTicks.filter((k) => k !== line.key);
       save(KEY.shopping, shoppingTicks);
+      const hadFocus = document.activeElement === box;
       render();
+      // The list is redrawn; keep a keyboard user on the line they ticked.
+      if (hadFocus) {
+        const again = [...$('#cook-shopping').querySelectorAll('.shopitem')]
+          .find((n) => n.dataset.key === line.key);
+        if (again) again.querySelector('input').focus({ preventScroll: true });
+      }
     };
+    card.dataset.key = line.key;
     wrap.appendChild(card);
   });
 

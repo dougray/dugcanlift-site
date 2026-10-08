@@ -10,20 +10,20 @@ hide_title: true
   <h1 class="calc-title">Tell Me What's Wrong</h1>
   <p class="calc-sub">Something broken, something confusing, something missing. This fills in an email and hands it to your mail app — nothing is sent from this page, and nothing about what you type touches a server. You see the message before it goes, and you press send.</p>
 
-  <div class="card" style="border-left:3px solid var(--dcl-accent);">
+  <div class="card card--accent">
     <p class="calc-sub"><strong>One thing first.</strong> Don't paste a <strong>Send to Coach</strong> link or a Coach backup file into this form. Your whole log travels inside that link — everything you've eaten and lifted. Describe what happened instead. If the link itself is the problem, say so and we'll find a safer way to look at it.</p>
   </div>
 
   <form id="fb-form" onsubmit="return false;">
-    <div class="calc-row">
-      <label>What kind of thing?</label>
+    <fieldset class="calc-row calc-fieldset">
+      <legend>What kind of thing?</legend>
       <div class="calc-toggle">
         <input type="radio" name="fb-kind" id="fb-bug" value="bug" checked>
         <label for="fb-bug">Something's broken</label>
         <input type="radio" name="fb-kind" id="fb-idea" value="idea">
         <label for="fb-idea">I want a feature</label>
       </div>
-    </div>
+    </fieldset>
 
     <div class="calc-row">
       <label for="fb-area">Which part?</label>
@@ -55,8 +55,8 @@ hide_title: true
       <input type="text" id="fb-device" placeholder="Pixel 8, Chrome on Windows, iPhone 14 — whatever you've got">
     </div>
 
-    <button class="calc-submit" id="fb-send" type="button" style="width:100%;margin-top:1rem;">Open this in my email</button>
-    <p class="calc-sub" id="fb-note" style="margin-top:0.75rem;"></p>
+    <button class="calc-submit calc-submit--block" id="fb-send" type="button">Open this in my email</button>
+    <p class="calc-sub form-note" id="fb-note" role="status"></p>
   </form>
 
   <h2>If nothing opens</h2>
@@ -129,9 +129,16 @@ hide_title: true
 
   document.getElementById('fb-send').onclick = function () {
     if (!what.value.trim()) {
+      // Said through the status line and tied to the box, so a screen reader
+      // hears why nothing opened and which field wants filling.
       note.textContent = 'Write something in the first box and it will fill the email in for you.';
+      what.setAttribute('aria-invalid', 'true');
+      what.setAttribute('aria-describedby', 'fb-note');
+      what.focus();
       return;
     }
+    what.removeAttribute('aria-invalid');
+    what.removeAttribute('aria-describedby');
     var url = 'mailto:' + ADDRESS
       + '?subject=' + encodeURIComponent(subject())
       + '&body=' + encodeURIComponent(body());

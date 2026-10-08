@@ -1,0 +1,24 @@
+{%- comment -%}
+minima's head.html, plus the web fonts. They were an @import at the top of
+assets/main.scss, which a browser only discovers after main.css has finished
+downloading; requested here with a preconnect, the font CSS and files start
+alongside the stylesheet. Weights are the ones the stylesheet uses: Oswald 600
+is drawn with 700, and nothing sets JetBrains Mono bold, so Oswald 500 and
+Mono 600 are no longer fetched.
+{%- endcomment -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  {%- seo -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=JetBrains+Mono:wght@400&display=swap">
+  <link rel="preload" href="{{ "/assets/fonts/source-sans-3-latin.woff2" | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+</head>

@@ -390,7 +390,7 @@ function table(parent, headers, rows) {
 
 const CHART = {
   calories: 'var(--accent)', protein: 'var(--accent-2)', goal: 'var(--muted)',
-  volume: 'var(--accent)', sets: '#5b8db8', weight: 'var(--accent)', e1rm: '#5b8db8',
+  volume: 'var(--accent)', sets: 'var(--chart-3)', weight: 'var(--accent)', e1rm: 'var(--chart-3)',
 };
 
 function drawChart(canvas, series, labels) {
@@ -501,8 +501,13 @@ function showTab(name) {
   document.body.dataset.tab = name;
   document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
   $('#' + name).classList.add('active');
-  document.querySelectorAll('#tabs button').forEach((b) =>
-    b.classList.toggle('active', b.dataset.tab === name));
+  // The underline is colour; aria-current is the same fact for a screen reader.
+  document.querySelectorAll('#tabs button').forEach((b) => {
+    const on = b.dataset.tab === name;
+    b.classList.toggle('active', on);
+    if (on) b.setAttribute('aria-current', 'page');
+    else b.removeAttribute('aria-current');
+  });
   window.scrollTo(0, 0);
   render();
 }
@@ -945,10 +950,14 @@ function renderLifts(client, unit) {
   }
   if (!lifts.some((l) => l.id === openLiftId)) openLiftId = lifts[0].id;
 
-  lifts.slice(0, 24).forEach((lift) => {
-    const chip = el('button', 'chip' + (lift.id === openLiftId ? ' on' : ''), lift.label);
-    chip.onclick = () => { openLiftId = lift.id; renderLifts(client, unit); };
-    chips.appendChild(chip);
+  // Through chipRow like every other chip row, so the chosen lift is said and
+  // not only drawn; the re-render would drop focus to the page, so it goes
+  // back to the chip that is now on.
+  chipRow(chips, lifts.slice(0, 24), (l) => l.id === openLiftId, (l) => {
+    openLiftId = l.id;
+    renderLifts(client, unit);
+    const on = $('#lift-chips [aria-pressed="true"]');
+    if (on) on.focus({ preventScroll: true });
   });
 
   const lift = lifts.find((l) => l.id === openLiftId);
@@ -2144,6 +2153,28 @@ async function encodeLibrary(clientId, { recipeIds = [], workoutIds = [] }) {
   return `${LIFT_URL}#1${body}`;
 }
 
+/* The send panel and the two pickers open inside the page, below or away from
+ * the button that opened them. Focus goes to the panel's title so a keyboard
+ * or screen reader lands where the page just changed, and back to that button
+ * on Cancel. After a pick the button has usually been redrawn, so there is
+ * nothing to return to and focus stays where the page puts it. */
+const panelOpener = new Map();
+
+function openPanel(panel, title) {
+  const from = document.activeElement;
+  if (!panelOpener.has(panel)) panelOpener.set(panel, from && from !== document.body ? from : null);
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ block: 'nearest' });
+  title.focus({ preventScroll: true });
+}
+
+function closePanel(panel) {
+  panel.classList.add('hidden');
+  const back = panelOpener.get(panel);
+  panelOpener.delete(panel);
+  if (back && back.isConnected && back.offsetParent !== null) back.focus({ preventScroll: true });
+}
+
 /* One panel for "send just this", used by both recipes and workouts. A coach
  * with several clients has to say who it is for; a plan is addressed. */
 function openSendPanel(title, describe, build) {
@@ -2196,11 +2227,10 @@ function openSendPanel(title, describe, build) {
     location.href = `mailto:?subject=${subject}&body=${body}`;
   };
 
-  panel.classList.remove('hidden');
-  panel.scrollIntoView({ block: 'nearest' });
+  openPanel(panel, $('#send-one-title'));
 }
 
-$('#send-one-cancel').onclick = () => $('#send-one').classList.add('hidden');
+$('#send-one-cancel').onclick = () => closePanel($('#send-one'));
 
 /* ---------------- COOK views ---------------- */
 
@@ -2326,6 +2356,17 @@ function renderCookRecipes() {
       card.appendChild(cookEl('p', 'muted',
         `${r.ingredients.length} ingredient${r.ingredients.length === 1 ? '' : 's'}`));
     }
+
+    // A click anywhere on the card still opens it; Edit is the same thing as
+    // a real button, so a keyboard or switch can reach the form (and Delete,
+    // which lives in it). The same pair the workout cards carry.
+    const edit = cookEl('button', 'chip', 'Edit');
+    edit.setAttribute('aria-label', `Edit ${r.name}`);
+    edit.onclick = (event) => {
+      event.stopPropagation();
+      openRecipeForm(r.id);
+    };
+    card.appendChild(edit);
 
     const send = cookEl('button', 'chip', 'Send');
     send.onclick = (event) => {
@@ -2559,8 +2600,7 @@ function addPlannedMeal(day, meal) {
   $('#picker-title').textContent =
     `${dayLabel(day)} · ${meal.charAt(0) + meal.slice(1).toLowerCase()}`;
   $('#picker-servings').value = '1';
-  panel.classList.remove('hidden');
-  panel.scrollIntoView({ block: 'nearest' });
+  openPanel(panel, $('#picker-title'));
 
   const draw = () => {
     const servings = parseFloat($('#picker-servings').value) || 1;
@@ -2584,6 +2624,7 @@ function addPlannedMeal(day, meal) {
         });
         save(COOK_KEY.plans, plans);
         panel.classList.add('hidden');
+        panelOpener.delete(panel);
         renderCook();
       };
       list.appendChild(row);
@@ -2594,7 +2635,7 @@ function addPlannedMeal(day, meal) {
   draw();
 }
 
-$('#picker-cancel').onclick = () => $('#picker').classList.add('hidden');
+$('#picker-cancel').onclick = () => closePanel($('#picker'));
 
 /* Mail clients wrap and corrupt very long links. The same 16k ceiling the
  * outbound log format works to applies here. */
@@ -3144,9 +3185,12 @@ function renderWorkoutEditor(focusAfter) {
       const row = cookEl('tr');
       row.appendChild(cookEl('td', null, String(setIndex + 1)));
 
-      [['weightLb', 'any'], ['reps', '1'], ['rpe', '0.5']].forEach(([field, step]) => {
+      [['weightLb', 'any', 'weight (lb)'], ['reps', '1', 'reps'], ['rpe', '0.5', 'RPE']]
+        .forEach(([field, step, name]) => {
         const cell = cookEl('td');
         const input = document.createElement('input');
+        // The column header is not a field's name to a screen reader.
+        input.setAttribute('aria-label', `Set ${setIndex + 1} ${name}`);
         input.type = 'number';
         input.inputMode = 'decimal';
         input.step = step;
@@ -3397,8 +3441,7 @@ function renderTrainPlan() {
 function addScheduledSession(day) {
   const panel = $('#session-picker');
   $('#session-picker-title').textContent = dayLabel(day);
-  panel.classList.remove('hidden');
-  panel.scrollIntoView({ block: 'nearest' });
+  openPanel(panel, $('#session-picker-title'));
 
   const list = $('#session-picker-list');
   list.innerHTML = '';
@@ -3417,6 +3460,7 @@ function addScheduledSession(day) {
       });
       save(TRAIN_KEY.sessions, sessions);
       panel.classList.add('hidden');
+      panelOpener.delete(panel);
       renderTrain();
     };
     list.appendChild(row);
@@ -3444,7 +3488,7 @@ $('#w-cancel').onclick = closeWorkoutForm;
 $('#w-add-exercise').onclick = openExercisePicker;
 $('#ex-cancel').onclick = () => $('#exercise-picker').classList.add('hidden');
 $('#ex-query').oninput = renderExercisePicker;
-$('#session-picker-cancel').onclick = () => $('#session-picker').classList.add('hidden');
+$('#session-picker-cancel').onclick = () => closePanel($('#session-picker'));
 
 $('#w-save').onclick = () => {
   if (!workoutDraft) return;

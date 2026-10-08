@@ -150,15 +150,15 @@ hide_title: true
 
   <h2>What it looks like</h2>
 
-  <figure style="display:flex;gap:1rem;justify-content:center;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
-    <img src="{{ '/assets/images/cook/cook-recipes.png' | relative_url }}" alt="The COOK recipe list, showing saved recipes with calories and macros per serving" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
-    <img src="{{ '/assets/images/cook/cook-plan.png' | relative_url }}" alt="The COOK meal plan, with recipes placed on breakfast, lunch and dinner across the week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
-    <img src="{{ '/assets/images/cook/cook-shopping.png' | relative_url }}" alt="The COOK shopping list, with ingredients totalled across the planned week" style="width:220px;max-width:44%;height:auto;border-radius:12px;">
+  <figure class="shots">
+    <img src="{{ '/assets/images/cook/cook-recipes.webp' | relative_url }}" alt="The COOK recipe list, showing saved recipes with calories and macros per serving" width="440" height="957" class="shot shot--phone" decoding="async">
+    <img src="{{ '/assets/images/cook/cook-plan.webp' | relative_url }}" alt="The COOK meal plan, with recipes placed on breakfast, lunch and dinner across the week" width="440" height="957" class="shot shot--phone" decoding="async">
+    <img src="{{ '/assets/images/cook/cook-shopping.webp' | relative_url }}" alt="The COOK shopping list, with ingredients totalled across the planned week" width="440" height="957" class="shot shot--phone" decoding="async">
   </figure>
-  <p class="calc-sub" style="text-align:center;">iPhone. Android and the web version are the same three screens, and they agree on every number — the same plan gives the same calories and the same shopping list on all four.</p>
+  <p class="calc-sub shots-caption">iPhone. Android and the web version are the same three screens, and they agree on every number — the same plan gives the same calories and the same shopping list on all four.</p>
 
-  <figure style="margin:1.5rem 0;">
-    <img src="{{ '/assets/images/web/lift-shopping.png' | relative_url }}" alt="The COOK shopping list in a desktop browser, with each ingredient totalled across the planned week and scaled to the servings planned" style="width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+  <figure class="shot-figure">
+    <img src="{{ '/assets/images/web/lift-shopping.webp' | relative_url }}" alt="The COOK shopping list in a desktop browser, with each ingredient totalled across the planned week and scaled to the servings planned" width="1600" height="1025" class="shot shot--wide" decoding="async" loading="lazy">
   </figure>
   <p class="calc-sub">The same shopping list in a browser. The fractional amounts are the scaling doing its job &mdash; 787.5 g of chicken thigh because the week asks for three and a half servings of a four-serving recipe, not a round 900.</p>
 

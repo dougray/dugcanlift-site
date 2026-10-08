@@ -1,8 +1,35 @@
+/* Source Sans 3 (variable 200-900), self-hosted; SIL OFL 1.1, see fonts/OFL.txt.
+   latin + latin-ext only, from Google Fonts v20. */
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("fonts/source-sans-3-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("fonts/source-sans-3-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Dark is the base palette. Light applies when chosen, or when the device is
  * in light mode and no choice has been made (appearance.js sets data-theme).
  * The two light blocks are the same values; CSS cannot share a block between a
  * selector and a media query. Values mirror LiftCore.Theme on iOS, the
- * canonical source -- every text pairing passes WCAG AA. */
+ * canonical source -- every text pairing passes WCAG AA.
+ *
+ * The accent has two jobs and dark mode can only do one of them with one
+ * value: #c1442c is right as a fill (on-accent text on it is 4.53:1) and too
+ * dark as text (3.39:1 on bg, 3.12:1 on surface). --accent-text is the accent
+ * wherever it is read: 5.09:1 on bg and 4.69:1 on surface in dark; in light
+ * the accent already passes as text, so the two are the same value.
+ * --control-border outlines a field or a ghost button at 3:1 or better
+ * against bg and surface; --rule stays the divider it was. */
 :root {
   --bg: #1c1b19;
   --surface: #242220;
@@ -12,6 +39,8 @@
   --accent-2: #7c8b7a;
   --rule: #3a3733;
   --on-accent: #f7f1e8;
+  --accent-text: #e0674d;
+  --control-border: #7a7368;
   /* A light card needs a hairline a dark one never had: parchment and
      near-white are too close in brightness to separate on their own. */
   --card-border: transparent;
@@ -27,6 +56,8 @@
   --accent-2: #56664f;
   --rule: #dcd3c5;
   --on-accent: #fffaf3;
+  --accent-text: #b23c25;
+  --control-border: #8c8172;
   --card-border: #dcd3c5;
   color-scheme: light;
 }
@@ -41,6 +72,8 @@
     --accent-2: #56664f;
     --rule: #dcd3c5;
     --on-accent: #fffaf3;
+    --accent-text: #b23c25;
+    --control-border: #8c8172;
     --card-border: #dcd3c5;
     color-scheme: light;
   }
@@ -52,7 +85,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* The system face, on purpose: nothing here loads a web font, so naming one
+     only made the declared type and the drawn type disagree. */
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 17px;
   line-height: 1.4;
   /* keeps content clear of the iPhone notch and home indicator */
@@ -66,7 +101,7 @@ h1 {
   margin: 0;
   font-size: 28px;
   letter-spacing: -0.5px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 h2 {
@@ -74,7 +109,7 @@ h2 {
   text-transform: none;
   letter-spacing: 1.2px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   margin: 24px 0 8px;
 }
 
@@ -101,7 +136,7 @@ nav button {
 }
 
 nav button.active {
-  color: var(--accent);
+  color: var(--accent-text);
   border-bottom-color: var(--accent);
 }
 
@@ -136,7 +171,7 @@ input[type=text], input[type=number] {
   width: 100%;
   padding: 12px;
   background: var(--bg);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--control-border);
   border-radius: 8px;
   color: var(--text);
   font-size: 17px;   /* 16px or larger stops iOS zooming on focus */
@@ -156,7 +191,7 @@ button {
 
 button.ghost {
   background: none;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--control-border);
   color: var(--text);
 }
 
@@ -187,6 +222,14 @@ button:disabled { opacity: 0.4; }
 }
 
 .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+/* Below the list/detail width this is a phone, often mid-set: chips get the
+ * 44px platform minimum. The pill keeps its look; the extra height is inside
+ * it. The compact chips in a card's header get it too. */
+@media (max-width: 1023px) {
+  .chip, .cardhead .chip { min-height: 44px; }
+}
 
 /* A full-width chip is a row, not a pill: the exercise picker draws each result
  * as one, and some names run to "Bent Over Dumbbell Rear Delt Raise With Head
@@ -208,7 +251,7 @@ button:disabled { opacity: 0.4; }
 }
 
 .datenav span { font-size: 22px; font-weight: 700; }
-.datenav button { background: none; color: var(--accent); padding: 8px; }
+.datenav button { background: none; color: var(--accent-text); padding: 8px; min-width: 44px; min-height: 44px; }
 .datenav button:disabled { color: var(--muted); }
 
 .statline {
@@ -269,8 +312,10 @@ button:disabled { opacity: 0.4; }
 
 .entry .x {
   background: none;
-  color: var(--accent);
+  color: var(--accent-text);
   padding: 6px 10px;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 18px;
 }
 
@@ -281,7 +326,7 @@ button:disabled { opacity: 0.4; }
   font-size: 13px;
   letter-spacing: 1.2px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 canvas { width: 100%; display: block; }
@@ -314,8 +359,10 @@ canvas { width: 100%; display: block; }
 .weeknav button {
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--accent-text);
   padding: 4px 6px;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 22px;
   line-height: 1;
 }
@@ -431,6 +478,30 @@ button.linkrow {
   margin-top: 8px;
 }
 button.linkrow .muted { margin: 0; }
+/* A recipe card is a button now, and a button's 15px would shrink the card
+   it replaced; it keeps the page's size. */
+button.recipecard { font-size: inherit; line-height: inherit; }
+
+/* A shopping line: a checkbox in a label that is drawn as a card. The label
+   rule above is for the small caps over a field, so this undoes it. */
+label.shopitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: inherit;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--text);
+  cursor: pointer;
+}
+label.shopitem input[type=checkbox] {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: var(--accent);
+}
+.shoptext { flex: 1; min-width: 0; }
 
 canvas.route {
   background: var(--bg);
@@ -494,7 +565,7 @@ canvas.route {
 button.roadchain { margin: 8px 0; box-shadow: inset 0 0 0 1px var(--card-border); }
 button.roadchain .roadname { font-weight: 700; }
 button.roadchain .muted { margin: 2px 0 0; }
-#road a { color: var(--accent); }
+#road a { color: var(--accent-text); }
 .roadrules { margin: 0; padding-left: 20px; }
 .roadrules li { margin: 4px 0; }
 /* Meal and category chips wrap instead of scrolling: four short labels. */
@@ -675,7 +746,7 @@ button.roadchain .muted { margin: 2px 0 0; }
   }
 
   nav button.active {
-    color: var(--accent);
+    color: var(--accent-text);
     background: var(--surface);
     box-shadow: inset 0 0 0 1px var(--card-border);
   }

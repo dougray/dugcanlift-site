@@ -14,6 +14,7 @@
 <title>LIFT Coach</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,7 +24,7 @@
 </header>
 
 <nav id="tabs">
-  <button data-tab="roster" class="active">Roster</button>
+  <button data-tab="roster" class="active" aria-current="page">Roster</button>
   <button data-tab="client" id="tab-client" disabled>Client</button>
   <button data-tab="cook">Cook</button>
   <button data-tab="train">Train</button>
@@ -249,7 +250,7 @@
   </div>
 
   <div id="picker" class="card hidden">
-    <strong id="picker-title"></strong>
+    <strong id="picker-title" tabindex="-1"></strong>
     <label for="picker-servings">Servings</label>
     <input type="number" id="picker-servings" inputmode="decimal" value="1" step="0.5" min="0.5">
     <p class="muted">Pick a recipe to place it.</p>
@@ -270,7 +271,7 @@
 </section>
 
 <div id="send-one" class="card hidden">
-  <strong id="send-one-title"></strong>
+  <strong id="send-one-title" tabindex="-1"></strong>
   <p class="muted" id="send-one-what"></p>
   <label for="send-one-client">Send to</label>
   <select id="send-one-client"></select>
@@ -328,7 +329,7 @@
   </div>
 
   <div id="session-picker" class="card hidden">
-    <strong id="session-picker-title"></strong>
+    <strong id="session-picker-title" tabindex="-1"></strong>
     <div id="session-picker-list"></div>
     <button class="ghost wide" id="session-picker-cancel">Cancel</button>
   </div>
