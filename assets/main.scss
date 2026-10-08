@@ -32,6 +32,10 @@
   --dcl-muted: #a39c8e;
   --dcl-accent: #c1442c;
   --dcl-accent-2: #7c8b7a;
+  // The sage is a fill too, and as text it is 4.78:1 on bg but 4.40:1 on
+  // surface. Text that wants the sage -- links, the feature table's yes, the
+  // code keywords -- uses --dcl-accent-2-text (5.46:1 bg / 5.03:1 surface).
+  --dcl-accent-2-text: #879585;
   --dcl-rule: #3a3733;
   // The accent is a fill. As text on these backgrounds it measures 3.39:1 on
   // bg and 3.12:1 on surface, under AA for anything but large type, so text
@@ -88,7 +92,9 @@ body {
   font-family: "Source Sans 3", -apple-system, sans-serif;
 }
 
-a { color: var(--dcl-accent-2); }
+// minima colours a visited link its own dark blue (2.6:1 here); a visited
+// link keeps the sage instead.
+a, a:visited { color: var(--dcl-accent-2-text); }
 a:hover { color: var(--dcl-accent-text); }
 
 .site-header, .site-footer {
@@ -313,7 +319,7 @@ pre code {
 }
 
 // Keep some syntax color distinction, just muted for dark bg
-.highlight .nt, .highlight .k { color: var(--dcl-accent-2); }
+.highlight .nt, .highlight .k { color: var(--dcl-accent-2-text); }
 .highlight .s, .highlight .s1, .highlight .s2 { color: var(--dcl-code-string); }
 
 .site-footer {
@@ -698,7 +704,7 @@ input:focus, select:focus, textarea:focus {
   border-bottom: none;
 }
 
-.feature-table .yes { color: var(--dcl-accent-2); font-weight: 600; }
+.feature-table .yes { color: var(--dcl-accent-2-text); font-weight: 600; }
 .feature-table .no { color: var(--dcl-muted); }
 
 // A cell whose answer is a link -- "By sideload" pointing at the Wear install

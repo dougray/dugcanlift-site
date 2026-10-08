@@ -9,11 +9,11 @@
 <style>
   body { padding: 1.5rem; }
   .case { padding: .4rem 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .95rem; }
-  .pass::before { content: 'PASS'; color: #7c8b7a; font-weight: 700; margin-right: .6rem; }
-  .fail::before { content: 'FAIL'; color: #c1442c; font-weight: 700; margin-right: .6rem; }
-  .detail { color: #a39c8e; font-size: .85rem; margin-left: 3.2rem; }
+  .pass::before { content: 'PASS'; color: var(--accent-2-text); font-weight: 700; margin-right: .6rem; }
+  .fail::before { content: 'FAIL'; color: var(--accent-text); font-weight: 700; margin-right: .6rem; }
+  .detail { color: var(--muted); font-size: .85rem; margin-left: 3.2rem; }
   #summary { font-size: 1.3rem; font-weight: 700; margin: 1rem 0; }
-  h2 { font-size: 1rem; margin: 1.4rem 0 .2rem; color: #a39c8e; }
+  h2 { font-size: 1rem; margin: 1.4rem 0 .2rem; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -248,7 +248,7 @@ const summary = document.getElementById('summary');
 summary.textContent = failed
   ? `${failed} of ${results.length} failing`
   : `All ${results.length} passing`;
-summary.style.color = failed ? '#c1442c' : '#7c8b7a';
+summary.style.color = failed ? 'var(--accent-text)' : 'var(--accent-2-text)';
 
 const out = document.getElementById('results');
 results.forEach((r) => {
