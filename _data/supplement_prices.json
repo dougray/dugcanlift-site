@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-08T12:06:36.094219+00:00",
+  "last_updated": "2026-10-09T11:58:25.164407+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -47,8 +47,8 @@
       "category": "Protein",
       "url": "https://axeandsledge.com/products/farm-fed-25g-protein",
       "servings": 25,
-      "price": 64.99,
-      "cost_per_serving": 2.6,
+      "price": 69.99,
+      "cost_per_serving": 2.8,
       "error": null
     },
     {
@@ -197,9 +197,8 @@
       "category": "Creatine",
       "url": "https://www.transparentlabs.com/products/creatine-hmb",
       "servings": 30,
-      "price": 49.99,
-      "cost_per_serving": 1.666,
-      "error": null
+      "price": null,
+      "error": "503 Server Error: Service Unavailable for url: https://www.transparentlabs.com/products/creatine-hmb"
     },
     {
       "name": "Creatine Monohydrate Powder (1.1lb)",
