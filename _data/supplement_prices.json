@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12T13:16:18.636555+00:00",
+  "last_updated": "2026-10-13T12:47:10.204858+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -127,8 +127,8 @@
       "category": "Protein",
       "url": "https://nutrithority.com/products/isothority",
       "servings": 30,
-      "price": 54.99,
-      "cost_per_serving": 1.833,
+      "price": 59.99,
+      "cost_per_serving": 2.0,
       "error": null
     },
     {
