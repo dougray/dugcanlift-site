@@ -9,9 +9,12 @@ has three. **Cloud Dancer: Beyond the Reef** is live: a steampunk pirate airship
 third game in the series after Reef Runner and Jolly Rogue. It's free, it plays in your browser,
 and it's built for phones as much as computers.
 
+*Updated October 24: painted art, much bigger rewards, and game controllers. The pictures below
+are from the updated game; [what changed](#update-october-24) is at the end.*
+
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23-cloud-dancer/home.jpg" alt="The reefrunner.us home page with three columns: Reef Runner with a Set sail button, Jolly Rogue with a SET SAIL button, and Cloud Dancer, a pirate airship logo, with a CAST OFF button, each with an About link, and gold or coins on the seams between them" style="width:100%;height:auto;border-radius:10px;">
-  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Three games, one harbour. Pick a ship.</figcaption>
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/home.jpg" alt="The top of the reefrunner.us home page: Three free pirate games, a short introduction, and the Reef Runner, Jolly Rogue and Cloud Dancer logos above a cartoon sea" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Three games, one harbour. Each has its own page now, so you can see what you're in for before you play.</figcaption>
 </figure>
 
 ## Pirates, but in the air
@@ -43,7 +46,7 @@ below, armoured sky pikes and cloud lurkers that only show a periscope until the
 Every sky ends with a boss, and every boss warns you before it strikes.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23-cloud-dancer/boss.jpg" alt="Cloud Dancer: the pirate airship firing cannonballs at HMS Thunderer, a huge grey navy zeppelin with a red war stripe, which fires a spread of red shots back; the boss health bar along the bottom and a FULL STEAM button at the bottom right" style="width:100%;height:auto;border-radius:10px;">
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/boss.jpg" alt="Cloud Dancer on a phone: the painted pirate airship over a tropical sea, facing HMS Thunderer, a huge brass-banded navy zeppelin with a red war stripe, as glowing enemy shots fan out between them; the boss health bar along the bottom and a FULL STEAM button at the bottom right" style="width:100%;height:auto;border-radius:10px;">
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">HMS Thunderer, the dreadnought at the end of the Reef Skies.</figcaption>
 </figure>
 
@@ -56,26 +59,41 @@ Every sky ends with a boss, and every boss warns you before it strikes.
   warning, ink clouds, and a lunge straight at you.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23-cloud-dancer/storm.jpg" alt="The Storm Wall: grey storm clouds over a dark sea, the Tempest Engine on the right, a brass platform with a crackling lightning coil, and a red-striped airship with a parrot ducking into a cloud on the left under the boss's health bar" style="width:100%;height:auto;border-radius:10px;">
-  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Tempest Engine, and a red-striped Cloud Dancer keeping low in the storm.</figcaption>
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/storm.jpg" alt="The Storm Wall in the rain: grey storm clouds over a dark sea, and the Tempest Engine on the right, a brass platform on a storm cloud with a coil of brass rings and a crackling lightning orb, facing the airship on the left" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Tempest Engine, riding a storm cloud through the rain.</figcaption>
 </figure>
 
-Beat one and you get an extra life, a shower of gold and a weapon crate. Chain shot, a harpoon
+Beat one and you get an extra life, a treasure chest, about forty gold coins and a weapon crate. Chain shot, a harpoon
 that goes through a whole line of enemies, homing rockets and a Gatling gun all turn up in crates.
 
 ## Spend the plunder
 
-After each boss the **Sky Market** opens for the run you're in: hull plating, a bigger boiler,
-faster cannons, a third cannonball, a lodestone that pulls gold in, a spare crew member, or a gun
-of your choice. Gold you don't spend goes into your chest when the run ends.
+Gold, coal, repairs and gun crates fly to your airship on their own, so nothing you shoot down is
+lost. A gyrocopter drops a coin, a zeppelin bursts into six, and now and then a wreck leaves a
+treasure chest worth 25.
+
+After each boss the **Sky Market** opens for the run you're in, and it changes how you fight: a
+wider broadside (three cannonballs, then five), heavy shot, exploding shells that hurt everything
+nearby, a rear gunner, a pirate wingman gyrocopter that flies and fights beside you, a steam shield
+that keeps you safe for a moment after FULL STEAM, and a gun rack that keeps a pickup gun until you
+lose a life. Hull plating, a bigger boiler, faster cannons, a spare crew member and a gun of your
+choice are there too, and a lodestone makes every coin count double. Gold you don't spend goes into
+your chest when the run ends.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23-cloud-dancer/hangar.jpg" alt="The Hangar: a red striped airship with a dark hull and a green parrot on the bowsprit, beside a list of choices for envelope, pattern, sail, hull, starting gun and crew pet" style="width:100%;height:auto;border-radius:10px;">
-  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Hangar, where banked gold becomes a paint job and a parrot.</figcaption>
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/market.jpg" alt="The Sky Market in two columns: hull plating, bigger boiler, quick cannons, heavy shot, exploding shells, rear gunner, wingman and steam shield on the left, and gun rack, lodestone, spare crew, a chain-shot gun and cast off on the right, each with its price in gold" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Sky Market after a boss.</figcaption>
 </figure>
 
-Between runs, the **Hangar** turns that chest into your airship's look: envelope colours and
-patterns, sails, hull paint, a starting gun, and a parrot that fetches nearby gold. Like the other
+<figure style="margin:1.5rem 0;">
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/hangar.jpg" alt="The Hangar: the painted airship with a blue striped envelope and a parrot on the bowsprit, beside a list of choices: envelope, pattern, sail, hull, starting gun, crew pet, hull armor, boiler, gun crew and broadside" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Hangar, where banked gold becomes a paint job, a parrot and upgrades that last.</figcaption>
+</figure>
+
+Between runs, the **Hangar** turns that chest into your airship: envelope colours and patterns,
+sails, hull paint, a starting gun, a parrot that brings the plunder in faster, and upgrades that last
+every run. Extra starting hearts, a bigger boiler, a faster gun crew and a three-ball broadside are
+bought in order, so every run builds toward the next. Like the other
 two games, it saves on your device, plays offline once it has loaded, and has no ads, no accounts
 and no tracking.
 
@@ -84,6 +102,25 @@ and no tracking.
 Cloud Dancer has native apps for iPhone, iPad and Android, built and tested and waiting alongside
 Reef Runner and Jolly Rogue for app store review. The apps carry the whole game, play with no
 signal, and are held sideways like a proper shooter. They'll be linked here when they clear review.
+
+## Update, October 24
+
+A day of play feedback, and a lot changed:
+
+- **Painted art.** The airship is now the painted ship from the game's icon, and every sky,
+  enemy and boss was repainted to match: puffy lit clouds and misty islands over the Reef Skies,
+  rain on the Storm Wall, floating forts with waterfalls at sunset, and a sea of cloud under the
+  stars at the Ceiling of the World.
+- **Bigger rewards.** More gold, treasure chests, prizes that come to you, a Sky Market full of
+  upgrades and Hangar upgrades that last (all above).
+- **Softer music** that runs longer before it repeats.
+- **Game controllers.** Xbox and PlayStation controllers work in the browser in all three games,
+  and the coming Android apps will also play on a Fire TV, with its remote or a controller.
+
+<figure style="margin:1.5rem 0;">
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/kraken.jpg" alt="The Ceiling of the World: a starry night sky over a sea of clouds with a floating island and a waterfall, the painted airship on the left, and the Brass Kraken on the right, a riveted brass dome with glowing blue eyes and eight clockwork tentacles, firing a column of glowing shots" style="width:100%;height:auto;border-radius:10px;">
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Brass Kraken at the Ceiling of the World.</figcaption>
+</figure>
 
 ## Where to play now
 
