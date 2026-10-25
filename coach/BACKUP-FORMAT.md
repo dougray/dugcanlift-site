@@ -126,6 +126,35 @@ weight. `loggedFoodEntryId` is the `food[]` id the meal became when eaten, or
 `null`. `recipeName` is kept so a meal still reads sensibly if its recipe is
 later deleted.
 
+**`rememberedBarcodes[]`** — a food the person entered once against a retail
+barcode, so the next scan finds it: `code`, `name`, `brand`, `per100g` of
+`{ calories, proteinG, carbsG, fatG, fiberG, saturatedFatG, sugarG, sodiumMg }`
+(the `food[]` spellings, per 100 g), `servingGrams`, `rememberedAt`, `updatedAt`
+(epoch ms). Written by LIFT iPhone from the release that adds its barcode
+scanner; LIFT for Android and the browser build will adopt it. The section is omitted when there are none, and it is never part
+of a share to a coach — backups only.
+
+`code` is the barcode **normalised**: digits only, leading zeros stripped, so
+`0036000291452` is `36000291452` and a short code can be under eight digits. A
+reader must accept a code with or without its leading zeros and store the
+normalised one. `calories`, `proteinG`, `carbsG` and `fatG` are required; every
+other nutrient, `brand` and `servingGrams` is omitted when unknown, never `0`.
+
+A reader skips a row, rather than failing the file, when: the code does not pass
+the GS1 check digit (checked after left-padding to 14 digits, which leaves the
+sum unchanged) or is all zeros; the `name` or any of the four macros is missing;
+or a required macro is negative. A negative optional nutrient, or any value that
+is not a number, is unknown. A date that is missing, not finite, or beyond
+±8.64e15 ms is treated as missing: a bad `updatedAt` is the oldest possible, a
+bad `rememberedAt` falls back to `updatedAt`.
+
+Restoring merges **by `code`, newest `updatedAt` wins**, not the additive-by-id
+rule below: an older backup never overwrites a later correction. Compare whole
+milliseconds; equal keeps what is on the device; a missing date is oldest. The
+newer row replaces the whole food, so a nutrient or brand it omits is cleared.
+A file without the section changes nothing. No `v` bump: a client that does not
+know it preserves it (see **Unknown sections**).
+
 Weights are **pounds** and distances **metres**, always, whatever the user sees
 on screen — same rule as the share format, and for the same reason: a file that
 mixed units would be unreadable the moment someone changed the setting. When a
