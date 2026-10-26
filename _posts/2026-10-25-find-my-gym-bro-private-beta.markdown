@@ -84,4 +84,6 @@ training. Your email is only used for the invite. It's never shared or sold.
 
 **[Join the waitlist: tinyurl.com/beta-find-gym-bro](https://tinyurl.com/beta-find-gym-bro)**
 
+How joining works, and how the app works once you're in: [Find My Gym Bro](/find-my-gym-bro/).
+
 See you in there. Bring your PRs.
