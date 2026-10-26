@@ -67,7 +67,7 @@ Nothing about you is shared until you choose to share it, one person and one thi
 training log, your food and your name each have their own switch, all off to start. Even a
 notification only says "something new", never who sent it or what it says.
 
-## Built on LIFT, free and open source
+## Built to complement LIFT, free and open source
 
 If you track in [LIFT](/lift/), you won't type your lifts in twice. The same link you use for
 Send to Coach fills in your profile, and it's what you share with your gym bro once you turn
