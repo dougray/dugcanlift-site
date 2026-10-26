@@ -14,7 +14,7 @@ both are. The private beta waitlist is open today:
 **[tinyurl.com/beta-find-gym-bro](https://tinyurl.com/beta-find-gym-bro)**.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-25-find-my-gym-bro/waitlist.jpg" alt="The Find My Gym Bro logo, a red map pin with two lifters in it above a barbell, over a red banner reading Beta waitlist open, the line Get matched with a training partner who fits what you want, and see exactly why, the words Free, 18+, Private by design, and the link tinyurl.com/beta-find-gym-bro" style="width:100%;height:auto;border-radius:10px;">
+  <img src="/assets/images/blog/2026-10-25-find-my-gym-bro/waitlist-wide.jpg" alt="The Find My Gym Bro logo, a red map pin with two lifters in it above a barbell, beside a red banner reading Beta waitlist open, the line Get matched with a training partner who fits what you want, and see exactly why, the words Free, 18+, Private by design, and the link tinyurl.com/beta-find-gym-bro" style="width:100%;max-width:720px;height:auto;border-radius:10px;display:block;margin:0 auto;">
 </figure>
 
 ## You decide what a match means
