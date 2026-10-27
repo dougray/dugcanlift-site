@@ -11,7 +11,7 @@ hide_title: true
 Apple Watch app, the Wear OS watch app, and the web app at
 [dugcanlift.com/lift](/lift/)
 
-Last updated: 17 September 2026
+Last updated: 26 October 2026
 
 Coach, the app a trainer uses to read what you send, has
 [its own privacy policy](/coach/privacy/).
@@ -24,7 +24,6 @@ unless you do something that sends it:
 
 - **Food search** sends the words you typed, or a barcode number, to Open Food
   Facts (Android and web).
-- **Importing a recipe from a link** fetches the page you pasted (iPhone).
 - **Send to Coach** puts your log into an email that you address and send
   yourself.
 - **A backup file** goes wherever you choose to save it.
@@ -78,10 +77,8 @@ Health Connect or Apple Health.
   browser's storage so a reload doesn't lose it.
 - **Wear OS** does not use location.
 
-Route maps are drawn on the device itself on Android and the web, with no map
-service involved. The iPhone app draws them with Apple Maps, which fetches map
-images from Apple for the area the route covers — that request is made by iOS,
-under Apple's privacy policy, not to anything we run.
+Route maps are drawn on the device itself on Android, iPhone and the web, with
+no map service involved.
 
 ## Health Connect and Apple Health
 
@@ -127,8 +124,11 @@ you choose to send.
 - **The web app** uses the camera only to scan the QR codes a LIFT watch shows
   when you move its food log across. They are decoded in the page, and the
   camera stops when you close the scanner or leave the tab.
-- **The iPhone app** declares camera access for barcode scanning, but does not
-  use the camera in its current version.
+- **The iPhone app** uses the camera only to read a food barcode when you tap
+  Scan a barcode. The barcode is read on the phone; no image or video is kept
+  or sent. Only the digits are kept, and only if you enter a food against
+  them: those remembered foods stay on your phone. LIFT doesn't send them
+  anywhere; they go into a backup file only when you save one.
 
 ## What leaves your device
 
@@ -170,12 +170,11 @@ no access to their logs.
 **The iPhone app** searches a food database built into the app, so a food search
 there sends nothing at all.
 
-### Importing a recipe from a link (iPhone)
+### Importing a recipe from Safari (iPhone)
 
-When you paste a recipe page's address and import it, the iPhone app fetches
-that page from the site you named and reads the recipe out of it on the phone.
-The site sees an ordinary request for its page from your device, identifying
-itself as LIFT. Nothing from your log is sent.
+Share a recipe page from Safari to LIFT and Safari hands over the recipe it
+already has on screen. LIFT reads it on the phone. It makes no request of its
+own, so the site sees nothing from LIFT.
 
 ### Send to Coach
 
@@ -198,8 +197,9 @@ where you started or finished, and thinned to at most 150 points.
 ### Backups
 
 There is no cloud backup, on purpose. Instead, **Save a backup file** writes a
-file containing your log — food, training, weight, goal, recipes, settings, and
-your runs, walks and hikes including their routes — to wherever you choose. It
+file containing your log — food, training, weight, goal, recipes, settings,
+remembered barcode foods, and your runs, walks and hikes including their
+routes — to wherever you choose. It
 never leaves your device unless you move or send it somewhere. With routes in
 it, it can show where you go, so treat the file with the same care as the log.
 

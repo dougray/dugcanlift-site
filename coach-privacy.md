@@ -10,7 +10,7 @@ hide_title: true
 **LIFT Coach** — the web app at [dugcanlift.com/coach](/coach/), the Android
 app, and the iPhone app
 
-Last updated: 7 October 2026
+Last updated: 26 October 2026
 
 LIFT itself, the app your clients log in, has
 [its own privacy policy](/app/privacy/).
@@ -24,8 +24,8 @@ uploaded anywhere, and there are no analytics, advertising or tracking in any
 version.
 
 The only network requests Coach makes are recipe and ingredient lookups you
-start yourself, and they differ by platform — the Android app makes none at
-all. They are listed below.
+start yourself, in the web app — the iPhone and Android apps make none at all.
+They are listed below.
 
 ## Your clients' logs
 
@@ -94,15 +94,11 @@ maps are drawn in the page with no map service.
 
 ### iPhone
 
-- **TheMealDB** — when you search it for a dish, the name you typed is sent.
-- **A recipe page you paste** — when you import a recipe from a link, Coach
-  fetches that page from the site you named, identifying itself as Coach, and
-  reads the recipe out of it on the phone.
-- **Apple Maps** — a client's route card is drawn with Apple Maps, which fetches
-  map images from Apple for the area of the route. That request is made by iOS,
-  under Apple's privacy policy, not to anything we run.
-
-Ingredient lookups use a food database built into the app and send nothing.
+Coach on iPhone makes no network requests. A recipe page reaches it through
+Safari's share sheet: Safari hands over the recipe it already has on screen,
+and Coach reads it on the phone without contacting the site. A client's route
+card is drawn on the device with no map service. Ingredient lookups use a food
+database built into the app.
 
 ### Android
 
@@ -112,11 +108,10 @@ it.
 
 ## Third parties
 
-TheMealDB (<https://www.themealdb.com>), Open Food Facts
-(<https://world.openfoodfacts.org/privacy>), Cloudflare
-(<https://www.cloudflare.com/privacypolicy/>) and Apple each have their own
-privacy terms. We have no affiliation with TheMealDB or Open Food Facts and no
-access to any of their logs. None of them receives anything from your roster or
+Open Food Facts (<https://world.openfoodfacts.org/privacy>) and Cloudflare
+(<https://www.cloudflare.com/privacypolicy/>) each have their own privacy
+terms. We have no affiliation with Open Food Facts and no access to any of
+their logs. None of them receives anything from your roster or
 your clients' logs.
 
 ## Analytics, advertising, and tracking
