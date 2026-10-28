@@ -386,15 +386,30 @@
     return names.charAt(0).toUpperCase() + names.slice(1) + ' not stated';
   }
 
-  /** The sentence under the Avoid row while something is avoided. */
-  function avoidNote(hiddenCount, covered, placeName) {
+  /**
+   * The sentence under the Avoid row while something is avoided. `chain` is
+   * the place on screen, or null for the gas station, which has no chart.
+   * Three cases, by what the chain's chart is on record as saying: no chart
+   * read at all (no `allergenSource`); a chart that says what items contain
+   * but not what it covers (no `allergensCovered`), whose lists can hide an
+   * item and never clear one; and a chart that says both.
+   */
+  function avoidNote(hiddenCount, chain) {
     var lead = hiddenCount === 0 ? 'Nothing here is listed as containing what you avoid. '
       : hiddenCount === 1 ? '1 item is hidden because its chart says it contains something you avoid. '
         : hiddenCount + ' items are hidden because their chart says they contain something you avoid. ';
-    return lead + (knownAllergens(covered).length === 0
-      ? 'This place publishes no allergen chart LIFT can read, so nothing is marked either way.'
-      : 'From ' + (placeName || 'the chain') + '’s own allergen chart, which doesn’t cover '
-        + 'cross-contact. Check with the restaurant.');
+    var source = chain && typeof chain.allergenSource === 'string' && chain.allergenSource.trim();
+    if (!source) {
+      return lead + 'This place publishes no allergen chart LIFT can read, so nothing is marked either way.';
+    }
+    var name = chain.name || 'the chain';
+    if (!knownAllergens(chain.allergensCovered).length) {
+      return lead + 'From the allergen chart ' + name + ' publishes. It says what items contain, not which '
+        + 'allergens it covers, so nothing is marked free of anything. It doesn\u2019t cover cross-contact '
+        + 'either. Check with the restaurant.';
+    }
+    return lead + 'From the allergen chart ' + name + ' publishes, which doesn\u2019t cover cross-contact. '
+      + 'Check with the restaurant.';
   }
 
   /* What is avoided, shared by every place, on this device only: a preference
