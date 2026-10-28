@@ -31,6 +31,12 @@
  *   `targetSets`: a routine here stores a count and one rep target (LIFT for
  *   Android's shape), not a list of sets, so there is no "most reps of any
  *   set" to take. `targetSets` counts as `toSession` lays it out, at least 1.
+ * - **Drop and rest-pause sets are not working sets.** A drop set is lighter
+ *   on purpose and a rest-pause set short on purpose, so a routine of four
+ *   with two of them would otherwise never go up. The routine asks for its
+ *   straight sets only -- `targetSets` less the sets its `setKinds` marks --
+ *   a logged set with a `kind` is not read, and "Use" leaves one alone: it
+ *   keeps its own lighter weight.
  * - **"Not done"** is a set that still holds the routine's own weight, or no
  *   weight at all. iOS has a tick per set; this build has none -- a set is
  *   logged by being there -- so the sets a lifter has not yet put a number
@@ -48,6 +54,11 @@
 
   var liftKey = function (name, equipment) {
     return (String(name || '').trim() + '|' + String(equipment || '').trim()).toLowerCase();
+  };
+  /** A drop or rest-pause set, read as set-types.js reads a kind. */
+  var kinded = function (v) {
+    var k = typeof v === 'string' ? v.trim().toLowerCase() : '';
+    return k === 'drop' || k === 'restpause';
   };
   var sided = function (set) {
     var v = set && typeof set.side === 'string' ? set.side.trim().toLowerCase() : '';
@@ -167,7 +178,7 @@
       });
       if (sets.some(sided)) return null;
       var working = sets
-        .filter(function (s) { return !s.warmup && s.weightLb > 0 && s.reps > 0; })
+        .filter(function (s) { return !s.warmup && !kinded(s.kind) && s.weightLb > 0 && s.reps > 0; })
         .map(function (s) { return { weight: rounded(s.weightLb, 0.25), reps: s.reps }; });
       return working.length ? { date: date, sets: working } : null;
     }).filter(Boolean);
@@ -200,19 +211,30 @@
     if (!ctx.enabled || ctx.perSide || !session || session.date !== ctx.today) return null;
     var prescribed = routineExercise(session, exercise, ctx);
     if (!prescribed || !(prescribed.targetReps > 0)) return null;
-    return next(prescribed.targetReps, Math.max(prescribed.targetSets || 0, 1),
+    return next(prescribed.targetReps, straightSets(prescribed),
       sessions(exercise, ctx.workouts, session.date), step('lb'));
+  }
+
+  /** How many straight sets a routine exercise asks for: the count toSession
+   *  lays out, less the drop and rest-pause sets among them. Set 1 is always
+   *  straight, so it is at least one. */
+  function straightSets(routineExercise) {
+    var count = Math.max(routineExercise.targetSets || 0, 1);
+    var kinds = Array.isArray(routineExercise.setKinds) ? routineExercise.setKinds : [];
+    var marked = kinds.slice(1, count).filter(kinded).length;
+    return count - marked;
   }
 
   /**
    * The sets "Use" writes the weight into: working sets not done -- still at
    * the routine's own weight, or with none -- whose weight is not already the
-   * one. See the top for why that is "not done" here.
+   * one. See the top for why that is "not done" here. Never a drop or
+   * rest-pause set: the weight is the top set's, and those keep their own.
    */
   function openSets(exercise, prescribed, weight) {
     var laidOut = prescribed && prescribed.targetWeightLb != null ? prescribed.targetWeightLb : null;
     return (exercise.sets || []).filter(function (s) {
-      if (s.warmup) return false;
+      if (s.warmup || kinded(s.kind)) return false;
       var untouched = s.weightLb == null || (laidOut !== null && s.weightLb === laidOut);
       return untouched && s.weightLb !== weight;
     });
@@ -239,6 +261,7 @@
     buttonText: buttonText,
     sessions: sessions,
     routineExercise: routineExercise,
+    straightSets: straightSets,
     suggestion: suggestion,
     openSets: openSets,
     enabled: enabled,

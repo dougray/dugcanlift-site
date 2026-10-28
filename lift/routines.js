@@ -13,12 +13,23 @@
  * coach/PLAN-FORMAT.md). Adjacent exercises sharing it are one group; the
  * rules are set-types.js. It is omitted on an exercise that is not grouped, so
  * a routine without one is the shape it always was.
+ *
+ * And one more: `setKinds`, the kind of each set the count lays out, by
+ * position -- `[null, null, "drop"]` is two straight sets, then a drop set.
+ * Index 0 is always null, it never outruns `targetSets`, and it is omitted
+ * when every set is straight. The rules, and the lenient read, are
+ * set-types.js; what reaches here has been through them, so it is read as
+ * stored.
  */
 (function (global) {
   'use strict';
 
   var present = function (v) { return v !== null && v !== undefined; };
   var positiveInt = function (v) { return Number.isInteger(v) && v > 0 ? v : null; };
+  var setKind = function (v) { return v === 'drop' || v === 'restPause' ? v : null; };
+  var setKindAt = function (e, i) {
+    return i > 0 && Array.isArray(e.setKinds) ? setKind(e.setKinds[i]) : null;
+  };
 
   /**
    * Reads splits.json into routines. A malformed entry costs that split, not
@@ -75,7 +86,7 @@
       createdAt: now,
       exercises: routine.exercises.map(function (e) {
         var copy = {};
-        Object.keys(e).forEach(function (k) { copy[k] = e[k]; });
+        Object.keys(e).forEach(function (k) { copy[k] = Array.isArray(e[k]) ? e[k].slice() : e[k]; });
         copy.id = makeId();
         return copy;
       }),
@@ -121,6 +132,10 @@
           if (present(e.targetRpe)) set.rpe = e.targetRpe;
           if (present(e.targetDurationSec)) set.durationSec = e.targetDurationSec;
           if (present(e.targetDistanceMeters)) set.distanceMeters = e.targetDistanceMeters;
+          // A drop or rest-pause set is laid out as one, the way a coach's
+          // prescribed kind is copied, so the row can say "drop".
+          var kind = setKindAt(e, i);
+          if (kind) set.kind = kind;
           sets.push(set);
         }
         var exercise = { id: makeId(), name: e.name, equipment: e.equipment || '', note: e.note || '', sets: sets };
@@ -169,9 +184,17 @@
           targetDistanceMeters: distances.length ? Math.max.apply(null, distances) : null,
           note: e.note || '',
         };
-        // A superset done today is kept as one. A set's kind is not: a
-        // routine holds a set count, not a list of sets.
+        // A superset done today is kept as one, and so are its sets' kinds,
+        // by position. Not for a lift logged a side at a time: two sides are
+        // two sets at each position, so a position would mean nothing.
         if (positiveInt(e.group)) exercise.group = e.group;
+        var sided = sets.some(function (s) {
+          var v = s && typeof s.side === 'string' ? s.side.trim().toLowerCase() : '';
+          return v === 'left' || v === 'right';
+        });
+        var kinds = sided ? [] : sets.map(function (s, i) { return i > 0 && s ? setKind(s.kind) : null; });
+        while (kinds.length && kinds[kinds.length - 1] == null) kinds.pop();
+        if (kinds.length) exercise.setKinds = kinds;
         return exercise;
       }),
     };

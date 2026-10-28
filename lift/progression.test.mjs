@@ -202,3 +202,60 @@ test('turning it off is stored; on is no key', () => {
   P.setEnabled(true, storage);
   assert.equal(map.has(P.ENABLED_KEY), false);
 });
+
+// MARK: - Drop sets and rest-pause in your own routine
+//
+// A drop set is lighter on purpose and a rest-pause set is short on purpose,
+// so neither is a working set at the top weight. The routine asks for its
+// straight sets only, and the log's drop and rest-pause sets are not read.
+const arms = {
+  id: 'push', name: 'Push', folder: 'Push/Pull/Legs', createdAt: 1,
+  exercises: [{ id: 'rx', ...bench, targetSets: 4, targetReps: 8, targetWeightLb: 185,
+    setKinds: [null, null, 'drop', 'restPause'] }],
+};
+
+test('drop and rest-pause sets are not working sets of the day', () => {
+  const days = P.sessions(bench, [
+    logged(earlier, [{ weightLb: 185, reps: 8 }, { weightLb: 185, reps: 8 },
+      { weightLb: 135, reps: 10, kind: 'drop' }, { weightLb: 185, reps: 3, kind: ' RestPause ' }]),
+  ], monday);
+  assert.deepEqual(days, [{ date: earlier, sets: [{ weight: 185, reps: 8 }, { weight: 185, reps: 8 }] }]);
+});
+
+test('a routine with two kinded sets of four asks for its two straight sets, and goes up', () => {
+  const s = LiftRoutines.toSession(arms, monday, makeId, 0);
+  const before = logged(earlier, [{ weightLb: 185, reps: 8 }, { weightLb: 185, reps: 8 },
+    { weightLb: 135, reps: 10, kind: 'drop' }, { weightLb: 185, reps: 4, kind: 'restPause' }]);
+  const next = P.suggestion(s, s.exercises[0], ctx([before, s], { routines: [arms] }));
+  assert.deepEqual(next, { kind: 'up', to: 190, from: 185, reps: 8, date: earlier });
+});
+
+test('one straight set short of the reps is still the same weight again', () => {
+  const s = LiftRoutines.toSession(arms, monday, makeId, 0);
+  const before = logged(earlier, [{ weightLb: 185, reps: 8 }, { weightLb: 185, reps: 7 },
+    { weightLb: 135, reps: 10, kind: 'drop' }, { weightLb: 185, reps: 4, kind: 'restPause' }]);
+  const next = P.suggestion(s, s.exercises[0], ctx([before, s], { routines: [arms] }));
+  assert.equal(next.kind, 'same');
+  assert.deepEqual(next.reps, [8, 7], 'the rest-pause set is not one of the reps it quotes');
+});
+
+test('one straight set where the routine asks for two is not done', () => {
+  const s = LiftRoutines.toSession(arms, monday, makeId, 0);
+  const before = logged(earlier, [{ weightLb: 185, reps: 8 }, { weightLb: 135, reps: 10, kind: 'drop' }]);
+  assert.equal(P.suggestion(s, s.exercises[0], ctx([before, s], { routines: [arms] })).kind, 'same');
+});
+
+// The weight "Use" writes is the top set's. A drop set is lighter on purpose
+// and keeps its own number, and so does rest-pause.
+test('"Use" leaves drop and rest-pause sets alone', () => {
+  const rx = arms.exercises[0];
+  const sets = [
+    { id: 'a', weightLb: 185, reps: 8 },
+    { id: 'b', reps: 8 },
+    { id: 'c', weightLb: 185, reps: 8, kind: 'drop' },
+    { id: 'd', reps: 8, kind: 'restPause' },
+  ];
+  assert.deepEqual(P.openSets({ sets }, rx, 190).map((s) => s.id), ['a', 'b']);
+  const started = LiftRoutines.toSession(arms, monday, makeId, 0).exercises[0];
+  assert.deepEqual(P.openSets(started, rx, 190).map((s) => s.kind || 'straight'), ['straight', 'straight']);
+});

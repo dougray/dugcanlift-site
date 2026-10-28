@@ -35,9 +35,17 @@
  *                    so none of this reaches a coach. A drop set logged here
  *                    reaches them as an ordinary set with its real numbers.
  *   your routines    `group` on a routine exercise, set with "Superset with
- *                    next". A routine stores a set count, not a list of sets
- *                    (LIFT for Android's shape), so it has no set to carry a
- *                    kind.
+ *                    next". A routine stores a set count, `targetSets`, not a
+ *                    list of sets (LIFT for Android's shape), so a kind lives
+ *                    beside the count: `setKinds`, an array by set position
+ *                    -- index 0 is set 1 -- of "drop", "restPause" or null.
+ *                    Index 0 is always null, trailing nulls are trimmed, it
+ *                    is never longer than `targetSets`, and it is omitted when
+ *                    every set is straight, so a routine without kinds is the
+ *                    shape it always was. Set in the routine's Exercises with
+ *                    "Drop / rest-pause", copied onto the sets toSession lays
+ *                    out. LIFT for Android stores and backs up the same field
+ *                    under the same spelling (coach/BACKUP-FORMAT.md).
  *
  * Counted and shown, never graded. Nothing here says whether a superset was
  * done as one, and progression, the imbalance figure and volume read the log,
@@ -96,6 +104,66 @@
   function kindLabel(kind) {
     var k = kindOf(kind);
     return k === DROP ? 'drop' : k === REST_PAUSE ? 'rest-pause' : '';
+  }
+
+  /* ---------------- a routine's set kinds ---------------- */
+
+  /** The kind one entry of `setKinds` says: only the strings "drop" and
+   *  "restPause", case and space aside. Anything else -- null, "straight",
+   *  an object, junk another app wrote -- is straight. */
+  function entryKind(v) {
+    return typeof v === 'string' ? kindOf(v) : null;
+  }
+
+  /** How many sets a routine exercise lays out: `targetSets`, at least one,
+   *  as LiftRoutines.toSession counts it. */
+  function routineSetCount(exercise) {
+    var n = exercise && typeof exercise.targetSets === 'number' ? Math.floor(exercise.targetSets) : 0;
+    return Math.max(n, 1);
+  }
+
+  /**
+   * A routine exercise's `setKinds` as it should be stored, or null when
+   * there are none: index 0 null, nothing past `targetSets`, trailing nulls
+   * trimmed. Read leniently -- not a list is none, an entry that is not
+   * "drop" or "restPause" is straight. None for an exercise carrying a
+   * coach's `prescribed` sets, whose kinds live on those sets.
+   */
+  function routineSetKinds(exercise) {
+    if (!exercise || typeof exercise !== 'object' || Array.isArray(exercise.prescribed)) return null;
+    var raw = exercise.setKinds;
+    if (!Array.isArray(raw)) return null;
+    var out = raw.slice(0, routineSetCount(exercise)).map(function (v, i) {
+      return i > 0 ? entryKind(v) : null;
+    });
+    while (out.length && out[out.length - 1] == null) out.pop();
+    return out.length ? out : null;
+  }
+
+  /** The kind of set `i` of a routine exercise, or null for straight. */
+  function routineSetKindAt(exercise, i) {
+    var kinds = routineSetKinds(exercise);
+    return kinds && i < kinds.length ? kinds[i] : null;
+  }
+
+  /**
+   * Set or clear the kind of set `i` of a routine exercise, in place -- the
+   * editor's one write. The first set and a set past the count cannot have
+   * one. A new list is written rather than the old one changed, so a routine
+   * copied from this one keeps its own; and when every set is straight the
+   * key is removed.
+   */
+  function setRoutineSetKind(exercise, i, kind) {
+    if (!exercise || typeof exercise !== 'object') return exercise;
+    if (i < 1 || i >= routineSetCount(exercise)) return exercise;
+    var kinds = (routineSetKinds(exercise) || []).slice();
+    while (kinds.length <= i) kinds.push(null);
+    kinds[i] = kindOf(kind);
+    exercise.setKinds = kinds;
+    var stored = routineSetKinds(exercise);
+    if (stored) exercise.setKinds = stored;
+    else delete exercise.setKinds;
+    return exercise;
   }
 
   /* ---------------- groups ---------------- */
@@ -239,13 +307,19 @@
   /**
    * Normalise one stored exercise in place: `group` kept only as a positive
    * integer, each set's `kind` only as "drop" or "restPause", and the first
-   * set never has one. An exercise with neither field is not touched, so a
-   * file written before set types restores exactly as it did; junk reads as
-   * not grouped, or straight, rather than failing the import.
+   * set never has one; a routine exercise's `setKinds` as routineSetKinds
+   * reads it, or no key. An exercise with none of these fields is not
+   * touched, so a file written before set types restores exactly as it did;
+   * junk reads as not grouped, or straight, rather than failing the import.
    */
   function normaliseExercise(exercise) {
     if (!exercise || typeof exercise !== 'object') return exercise;
     if (groupOf(exercise) == null && 'group' in exercise) delete exercise.group;
+    if ('setKinds' in exercise) {
+      var kinds = routineSetKinds(exercise);
+      if (kinds) exercise.setKinds = kinds;
+      else delete exercise.setKinds;
+    }
     if (Array.isArray(exercise.sets)) {
       exercise.sets.forEach(function (set, i) {
         if (!set || typeof set !== 'object' || !('kind' in set)) return;
@@ -283,6 +357,10 @@
     kindFromFlags: kindFromFlags,
     kindAt: kindAt,
     kindLabel: kindLabel,
+    routineSetCount: routineSetCount,
+    routineSetKinds: routineSetKinds,
+    routineSetKindAt: routineSetKindAt,
+    setRoutineSetKind: setRoutineSetKind,
     groupOf: groupOf,
     wireGroups: wireGroups,
     decodeGroups: decodeGroups,
