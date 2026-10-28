@@ -152,15 +152,45 @@ preferences about this screen like `lift.perSide`. All three are in `sw.js`'s
   (a prescription's `startedSessionId`, or a name a coach's template carries)
   is never one of yours.
 - **The next weight** is double progression: every working set at last
-  session's top weight reached the routine's `targetReps`, `targetSets` of
-  them, is up a step; short is the same again; short at the same weight two
-  sessions running backs off about 10%. A line with its reason, and "Use",
+  session's top weight reached the routine's `targetReps`, as many of them as
+  the routine has straight sets, is up a step; short is the same again; short
+  at the same weight two sessions running backs off about 10%. A line with its reason, and "Use",
   which writes the weight into the sets not done. The step is **5 lb**: this
   build has no plate or bar data and weighs everything in pounds. There is no
   per-set done tick here either, so "not done" is a set still holding the
   routine's own weight, or none. None for a coach's session, a lift logged a
   side at a time, a bodyweight lift, or a first session; off with "Suggest the
-  next weight" (`lift.suggestsNextWeight`, stored only when off).
+  next weight" (`lift.suggestsNextWeight`, stored only when off). **Drop and
+  rest-pause sets are not working sets**: the routine asks for `targetSets`
+  less the sets its `setKinds` marks, a logged set with a `kind` is not read,
+  and "Use" never writes into one -- a drop set keeps its own lighter weight.
+  Without that, a routine of four with two drops could never go up.
+
+## Set types (`set-types.js`)
+
+Supersets and circuits, drop sets and rest-pause (`coach/PLAN-FORMAT.md` "Set
+types"; Coach web's `coach/prescriptions.js` is the reference implementation).
+A coach's plan carries them on its exercises (`group`) and prescribed sets
+(`kind`), and starting it copies both onto the day.
+
+Your own routines have both too, in the routine's Exercises (tap its name):
+"Superset with next" on every exercise but the last, and **"Drop / rest-pause"**
+on an exercise of two sets or more, which opens a Straight / Drop / Rest-pause
+choice for each set after the first. It is closed until asked for, so the
+screen is unchanged for someone who never uses it, and open whenever a set has
+a kind, so a kind is never set where it cannot be seen. A routine stores a set
+count, not a list of sets (LIFT for Android's shape), so the kinds sit beside
+the count: **`setKinds`**, by position, `[null, null, "drop"]` for two straight
+sets and then a drop. Index 0 is always null, trailing nulls are trimmed, it is
+never longer than `targetSets`, and it is omitted when every set is straight,
+so a routine without kinds is stored and backed up byte for byte as before.
+Read leniently (`coach/BACKUP-FORMAT.md`). Starting the routine puts each kind
+on the set laid out at that position, so the row reads "70 x 12 drop", and
+saving a workout as a routine keeps them -- except for a lift logged a side at
+a time, where a position is two sets. LIFT for Android stores the same field
+under the same spelling. Nothing reaches the coach: SHARE-FORMAT carries no set
+type. `set-types.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it
+changes.**
 
 ## Watch import (`watch-scan.js`)
 

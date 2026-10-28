@@ -192,16 +192,33 @@ reads the same in both. In `workouts[].exercises[]`:
 
 LIFT uses the same names. In LIFT web's and LIFT Android's backups, a
 routine exercise carries `group`, and a logged workout's exercise and set carry
-`group` and `kind`, which come from a coach's plan and are information only.
-Their routines store a set count rather than individual sets, so a routine set
-has no `kind`. LIFT iOS writes no `routines` section of its own; it keeps one
+`group` and `kind`, which come from a coach's plan or a routine and are
+information only. LIFT iOS writes no `routines` section of its own; it keeps one
 from another platform and writes it back unchanged.
+
+Their routines store a set count, `targetSets`, rather than individual sets, so
+a routine exercise carries its sets' kinds beside the count:
+
+- **`setKinds`**: an array by set position (index 0 is set 1) of `"drop"`,
+  `"restPause"` or `null` for straight, e.g. `[null, null, "drop"]` for two
+  straight sets and then a drop set. Index 0 is always `null`, because a first
+  set is straight. Trailing `null`s are trimmed, and the array is never longer
+  than `targetSets`. Omitted when every set is straight, never `[]`, so a
+  routine with no kinds is written exactly as before. It goes only on an
+  exercise with no `prescribed` list; where a coach's prescribed sets exist,
+  each one carries its own `kind`.
+
+Starting the routine copies `setKinds[i]` onto the `kind` of the set laid out
+at position `i`.
 
 A file written before these restores unchanged. An unrecognised `side` string
 reads as both, an `eachSide` that is anything but `true` as not, a `group`
 that is not a positive integer as not grouped, and a `kind` that is not
 `"drop"` or `"restPause"` (case aside) as straight, rather than failing the
-import. A kind on a first set is dropped.
+import. A kind on a first set is dropped. A `setKinds` that is not an array
+reads as none; an entry in it that is not `"drop"` or `"restPause"` (case
+aside) reads as straight; a non-null index 0 is dropped, and so is anything
+past `targetSets`.
 
 ## The Coach backup's road picks
 
