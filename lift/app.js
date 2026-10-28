@@ -540,9 +540,62 @@ document.querySelectorAll('#tabs button').forEach((b) => {
 
 /* ---------------- home ---------------- */
 
+/* Training settings on Home, beside Appearance: whether LIFT suggests the next
+ * weight (progression.js), and My equipment (my-equipment.js). Each is its own
+ * localStorage key and neither is in the backup -- preferences about this
+ * device's screen, like lift.perSide. LIFT iOS keeps both in Settings ->
+ * Training, under the same words. */
+let equipmentListOpen = false;
+
+function switchRow(text, on, onChange) {
+  const row = el('label', 'switchrow');
+  const box = el('input');
+  box.type = 'checkbox';
+  box.checked = on;
+  box.onchange = () => onChange(box.checked);
+  row.appendChild(box);
+  row.appendChild(el('span', null, text));
+  return row;
+}
+
+function renderTrainingSettings() {
+  const card = $('#training-settings');
+  card.innerHTML = '';
+  card.appendChild(switchRow('Suggest the next weight', LiftProgression.enabled(localStorage),
+    (on) => LiftProgression.setEnabled(on, localStorage)));
+  card.appendChild(el('p', 'muted',
+    'My equipment narrows exercise search to what you have. For an exercise from one of your own '
+    + 'routines, LIFT suggests the next weight from your last session: up a step when every set '
+    + "reached its reps, the same again when one didn't, and a little lighter after two short "
+    + 'sessions in a row.'));
+
+  const notOwned = LiftEquipment.load(localStorage);
+  const list = el('details', 'equipment');
+  list.open = equipmentListOpen;
+  list.ontoggle = () => { equipmentListOpen = list.open; };
+  list.appendChild(el('summary', null, 'My equipment'));
+  LiftEquipment.KINDS.forEach((kind) => {
+    list.appendChild(switchRow(kind.displayName, !notOwned.has(kind.id), (owned) => {
+      if (owned) notOwned.delete(kind.id); else notOwned.add(kind.id);
+      LiftEquipment.save(notOwned, localStorage);
+      renderTrainingSettings();
+    }));
+  });
+  list.appendChild(el('p', 'muted',
+    "Exercise search shows what you can do with what's switched on, and says how many it left out. "
+    + 'An exercise with no equipment listed always shows.'));
+  if (notOwned.size) {
+    const all = el('button', 'ghost wide', 'I have all of it');
+    all.onclick = () => { LiftEquipment.save(new Set(), localStorage); renderTrainingSettings(); };
+    list.appendChild(all);
+  }
+  card.appendChild(list);
+}
+
 function renderHome() {
   renderCoach();
   renderBackupNote();
+  renderTrainingSettings();
   const today = todayKey();
   const eaten = totals(entriesFor(today));
 
@@ -2130,6 +2183,11 @@ let exerciseLibrary = null;
 let libraryError = null;
 let pickerSession = null;
 let exerciseFilter = '';
+/* My equipment (my-equipment.js): what is switched off on Home, read each
+ * time the picker opens, and "Show all" for this one search, without changing
+ * the setting -- iOS's picker holds both the same way. */
+let equipmentNotOwned = new Set();
+let showsAllEquipment = false;
 
 const EQUIPMENT_FILTERS = ['barbell', 'dumbbell', 'machine', 'cable', 'body only', 'kettlebells'];
 
@@ -2156,6 +2214,8 @@ async function loadExerciseLibrary() {
 
 async function openExercisePicker(session) {
   pickerSession = session;
+  equipmentNotOwned = LiftEquipment.load(localStorage);
+  showsAllEquipment = false;
   const panel = $('#exercise-picker');
   panel.classList.remove('hidden');
   $('#ex-query').value = '';
@@ -2203,15 +2263,33 @@ function renderExercisePicker() {
     (i) => { exerciseFilter = i.v; renderExercisePicker(); });
 
   const needle = query.toLowerCase();
-  const hits = (exerciseLibrary || [])
+  const matches = (exerciseLibrary || [])
     .filter((x) => !exerciseFilter || x.equipment === exerciseFilter)
     .filter((x) => !needle
       || x.name.toLowerCase().includes(needle)
-      || x.muscle.toLowerCase().includes(needle))
-    .slice(0, 40);
+      || x.muscle.toLowerCase().includes(needle));
+  // Narrowed before the first 40 are taken, or the 40 could all be lifts it
+  // then throws away -- iOS searches deeper when filtering for that reason.
+  const filtering = equipmentNotOwned.size > 0 && !showsAllEquipment;
+  const narrowed = LiftEquipment.filter(matches, filtering ? equipmentNotOwned : new Set(), (x) => x.equipment);
+  const hits = narrowed.shown.slice(0, 40);
 
-  if (!hits.length) {
+  if (!hits.length && narrowed.leftOut > 0) {
+    results.appendChild(el('strong', null, 'Nothing with your equipment'));
+    results.appendChild(el('p', 'muted', LiftEquipment.leftOutText(narrowed.leftOut)));
+    const all = el('button', 'ghost wide', 'Show all');
+    all.onclick = () => { showsAllEquipment = true; renderExercisePicker(); };
+    results.appendChild(all);
+  } else if (!hits.length) {
     results.appendChild(el('p', 'muted', 'Nothing matches that.'));
+  } else if (equipmentNotOwned.size) {
+    // Says the list is narrowed, and by how much, with the way out.
+    const row = el('div', 'entry equipmentrow');
+    row.appendChild(el('div', 'muted small', LiftEquipment.rowText(filtering, narrowed.leftOut)));
+    const flip = el('button', 'ghost', filtering ? 'Show all' : 'Only mine');
+    flip.onclick = () => { showsAllEquipment = !showsAllEquipment; renderExercisePicker(); };
+    row.appendChild(flip);
+    results.appendChild(row);
   }
 
   hits.forEach((hit) => {
@@ -2554,6 +2632,7 @@ function renderTrain() {
     (i) => { settings.focus = i.k; save(KEY.settings, settings); render(); });
 
   renderPrescribed();
+  renderUpNext();
   renderPlanWeek();
   renderRoutines();
   renderOutdoor();
@@ -2613,6 +2692,9 @@ function renderTrain() {
         row.appendChild(x);
         block.appendChild(row);
       });
+
+      const hint = progressionHint(session, ex, sided);
+      if (hint) block.appendChild(hint);
 
       /* One tap more than a normal set, not two: the side is already picked
        * -- whichever has fewer sets so far -- and Add set logs it there. */
@@ -2888,6 +2970,56 @@ function routineExercises(routine) {
   return list;
 }
 
+/* The lifter's own sessions, without a coach's: rotation.js and
+ * progression.js both read only these. */
+const ownSessions = () => LiftRotation.ownSessions(workouts, training, templates);
+
+/* "Up next: Pull · Push/Pull/Legs", on today while nothing has been logged on
+ * it and no coach has booked it: the next routine of the rotation most
+ * recently trained (rotation.js). A suggestion, started by a tap the way any
+ * routine is. Only today, because a rotation's next step is about now: on a
+ * day gone by it would be a guess about what came after. LIFT iOS's
+ * UpNextBanner. */
+function renderUpNext() {
+  const wrap = $('#up-next');
+  wrap.innerHTML = '';
+  if (trainDate !== todayKey() || prescribedFor(trainDate).length) return;
+  if (sessionsFor(trainDate).some((s) => (s.exercises || []).length)) return;
+  const current = LiftRotation.current(routines, ownSessions());
+  const routine = current && routines.find((r) => r.id === current.upNext.routineId);
+  if (!routine) return;
+  const go = el('button', 'wide ghost', `Up next: ${routine.name} \u00b7 ${current.folder}`);
+  go.onclick = () => startRoutine(routine);
+  wrap.appendChild(go);
+}
+
+/* The next weight for an exercise started from one of your own routines, with
+ * why (progression.js), and "Use" to put it in the sets not yet done. None
+ * for a coach's session: the coach sets those numbers. LIFT iOS's
+ * ProgressionHint. */
+function progressionHint(session, ex, sided) {
+  const ctx = {
+    routines, workouts, training, templates, today: todayKey(),
+    enabled: LiftProgression.enabled(localStorage), perSide: sided,
+  };
+  const next = LiftProgression.suggestion(session, ex, ctx);
+  if (!next) return null;
+  const box = el('div', 'progression');
+  box.appendChild(el('p', 'muted', LiftProgression.line(next, 'lb')));
+  const weight = LiftProgression.weightOf(next);
+  const open = LiftProgression.openSets(ex, LiftProgression.routineExercise(session, ex, ctx), weight);
+  if (open.length) {
+    const use = el('button', 'ghost', LiftProgression.buttonText(next, 'lb'));
+    use.onclick = () => {
+      open.forEach((st) => { st.weightLb = weight; });
+      save(KEY.workouts, workouts);
+      render();
+    };
+    box.appendChild(use);
+  }
+  return box;
+}
+
 function renderRoutines() {
   const wrap = $('#routine-list');
   wrap.innerHTML = '';
@@ -2896,12 +3028,18 @@ function renderRoutines() {
   if (routines.length) {
     const card = el('div', 'card');
     card.appendChild(el('strong', null, 'Your routines'));
+    // A named folder is a rotation (rotation.js): listed in its order, with
+    // the routine after the last one started from it marked Up next.
+    const upNext = LiftRotation.upNextIds(routines, ownSessions());
+    let rotationSaid = false;
     LiftRoutines.byFolder(routines).forEach((group) => {
       const head = el('div', 'mealhead');
       head.appendChild(el('span', null, group.folder));
       head.appendChild(el('span', null, String(group.routines.length)));
       card.appendChild(head);
-      group.routines.forEach((routine) => {
+      const isDefault = group.routines.some((r) => !(r.folder || '').trim());
+      const listed = LiftRotation.listed(isDefault ? '' : group.folder, group.routines);
+      listed.forEach((routine) => {
         const go = el('button', 'ghost', 'Start');
         go.onclick = () => startRoutine(routine);
         const row = routineRow(routine, go);
@@ -2910,7 +3048,12 @@ function renderRoutines() {
         const head = el('button', 'routinehead');
         head.type = 'button';
         head.setAttribute('aria-expanded', String(open));
-        head.appendChild(el('div', null, routine.name));
+        const name = el('div', null, routine.name);
+        if (upNext.has(routine.id)) {
+          name.appendChild(document.createTextNode(' '));
+          name.appendChild(el('span', 'upnext', 'Up next'));
+        }
+        head.appendChild(name);
         const count = el('div', 'muted', row.firstChild.lastChild.textContent);
         count.appendChild(el('span', 'routinehead-hint', open ? ' \u00b7 Hide exercises' : ' \u00b7 Exercises'));
         head.appendChild(count);
@@ -2928,6 +3071,12 @@ function renderRoutines() {
         card.appendChild(row);
         if (open) card.appendChild(routineExercises(routine));
       });
+      // Said once, under the first folder it applies to.
+      if (!rotationSaid && listed.some((r) => upNext.has(r.id))) {
+        rotationSaid = true;
+        card.appendChild(el('p', 'muted small',
+          'A folder is a rotation: Up next is the routine after the last one you started from it.'));
+      }
     });
     wrap.appendChild(card);
   }

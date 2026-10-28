@@ -94,6 +94,9 @@ exclude:
   - vendor
   - lift/watch-scan.test.mjs
   - lift/road-food.test.mjs
+  - lift/my-equipment.test.mjs
+  - lift/rotation.test.mjs
+  - lift/progression.test.mjs
   - lift/fixtures/
   - lift/README.md
   # Coach's copies of the same kind of thing. coach/ is rsynced in whole from
