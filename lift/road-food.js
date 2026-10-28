@@ -30,6 +30,11 @@
  * is hidden. A pick is an opinion sitting beside the numbers, never in front
  * of them, and a pick that is "a little over" stays in the little-over group
  * where the arithmetic put it. See coach/PLAN-FORMAT.md "Road picks".
+ *
+ * LIFT iOS's RoadFoodRanking is a port of the ranking above, so the two must
+ * keep agreeing. Two later parts go the other way: avoiding allergens and
+ * putting a meal together (`allergens`, `meal`, near the end) are ports of LIFT
+ * iOS's RoadFoodAllergens and RoadFoodMeal, which are the reference for them.
  */
 (function (global) {
   'use strict';
@@ -276,6 +281,256 @@
     return entry;
   }
 
+  /* ---------------- allergens ---------------- */
+
+  /*
+   * Avoiding allergens at a place: what is hidden, what is shown, and what is
+   * said about an item the chart is silent on. A port of LIFT iOS's
+   * `RoadFoodAllergens`, which is the reference for this part (as this file is
+   * the reference for the ranking), so the words and rules are its own.
+   *
+   * The data is what the chain's own allergen chart says an item **contains**
+   * (dugcanlift-kit/data/README.md "Allergens"); "may contain" and
+   * shared-fryer notes are not in it. So the rules are deliberately one-sided:
+   *
+   *  - An item that contains something avoided is **hidden**, and counted, so
+   *    a short list is never mistaken for a short menu.
+   *  - An item is **never claimed free** of an allergen the chart does not
+   *    cover (`allergensCovered`; absent covers nothing) or does not state for
+   *    it (no `allergens`). It stays on the list and its row says "Milk not
+   *    stated" in words. A filter that hid only what it knew about and implied
+   *    the rest was safe would be worse than no filter.
+   *  - Nothing here says "safe". The screen says the chart is the chain's, and
+   *    that cross-contact is not covered.
+   */
+
+  /** The US major allergens, in display order. */
+  var ALLERGENS = ['milk', 'egg', 'fish', 'shellfish', 'tree-nuts', 'peanuts', 'wheat', 'soy', 'sesame'];
+
+  function allergenLabel(allergen) {
+    if (allergen === 'tree-nuts') return 'Tree nuts';
+    var s = String(allergen || '');
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  /** Known strings only, in display order, once each. Anything that is not a
+   *  list is nothing. */
+  function knownAllergens(list) {
+    if (!Array.isArray(list)) return [];
+    var set = {};
+    list.forEach(function (a) { if (typeof a === 'string') set[a.toLowerCase()] = true; });
+    return ALLERGENS.filter(function (a) { return set[a]; });
+  }
+
+  /** An item's stated allergens, cleaned, or null when the chart says nothing
+   *  about it -- which is not the same thing as `[]`. */
+  function statedAllergens(item) {
+    return item && Array.isArray(item.allergens) ? knownAllergens(item.allergens) : null;
+  }
+
+  // "milk, wheat, and soy": English, like the sentence it sits in.
+  function joinList(list) {
+    try {
+      if (typeof Intl !== 'undefined' && Intl.ListFormat) {
+        return new Intl.ListFormat('en', { style: 'long', type: 'conjunction' }).format(list);
+      }
+    } catch (e) { /* the plain join below says the same */ }
+    if (list.length < 2) return list.join('');
+    if (list.length === 2) return list[0] + ' and ' + list[1];
+    return list.slice(0, -1).join(', ') + ', and ' + list[list.length - 1];
+  }
+
+  /**
+   * { kind: 'contains', list }  -- contains at least one avoided allergen: hidden.
+   * { kind: 'notStated', list } -- shown; these avoided ones are not stated for it.
+   * { kind: 'clear', list: [] } -- shown; the chart covers every avoided
+   *                                allergen and lists none of them for it.
+   * `covered` is the chain's `allergensCovered` (absent is []); `avoiding` a list.
+   */
+  function allergenVerdict(item, covered, avoiding) {
+    var avoided = knownAllergens(avoiding);
+    if (!avoided.length) return { kind: 'clear', list: [] };
+    var stated = statedAllergens(item);
+    if (stated) {
+      var hit = avoided.filter(function (a) { return stated.indexOf(a) !== -1; });
+      if (hit.length) return { kind: 'contains', list: hit };
+      var cov = knownAllergens(covered);
+      var unknown = avoided.filter(function (a) { return cov.indexOf(a) === -1; });
+      return unknown.length ? { kind: 'notStated', list: unknown } : { kind: 'clear', list: [] };
+    }
+    return { kind: 'notStated', list: avoided };
+  }
+
+  /** { shown, hiddenCount }: the items left on screen, and how many were hidden. */
+  function filterAllergens(items, covered, avoiding) {
+    var list = (items || []).filter(Boolean);
+    var shown = list.filter(function (item) {
+      return allergenVerdict(item, covered, avoiding).kind !== 'contains';
+    });
+    return { shown: shown, hiddenCount: list.length - shown.length };
+  }
+
+  /** "Contains milk, wheat, and soy" / "Contains none of the allergens its
+   *  chart lists" / null when the chart says nothing about the item. */
+  function containsLine(item) {
+    var stated = statedAllergens(item);
+    if (!stated) return null;
+    if (!stated.length) return 'Contains none of the allergens its chart lists';
+    return 'Contains ' + joinList(stated.map(function (a) { return allergenLabel(a).toLowerCase(); }));
+  }
+
+  /** "Milk and egg not stated", for a shown row while something is avoided. */
+  function notStatedLine(verdict) {
+    if (!verdict || verdict.kind !== 'notStated' || !verdict.list.length) return null;
+    var names = joinList(verdict.list.map(function (a) { return allergenLabel(a).toLowerCase(); }));
+    return names.charAt(0).toUpperCase() + names.slice(1) + ' not stated';
+  }
+
+  /**
+   * The sentence under the Avoid row while something is avoided. `chain` is
+   * the place on screen, or null for the gas station, which has no chart.
+   * Three cases, by what the chain's chart is on record as saying: no chart
+   * read at all (no `allergenSource`); a chart that says what items contain
+   * but not what it covers (no `allergensCovered`), whose lists can hide an
+   * item and never clear one; and a chart that says both.
+   */
+  function avoidNote(hiddenCount, chain) {
+    var lead = hiddenCount === 0 ? 'Nothing here is listed as containing what you avoid. '
+      : hiddenCount === 1 ? '1 item is hidden because its chart says it contains something you avoid. '
+        : hiddenCount + ' items are hidden because their chart says they contain something you avoid. ';
+    var source = chain && typeof chain.allergenSource === 'string' && chain.allergenSource.trim();
+    if (!source) {
+      return lead + 'This place publishes no allergen chart LIFT can read, so nothing is marked either way.';
+    }
+    var name = chain.name || 'the chain';
+    if (!knownAllergens(chain.allergensCovered).length) {
+      return lead + 'From the allergen chart ' + name + ' publishes. It says what items contain, not which '
+        + 'allergens it covers, so nothing is marked free of anything. It doesn\u2019t cover cross-contact '
+        + 'either. Check with the restaurant.';
+    }
+    return lead + 'From the allergen chart ' + name + ' publishes, which doesn\u2019t cover cross-contact. '
+      + 'Check with the restaurant.';
+  }
+
+  /* What is avoided, shared by every place, on this device only: a preference
+   * about this screen, like the recent chains, and not in the backup. */
+  var AVOID_KEY = 'lift.roadAvoid';
+
+  function loadAvoid(storage) {
+    try {
+      var raw = storage.getItem(AVOID_KEY);
+      return raw ? knownAllergens(JSON.parse(raw)) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  /** Avoiding nothing removes the key. Returns the list as kept. */
+  function saveAvoid(avoiding, storage) {
+    var list = knownAllergens(avoiding);
+    try {
+      if (list.length) storage.setItem(AVOID_KEY, JSON.stringify(list));
+      else storage.removeItem(AVOID_KEY);
+    } catch (e) { /* storage unavailable: the chips still work for this visit */ }
+    return list;
+  }
+
+  /* ---------------- a meal before it is ordered ---------------- */
+
+  /*
+   * A sandwich, a side and a milk, put together at one place and totalled
+   * against what is left of today. A port of LIFT iOS's `RoadFoodMeal`.
+   *
+   * Only an item with a calorie and a protein figure can be added: the total
+   * states both, and a sum missing one item's protein would be a smaller
+   * number passed off as the whole. Each item is rounded as its entry is
+   * logged (`entryFor`), so the tray and the day it lands in agree. Logging
+   * the meal logs each item as its own entry, so the day reads the same either
+   * way and one item can be removed from it later on its own.
+   *
+   * A meal is a plain value, { lines: [{ id, count }] }, in the order items
+   * were first added. Every function returns a new one rather than changing
+   * the one it was given.
+   */
+
+  function mealEmpty() { return { lines: [] }; }
+
+  function mealCanAdd(item) {
+    return !!item && typeof item.id === 'string' && !!item.id
+      && num(item.kcal) != null && num(item.proteinG) != null;
+  }
+
+  function mealLines(meal) { return meal && Array.isArray(meal.lines) ? meal.lines : []; }
+
+  function mealAdd(meal, item) {
+    var lines = mealLines(meal).map(function (l) { return { id: l.id, count: l.count }; });
+    if (!mealCanAdd(item)) return { lines: lines };
+    var line = lines.filter(function (l) { return l.id === item.id; })[0];
+    if (line) line.count += 1;
+    else lines.push({ id: item.id, count: 1 });
+    return { lines: lines };
+  }
+
+  function mealRemove(meal, item) {
+    var id = item && item.id;
+    var lines = mealLines(meal).map(function (l) {
+      return { id: l.id, count: l.id === id ? l.count - 1 : l.count };
+    }).filter(function (l) { return l.count > 0; });
+    return { lines: lines };
+  }
+
+  function mealCount(meal, id) {
+    var line = mealLines(meal).filter(function (l) { return l.id === id; })[0];
+    return line ? line.count : 0;
+  }
+
+  function mealItemCount(meal) {
+    return mealLines(meal).reduce(function (t, l) { return t + l.count; }, 0);
+  }
+
+  function mealIsEmpty(meal) { return mealLines(meal).length === 0; }
+
+  /** The items to log, one per serving, in the order they were added. An id
+   *  `menu` no longer lists is dropped rather than logged as nothing. */
+  function mealItems(meal, menu) {
+    var out = [];
+    mealLines(meal).forEach(function (l) {
+      var item = (menu || []).filter(function (i) { return i && i.id === l.id; })[0];
+      if (!item) return;
+      for (var n = 0; n < l.count; n++) out.push(item);
+    });
+    return out;
+  }
+
+  /** { kcal, proteinG }, each item rounded as it is logged. */
+  function mealTotal(meal, menu) {
+    return mealItems(meal, menu).reduce(function (t, item) {
+      return { kcal: t.kcal + Math.round(num(item.kcal) || 0),
+               proteinG: t.proteinG + Math.round(num(item.proteinG) || 0) };
+    }, { kcal: 0, proteinG: 0 });
+  }
+
+  /**
+   * "2 items · 520 kcal · 40 g protein · fits, 380 kcal to spare", or
+   * "... · 120 kcal over what is left", or "... · uses exactly what is left".
+   * Said, never coloured. `remaining` is what `rank` is given, or null with no
+   * goal, which leaves the last clause off. What is left is counted in whole
+   * calories, truncated, as LIFT iOS's `RemainingMacros.wholeCalories` is.
+   */
+  function mealLine(meal, menu, remaining) {
+    var total = mealTotal(meal, menu);
+    var count = mealItems(meal, menu).length;
+    var parts = [count === 1 ? '1 item' : count + ' items',
+                 total.kcal + ' kcal', total.proteinG + ' g protein'];
+    var cal = remaining && remaining.calories != null ? Number(remaining.calories) : NaN;
+    if (isFinite(cal)) {
+      var left = Math.trunc(cal) - total.kcal;
+      if (left >= 0) parts.push(left === 0 ? 'uses exactly what is left' : 'fits, ' + left + ' kcal to spare');
+      else parts.push(-left + ' kcal over what is left');
+    }
+    return parts.join(' · ');
+  }
+
   global.LiftRoadFood = {
     proteinPer100: proteinPer100,
     rank: rank,
@@ -288,5 +543,30 @@
     orderChains: orderChains,
     remember: remember,
     entryFor: entryFor,
+    allergens: {
+      all: ALLERGENS.slice(),
+      storageKey: AVOID_KEY,
+      label: allergenLabel,
+      known: knownAllergens,
+      verdict: allergenVerdict,
+      filter: filterAllergens,
+      containsLine: containsLine,
+      notStatedLine: notStatedLine,
+      avoidNote: avoidNote,
+      load: loadAvoid,
+      save: saveAvoid,
+    },
+    meal: {
+      empty: mealEmpty,
+      canAdd: mealCanAdd,
+      add: mealAdd,
+      remove: mealRemove,
+      count: mealCount,
+      itemCount: mealItemCount,
+      isEmpty: mealIsEmpty,
+      items: mealItems,
+      total: mealTotal,
+      line: mealLine,
+    },
   };
 })(typeof window !== 'undefined' ? window : globalThis);
