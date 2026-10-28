@@ -20,6 +20,7 @@ const SHELL = [
   '/lift/backup.js',
   '/lift/routines.js',
   '/lift/sides.js',
+  '/lift/set-types.js',
   '/lift/plan-log.js',
   '/lift/outdoor.js',
   '/lift/road-food.js',
