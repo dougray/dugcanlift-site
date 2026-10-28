@@ -406,6 +406,34 @@ canvas { width: 100%; display: block; }
 .exercise { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 12px; }
 .exercise h3 { margin: 0 0 2px; font-size: 17px; }
 
+/* "Superset A": the group an exercise is done in, over the group's first
+   member, on a coach's card, a routine and a started session alike. Coach
+   web's label, in this app's accent. */
+.group-label {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+/* A saved routine's name and count, which open its exercises. A button so it
+   is reachable and says whether it is open; drawn as the text it replaced. */
+button.routinehead {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  min-height: 44px;
+  text-align: left;
+  color: var(--text);
+  font-size: inherit;
+  font-weight: 400;
+}
+.routinehead-hint { color: var(--accent-text); }
+.routine-exercises { margin: 0 0 8px; }
+.routine-exercises .exercise-actions { margin-top: 6px; }
+
 /* Add set, and the exercise's own left/right toggle beside it. They wrap
    rather than push: at 375px an exercise card is 311px wide, and a row that
    refuses to break is how a page ends up wider than the phone holding it. */
