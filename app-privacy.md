@@ -130,6 +130,15 @@ you choose to send.
   them: those remembered foods stay on your phone. LIFT doesn't send them
   anywhere; they go into a backup file only when you save one.
 
+## Notifications (iPhone)
+
+The iPhone app asks to send notifications the first time a rest between sets
+starts in a live session, and uses them for one thing: telling you the rest is
+over, including with your phone locked. The notification is scheduled on the
+phone, for a time on the phone; nothing is sent to or from anywhere. Say no and
+the rest timer still counts down on screen and on the lock screen; only the
+alert at the end is missing.
+
 ## What leaves your device
 
 ### Food search (Android and web)
