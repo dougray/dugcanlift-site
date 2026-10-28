@@ -1606,6 +1606,15 @@ const roadPicksLabel = (suffix) => (roadPickWho()
 let roadView = { kind: 'picker' };
 let roadMeal = 'LUNCH';
 let roadNote = '';
+/* Allergens avoided, shared by every place and kept on this device only
+ * (road-food.js `allergens`). Read through its own try/catch, so a private
+ * window or blocked storage is avoiding nothing, not a broken screen. */
+const roadStorage = () => { try { return window.localStorage; } catch (e) { return null; } };
+let roadAvoid = LiftRoadFood.allergens.load(roadStorage());
+/* Items put together before ordering (road-food.js `meal`). Not kept: it is the
+ * order in front of you, and a new place is a new order, so every way into a
+ * place starts it empty. */
+let roadPlate = LiftRoadFood.meal.empty();
 
 function loadRoadFood() {
   if (roadData) return Promise.resolve(roadData);
@@ -1639,6 +1648,7 @@ function openRoadFood() {
   roadView = { kind: 'picker' };
   roadMeal = guessMeal();
   roadNote = '';
+  roadPlate = LiftRoadFood.meal.empty();
   showTab('road');
   loadRoadFood().then(render, render);
 }
@@ -1648,6 +1658,7 @@ $('#road-back').onclick = () => {
   if (roadView.kind === 'picker') { showTab('food'); return; }
   roadView = { kind: 'picker' };
   roadNote = '';
+  roadPlate = LiftRoadFood.meal.empty();
   render();
   window.scrollTo(0, 0);
 };
@@ -1675,6 +1686,7 @@ function openRoadChain(id) {
   save(KEY.roadRecent, LiftRoadFood.remember(roadRecent(), id, 5));
   roadView = { kind: 'chain', id };
   roadNote = '';
+  roadPlate = LiftRoadFood.meal.empty();
   render();
   window.scrollTo(0, 0);
 }
@@ -1764,7 +1776,13 @@ function renderRoadPicker(body) {
     const gasPicked = LiftRoadFood.pickCount(roadData.snacks, roadPickIds());
     gas.appendChild(el('p', 'muted small', (cats.length ? titleCase(cats.join(', ')) : 'Snacks')
       + (gasPicked ? ` · ${gasPicked} picked for you` : '')));
-    gas.onclick = () => { roadView = { kind: 'snacks', category: '' }; roadNote = ''; render(); window.scrollTo(0, 0); };
+    gas.onclick = () => {
+      roadView = { kind: 'snacks', category: '' };
+      roadNote = '';
+      roadPlate = LiftRoadFood.meal.empty();
+      render();
+      window.scrollTo(0, 0);
+    };
     grid.appendChild(gas);
   }
   body.appendChild(grid);
@@ -1807,7 +1825,29 @@ function roadFitLine(card, remaining, ranked) {
   }
 }
 
-function roadRow(item, placeName, isPick) {
+/* One item as the entry "Log" writes: the same call for a single item and for
+ * each item of a meal, so the day reads the same whichever way it was logged. */
+const roadEntry = (item, placeName, loggedAt) => LiftRoadFood.entryFor(item, placeName, {
+  id: uid(), date: todayKey(), loggedAt, meal: roadMeal,
+});
+
+/* " 380 kcal left today." after a log, or nothing with no goal. */
+function roadLeftToday() {
+  const left = remainingFor(todayKey());
+  return left ? ` ${left.calories >= 0 ? `${left.calories} kcal left` : `${-left.calories} kcal over`} today.` : '';
+}
+
+/* Re-render, then put focus back on the row's button that was pressed: the
+ * list was rebuilt under it. "−" on the last one falls back to that row's "+". */
+function roadRefocus(item, less) {
+  render();
+  const find = (label) => [...document.querySelectorAll('#road-body .roadplus')]
+    .find((b) => b.getAttribute('aria-label') === label);
+  const target = (less && find(`One less ${item.name} in the meal`)) || find(`Add ${item.name} to the meal`);
+  if (target) target.focus({ preventScroll: true });
+}
+
+function roadRow(item, placeName, isPick, allergens) {
   const row = el('div', 'entry roaditem');
   const info = el('div');
   info.appendChild(el('div', 'roadname', item.name));
@@ -1830,22 +1870,46 @@ function roadRow(item, placeName, isPick) {
   const extras = LiftNutrients.entryLine(LiftRoadFood.entryFor(item));
   if (extras) info.appendChild(el('div', 'muted small', extras));
   if (item.modification) info.appendChild(el('div', 'muted small', item.modification));
+  // What the chart says it contains, when it says. And while something is
+  // avoided, what it does not say, in the body colour: an item is never
+  // passed off as free of something its chart is silent on.
+  const contains = LiftRoadFood.allergens.containsLine(item);
+  if (contains) info.appendChild(el('div', 'muted small', contains));
+  const unknown = LiftRoadFood.allergens.notStatedLine(
+    LiftRoadFood.allergens.verdict(item, allergens.covered, roadAvoid));
+  if (unknown) info.appendChild(el('div', 'small roadunstated', unknown));
   if (item.barcode) info.appendChild(el('div', 'muted small', `Barcode ${item.barcode}`));
   row.appendChild(info);
+
+  // "+" adds one to the meal being put together; once there is one, the count
+  // and "−" show beside it. Only an item with calories and protein can go in.
+  if (LiftRoadFood.meal.canAdd(item)) {
+    const plate = el('span', 'roadplate');
+    const count = LiftRoadFood.meal.count(roadPlate, item.id);
+    if (count > 0) {
+      const less = el('button', 'roadplus', '\u2212');
+      less.type = 'button';
+      less.setAttribute('aria-label', `One less ${item.name} in the meal`);
+      less.onclick = () => { roadPlate = LiftRoadFood.meal.remove(roadPlate, item); roadRefocus(item, true); };
+      plate.appendChild(less);
+      plate.appendChild(el('span', 'roadcount', String(count)));
+    }
+    const more = el('button', 'roadplus', '+');
+    more.type = 'button';
+    more.setAttribute('aria-label', `Add ${item.name} to the meal`);
+    more.onclick = () => { roadPlate = LiftRoadFood.meal.add(roadPlate, item); roadRefocus(item, false); };
+    plate.appendChild(more);
+    row.appendChild(plate);
+  }
 
   const log = el('button', 'chip', 'Log');
   log.setAttribute('aria-label', `Log ${item.name}`);
   // Nothing to log without a calorie figure; every entry in LIFT has one.
   log.disabled = item.kcal == null;
   log.onclick = () => {
-    const entry = LiftRoadFood.entryFor(item, placeName, {
-      id: uid(), date: todayKey(), loggedAt: Date.now(), meal: roadMeal,
-    });
-    food.push(entry);
+    food.push(roadEntry(item, placeName, Date.now()));
     save(KEY.food, food);
-    const left = remainingFor(todayKey());
-    roadNote = `Logged ${item.name} to ${MEAL_LABEL[roadMeal]}.`
-      + (left ? ` ${left.calories >= 0 ? `${left.calories} kcal left` : `${-left.calories} kcal over`} today.` : '');
+    roadNote = `Logged ${item.name} to ${MEAL_LABEL[roadMeal]}.` + roadLeftToday();
     render();
   };
   row.appendChild(log);
@@ -1902,11 +1966,17 @@ function renderRoadPlace(body, chain, isSnacks) {
     body.appendChild(row);
   }
 
+  // Allergens avoided: what contains one is hidden before anything is ranked,
+  // and counted. A gas-station view mixes products and none states a chart.
+  const allergens = { covered: isSnacks ? [] : (chain.allergensCovered || []) };
+  const filtered = LiftRoadFood.allergens.filter(items, allergens.covered, roadAvoid);
+  roadAvoidRow(body, filtered.hiddenCount, allergens.covered, isSnacks ? '' : chain.name);
+
   const remaining = remainingFor(todayKey());
   // Ranked first, then the coach's picks floated to the top of each group.
   // Nothing about the ranking changes: the same items fit, in the same order
   // among themselves, and the same ones are left out.
-  const ranked = LiftRoadFood.withPicks(LiftRoadFood.rank(items, remaining), roadPickIds());
+  const ranked = LiftRoadFood.withPicks(LiftRoadFood.rank(filtered.shown, remaining), roadPickIds());
   const fit = el('div', 'card');
   roadFitLine(fit, remaining, ranked);
   if (ranked.count) {
@@ -1937,7 +2007,7 @@ function renderRoadPlace(body, chain, isSnacks) {
   const placeName = isSnacks ? '' : chain.name;
   if (ranked.fits.length) {
     const list = el('div', 'card');
-    ranked.fits.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id])));
+    ranked.fits.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id], allergens)));
     main.appendChild(list);
   }
   if (ranked.over.length) {
@@ -1946,7 +2016,7 @@ function renderRoadPlace(body, chain, isSnacks) {
     const list = el('div', 'card');
     // A pick that is over stays over: the pick is about the food, and what is
     // left of the day is the client's own arithmetic.
-    ranked.over.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id])));
+    ranked.over.forEach((item) => list.appendChild(roadRow(item, placeName, ranked.picked[item.id], allergens)));
     main.appendChild(list);
   }
 
@@ -1964,6 +2034,76 @@ function renderRoadPlace(body, chain, isSnacks) {
     card.appendChild(ul);
     side.appendChild(card);
   }
+
+  // The meal tray sits last and sticks to the bottom of the screen, so it is
+  // seen wherever the row that was added had been scrolled to. Its menu is the
+  // whole place, not the gas-station category on screen, so switching
+  // category never drops an item from the total it is still counted in.
+  const menu = isSnacks ? roadData.snacks : chain.items;
+  if (!LiftRoadFood.meal.isEmpty(roadPlate)) roadTray(body, menu, placeName, remaining);
+}
+
+/* "Avoid": one chip per allergen, any number on, and while any is on, what was
+ * hidden and whose chart said so. Nothing on this screen ever says "safe". */
+function roadAvoidRow(body, hiddenCount, covered, placeName) {
+  body.appendChild(el('label', null, 'Avoid'));
+  const row = el('div', 'chips roadwrap');
+  row.id = 'road-avoid';
+  row.setAttribute('role', 'group');
+  row.setAttribute('aria-label', 'Avoid');
+  LiftRoadFood.allergens.all.forEach((a) => {
+    const on = roadAvoid.indexOf(a) !== -1;
+    const b = el('button', 'chip' + (on ? ' on' : ''), LiftRoadFood.allergens.label(a));
+    b.type = 'button';
+    b.dataset.allergen = a;
+    b.setAttribute('aria-pressed', String(on));
+    b.onclick = () => {
+      roadAvoid = LiftRoadFood.allergens.save(on ? roadAvoid.filter((x) => x !== a) : roadAvoid.concat(a),
+        roadStorage());
+      render();
+      // The row was rebuilt: keep focus on the chip that was pressed.
+      const again = document.querySelector(`#road-avoid [data-allergen="${a}"]`);
+      if (again) again.focus({ preventScroll: true });
+    };
+    row.appendChild(b);
+  });
+  body.appendChild(row);
+  if (roadAvoid.length) {
+    body.appendChild(el('p', 'muted small', LiftRoadFood.allergens.avoidNote(hiddenCount, covered, placeName)));
+  }
+}
+
+/* The meal being put together: its line against what is left today, Clear,
+ * and Log meal, which logs each item as its own entry exactly as Log does. */
+function roadTray(body, menu, placeName, remaining) {
+  const tray = el('div', 'card roadtray');
+  tray.setAttribute('role', 'region');
+  tray.setAttribute('aria-label', 'Your meal');
+  const words = el('div', 'roadtraytext');
+  words.appendChild(el('div', 'muted small', 'Your meal'));
+  const line = el('div', null, LiftRoadFood.meal.line(roadPlate, menu, remaining));
+  line.setAttribute('aria-live', 'polite');
+  words.appendChild(line);
+  tray.appendChild(words);
+  const clear = el('button', 'ghost', 'Clear');
+  clear.type = 'button';
+  clear.onclick = () => { roadPlate = LiftRoadFood.meal.empty(); render(); };
+  tray.appendChild(clear);
+  const logMeal = el('button', null, 'Log meal');
+  logMeal.type = 'button';
+  logMeal.onclick = () => {
+    const chosen = LiftRoadFood.meal.items(roadPlate, menu);
+    if (!chosen.length) return;
+    const now = Date.now();
+    chosen.forEach((item) => food.push(roadEntry(item, placeName, now)));
+    save(KEY.food, food);
+    roadNote = `Logged ${chosen.length === 1 ? '1 item' : `${chosen.length} items`} to ${MEAL_LABEL[roadMeal]}.`
+      + roadLeftToday();
+    roadPlate = LiftRoadFood.meal.empty();
+    render();
+  };
+  tray.appendChild(logMeal);
+  body.appendChild(tray);
 }
 
 /* ---------------- train ---------------- */

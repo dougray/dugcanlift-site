@@ -570,6 +570,41 @@ button.roadchain .muted { margin: 2px 0 0; }
 .roadrules li { margin: 4px 0; }
 /* Meal and category chips wrap instead of scrolling: four short labels. */
 .chips.roadwrap { flex-wrap: wrap; }
+/* Said when an avoided allergen is not stated for an item: the body colour,
+   not the muted one, because it is the line that stops a list reading as safe.
+   Still no colour of its own -- it is a gap in the chart, not a warning. */
+.roadunstated { color: var(--text); margin-top: 2px; }
+/* Build a meal: "+" on a row, and once there is one, "-" and the count. */
+.roaditem > .roadplate { flex: none; display: flex; align-items: center; gap: 2px; }
+.roadplus {
+  background: none;
+  color: var(--accent-text);
+  border: 1px solid var(--control-border);
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+.roadcount { min-width: 20px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 1023px) {
+  .roadplus { min-width: 44px; min-height: 44px; }
+}
+/* The meal tray is the last thing on the page and sticks to the bottom of the
+   screen, so it is in view wherever the row that was added had scrolled to. */
+.roadtray {
+  position: sticky;
+  bottom: calc(env(safe-area-inset-bottom) + 8px);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  box-shadow: inset 0 0 0 1px var(--card-border), 0 4px 16px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+}
+.roadtraytext { flex: 1 1 260px; min-width: 0; }
+.roadtraytext .muted { margin: 0 0 2px; }
+.roadtray button { padding: 10px 18px; }
 
 /* ---------------- large screens ----------------
  *
