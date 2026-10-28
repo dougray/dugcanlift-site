@@ -140,6 +140,15 @@ phone, for a time on the phone; nothing is sent to or from anywhere. Say no and
 the rest timer still counts down on screen and on the lock screen; only the
 alert at the end is missing.
 
+## Progress photos (iPhone)
+
+You can keep progress photos in the iPhone app. You choose each one in the
+system photo picker, which shows LIFT only the picture you pick and gives it no
+access to the rest of your library. LIFT saves a smaller copy in its own
+storage on your phone, without the original's location data. Progress photos
+are never uploaded, never included in a backup file, and never sent to a
+coach. Deleting a photo in LIFT, or deleting LIFT, removes them.
+
 ## What leaves your device
 
 ### Food search (Android and web)
@@ -221,6 +230,10 @@ it, it can show where you go, so treat the file with the same care as the log.
   every app, under Apple's terms.
 - **The web app** keeps everything in your browser, which does not sync it
   anywhere. Clearing site data erases it, so keep a backup file.
+- **The iPhone app** can also export your training as a spreadsheet (a CSV
+  file) and import a training history exported from Strong, Hevy or FitNotes.
+  Both are files you choose and handle yourself: LIFT reads an import on the
+  phone and writes an export only where you save or send it.
 
 ## The watch apps
 
