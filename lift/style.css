@@ -433,6 +433,36 @@ button.routinehead {
 .routinehead-hint { color: var(--accent-text); }
 .routine-exercises { margin: 0 0 8px; }
 .routine-exercises .exercise-actions { margin-top: 6px; }
+/* "Up next" beside a routine in a rotation, and the next-weight line under an
+   exercise's sets: words in the accent, never a badge or a score. */
+.upnext { color: var(--accent-text); font-size: 13px; font-weight: 600; }
+.progression { margin: 6px 0 2px; }
+.progression .muted { margin: 0 0 4px; }
+.equipmentrow { align-items: center; }
+#up-next button { margin-bottom: 12px; }
+
+/* A setting's switch: a checkbox in a label, like a shopping line without
+   the card. */
+label.switchrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  min-height: 44px;
+  font-size: inherit;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--text);
+  cursor: pointer;
+}
+label.switchrow input[type=checkbox] {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+details.equipment summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
 
 /* Add set, and the exercise's own left/right toggle beside it. They wrap
    rather than push: at 375px an exercise card is 311px wide, and a row that

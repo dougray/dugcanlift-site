@@ -124,6 +124,44 @@ shipped.
 
 `plan-log.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it changes.**
 
+## Programming: equipment, rotations, the next weight (`my-equipment.js`, `rotation.js`, `progression.js`)
+
+Ports of LIFT iOS's `MyEquipment`, `RoutineRotation` and `ProgressionRule`, rule
+for rule and word for word, each with its tests ported case for case. Nothing
+on the wire, nothing in the backup: two new localStorage keys, both
+preferences about this screen like `lift.perSide`. All three are in `sw.js`'s
+`SHELL`, so **bump `CACHE` when any of them changes.**
+
+- **My equipment** (Home → Training settings) is stored under
+  `lift.equipmentNotOwned` as what you do *not* have, so an untouched browser
+  hides nothing and owning everything removes the key. An exercise with no
+  equipment listed always shows. Search narrows before it takes its first 40,
+  says "Your equipment · N left out", and offers Show all for that search.
+  `my-equipment.test.mjs` fails if `exercises.json` gains an equipment value
+  with no switch.
+- **A folder is a rotation.** Up next is the routine after the last one started
+  from that folder, wrapping round; a named folder lists in that order
+  (`createdAt`, names breaking a tie), and the default folder ("My Routines")
+  is not a rotation and lists as it always did. Train offers today's up next
+  only while today is empty and no coach booked it, and only from a rotation
+  someone has started. **This build records a routine only as the session's
+  name** -- `toSession` mints fresh exercise ids, unlike iOS's
+  `routine:<exercise id>` refs -- so a session came from a routine when its name
+  is the routine's and it holds one of the routine's lifts by `name|equipment`.
+  That also counts every session started before this build. A coach's session
+  (a prescription's `startedSessionId`, or a name a coach's template carries)
+  is never one of yours.
+- **The next weight** is double progression: every working set at last
+  session's top weight reached the routine's `targetReps`, `targetSets` of
+  them, is up a step; short is the same again; short at the same weight two
+  sessions running backs off about 10%. A line with its reason, and "Use",
+  which writes the weight into the sets not done. The step is **5 lb**: this
+  build has no plate or bar data and weighs everything in pounds. There is no
+  per-set done tick here either, so "not done" is a set still holding the
+  routine's own weight, or none. None for a coach's session, a lift logged a
+  side at a time, a bodyweight lift, or a first session; off with "Suggest the
+  next weight" (`lift.suggestsNextWeight`, stored only when off).
+
 ## Watch import (`watch-scan.js`)
 
 `watch-scan.js` reads food logs off an Apple Watch by QR code. The watch has
