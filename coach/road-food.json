@@ -741,7 +741,7 @@
       "id": "chickfila",
       "name": "Chick-fil-A",
       "kind": "chicken",
-      "checkedOn": "2026-09-20",
+      "checkedOn": "2026-10-28",
       "source": "https://www.chick-fil-a.com/nutrition-allergens",
       "items": [
         {
@@ -852,14 +852,14 @@
           "id": "chickfila-chicken-tortilla-soup",
           "name": "Chicken Tortilla Soup",
           "serving": "1 serving (265 g)",
-          "kcal": 280,
-          "proteinG": 24,
-          "fatG": 7,
-          "carbsG": 31,
-          "fiberG": 17,
+          "kcal": 350,
+          "proteinG": 25,
+          "fatG": 11,
+          "carbsG": 39,
+          "fiberG": 18,
           "saturatedFatG": 2.5,
           "sugarG": 4,
-          "sodiumMg": 1060
+          "sodiumMg": 1115
         },
         {
           "id": "chickfila-1-percent-milk",
@@ -880,8 +880,8 @@
       "id": "popeyes",
       "name": "Popeyes",
       "kind": "chicken",
-      "publishedOn": "2026-08",
-      "checkedOn": "2026-09-20",
+      "publishedOn": "2026-09",
+      "checkedOn": "2026-10-28",
       "source": "https://plk-use1-prod.sites.rbictg.com/nutrition/PLK_Nutrition.pdf",
       "items": [
         {
@@ -968,8 +968,8 @@
       "id": "tacobell",
       "name": "Taco Bell",
       "kind": "mexican",
-      "publishedOn": "2026-09-24",
-      "checkedOn": "2026-09-24",
+      "publishedOn": "2026-10-26",
+      "checkedOn": "2026-10-28",
       "source": "https://www.tacobell.com/nutrition/info",
       "items": [
         {
@@ -1833,8 +1833,8 @@
       "id": "sheetz",
       "name": "Sheetz",
       "kind": "gas-station-kitchen",
-      "publishedOn": "2026-09-23",
-      "checkedOn": "2026-09-24",
+      "publishedOn": "2026-10-23",
+      "checkedOn": "2026-10-28",
       "source": "https://www.sheetz.com/nutrition",
       "items": [
         {
@@ -1879,7 +1879,7 @@
         },
         {
           "id": "sheetz-skinny-grilled-chicken-half",
-          "name": "Skinny Grilled Chicken - Half",
+          "name": "Premium Chicken - Half",
           "serving": "1 half sub",
           "kcal": 510,
           "proteinG": 38,
