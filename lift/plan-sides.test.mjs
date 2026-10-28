@@ -73,7 +73,9 @@ test('old decoder degradation: the per-side fixture reads as two-sided sets, wei
 // run against stand-ins for storage, so the test reads the real code rather
 // than a copy of it.
 const shim = { window: {} };
-new Function('window', readFileSync('lift/sides.js', 'utf8')).call(shim, shim.window);
+['sides.js', 'set-types.js'].forEach((file) => {
+  new Function('window', readFileSync(`lift/${file}`, 'utf8')).call(shim, shim.window);
+});
 const S = shim.window.LiftSides;
 
 function liftApp() {
@@ -91,9 +93,9 @@ function liftApp() {
   const perSide = {};
   const setPerSide = (ex, on) => { perSide[`${ex.name}|${ex.equipment}`.toLowerCase()] = on; };
   let n = 0;
-  const api = new Function('LiftSides', 'KEY', 'save', 'uid', 'render', 'setPerSide',
+  const api = new Function('LiftSides', 'LiftSetTypes', 'KEY', 'save', 'uid', 'render', 'setPerSide',
     'let training = [], workouts = [], templates = [];\n' + code)(
-    S, {}, () => {}, () => 'id' + (++n), () => {}, setPerSide);
+    S, shim.window.LiftSetTypes, {}, () => {}, () => 'id' + (++n), () => {}, setPerSide);
   return { ...api, perSide };
 }
 

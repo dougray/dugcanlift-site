@@ -1546,7 +1546,9 @@ function saveBackup() {
   clients.forEach(CoachSides.normaliseClient);
   // A prescription's sides follow the same rule: `eachSide: true` on an
   // exercise done each side, omitted when not, and `side` on a set that names
-  // one, omitted when both. See prescriptions.js.
+  // one, omitted when both. Set types too: `group` on an exercise in a
+  // superset or circuit and `kind` on a drop or rest-pause set, each omitted
+  // otherwise. See prescriptions.js.
   workouts.forEach(CoachPrescriptions.normaliseWorkout);
   // Road picks are a map of client id to item ids, not a list of rows with
   // ids of their own, so they are written as they are stored rather than
@@ -1583,8 +1585,9 @@ function restoreLibrary(parsed) {
     if (!Array.isArray(parsed[key])) return;
     let n = 0;
     parsed[key].forEach((item) => {
-      // A workout from a file written before sides has neither field and
-      // restores as it always did; an unknown side string reads as both.
+      // A workout from a file written before sides or set types has none of
+      // their fields and restores as it always did; an unknown side string
+      // reads as both, an unknown kind as straight, a junk group as none.
       if (key === 'workouts') CoachPrescriptions.normaliseWorkout(item);
       if (item && item.id && !target.some((existing) => existing.id === item.id)) {
         target.push(item);
@@ -3016,10 +3019,15 @@ function renderWorkoutList() {
       `${count} exercise${count === 1 ? '' : 's'} · `
       + `${(workout.exercises || []).reduce((t, e) => t + (e.sets || []).length, 0)} sets`));
 
-    (workout.exercises || []).forEach((exercise) => {
+    // A superset or circuit is named once, above its first member, and each
+    // member carries its place in it: "Superset A", then "A1 · …", "A2 · …".
+    const labels = CoachPrescriptions.groupLabels(workout.exercises || []);
+    (workout.exercises || []).forEach((exercise, i) => {
+      const label = labels[i];
+      if (label && label.first) card.appendChild(cookEl('div', 'setline group-label', label.group));
       const row = cookEl('div', 'setline');
-      row.appendChild(cookEl('b', null,
-        exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+      const title = exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name;
+      row.appendChild(cookEl('b', null, label ? `${label.member} · ${title}` : title));
       row.appendChild(document.createTextNode(' — ' + exerciseSummary(exercise)));
       card.appendChild(row);
     });
@@ -3128,6 +3136,54 @@ function sideControl(set, setNumber, onChange) {
   return group;
 }
 
+/* ---------------- set types in the editor ----------------
+ *
+ * Two more controls, kept out of the way in the same manner as sides.
+ * "Superset with next" sits beside "Each side" on every exercise but the last,
+ * and joins this exercise to the next one -- or splits them, when they are
+ * already together. Joining onto a superset makes a circuit. The rules, and
+ * the tests, are CoachPrescriptions.setGroupedWithNext.
+ *
+ * A set's kind -- Straight / Drop / Rest-pause -- is a control on every set
+ * but the first, which has nothing before it to drop from or pause after. Like
+ * the side control it stays out of sight until a set has a kind or the coach
+ * asks for it with "Drop / rest-pause", so an editor for straight sets looks
+ * as it always did. */
+
+/* Exercises whose coach tapped "Drop / rest-pause". Not stored, for the
+ * reason sidesAsked is not. */
+const kindsAsked = new WeakSet();
+
+const showsKinds = (exercise) => kindsAsked.has(exercise)
+  || (exercise.sets || []).some((set, i) => i > 0 && CoachPrescriptions.kindOf(set));
+
+const KIND_CHOICES = [
+  { v: null, label: 'Straight', name: 'Straight set' },
+  { v: 'drop', label: 'Drop', name: 'Drop set: no rest before it' },
+  { v: 'restPause', label: 'Rest-pause', name: 'Rest-pause: a short pause before it' },
+];
+
+/** Straight / Drop / Rest-pause for one set, built like the side control. */
+function kindControl(set, setNumber, onChange) {
+  const group = cookEl('div', 'seg');
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', `Type of set ${setNumber}`);
+  const current = CoachPrescriptions.kindOf(set);
+  KIND_CHOICES.forEach((choice) => {
+    const button = cookEl('button', null, choice.label);
+    button.type = 'button';
+    button.setAttribute('aria-label', choice.name);
+    button.setAttribute('aria-pressed', String(current === choice.v));
+    button.onclick = () => {
+      if (choice.v) set.kind = choice.v;
+      else delete set.kind;
+      onChange();
+    };
+    group.appendChild(button);
+  });
+  return group;
+}
+
 /* The set editor.
  *
  * Every field is optional on purpose: "five reps, you pick the weight" is a
@@ -3138,8 +3194,13 @@ function renderWorkoutEditor(focusAfter) {
   wrap.innerHTML = '';
   if (!workoutDraft) return;
 
+  const labels = CoachPrescriptions.groupLabels(workoutDraft.exercises);
   workoutDraft.exercises.forEach((exercise, exerciseIndex) => {
     const card = cookEl('div', 'card');
+
+    // "Superset A · A1" on a grouped exercise; nothing on any other.
+    const label = labels[exerciseIndex];
+    if (label) card.appendChild(cookEl('p', 'group-label', `${label.group} · ${label.member}`));
 
     const head = cookEl('div', 'statline');
     head.appendChild(cookEl('strong', null,
@@ -3147,6 +3208,9 @@ function renderWorkoutEditor(focusAfter) {
     const remove = cookEl('button', 'chip', 'Remove');
     remove.onclick = () => {
       workoutDraft.exercises.splice(exerciseIndex, 1);
+      // Removing the middle of a superset leaves a group of one, which is no
+      // group; the middle of a circuit leaves a superset.
+      CoachPrescriptions.regroup(workoutDraft.exercises);
       renderWorkoutEditor();
     };
     head.appendChild(remove);
@@ -3172,13 +3236,33 @@ function renderWorkoutEditor(focusAfter) {
     toggle.dataset.focus = `${exerciseIndex}:each`;
     const sideRow = cookEl('div', 'chips');
     sideRow.appendChild(toggle);
+
+    // The last exercise has no next to join.
+    if (exerciseIndex + 1 < workoutDraft.exercises.length) {
+      const joined = CoachPrescriptions.groupedWithNext(workoutDraft.exercises, exerciseIndex);
+      const superset = cookEl('button', 'chip' + (joined ? ' on' : ''), 'Superset with next');
+      superset.type = 'button';
+      superset.setAttribute('aria-pressed', String(joined));
+      superset.title = joined
+        ? 'Done round by round with the next exercise, then the rest'
+        : 'Do this and the next exercise back to back, then rest';
+      superset.onclick = () => {
+        CoachPrescriptions.setGroupedWithNext(workoutDraft.exercises, exerciseIndex, !joined);
+        renderWorkoutEditor({ exercise: exerciseIndex, control: 'group' });
+      };
+      superset.dataset.focus = `${exerciseIndex}:group`;
+      sideRow.appendChild(superset);
+    }
     card.appendChild(sideRow);
 
     const sided = showsSides(exercise);
+    const kinded = showsKinds(exercise);
     const table = cookEl('table', 'grid sets');
     const header = cookEl('tr');
-    ['Set', 'lb', 'Reps', 'RPE', ...(sided ? ['Side'] : []), '']
-      .forEach((h) => header.appendChild(cookEl('th', h === 'Side' ? 'side-col' : null, h)));
+    // `side-col` is the class for an optional column, the side's or the
+    // kind's: shown in the row where there is room, under it where not.
+    ['Set', 'lb', 'Reps', 'RPE', ...(sided ? ['Side'] : []), ...(kinded ? ['Type'] : []), '']
+      .forEach((h) => header.appendChild(cookEl('th', h === 'Side' || h === 'Type' ? 'side-col' : null, h)));
     table.appendChild(header);
 
     exercise.sets.forEach((set, setIndex) => {
@@ -3221,20 +3305,43 @@ function renderWorkoutEditor(focusAfter) {
         row.appendChild(cell);
       }
 
+      // The kind control, the same two ways. The first set has none: there
+      // is no set before it to drop from or pause after.
+      const hasKind = kinded && setIndex > 0;
+      const kindFor = () => {
+        const control = kindControl(set, setIndex + 1, () =>
+          renderWorkoutEditor({ exercise: exerciseIndex, control: `kind${setIndex}` }));
+        control.dataset.focus = `${exerciseIndex}:kind${setIndex}`;
+        return control;
+      };
+      if (kinded) {
+        const cell = cookEl('td', 'side-col');
+        if (hasKind) cell.appendChild(kindFor());
+        row.appendChild(cell);
+      }
+
       const last = cookEl('td');
       const drop = cookEl('button', 'chip', '×');
-      drop.onclick = () => { exercise.sets.splice(setIndex, 1); renderWorkoutEditor(); };
+      drop.onclick = () => {
+        exercise.sets.splice(setIndex, 1);
+        // A set that has just become the first loses its kind.
+        CoachPrescriptions.normaliseExercise(exercise);
+        renderWorkoutEditor();
+      };
       last.appendChild(drop);
       row.appendChild(last);
       table.appendChild(row);
 
-      if (sided) {
+      if (sided || hasKind) {
         row.classList.add('has-side-sub');
         const sub = cookEl('tr', 'side-sub');
         sub.appendChild(cookEl('td'));
         const cell = cookEl('td');
         cell.colSpan = 4;
-        cell.appendChild(sideFor());
+        const controls = cookEl('div', 'sub-controls');
+        if (sided) controls.appendChild(sideFor());
+        if (hasKind) controls.appendChild(kindFor());
+        cell.appendChild(controls);
         sub.appendChild(cell);
         table.appendChild(sub);
       }
@@ -3263,6 +3370,17 @@ function renderWorkoutEditor(focusAfter) {
       ask.onclick = () => {
         sidesAsked.add(exercise);
         renderWorkoutEditor({ exercise: exerciseIndex, control: 'side0' });
+      };
+      actions.appendChild(ask);
+    }
+    // Only from a second set: the first can never be a drop or rest-pause.
+    if (!kinded && exercise.sets.length > 1) {
+      const ask = cookEl('button', 'chip', 'Drop / rest-pause');
+      ask.type = 'button';
+      ask.title = 'Mark a set as a drop set or rest-pause';
+      ask.onclick = () => {
+        kindsAsked.add(exercise);
+        renderWorkoutEditor({ exercise: exerciseIndex, control: 'kind1' });
       };
       actions.appendChild(ask);
     }
@@ -3499,6 +3617,9 @@ $('#w-save').onclick = () => {
     return;
   }
   workoutDraft.name = name;
+  // Stored as the wire would read it: a group of one is not kept, and no
+  // first set carries a kind. See prescriptions.js.
+  CoachPrescriptions.normaliseWorkout(workoutDraft);
 
   const existing = workouts.findIndex((w) => w.id === workoutDraft.id);
   if (existing >= 0) workouts[existing] = workoutDraft;

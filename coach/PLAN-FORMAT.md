@@ -142,14 +142,14 @@ four-serving recipe buys half the ingredients and logs half the calories.
 | `n` | template name, e.g. "Lower A" |
 | `e` | prescribed exercises, in the order they are to be done |
 
-Within an exercise: `n` name, `q` equipment, `b` each side (see Sides), `c`
-an optional coaching note, and `s` the prescribed sets. Coach writes the keys
-in that order.
+Within an exercise: `n` name, `q` equipment, `b` each side (see Sides), `g`
+its group (see Set types), `s` the prescribed sets, and `c` an optional
+coaching note. Coach writes the keys in that order: `n q b g s c`.
 
 **A set is `[weightLb, reps, rpe, durationSec, distanceMeters, flags]`** — the
 same order and the same units as a set in SHARE-FORMAT. `flags` is present
-only on a set that names a side (see Sides); every other set is the five-field
-tuple it has always been. Only trailing nulls are trimmed. Sharing the
+only on a set that names a side (see Sides) or a kind (see Set types); every
+other set is the five-field tuple it has always been. Only trailing nulls are trimmed. Sharing the
 ordering is deliberate: a prescription and the log that answers it are the
 same shape, so nothing has to be transposed to compare what was asked for
 against what was done.
@@ -204,6 +204,79 @@ one more on the left": seven sets, three right and four left.
   done — LIFT's header reads `L 3/4 · R 3/3`, and `L 5/4` when over, never
   capped — and nothing comments on it. Progression, the imbalance figure and
   volume read the log, never the plan.
+
+#### Set types
+
+Three common prescriptions a plan could not say until now: "do these two back
+to back, then rest", "straight after this set, strip the weight and keep
+going", and "rest a few breaths, then go again". A pyramid needs nothing new —
+a ramp of weights, set by set, is already what a set list says.
+
+1. **Exercises can be grouped: `g`, a positive integer.** *Adjacent* exercises
+   with the same `g` are one group, done round by round: one set of each in
+   order, then the rest. Two exercises make a superset and three or more a
+   circuit; the format does not distinguish the two. Sets in a group may
+   differ in count — the round goes on while any exercise still has sets, and
+   one that has run out is skipped.
+2. **A set can have a kind: `flags` bits 3-4.** The same sixth position the
+   side uses, OR'd with it:
+
+   | bits 3-4 | kind | means |
+   |---|---|---|
+   | `0` | straight | as always |
+   | `1` | drop | done straight after the set before it, with no rest; normally lighter |
+   | `2` | rest-pause | done after a short pause, about 15 seconds; normally the same weight |
+   | `3` | — | never written; reads as straight |
+
+```json
+{ "n": "Upper B", "e": [
+  { "n": "Dumbbell Bench Press", "q": "Dumbbell", "g": 1, "s": [[60, 10], [60, 10], [60, 10]] },
+  { "n": "Seated Cable Rows", "q": "Cable", "g": 1, "s": [[120, 12], [120, 12], [120, 12]] },
+  { "n": "Triceps Pushdown", "q": "Cable",
+    "s": [[70, 12], [70, 12], [50, 10, null, null, null, 8], [35, 10, null, null, null, 8]] },
+  { "n": "Barbell Curl", "q": "Barbell", "s": [[65, 8], [65, 4, null, null, null, 16]] }
+]}
+```
+
+A superset of bench and rows, three rounds. The pushdown is two straight sets,
+then two drops: `8` is kind 1 in bits 3-4. The curl is a set of eight, then a
+rest-pause set of four: `16` is kind 2. A left-side drop set is `10`, side 1 and
+kind 1 together.
+
+- **Adjacency makes a group, not the number.** `g: 1` on exercises one and
+  three, with a different exercise between them, is two groups of one, and a
+  group of one is an ordinary exercise. So the number only has to differ from
+  its neighbours. Coach writes 1, 2, 3… in order of appearance and never writes
+  `g` on an exercise that is not grouped, but a reader must not depend on
+  either. `g` is never `0`, and anything that is not a positive integer — `0`,
+  a fraction, a negative, a string — reads as not grouped.
+- **Mask, never compare.** Read the kind as `(flags >> 3) & 3` and the side as
+  `(flags >> 1) & 3`. A reader testing `flags === 2` breaks the day a set is
+  left *and* drop, which is `10`. A missing, non-numeric or zero `flags` is a
+  straight set on both sides.
+- **The first set of an exercise is always straight.** There is no set before
+  it to drop from or pause after. An encoder never writes a kind on it, and a
+  reader shows one as straight.
+- **A straight set on both sides still writes no sixth position.** A set with a
+  kind writes one, keeping every position up to it, because only trailing
+  nulls are trimmed. Bit 0 stays unused in a plan, and is written `0`.
+- **Every plan written before this is byte-for-byte unchanged**, and `v` stays
+  `1`: both additions are optional, and absent means what it always meant.
+- **Old decoders degrade correctly, and this is checked.** A decoder that does
+  not know `g` leaves the exercises in the order they were written — the right
+  order, just without grouping. A decoder that masks bits 1-2 reads the side
+  correctly whatever is in bits 3-4, and reads a drop or rest-pause set as an
+  ordinary set with the right weight and reps. `coach/set-types.test.mjs` pins
+  that against `coach/fixtures/web-plan-set-types.txt`, a link Coach web's own
+  encoder wrote: a superset, a circuit of three, a drop set, a rest-pause set, a
+  left-side drop set (`10`), an each-side exercise and an ordinary one. The
+  LIFT web, iOS and Android decoders check the same fixture, and Coach iOS's
+  and Android's encoders must reproduce its payload from the same input. Never
+  regenerate it from a decoder, or from Swift or Kotlin.
+- **Counted and shown, never graded.** Whether a superset was done as one is
+  not scored anywhere. Progression, the imbalance figure and volume read the
+  log, never the plan, as they do for sides, and a drop set logged in LIFT
+  reaches the coach as an ordinary set with its real weight and reps.
 
 Every field is optional, because a prescription is often partial. `[null, 5]`
 is "five reps, you pick the weight". `[225, 5]` is "225 for five, however it

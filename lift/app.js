@@ -2240,9 +2240,30 @@ $('#ex-query').addEventListener('input', () => {
  * the card would be comparing two different sentences. The side is added here
  * because this list is flat -- the card groups its sets by side and would say
  * it twice. */
-function formatPrescription(set) {
+function formatPrescription(set, kind) {
   const side = LiftSides.label(set);
-  return LiftPlanLog.setText(set) + (side ? ` ${side}` : '');
+  return LiftPlanLog.setText(set) + (side ? ` ${side}` : '') + kindSuffix(kind);
+}
+
+/* " drop", " rest-pause", or nothing: a set's kind, said after its side --
+ * "30 x 12 L drop", Coach web's order. The caller passes the kind as
+ * LiftSetTypes.kindAt resolves it, so an exercise's first set is straight
+ * whatever it says. */
+const kindSuffix = (kind) => {
+  const label = LiftSetTypes.kindLabel(kind);
+  return label ? ` ${label}` : '';
+};
+
+/* An exercise's heading, with its place in a superset or circuit when it has
+ * one: "A1 · Dumbbell Bench Press (Dumbbell)". The group itself is named once,
+ * above its first member, by groupHeading. */
+function exerciseHeading(ex, label) {
+  const title = ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name;
+  return el('h3', null, label ? `${label.member} \u00b7 ${title}` : title);
+}
+
+function groupHeading(parent, label) {
+  if (label && label.first) parent.appendChild(el('p', 'group-label', label.group));
 }
 
 /* The coach's session for this day, shown above your own log rather than
@@ -2261,10 +2282,13 @@ function renderPrescribed() {
     card.appendChild(el('p', 'muted', from));
     card.appendChild(el('p', 'big', prescription.name));
 
-    prescription.exercises.forEach((exercise) => {
+    // A superset or circuit is named once, above its first member, and each
+    // member carries its place in it: "Superset A", then "A1 · …", "A2 · …".
+    const labels = LiftSetTypes.groupLabels(prescription.exercises);
+    prescription.exercises.forEach((exercise, index) => {
       const block = el('div', 'exercise');
-      block.appendChild(el('h3', null,
-        exercise.equipment ? `${exercise.name} (${exercise.equipment})` : exercise.name));
+      groupHeading(block, labels[index]);
+      block.appendChild(exerciseHeading(exercise, labels[index]));
       // Each side: the sets are listed once and done on both, so say so and
       // say what that comes to -- "Each side · L 4 · R 3" for the seven-set
       // case, where the extra left set is listed with its L.
@@ -2273,7 +2297,8 @@ function renderPrescribed() {
         block.appendChild(el('p', 'muted', `Each side \u00b7 L ${t.left} \u00b7 R ${t.right}`));
       }
       exercise.sets.forEach((set, i) => {
-        block.appendChild(el('div', 'muted', `${i + 1}.  ${formatPrescription(set)}`));
+        block.appendChild(el('div', 'muted',
+          `${i + 1}.  ${formatPrescription(set, LiftSetTypes.kindAt(exercise.sets, i))}`));
       });
       if (exercise.note) block.appendChild(el('p', 'muted', exercise.note));
       card.appendChild(block);
@@ -2551,9 +2576,13 @@ function renderTrain() {
       card.appendChild(el('p', 'muted', focusSummary(session, f)));
     }
 
-    (session.exercises || []).forEach((ex) => {
+    // Labelled as the coach's card or the routine labels them: a group from
+    // a plan or a routine is copied onto the day when it starts.
+    const labels = LiftSetTypes.groupLabels(session.exercises || []);
+    (session.exercises || []).forEach((ex, index) => {
       const block = el('div', 'exercise');
-      block.appendChild(el('h3', null, ex.equipment ? `${ex.name} (${ex.equipment})` : ex.name));
+      groupHeading(block, labels[index]);
+      block.appendChild(exerciseHeading(ex, labels[index]));
 
       // Left and right, when this exercise is logged that way. "L 3 · R 2"
       // under the name is the whole point of the counts: a side you skipped
@@ -2572,7 +2601,9 @@ function renderTrain() {
 
       (ex.sets || []).forEach((st, i) => {
         const row = el('div', 'entry');
-        row.appendChild(el('div', null, `${i + 1}.  ${formatSet(st)}`));
+        // "drop" or "rest-pause" when the plan or routine asked for one.
+        row.appendChild(el('div', null,
+          `${i + 1}.  ${formatSet(st)}${kindSuffix(LiftSetTypes.kindAt(ex.sets, i))}`));
         const x = el('button', 'x', '\u00d7');
         x.onclick = () => {
           ex.sets = ex.sets.filter((s) => s.id !== st.id);
@@ -2671,6 +2702,10 @@ function addSetPrompt(ex, f, side) {
   const set = { id: uid() };
   // Both is absent, never written out, and never defaulted to left.
   if (side) set.side = side;
+  // The kind of the prescribed set this one answers, as a pre-filled set
+  // carries it: what was asked, so the row can say "drop". See set-types.js.
+  const askedKind = asked ? LiftSetTypes.kindOf(asked) : null;
+  if (askedKind) set.kind = askedKind;
   if (f.weight) {
     const v = prompt('Weight (lb)', last.weightLb != null ? last.weightLb : '');
     if (v === null) return;
@@ -2756,6 +2791,9 @@ $('#train-start').onclick = () => {
 
 let starterRoutines = null;
 let startersError = false;
+// The one saved routine whose exercises are open, for "Superset with next".
+// Not stored: it is where you are on the screen, not something you chose.
+let openRoutineId = null;
 
 async function loadStarterRoutines() {
   if (starterRoutines || startersError) return;
@@ -2781,7 +2819,10 @@ function startRoutine(routine) {
 function saveAsRoutine(session) {
   const name = prompt('Name this routine', session.name || '');
   if (name === null) return;
-  routines.push(LiftRoutines.fromSession(session, name, '', uid, Date.now()));
+  const routine = LiftRoutines.fromSession(session, name, '', uid, Date.now());
+  // Stored as it would be read back: a group of one is not kept.
+  LiftSetTypes.regroup(routine.exercises);
+  routines.push(routine);
   save(KEY.routines, routines);
   render();
 }
@@ -2795,6 +2836,56 @@ function routineRow(routine, button) {
   row.appendChild(info);
   row.appendChild(button);
   return row;
+}
+
+/* "3 x 10", "3 sets", "1 set · 45s": what a routine exercise lays out. */
+function routineTargets(e) {
+  const count = Math.max(e.targetSets || 0, 1);
+  const parts = [e.targetReps != null ? `${count} x ${e.targetReps}` : `${count} ${count === 1 ? 'set' : 'sets'}`];
+  if (e.targetWeightLb != null) parts.push(`${e.targetWeightLb} lb`);
+  if (e.targetDurationSec != null) parts.push(formatSet({ durationSec: e.targetDurationSec }));
+  return parts.join(' \u00b7 ');
+}
+
+/* A saved routine's exercises, opened from its row, with the one thing this
+ * build lets you change in a routine: which of them are done together.
+ *
+ * "Superset with next" is on every exercise but the last, and joins it to the
+ * next one -- or splits them, when they are already together. Joining onto a
+ * superset makes a circuit. The rules, and the tests, are
+ * LiftSetTypes.setGroupedWithNext, Coach web's own. There is no Straight /
+ * Drop / Rest-pause control here: a routine stores a set count rather than a
+ * list of sets (LIFT for Android's shape, which a backup carries between the
+ * two), so there is no set to give a kind to. A coach's plan can still
+ * prescribe one. */
+function routineExercises(routine) {
+  const list = el('div', 'routine-exercises');
+  const labels = LiftSetTypes.groupLabels(routine.exercises);
+  routine.exercises.forEach((e, i) => {
+    const block = el('div', 'exercise');
+    groupHeading(block, labels[i]);
+    block.appendChild(exerciseHeading(e, labels[i]));
+    block.appendChild(el('p', 'muted', routineTargets(e)));
+    if (i + 1 < routine.exercises.length) {
+      const joined = LiftSetTypes.groupedWithNext(routine.exercises, i);
+      const chip = el('button', 'chip' + (joined ? ' on' : ''), 'Superset with next');
+      chip.type = 'button';
+      chip.setAttribute('aria-pressed', String(joined));
+      chip.title = joined
+        ? 'Done round by round with the next exercise, then the rest'
+        : 'Do this and the next exercise back to back, then rest';
+      chip.onclick = () => {
+        LiftSetTypes.setGroupedWithNext(routine.exercises, i, !joined);
+        save(KEY.routines, routines);
+        render();
+      };
+      const actions = el('div', 'exercise-actions');
+      actions.appendChild(chip);
+      block.appendChild(actions);
+    }
+    list.appendChild(block);
+  });
+  return list;
 }
 
 function renderRoutines() {
@@ -2814,6 +2905,17 @@ function renderRoutines() {
         const go = el('button', 'ghost', 'Start');
         go.onclick = () => startRoutine(routine);
         const row = routineRow(routine, go);
+        // The name opens the routine's exercises, where a superset is made.
+        const open = openRoutineId === routine.id;
+        const head = el('button', 'routinehead');
+        head.type = 'button';
+        head.setAttribute('aria-expanded', String(open));
+        head.appendChild(el('div', null, routine.name));
+        const count = el('div', 'muted', row.firstChild.lastChild.textContent);
+        count.appendChild(el('span', 'routinehead-hint', open ? ' \u00b7 Hide exercises' : ' \u00b7 Exercises'));
+        head.appendChild(count);
+        head.onclick = () => { openRoutineId = open ? null : routine.id; render(); };
+        row.replaceChild(head, row.firstChild);
         const drop = el('button', 'x', '×');
         drop.setAttribute('aria-label', `Delete ${routine.name}`);
         drop.onclick = () => {
@@ -2824,6 +2926,7 @@ function renderRoutines() {
         };
         row.appendChild(drop);
         card.appendChild(row);
+        if (open) card.appendChild(routineExercises(routine));
       });
     });
     wrap.appendChild(card);
@@ -3578,6 +3681,13 @@ function saveBackup() {
   // Routes are compact in storage and spelled out in the file, in LIFT for
   // Android's field names. See outdoor.js.
   stored.outdoor = outdoor.map(LiftOutdoor.toBackup);
+  // Set types, as BACKUP-FORMAT spells them: `group` on an exercise in a
+  // superset or circuit, a positive integer, and `kind: "drop" | "restPause"`
+  // on a set, each omitted otherwise and never on a first set. Normalised on
+  // the way out so a file never carries a spelling this app would not read
+  // back. See set-types.js.
+  LiftSetTypes.normaliseRecords(stored.routines);
+  LiftSetTypes.normaliseRecords(stored.workouts);
   // Sections a newer client wrote that this build does not store go back out
   // as they came in -- the same promise `ext` makes, for the same reason.
   const data = LiftBackup.buildData(stored, load(KEY.unknownData, {}));
@@ -3646,6 +3756,12 @@ function loadBackup(file) {
       }));
 
       const arrivingFood = LiftBackup.foodWithIosDetails((incoming.food || []).filter(Boolean), parsed.ext);
+      // Set types are read leniently: a `group` that is not a positive
+      // integer is not grouped, a `kind` that is not "drop" or "restPause" is
+      // straight, and a group of one is none. A file written before them has
+      // neither field and restores exactly as it did. See set-types.js.
+      LiftSetTypes.normaliseRecords(incoming.routines);
+      LiftSetTypes.normaliseRecords(incoming.workouts);
       const added = addMissing(food, arrivingFood) + addMissing(workouts, incoming.workouts)
         + addMissing(recipes, arrivingRecipes)
         // After recipes, so a meal whose recipe came in this same file keeps it.
@@ -4468,33 +4584,47 @@ function importTraining(payload) {
   const incoming = payload.w || [];
   if (!incoming.length) return 0;
 
-  const toTemplate = (raw) => ({
-    name: raw.n || 'Session',
-    exercises: (raw.e || []).map((exercise) => ({
-      name: exercise.n || 'Exercise',
-      equipment: exercise.q || '',
-      note: exercise.c || '',
-      // `b: 1` is each side: every set is done on both. Absent (or anything
-      // else) is today's meaning.
-      ...(Number(exercise.b) === 1 ? { eachSide: true } : {}),
-      // [weightLb, reps, rpe, durationSec, distanceMeters, flags], only
-      // trailing nulls trimmed by the sender. Missing is unprescribed, not
-      // zero. flags bits 1-2 name a side, masked, never compared; no sixth
-      // position, or 0 or 3 in those bits, is both.
-      sets: (exercise.s || []).map((tuple) => {
-        const set = {
-          weightLb: tuple[0] ?? null,
-          reps: tuple[1] ?? null,
-          rpe: tuple[2] ?? null,
-          durationSec: tuple[3] ?? null,
-          distanceMeters: tuple[4] ?? null,
-        };
-        const side = LiftSides.sideFromFlags(tuple[5]);
-        if (side) set.side = side;
-        return set;
-      }),
-    })),
-  });
+  // `g` groups adjacent exercises into a superset or circuit. Adjacency makes
+  // the group, not the number, so it is read across the whole workout rather
+  // than exercise by exercise: a run of two or more neighbours sharing a
+  // positive integer is one group, stored renumbered 1, 2, 3..., and a group of
+  // one -- or a `g` that is 0, a fraction, a negative or a string -- is an
+  // ordinary exercise. See set-types.js.
+  const toTemplate = (raw) => {
+    const groups = LiftSetTypes.decodeGroups(raw.e);
+    return {
+      name: raw.n || 'Session',
+      exercises: (raw.e || []).map((exercise, i) => ({
+        name: exercise.n || 'Exercise',
+        equipment: exercise.q || '',
+        note: exercise.c || '',
+        // `b: 1` is each side: every set is done on both. Absent (or anything
+        // else) is today's meaning.
+        ...(Number(exercise.b) === 1 ? { eachSide: true } : {}),
+        ...(groups[i] != null ? { group: groups[i] } : {}),
+        // [weightLb, reps, rpe, durationSec, distanceMeters, flags], only
+        // trailing nulls trimmed by the sender. Missing is unprescribed, not
+        // zero. flags bits 1-2 name a side and bits 3-4 a kind, both masked,
+        // never compared; no sixth position, or 0 or 3 in those bits, is a
+        // straight set on both sides. A first set that says drop or
+        // rest-pause has nothing before it to follow, and reads as straight.
+        sets: (exercise.s || []).map((tuple, n) => {
+          const set = {
+            weightLb: tuple[0] ?? null,
+            reps: tuple[1] ?? null,
+            rpe: tuple[2] ?? null,
+            durationSec: tuple[3] ?? null,
+            distanceMeters: tuple[4] ?? null,
+          };
+          const side = LiftSides.sideFromFlags(tuple[5]);
+          if (side) set.side = side;
+          const kind = n > 0 ? LiftSetTypes.kindFromFlags(tuple[5]) : null;
+          if (kind) set.kind = kind;
+          return set;
+        }),
+      })),
+    };
+  };
 
   // An each-side exercise turns on "Left and right separately" for that lift
   // when the plan is accepted, if it is not on already. The lifter can turn it
@@ -4568,6 +4698,9 @@ function startPrescribed(prescription) {
         prescribed: exercise.sets.map((set) => ({ ...set })),
         ...(exercise.eachSide ? { eachSide: true } : {}),
       } : {}),
+      // A superset or circuit stays one on the day, so the session can label
+      // it "Superset A" as the card above it did. See set-types.js.
+      ...(LiftSetTypes.groupOf(exercise) != null ? { group: exercise.group } : {}),
       sets: exercise.sets.filter((set) => !exercise.eachSide && !LiftSides.of(set)).map((set) => {
         const copy = { id: uid() };
         // Only fields the coach actually prescribed. An unprescribed weight
@@ -4577,6 +4710,11 @@ function startPrescribed(prescription) {
         if (set.rpe != null) copy.rpe = set.rpe;
         if (set.durationSec != null) copy.durationSec = set.durationSec;
         if (set.distanceMeters != null) copy.distanceMeters = set.distanceMeters;
+        // What the coach asked this set to be, so its row can say "drop". It
+        // is what was asked, not a claim about what was done, and it never
+        // reaches the coach: SHARE-FORMAT has no set type.
+        const kind = LiftSetTypes.kindOf(set);
+        if (kind) copy.kind = kind;
         return copy;
       }),
     })),

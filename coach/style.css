@@ -329,6 +329,19 @@ table.grid tr.side-sub td { padding-top: 0; text-align: left; }
   table.grid tr.has-side-sub:nth-last-child(2) td { border-bottom: none; }
 }
 
+/* Under a set at phone width, its side and its kind controls sit side by side
+ * and wrap when the pair is wider than the card. */
+.sub-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* "Superset A · A1": the group an exercise is done in, over its card in the
+ * editor and over the group's first exercise in the workout list. */
+.group-label, .setline.group-label {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
 /* A full-width chip is a row, not a pill: the ingredient and recipe pickers
  * draw results as one, and an ingredient or dish name can be long. Left as
  * nowrap the row's text is wider than the card, which makes the page wider
