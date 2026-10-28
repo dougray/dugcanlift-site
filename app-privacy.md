@@ -230,6 +230,10 @@ it, it can show where you go, so treat the file with the same care as the log.
   every app, under Apple's terms.
 - **The web app** keeps everything in your browser, which does not sync it
   anywhere. Clearing site data erases it, so keep a backup file.
+- **The iPhone app** can also export your training as a spreadsheet (a CSV
+  file) and import a training history exported from Strong, Hevy or FitNotes.
+  Both are files you choose and handle yourself: LIFT reads an import on the
+  phone and writes an export only where you save or send it.
 
 ## The watch apps
 
