@@ -870,3 +870,12 @@ button.roadchain .muted { margin: 2px 0 0; }
     overscroll-behavior: contain;
   }
 }
+
+/* A routine exercise's Straight / Drop / Rest-pause choice, one row a set
+   after the first. The chips wrap under "Set 2" rather than push the card
+   wider than a 375px phone. */
+.setkinds { margin-top: 6px; }
+.setkind { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-top: 4px; }
+.setkind > .muted { min-width: 3.5em; font-size: 14px; }
+.setkind .chips { flex-wrap: wrap; padding-bottom: 0; }
+.setkind .chip { padding: 6px 12px; }
