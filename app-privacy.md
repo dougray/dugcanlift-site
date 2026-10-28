@@ -11,7 +11,7 @@ hide_title: true
 Apple Watch app, the Wear OS watch app, and the web app at
 [dugcanlift.com/lift](/lift/)
 
-Last updated: 26 October 2026
+Last updated: 28 October 2026
 
 Coach, the app a trainer uses to read what you send, has
 [its own privacy policy](/coach/privacy/).
@@ -65,10 +65,11 @@ Health Connect or Apple Health.
   locks or you switch apps because it runs as a foreground service, shown as
   the ongoing "Recording your route" notification — which is what the
   notifications permission is for.
-- **iPhone** asks for location access including "Always", so that a recording
-  keeps going with the phone locked in your pocket. GPS runs only while the
-  recording screen is open: it starts when that screen opens and stops when you
-  finish, cancel or leave it.
+- **iPhone** asks for location only while you use the app, and never for
+  "Always". A recording you start keeps going with the phone locked in your
+  pocket, and iOS shows that LIFT is using your location while it does. GPS
+  runs only while the recording screen is open: it starts when that screen
+  opens and stops when you finish, cancel or leave it.
 - **Apple Watch** uses location only while you are recording an outdoor
   activity on the watch, and runs a workout session during it to keep GPS on.
 - **The web app** can only record while the page is on screen. It starts
