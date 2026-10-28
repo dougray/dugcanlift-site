@@ -182,10 +182,23 @@ reads the same in both. In `workouts[].exercises[]`:
   both sides (PLAN-FORMAT.md "Sides"). Omitted when false; never `false`.
 - **`side: "left" | "right"`** on a prescribed set for one side only. Omitted
   when both — not `"both"`, not `null`.
+- **`group: <positive integer>`** on an exercise in a superset or circuit
+  (PLAN-FORMAT.md "Set types"). Adjacent exercises with the same `group` are
+  one group; a group of one is no group, and is not written. Omitted when the
+  exercise is not grouped; never `0`.
+- **`kind: "drop" | "restPause"`** on a prescribed set that is a drop set or
+  rest-pause. Omitted when straight — not `"straight"`, not `null` — and never
+  written on an exercise's first set.
+
+LIFT's own routines take `group` and `kind` under the same names, in the same
+places, when its routine editor gains set types. Until then no LIFT file
+carries either.
 
 A file written before these restores unchanged. An unrecognised `side` string
-reads as both, and an `eachSide` that is anything but `true` as not, rather
-than failing the import.
+reads as both, an `eachSide` that is anything but `true` as not, a `group`
+that is not a positive integer as not grouped, and a `kind` that is not
+`"drop"` or `"restPause"` (case aside) as straight, rather than failing the
+import. A kind on a first set is dropped.
 
 ## The Coach backup's road picks
 
