@@ -96,20 +96,23 @@ no map service involved.
 **iPhone — Apple Health.**
 
 - *Reads:* your step count (today's, and daily totals for Send to Coach) and
-  your latest bodyweight, shown in Settings. It also asks to read workouts, but
-  does not currently read them.
+  your latest bodyweight, shown in Settings. Nothing else.
 - *Writes:*
   - Strength sessions, as workouts, once you have connected Apple Health — when
     you end a live session, when you connect, or when you tap Sync now. A day
     logged after the fact gets an estimated time, marked as estimated.
   - Runs, walks and hikes, as a workout with its distance and GPS route, when
     you finish recording one.
-- It also asks for permission to save bodyweight, calories and protein. The
-  current version does not write any of those.
 
-**Apple Watch.** Reads nothing from Apple Health. When you finish an outdoor
-activity on the watch, it saves the workout, distance and route to Apple
-Health. Strength sessions on the watch are not saved to Health.
+**Apple Watch.**
+
+- *Reads:* your heart rate and active energy, only while a strength session is
+  running on the watch, to show your heart rate there. When the session ends,
+  its average and highest heart rate are passed to LIFT on your paired iPhone,
+  where they stay.
+- *Writes:* a strength session, as a workout, when you finish it on the watch;
+  an outdoor activity, as a workout with its distance and route, when you
+  finish recording one.
 
 **The web app and Wear OS** do not use Health Connect or Apple Health at all.
 The web app's steps are the numbers you type in.
