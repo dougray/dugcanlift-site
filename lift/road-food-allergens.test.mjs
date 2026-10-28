@@ -106,17 +106,28 @@ test('storage that throws reads as avoiding nothing', () => {
 });
 
 test('the note under the Avoid row', () => {
-  assert.equal(A.avoidNote(0, nine, 'Wendy’s'),
+  const covers = { name: 'Sonic', allergenSource: 'https://example.test/chart.pdf', allergensCovered: nine };
+  const listsOnly = { name: 'Starbucks', allergenSource: 'https://example.test/api' };
+  const noChart = { name: 'Taco Bell' };
+  assert.equal(A.avoidNote(0, covers),
     'Nothing here is listed as containing what you avoid. '
-    + 'From Wendy’s’s own allergen chart, which doesn’t cover cross-contact. Check with the restaurant.');
-  assert.equal(A.avoidNote(1, nine, 'Culver’s').split('. ')[0],
+    + 'From the allergen chart Sonic publishes, which doesn’t cover cross-contact. Check with the restaurant.');
+  assert.equal(A.avoidNote(1, covers).split('. ')[0],
     '1 item is hidden because its chart says it contains something you avoid');
-  assert.equal(A.avoidNote(3, nine, 'Sonic'),
-    '3 items are hidden because their chart says they contain something you avoid. '
-    + 'From Sonic’s own allergen chart, which doesn’t cover cross-contact. Check with the restaurant.');
-  assert.equal(A.avoidNote(0, [], null),
-    'Nothing here is listed as containing what you avoid. '
-    + 'This place publishes no allergen chart LIFT can read, so nothing is marked either way.');
+  assert.equal(A.avoidNote(6, listsOnly),
+    '6 items are hidden because their chart says they contain something you avoid. '
+    + 'From the allergen chart Starbucks publishes. It says what items contain, not which allergens it '
+    + 'covers, so nothing is marked free of anything. It doesn’t cover cross-contact either. '
+    + 'Check with the restaurant.');
+  // An empty or junk allergensCovered covers nothing, like an absent one.
+  assert.equal(A.avoidNote(0, { ...listsOnly, allergensCovered: ['dairy'] }), A.avoidNote(0, listsOnly));
+  const none = 'Nothing here is listed as containing what you avoid. '
+    + 'This place publishes no allergen chart LIFT can read, so nothing is marked either way.';
+  assert.equal(A.avoidNote(0, noChart), none);
+  // A covered list with no source is still no chart read.
+  assert.equal(A.avoidNote(0, { name: 'X', allergensCovered: nine }), none);
+  // The gas station.
+  assert.equal(A.avoidNote(0, null), none);
 });
 
 // Nothing this file can say about an item calls it safe or free of anything.
@@ -128,10 +139,15 @@ test('nothing here says safe', () => {
       items.forEach((i) => {
         lines.push(A.containsLine(i), A.notStatedLine(A.verdict(i, covered, avoiding)));
       });
-      [0, 1, 2].forEach((n) => lines.push(A.avoidNote(n, covered, 'X')));
+      [0, 1, 2].forEach((n) => lines.push(
+        A.avoidNote(n, { name: 'X', allergenSource: 'u', allergensCovered: covered }),
+        A.avoidNote(n, { name: 'X', allergenSource: 'u' }), A.avoidNote(n, null)));
     });
   });
-  lines.filter(Boolean).forEach((l) => assert.doesNotMatch(l, /\bsafe\b|\bfree\b/i, l));
+  // "nothing is marked free of anything" is the one use of the word, and it
+  // is the refusal to claim it.
+  lines.filter(Boolean).forEach((l) => assert.doesNotMatch(l, /\bsafe\b|\bfree of (?!anything)|-free\b/i, l));
+  assert.ok(lines.some((l) => l && l.includes('nothing is marked free of anything')));
 });
 
 // Where reading `localStorage` itself throws, the screen hands over nothing.

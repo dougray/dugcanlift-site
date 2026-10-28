@@ -1970,7 +1970,7 @@ function renderRoadPlace(body, chain, isSnacks) {
   // and counted. A gas-station view mixes products and none states a chart.
   const allergens = { covered: isSnacks ? [] : (chain.allergensCovered || []) };
   const filtered = LiftRoadFood.allergens.filter(items, allergens.covered, roadAvoid);
-  roadAvoidRow(body, filtered.hiddenCount, allergens.covered, isSnacks ? '' : chain.name);
+  roadAvoidRow(body, filtered.hiddenCount, isSnacks ? null : chain);
 
   const remaining = remainingFor(todayKey());
   // Ranked first, then the coach's picks floated to the top of each group.
@@ -2045,7 +2045,7 @@ function renderRoadPlace(body, chain, isSnacks) {
 
 /* "Avoid": one chip per allergen, any number on, and while any is on, what was
  * hidden and whose chart said so. Nothing on this screen ever says "safe". */
-function roadAvoidRow(body, hiddenCount, covered, placeName) {
+function roadAvoidRow(body, hiddenCount, chain) {
   body.appendChild(el('label', null, 'Avoid'));
   const row = el('div', 'chips roadwrap');
   row.id = 'road-avoid';
@@ -2069,7 +2069,7 @@ function roadAvoidRow(body, hiddenCount, covered, placeName) {
   });
   body.appendChild(row);
   if (roadAvoid.length) {
-    body.appendChild(el('p', 'muted small', LiftRoadFood.allergens.avoidNote(hiddenCount, covered, placeName)));
+    body.appendChild(el('p', 'muted small', LiftRoadFood.allergens.avoidNote(hiddenCount, chain)));
   }
 }
 
