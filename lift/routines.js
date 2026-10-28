@@ -7,6 +7,12 @@
  * `targetSets`, `targetReps`, `targetWeightLb`, `targetRpe`,
  * `targetDurationSec`, `targetDistanceMeters`, `note` -- so a backup moves
  * routines between the two with no conversion step.
+ *
+ * One field more, optional: `group`, a positive integer on each exercise of a
+ * superset or circuit (coach/BACKUP-FORMAT.md, "Set types" in
+ * coach/PLAN-FORMAT.md). Adjacent exercises sharing it are one group; the
+ * rules are set-types.js. It is omitted on an exercise that is not grouped, so
+ * a routine without one is the shape it always was.
  */
 (function (global) {
   'use strict';
@@ -117,7 +123,10 @@
           if (present(e.targetDistanceMeters)) set.distanceMeters = e.targetDistanceMeters;
           sets.push(set);
         }
-        return { id: makeId(), name: e.name, equipment: e.equipment || '', note: e.note || '', sets: sets };
+        var exercise = { id: makeId(), name: e.name, equipment: e.equipment || '', note: e.note || '', sets: sets };
+        // A superset stays one on the day, so the session can label it.
+        if (positiveInt(e.group)) exercise.group = e.group;
+        return exercise;
       }),
     };
   }
@@ -148,7 +157,7 @@
         var weights = nums(sets, 'weightLb');
         var durations = nums(sets, 'durationSec');
         var distances = nums(sets, 'distanceMeters');
-        return {
+        var exercise = {
           id: makeId(),
           name: e.name,
           equipment: e.equipment || '',
@@ -160,6 +169,10 @@
           targetDistanceMeters: distances.length ? Math.max.apply(null, distances) : null,
           note: e.note || '',
         };
+        // A superset done today is kept as one. A set's kind is not: a
+        // routine holds a set count, not a list of sets.
+        if (positiveInt(e.group)) exercise.group = e.group;
+        return exercise;
       }),
     };
   }
