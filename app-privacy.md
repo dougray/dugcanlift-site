@@ -140,6 +140,15 @@ phone, for a time on the phone; nothing is sent to or from anywhere. Say no and
 the rest timer still counts down on screen and on the lock screen; only the
 alert at the end is missing.
 
+## Progress photos (iPhone)
+
+You can keep progress photos in the iPhone app. You choose each one in the
+system photo picker, which shows LIFT only the picture you pick and gives it no
+access to the rest of your library. LIFT saves a smaller copy in its own
+storage on your phone, without the original's location data. Progress photos
+are never uploaded, never included in a backup file, and never sent to a
+coach. Deleting a photo in LIFT, or deleting LIFT, removes them.
+
 ## What leaves your device
 
 ### Food search (Android and web)
