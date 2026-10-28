@@ -190,9 +190,12 @@ reads the same in both. In `workouts[].exercises[]`:
   rest-pause. Omitted when straight — not `"straight"`, not `null` — and never
   written on an exercise's first set.
 
-LIFT's own routines take `group` and `kind` under the same names, in the same
-places, when its routine editor gains set types. Until then no LIFT file
-carries either.
+LIFT uses the same names. In LIFT web's and LIFT Android's backups, a
+routine exercise carries `group`, and a logged workout's exercise and set carry
+`group` and `kind`, which come from a coach's plan and are information only.
+Their routines store a set count rather than individual sets, so a routine set
+has no `kind`. LIFT iOS writes no `routines` section of its own; it keeps one
+from another platform and writes it back unchanged.
 
 A file written before these restores unchanged. An unrecognised `side` string
 reads as both, an `eachSide` that is anything but `true` as not, a `group`
