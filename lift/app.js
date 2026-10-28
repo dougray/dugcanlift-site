@@ -2876,6 +2876,9 @@ let startersError = false;
 // The one saved routine whose exercises are open, for "Superset with next".
 // Not stored: it is where you are on the screen, not something you chose.
 let openRoutineId = null;
+// Routine exercises whose "Drop / rest-pause" sets are open, by id. Not stored
+// either; an exercise that has a kind shows its sets whether or not it is here.
+const openSetKinds = new Set();
 
 async function loadStarterRoutines() {
   if (starterRoutines || startersError) return;
@@ -2929,17 +2932,55 @@ function routineTargets(e) {
   return parts.join(' \u00b7 ');
 }
 
-/* A saved routine's exercises, opened from its row, with the one thing this
- * build lets you change in a routine: which of them are done together.
+/* A saved routine's exercises, opened from its row, with the two things this
+ * build lets you change in a routine: which of them are done together, and
+ * which sets are drop or rest-pause.
  *
  * "Superset with next" is on every exercise but the last, and joins it to the
  * next one -- or splits them, when they are already together. Joining onto a
  * superset makes a circuit. The rules, and the tests, are
- * LiftSetTypes.setGroupedWithNext, Coach web's own. There is no Straight /
- * Drop / Rest-pause control here: a routine stores a set count rather than a
- * list of sets (LIFT for Android's shape, which a backup carries between the
- * two), so there is no set to give a kind to. A coach's plan can still
- * prescribe one. */
+ * LiftSetTypes.setGroupedWithNext, Coach web's own.
+ *
+ * "Drop / rest-pause" is beside it on an exercise of two sets or more, and
+ * opens a Straight / Drop / Rest-pause choice for each set after the first --
+ * the first has no set before it to drop from. Closed until asked for, so the
+ * screen is unchanged for someone who never uses it, and open whenever a set
+ * has a kind, so a kind is never set where it cannot be seen. A routine
+ * stores a set count (LIFT for Android's shape), so the kinds are stored
+ * beside it by position, `setKinds`; the rules are LiftSetTypes'. */
+function routineSetKindsPanel(e) {
+  const panel = el('div', 'setkinds');
+  const count = LiftSetTypes.routineSetCount(e);
+  const choices = [[null, 'Straight'], [LiftSetTypes.DROP, 'Drop'], [LiftSetTypes.REST_PAUSE, 'Rest-pause']];
+  for (let n = 1; n < count; n++) {
+    const row = el('div', 'setkind');
+    row.appendChild(el('span', 'muted', `Set ${n + 1}`));
+    const group = el('div', 'chips');
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', `Set ${n + 1} of ${e.name}`);
+    const current = LiftSetTypes.routineSetKindAt(e, n);
+    choices.forEach(([kind, label]) => {
+      const on = current === kind;
+      const chip = el('button', 'chip' + (on ? ' on' : ''), label);
+      chip.type = 'button';
+      chip.setAttribute('aria-pressed', String(on));
+      chip.onclick = () => {
+        if (on) return;
+        // Kept open after the last kind is set back to Straight, rather than
+        // closing under the finger that did it.
+        openSetKinds.add(e.id);
+        LiftSetTypes.setRoutineSetKind(e, n, kind);
+        save(KEY.routines, routines);
+        render();
+      };
+      group.appendChild(chip);
+    });
+    row.appendChild(group);
+    panel.appendChild(row);
+  }
+  return panel;
+}
+
 function routineExercises(routine) {
   const list = el('div', 'routine-exercises');
   const labels = LiftSetTypes.groupLabels(routine.exercises);
@@ -2948,6 +2989,7 @@ function routineExercises(routine) {
     groupHeading(block, labels[i]);
     block.appendChild(exerciseHeading(e, labels[i]));
     block.appendChild(el('p', 'muted', routineTargets(e)));
+    const actions = el('div', 'exercise-actions');
     if (i + 1 < routine.exercises.length) {
       const joined = LiftSetTypes.groupedWithNext(routine.exercises, i);
       const chip = el('button', 'chip' + (joined ? ' on' : ''), 'Superset with next');
@@ -2961,10 +3003,27 @@ function routineExercises(routine) {
         save(KEY.routines, routines);
         render();
       };
-      const actions = el('div', 'exercise-actions');
       actions.appendChild(chip);
-      block.appendChild(actions);
     }
+    // A coach's per-set list carries its own kinds; a routine of yours never
+    // has one, but this is not the place to give it a second set of them.
+    const kindable = LiftSetTypes.routineSetCount(e) >= 2 && !Array.isArray(e.prescribed);
+    const hasKinds = !!LiftSetTypes.routineSetKinds(e);
+    const kindsOpen = kindable && (hasKinds || openSetKinds.has(e.id));
+    if (kindable && !hasKinds) {
+      const chip = el('button', 'chip' + (kindsOpen ? ' on' : ''), 'Drop / rest-pause');
+      chip.type = 'button';
+      chip.setAttribute('aria-expanded', String(kindsOpen));
+      chip.title = kindsOpen ? 'Hide the choice for each set' : 'Make a set after the first a drop set or rest-pause';
+      chip.onclick = () => {
+        if (kindsOpen) openSetKinds.delete(e.id);
+        else openSetKinds.add(e.id);
+        render();
+      };
+      actions.appendChild(chip);
+    }
+    if (actions.childNodes.length) block.appendChild(actions);
+    if (kindsOpen) block.appendChild(routineSetKindsPanel(e));
     list.appendChild(block);
   });
   return list;
@@ -3832,7 +3891,8 @@ function saveBackup() {
   stored.outdoor = outdoor.map(LiftOutdoor.toBackup);
   // Set types, as BACKUP-FORMAT spells them: `group` on an exercise in a
   // superset or circuit, a positive integer, and `kind: "drop" | "restPause"`
-  // on a set, each omitted otherwise and never on a first set. Normalised on
+  // on a set, each omitted otherwise and never on a first set, and a routine
+  // exercise's `setKinds` by set position, omitted when all straight. Normalised on
   // the way out so a file never carries a spelling this app would not read
   // back. See set-types.js.
   LiftSetTypes.normaliseRecords(stored.routines);

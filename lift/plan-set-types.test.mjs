@@ -501,3 +501,116 @@ test('a backup written before set types restores unchanged', () => {
   T.normaliseRecords(copy);
   assert.equal(JSON.stringify(copy), JSON.stringify(old), 'byte for byte');
 });
+
+// MARK: - Your routines' set kinds
+//
+// A routine of your own stores a set count, `targetSets`, so a set's kind has
+// nowhere to live on a set. It lives beside the count instead: `setKinds`, an
+// array by set position -- index 0 is set 1 -- of "drop", "restPause" or null.
+// LIFT for Android stores and backs up the same field under the same spelling.
+
+const own = (targetSets, setKinds, extra = {}) => ({
+  id: 'e', name: 'Triceps Pushdown', equipment: 'Cable', targetSets, targetReps: 12, targetWeightLb: 70,
+  targetRpe: null, targetDurationSec: null, targetDistanceMeters: null, note: '',
+  ...(setKinds !== undefined ? { setKinds } : {}), ...extra,
+});
+
+test('setKinds reads leniently: junk is straight, a first set is straight, and it never outruns the count', () => {
+  assert.equal(T.routineSetKinds(own(3, 'drop')), null, 'not a list is none');
+  assert.equal(T.routineSetKinds(own(3)), null);
+  assert.equal(T.routineSetKinds(own(3, [])), null);
+  assert.equal(T.routineSetKinds(own(3, [null, null, null])), null, 'every set straight is none');
+  assert.deepEqual(T.routineSetKinds(own(3, ['drop', 'drop'])), [null, 'drop'], 'a first set is straight');
+  assert.deepEqual(T.routineSetKinds(own(5, [null, 'Drop', ' RESTPAUSE ', 'sideways', { kind: 'drop' }])),
+    [null, 'drop', 'restPause'], 'case and space forgiven; junk and objects are straight; trailing nulls trimmed');
+  assert.deepEqual(T.routineSetKinds(own(2, [null, 'drop', 'drop', 'restPause'])), [null, 'drop'],
+    'never longer than targetSets');
+  assert.equal(T.routineSetKinds(own(1, [null, 'drop'])), null, 'one set has no second set to be a drop');
+  assert.equal(T.routineSetKinds(own(3, [null, 'drop'], { prescribed: [{ reps: 5 }] })), null,
+    'a coach\'s per-set list keeps its kinds on its own sets');
+});
+
+test('normalising a routine exercise rewrites setKinds as it would be read back, or removes it', () => {
+  const records = [{ id: 'r', exercises: [
+    own(4, [null, 'drop', null, 'restPause']),
+    own(3, ['drop', 'nope']),
+    own(2, [null, 'restPause', 'drop']),
+    own(3, 'drop'),
+    own(3, [null, 'drop'], { prescribed: [{ reps: 5 }, { reps: 5, kind: 'drop' }] }),
+  ] }];
+  T.normaliseRecords(records);
+  const [a, b, c, d, e] = records[0].exercises;
+  assert.deepEqual(a.setKinds, [null, 'drop', null, 'restPause']);
+  assert.equal('setKinds' in b, false, 'nothing but straight is no key at all');
+  assert.deepEqual(c.setKinds, [null, 'restPause'], 'lowering the count trims it');
+  assert.equal('setKinds' in d, false);
+  assert.equal('setKinds' in e, false, 'not written beside a coach\'s prescribed sets');
+  assert.equal(e.prescribed[1].kind, 'drop', 'whose own kinds are left alone');
+});
+
+test('the editor sets a kind on a set, clears it, and leaves no key once every set is straight', () => {
+  const e = own(4);
+  T.setRoutineSetKind(e, 2, 'drop');
+  assert.deepEqual(e.setKinds, [null, null, 'drop']);
+  const before = e.setKinds;
+  T.setRoutineSetKind(e, 3, 'restPause');
+  assert.deepEqual(e.setKinds, [null, null, 'drop', 'restPause']);
+  assert.notEqual(e.setKinds, before, 'a new list, so a copy of the routine is not changed with it');
+  assert.equal(T.routineSetKindAt(e, 3), 'restPause');
+  assert.equal(T.routineSetKindAt(e, 1), null);
+  T.setRoutineSetKind(e, 0, 'drop');
+  T.setRoutineSetKind(e, 4, 'drop');
+  assert.deepEqual(e.setKinds, [null, null, 'drop', 'restPause'], 'no first set, no set past the count');
+  T.setRoutineSetKind(e, 3, null);
+  assert.deepEqual(e.setKinds, [null, null, 'drop']);
+  T.setRoutineSetKind(e, 2, 'straight');
+  assert.equal('setKinds' in e, false);
+});
+
+test('starting a routine copies its kinds onto the sets it lays out, as a coach\'s are', () => {
+  const r = { id: 'r', name: 'Arms', folder: '', createdAt: 1,
+    exercises: [own(4, [null, null, 'drop', 'restPause']), { ...own(2), id: 'f', name: 'Curl' }] };
+  const session = R.toSession(r, '2026-11-02', makeId, 1);
+  const [push, curl] = session.exercises;
+  assert.deepEqual(push.sets.map((s) => s.kind || 'straight'), ['straight', 'straight', 'drop', 'restPause']);
+  assert.equal(push.sets[2].weightLb, 70, 'the numbers are laid out as before');
+  assert.deepEqual(push.sets.map((s, i) => T.kindLabel(T.kindAt(push.sets, i))), ['', '', 'drop', 'rest-pause']);
+  curl.sets.forEach((s) => assert.deepEqual(Object.keys(s).sort(), ['id', 'reps', 'weightLb'],
+    'a routine without kinds lays out exactly what it did'));
+  assert.equal('setKinds' in push, false, 'the day carries kinds on its sets, not the list');
+});
+
+test('saving a session as a routine keeps its kinds; a session logged a side at a time does not', () => {
+  const r = { id: 'r', name: 'Arms', folder: '', createdAt: 1, exercises: [own(4, [null, 'drop', null, 'restPause'])] };
+  const kept = R.fromSession(R.toSession(r, '2026-11-02', makeId, 1), 'Arms', '', makeId, 1);
+  assert.deepEqual(kept.exercises[0].setKinds, [null, 'drop', null, 'restPause']);
+  const plain = R.fromSession(R.toSession({ ...r, exercises: [own(3)] }, 'd', makeId, 1), 'x', '', makeId, 1);
+  assert.equal('setKinds' in plain.exercises[0], false);
+  // Two sides are two sets per position, so a position means nothing here.
+  const sided = R.fromSession({ exercises: [{ name: 'Split Squat', sets: [
+    { weightLb: 40, reps: 8, side: 'left' }, { weightLb: 30, reps: 8, side: 'left', kind: 'drop' },
+  ] }] }, 'x', '', makeId, 1);
+  assert.equal('setKinds' in sided.exercises[0], false);
+});
+
+test('a copy of a routine has its own setKinds', () => {
+  const r = { id: 'r', name: 'Arms', folder: '', createdAt: 1, exercises: [own(3, [null, 'drop'])] };
+  const copy = R.copyOf(r, makeId, 1);
+  assert.deepEqual(copy.exercises[0].setKinds, [null, 'drop']);
+  assert.notEqual(copy.exercises[0].setKinds, r.exercises[0].setKinds);
+});
+
+test('backup round trip: a routine\'s setKinds come back as they went, and none is no key', () => {
+  const routines = [{ id: 'r', name: 'Arms', folder: '', createdAt: 1,
+    exercises: [own(4, [null, 'drop', null, 'restPause']), { ...own(3), id: 'f' }] }];
+  const stored = JSON.parse(JSON.stringify({ routines }));
+  T.normaliseRecords(stored.routines);
+  const file = JSON.parse(JSON.stringify({ v: 1, app: 'lift', data: B.buildData(stored, {}) }));
+  assert.ok(JSON.stringify(file).includes('"setKinds":[null,"drop",null,"restPause"]'));
+  assert.equal(JSON.stringify(file.data.routines[0].exercises[1]), JSON.stringify(routines[0].exercises[1]),
+    'a routine exercise with no kinds is written byte for byte as before');
+  T.normaliseRecords(file.data.routines);
+  const here = [];
+  B.addMissing(here, file.data.routines);
+  assert.deepEqual(here, routines);
+});
