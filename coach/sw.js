@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v36';
+const CACHE = 'coach-v37';
 
 const SHELL = [
   '/coach/',
@@ -14,6 +14,7 @@ const SHELL = [
   '/coach/fonts/source-sans-3-latin-ext.woff2',
   '/coach/parser.js',
   '/coach/recipe-import.js',
+  '/coach/recipe-link.js',
   '/coach/appearance.js',
   '/coach/route.js',
   '/coach/nutrients.js',
@@ -28,6 +29,9 @@ const SHELL = [
   '/coach/app.js',
   '/coach/foods.js',
   '/coach/exercises.json',
+  // 4.7 KB, and Cook's "Send recipes from your browser" shows it, so it is in
+  // the install bundle rather than fetched on first use like the big three.
+  '/coach/bookmarklets.json',
   '/coach/manifest.webmanifest',
   '/coach/icon-180.png',
   '/coach/icon-192.png',

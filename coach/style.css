@@ -130,7 +130,22 @@ h2 {
 #recipe-form { scroll-margin-top: 64px; }
 /* An estimated recipe's source note is attribution, licence and caveat on
    lines of their own, as the catalogue wrote them. */
-.estimated-source { white-space: pre-line; }
+.estimated-source { white-space: pre-line; overflow-wrap: anywhere; }
+
+/* "Send to Coach" is a link so a desktop browser can drag it to the bookmarks
+   bar, and drawn as a button so it reads as something to take. */
+a.bookmarklet {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: grab;
+}
+#bm-code { box-sizing: border-box; width: 100%; font-size: 16px; word-break: break-all; }
 
 nav {
   display: flex;
@@ -637,7 +652,7 @@ canvas.route {
 
   /* Forms and pickers are read top to bottom; past this they are all line. */
   #recipe-form, #workout-form, #exercise-picker, #picker, #session-picker,
-  #send-one, #rp-panel, #incoming { max-width: 760px; }
+  #send-one, #rp-panel, #bm-panel, #rl-error, #incoming { max-width: 760px; }
 }
 
 @container (min-width: 640px) {
