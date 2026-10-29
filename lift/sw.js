@@ -28,6 +28,8 @@ const SHELL = [
   '/lift/outdoor.js',
   '/lift/road-food.js',
   '/lift/recipe-import.js',
+  '/lift/recipe-link.js',
+  '/lift/bookmarklets.json',
   '/lift/recipe-catalog.js',
   '/lift/splits.json',
   '/lift/jsqr.js',

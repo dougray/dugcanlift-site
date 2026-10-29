@@ -1530,6 +1530,16 @@ async function consume(text) {
   }
 }
 
+/* A log link or a recipe link, told apart by prefix before either is decoded:
+ * a log link's fragment opens with its version number (`1z`, `1u`), a recipe
+ * link's with `r1` (recipe-link.js). Every way a link reaches the page -- the
+ * address on load, a fragment change, the paste box -- comes through here, so
+ * neither decoder is ever handed the other's link. */
+function consumeAny(text) {
+  if (CoachRecipeLink.isRecipeLink(text)) consumeRecipeLink(text);
+  else consume(text);
+}
+
 /* ---------------- backup ---------------- */
 
 function saveBackup() {
@@ -1782,7 +1792,7 @@ $('#paste-go').onclick = () => {
   const value = $('#paste-link').value;
   if (!value.trim()) return;
   $('#paste-link').value = '';
-  consume(value);
+  consumeAny(value.trim().replace(/^<|>$/g, ''));
 };
 
 $('#empty-connect').onclick = () => showTab('connect');
@@ -1895,7 +1905,7 @@ window.addEventListener('hashchange', () => {
   const hash = location.hash.slice(1);
   if (!hash) return;
   clearFragment();
-  consume(hash);
+  consumeAny(hash);
 });
 
 /* ---------------- boot ---------------- */
@@ -1906,7 +1916,7 @@ if (clients.length) openClientId = clients[0].id;
 const initialHash = location.hash.slice(1);
 if (initialHash) {
   clearFragment();
-  consume(initialHash);
+  consumeAny(initialHash);
 }
 
 
@@ -2239,6 +2249,10 @@ $('#send-one-cancel').onclick = () => closePanel($('#send-one'));
 
 let cookSection = 'recipes';
 let editingRecipeId = null;
+// What a recipe link filled the open form from: the page's source fields and
+// its own nutrition, which Save adds to the new recipe. Null for every other
+// way the form opens. See "Recipe links" below.
+let recipeImport = null;
 let planClientId = null;
 
 /* A recipe's weight unit is the coach's display preference: grams or ounces,
@@ -2296,7 +2310,12 @@ function renderCook() {
     [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' },
      { label: 'Shopping', v: 'shopping' }, { label: 'Road', v: 'road' }],
     (i) => i.v === cookSection,
-    (i) => { cookSection = i.v; $('#recipe-form').classList.add('hidden'); renderCook(); });
+    (i) => {
+      cookSection = i.v;
+      $('#recipe-form').classList.add('hidden');
+      recipeImport = null;
+      renderCook();
+    });
 
   $('#cook-recipes').classList.toggle('hidden', cookSection !== 'recipes');
   $('#cook-plan').classList.toggle('hidden', cookSection !== 'plan');
@@ -2402,6 +2421,7 @@ function showStoredMacro(selector, value) {
 
 function openRecipeForm(id) {
   editingRecipeId = id;
+  recipeImport = null;
   const r = id ? recipeById(id) : null;
   $('#r-name').value = r ? r.name : '';
   $('#r-servings').value = r ? r.servings : 4;
@@ -2477,6 +2497,7 @@ $('#recipe-new').onclick = () => openRecipeForm(null);
 $('#r-cancel').onclick = () => {
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
+  recipeImport = null;
 };
 
 $('#r-delete').onclick = () => {
@@ -2510,9 +2531,12 @@ $('#r-save').onclick = () => {
   // opened it and pressed Save. Sugar and sodium went the same way until the
   // merge moved to recipe-nutrition.js, which carries every key the form
   // does not show.
+  // A recipe link's page nutrition stands in for a new recipe's existing
+  // figures, so its `estimated` mark is carried the way any key the form does
+  // not show is; the fields themselves are whatever the form now says.
   const existing = editingRecipeId
     ? (recipes.find((r) => r.id === editingRecipeId) || {}).nutritionPerServing
-    : null;
+    : (recipeImport ? recipeImport.nutrition : null);
   // Saturated fat, sugar and sodium are form fields; blank removes them.
   const details = {};
   Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
@@ -2537,12 +2561,17 @@ $('#r-save').onclick = () => {
   if (editingRecipeId) {
     recipes = recipes.map((r) => (r.id === editingRecipeId ? { ...r, ...body } : r));
     save(COOK_KEY.recipes, recipes);
+  } else if (recipeImport) {
+    // The page address is the recipe's source, as a Safari share's is on the
+    // iPhone. Never fetched, here or anywhere.
+    addLibraryRecipe({ ...body, ...recipeImport.source, importedAt: Date.now() });
   } else {
     addLibraryRecipe(body);
   }
 
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
+  recipeImport = null;
   renderCook();
 };
 
@@ -3890,7 +3919,8 @@ renderIngredientSources();
  *
  * The way in for a recipe found anywhere else, and it touches no network at
  * all: a browser may not fetch another site's page, so the address bar is no
- * use and the text is.
+ * use and the text is. A recipe website comes in by the bookmarklet instead
+ * (see "Recipe links" below), which reads the page where it is already open.
  *
  * Only ingredients that convert to a weight get costed. Volume and vague units
  * are left alone and counted as unpriced, because pricing "2 tbsp olive oil"
@@ -3906,6 +3936,7 @@ renderIngredientSources();
  */
 $('#rp-open').onclick = () => {
   closePanel($('#rc-panel'));
+  closePanel($('#bm-panel'));
   $('#rp-panel').classList.remove('hidden');
   $('#rp-note').textContent = '';
   $('#rp-text').focus();
@@ -3995,6 +4026,7 @@ function loadCatalogue() {
 
 $('#rc-open').onclick = () => {
   $('#rp-panel').classList.add('hidden');
+  closePanel($('#bm-panel'));
   catalogueOpen = null;
   $('#rc-query').value = '';
   showCatalogueList();
@@ -4181,4 +4213,169 @@ $('#rc-add').onclick = () => {
   catalogueOpen = null;
   closePanel($('#rc-panel'));
   renderCook();
+};
+
+/* Recipe links: what the "Send to Coach" bookmarklet opens.
+ *
+ * The bookmarklet runs on a recipe page the coach already has open and comes
+ * here with the page's address and its schema.org JSON-LD in the fragment
+ * (`#r1…`, recipe-link.js). Coach never requests the page. The fragment is
+ * stripped before this runs, by the same clearFragment a log link goes
+ * through, so a reload or a shared address never brings the recipe back.
+ *
+ * Coach web has no JSON-LD review of its own, so the link fills the recipe
+ * form, as Paste a recipe does, and nothing is saved until Save. The page's
+ * yield is the only source of servings; its nutrition fills the macros and
+ * counts as typed, so a looked-up ingredient never writes over it; and its
+ * address, author and published text are added to the recipe on Save.
+ *
+ * Declared at the end with the rest of Cook, though the boot code above calls
+ * it: the first thing it does is await, so nothing below is read before the
+ * whole script has run. */
+async function consumeRecipeLink(text) {
+  const supported = typeof DecompressionStream !== 'undefined';
+  const decoded = await (supported ? CoachRecipeLink.decodeRecipeLink(text) : null);
+  if (!supported) {
+    showRecipeLinkError('This browser is too old to open recipe links. Safari 16.4, '
+      + 'Chrome 103 or anything newer will work.');
+    return;
+  }
+  if (!decoded) {
+    showRecipeLinkError('That recipe link could not be read, so nothing was added. '
+      + 'Open the recipe page and tap Send to Coach again.');
+    return;
+  }
+  const found = CoachRecipeLink.recipeFrom(decoded, recipeFromJsonLdPayload);
+  if (!found) {
+    showRecipeLinkError('That page has no recipe Coach can read. Copy the recipe '
+      + 'text and use Paste a recipe instead.');
+    return;
+  }
+  openImportedRecipe(CoachRecipeLink.formFill(found));
+}
+
+function showRecipeCook() {
+  cookSection = 'recipes';
+  showTab('cook');
+  ['#rp-panel', '#rc-panel', '#bm-panel', '#rl-error'].forEach((id) => $(id).classList.add('hidden'));
+}
+
+/* Says so and fills nothing. A recipe the coach had open in the form is left
+ * as it was. */
+function showRecipeLinkError(message) {
+  showRecipeCook();
+  $('#rl-error-text').textContent = message;
+  $('#rl-error').classList.remove('hidden');
+  $('#rl-error').scrollIntoView({ block: 'nearest' });
+  $('#rl-error-ok').focus({ preventScroll: true });
+}
+
+$('#rl-error-ok').onclick = () => $('#rl-error').classList.add('hidden');
+
+function openImportedRecipe(fill) {
+  showRecipeCook();
+  openRecipeForm(null);
+  recipeImport = { source: fill.source, nutrition: fill.nutritionPerServing };
+
+  $('#r-name').value = fill.name;
+  $('#r-ingredients').value = fill.ingredientLines.join('\n');
+  $('#r-steps').value = fill.steps.join('\n');
+  // Only the page's own yield. An unstated one stays at 1 and says so below,
+  // the rule Paste a recipe follows: a guessed yield divides every macro by a
+  // number nobody chose.
+  $('#r-servings').value = fill.servings || 1;
+
+  // The page's nutrition wins: shown, and counted as typed so the ingredient
+  // lookup never writes over it. Blank stays blank where the page gave none.
+  const n = fill.nutritionPerServing;
+  if (CoachRecipeNutrition.hasMacros(n)) {
+    [['#r-cal', n.calories], ['#r-p', n.proteinG], ['#r-c', n.carbsG], ['#r-f', n.fatG]]
+      .forEach(([selector, value]) => {
+        showStoredMacro(selector, value);
+        $(selector).dataset.typed = '1';
+      });
+  }
+  if (n && n.fiberG) {
+    showStoredMacro('#r-fib', n.fiberG);
+    $('#r-fib').dataset.typed = '1';
+  }
+  const known = CoachNutrients.details(n);
+  Object.entries(RECIPE_DETAIL_INPUTS).forEach(([key, selector]) => {
+    if (known[key] == null) return;
+    $(selector).value = known[key];
+    $(selector).dataset.typed = '1';
+  });
+  renderRecipeWeightEach();
+  // The editor's line for an imported estimate, without the page's JSON
+  // under it; that is kept on the recipe for whoever reopens it.
+  renderRecipeEstimated(n ? { nutritionPerServing: n } : null);
+
+  const said = [`From ${new URL(fill.source.sourceUrl).host}. Check it, then Save.`];
+  if (!fill.servings) said.push('The page did not say how many this serves; set it before saving.');
+  $('#ing-tally').textContent = said.join(' ');
+}
+
+/* "Send recipes from your browser": the bookmarklet itself, to drag or copy.
+ *
+ * bookmarklets.json is dugcanlift-kit's, byte for byte and pinned by
+ * recipe-link.test.mjs; this shows its `coachWeb` entry and never builds one.
+ * It is fetched from this app's own origin, and the service worker keeps it. */
+let bookmarkletCode = null;
+
+function loadBookmarklet() {
+  if (bookmarkletCode) return Promise.resolve(bookmarkletCode);
+  return fetch('bookmarklets.json')
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .then((doc) => {
+      if (typeof doc.coachWeb !== 'string' || !doc.coachWeb.startsWith('javascript:')) {
+        throw new Error('no Coach bookmarklet in the file');
+      }
+      bookmarkletCode = doc.coachWeb;
+      return bookmarkletCode;
+    });
+}
+
+const BM_NOTE = 'On a computer, drag it to your bookmarks bar.';
+
+$('#bm-open').onclick = () => {
+  closePanel($('#rc-panel'));
+  $('#rp-panel').classList.add('hidden');
+  $('#bm-note').textContent = BM_NOTE;
+  $('#bm-code').classList.add('hidden');
+  openPanel($('#bm-panel'), $('#bm-title'));
+  loadBookmarklet().then((code) => {
+    $('#bm-link').href = code;
+    $('#bm-code').value = code;
+    $('#bm-copy').disabled = false;
+  }, (error) => {
+    $('#bm-note').textContent = 'The bookmark could not be loaded. Reload Coach '
+      + `and try again (${error.message}).`;
+  });
+};
+
+$('#bm-done').onclick = () => closePanel($('#bm-panel'));
+
+// Tapped here it would only read this page, which holds no recipe.
+$('#bm-link').onclick = (event) => {
+  event.preventDefault();
+  $('#bm-note').textContent = 'Drag it to your bookmarks bar, or tap Copy and save it '
+    + 'as a bookmark. It works on a recipe page, not here.';
+};
+
+$('#bm-copy').onclick = async () => {
+  if (!bookmarkletCode) return;
+  try {
+    await navigator.clipboard.writeText(bookmarkletCode);
+    $('#bm-code').classList.add('hidden');
+    $('#bm-note').textContent = BM_NOTE;
+    $('#bm-copy').textContent = 'Copied';
+    setTimeout(() => { $('#bm-copy').textContent = 'Copy'; }, 1500);
+  } catch (e) {
+    $('#bm-code').classList.remove('hidden');
+    $('#bm-code').select();
+    $('#bm-note').textContent = 'Copying was blocked. Select all of the text below and copy it.';
+  }
 };
