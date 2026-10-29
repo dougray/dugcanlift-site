@@ -132,7 +132,7 @@ put them.
 
 ## Changes
 
-If Coach's behaviour changes in a way that affects this policy, this page will
+If Coach's behavior changes in a way that affects this policy, this page will
 be updated and the date above revised.
 
 ## Contact

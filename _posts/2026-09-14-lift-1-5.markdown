@@ -8,7 +8,7 @@ date:   2026-09-14 13:30:00 -0500
 
 ## Typing it out every time
 
-Adding an exercise on Android was a name you typed and an equipment field beside it, plus chips for the lifts you'd already logged. Fine for the fourth week of a programme where you do the same six things. Useless the first time, and useless the day you try something new — you're spelling "Romanian Deadlift" into a phone keyboard and hoping you spell it the same way next Tuesday.
+Adding an exercise on Android was a name you typed and an equipment field beside it, plus chips for the lifts you'd already logged. Fine for the fourth week of a program where you do the same six things. Useless the first time, and useless the day you try something new — you're spelling "Romanian Deadlift" into a phone keyboard and hoping you spell it the same way next Tuesday.
 
 The browser build and the iPhone app have both searched a 873-exercise reference library for a while. Android was the one that couldn't.
 
