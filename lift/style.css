@@ -539,6 +539,9 @@ button.linkrow .muted { margin: 0; }
 /* A recipe card is a button now, and a button's 15px would shrink the card
    it replaced; it keeps the page's size. */
 button.recipecard { font-size: inherit; line-height: inherit; }
+/* "estimated" after a recipe card's macros: LIFT iPhone draws it in its
+   accent text colour, inside the muted line. */
+.estimated-mark { color: var(--accent-text); }
 
 /* Paste a recipe and the catalogue. A textarea is drawn as the text fields
    are; the recipe form's two had been left to the browser's default. */
