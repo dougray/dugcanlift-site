@@ -52,6 +52,15 @@ const COOK_SPELLED_UNITS = {
   liter: 'l', liters: 'l', litre: 'l', litres: 'l',
 };
 
+/* Every whitespace character, written out rather than left to a platform's
+ * idea of whitespace: U+0009-U+000D, U+0020, U+00A0, U+1680, U+2000-U+200A,
+ * U+2028, U+2029, U+202F, U+205F, U+3000, U+FEFF (JavaScript's \s). Before
+ * parsing, each one becomes a plain space, so a non-breaking space or a tab
+ * pasted from a recipe page splits words like a space does. rawText keeps the
+ * line as it was. The same set, character for character, is in all four
+ * parsers. */
+const COOK_WHITESPACE = /[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]/g;
+
 /* Pulls a quantity and unit off the front of a typed ingredient line.
  *
  * Deliberately small. It handles the shapes people actually type and gives up
@@ -59,7 +68,7 @@ const COOK_SPELLED_UNITS = {
  * shows the raw line instead. A confident wrong quantity on a client's
  * shopping list is worse than a line they can read and check. */
 function parseIngredient(raw) {
-  let rest = raw.trimStart();
+  let rest = raw.replace(COOK_WHITESPACE, ' ').trimStart();
 
   const takeNumber = () => {
     const m = rest.match(/^[0-9.]+/);
