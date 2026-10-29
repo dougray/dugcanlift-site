@@ -4289,9 +4289,17 @@ function renderRecipes() {
     // Deliberately not "0 kcal". An unknown that renders as zero becomes a
     // zero-calorie dinner in someone's day total.
     const n = r.nutritionPerServing;
-    card.appendChild(el('div', 'muted', n
+    const macros = el('div', 'muted', n
       ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
-      : 'Macros not set'));
+      : 'Macros not set');
+    // "estimated" after the macros, in the accent, as LIFT iPhone's card has
+    // it. Only beside macros: an estimate of nothing says nothing.
+    const mark = LiftRecipeCatalog.estimatedMark(n);
+    if (n && mark) {
+      macros.appendChild(document.createTextNode('  '));
+      macros.appendChild(el('span', 'estimated-mark', mark));
+    }
+    card.appendChild(macros);
 
     if ((r.ingredients || []).length) {
       card.appendChild(el('div', 'muted',

@@ -252,3 +252,31 @@ test('the credits are every distinct attribution and licence, sorted', () => {
   assert.ok(credits.includes('UniTools — theunitools.com — CC BY-SA 4.0'));
   assert.ok(credits.some((c) => c.endsWith(' — Public domain')));
 });
+
+// MARK: - The library card's estimated mark
+
+// LIFT iPhone's CookView row says "estimated" after the macros of a recipe
+// whose nutritionIsEstimated is set. Here the flag is nutritionPerServing's
+// `estimated`, and the card shows the same word.
+test('an estimated recipe\'s card says "estimated"', () => {
+  assert.equal(C.ESTIMATED_MARK, 'estimated');
+  const n = { calories: 450, proteinG: 30, carbsG: 40, fatG: 12, fiberG: 0, estimated: true };
+  assert.equal(C.estimatedMark(n), 'estimated');
+});
+
+test('a recipe without the flag shows nothing new', () => {
+  const macros = { calories: 450, proteinG: 30, carbsG: 40, fatG: 12, fiberG: 0 };
+  assert.equal(C.estimatedMark(macros), null);
+  assert.equal(C.estimatedMark({ ...macros, estimated: false }), null);
+  assert.equal(C.estimatedMark({ ...macros, estimated: 'true' }), null, 'only a literal true');
+  assert.equal(C.estimatedMark(null), null, 'no macros, no mark');
+  assert.equal(C.estimatedMark(undefined), null);
+});
+
+test('a recipe copied from the catalogue carries the mark', () => {
+  // Every catalogue recipe with macros is estimated: published figures are
+  // not resolved against the food database, and the costed ones are costed.
+  const r = all.find((x) => x.nutritionIsEstimated && x.caloriesPerServing != null);
+  assert.ok(r);
+  assert.equal(C.estimatedMark(C.libraryFields(r).nutritionPerServing), 'estimated');
+});

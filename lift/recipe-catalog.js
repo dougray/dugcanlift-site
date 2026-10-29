@@ -98,6 +98,18 @@
       + ' \u00b7 C ' + roundWhole(n.carbsG) + ' \u00b7 F ' + roundWhole(n.fatG);
   }
 
+  /* The word a library card adds after its macros when they are an estimate:
+   * LIFT iPhone's CookView row, word for word, in the accent. A recipe copied
+   * from here is the usual way to have one (`estimated` on its
+   * nutritionPerServing, BACKUP-FORMAT's spelling), but a backup from another
+   * build can carry it too, so it is read off the nutrition, not the source.
+   * Only a literal true counts: an absent or false flag shows nothing new. */
+  var ESTIMATED_MARK = 'estimated';
+
+  function estimatedMark(n) {
+    return n && n.estimated === true ? ESTIMATED_MARK : null;
+  }
+
   /* The browsing row's line under the name. */
   function rowMacros(r) {
     if (r.caloriesPerServing != null) return roundWhole(r.caloriesPerServing) + ' kcal per serving';
@@ -224,6 +236,8 @@
     showsServingsStepper: showsServingsStepper,
     roundWhole: roundWhole,
     macroLine: macroLine,
+    ESTIMATED_MARK: ESTIMATED_MARK,
+    estimatedMark: estimatedMark,
     rowMacros: rowMacros,
     needsServings: needsServings,
     nutrition: nutrition,
