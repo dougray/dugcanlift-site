@@ -10,15 +10,15 @@ Two days of work, and most of it came out of using the apps rather than planning
 
 I like a dark screen. Not everyone does, and an app you have to squint at in daylight is an app you stop opening.
 
-Every app now has an **Appearance** setting: **System**, **Light**, or **Dark**. System is the default, so it follows whatever your phone is already set to. The light palette is the same brand, warmer paper instead of charcoal, and every text colour on it passes the WCAG contrast check rather than just looking fine on my screen.
+Every app now has an **Appearance** setting: **System**, **Light**, or **Dark**. System is the default, so it follows whatever your phone is already set to. The light palette is the same brand, warmer paper instead of charcoal, and every text color on it passes the WCAG contrast check rather than just looking fine on my screen.
 
 ## Recipes you can actually read
 
 **Paste a recipe.** Recipe links work when the page publishes its recipe properly. Social video doesn't — TikTok, Instagram and Reels publish no recipe data at all. So now you can paste the caption instead. LIFT and Coach split it into ingredients and method, and you edit the split before saving. It never guesses a number the text didn't state: a wrong split costs you an edit, not a wrong calorie count.
 
-**Labelled macros, and fibre.** A recipe's macros used to be four boxes of numbers. If you didn't already know the order, you had no idea which one was protein. Each one is labelled with its unit now, and **fibre** sits alongside protein, fat and carbs everywhere a recipe's nutrition shows up.
+**Labeled macros, and fiber.** A recipe's macros used to be four boxes of numbers. If you didn't already know the order, you had no idea which one was protein. Each one is labeled with its unit now, and **fiber** sits alongside protein, fat and carbs everywhere a recipe's nutrition shows up.
 
-**Weight in grams or ounces.** Tell a recipe what the whole dish weighs and you can log a portion by weighing it, which beats guessing what "a serving" of chilli is. Switching between grams and ounces converts the number rather than relabelling it — 1200 g becomes 42.3 oz, not 1200 oz.
+**Weight in grams or ounces.** Tell a recipe what the whole dish weighs and you can log a portion by weighing it, which beats guessing what "a serving" of chili is. Switching between grams and ounces converts the number rather than relabelling it — 1200 g becomes 42.3 oz, not 1200 oz.
 
 **Backups carry your recipes.** A LIFT backup file now includes your recipes and your week's meal plan, and restores them on any of the three LIFT apps. Shopping-list ticks are left out on purpose: restoring last month's file shouldn't show this week's list as already bought.
 
@@ -42,7 +42,7 @@ The space under **Outdoor** on the Train tab was empty. Now it holds two cards:
 - **Last route** — your most recent run, walk or hike, drawn out, with its distance, time and pace. Tap it for the full review.
 - **Personal bests** — farthest, longest, and fastest pace, for each kind of activity.
 
-Fastest pace only counts activities of a kilometre or more. GPS drifts, and forty metres of drift in five seconds reads as a world-record mile. That's a number you'd chase, and it isn't real.
+Fastest pace only counts activities of a kilometer or more. GPS drifts, and forty meters of drift in five seconds reads as a world-record mile. That's a number you'd chase, and it isn't real.
 
 There's also **Walk** next to Run and Hike, and it goes to Apple Health and Health Connect as walking.
 
@@ -52,7 +52,7 @@ There's also **Walk** next to Run and Hike, and it goes to Apple Health and Heal
 
 Send to Coach now includes your runs, walks and hikes — each day's time, distance and climb, plus your personal bests — and Coach shows them on your page: recent activities, bests, and your last route.
 
-**The route itself is off until you turn it on.** Most routes start and finish at someone's front door, and a map of your run sitting in your coach's inbox is a map of where you live. So there's a new choice under Send to Coach, **Your last route**, set to *Don't send*. Switch it to **Send, trimmed** and the newest route goes with the first and last 200 metres cut off, before it ever leaves your phone. Turn it back off and the next link removes it from Coach, rather than leaving the last one sitting there.
+**The route itself is off until you turn it on.** Most routes start and finish at someone's front door, and a map of your run sitting in your coach's inbox is a map of where you live. So there's a new choice under Send to Coach, **Your last route**, set to *Don't send*. Switch it to **Send, trimmed** and the newest route goes with the first and last 200 meters cut off, before it ever leaves your phone. Turn it back off and the next link removes it from Coach, rather than leaving the last one sitting there.
 
 On the web and Android, Coach draws the route as a line rather than on a street map, so no map service learns where you run. Coach on iPhone shows it on Apple Maps, which means Apple's map servers see the area the route is in.
 

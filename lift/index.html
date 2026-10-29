@@ -165,14 +165,17 @@
   <div id="cook-recipes">
     <div class="actions" id="cook-actions">
       <button class="wide" id="recipe-new">New recipe</button>
-      <button class="wide ghost" id="rc-open">Browse the catalogue</button>
+      <button class="wide ghost" id="rc-open">Browse the catalog</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
       <button class="wide ghost" id="rb-open">Send recipes from your browser</button>
     </div>
 
     <!-- What a "Send to LIFT" link said when it could not be read or carried no
          recipe (recipe-link.js). Nothing is filled in when this shows. -->
-    <p class="card hidden" id="rl-note" role="status"></p>
+    <div class="card hidden" id="rl-note" role="status">
+      <strong>Couldn't read that recipe</strong>
+      <p class="muted" id="rl-note-text"></p>
+    </div>
 
     <!-- Send recipes from your browser: the kit's "Send to LIFT" bookmarklet,
          bookmarklets.json's liftWeb. On a recipe page it reads the page's
@@ -220,12 +223,12 @@
     <!-- The bundled recipe catalogue (recipe-catalog.js, recipes.json), LIFT
          iPhone's RecipeCatalogView. Nothing is in the library until Add. -->
     <div id="rc-panel" class="hidden">
-      <h2 id="rc-title">Recipe catalogue</h2>
+      <h2 id="rc-title">Recipe catalog</h2>
       <div id="rc-browse">
         <input type="text" id="rc-query" inputmode="search" autocomplete="off"
-          placeholder="Search 600+ recipes" aria-label="Search the recipe catalogue">
+          placeholder="Search 600+ recipes" aria-label="Search the recipe catalog">
         <div id="rc-list" aria-live="polite"></div>
-        <button class="ghost" id="rc-credits-toggle" aria-expanded="false">Credits and licences</button>
+        <button class="ghost" id="rc-credits-toggle" aria-expanded="false">Credits and licenses</button>
         <div id="rc-credits" class="card hidden"></div>
         <button class="wide ghost" id="rc-done">Done</button>
       </div>
@@ -280,7 +283,7 @@
       <div><label for="r-f">Fat g</label><input type="number" id="r-f" inputmode="decimal"></div>
     </div>
     <div class="row">
-      <div><label for="r-fib">Fibre g</label><input type="number" id="r-fib" inputmode="decimal"></div>
+      <div><label for="r-fib">Fiber g</label><input type="number" id="r-fib" inputmode="decimal"></div>
     </div>
     <details class="more" id="r-more">
       <summary id="r-more-summary">More nutrients</summary>
