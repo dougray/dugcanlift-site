@@ -29,6 +29,29 @@ const COOK_UNITS = new Set([
   'can', 'cans', 'pinch', 'handful',
 ]);
 
+/* Unit words spelled out, as US recipe sites write them ("1.5 pounds ground
+ * beef"), each stored as the abbreviation above. Storing the abbreviation is
+ * the whole design: costing, shopping-list grouping and the count sentinel
+ * already key on it, so a spelled-out line behaves exactly like its
+ * abbreviated twin and nothing downstream changes.
+ *
+ * The same table, word for word, is in LiftKit's IngredientParser.swift, the
+ * Android kit's IngredientParser.kt and LIFT web's app.js. Deliberately
+ * not here: fl oz, a bare t or T, c., pt, qt, stick, or anything that needs a
+ * density. */
+const COOK_SPELLED_UNITS = {
+  gram: 'g', grams: 'g', gramme: 'g', grammes: 'g',
+  kilogram: 'kg', kilograms: 'kg', kilogramme: 'kg', kilogrammes: 'kg',
+  kilo: 'kg', kilos: 'kg',
+  milligram: 'mg', milligrams: 'mg', milligramme: 'mg', milligrammes: 'mg',
+  ounce: 'oz', ounces: 'oz',
+  pound: 'lb', pounds: 'lb',
+  teaspoon: 'tsp', teaspoons: 'tsp',
+  tablespoon: 'tbsp', tablespoons: 'tbsp',
+  milliliter: 'ml', milliliters: 'ml', millilitre: 'ml', millilitres: 'ml',
+  liter: 'l', liters: 'l', litre: 'l', litres: 'l',
+};
+
 /* Pulls a quantity and unit off the front of a typed ingredient line.
  *
  * Deliberately small. It handles the shapes people actually type and gives up
@@ -75,8 +98,12 @@ function parseIngredient(raw) {
 
   let unit = null;
   let item;
-  if (COOK_UNITS.has(candidate)) {
-    unit = candidate;
+  // An own-property check, so "constructor" or "toString" is never a unit.
+  const spelled = Object.prototype.hasOwnProperty.call(COOK_SPELLED_UNITS, candidate)
+    ? COOK_SPELLED_UNITS[candidate] : null;
+  const known = COOK_UNITS.has(candidate) ? candidate : spelled;
+  if (known) {
+    unit = known;
     item = rest.slice(firstWord.length).trim();
   } else {
     item = rest.trim();
