@@ -614,3 +614,37 @@ test('backup round trip: a routine\'s setKinds come back as they went, and none 
   B.addMissing(here, file.data.routines);
   assert.deepEqual(here, routines);
 });
+
+// MARK: - The line that names them
+//
+// LIFT for Android's `RoutineExercise.summary` ends an exercise's targets with
+// its drop and rest-pause sets, by number: "4 sets x 8 @ 185 lb · set 3 drop,
+// set 4 rest-pause". These are its words, its numbering (from 1, by
+// position) and its separators (" · " before, ", " between), so the line
+// reads the same on every LIFT build.
+
+test('the kinded sets are named by number, in Android\'s words', () => {
+  assert.equal(T.routineSetKindsLine(own(4, [null, null, 'drop', 'restPause'])), 'set 3 drop, set 4 rest-pause');
+  assert.equal(T.routineSetKindsLine(own(4, [null, 'restPause'])), 'set 2 rest-pause');
+  assert.equal(T.routineSetKindsLine(own(5, [null, 'drop', null, 'drop'])), 'set 2 drop, set 4 drop');
+});
+
+test('no kinds is no line: straight sets, a first set, a set past the count, a coach\'s sets', () => {
+  assert.equal(T.routineSetKindsLine(own(4)), '');
+  assert.equal(T.routineSetKindsLine(own(4, [null, null])), '');
+  assert.equal(T.routineSetKindsLine(own(3, ['drop'])), '', 'set 1 is always straight');
+  assert.equal(T.routineSetKindsLine(own(2, [null, 'drop', 'restPause'])), 'set 2 drop', 'nothing past targetSets');
+  assert.equal(T.routineSetKindsLine(own(3, [null, 'drop'], { prescribed: [{ reps: 5 }, { reps: 5, kind: 'drop' }] })), '',
+    'a coach\'s sets say their own kinds');
+  assert.equal(T.routineSetKindsLine(null), '');
+});
+
+test('the routine\'s Exercises end an exercise\'s targets with the line, behind " · "', () => {
+  const src = readFileSync('lift/app.js', 'utf8');
+  const i = src.indexOf('function routineTargets(e)');
+  const code = src.slice(i, src.indexOf('\n}\n', i) + 3);
+  const routineTargets = new Function('LiftSetTypes', 'formatSet', code + 'return routineTargets;')(T, () => '45s');
+  assert.equal(routineTargets(own(4)), '4 x 12 · 70 lb', 'a routine without kinds reads as it did');
+  assert.equal(routineTargets(own(4, [null, null, 'drop', 'restPause'])),
+    '4 x 12 · 70 lb · set 3 drop, set 4 rest-pause');
+});

@@ -147,6 +147,25 @@
   }
 
   /**
+   * "set 3 drop, set 4 rest-pause": the sets of a routine exercise that are
+   * not straight, by number from 1, in order, or "" when every set is
+   * straight. Said after the exercise's targets, behind " · ", in the
+   * routine's Exercises: "4 x 8 · 185 lb · set 3 drop". LIFT for
+   * Android's line (`RoutineExercise.summary`), word for word, so a lifter
+   * reads the same sentence on every build. Set 1 never appears -- it is
+   * always straight -- and neither does an exercise carrying a coach's
+   * `prescribed` sets, whose kinds are on those sets (routineSetKinds).
+   */
+  function routineSetKindsLine(exercise) {
+    var kinds = routineSetKinds(exercise) || [];
+    var named = [];
+    kinds.forEach(function (kind, i) {
+      if (kind) named.push('set ' + (i + 1) + ' ' + kindLabel(kind));
+    });
+    return named.join(', ');
+  }
+
+  /**
    * Set or clear the kind of set `i` of a routine exercise, in place -- the
    * editor's one write. The first set and a set past the count cannot have
    * one. A new list is written rather than the old one changed, so a routine
@@ -360,6 +379,7 @@
     routineSetCount: routineSetCount,
     routineSetKinds: routineSetKinds,
     routineSetKindAt: routineSetKindAt,
+    routineSetKindsLine: routineSetKindsLine,
     setRoutineSetKind: setRoutineSetKind,
     groupOf: groupOf,
     wireGroups: wireGroups,
