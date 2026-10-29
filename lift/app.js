@@ -4427,6 +4427,7 @@ $('#r-save').onclick = () => {
     });
     LiftNutrients.assign(nutrition, details);
   }
+  carryEstimated(nutrition, editingRecipeId ? recipeById(editingRecipeId) : null);
 
   const servings = parseFloat($('#r-servings').value) || 1;
 
@@ -4444,6 +4445,21 @@ $('#r-save').onclick = () => {
   editingRecipeId = null;
   render();
 };
+
+/* Whether a recipe's macros are an estimate survives a save through the form,
+ * edited or not. LIFT iPhone's rule, ported: there `nutritionIsEstimated` is a
+ * property of the recipe that RecipeEditorView.save() never writes, so
+ * changing a macro, or none, leaves it as it was. Here the flag lives inside
+ * nutritionPerServing (`estimated`, BACKUP-FORMAT's nutrition-level spelling)
+ * and the form rebuilds that object, so it is copied across from the stored
+ * recipe. A new recipe has none to carry, which reads as not estimated, as it
+ * does on the iPhone. Macros cleared to nothing leave nowhere to hold it --
+ * the same as an iPhone backup, which writes `estimated` only beside macros. */
+function carryEstimated(nutrition, previous) {
+  const was = previous && previous.nutritionPerServing;
+  if (nutrition && was && typeof was.estimated === 'boolean') nutrition.estimated = was.estimated;
+  return nutrition;
+}
 
 const recipeLines = (text) => String(text || '').split('\n').map((l) => l.trim()).filter(Boolean);
 

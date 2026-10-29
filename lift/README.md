@@ -225,7 +225,9 @@ only then is anything divided. What is stored is the raw quotient; what is
 shown is rounded, half away from zero, never truncated (Beef Pot Pie at 4
 reads 225 kcal), and the recipe form shows a stored macro to two places as the
 recipe cards do, writing the stored figure back unchanged unless the field is
-edited. The stepper shows for every such recipe, macros
+edited. A copy's `estimated` flag survives a save through the form, macros
+edited or not, as `nutritionIsEstimated` does on the iPhone, whose editor never
+writes it. The stepper shows for every such recipe, macros
 or not, because a library recipe needs a count and a silent 4 would be one
 nobody chose -- the iPhone saves 4 without asking when there are no macros to
 divide. The credit, the licence and the costing caveat ride on the copy as

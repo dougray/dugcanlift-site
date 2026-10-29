@@ -179,6 +179,30 @@ test('the chosen count is held to the stepper: whole, 1 to 48, 4 when unreadable
   assert.equal(C.DEFAULT_SERVINGS, 4);
 });
 
+test('an estimate stays an estimate through the recipe form, edited or not', () => {
+  // carryEstimated lifted out of app.js as it is now: LIFT iPhone's editor
+  // never writes nutritionIsEstimated, so a save keeps whatever it was.
+  const src = readFileSync('lift/app.js', 'utf8');
+  const i = src.indexOf('function carryEstimated(nutrition, previous) {');
+  const j = src.indexOf('const recipeLines', i);
+  assert.ok(i >= 0 && j > i);
+  const carry = new Function(src.slice(i, j) + '\nreturn carryEstimated;')();
+  assert.ok(src.includes('carryEstimated(nutrition, editingRecipeId ? recipeById(editingRecipeId) : null);'),
+    'the form\'s Save calls it with the recipe being edited');
+
+  const copy = { nutritionPerServing: C.libraryFields(byId('unitools:spaghetti-carbonara'), 2).nutritionPerServing };
+  const form = (calories) => ({ calories, proteinG: 32, carbsG: 62, fatG: 34, fiberG: 0 });
+
+  assert.equal(carry(form(690), copy).estimated, true, 'saved untouched');
+  assert.equal(carry(form(700), copy).estimated, true, 'a macro edited');
+  const notEstimated = { nutritionPerServing: { ...copy.nutritionPerServing, estimated: false } };
+  assert.equal(carry(form(700), notEstimated).estimated, false, 'false stays false');
+  assert.equal('estimated' in carry(form(700), null), false, 'a new recipe has none');
+  assert.equal('estimated' in carry(form(700), { nutritionPerServing: { calories: 1 } }), false,
+    'a recipe that never said gains nothing');
+  assert.equal(carry(null, copy), null, 'macros cleared: nowhere to hold it');
+});
+
 // MARK: - Browsing and searching
 
 test('with no search typed, every recipe is listed, by name', () => {
