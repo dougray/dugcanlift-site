@@ -27,7 +27,7 @@ test('the bundled recipes.json is the kit\'s file, byte for byte', () => {
     'lift/recipes.json does not match lift/recipes.sha256.\n' +
     'Copy dugcanlift-kit/data/recipes.json AND data/recipes.sha256 over together, and bump\n' +
     'CACHE in sw.js. Never edit either file here, and never re-write the checksum by hand:\n' +
-    'the kit\'s exporter (tools/export_recipes_json.py) writes it.');
+    'the kit\'s exporter (Tools/export_recipes_json.py) writes it.');
 });
 
 test('every recipe reads, with a name, a licence and a credit', () => {

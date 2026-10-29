@@ -1,6 +1,6 @@
 {
  "license": "CC BY-SA 4.0",
- "note": "Derived from LiftReference's recipes.db by tools/export_recipes_json.py. Never edit by hand. Show each recipe's own license and attribution.",
+ "note": "Derived from LiftReference's recipes.db by Tools/export_recipes_json.py. Never edit by hand. Show each recipe's own license and attribution.",
  "recipes": [
   {
    "id": "gutenberg-26558:a-good-pennsylvania-dutch-salad-dressing",
