@@ -49,6 +49,30 @@
   <div class="card" id="today-training"></div>
   </div>
 
+  <!-- Weigh-ins are the `weights` map backups and Send to Coach already carry.
+       Photos are not: see progress.js. -->
+  <div class="panel">
+  <h2>Body weight</h2>
+  <div class="card" id="body-weight">
+    <p id="bw-summary"></p>
+    <canvas id="bw-chart" height="150" role="img" aria-label="Body weight over the last 90 days"></canvas>
+    <div id="bw-form" class="hidden">
+      <label for="bw-weight">Weight (lb)</label>
+      <input type="number" id="bw-weight" inputmode="decimal" step="any">
+      <p class="muted small">One weigh-in a day: logging again today replaces today's.</p>
+      <label for="bw-goal">Goal (lb), optional</label>
+      <input type="number" id="bw-goal" inputmode="decimal" step="any">
+      <p class="muted small">Drawn as a line on the chart. Leave it blank for none.</p>
+      <button class="wide" id="bw-save">Save</button>
+      <button class="wide ghost" id="bw-cancel">Cancel</button>
+    </div>
+    <div class="row" id="bw-actions">
+      <button class="ghost" id="bw-log">Log weight</button>
+      <button class="ghost" id="bw-photos">Photos</button>
+    </div>
+  </div>
+  </div>
+
   <div class="panel">
   <h2>Fuel so far today</h2>
   <div class="card" id="today-fuel"></div>
@@ -490,6 +514,13 @@
   <div class="col">
   <h2>Outdoor</h2>
   <div id="outdoor-section"></div>
+
+  <!-- Counting, never grading: see progress.js. -->
+  <h2>Muscles this week</h2>
+  <div class="card" id="muscles-week"></div>
+
+  <h2>Your year</h2>
+  <div class="card" id="your-year"></div>
   </div>
   </div>
 </section>
@@ -524,6 +555,42 @@
   <button class="wide ghost" id="review-delete">Delete</button>
 </div>
 
+<!-- Progress photos. Kept in this browser only: never in a backup file, never
+     sent to a coach (progress.js). -->
+<div id="photos" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="photos-title">
+  <div class="overlayhead">
+    <div class="big" id="photos-title" tabindex="-1">Progress photos</div>
+    <button class="ghost" id="photos-done">Done</button>
+  </div>
+  <button class="wide" id="photos-add">Add photo</button>
+  <input type="file" id="photos-file" accept="image/*" class="hidden">
+  <p class="muted" id="photos-status" role="status"></p>
+  <button class="wide ghost hidden" id="photos-compare"></button>
+  <div class="photogrid" id="photos-grid"></div>
+  <p class="muted">Photos stay in this browser, on this device, in LIFT's own storage.
+    They are not in backup files and never go to a coach. Clearing this site's data
+    deletes them.</p>
+</div>
+
+<!-- Two photos one over the other, with a handle to slide between them. -->
+<div id="compare" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="compare-title">
+  <div class="overlayhead">
+    <div class="big" id="compare-title" tabindex="-1">Compare</div>
+    <button class="ghost" id="compare-done">Done</button>
+  </div>
+  <div class="compare" id="compare-frame">
+    <img id="compare-after" alt="">
+    <img id="compare-before" alt="">
+    <div class="compare-line" id="compare-line"></div>
+  </div>
+  <input type="range" id="compare-split" min="0" max="100" step="1" value="50"
+    aria-label="Before and after">
+  <div class="compare-pickers">
+    <label>Before <select id="compare-before-pick"></select></label>
+    <label>After <select id="compare-after-pick"></select></label>
+  </div>
+</div>
+
 <script src="nutrients.js"></script>
 <script src="foods.js"></script>
 <script src="food-amount.js"></script>
@@ -536,6 +603,7 @@
 <script src="set-types.js"></script>
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
+<script src="progress.js"></script>
 <script src="road-food.js"></script>
 <script src="recipe-import.js"></script>
 <script src="recipe-link.js"></script>
