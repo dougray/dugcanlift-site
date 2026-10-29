@@ -4247,7 +4247,13 @@ function renderCook() {
   chips($('#cook-sections'),
     [{ label: 'Recipes', v: 'recipes' }, { label: 'Plan', v: 'plan' }, { label: 'Shopping', v: 'shopping' }],
     (i) => i.v === cookSection,
-    (i) => { cookSection = i.v; $('#recipe-form').classList.add('hidden'); render(); });
+    (i) => {
+      cookSection = i.v;
+      $('#recipe-form').classList.add('hidden');
+      $('#rp-panel').classList.add('hidden');
+      closeRecipeCatalog();
+      render();
+    });
 
   $('#cook-recipes').classList.toggle('hidden', cookSection !== 'recipes');
   $('#cook-plan').classList.toggle('hidden', cookSection !== 'plan');
@@ -4405,30 +4411,357 @@ $('#r-save').onclick = () => {
     LiftNutrients.assign(nutrition, details);
   }
 
-  const lines = (sel) => $(sel).value.split('\n').map((l) => l.trim()).filter(Boolean);
   const servings = parseFloat($('#r-servings').value) || 1;
 
-  const body = {
+  storeRecipe({
     name,
     servings: servings > 0 ? servings : 1,
-    ingredients: lines('#r-ingredients').map(parseIngredient),
-    steps: lines('#r-steps'),
+    steps: recipeLines($('#r-steps').value),
     nutritionPerServing: nutrition,
     // Written even when null, so clearing the field on an existing recipe
     // actually clears it -- the spread below would otherwise keep the old one.
     totalWeightGrams: recipeWeightGrams(),
-  };
+  }, $('#r-ingredients').value, editingRecipeId);
 
-  if (editingRecipeId) {
-    recipes = recipes.map((r) => (r.id === editingRecipeId ? { ...r, ...body } : r));
-  } else {
-    recipes.push({ id: uid(), importedAt: Date.now(), ...body });
-  }
-
-  save(KEY.recipes, recipes);
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
   render();
+};
+
+const recipeLines = (text) => String(text || '').split('\n').map((l) => l.trim()).filter(Boolean);
+
+/* The one way a recipe enters the library: the form's Save and the
+ * catalogue's Add both come through here. Ingredient lines are parsed here,
+ * from the text as it finally stands -- the line is the contract, so a pasted
+ * caption's wrong split or a catalogue line that does not parse costs an
+ * unparsed line, never a confident wrong quantity. Editing spreads over the
+ * stored recipe, so fields the form does not show (a catalogue recipe's
+ * credit) are kept. */
+function storeRecipe(fields, ingredientText, id) {
+  const body = { ...fields, ingredients: recipeLines(ingredientText).map(parseIngredient) };
+  if (id) {
+    recipes = recipes.map((r) => (r.id === id ? { ...r, ...body } : r));
+  } else {
+    recipes.push({ id: uid(), importedAt: Date.now(), ...body });
+  }
+  save(KEY.recipes, recipes);
+}
+
+/* Paste a recipe. Coach web's flow (coach/app.js), on this form.
+ *
+ * The way in for a recipe found anywhere else, and it touches no network at
+ * all: a browser may not fetch another site's page, so the address bar is no
+ * use and the text is.
+ *
+ * parseCaption (recipe-import.js) only PROPOSES a split. Nothing is saved here
+ * -- it fills the recipe form and the person checks it, which is the whole
+ * safety argument. The form's two textareas are already one-per-line, so the
+ * editor the split lands in is the editor that already existed, and a wrong
+ * split costs an edit rather than a number. parseIngredient still reads the
+ * quantities on Save, from the text as edited.
+ */
+$('#rp-open').onclick = () => {
+  closeRecipeCatalog();
+  $('#rp-panel').classList.remove('hidden');
+  $('#rp-note').textContent = '';
+  $('#rp-text').focus();
+};
+$('#rp-cancel').onclick = () => $('#rp-panel').classList.add('hidden');
+
+$('#rp-go').onclick = () => {
+  const parsed = parseCaption($('#rp-text').value);
+
+  if (!parsed.ingredientLines.length && !parsed.steps.length) {
+    $('#rp-note').textContent =
+      'Nothing in that reads as a recipe. Paste the ingredients and steps as text.';
+    return;
+  }
+
+  // Panel first: hiding it after the form scrolled into view would pull the
+  // form up past the top of the screen.
+  $('#rp-panel').classList.add('hidden');
+  openRecipeForm(null);
+
+  $('#r-name').value = parsed.name || '';
+  $('#r-ingredients').value = parsed.ingredientLines.join('\n');
+  $('#r-steps').value = parsed.steps.join('\n');
+  // Only ever from an explicit "serves 4". A guessed yield silently divides
+  // every macro by a number nobody chose, so an unstated one stays at the
+  // form's own 1 and says so below.
+  if (parsed.servings) $('#r-servings').value = parsed.servings;
+  renderRecipeWeightEach();
+
+  const advice = {
+    labelled: 'Split on the headings in the text — check it read them right.',
+    inferred: 'The text labelled one section and this worked out the rest, so check the division.',
+    unsorted: 'The text had no headings, so everything landed in Ingredients — cut any method steps out and paste them into Method.',
+  }[parsed.split];
+
+  $('#ing-tally').textContent = parsed.servings
+    ? advice
+    : advice + ' The text did not say how many this serves; set it before saving.';
+};
+
+/* ---------------- recipe catalogue ----------------
+ *
+ * LIFT iPhone's RecipeCatalogView: browse or search the bundled recipes, open
+ * one, Add it to the library. The rules -- what is divided and what is not,
+ * the serving count, search, credits -- are recipe-catalog.js, where node
+ * tests them; this is the screen.
+ *
+ * recipes.json is 1 MB, so it is fetched from this site the first time the
+ * catalogue opens, never at launch, and the service worker keeps it from then
+ * on (cache-first, like road-food.json), so it opens again with no signal.
+ * Nothing in it is requested from anywhere else: a row's sourceURL is a credit
+ * printed as text, not a link this page follows. */
+
+const RECIPE_DB = 'recipes.json';
+let catalogRecipes = null;
+let catalogLoading = null;
+let catalogError = null;
+let catalogSelected = null;
+let catalogServings = LiftRecipeCatalog.DEFAULT_SERVINGS;
+let catalogQueryTimer = null;
+
+function loadRecipeCatalog() {
+  if (catalogRecipes) return Promise.resolve(catalogRecipes);
+  if (!catalogLoading) {
+    catalogLoading = fetch(RECIPE_DB)
+      .then((response) => {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then((raw) => {
+        catalogRecipes = LiftRecipeCatalog.parse(raw);
+        catalogError = null;
+        return catalogRecipes;
+      })
+      .catch((e) => {
+        // Cleared so opening the catalogue again tries again.
+        catalogError = e;
+        catalogLoading = null;
+        throw e;
+      });
+  }
+  return catalogLoading;
+}
+
+function openRecipeCatalog() {
+  $('#rp-panel').classList.add('hidden');
+  $('#recipe-form').classList.add('hidden');
+  editingRecipeId = null;
+  $('#cook-actions').classList.add('hidden');
+  $('#recipe-list').classList.add('hidden');
+  $('#rc-panel').classList.remove('hidden');
+  // Each visit starts fresh, as the iPhone's sheet does.
+  catalogSelected = null;
+  $('#rc-query').value = '';
+  $('#rc-credits').classList.add('hidden');
+  $('#rc-credits-toggle').textContent = 'Credits and licences';
+  $('#rc-credits-toggle').setAttribute('aria-expanded', 'false');
+  renderRecipeCatalog();
+  $('#rc-query').focus();
+  loadRecipeCatalog().then(renderRecipeCatalog, renderRecipeCatalog);
+}
+
+function closeRecipeCatalog() {
+  $('#rc-panel').classList.add('hidden');
+  $('#cook-actions').classList.remove('hidden');
+  $('#recipe-list').classList.remove('hidden');
+  catalogSelected = null;
+}
+
+function catalogCard() {
+  return el('div', 'card');
+}
+
+function renderRecipeCatalog() {
+  const detail = !!catalogSelected;
+  $('#rc-title').textContent = detail ? 'Add recipe' : 'Recipe catalogue';
+  $('#rc-browse').classList.toggle('hidden', detail);
+  $('#rc-detail').classList.toggle('hidden', !detail);
+  if (detail) renderCatalogDetail(catalogSelected);
+  else renderCatalogList();
+}
+
+function renderCatalogList() {
+  const list = $('#rc-list');
+  list.innerHTML = '';
+  const query = $('#rc-query').value;
+
+  if (catalogError && !catalogRecipes) {
+    const card = catalogCard();
+    card.appendChild(el('p', 'muted', 'The recipe catalogue could not be opened.'));
+    list.appendChild(card);
+    return;
+  }
+  if (!catalogRecipes) {
+    const card = catalogCard();
+    card.appendChild(el('p', 'muted', 'Loading…'));
+    list.appendChild(card);
+    return;
+  }
+
+  const found = LiftRecipeCatalog.isQuery(query)
+    ? LiftRecipeCatalog.search(catalogRecipes, query)
+    : LiftRecipeCatalog.browse(catalogRecipes);
+
+  if (!found.length) {
+    const card = catalogCard();
+    card.appendChild(el('p', 'muted', 'Nothing matches that.'));
+    list.appendChild(card);
+  }
+
+  found.forEach((r) => {
+    // A real button drawn as a card, as the library's own recipe cards are.
+    const row = el('button', 'card linkcard recipecard');
+    row.type = 'button';
+    const head = el('div', 'statline');
+    head.appendChild(el('strong', null, r.name));
+    if (r.servings != null) head.appendChild(el('span', 'muted', servingsLabel(r.servings)));
+    row.appendChild(head);
+    // Said here rather than only in the detail, so a browsing eye never reads
+    // a whole-dish number as a portion.
+    row.appendChild(el('div', 'muted', r.caloriesPerServing != null
+      ? `${Math.round(r.caloriesPerServing)} kcal per serving`
+      : LiftRecipeCatalog.needsServings(r) ? 'Macros for the whole dish' : 'No macros'));
+    row.appendChild(el('div', 'muted', `${r.ingredients.length} ingredients`));
+    row.onclick = () => {
+      // Seeded from the source when it stated one, so the count starts
+      // somewhere sensible rather than at a default to undo.
+      catalogServings = r.servings != null ? r.servings : LiftRecipeCatalog.DEFAULT_SERVINGS;
+      catalogSelected = r;
+      renderRecipeCatalog();
+      window.scrollTo(0, 0);
+    };
+    list.appendChild(row);
+  });
+
+  // The credit is the CC BY-SA obligation, not decoration, so it sits on the
+  // screen that shows the data.
+  const credits = $('#rc-credits');
+  credits.innerHTML = '';
+  LiftRecipeCatalog.credits(catalogRecipes).forEach((line) => credits.appendChild(el('p', 'muted', line)));
+}
+
+function renderCatalogDetail(r) {
+  const box = $('#rc-detail');
+  box.innerHTML = '';
+  const C = LiftRecipeCatalog;
+
+  const nav = el('div', 'row');
+  const back = el('button', 'ghost', 'Back');
+  back.onclick = () => { catalogSelected = null; renderRecipeCatalog(); $('#rc-query').focus(); };
+  const add = el('button', null, 'Add');
+  add.id = 'rc-add';
+  add.onclick = () => addCatalogRecipe(r);
+  nav.appendChild(back);
+  nav.appendChild(add);
+  box.appendChild(nav);
+
+  const head = catalogCard();
+  head.appendChild(el('strong', 'cardtitle', r.name));
+  if (r.summary) head.appendChild(el('p', 'muted', r.summary));
+  if (C.statesNoYield(r)) {
+    // Only for a source that stated no yield: a published per-serving figure
+    // is never rescaled, so there is no count to choose.
+    // The iPhone's stepper, 1 to 48, drawn with Road Food's "+" and "−".
+    const stepper = el('div', 'servingstep');
+    stepper.setAttribute('role', 'group');
+    stepper.setAttribute('aria-label', 'Servings');
+    const step = (id, symbol, label, by, disabled) => {
+      const b = el('button', 'roadplus', symbol);
+      b.type = 'button';
+      b.id = id;
+      b.setAttribute('aria-label', label);
+      b.disabled = disabled;
+      b.onclick = () => {
+        catalogServings = C.servingsFor(r, catalogServings + by);
+        renderCatalogDetail(r);
+        const again = document.getElementById(id);
+        (again && !again.disabled ? again : $('#rc-add')).focus();
+      };
+      return b;
+    };
+    stepper.appendChild(step('rc-less', '\u2212', 'One serving fewer', -1, catalogServings <= C.MIN_SERVINGS));
+    const count = el('span', null, servingsLabel(catalogServings));
+    count.setAttribute('aria-live', 'polite');
+    stepper.appendChild(count);
+    stepper.appendChild(step('rc-more', '+', 'One serving more', 1, catalogServings >= C.MAX_SERVINGS));
+    head.appendChild(stepper);
+    head.appendChild(el('p', 'muted', C.needsServings(r)
+      ? 'This book states no yield, so the macros below are for the whole dish. Set how many it serves and they divide.'
+      : 'This book states no yield. Set how many it serves.'));
+  } else {
+    head.appendChild(el('p', 'muted', servingsLabel(r.servings)));
+  }
+  if (r.prepMinutes != null && r.cookMinutes != null) {
+    head.appendChild(el('p', 'muted', `${r.prepMinutes} min prep \u00b7 ${r.cookMinutes} min cook`));
+  }
+  box.appendChild(head);
+
+  const ing = catalogCard();
+  ing.appendChild(el('strong', 'cardtitle', `Ingredients (${r.ingredients.length})`));
+  r.ingredients.forEach((line) => {
+    const row = el('div', 'statline');
+    row.appendChild(el('span', null, line));
+    // A line the parser cannot read is kept as written, and says so, so a
+    // shopping list that prints it raw is no surprise.
+    if (parseIngredient(line).qty == null) row.appendChild(el('span', 'muted', 'as written'));
+    ing.appendChild(row);
+  });
+  box.appendChild(ing);
+
+  if (r.steps.length) {
+    const steps = catalogCard();
+    steps.appendChild(el('strong', 'cardtitle', `Method (${r.steps.length})`));
+    const ol = el('ol', 'catalogsteps');
+    r.steps.forEach((step) => ol.appendChild(el('li', null, step)));
+    steps.appendChild(ol);
+    box.appendChild(steps);
+  }
+
+  const macros = catalogCard();
+  macros.appendChild(el('strong', 'cardtitle', 'Macros'));
+  const n = C.nutrition(r, catalogServings);
+  if (n) {
+    macros.appendChild(el('div', null,
+      `${Math.round(n.calories)} kcal \u00b7 P ${Math.round(n.proteinG)} \u00b7 C ${Math.round(n.carbsG)} \u00b7 F ${Math.round(n.fatG)}`));
+    macros.appendChild(el('p', 'muted', C.needsServings(r)
+      ? `Per serving at ${servingsLabel(catalogServings)}.`
+      : 'Per serving, as published.'));
+  } else {
+    macros.appendChild(el('p', 'muted', 'None.'));
+  }
+  if (r.nutritionNote) macros.appendChild(el('p', 'muted', r.nutritionNote));
+  box.appendChild(macros);
+
+  const source = catalogCard();
+  source.appendChild(el('strong', 'cardtitle', 'Source'));
+  source.appendChild(el('p', 'muted', r.attribution));
+  source.appendChild(el('p', 'muted', r.license));
+  box.appendChild(source);
+}
+
+/* Copies the recipe into the library, through the same save as the form. */
+function addCatalogRecipe(r) {
+  storeRecipe(LiftRecipeCatalog.libraryFields(r, catalogServings), r.ingredients.join('\n'), null);
+  closeRecipeCatalog();
+  render();
+}
+
+$('#rc-open').onclick = openRecipeCatalog;
+$('#rc-done').onclick = () => { closeRecipeCatalog(); render(); };
+$('#rc-query').addEventListener('input', () => {
+  // A keystroke is not a query: debounced as the iPhone's search is.
+  clearTimeout(catalogQueryTimer);
+  catalogQueryTimer = setTimeout(renderRecipeCatalog, 200);
+});
+$('#rc-credits-toggle').onclick = () => {
+  const box = $('#rc-credits');
+  const open = box.classList.toggle('hidden') === false;
+  $('#rc-credits-toggle').textContent = open ? 'Hide credits' : 'Credits and licences';
+  $('#rc-credits-toggle').setAttribute('aria-expanded', String(open));
 };
 
 function renderPlan() {

@@ -192,6 +192,54 @@ under the same spelling. Nothing reaches the coach: SHARE-FORMAT carries no set
 type. `set-types.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it
 changes.**
 
+## Recipes from elsewhere (`recipe-import.js`, `recipe-catalog.js`, `recipes.json`)
+
+Cook → Recipes has three ways in beside **New recipe**: **Browse the
+catalogue** and **Paste a recipe**, the iPhone's words and Coach web's. None of
+them reaches any server but this site's own.
+
+**Paste a recipe** is Coach web's card, word for word, filling this build's
+recipe form. `recipe-import.js` is the caption half of Coach web's
+`coach/recipe-import.js`, the reference, copied unchanged so the two web apps
+split the same text the same way; `recipe-import.test.mjs` ports Coach web's
+cases and also fails if the block drifts from the deployed `coach/` copy. The
+JSON-LD half is not here: nothing in LIFT fetches a page. **A pasted caption is
+edited, not reviewed** -- `parseCaption` only proposes a name, ingredients and
+steps, they land in the ordinary form, and Save reads the quantities from the
+text as edited, so a wrong split costs an edit and never a number. The name is
+the first line or none; a yield is a line that opens with a yield word and
+carries a number ("Serves 4"), or none, and with none the Servings field keeps
+the form's own 1 and the note under Ingredients says so. Coach web's note ends
+"set it before sending"; here it is "before saving".
+
+**Browse the catalogue** is LIFT iPhone's `RecipeCatalogView`: the 622 bundled
+recipes, searched or browsed, one opened with its summary, ingredients, method,
+macros, `nutritionNote` and its own `license` and `attribution`, and **Add**
+copying it into the library through the same `storeRecipe` the form's Save
+uses, ingredient lines parsed by `parseIngredient`. The rules are
+`recipe-catalog.js`, tested by `recipe-catalog.test.mjs`. Nothing is re-costed:
+a recipe with a stated yield keeps its per-serving figures whatever the count.
+`servings: null` is a source that stated no yield; those rows carry whole-dish
+totals, the person sets the servings on a stepper (4 to start, 1 to 48), and
+only then is anything divided. The stepper shows for every such recipe, macros
+or not, because a library recipe needs a count and a silent 4 would be one
+nobody chose -- the iPhone saves 4 without asking when there are no macros to
+divide. The credit, the licence and the costing caveat ride on the copy as
+`sourceAuthor`, `sourceUrl` and `sourceTranscript` (BACKUP-FORMAT's names), so
+they travel in a backup. Search stands in for the iPhone's FTS5 index: every
+word must start a word of the name, summary or country, accents and case
+ignored, name matches first and then the shorter name; FTS5's stemming is not
+reproduced.
+
+`recipes.json` is `dugcanlift-kit/data/recipes.json`, copied byte for byte with
+`recipes.sha256`, and `recipe-catalog.test.mjs` hashes it against that checksum.
+**Never edit either file here**; copy both over together from the kit, whose
+exporter writes them, and bump `CACHE`. At 1 MB it is **not in `SHELL`**: it is
+fetched from this site the first time the catalogue opens and then kept by the
+service worker cache-first, as `road-food.json` is, so it opens again offline
+without making every install download it. `recipe-import.js` and
+`recipe-catalog.js` are in `SHELL`, so **bump `CACHE` when either changes.**
+
 ## Watch import (`watch-scan.js`)
 
 `watch-scan.js` reads food logs off an Apple Watch by QR code. The watch has

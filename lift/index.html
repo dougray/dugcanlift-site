@@ -163,7 +163,44 @@
 
   <!-- recipes -->
   <div id="cook-recipes">
-    <button class="wide" id="recipe-new">New recipe</button>
+    <div class="actions" id="cook-actions">
+      <button class="wide" id="recipe-new">New recipe</button>
+      <button class="wide ghost" id="rc-open">Browse the catalogue</button>
+      <button class="wide ghost" id="rp-open">Paste a recipe</button>
+    </div>
+
+    <!-- Paste a recipe: Coach web's card and words. recipe-import.js proposes a
+         split and the recipe form below is where it is checked and saved. -->
+    <div id="rp-panel" class="card hidden">
+      <strong>Paste a recipe</strong>
+      <p class="muted">For a recipe written out as text — a video caption, an
+        email, a card off the fridge. Nothing is sent anywhere; this reads what
+        you paste and fills the recipe form, which you then check.</p>
+      <p class="muted">A recipe website will not work here. A browser cannot
+        fetch another site's page, so paste the recipe's text rather than its
+        address.</p>
+      <label for="rp-text">Recipe text</label>
+      <textarea id="rp-text" rows="8" placeholder="Creamy Tuscan Chicken&#10;&#10;Ingredients:&#10;- 2 chicken breasts&#10;- 200 g spinach&#10;&#10;Method:&#10;1. Sear the chicken&#10;&#10;Serves 4"></textarea>
+      <p class="muted" id="rp-note" role="status"></p>
+      <button class="wide" id="rp-go">Read it</button>
+      <button class="wide ghost" id="rp-cancel">Cancel</button>
+    </div>
+
+    <!-- The bundled recipe catalogue (recipe-catalog.js, recipes.json), LIFT
+         iPhone's RecipeCatalogView. Nothing is in the library until Add. -->
+    <div id="rc-panel" class="hidden">
+      <h2 id="rc-title">Recipe catalogue</h2>
+      <div id="rc-browse">
+        <input type="text" id="rc-query" inputmode="search" autocomplete="off"
+          placeholder="Search 600+ recipes" aria-label="Search the recipe catalogue">
+        <div id="rc-list" aria-live="polite"></div>
+        <button class="ghost" id="rc-credits-toggle" aria-expanded="false">Credits and licences</button>
+        <div id="rc-credits" class="card hidden"></div>
+        <button class="wide ghost" id="rc-done">Done</button>
+      </div>
+      <div id="rc-detail" class="hidden"></div>
+    </div>
+
     <div id="recipe-list"></div>
   </div>
 
@@ -469,6 +506,8 @@
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
 <script src="road-food.js"></script>
+<script src="recipe-import.js"></script>
+<script src="recipe-catalog.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
 </body>
