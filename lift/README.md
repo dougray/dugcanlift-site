@@ -402,3 +402,31 @@ the plan was sent is not a broken row, and it reappears if the item does.
 
 Shown, never targeted, like saturated fat and the imbalance figure: a label in
 words, no colour, no score, and nothing anywhere about what you ate instead.
+
+## Training as CSV (`workout-csv.js`)
+
+Home -> Your data -> "Import from Strong, Hevy or FitNotes" and "Export
+training as a spreadsheet (CSV)". A port of LIFT iOS's `WorkoutCSV` (lift-ios
+#63), in the same words; `workout-csv.test.mjs` ports `WorkoutCSVTests` against
+the iPhone's own fixtures, `fixtures/csv-*.csv`, copied byte for byte. **Never
+regenerate them here.**
+
+**None of the three apps publishes its export format**, so the reader is strict:
+a file it can't place is refused, never half-read. Strong's semicolon layout says
+`Weight (kg)`; its comma layout names no unit, so the import panel asks and builds
+nothing until it is answered. `W` is a warm-up, `D` and `F` working sets, `Note`
+and `Rest Timer` rows not sets. Hevy says its unit in the header; FitNotes on every
+row, and its category becomes `primaryMuscle` on the exercise (except Cardio),
+which Muscles this week reads. Numbers are digits and a point only; times carry no
+zone and are read as local.
+
+**Pounds on the way in**, because every weight LIFT web stores is pounds: a pound
+figure is kept exactly, a kilogram one converted (`2.2046226218`) to two
+decimals. **Blank stays blank**: a column a set did not use -- empty, or the 0
+these apps write there -- is not recorded. **A day LIFT already has training on
+is left alone and counted**, never merged into, which also makes a second import
+of the same file add nothing. Two workouts on one day become one.
+
+The export is built in the browser and saved as a file: one row per set, always
+in kilograms (the file is the same shape on every build), with blanks left
+blank. Nothing is sent anywhere.

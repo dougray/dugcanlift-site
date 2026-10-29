@@ -138,6 +138,27 @@
     <button class="wide ghost" id="backup-load">Restore from a backup file</button>
     <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
     <p class="muted" id="backup-note"></p>
+    <!-- Training history in from another app, and out as a spreadsheet: files
+         you pick and keep, read and written here (workout-csv.js). -->
+    <button class="wide ghost" id="csv-import">Import from Strong, Hevy or FitNotes</button>
+    <input type="file" id="csv-file" accept=".csv,text/csv,text/plain" class="hidden">
+    <button class="wide ghost" id="csv-export">Export training as a spreadsheet (CSV)</button>
+    <div id="csv-review" class="card hidden">
+      <strong>Import training</strong>
+      <p id="csv-source" class="csvsource"></p>
+      <p id="csv-holds"></p>
+      <div id="csv-unit" class="hidden">
+        <label>Weights in this file are in</label>
+        <div class="chips" id="csv-unit-chips"></div>
+        <p class="muted small">This Strong file doesn't say. It is whichever unit Strong was
+          showing when you exported it.</p>
+      </div>
+      <p class="muted small">Days you already have training on in LIFT are left exactly as
+        they are, so importing the same file twice adds nothing the second time.</p>
+      <button class="wide" id="csv-do-import">Import</button>
+      <button class="wide ghost" id="csv-cancel">Cancel</button>
+    </div>
+    <p class="muted" id="csv-note" role="status"></p>
     <button class="wide ghost" id="watch-scan-open">Scan from watch</button>
     <div id="watch-scan" class="card hidden">
       <strong>Scan from watch</strong>
@@ -536,6 +557,7 @@
 <script src="set-types.js"></script>
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
+<script src="workout-csv.js"></script>
 <script src="road-food.js"></script>
 <script src="recipe-import.js"></script>
 <script src="recipe-link.js"></script>
