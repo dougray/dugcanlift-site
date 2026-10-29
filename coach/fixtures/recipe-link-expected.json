@@ -1,0 +1,6 @@
+{
+ "url": "https://example.com/recipes/stew",
+ "jsonld": [
+  "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://example.com/recipes/stew\",\"name\":\"Beef and barley stew\"},{\"@type\":\"Recipe\",\"name\":\"Beef & barley stew — crème fraîche finish 🍲\",\"recipeYield\":[\"4\",\"4 bowls\"],\"author\":{\"@type\":\"Person\",\"name\":\"Ana Núñez\"},\"recipeIngredient\":[\"600 g beef chuck, cubed\",\"150 g pearl barley\",\"2 carrots, diced\",\"1 onion, chopped\",\"1.2 L beef stock\",\"2 tbsp crème fraîche\"],\"recipeInstructions\":[{\"@type\":\"HowToStep\",\"text\":\"Brown the beef in batches.\"},{\"@type\":\"HowToStep\",\"text\":\"Add the vegetables, barley and stock; simmer 90 minutes.\"},{\"@type\":\"HowToStep\",\"text\":\"Stir in the crème fraîche and serve.\"}],\"nutrition\":{\"@type\":\"NutritionInformation\",\"calories\":\"520 kcal\",\"proteinContent\":\"38 g\",\"carbohydrateContent\":\"44 g\",\"fatContent\":\"20 g\"}}]}"
+ ]
+}

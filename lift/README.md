@@ -192,18 +192,23 @@ under the same spelling. Nothing reaches the coach: SHARE-FORMAT carries no set
 type. `set-types.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it
 changes.**
 
-## Recipes from elsewhere (`recipe-import.js`, `recipe-catalog.js`, `recipes.json`)
+## Recipes from elsewhere (`recipe-import.js`, `recipe-link.js`, `recipe-catalog.js`, `recipes.json`)
 
 Cook → Recipes has three ways in beside **New recipe**: **Browse the
-catalogue** and **Paste a recipe**, the iPhone's words and Coach web's. None of
-them reaches any server but this site's own.
+catalogue** and **Paste a recipe**, the iPhone's words and Coach web's, and
+**Send recipes from your browser**. None of them reaches any server but this
+site's own.
 
 **Paste a recipe** is Coach web's card, word for word, filling this build's
-recipe form. `recipe-import.js` is the caption half of Coach web's
+recipe form. Its website sentence is the shared bookmarklet wording ("A recipe
+website's address will not work here. Use Send recipes from your browser for a
+website instead."), which every build's card says. `recipe-import.js` is the caption half of Coach web's
 `coach/recipe-import.js`, the reference, copied unchanged so the two web apps
 split the same text the same way; `recipe-import.test.mjs` ports Coach web's
-cases and also fails if the block drifts from the deployed `coach/` copy. The
-JSON-LD half is not here: nothing in LIFT fetches a page. **A pasted caption is
+cases and also fails if anything from "Caption reading" to the end of the file
+drifts from the deployed `coach/` copy. The JSON-LD half is there too, and reads
+a "Send to LIFT" link's blocks (below); nothing in LIFT fetches a page, so its
+`recipeFromJsonLd(html)` entry point is carried and never called. **A pasted caption is
 edited, not reviewed** -- `parseCaption` only proposes a name, ingredients and
 steps, they land in the ordinary form, and Save reads the quantities from the
 text as edited, so a wrong split costs an edit and never a number. The name is
@@ -245,6 +250,44 @@ fetched from this site the first time the catalogue opens and then kept by the
 service worker cache-first, as `road-food.json` is, so it opens again offline
 without making every install download it. `recipe-import.js` and
 `recipe-catalog.js` are in `SHELL`, so **bump `CACHE` when either changes.**
+
+**Send recipes from your browser** hands over the kit's "Send to LIFT"
+bookmarklet (`dugcanlift-kit/bookmarklet/`, whose README's rules every build
+follows). On a recipe page the browser already has open it reads the page's
+schema.org JSON-LD and opens `https://www.dugcanlift.com/lift/#r1…`, carrying
+the page's address and the raw blocks -- what Safari's share extension hands
+LIFT iPhone. The payload is after the `#`, so it never reaches a server, and
+nothing here requests the page. The panel offers the link to drag to a
+computer's bookmarks bar, the same address to copy into a phone's bookmark, and
+says LIFT on iPhone can share from Safari instead. Clicking the link on LIFT's
+own page only says to drag it or copy it. **The panel's words, the two link
+messages and the form's note are one shared set** that every build uses, LIFT
+and Coach, web and apps, with the app's name put in. Change them in all of them
+or in none. Two lines are this build's own: the load-failure line, and "Copy the
+selected text." for a browser with no clipboard API at all.
+
+On load and on `hashchange`, an `#r1` fragment is **stripped at once** with
+`history.replaceState`, so a reload or a shared address never imports it again,
+then decoded by `recipe-link.js` -- a port of the kit's `recipe-link.mjs`, on
+`DecompressionStream('deflate-raw')`, with the same refusals and the same
+512 KiB cap. The blocks go to `recipeFromJsonLdPayload`, the first recipe found
+wins, and it **fills the ordinary recipe form**: name, ingredients, steps,
+servings only from the page's own yield (with none the form keeps its 1 and the
+note says so), and the page's own nutrition, counted as typed so a looked-up
+ingredient fills only what the page left blank. **Nothing is saved until
+Save.** The page's address is kept as `sourceUrl`, with `sourceAuthor`,
+`prepMinutes` and `cookMinutes` when the page has them (BACKUP-FORMAT's names),
+so they travel in a backup. A link that will not decode, or carries no recipe,
+shows a plain message in Cook and fills nothing.
+
+`bookmarklets.json` and `bookmarklets.sha256` are the kit's, copied byte for
+byte; `recipe-link.test.mjs` hashes one against the other, as
+`recipe-catalog.test.mjs` does for `recipes.json`. **Never edit either here.**
+`fixtures/recipe-link.txt` and `recipe-link-expected.json` are the kit's fixture
+pair, a link the bookmarklet itself wrote and what it decodes to; the port is
+checked against them under node's own `DecompressionStream`. Never regenerate
+them. `recipe-link.js` and `bookmarklets.json` are in `SHELL`, so **bump
+`CACHE` when either changes.**
 
 ## Watch import (`watch-scan.js`)
 

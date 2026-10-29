@@ -151,6 +151,13 @@
       <button class="wide" id="recipe-new">New recipe</button>
       <button class="wide ghost" id="rc-open">From the catalogue</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
+      <button class="wide ghost" id="bm-open">Send recipes from your browser</button>
+    </div>
+
+    <div id="rl-error" class="card hidden" role="alert">
+      <strong>Couldn't read that recipe</strong>
+      <p class="muted" id="rl-error-text"></p>
+      <button class="ghost wide" id="rl-error-ok">OK</button>
     </div>
 
     <div id="rc-panel" class="card hidden">
@@ -177,13 +184,33 @@
       <p class="muted">For a recipe written out as text — a video caption, an
         email, a card off the fridge. Nothing is sent anywhere; this reads what
         you paste and fills the recipe form, which you then check.</p>
-      <p class="muted">A recipe website will not work here. A browser cannot
-        fetch another site's page, so paste the recipe's text rather than its
-        address.</p>
+      <p class="muted">A recipe website's address will not work here. Use
+        Send recipes from your browser for a website instead.</p>
       <textarea id="rp-text" rows="8" placeholder="Creamy Tuscan Chicken&#10;&#10;Ingredients:&#10;- 2 chicken breasts&#10;- 200 g spinach&#10;&#10;Method:&#10;1. Sear the chicken&#10;&#10;Serves 4"></textarea>
       <p class="muted" id="rp-note"></p>
       <button id="rp-go">Read it</button>
       <button class="ghost wide" id="rp-cancel">Cancel</button>
+    </div>
+
+    <div id="bm-panel" class="card hidden">
+      <strong id="bm-title" tabindex="-1">Send recipes from your browser</strong>
+      <p class="muted">Save this as a bookmark once. On any recipe page, tap
+        the bookmark and the recipe opens here for you to check. Coach never
+        visits the page.</p>
+      <p><a id="bm-link" class="bookmarklet" draggable="true">Send to Coach</a></p>
+      <p class="muted small" id="bm-note">On a computer, drag it to your bookmarks bar.</p>
+      <button class="ghost" id="bm-copy" disabled>Copy</button>
+      <label for="bm-code" class="sronly">The bookmark's address</label>
+      <textarea id="bm-code" class="hidden" rows="4" readonly></textarea>
+      <p><strong>On a phone</strong></p>
+      <ol class="steps muted">
+        <li>Tap Copy.</li>
+        <li>Bookmark any page.</li>
+        <li>Edit the bookmark. Name it Send to Coach, and paste over its address.</li>
+        <li>On a recipe page, type Send to Coach in the address bar and tap the bookmark.</li>
+      </ol>
+      <p class="muted">Coach on iPhone can share a recipe from Safari instead.</p>
+      <button class="ghost wide" id="bm-done">Done</button>
     </div>
 
     <div id="recipe-list"></div>
@@ -426,6 +453,7 @@
 
 <script src="parser.js"></script>
 <script src="recipe-import.js"></script>
+<script src="recipe-link.js"></script>
 <script src="foods.js"></script>
 <script src="route.js"></script>
 <script src="nutrients.js"></script>

@@ -4269,6 +4269,9 @@ function buildShoppingList(meals) {
 
 let cookSection = 'recipes';
 let editingRecipeId = null;
+// What a "Send to LIFT" link brought that the form has no field for -- the
+// page's address and credit -- held until Save. See receiveRecipeLink.
+let recipeLinkSource = null;
 
 function renderCook() {
   chips($('#cook-sections'),
@@ -4278,6 +4281,8 @@ function renderCook() {
       cookSection = i.v;
       $('#recipe-form').classList.add('hidden');
       $('#rp-panel').classList.add('hidden');
+      $('#rb-panel').classList.add('hidden');
+      $('#rl-note').classList.add('hidden');
       closeRecipeCatalog();
       render();
     });
@@ -4361,6 +4366,8 @@ function showStoredMacro(selector, value) {
 
 function openRecipeForm(id) {
   editingRecipeId = id;
+  recipeLinkSource = null;
+  $('#rl-note').classList.add('hidden');
   const r = id ? recipeById(id) : null;
   $('#r-name').value = r ? r.name : '';
   $('#r-servings').value = r ? r.servings : 1;
@@ -4412,6 +4419,7 @@ $('#recipe-new').onclick = () => openRecipeForm(null);
 $('#r-cancel').onclick = () => {
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
+  recipeLinkSource = null;
 };
 
 $('#r-delete').onclick = () => {
@@ -4474,10 +4482,13 @@ $('#r-save').onclick = () => {
     // Written even when null, so clearing the field on an existing recipe
     // actually clears it -- the spread below would otherwise keep the old one.
     totalWeightGrams: recipeWeightGrams(),
+    // A page's address and credit, when a "Send to LIFT" link filled the form.
+    ...(editingRecipeId ? null : recipeLinkSource),
   }, $('#r-ingredients').value, editingRecipeId);
 
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
+  recipeLinkSource = null;
   render();
 };
 
@@ -4530,6 +4541,8 @@ function storeRecipe(fields, ingredientText, id) {
  */
 $('#rp-open').onclick = () => {
   closeRecipeCatalog();
+  $('#rb-panel').classList.add('hidden');
+  $('#rl-note').classList.add('hidden');
   $('#rp-panel').classList.remove('hidden');
   $('#rp-note').textContent = '';
   $('#rp-text').focus();
@@ -4568,6 +4581,162 @@ $('#rp-go').onclick = () => {
   $('#ing-tally').textContent = parsed.servings
     ? advice
     : advice + ' The text did not say how many this serves; set it before saving.';
+};
+
+/* ---------------- Send to LIFT ----------------
+ *
+ * The kit's bookmarklet (dugcanlift-kit/bookmarklet/, bookmarklets.json's
+ * liftWeb) runs on a recipe page the browser already has open and opens
+ * https://www.dugcanlift.com/lift/#r1... carrying the page's address and the
+ * raw text of its schema.org JSON-LD -- what Safari's share extension hands
+ * LIFT iPhone. The payload is after the #, so it never reaches a server, and
+ * nothing here requests the page: its address is kept as text, the recipe's
+ * sourceUrl (BACKUP-FORMAT's name), and never opened.
+ *
+ * The kit's rules, which every build follows: read once and stripped at once
+ * with history.replaceState, so a reload or a shared address never imports it
+ * again; reviewed, then saved -- the blocks go to recipeFromJsonLdPayload
+ * (recipe-import.js, Coach web's reader) and fill the ordinary recipe form, as
+ * Paste a recipe does, and nothing is saved until Save. Servings come only
+ * from the page's own yield; with none the form keeps its 1 and says so. The
+ * page's own nutrition fills the macros and counts as typed, so a looked-up
+ * ingredient fills only what the page left blank and never overwrites it --
+ * the source's figures win, as LinkImportMacros has it on the iPhone. A link
+ * that will not read, or carries no recipe, says so and fills nothing.
+ */
+
+// The shared words every build uses for this feature, LIFT put in.
+const RECIPE_LINK_UNREADABLE =
+  'That recipe link could not be read, so nothing was added. Open the recipe page and tap Send to LIFT again.';
+const RECIPE_LINK_NO_RECIPE =
+  'That page has no recipe LIFT can read. Copy the recipe text and use Paste a recipe instead.';
+
+function fillRecipeFormFromPage(recipe) {
+  $('#r-name').value = recipe.name;
+  if (recipe.servings) $('#r-servings').value = recipe.servings;
+  $('#r-ingredients').value = recipe.ingredientLines.join('\n');
+  $('#r-steps').value = recipe.steps.join('\n');
+
+  const n = recipe.nutritionPerServing;
+  if (n) {
+    showStoredMacro('#r-cal', n.calories);
+    showStoredMacro('#r-p', n.proteinG);
+    showStoredMacro('#r-c', n.carbsG);
+    showStoredMacro('#r-f', n.fatG);
+    ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => { $(selector).dataset.typed = '1'; });
+    // Fibre and the three details only when the page stated them: an unstated
+    // one stays blank, never zero, and open to the ingredient tally.
+    if (n.fiberG != null) {
+      showStoredMacro('#r-fib', n.fiberG);
+      $('#r-fib').dataset.typed = '1';
+    }
+    Object.entries(RECIPE_DETAIL_INPUTS).forEach(([field, selector]) => {
+      const v = LiftNutrients.value(n[field]);
+      if (v == null) return;
+      $(selector).value = LiftNutrients.roundField(field, v);
+      $(selector).dataset.typed = '1';
+    });
+    renderRecipeMoreSummary();
+  }
+  renderRecipeWeightEach();
+}
+
+async function receiveRecipeLink() {
+  const hash = location.hash;
+  if (!LiftRecipeLink.isRecipeLink(hash)) return;
+  // Before anything else, so a reload never reads it twice.
+  history.replaceState(null, '', location.pathname + location.search);
+
+  const link = await LiftRecipeLink.decode(hash);
+  const recipe = link ? link.jsonld.map(recipeFromJsonLdPayload).find(Boolean) : null;
+
+  cookSection = 'recipes';
+  closeRecipeCatalog();
+  $('#rp-panel').classList.add('hidden');
+  $('#rb-panel').classList.add('hidden');
+  showTab('cook');
+
+  if (!recipe) {
+    const note = $('#rl-note');
+    note.textContent = link ? RECIPE_LINK_NO_RECIPE : RECIPE_LINK_UNREADABLE;
+    note.classList.remove('hidden');
+    return;
+  }
+
+  openRecipeForm(null);
+  fillRecipeFormFromPage(recipe);
+  recipeLinkSource = { sourceUrl: link.url };
+  if (recipe.author) recipeLinkSource.sourceAuthor = recipe.author;
+  if (recipe.prepMinutes != null) recipeLinkSource.prepMinutes = recipe.prepMinutes;
+  if (recipe.cookMinutes != null) recipeLinkSource.cookMinutes = recipe.cookMinutes;
+
+  let site = 'the page';
+  try { site = new URL(link.url).hostname.replace(/^www\./, ''); } catch (e) { /* keep "the page" */ }
+  $('#ing-tally').textContent = `From ${site}. Check it, then Save.`
+    + (recipe.servings ? '' : ' The page did not say how many this serves; set it before saving.');
+}
+
+receiveRecipeLink();
+window.addEventListener('hashchange', receiveRecipeLink);
+
+/* Send recipes from your browser: the panel that hands the bookmarklet over.
+ * bookmarklets.json is this site's own file, in SHELL, fetched the first time
+ * the panel opens. A computer drags the link to its bookmarks bar; a phone
+ * browser has no bar to drag to, so the address is there to copy into a
+ * bookmark, and it runs by typing the bookmark's name in the address bar. */
+let bookmarkletCode = null;
+
+async function loadBookmarklet() {
+  if (bookmarkletCode) return bookmarkletCode;
+  const response = await fetch('bookmarklets.json');
+  if (!response.ok) throw new Error(`bookmarklets.json: ${response.status}`);
+  const code = (await response.json()).liftWeb;
+  if (typeof code !== 'string' || !code.startsWith('javascript:')) throw new Error('bookmarklets.json: no liftWeb');
+  bookmarkletCode = code;
+  return code;
+}
+
+$('#rb-open').onclick = () => {
+  closeRecipeCatalog();
+  $('#rp-panel').classList.add('hidden');
+  $('#rl-note').classList.add('hidden');
+  $('#rb-panel').classList.remove('hidden');
+  $('#rb-note').textContent = '';
+  $('#rb-copy').textContent = 'Copy';
+  loadBookmarklet().then((code) => {
+    $('#rb-link').href = code;
+    $('#rb-code').value = code;
+  }, () => {
+    $('#rb-note').textContent = 'The bookmark could not be loaded. Reload LIFT and try again.';
+  });
+};
+$('#rb-done').onclick = () => $('#rb-panel').classList.add('hidden');
+
+// Clicked here it would only look for a recipe on LIFT's own page.
+$('#rb-link').onclick = (e) => {
+  e.preventDefault();
+  $('#rb-note').textContent =
+    'Drag it to your bookmarks bar, or tap Copy and save it as a bookmark. It works on a recipe page, not here.';
+};
+
+$('#rb-copy').onclick = () => {
+  const field = $('#rb-code');
+  if (!field.value) return;
+  // The text is selected either way, so it can be copied by hand.
+  const selectIt = (message) => {
+    field.focus();
+    field.select();
+    $('#rb-note').textContent = message;
+  };
+  $('#rb-note').textContent = '';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(field.value).then(
+      () => { $('#rb-copy').textContent = 'Copied'; },
+      () => selectIt('Copying was blocked. Select all of the text below and copy it.'));
+  } else {
+    // A browser with no clipboard API to ask.
+    selectIt('Copy the selected text.');
+  }
 };
 
 /* ---------------- recipe catalogue ----------------
@@ -4616,6 +4785,8 @@ function loadRecipeCatalog() {
 
 function openRecipeCatalog() {
   $('#rp-panel').classList.add('hidden');
+  $('#rb-panel').classList.add('hidden');
+  $('#rl-note').classList.add('hidden');
   $('#recipe-form').classList.add('hidden');
   editingRecipeId = null;
   $('#cook-actions').classList.add('hidden');
