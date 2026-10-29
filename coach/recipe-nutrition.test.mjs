@@ -118,3 +118,55 @@ test('u is never sent as zeros', () => {
   assert.deepEqual(planRecipe(recipe({ calories: 200, proteinG: 10, carbsG: 20, fatG: 5 }), row).u, [200, 10, 20, 5, 0],
     'a missing fibre is sent as 0 beside real macros, as before');
 });
+
+// ---- the estimated mark: Coach iPhone's two lines ----
+
+const { cardMacroLine, estimatedNote, isEstimated } = shim.window.CoachRecipeNutrition;
+const trimNum = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100));
+const macros = { calories: 450, proteinG: 30.25, carbsG: 40, fatG: 12, fiberG: 0 };
+
+test('an estimated recipe\'s card ends " · estimated", as Coach iPhone\'s does', () => {
+  assert.equal(cardMacroLine({ ...macros, estimated: true }, trimNum),
+    '450 kcal  P 30.25  C 40  F 12 · estimated');
+});
+
+test('a card without the flag reads as it did', () => {
+  assert.equal(cardMacroLine(macros, trimNum), '450 kcal  P 30.25  C 40  F 12');
+  assert.equal(cardMacroLine({ ...macros, estimated: false }, trimNum), '450 kcal  P 30.25  C 40  F 12');
+  assert.equal(cardMacroLine({ ...macros, estimated: 'true' }, trimNum), '450 kcal  P 30.25  C 40  F 12',
+    'only a literal true');
+});
+
+test('no macros is "Macros not set", estimated or not', () => {
+  assert.equal(cardMacroLine(null, trimNum), 'Macros not set');
+  assert.equal(cardMacroLine({ calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, sodiumMg: 480, estimated: true },
+    trimNum), 'Macros not set');
+});
+
+test('an estimated recipe\'s editor says Coach iPhone\'s sentence, with the source\'s note', () => {
+  const r = {
+    name: 'Beef Pot Pie', nutritionPerServing: { ...macros, estimated: true },
+    sourceTranscript: 'UniTools — theunitools.com\nCC BY-SA 4.0\nCosted from 6 of 9 lines',
+  };
+  assert.deepEqual(estimatedNote(r), {
+    note: 'Estimated from an import — check these before sending.',
+    source: 'UniTools — theunitools.com\nCC BY-SA 4.0\nCosted from 6 of 9 lines',
+  });
+  assert.deepEqual(estimatedNote({ ...r, sourceTranscript: '' }),
+    { note: 'Estimated from an import — check these before sending.', source: null });
+  assert.deepEqual(estimatedNote({ ...r, sourceTranscript: undefined }),
+    { note: 'Estimated from an import — check these before sending.', source: null });
+});
+
+test('an editor for a recipe without the flag shows nothing new', () => {
+  assert.equal(estimatedNote({ name: 'Oats', nutritionPerServing: macros, sourceTranscript: 'a note' }), null);
+  assert.equal(estimatedNote({ name: 'Oats', nutritionPerServing: { ...macros, estimated: false } }), null);
+  assert.equal(estimatedNote({ name: 'Oats', nutritionPerServing: null }), null);
+  assert.equal(estimatedNote(null), null, 'a new recipe');
+  assert.equal(isEstimated(undefined), false);
+});
+
+test('the flag survives a save, so the lines survive it too', () => {
+  const saved = mergeNutrition([400, 30, 40, 12, null], { ...macros, estimated: true });
+  assert.equal(isEstimated(saved), true);
+});

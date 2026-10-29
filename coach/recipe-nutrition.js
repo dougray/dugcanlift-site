@@ -89,7 +89,47 @@
     return out;
   }
 
+  /* Whether a recipe's macros are an estimate: `estimated` on its
+   * nutritionPerServing (BACKUP-FORMAT's spelling), set by a catalogue copy
+   * or carried in from another build's backup. Only a literal true counts. */
+  function isEstimated(n) {
+    return !!n && typeof n === 'object' && n.estimated === true;
+  }
+
+  /* The library card's macro line, Coach iPhone's CookView.macroLine: the
+   * four macros, " · estimated" after them when they are an estimate, and
+   * "Macros not set" -- never an estimate of nothing -- when none was
+   * entered. `trim` is app.js's trimNum, passed in so this file stays
+   * loadable on its own. */
+  var ESTIMATED_SUFFIX = ' · estimated';
+
+  function cardMacroLine(n, trim) {
+    if (!hasMacros(n)) return 'Macros not set';
+    var line = trim(n.calories) + ' kcal  P ' + trim(n.proteinG)
+      + '  C ' + trim(n.carbsG) + '  F ' + trim(n.fatG);
+    return isEstimated(n) ? line + ESTIMATED_SUFFIX : line;
+  }
+
+  /* The recipe editor's line under the macros, Coach iPhone's
+   * RecipeEditorView word for word, with the source's own note (the
+   * catalogue's attribution, licence and costing caveat, `sourceTranscript`)
+   * under it when the recipe has one. Null for a recipe whose macros are not
+   * an estimate, so the editor shows nothing new for it. */
+  var ESTIMATED_NOTE = 'Estimated from an import — check these before sending.';
+
+  function estimatedNote(r) {
+    if (!r || !isEstimated(r.nutritionPerServing)) return null;
+    var source = typeof r.sourceTranscript === 'string' && r.sourceTranscript.trim()
+      ? r.sourceTranscript : null;
+    return { note: ESTIMATED_NOTE, source: source };
+  }
+
   global.CoachRecipeNutrition = {
+    isEstimated: isEstimated,
+    ESTIMATED_SUFFIX: ESTIMATED_SUFFIX,
+    ESTIMATED_NOTE: ESTIMATED_NOTE,
+    cardMacroLine: cardMacroLine,
+    estimatedNote: estimatedNote,
     hasMacros: hasMacros,
     planRecipe: planRecipe,
     FORM_KEYS: FORM_KEYS,
