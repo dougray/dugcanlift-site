@@ -99,6 +99,7 @@ exclude:
   - lift/progression.test.mjs
   - lift/recipe-import.test.mjs
   - lift/recipe-catalog.test.mjs
+  - lift/recipe-link.test.mjs
   - lift/fixtures/
   - lift/README.md
   # Coach's copies of the same kind of thing. coach/ is rsynced in whole from

@@ -167,6 +167,36 @@
       <button class="wide" id="recipe-new">New recipe</button>
       <button class="wide ghost" id="rc-open">Browse the catalogue</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
+      <button class="wide ghost" id="rb-open">Send recipes from your browser</button>
+    </div>
+
+    <!-- What a "Send to LIFT" link said when it could not be read or carried no
+         recipe (recipe-link.js). Nothing is filled in when this shows. -->
+    <p class="card hidden" id="rl-note" role="status"></p>
+
+    <!-- Send recipes from your browser: the kit's "Send to LIFT" bookmarklet,
+         bookmarklets.json's liftWeb. On a recipe page it reads the page's
+         recipe and opens LIFT with it; recipe-link.js reads that, and the
+         recipe form below is where it is checked and saved. -->
+    <div id="rb-panel" class="card hidden">
+      <strong>Send recipes from your browser</strong>
+      <p class="muted">Save this as a bookmark. On a recipe page, tap the
+        bookmark and the recipe opens here for you to check and save. Nothing
+        is uploaded.</p>
+      <p class="muted">On a computer, drag this to your bookmarks bar:</p>
+      <p><a id="rb-link" class="bookmarklet" href="#" draggable="true">Send to LIFT</a></p>
+      <p class="muted">On a phone, copy this:</p>
+      <textarea id="rb-code" rows="3" readonly aria-label="The bookmark's address"></textarea>
+      <button class="wide" id="rb-copy">Copy</button>
+      <p class="muted" id="rb-note" role="status"></p>
+      <ol class="catalogsteps muted">
+        <li>Bookmark any page.</li>
+        <li>Edit the bookmark: name it Send to LIFT, and paste what you copied as its address.</li>
+        <li>On a recipe page, type Send to LIFT in the address bar and tap the bookmark.</li>
+      </ol>
+      <p class="muted">On an iPhone with LIFT installed, you can share a recipe
+        page from Safari to LIFT instead.</p>
+      <button class="wide ghost" id="rb-done">Done</button>
     </div>
 
     <!-- Paste a recipe: Coach web's card and words. recipe-import.js proposes a
@@ -507,6 +537,7 @@
 <script src="outdoor.js"></script>
 <script src="road-food.js"></script>
 <script src="recipe-import.js"></script>
+<script src="recipe-link.js"></script>
 <script src="recipe-catalog.js"></script>
 <script src="app.js"></script>
 <script src="watch-scan.js"></script>
