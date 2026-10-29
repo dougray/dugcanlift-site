@@ -4311,6 +4311,19 @@ function renderRecipeMoreSummary() {
   $('#r-more-summary').textContent = filled ? `More nutrients \u00b7 ${filled} filled` : 'More nutrients';
 }
 
+/* A stored macro shown in the form as the recipe cards show it (trimNum, two
+ * places), so a catalogue recipe divided by 6 reads 149.68 rather than
+ * 149.68333333333334. The stored figure is kept beside it, and Save writes it
+ * back unchanged unless the field was edited: reopening a recipe to rename it
+ * must not round the numbers it was saved with. */
+function showStoredMacro(selector, value) {
+  const field = $(selector);
+  const known = Number.isFinite(value);
+  field.value = known ? trimNum(value) : '';
+  field.dataset.stored = known ? String(value) : '';
+  field.dataset.shown = field.value;
+}
+
 function openRecipeForm(id) {
   editingRecipeId = id;
   const r = id ? recipeById(id) : null;
@@ -4325,13 +4338,13 @@ function openRecipeForm(id) {
   $('#r-ingredients').value = r ? (r.ingredients || []).map((i) => i.rawText).join('\n') : '';
   $('#r-steps').value = r ? (r.steps || []).join('\n') : '';
   const n = r && r.nutritionPerServing;
-  $('#r-cal').value = n ? n.calories : '';
-  $('#r-p').value = n ? n.proteinG : '';
-  $('#r-c').value = n ? n.carbsG : '';
-  $('#r-f').value = n ? n.fatG : '';
+  showStoredMacro('#r-cal', n ? n.calories : null);
+  showStoredMacro('#r-p', n ? n.proteinG : null);
+  showStoredMacro('#r-c', n ? n.carbsG : null);
+  showStoredMacro('#r-f', n ? n.fatG : null);
   // Blank rather than a zero nobody measured: fibre is often absent on a
   // recipe that has the other four.
-  $('#r-fib').value = n && n.fiberG ? n.fiberG : '';
+  showStoredMacro('#r-fib', n && n.fiberG ? n.fiberG : null);
   $('#r-delete').classList.toggle('hidden', !r);
 
   // A recipe already carrying macros counts as typed: reopening it to add one
@@ -4386,7 +4399,11 @@ $('#r-save').onclick = () => {
 
   const num = (sel) => {
     const raw = $(sel).value.trim();
-    return raw === '' ? null : parseFloat(raw);
+    if (raw === '') return null;
+    // Untouched since it was shown: the stored figure, not its rounding.
+    const field = $(sel);
+    if (field.dataset.stored && raw === field.dataset.shown) return parseFloat(field.dataset.stored);
+    return parseFloat(raw);
   };
   const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f'), num('#r-fib')];
   // Null unless something was actually typed — an untouched form must not
@@ -4622,9 +4639,7 @@ function renderCatalogList() {
     row.appendChild(head);
     // Said here rather than only in the detail, so a browsing eye never reads
     // a whole-dish number as a portion.
-    row.appendChild(el('div', 'muted', r.caloriesPerServing != null
-      ? `${Math.round(r.caloriesPerServing)} kcal per serving`
-      : LiftRecipeCatalog.needsServings(r) ? 'Macros for the whole dish' : 'No macros'));
+    row.appendChild(el('div', 'muted', LiftRecipeCatalog.rowMacros(r)));
     row.appendChild(el('div', 'muted', `${r.ingredients.length} ingredients`));
     row.onclick = () => {
       // Seeded from the source when it stated one, so the count starts
@@ -4662,7 +4677,7 @@ function renderCatalogDetail(r) {
   const head = catalogCard();
   head.appendChild(el('strong', 'cardtitle', r.name));
   if (r.summary) head.appendChild(el('p', 'muted', r.summary));
-  if (C.statesNoYield(r)) {
+  if (C.showsServingsStepper(r)) {
     // Only for a source that stated no yield: a published per-serving figure
     // is never rescaled, so there is no count to choose.
     // The iPhone's stepper, 1 to 48, drawn with Road Food's "+" and "−".
@@ -4725,8 +4740,7 @@ function renderCatalogDetail(r) {
   macros.appendChild(el('strong', 'cardtitle', 'Macros'));
   const n = C.nutrition(r, catalogServings);
   if (n) {
-    macros.appendChild(el('div', null,
-      `${Math.round(n.calories)} kcal \u00b7 P ${Math.round(n.proteinG)} \u00b7 C ${Math.round(n.carbsG)} \u00b7 F ${Math.round(n.fatG)}`));
+    macros.appendChild(el('div', null, C.macroLine(n)));
     macros.appendChild(el('p', 'muted', C.needsServings(r)
       ? `Per serving at ${servingsLabel(catalogServings)}.`
       : 'Per serving, as published.'));

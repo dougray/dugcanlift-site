@@ -85,6 +85,62 @@ test('no macros is null, never zeros', () => {
   assert.ok(dressing.nutritionNote, 'and the note says why');
 });
 
+// MARK: - On screen
+
+test('whole numbers on screen are rounded half away from zero, never truncated', () => {
+  assert.equal(C.roundWhole(224.525), 225);
+  assert.equal(C.roundWhole(2.5), 3);
+  assert.equal(C.roundWhole(-2.5), -3, 'Math.round alone would say -2');
+  assert.equal(C.roundWhole(2.4999), 2);
+  assert.equal(C.roundWhole(0), 0);
+  assert.equal(C.roundWhole(690), 690);
+});
+
+test('Beef Pot Pie at 4 servings reads 225 kcal', () => {
+  const pie = byId('gutenberg-26558:beef-pot-pie');
+  const n = C.nutrition(pie, 4);
+  assert.equal(n.calories, 898.1 / 4, 'the quotient itself is not rounded');
+  assert.ok(Math.trunc(n.calories) === 224, 'truncating would have said 224');
+  assert.equal(C.macroLine(n),
+    `225 kcal \u00b7 P ${C.roundWhole(pie.proteinTotal / 4)} \u00b7 C ${C.roundWhole(pie.carbsTotal / 4)} \u00b7 F ${C.roundWhole(pie.fatTotal / 4)}`);
+  assert.match(C.macroLine(n), /^225 kcal /);
+});
+
+test('a browsing row rounds too, and says which kind of macros it has', () => {
+  const carbonara = byId('unitools:spaghetti-carbonara');
+  assert.equal(C.rowMacros(carbonara), '690 kcal per serving');
+  assert.equal(C.rowMacros({ ...carbonara, caloriesPerServing: 412.5 }), '413 kcal per serving');
+  assert.equal(C.rowMacros(byId('gutenberg-26558:beef-pot-pie')), 'Macros for the whole dish');
+  assert.equal(C.rowMacros(byId('gutenberg-26558:a-good-pennsylvania-dutch-salad-dressing')), 'No macros');
+});
+
+test('the servings stepper shows for every recipe whose servings is null, and only those', () => {
+  const nulls = all.filter((r) => r.servings == null);
+  assert.equal(nulls.length, 121);
+  assert.ok(nulls.some((r) => r.caloriesTotal == null), 'including ones with no macros to divide');
+  all.forEach((r) => {
+    assert.equal(C.showsServingsStepper(r), r.servings == null, r.id);
+  });
+});
+
+test('the recipe form shows a stored macro as the cards do, and keeps the raw figure', () => {
+  // showStoredMacro lifted out of app.js as it is now, against a stand-in field.
+  const src = readFileSync('lift/app.js', 'utf8');
+  const i = src.indexOf('function showStoredMacro(selector, value) {');
+  const j = src.indexOf('function openRecipeForm(id) {', i);
+  assert.ok(i >= 0 && j > i);
+  const field = { value: '', dataset: {} };
+  const trimNum = (v) => (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100));
+  const show = new Function('$', 'trimNum', src.slice(i, j) + '\nreturn showStoredMacro;')(() => field, trimNum);
+  const stored = 898.1 / 6;
+  show('#r-cal', stored);
+  assert.equal(field.value, '149.68');
+  assert.equal(parseFloat(field.dataset.stored), stored, 'the quotient, unrounded, beside it');
+  assert.equal(field.dataset.shown, '149.68');
+  show('#r-cal', null);
+  assert.deepEqual([field.value, field.dataset.stored], ['', '']);
+});
+
 // MARK: - The copy
 
 test('a stated yield is the copy\'s serving count; the chosen one is ignored', () => {
@@ -125,11 +181,13 @@ test('the chosen count is held to the stepper: whole, 1 to 48, 4 when unreadable
 
 // MARK: - Browsing and searching
 
-test('the opening page is the first sixty by name, both collections interleaved', () => {
+test('with no search typed, every recipe is listed, by name', () => {
   const page = C.browse(all);
-  assert.equal(page.length, 60);
+  assert.equal(page.length, 622, 'all 622, not a first page');
+  assert.equal(page.length, all.length);
   const names = page.map((r) => r.name);
   assert.deepEqual(names, [...names].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0)));
+  assert.equal(new Set(page.map((r) => r.id)).size, all.length, 'each once');
 });
 
 test('one character is no query', () => {
