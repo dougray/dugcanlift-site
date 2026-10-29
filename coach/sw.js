@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'coach-v34';
+const CACHE = 'coach-v35';
 
 const SHELL = [
   '/coach/',
@@ -20,6 +20,7 @@ const SHELL = [
   '/coach/sides.js',
   '/coach/prescriptions.js',
   '/coach/recipe-nutrition.js',
+  '/coach/recipe-catalogue.js',
   '/coach/share-import.js',
   '/coach/client-removal.js',
   '/coach/road-picks.js',
@@ -63,9 +64,13 @@ self.addEventListener('fetch', (event) => {
   // but it is cached the first time it is actually used, which is what makes
   // the lookup work in a gym with no signal.
   // Road Food's menus are the same story, at 37 KB: fetched the first time
-  // the Road section is opened, then kept. Both are cache-first, so a new copy
-  // of either reaches a coach only with a CACHE bump.
-  if (url.pathname === '/coach/foods.json' || url.pathname === '/coach/road-food.json') {
+  // the Road section is opened, then kept. The recipe catalogue too, at 1 MB
+  // (200 KB on the wire): fetched the first time the catalogue is opened,
+  // never at install, since most coaches write their own recipes and should
+  // not pay for 622 they never browse. All three are cache-first, so a new
+  // copy of any reaches a coach only with a CACHE bump.
+  if (url.pathname === '/coach/foods.json' || url.pathname === '/coach/road-food.json'
+      || url.pathname === '/coach/recipes.json') {
     event.respondWith(
       caches.match(event.request).then((hit) => hit || fetch(event.request).then((response) => {
         if (response.ok) {
