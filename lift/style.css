@@ -540,6 +540,30 @@ button.linkrow .muted { margin: 0; }
    it replaced; it keeps the page's size. */
 button.recipecard { font-size: inherit; line-height: inherit; }
 
+/* Paste a recipe and the catalogue. A textarea is drawn as the text fields
+   are; the recipe form's two had been left to the browser's default. */
+textarea {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--control-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 17px;   /* 16px or larger stops iOS zooming on focus */
+  font-family: inherit;
+  line-height: 1.4;
+  resize: vertical;
+}
+#rc-query { margin-bottom: 4px; }
+#rc-credits-toggle { margin-top: 12px; }
+.servingstep { display: flex; align-items: center; gap: 12px; margin: 10px 0 4px; }
+.servingstep > span { min-width: 6.5em; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.catalogsteps { margin: 0; padding-left: 1.4em; }
+.catalogsteps li { margin: 6px 0; }
+.catalogsteps li::marker { color: var(--accent-text); }
+#rc-detail .statline { gap: 12px; }
+#rc-detail .statline > .muted { flex: none; margin: 0; }
+
 /* A shopping line: a checkbox in a label that is drawn as a card. The label
    rule above is for the small caps over a field, so this undoes it. */
 label.shopitem {
@@ -748,6 +772,10 @@ button.roadchain .muted { margin: 2px 0 0; }
     width: auto;
     padding-inline: 28px;
   }
+  /* New recipe, Browse the catalogue and Paste a recipe, in one row. */
+  .actions { display: flex; flex-wrap: wrap; gap: 0 12px; }
+  .actions > button.wide { display: inline-block; width: auto; padding-inline: 28px; }
+  #rp-panel, #rc-panel { max-width: 760px; }
 
   /* Record a route above, then Last route | Personal bests. */
   #outdoor-section {
