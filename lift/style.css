@@ -645,6 +645,9 @@ canvas.route {
 #review-close { float: right; }
 
 
+/* Importing training from another app's CSV (workout-csv.js). */
+.csvsource { font-weight: 600; margin-bottom: 4px; }
+
 /* ---------------- road food ---------------- */
 
 .roadnav { margin: 16px 0 8px; }
