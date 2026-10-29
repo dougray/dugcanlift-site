@@ -200,7 +200,9 @@ catalogue** and **Paste a recipe**, the iPhone's words and Coach web's, and
 site's own.
 
 **Paste a recipe** is Coach web's card, word for word, filling this build's
-recipe form. `recipe-import.js` is the caption half of Coach web's
+recipe form. Its website sentence is the shared bookmarklet wording ("A recipe
+website's address will not work here. Use Send recipes from your browser for a
+website instead."), which every build's card says. `recipe-import.js` is the caption half of Coach web's
 `coach/recipe-import.js`, the reference, copied unchanged so the two web apps
 split the same text the same way; `recipe-import.test.mjs` ports Coach web's
 cases and also fails if anything from "Caption reading" to the end of the file
@@ -257,8 +259,12 @@ the page's address and the raw blocks -- what Safari's share extension hands
 LIFT iPhone. The payload is after the `#`, so it never reaches a server, and
 nothing here requests the page. The panel offers the link to drag to a
 computer's bookmarks bar, the same address to copy into a phone's bookmark, and
-says an iPhone with LIFT can share from Safari instead. Clicking the link on
-LIFT's own page does nothing but say to drag it.
+says LIFT on iPhone can share from Safari instead. Clicking the link on LIFT's
+own page only says to drag it or copy it. **The panel's words, the two link
+messages and the form's note are one shared set** that every build uses, LIFT
+and Coach, web and apps, with the app's name put in. Change them in all of them
+or in none. Two lines are this build's own: the load-failure line, and "Copy the
+selected text." for a browser with no clipboard API at all.
 
 On load and on `hashchange`, an `#r1` fragment is **stripped at once** with
 `history.replaceState`, so a reload or a shared address never imports it again,

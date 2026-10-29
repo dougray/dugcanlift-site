@@ -4578,10 +4578,11 @@ $('#rp-go').onclick = () => {
  * that will not read, or carries no recipe, says so and fills nothing.
  */
 
+// The shared words every build uses for this feature, LIFT put in.
 const RECIPE_LINK_UNREADABLE =
-  'That recipe link could not be read, so nothing was added. Try the bookmark on the recipe page again.';
+  'That recipe link could not be read, so nothing was added. Open the recipe page and tap Send to LIFT again.';
 const RECIPE_LINK_NO_RECIPE =
-  'That page had no recipe LIFT could read, so nothing was added. Copy the recipe text and use Paste a recipe instead.';
+  'That page has no recipe LIFT can read. Copy the recipe text and use Paste a recipe instead.';
 
 function fillRecipeFormFromPage(recipe) {
   $('#r-name').value = recipe.name;
@@ -4674,6 +4675,7 @@ $('#rb-open').onclick = () => {
   $('#rl-note').classList.add('hidden');
   $('#rb-panel').classList.remove('hidden');
   $('#rb-note').textContent = '';
+  $('#rb-copy').textContent = 'Copy';
   loadBookmarklet().then((code) => {
     $('#rb-link').href = code;
     $('#rb-code').value = code;
@@ -4686,21 +4688,27 @@ $('#rb-done').onclick = () => $('#rb-panel').classList.add('hidden');
 // Clicked here it would only look for a recipe on LIFT's own page.
 $('#rb-link').onclick = (e) => {
   e.preventDefault();
-  $('#rb-note').textContent = 'Drag it to your bookmarks bar. It works on a recipe page, not here.';
+  $('#rb-note').textContent =
+    'Drag it to your bookmarks bar, or tap Copy and save it as a bookmark. It works on a recipe page, not here.';
 };
 
 $('#rb-copy').onclick = () => {
   const field = $('#rb-code');
   if (!field.value) return;
-  const selectIt = () => {
+  // The text is selected either way, so it can be copied by hand.
+  const selectIt = (message) => {
     field.focus();
     field.select();
-    $('#rb-note').textContent = 'Copy the selected text.';
+    $('#rb-note').textContent = message;
   };
+  $('#rb-note').textContent = '';
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(field.value).then(() => { $('#rb-note').textContent = 'Copied.'; }, selectIt);
+    navigator.clipboard.writeText(field.value).then(
+      () => { $('#rb-copy').textContent = 'Copied'; },
+      () => selectIt('Copying was blocked. Select all of the text below and copy it.'));
   } else {
-    selectIt();
+    // A browser with no clipboard API to ask.
+    selectIt('Copy the selected text.');
   }
 };
 
