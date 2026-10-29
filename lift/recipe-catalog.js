@@ -35,9 +35,9 @@
   var DEFAULT_SERVINGS = 4;
   var MIN_SERVINGS = 1;
   var MAX_SERVINGS = 48;
-  /* searchRecipes(limit: 40) and browseRecipes(limit: 60). */
+  /* searchRecipes(limit: 40). Browsing has no limit: with no search typed,
+   * every recipe is listed, by name, as every build's catalogue lists it. */
   var SEARCH_LIMIT = 40;
-  var BROWSE_LIMIT = 60;
 
   var num = function (v) { return typeof v === 'number' && isFinite(v) ? v : null; };
   var text = function (v) { return typeof v === 'string' && v.trim() ? v : null; };
@@ -79,8 +79,30 @@
 
   /* The source stated no yield. The person supplies one on Add -- whether or
    * not the recipe has macros to divide, because a library recipe needs a
-   * serving count and a silent 4 would be one nobody chose. */
+   * serving count and a silent 4 would be one nobody chose. This is what
+   * decides whether the detail shows the servings stepper. */
   function statesNoYield(r) { return r.servings == null; }
+  var showsServingsStepper = statesNoYield;
+
+  /* A whole number for the screen: rounded half away from zero, never
+   * truncated. Math.round alone rounds -2.5 to -2; no macro here is negative,
+   * but the rule is written as every build writes it. Display only -- what is
+   * stored is the raw figure. */
+  function roundWhole(v) {
+    return v < 0 ? -Math.round(-v) : Math.round(v);
+  }
+
+  /* "225 kcal · P 10 · C 18 · F 13", the detail's macro line. */
+  function macroLine(n) {
+    return roundWhole(n.calories) + ' kcal \u00b7 P ' + roundWhole(n.proteinG)
+      + ' \u00b7 C ' + roundWhole(n.carbsG) + ' \u00b7 F ' + roundWhole(n.fatG);
+  }
+
+  /* The browsing row's line under the name. */
+  function rowMacros(r) {
+    if (r.caloriesPerServing != null) return roundWhole(r.caloriesPerServing) + ' kcal per serving';
+    return needsServings(r) ? 'Macros for the whole dish' : 'No macros';
+  }
 
   /* CatalogRecipe.needsServings: the macros describe the whole dish. */
   function needsServings(r) { return r.servings == null && r.caloriesTotal != null; }
@@ -153,10 +175,10 @@
   /* SQLite's ORDER BY name: by code unit, not by locale. */
   function byName(a, b) { return a.name < b.name ? -1 : a.name > b.name ? 1 : 0; }
 
-  /* The opening page, before anything is typed: by name, so the two
-   * collections interleave rather than one reading as an afterthought. */
-  function browse(list, limit) {
-    return list.slice().sort(byName).slice(0, limit || BROWSE_LIMIT);
+  /* Before anything is typed: every recipe, by name, so the two collections
+   * interleave rather than one reading as an afterthought. */
+  function browse(list) {
+    return list.slice().sort(byName);
   }
 
   /* Fewer than two characters is no query (searchRecipes' guard). */
@@ -199,6 +221,10 @@
     MAX_SERVINGS: MAX_SERVINGS,
     parse: parse,
     statesNoYield: statesNoYield,
+    showsServingsStepper: showsServingsStepper,
+    roundWhole: roundWhole,
+    macroLine: macroLine,
+    rowMacros: rowMacros,
     needsServings: needsServings,
     nutrition: nutrition,
     servingsFor: servingsFor,

@@ -213,7 +213,7 @@ the form's own 1 and the note under Ingredients says so. Coach web's note ends
 "set it before sending"; here it is "before saving".
 
 **Browse the catalogue** is LIFT iPhone's `RecipeCatalogView`: the 622 bundled
-recipes, searched or browsed, one opened with its summary, ingredients, method,
+recipes, all of them listed by name until a search is typed, one opened with its summary, ingredients, method,
 macros, `nutritionNote` and its own `license` and `attribution`, and **Add**
 copying it into the library through the same `storeRecipe` the form's Save
 uses, ingredient lines parsed by `parseIngredient`. The rules are
@@ -221,7 +221,11 @@ uses, ingredient lines parsed by `parseIngredient`. The rules are
 a recipe with a stated yield keeps its per-serving figures whatever the count.
 `servings: null` is a source that stated no yield; those rows carry whole-dish
 totals, the person sets the servings on a stepper (4 to start, 1 to 48), and
-only then is anything divided. The stepper shows for every such recipe, macros
+only then is anything divided. What is stored is the raw quotient; what is
+shown is rounded, half away from zero, never truncated (Beef Pot Pie at 4
+reads 225 kcal), and the recipe form shows a stored macro to two places as the
+recipe cards do, writing the stored figure back unchanged unless the field is
+edited. The stepper shows for every such recipe, macros
 or not, because a library recipe needs a count and a silent 4 would be one
 nobody chose -- the iPhone saves 4 without asking when there are no macros to
 divide. The credit, the licence and the costing caveat ride on the copy as
