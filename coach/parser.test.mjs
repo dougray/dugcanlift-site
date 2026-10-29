@@ -102,3 +102,65 @@ test('a word that only looks like a table key is not a unit', () => {
     assert.equal(parseIngredient(line).unit, COUNT_UNIT, line);
   }
 });
+
+// MARK: - Whitespace
+
+// Every whitespace character in the line becomes a plain space before parsing:
+// U+0009-U+000D, U+0020, U+00A0, U+1680, U+2000-U+200A, U+2028, U+2029,
+// U+202F, U+205F, U+3000, U+FEFF. The same cases are in the other three
+// parsers' suites.
+const WHITESPACE_CASES = [
+  ['1.5 pounds ground beef', 1.5, 'lb', 'ground beef'], // NBSP between number and unit
+  ['2 cups rice', 2, 'cups', 'rice'], // NBSP between unit and item
+  ['1 lb ground beef', 1, 'lb', 'ground beef'], // the item comes out with plain spaces
+  ['2\tcups rice', 2, 'cups', 'rice'], // tab between number and unit
+  ['\t2 cups rice', 2, 'cups', 'rice'], // a leading tab
+  ['250 g flour', 250, 'g', 'flour'], // U+202F narrow no-break space
+  ['1 1/2 cups flour', 1.5, 'cups', 'flour'], // "1 1/2" with an NBSP
+  ['﻿400 g chicken thigh', 400, 'g', 'chicken thigh'], // a byte-order mark
+];
+
+const WHITESPACE = [
+  0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x20, 0xA0, 0x1680,
+  0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2007, 0x2008, 0x2009, 0x200A,
+  0x2028, 0x2029, 0x202F, 0x205F, 0x3000, 0xFEFF,
+];
+
+const bytes = (text) => [...Buffer.from(text, 'utf8')];
+
+test('whitespace of every kind splits words like a space', () => {
+  for (const [line, qty, unit, item] of WHITESPACE_CASES) {
+    const parsed = parseIngredient(line);
+    assert.equal(parsed.qty, qty, JSON.stringify(line));
+    assert.equal(parsed.unit, unit, JSON.stringify(line));
+    assert.equal(parsed.item, item, JSON.stringify(line));
+  }
+});
+
+test('every character in the set is a space, wherever it falls', () => {
+  for (const code of WHITESPACE) {
+    const ws = String.fromCharCode(code);
+    const hex = code.toString(16);
+    const between = parseIngredient(`${ws}2${ws}1/2${ws}cups${ws}basmati${ws}rice${ws}`);
+    assert.equal(between.qty, 2.5, hex);
+    assert.equal(between.unit, 'cups', hex);
+    assert.equal(between.item, 'basmati rice', hex);
+  }
+});
+
+test('a character outside the set is not a space', () => {
+  // U+200B zero-width space, U+001C file separator and U+0085 next line are
+  // not in the set, so "cups" never becomes a unit through them.
+  for (const ws of ['​', '\u001C', '\u0085']) {
+    const parsed = parseIngredient(`2${ws}cups rice`);
+    assert.equal(parsed.unit, COUNT_UNIT, ws.charCodeAt(0).toString(16));
+    assert.equal(parsed.item, `${ws}cups rice`, ws.charCodeAt(0).toString(16));
+  }
+});
+
+test('rawText keeps the line byte for byte', () => {
+  const lines = WHITESPACE_CASES.map(([line]) => line).concat(['　salt to taste\t']);
+  for (const line of lines) {
+    assert.deepEqual(bytes(parseIngredient(line).rawText), bytes(line), JSON.stringify(line));
+  }
+});
