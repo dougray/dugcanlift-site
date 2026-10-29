@@ -558,6 +558,22 @@ textarea {
   resize: vertical;
 }
 #rc-query { margin-bottom: 4px; }
+/* Send recipes from your browser. The bookmarklet is a link drawn as the
+   app's button so it reads as the thing to drag; the address under it is a
+   readonly field. 16px, as every field here is, so iOS does not zoom on it. */
+a.bookmarklet {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: grab;
+}
+#rb-code { font-size: 16px; font-family: ui-monospace, Menlo, monospace; word-break: break-all; }
+#rl-note { margin-top: 12px; }
 #rc-credits-toggle { margin-top: 12px; }
 .servingstep { display: flex; align-items: center; gap: 12px; margin: 10px 0 4px; }
 .servingstep > span { min-width: 6.5em; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
