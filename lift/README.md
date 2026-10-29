@@ -184,7 +184,10 @@ the count: **`setKinds`**, by position, `[null, null, "drop"]` for two straight
 sets and then a drop. Index 0 is always null, trailing nulls are trimmed, it is
 never longer than `targetSets`, and it is omitted when every set is straight,
 so a routine without kinds is stored and backed up byte for byte as before.
-Read leniently (`coach/BACKUP-FORMAT.md`). Starting the routine puts each kind
+The exercise's targets line then names them by number, from 1: "4 x 8 · 185
+lb · set 3 drop, set 4 rest-pause" (`routineSetKindsLine`) -- LIFT for
+Android's words, separators and numbering, the same on every LIFT build, and
+no clause at all when every set is straight. Read leniently (`coach/BACKUP-FORMAT.md`). Starting the routine puts each kind
 on the set laid out at that position, so the row reads "70 x 12 drop", and
 saving a workout as a routine keeps them -- except for a lift logged a side at
 a time, where a position is two sets. LIFT for Android stores the same field
