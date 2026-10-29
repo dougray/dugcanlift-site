@@ -180,22 +180,24 @@
          recipe form below is where it is checked and saved. -->
     <div id="rb-panel" class="card hidden">
       <strong>Send recipes from your browser</strong>
-      <p class="muted">Save this as a bookmark. On a recipe page, tap the
-        bookmark and the recipe opens here for you to check and save. Nothing
-        is uploaded.</p>
-      <p class="muted">On a computer, drag this to your bookmarks bar:</p>
+      <!-- The words are the shared set every build uses (LIFT and Coach, web
+           and apps), with the app's name put in. Change them in all or none. -->
+      <p class="muted">Save this as a bookmark once. On any recipe page, tap
+        the bookmark and the recipe opens here for you to check. LIFT never
+        visits the page.</p>
       <p><a id="rb-link" class="bookmarklet" href="#" draggable="true">Send to LIFT</a></p>
-      <p class="muted">On a phone, copy this:</p>
-      <textarea id="rb-code" rows="3" readonly aria-label="The bookmark's address"></textarea>
-      <button class="wide" id="rb-copy">Copy</button>
-      <p class="muted" id="rb-note" role="status"></p>
+      <p class="muted">On a computer, drag it to your bookmarks bar.</p>
       <ol class="catalogsteps muted">
+        <li>Tap Copy.</li>
         <li>Bookmark any page.</li>
-        <li>Edit the bookmark: name it Send to LIFT, and paste what you copied as its address.</li>
+        <li>Edit the bookmark. Name it Send to LIFT, and paste over its address.</li>
         <li>On a recipe page, type Send to LIFT in the address bar and tap the bookmark.</li>
       </ol>
-      <p class="muted">On an iPhone with LIFT installed, you can share a recipe
-        page from Safari to LIFT instead.</p>
+      <!-- Above the field, so "the text below" in its messages is the field. -->
+      <p class="muted" id="rb-note" role="status"></p>
+      <textarea id="rb-code" rows="3" readonly aria-label="The bookmark's address"></textarea>
+      <button class="wide" id="rb-copy">Copy</button>
+      <p class="muted">LIFT on iPhone can share a recipe from Safari instead.</p>
       <button class="wide ghost" id="rb-done">Done</button>
     </div>
 
@@ -206,9 +208,8 @@
       <p class="muted">For a recipe written out as text — a video caption, an
         email, a card off the fridge. Nothing is sent anywhere; this reads what
         you paste and fills the recipe form, which you then check.</p>
-      <p class="muted">A recipe website will not work here. A browser cannot
-        fetch another site's page, so paste the recipe's text rather than its
-        address.</p>
+      <p class="muted">A recipe website's address will not work here. Use Send
+        recipes from your browser for a website instead.</p>
       <label for="rp-text">Recipe text</label>
       <textarea id="rp-text" rows="8" placeholder="Creamy Tuscan Chicken&#10;&#10;Ingredients:&#10;- 2 chicken breasts&#10;- 200 g spinach&#10;&#10;Method:&#10;1. Sear the chicken&#10;&#10;Serves 4"></textarea>
       <p class="muted" id="rp-note" role="status"></p>

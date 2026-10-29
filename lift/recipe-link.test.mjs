@@ -137,6 +137,38 @@ test('more than MAX_BYTES once inflated is refused, and exactly MAX_BYTES is not
 
 // MARK: - This build
 
+test('the panel and the messages use the shared wording, word for word', () => {
+  // One set of words for this feature in every build, LIFT and Coach, web and
+  // apps, with the app's name put in. Whitespace is collapsed so a line break
+  // in the HTML does not count as a change.
+  const flat = (file) => readFileSync(file, 'utf8').replace(/\s+/g, ' ');
+  const html = flat('lift/index.html');
+  const app = flat('lift/app.js');
+  [
+    'Send recipes from your browser',
+    'Save this as a bookmark once. On any recipe page, tap the bookmark and the recipe opens here for you to check. LIFT never visits the page.',
+    '>Send to LIFT</a>',
+    'On a computer, drag it to your bookmarks bar.',
+    '<li>Tap Copy.</li>',
+    '<li>Bookmark any page.</li>',
+    '<li>Edit the bookmark. Name it Send to LIFT, and paste over its address.</li>',
+    '<li>On a recipe page, type Send to LIFT in the address bar and tap the bookmark.</li>',
+    '>Copy</button>',
+    '>Done</button>',
+    'LIFT on iPhone can share a recipe from Safari instead.',
+    "A recipe website's address will not work here. Use Send recipes from your browser for a website instead.",
+  ].forEach((words) => assert.ok(html.includes(words), words));
+  [
+    "'Copied'",
+    "'Copying was blocked. Select all of the text below and copy it.'",
+    "'Drag it to your bookmarks bar, or tap Copy and save it as a bookmark. It works on a recipe page, not here.'",
+    "'That recipe link could not be read, so nothing was added. Open the recipe page and tap Send to LIFT again.'",
+    "'That page has no recipe LIFT can read. Copy the recipe text and use Paste a recipe instead.'",
+    '`From ${site}. Check it, then Save.`',
+    "' The page did not say how many this serves; set it before saving.'",
+  ].forEach((words) => assert.ok(app.includes(words), words));
+});
+
 test('nothing here can reach the network', () => {
   // The page's address rides in the link as text. It is never opened.
   const src = readFileSync('lift/recipe-link.js', 'utf8');
