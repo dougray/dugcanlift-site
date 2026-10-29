@@ -2349,9 +2349,9 @@ function renderCookRecipes() {
     card.appendChild(cookEl('p', 'muted', servingsLabel(r.servings)));
 
     const n = r.nutritionPerServing;
-    card.appendChild(cookEl('p', 'muted', CoachRecipeNutrition.hasMacros(n)
-      ? `${trimNum(n.calories)} kcal  P ${trimNum(n.proteinG)}  C ${trimNum(n.carbsG)}  F ${trimNum(n.fatG)}`
-      : 'Macros not set'));
+    // " · estimated" after the macros when they are an estimate, as Coach
+    // iPhone's card has it.
+    card.appendChild(cookEl('p', 'muted', CoachRecipeNutrition.cardMacroLine(n, trimNum)));
     const detail = CoachNutrients.foodLine(n);
     if (detail) card.appendChild(cookEl('p', 'muted', `${detail} a serving`));
 
@@ -2441,12 +2441,26 @@ function openRecipeForm(id) {
     $(selector).value = known[key] == null ? '' : known[key];
     $(selector).dataset.typed = known[key] == null ? '' : '1';
   });
+  renderRecipeEstimated(r);
   ingredientTally = null;
   $('#ing-query').value = '';
   $('#ing-results').innerHTML = '';
   $('#ing-tally').textContent = '';
 
   showRecipeForm();
+}
+
+/* Coach iPhone's line under the macros of a recipe whose macros are an
+ * estimate, with the source's own note under it. Hidden for every other
+ * recipe, and for a new one. The flag rides on the stored recipe and Save
+ * carries it, so the line describes the recipe as it was opened. */
+function renderRecipeEstimated(r) {
+  const box = $('#r-estimated');
+  const shown = CoachRecipeNutrition.estimatedNote(r);
+  box.classList.toggle('hidden', !shown);
+  $('#r-estimated-note').textContent = shown ? shown.note : '';
+  $('#r-estimated-source').textContent = shown && shown.source ? shown.source : '';
+  $('#r-estimated-source').classList.toggle('hidden', !(shown && shown.source));
 }
 
 /* Unhides the editor and brings it on screen. Every way in needs both: the

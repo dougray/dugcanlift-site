@@ -128,6 +128,9 @@ h2 {
 
 /* Clears the sticky tab row when app.js scrolls the recipe editor into view. */
 #recipe-form { scroll-margin-top: 64px; }
+/* An estimated recipe's source note is attribution, licence and caveat on
+   lines of their own, as the catalogue wrote them. */
+.estimated-source { white-space: pre-line; }
 
 nav {
   display: flex;
