@@ -149,7 +149,27 @@
   <div id="cook-recipes">
     <div class="actions">
       <button class="wide" id="recipe-new">New recipe</button>
+      <button class="wide ghost" id="rc-open">From the catalogue</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
+    </div>
+
+    <div id="rc-panel" class="card hidden">
+      <strong id="rc-title" tabindex="-1">Recipe catalogue</strong>
+      <div id="rc-browse">
+        <label for="rc-query" class="sronly">Search the catalogue</label>
+        <input type="text" id="rc-query" inputmode="search" autocomplete="off" placeholder="Search 600+ recipes">
+        <p class="muted" id="rc-note"></p>
+        <div id="rc-list"></div>
+        <p class="muted small">Ships with Coach and is kept on this device once
+          opened. Nothing is added to your library until you tap Add.</p>
+        <div id="rc-credits"></div>
+        <button class="ghost wide" id="rc-done">Done</button>
+      </div>
+      <div id="rc-detail" class="hidden">
+        <div id="rc-recipe"></div>
+        <button class="wide" id="rc-add">Add</button>
+        <button class="ghost wide" id="rc-back">Back</button>
+      </div>
     </div>
 
     <div id="rp-panel" class="card hidden">
@@ -408,6 +428,7 @@
 <script src="sides.js"></script>
 <script src="prescriptions.js"></script>
 <script src="recipe-nutrition.js"></script>
+<script src="recipe-catalogue.js"></script>
 <script src="share-import.js"></script>
 <script src="client-removal.js"></script>
 <script src="road-picks.js"></script>
