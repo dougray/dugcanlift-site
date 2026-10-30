@@ -161,11 +161,11 @@
       name: r.name,
       servings: servings,
       steps: r.steps.slice(),
-      // fiberG 0 is how the recipe form writes an unknown fibre: it reads
-      // back blank, and a catalogue recipe records none.
+      // No fiberG: a catalogue recipe records none, and unknown is no key,
+      // never 0 g (nutrients.js recipeNutrition).
       nutritionPerServing: n ? {
         calories: n.calories, proteinG: n.proteinG, carbsG: n.carbsG, fatG: n.fatG,
-        fiberG: 0, estimated: r.nutritionIsEstimated,
+        estimated: r.nutritionIsEstimated,
       } : null,
       totalWeightGrams: null,
       sourceAuthor: r.attribution,

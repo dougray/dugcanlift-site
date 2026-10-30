@@ -201,6 +201,55 @@
     }).filter(Boolean);
   }
 
+  /* ---- Fiber on a recipe ----
+   *
+   * Not one of the three above -- fiber has a goal and a bar -- but a recipe's
+   * fiber follows their rule: unknown when nobody stated it, never 0 g. LIFT
+   * iPhone's NutritionFacts.fiberG is optional, and LIFT Android holds it the
+   * same way since kit-android 1.10.0. Calories, protein, carbs and fat are
+   * always numbers on a recipe that has nutrition at all; fiber may be absent.
+   * Every recipe an earlier build saved carries fiberG 0 for a blank field, and
+   * nobody can tell now which of those were unknown, so a stored 0 stays 0. */
+
+  /** The recipe form's five macros, read back in [calories, protein, carbs,
+   *  fat, fiber] order, null where blank, as nutritionPerServing. Null when all
+   *  five are blank: an untouched form must not write zeros. A blank fiber
+   *  writes no key; a typed 0 is kept. */
+  function recipeNutrition(typed) {
+    if (typed.every(function (v) { return v === null || v === undefined; })) return null;
+    var n = {
+      calories: typed[0] || 0,
+      proteinG: typed[1] || 0,
+      carbsG: typed[2] || 0,
+      fatG: typed[3] || 0,
+    };
+    var fiber = value(typed[4]);
+    if (fiber !== null) n.fiberG = fiber;
+    return n;
+  }
+
+  /** The fiber the recipe editor opens with: the stored figure, 0 included,
+   *  or null -- blank -- when the recipe does not state one. */
+  function storedFiber(n) {
+    return n && typeof n === 'object' && typeof n.fiberG === 'number' ? value(n.fiberG) : null;
+  }
+
+  /** PLAN-FORMAT's `u`, [kcal, protein, carbs, fat, fiber] per serving, as
+   *  nutritionPerServing; null when absent, because absent is "the coach did
+   *  not know the macros". u[4] is taken as sent: every Coach build sends 0
+   *  for unknown fiber, since the iPhone decoders reject a null in u, and a
+   *  receiver cannot tell that 0 from a stated one. Only a u[4] that is not a
+   *  number -- a short or hand-made link -- is unknown. */
+  function planNutrition(u) {
+    if (!Array.isArray(u)) return null;
+    var n = {
+      calories: u[0] || 0, proteinG: u[1] || 0, carbsG: u[2] || 0, fatG: u[3] || 0,
+    };
+    var fiber = typeof u[4] === 'number' ? value(u[4]) : null;
+    if (fiber !== null) n.fiberG = fiber;
+    return n;
+  }
+
   /** A form field read back. Blank, unreadable or negative is null -- not
    *  recorded -- and never zero. */
   function parseField(text) {
@@ -227,5 +276,8 @@
     entryLine: entryLine,
     dayRows: dayRows,
     parseField: parseField,
+    recipeNutrition: recipeNutrition,
+    storedFiber: storedFiber,
+    planNutrition: planNutrition,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
