@@ -645,6 +645,75 @@ canvas.route {
 #review-close { float: right; }
 
 
+/* ---------------- progress ---------------- */
+
+/* Your year: a column a week, a square a day. The grid scrolls inside its card
+   on a phone, never the page. */
+.yearscroll { overflow-x: auto; margin: 10px 0; scrollbar-width: none; }
+.yearscroll::-webkit-scrollbar { display: none; }
+.yeargrid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 11px);
+  grid-auto-columns: 11px;
+  gap: 3px;
+  width: max-content;
+}
+.sq { display: inline-block; width: 11px; height: 11px; border-radius: 2px; background: var(--rule); }
+/* The accent at iOS's three strengths. Opacity rather than mixed colours, so a
+   level is the same fraction of the accent in light and dark. */
+.sq.l1 { background: var(--accent); opacity: 0.35; }
+.sq.l2 { background: var(--accent); opacity: 0.65; }
+.sq.l3 { background: var(--accent); }
+.sq.future { background: transparent; }
+.yearkey { display: flex; align-items: center; gap: 4px; }
+.yearkey .sq { width: 10px; height: 10px; }
+
+/* Muscles this week: a list with plain bars. */
+.musclerow { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.musclename { flex: 0 0 120px; overflow-wrap: anywhere; }
+.muscletrack { flex: 1; min-width: 0; height: 8px; }
+.musclefill { display: block; height: 8px; border-radius: 3px; background: var(--accent); }
+.musclecount { min-width: 24px; text-align: right; font-variant-numeric: tabular-nums; }
+
+#bw-summary { margin-top: 0; }
+#bw-chart { margin: 8px 0 4px; }
+
+/* Progress photos and the before/after slider. */
+.overlayhead { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 12px; }
+.photogrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px;
+  margin: 12px 0; }
+.photo { margin: 0; text-align: center; min-width: 0; }
+.photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px;
+  background: var(--rule); }
+.photo figcaption { margin: 4px 0 2px; }
+.photo button { padding: 4px 10px; }
+.compare {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 12px;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--rule);
+  /* A sideways drag moves the handle; an upward one still scrolls. */
+  touch-action: pan-y;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none; -webkit-user-drag: none; }
+.compare-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; pointer-events: none; }
+#compare-split { display: block; width: 100%; max-width: 480px; margin: 0 auto 12px; }
+.compare-pickers { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  max-width: 480px; margin: 0 auto; }
+.compare-pickers label { margin: 0; display: flex; align-items: center; gap: 8px; }
+.compare-pickers select { padding: 8px 10px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--control-border); border-radius: 8px; font-size: 16px; font-family: inherit; }
+
 /* ---------------- road food ---------------- */
 
 .roadnav { margin: 16px 0 8px; }

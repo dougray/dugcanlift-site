@@ -402,3 +402,40 @@ the plan was sent is not a broken row, and it reappears if the item does.
 
 Shown, never targeted, like saturated fat and the imbalance figure: a label in
 words, no colour, no score, and nothing anywhere about what you ate instead.
+
+## Progress: your year, muscles this week, body weight, photos (`progress.js`)
+
+A port of LIFT iOS's `ProgressRules.swift` and `ProgressPhotoStore` (lift-ios
+#60), in the same words; `progress.test.mjs` ports their tests case for case.
+**Counting, never grading**: an empty week is a column of empty squares, and
+"No sets yet" lists muscles with nothing said about them.
+
+- **Your year** (Train) is every day of the last 53 weeks as a square, its
+  level from that day's working sets in fixed steps (1-9, 10-19, 20 or more),
+  so a day reads the same next month. A warmup is not a working set; a drop or
+  rest-pause set is. Days after today draw as nothing, never as rest days. The
+  week starts on the reader's first weekday (`Intl.Locale` week info), Monday
+  where the browser cannot say.
+- **Muscles this week** (Train) counts working sets per primary muscle over the
+  calendar week holding today. The muscle comes from the logged exercise if it
+  carries one, then from `exercises.json` by name and equipment, then by name
+  alone -- the key is case-blind, because LIFT web stores the library's
+  "barbell" as "Barbell". What can't be placed is counted and said, never
+  guessed. A list with bars, not a body drawing: a drawing needs artwork LIFT
+  can license.
+- **Body weight** (Home) is the `weights` map -- one weigh-in a day, in pounds
+  -- that the calculator already wrote and backups and Send to Coach already
+  carry, so logging again today replaces today's. The chart is the last 90 days
+  on a time axis, fitted to the weights rather than starting at zero. The goal
+  is `lift.bodyWeightGoalLb`, a preference like `lift.perSide`, not in the
+  backup; none is no key.
+- **Progress photos** (Home -> Body weight -> Photos) are in this browser's
+  IndexedDB (`lift-photos`), **never in localStorage, never in a backup file,
+  never in a link to a coach**: a photo is megabytes, and a backup that quietly
+  grew by a gigabyte of pictures is one nobody can move. Picked with a plain
+  `<input type="file" accept="image/*">`, which on a phone also offers the
+  camera; the page asks for no permission. Each is redrawn onto a canvas at no
+  more than 2048 px on its long side and kept as a JPEG, which leaves every
+  byte of the original's metadata behind, location included. The screen says
+  in its own words that photos stay in this browser. A before/after view lays
+  one over the other with a slider.
