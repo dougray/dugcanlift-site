@@ -149,7 +149,7 @@ test('a stated yield is the copy\'s serving count; the chosen one is ignored', (
   assert.equal(fields.servings, 2);
   assert.equal(fields.nutritionPerServing.calories, 690);
   assert.equal(fields.nutritionPerServing.estimated, true);
-  assert.equal(fields.nutritionPerServing.fiberG, 0, 'an unknown fibre as the recipe form writes one');
+  assert.equal('fiberG' in fields.nutritionPerServing, false, 'the catalog states no fiber: unknown, not 0 g');
   assert.deepEqual(fields.steps, carbonara.steps);
   assert.equal(fields.sourceUrl, 'https://theunitools.com/recipes/spaghetti-carbonara');
   assert.equal(fields.sourceAuthor, 'UniTools — theunitools.com');

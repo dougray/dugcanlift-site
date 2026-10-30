@@ -4393,19 +4393,20 @@ function openRecipeForm(id) {
   showStoredMacro('#r-p', n ? n.proteinG : null);
   showStoredMacro('#r-c', n ? n.carbsG : null);
   showStoredMacro('#r-f', n ? n.fatG : null);
-  // Blank rather than a zero nobody measured: fibre is often absent on a
-  // recipe that has the other four.
-  showStoredMacro('#r-fib', n && n.fiberG ? n.fiberG : null);
+  // Blank rather than a zero nobody measured: fiber is often unknown on a
+  // recipe that has the other four. A stored 0 is a figure and reopens as 0.
+  const fiber = LiftNutrients.storedFiber(n);
+  showStoredMacro('#r-fib', fiber);
   $('#r-delete').classList.toggle('hidden', !r);
 
   // A recipe already carrying macros counts as typed: reopening it to add one
   // more ingredient must not throw away numbers that were already right.
-  // Fibre counts as typed only when the recipe actually has some, so a recipe
-  // without it stays open to the ingredient tally.
+  // Fiber counts as typed only when the recipe states it, 0 included, so a
+  // recipe without it stays open to the ingredient tally.
   ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
     $(selector).dataset.typed = n ? '1' : '';
   });
-  $('#r-fib').dataset.typed = n && n.fiberG ? '1' : '';
+  $('#r-fib').dataset.typed = fiber == null ? '' : '1';
   // The same for the three details: typed only when the recipe has one, so an
   // unknown sodium stays open to the ingredient tally.
   Object.entries(RECIPE_DETAIL_INPUTS).forEach(([field, selector]) => {
@@ -4459,16 +4460,9 @@ $('#r-save').onclick = () => {
   };
   const typed = [num('#r-cal'), num('#r-p'), num('#r-c'), num('#r-f'), num('#r-fib')];
   // Null unless something was actually typed — an untouched form must not
-  // write zeros, which would later log as a zero-calorie meal.
-  const nutrition = typed.every((v) => v === null) ? null : {
-    calories: typed[0] || 0,
-    proteinG: typed[1] || 0,
-    carbsG: typed[2] || 0,
-    fatG: typed[3] || 0,
-    // Was hard-coded to 0 because there was no field, so a recipe carrying
-    // fibre lost it the first time anyone opened it and pressed Save.
-    fiberG: typed[4] || 0,
-  };
+  // write zeros, which would later log as a zero-calorie meal. A blank fiber
+  // is unknown and writes no key; a typed 0 is kept (nutrients.js).
+  const nutrition = LiftNutrients.recipeNutrition(typed);
   // Saturated fat, sugar and sodium per serving, absent when blank. They live
   // on the macros, so a recipe with none of those cannot hold them either --
   // inventing a zero-calorie serving to carry a sodium figure would be worse.
@@ -5127,6 +5121,9 @@ function logPlannedMeal(id) {
   const n = m.snapshotNutrition;
   // A snapshot missing a macro rounded to NaN, which JSON stores as null in a
   // field every reader treats as a number -- LIFT Android crashed restoring it.
+  // That includes a recipe's unknown fiber: the food log holds fiber as a whole
+  // number and its day total is a plain sum, so unknown logs as 0, as LIFT
+  // Android's PlannedMeal.loggedFiber and LIFT iPhone's day total both read it.
   const whole = (v) => (Number.isFinite(v) ? Math.round(v) : 0);
   const entry = {
     id: uid(),
@@ -5276,13 +5273,11 @@ function importPlan(payload) {
   (payload.r || []).forEach((raw) => {
     const name = raw.n || 'Untitled recipe';
     const existing = recipes.find((r) => r.name.trim().toLowerCase() === name.trim().toLowerCase());
-    // u is [kcal, protein, carbs, fat, fibre] per serving, and is absent
+    // u is [kcal, protein, carbs, fat, fiber] per serving, and is absent
     // entirely when the coach did not know the macros. Absent stays unknown —
-    // it must not become a zero-calorie dinner in the day's total.
-    const nutrition = Array.isArray(raw.u) ? {
-      calories: raw.u[0] || 0, proteinG: raw.u[1] || 0,
-      carbsG: raw.u[2] || 0, fatG: raw.u[3] || 0, fiberG: raw.u[4] || 0,
-    } : null;
+    // it must not become a zero-calorie dinner in the day's total. u[4] is
+    // taken as sent (nutrients.js planNutrition).
+    const nutrition = LiftNutrients.planNutrition(raw.u);
     // ux is [saturatedFatG, sugarG, sodiumMg] per serving, trailing nulls
     // trimmed. It rides on the macros: a plan that sent ux with no u has
     // nowhere to put it, for the reason the recipe form gives.
@@ -5624,6 +5619,11 @@ let ingredientTally = null;
 
 const emptyTally = () => ({
   calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0,
+  // Fiber is summed over the lines that recorded it, and fills the field only
+  // when at least one did: Open Food Facts often has none, and a product that
+  // states no fiber is not 0 g of it (LiftCore's NutritionFacts sum, where
+  // nil + nil stays nil).
+  fiberLines: 0,
   // Saturated fat, sugar and sodium are summed over the lines that recorded
   // them, with a count, so the tally can tell a whole recipe from part of one.
   details: { saturatedFatG: 0, sugarG: 0, sodiumMg: 0 },
@@ -5712,9 +5712,13 @@ function addIngredient(hit, quantity) {
 
   if (!ingredientTally) ingredientTally = emptyTally();
   const contribution = foodContribution(hit, quantity);
-  ['calories', 'proteinG', 'carbsG', 'fatG', 'fiberG'].forEach((key) => {
+  ['calories', 'proteinG', 'carbsG', 'fatG'].forEach((key) => {
     ingredientTally[key] += contribution[key];
   });
+  if (contribution.fiberG != null) {
+    ingredientTally.fiberG += contribution.fiberG;
+    ingredientTally.fiberLines += 1;
+  }
   LiftNutrients.FIELDS.forEach((field) => {
     if (contribution[field] == null) return;
     ingredientTally.details[field] += contribution[field];
@@ -5738,7 +5742,9 @@ function applyTally() {
 
   const servings = parseFloat($('#r-servings').value) || 1;
   const perServing = {
-    '#r-fib': ingredientTally.fiberG / servings,
+    // Absent when no looked-up line recorded fiber: the field is left as it
+    // is rather than given a 0 g nobody measured.
+    ...(ingredientTally.fiberLines ? { '#r-fib': ingredientTally.fiberG / servings } : {}),
     '#r-cal': ingredientTally.calories / servings,
     '#r-p': ingredientTally.proteinG / servings,
     '#r-c': ingredientTally.carbsG / servings,
