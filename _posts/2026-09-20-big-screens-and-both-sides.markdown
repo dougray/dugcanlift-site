@@ -62,14 +62,14 @@ are and whether the gap is closing:
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Eight sessions of split squats. Two lines, and the gap between them is closing.</figcaption>
 </figure>
 
-**What it will not do is tell you what that means.** No target, no colour, no
+**What it will not do is tell you what that means.** No target, no color, no
 warning. A 10% difference is ordinary in most people, and an app that decides
 what yours means is guessing about your body. It shows the number and the
 direction; you and your trainer do the rest. Same rule as saturated fat, sugar
 and sodium: tracked and shown, never targeted.
 
 If you send your log to a coach, they see the same split, with the same figure
-worked out the same way — the maths is one implementation ported to the other
+worked out the same way — the math is one implementation ported to the other
 five apps, not six apps each doing their best.
 
 **Nothing you have already logged changes meaning.** A set with no side is a
