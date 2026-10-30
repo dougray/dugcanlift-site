@@ -289,6 +289,15 @@ checked against them under node's own `DecompressionStream`. Never regenerate
 them. `recipe-link.js` and `bookmarklets.json` are in `SHELL`, so **bump
 `CACHE` when either changes.**
 
+`parseIngredient` in `app.js` is one of four copies of the ingredient parser --
+Coach web's `coach/parser.js` and the iOS and Android kits are the others -- and
+all four must read the same line the same way. `fixtures/ingredient-lines.json`
+is `dugcanlift-kit/data/ingredient-lines.json`, the case table every one of them
+is tested against, written by hand from the rules in that repo's
+`data/README.md`; `ingredient-parser.test.mjs` runs it and checks the copy
+against `ingredient-lines.sha256`. Change a rule there first, then all four
+parsers, and copy both files over together; never edit them here.
+
 ## Watch import (`watch-scan.js`)
 
 `watch-scan.js` reads food logs off an Apple Watch by QR code. The watch has
