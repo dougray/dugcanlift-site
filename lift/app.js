@@ -4024,6 +4024,92 @@ $('#backup-file').onchange = (e) => {
 };
 
 
+/* ---------------- training as CSV ----------------
+ *
+ * In from Strong, Hevy or FitNotes, out as LIFT's own one-row-per-set file:
+ * LIFT iOS's Settings -> Your data, in the same words (lift-ios #63). The
+ * rules are workout-csv.js. Nothing is sent anywhere: an import is a file read
+ * here, and an export is a file built here and handed to the browser to save. */
+
+let csvReading = null;
+let csvUnit = null;
+
+const csvNote = (text) => { $('#csv-note').textContent = text; };
+
+function csvWorkouts() {
+  if (!csvReading || (csvReading.needsUnit && !csvUnit)) return null;
+  return csvReading.parse(csvUnit);
+}
+
+function renderCsvReview() {
+  const panel = $('#csv-review');
+  panel.classList.toggle('hidden', !csvReading);
+  if (!csvReading) return;
+  $('#csv-source').textContent = `From ${csvReading.source}`;
+  $('#csv-unit').classList.toggle('hidden', !csvReading.needsUnit);
+  if (csvReading.needsUnit) {
+    chips($('#csv-unit-chips'),
+      [{ label: 'Pounds (lb)', v: 'lb' }, { label: 'Kilograms (kg)', v: 'kg' }],
+      (i) => i.v === csvUnit,
+      (i) => { csvUnit = i.v; renderCsvReview(); });
+  }
+  const workouts = csvWorkouts();
+  $('#csv-holds').textContent = workouts ? LiftWorkoutCSV.describe(workouts) : '';
+  $('#csv-do-import').disabled = !(workouts && workouts.length);
+}
+
+function closeCsvReview() {
+  csvReading = null;
+  csvUnit = null;
+  renderCsvReview();
+}
+
+$('#csv-import').onclick = () => $('#csv-file').click();
+$('#csv-file').onchange = async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  csvNote('');
+  let text;
+  try {
+    text = LiftWorkoutCSV.decode(new Uint8Array(await file.arrayBuffer()));
+  } catch (err) {
+    closeCsvReview();
+    csvNote('Could not read that file.');
+    return;
+  }
+  try {
+    csvReading = LiftWorkoutCSV.read(text);
+    csvUnit = null;
+    renderCsvReview();
+    $('#csv-review').scrollIntoView({ block: 'nearest' });
+  } catch (err) {
+    closeCsvReview();
+    csvNote("That doesn't look like an export from Strong, Hevy or FitNotes.");
+  }
+};
+$('#csv-cancel').onclick = closeCsvReview;
+$('#csv-do-import').onclick = () => {
+  const imported = csvWorkouts();
+  if (!imported || !imported.length) return;
+  const outcome = LiftWorkoutCSV.apply(imported, workouts, uid);
+  save(KEY.workouts, workouts);
+  closeCsvReview();
+  csvNote(LiftWorkoutCSV.summary(outcome));
+  render();
+};
+
+$('#csv-export').onclick = () => {
+  const text = LiftWorkoutCSV.exportText(LiftWorkoutCSV.exportRows(workouts));
+  const url = URL.createObjectURL(new Blob([text], { type: 'text/csv' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `lift-training-${todayKey()}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+
 /* ---------------- appearance ---------------- */
 
 /* System / Light / Dark. appearance.js owns the choice and the palette switch;

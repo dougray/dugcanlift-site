@@ -1,0 +1,8 @@
+"title","start_time","end_time","description","exercise_title","superset_id","exercise_notes","set_index","set_type","weight_kg","reps","distance_km","duration_seconds","rpe"
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Bench Press (Barbell)",,"Pause the first rep",0,"warmup",40,8,,,
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Bench Press (Barbell)",,"Pause the first rep",1,"normal",80,5,,,8
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Bench Press (Barbell)",,"Pause the first rep",2,"failure",80,4,,,10
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Lateral Raise (Dumbbell)",0,"",0,"normal",10,12,,,7.5
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Triceps Pushdown",0,"",0,"normal",30,12,,,
+"Push A","2 Mar 2026, 18:04","2 Mar 2026, 19:06","Slept badly","Triceps Pushdown",0,"",1,"dropset",20,10,,,
+"Morning run","28 Feb 2026, 07:30","28 Feb 2026, 08:02","","Running",,"",0,"normal",,,5.21,1860,
