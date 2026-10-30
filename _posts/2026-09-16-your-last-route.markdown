@@ -18,7 +18,7 @@ Every app now has an **Appearance** setting: **System**, **Light**, or **Dark**.
 
 **Labeled macros, and fiber.** A recipe's macros used to be four boxes of numbers. If you didn't already know the order, you had no idea which one was protein. Each one is labeled with its unit now, and **fiber** sits alongside protein, fat and carbs everywhere a recipe's nutrition shows up.
 
-**Weight in grams or ounces.** Tell a recipe what the whole dish weighs and you can log a portion by weighing it, which beats guessing what "a serving" of chili is. Switching between grams and ounces converts the number rather than relabelling it — 1200 g becomes 42.3 oz, not 1200 oz.
+**Weight in grams or ounces.** Tell a recipe what the whole dish weighs and you can log a portion by weighing it, which beats guessing what "a serving" of chili is. Switching between grams and ounces converts the number rather than relabeling it — 1200 g becomes 42.3 oz, not 1200 oz.
 
 **Backups carry your recipes.** A LIFT backup file now includes your recipes and your week's meal plan, and restores them on any of the three LIFT apps. Shopping-list ticks are left out on purpose: restoring last month's file shouldn't show this week's list as already bought.
 
