@@ -878,3 +878,31 @@ canvas.route {
 @media (max-width: 560px) {
   .sidegroup + .sidegroup { display: block; margin-left: 0; }
 }
+
+/* The week on paper (printout.js). Black on white whatever the page's
+ * appearance -- it is for paper -- at the iPhone printout's sizes, in points:
+ * name 20 bold, "Week of" 10 gray, day 14 and workout 12 semibold, exercise 11
+ * indented, note 10 gray indented further. US Letter with the iPhone page's
+ * 54 pt margin, which A4 printers also take without cropping. The browser
+ * paginates; a line is never split across two pages, and a day or workout
+ * heading never ends a page with its first exercise on the next. Only the
+ * Print or save as PDF button sets `printing`, so the browser's own Print
+ * still prints the page as it always did. */
+#printout { display: none; }
+@media print {
+  @page { size: letter; margin: 54pt; }
+  body.printing { background: #fff; color: #000; padding: 0; color-scheme: light; }
+  body.printing > *:not(#printout) { display: none !important; }
+  body.printing #printout { display: block; }
+  #printout { font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #000; font-size: 11pt; line-height: 1.25; }
+  #printout p { margin: 0; break-inside: avoid; }
+  #printout .print-title { font-size: 20pt; font-weight: 700; }
+  #printout .print-subtitle { font-size: 10pt; color: #555; }
+  #printout .print-body { margin-top: 12pt; }
+  #printout .print-day { font-size: 14pt; font-weight: 600; margin-top: 16pt; }
+  #printout .print-workout { font-size: 12pt; font-weight: 600; margin-top: 6pt; }
+  #printout .print-exercise { margin-top: 2pt; padding-left: 12pt; }
+  #printout .print-note { font-size: 10pt; color: #555; padding-left: 24pt; }
+  #printout .print-day, #printout .print-workout { break-after: avoid; }
+}

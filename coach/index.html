@@ -149,7 +149,7 @@
   <div id="cook-recipes">
     <div class="actions">
       <button class="wide" id="recipe-new">New recipe</button>
-      <button class="wide ghost" id="rc-open">From the catalogue</button>
+      <button class="wide ghost" id="rc-open">From the catalog</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
       <button class="wide ghost" id="bm-open">Send recipes from your browser</button>
     </div>
@@ -161,9 +161,9 @@
     </div>
 
     <div id="rc-panel" class="card hidden">
-      <strong id="rc-title" tabindex="-1">Recipe catalogue</strong>
+      <strong id="rc-title" tabindex="-1">Recipe catalog</strong>
       <div id="rc-browse">
-        <label for="rc-query" class="sronly">Search the catalogue</label>
+        <label for="rc-query" class="sronly">Search the catalog</label>
         <input type="text" id="rc-query" inputmode="search" autocomplete="off" placeholder="Search 600+ recipes">
         <p class="muted" id="rc-note"></p>
         <div id="rc-list"></div>
@@ -218,7 +218,7 @@
 
   <div id="recipe-form" class="card hidden">
     <label for="r-name">Name</label>
-    <input type="text" id="r-name" placeholder="Beef chilli">
+    <input type="text" id="r-name" placeholder="Beef chili">
 
     <label for="r-servings">Servings</label>
     <input type="number" id="r-servings" inputmode="decimal" value="4">
@@ -262,7 +262,7 @@
       <div><label for="r-f">Fat g</label><input type="number" id="r-f" inputmode="decimal"></div>
     </div>
     <div class="row">
-      <div><label for="r-fib">Fibre g</label><input type="number" id="r-fib" inputmode="decimal"></div>
+      <div><label for="r-fib">Fiber g</label><input type="number" id="r-fib" inputmode="decimal"></div>
     </div>
 
     <label>Saturated fat, sugar and sodium per serving</label>
@@ -375,6 +375,7 @@
     <div class="card" id="tplan-send-card">
       <button class="wide" id="tplan-copy">Copy plan link</button>
       <button class="ghost wide" id="tplan-mail">Email it</button>
+      <button class="ghost wide hidden" id="tplan-print">Print or save as PDF</button>
       <p class="muted" id="tplan-size"></p>
     </div>
   </div>
@@ -451,6 +452,10 @@
 
 </main>
 
+<!-- The week on paper: filled and shown only while Print or save as PDF is
+     printing (printout.js, style.css "@media print"). -->
+<div id="printout"></div>
+
 <script src="parser.js"></script>
 <script src="recipe-import.js"></script>
 <script src="recipe-link.js"></script>
@@ -465,6 +470,7 @@
 <script src="client-removal.js"></script>
 <script src="road-picks.js"></script>
 <script src="plan-log.js"></script>
+<script src="printout.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
