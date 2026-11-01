@@ -82,7 +82,7 @@ A few hours after publishing the above, the same question came back about the ot
 
 So that's done as well. **Coach for Android 1.0** is on the Coach page now. It takes a client's log link — tap it and it opens in the app, not a browser, because the site publishes a file naming the app's signing key. Roster sorted quietest first with a banner for anyone gone quiet a week. Weekly summary per client, charts, a session log down to the individual set, and a Connect screen that writes the invite text for you.
 
-It has no COOK in it. The table on the COOK page says so with a column of dashes, which someone quite reasonably read as "this app doesn't exist" — so that column is now labelled "no COOK yet" with a line underneath spelling it out. A dash should say what it means.
+It has no COOK in it. The table on the COOK page says so with a column of dashes, which someone quite reasonably read as "this app doesn't exist" — so that column is now labeled "no COOK yet" with a line underneath spelling it out. A dash should say what it means.
 
 The iPhone Coach is still the one you can't have. That one isn't a build I've failed to cut — it's signed with a free Apple account, which means it installs on exactly one phone, mine. No date on that changing.
 

@@ -4,7 +4,7 @@ title:  "Cloud Dancer Takes to the Sky"
 date:   2026-10-23 20:30:00 -0500
 ---
 
-Earlier today the harbour at [reefrunner.us](https://reefrunner.us/) had two ships. Tonight it
+Earlier today the harbor at [reefrunner.us](https://reefrunner.us/) had two ships. Tonight it
 has three. **Cloud Dancer: Beyond the Reef** is live: a steampunk pirate airship shooter, and the
 third game in the series after Reef Runner and Jolly Rogue. It's free, it plays in your browser,
 and it's built for phones as much as computers.
@@ -14,7 +14,7 @@ are from the updated game; [what changed](#update-october-24) is at the end.*
 
 <figure style="margin:1.5rem 0;">
   <img src="/assets/images/blog/2026-10-23-cloud-dancer/home.jpg" alt="The top of the reefrunner.us home page: Three free pirate games, a short introduction, and the Reef Runner, Jolly Rogue and Cloud Dancer logos above a cartoon sea" style="width:100%;height:auto;border-radius:10px;">
-  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Three games, one harbour. Each has its own page now, so you can see what you're in for before you play.</figcaption>
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Three games, one harbor. Each has its own page now, so you can see what you're in for before you play.</figcaption>
 </figure>
 
 ## Pirates, but in the air
@@ -39,7 +39,7 @@ your breath, not to win from.
 There are four skies, about a minute each, in an endless loop: the Reef Skies, the Storm Wall
 (where lightning flickers a warning before it strikes), the Sky-Forts at sunset, and the Ceiling
 of the World. The navy brings gyrocopters, zeppelins, balloon mines, flak towers on the islands
-below, armoured sky pikes and cloud lurkers that only show a periscope until they pop out to fire.
+below, armored sky pikes and cloud lurkers that only show a periscope until they pop out to fire.
 
 ## Four bosses
 
@@ -59,7 +59,7 @@ Every sky ends with a boss, and every boss warns you before it strikes.
   warning, ink clouds, and a lunge straight at you.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23-cloud-dancer/storm.jpg" alt="The Storm Wall in the rain: grey storm clouds over a dark sea, and the Tempest Engine on the right, a brass platform on a storm cloud with a coil of brass rings and a crackling lightning orb, facing the airship on the left" style="width:100%;height:auto;border-radius:10px;">
+  <img src="/assets/images/blog/2026-10-23-cloud-dancer/storm.jpg" alt="The Storm Wall in the rain: gray storm clouds over a dark sea, and the Tempest Engine on the right, a brass platform on a storm cloud with a coil of brass rings and a crackling lightning orb, facing the airship on the left" style="width:100%;height:auto;border-radius:10px;">
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Tempest Engine, riding a storm cloud through the rain.</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ your chest when the run ends.
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Hangar, where banked gold becomes a paint job, a parrot and upgrades that last.</figcaption>
 </figure>
 
-Between runs, the **Hangar** turns that chest into your airship: envelope colours and patterns,
+Between runs, the **Hangar** turns that chest into your airship: envelope colors and patterns,
 sails, hull paint, a starting gun, a parrot that brings the plunder in faster, and upgrades that last
 every run. Extra starting hearts, a bigger boiler, a faster gun crew and a three-ball broadside are
 bought in order, so every run builds toward the next. Like the other
