@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 // parser.js and foods.js declare plain functions for app.js to call; hand them
 // back out, the way recipe-catalogue.test.mjs does.
@@ -162,5 +163,45 @@ test('rawText keeps the line byte for byte', () => {
   const lines = WHITESPACE_CASES.map(([line]) => line).concat(['　salt to taste\t']);
   for (const line of lines) {
     assert.deepEqual(bytes(parseIngredient(line).rawText), bytes(line), JSON.stringify(line));
+  }
+});
+
+// MARK: - The shared case table
+
+// dugcanlift-kit's data/ingredient-lines.json, copied byte for byte with its
+// ingredient-lines.sha256: the case table all four parsers are checked
+// against, written by hand from the rules in that repo's data/README.md. Never
+// edit either file here, and never regenerate them from this parser.
+// The table's tolerance, tighter than near()'s.
+const within = (actual, expected, label) =>
+  assert.ok(Math.abs(actual - expected) < 1e-9, `${label}: got ${actual}, wanted ${expected}`);
+const TABLE_PATH = 'coach/fixtures/ingredient-lines.json';
+
+test('the case table is the kit\'s bytes', () => {
+  const sum = readFileSync('coach/fixtures/ingredient-lines.sha256', 'utf8').trim();
+  assert.match(sum, /^[0-9a-f]{64}$/, 'ingredient-lines.sha256 should be one bare sha256 and nothing else');
+  assert.equal(createHash('sha256').update(readFileSync(TABLE_PATH)).digest('hex'), sum,
+    'coach/fixtures/ingredient-lines.json does not match ingredient-lines.sha256.\n' +
+    'Copy dugcanlift-kit/data/ingredient-lines.json AND data/ingredient-lines.sha256 over together;\n' +
+    'the kit writes the checksum (node data/validate-ingredient-lines.mjs --write-checksum).');
+});
+
+test('every line in the shared case table', () => {
+  const table = JSON.parse(readFileSync(TABLE_PATH, 'utf8'));
+  assert.equal(table.countUnit, COUNT_UNIT);
+  assert.ok(table.cases.length > 100);
+  for (const c of table.cases) {
+    const label = JSON.stringify(c.line);
+    const parsed = parseIngredient(c.line);
+    assert.deepEqual(bytes(parsed.rawText), bytes(c.line), label);
+    if (c.unparsed) {
+      assert.deepEqual(parsed, { rawText: c.line }, label);
+      continue;
+    }
+    within(parsed.qty, c.qty, label);
+    assert.equal(parsed.unit, c.unit, label);
+    assert.equal(parsed.item, c.item, label);
+    if (c.grams === null) assert.equal(parsed.grams, null, label);
+    else within(parsed.grams, c.grams, label);
   }
 });

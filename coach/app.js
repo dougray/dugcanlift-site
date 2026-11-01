@@ -2440,9 +2440,11 @@ function openRecipeForm(id) {
   showStoredMacro('#r-p', macros ? n.proteinG : null);
   showStoredMacro('#r-c', macros ? n.carbsG : null);
   showStoredMacro('#r-f', macros ? n.fatG : null);
-  // Fibre is often absent on a recipe that has the other four, so a blank
-  // stays blank rather than showing a zero nobody measured.
-  showStoredMacro('#r-fib', n && n.fiberG ? n.fiberG : null);
+  // Fiber is often unknown on a recipe that has the other four, and unknown
+  // reopens blank rather than as a zero nobody measured. A stored 0 is a
+  // figure and reopens as 0 (recipe-nutrition.js storedFiber).
+  const fiber = CoachRecipeNutrition.storedFiber(n);
+  showStoredMacro('#r-fib', fiber);
   $('#r-delete').classList.toggle('hidden', !r);
 
   // A recipe already carrying macros counts as typed: reopening it to add one
@@ -2450,10 +2452,10 @@ function openRecipeForm(id) {
   ['#r-cal', '#r-p', '#r-c', '#r-f'].forEach((selector) => {
     $(selector).dataset.typed = macros ? '1' : '';
   });
-  // Fibre counts as typed only when the recipe actually has some. A recipe
-  // without it leaves the field open to the ingredient tally rather than
-  // pinning it to a blank nobody chose.
-  $('#r-fib').dataset.typed = n && n.fiberG ? '1' : '';
+  // Fiber counts as typed only when the recipe states it, 0 included. A
+  // recipe without it leaves the field open to the ingredient tally rather
+  // than pinning it to a blank nobody chose.
+  $('#r-fib').dataset.typed = fiber == null ? '' : '1';
   // Saturated fat, sugar and sodium the same way, one at a time: a known
   // value is kept, an unknown one stays open to the tally.
   const known = CoachNutrients.details(n);
@@ -3793,6 +3795,11 @@ let ingredientTally = null;
 
 const emptyTally = () => ({
   calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, lines: 0,
+  // Fiber is summed over the lines that recorded it, and fills the field only
+  // when at least one did: Open Food Facts often has none, and a product that
+  // states no fiber is not 0 g of it (LiftCore's NutritionFacts sum, where
+  // nil + nil stays nil).
+  fiberLines: 0,
   // Saturated fat, sugar and sodium, summed over the lines that recorded them
   // with a count, so the tally can tell a whole recipe from part of one.
   details: CoachNutrients.emptyTally(),
@@ -3880,9 +3887,13 @@ function addIngredient(hit, quantity) {
 
   if (!ingredientTally) ingredientTally = emptyTally();
   const contribution = foodContribution(hit, quantity);
-  ['calories', 'proteinG', 'carbsG', 'fatG', 'fiberG'].forEach((key) => {
+  ['calories', 'proteinG', 'carbsG', 'fatG'].forEach((key) => {
     ingredientTally[key] += contribution[key];
   });
+  if (contribution.fiberG != null) {
+    ingredientTally.fiberG += contribution.fiberG;
+    ingredientTally.fiberLines += 1;
+  }
   CoachNutrients.addToTally(ingredientTally.details, contribution);
   ingredientTally.lines += 1;
 
@@ -3908,7 +3919,9 @@ function applyTally() {
     '#r-p': ingredientTally.proteinG / servings,
     '#r-c': ingredientTally.carbsG / servings,
     '#r-f': ingredientTally.fatG / servings,
-    '#r-fib': ingredientTally.fiberG / servings,
+    // Absent when no looked-up line recorded fiber: the field is left as it
+    // is rather than given a 0 g nobody measured.
+    ...(ingredientTally.fiberLines ? { '#r-fib': ingredientTally.fiberG / servings } : {}),
   };
 
   Object.entries(perServing).forEach(([selector, value]) => {
@@ -4333,8 +4346,11 @@ function openImportedRecipe(fill) {
         $(selector).dataset.typed = '1';
       });
   }
-  if (n && n.fiberG) {
-    showStoredMacro('#r-fib', n.fiberG);
+  // Fiber only when the page stated it -- a stated 0 g included -- so an
+  // unstated one stays blank and saves as unknown.
+  const fiber = CoachRecipeNutrition.storedFiber(n);
+  if (fiber != null) {
+    showStoredMacro('#r-fib', fiber);
     $('#r-fib').dataset.typed = '1';
   }
   const known = CoachNutrients.details(n);

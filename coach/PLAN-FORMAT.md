@@ -95,6 +95,11 @@ two meals off one recipe comes to about 280 characters.
 already in use reads `u` by position and would take a sixth number for
 something else. A receiver that doesn't know `ux` ignores it.
 
+`u` is always five numbers. Unknown fiber is sent as `0` in `u[4]`, because
+the iPhone decoders read `u` as numbers and reject a `null` in it; a receiver
+stores the number as sent. A recipe's stored fiber stays unknown on the
+sending side (BACKUP-FORMAT.md `nutritionPerServing`).
+
 **`u` is omitted entirely when the coach did not enter macros.** It must never
 be sent as zeros. A zero here becomes a zero-calorie dinner in the client's day
 total, which is worse than an unknown they can see.

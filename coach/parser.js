@@ -61,49 +61,127 @@ const COOK_SPELLED_UNITS = {
  * parsers. */
 const COOK_WHITESPACE = /[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]/g;
 
+/* The vulgar fractions read as quantities, each as [numerator, denominator]:
+ * the eighteen in Unicode that name a fraction, alone ("½ cup") or after a
+ * whole number with or without a space ("1½", "1 ½"). Not ⅟ (U+215F), which
+ * is half of a fraction, or ↉ (U+2189), zero thirds. The same eighteen are in
+ * all four parsers. */
+const COOK_VULGAR_FRACTIONS = {
+  '¼': [1, 4], '½': [1, 2], '¾': [3, 4],
+  '⅐': [1, 7], '⅑': [1, 9], '⅒': [1, 10], '⅓': [1, 3], '⅔': [2, 3],
+  '⅕': [1, 5], '⅖': [2, 5], '⅗': [3, 5], '⅘': [4, 5], '⅙': [1, 6], '⅚': [5, 6],
+  '⅛': [1, 8], '⅜': [3, 8], '⅝': [5, 8], '⅞': [7, 8],
+};
+
+/* What may follow a quantity, checked once it has been read. The line is not
+ * read at all when the next character after any spaces is a number character
+ * (Unicode category N: a digit, a vulgar fraction, a superscript, another
+ * script's digit) or a slash, or is one of . , - ‐ ‑ ‒ – — − followed, after
+ * any spaces, by a number character: "1 2 eggs", "1,5 kg", "1,000 g", "1-2
+ * cups", "1/2/3", "2² cups". Each of those is a number this parser cannot
+ * read, and stopping short of it would be a confident wrong quantity. A dash
+ * before a letter is fine: "1/2-inch piece ginger". */
+const COOK_NOT_A_QUANTITY_END = /^ *(?:[\p{N}/\u2044]|[.,\-\u2010-\u2014\u2212] *\p{N})/u;
+
+/* The punctuation trimmed from the end of a unit word, so "2 tbsp. oil",
+ * "2 tbsp: oil" and "1 cup; sugar" all read the unit. Only the end, and only
+ * these four: "(tbsp)", "tbsp)" and "tbsp-" are not units. The same four are
+ * in all four parsers. */
+const COOK_UNIT_TRAILING_PUNCTUATION = /[.,:;]+$/;
+
+/* Reads the quantity off the front of a normalized line with no leading
+ * spaces, returning it with the rest of the line (leading spaces dropped), or
+ * null to give up on the line. A quantity is a decimal ("2", "1.5", "1.",
+ * ".5"; ASCII digits and at most one point), a fraction of whole numbers
+ * ("1/2", the fraction slash U+2044 read as "/"), a whole number then spaces
+ * then a fraction ("1 1/2"), or a vulgar fraction, alone or after a whole
+ * number ("½", "1½", "1 ½"). Every number in it must be finite and a
+ * denominator must not be zero. */
+function cookTakeQuantity(text) {
+  let s = text;
+  const digits = () => (s.match(/^[0-9]*/))[0];
+  // A run of digits as a number, or null when it is too long to be finite.
+  const number = (run) => { const v = Number(run); return Number.isFinite(v) ? v : null; };
+  const vulgar = () => (Object.prototype.hasOwnProperty.call(COOK_VULGAR_FRACTIONS, s[0])
+    ? COOK_VULGAR_FRACTIONS[s[0]] : null);
+  // "/" or U+2044 and a nonzero whole denominator, consumed only if all there.
+  const takeDenominator = () => {
+    if (s[0] !== '/' && s[0] !== '\u2044') return null;
+    const saved = s;
+    s = s.slice(1);
+    const run = digits();
+    const d = run ? number(run) : null;
+    if (!d) { s = saved; return null; }
+    s = s.slice(run.length);
+    return d;
+  };
+
+  let value;
+  const lead = vulgar();
+  if (lead) {
+    s = s.slice(1);
+    value = lead[0] / lead[1];
+  } else {
+    const run = (s.match(/^[0-9.]*/))[0];
+    if (!run) return null;
+    if (run.includes('.')) {
+      // One point at most, and at least one digit: "1.2.3" and "." are not numbers.
+      if (!/^(?:[0-9]+\.[0-9]*|\.[0-9]+)$/.test(run)) return null;
+      value = number(run);
+      s = s.slice(run.length);
+    } else {
+      value = number(run);
+      s = s.slice(run.length);
+      if (value === null) return null;
+      const denominator = takeDenominator();
+      const fraction = denominator === null ? vulgar() : null;
+      if (denominator !== null) {
+        value /= denominator;
+      } else if (fraction) {
+        s = s.slice(1);
+        value += fraction[0] / fraction[1];
+      } else if (s.startsWith(' ')) {
+        // "1 1/2" or "1 ½" — a whole number, spaces, then a fraction.
+        const saved = s;
+        s = s.trimStart();
+        const after = vulgar();
+        const numerator = after ? '' : digits();
+        if (after) {
+          s = s.slice(1);
+          value += after[0] / after[1];
+        } else if (numerator && number(numerator) !== null) {
+          s = s.slice(numerator.length);
+          const d = takeDenominator();
+          if (d !== null) value += number(numerator) / d;
+          else s = saved;
+        } else {
+          s = saved;
+        }
+      }
+    }
+  }
+
+  if (value === null || !Number.isFinite(value)) return null;
+  if (COOK_NOT_A_QUANTITY_END.test(s)) return null;
+  return { qty: value, rest: s.trimStart() };
+}
+
 /* Pulls a quantity and unit off the front of a typed ingredient line.
  *
  * Deliberately small. It handles the shapes people actually type and gives up
  * cleanly on everything else, leaving `item` undefined so the shopping list
  * shows the raw line instead. A confident wrong quantity on a client's
- * shopping list is worse than a line they can read and check. */
+ * shopping list is worse than a line they can read and check.
+ *
+ * dugcanlift-kit's data/ingredient-lines.json is the case table all four
+ * parsers are checked against; a copy is in fixtures/. */
 function parseIngredient(raw) {
-  let rest = raw.replace(COOK_WHITESPACE, ' ').trimStart();
+  const quantity = cookTakeQuantity(raw.replace(COOK_WHITESPACE, ' ').trimStart());
+  if (quantity === null) return { rawText: raw };
+  const { qty, rest } = quantity;
 
-  const takeNumber = () => {
-    const m = rest.match(/^[0-9.]+/);
-    if (!m) return null;
-    const value = parseFloat(m[0]);
-    if (isNaN(value)) return null;
-    rest = rest.slice(m[0].length);
-    return value;
-  };
-
-  let qty = takeNumber();
-  if (qty === null) return { rawText: raw };
-
-  if (rest.startsWith('/')) {
-    rest = rest.slice(1);
-    const denominator = takeNumber();
-    if (!denominator) return { rawText: raw };
-    qty /= denominator;
-  } else if (rest.startsWith(' ')) {
-    const saved = rest;
-    rest = rest.slice(1);
-    const whole = takeNumber();
-    if (whole !== null && rest.startsWith('/')) {
-      rest = rest.slice(1);
-      const denominator = takeNumber();
-      if (denominator) qty += whole / denominator;
-      else rest = saved;
-    } else {
-      rest = saved;
-    }
-  }
-
-  rest = rest.trimStart();
   const firstWord = rest.split(' ')[0];
-  const candidate = firstWord.toLowerCase().replace(/[.,]+$/, '');
+  const candidate = firstWord.toLowerCase().replace(COOK_UNIT_TRAILING_PUNCTUATION, '');
 
   let unit = null;
   let item;
