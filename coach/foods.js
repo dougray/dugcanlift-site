@@ -52,7 +52,7 @@ async function loadFoodLibrary() {
         proteinG: proteinG / 100,
         fatG: fatG / 100,
         carbsG: carbsG / 100,
-        fiberG: fiberG / 100,
+        fiberG: perGram(fiberG),
         saturatedFatG: perGram(saturatedFatG),
         sugarG: perGram(sugarG),
         sodiumMg: perGram(sodiumMg),
@@ -112,6 +112,7 @@ function searchFoodLibrary(query, limit = 30) {
 function parseFoodProduct(product) {
   const nutriments = product.nutriments || {};
   const value = (v) => (typeof v === 'number' ? v : parseFloat(v));
+  const stated = (v) => (Number.isFinite(v) && v >= 0 ? v : null);
   if (!product.product_name) return null;
 
   const read = (suffix) => {
@@ -122,7 +123,9 @@ function parseFoodProduct(product) {
       proteinG: value(nutriments[`proteins_${suffix}`]) || 0,
       fatG: value(nutriments[`fat_${suffix}`]) || 0,
       carbsG: value(nutriments[`carbohydrates_${suffix}`]) || 0,
-      fiberG: value(nutriments[`fiber_${suffix}`]) || 0,
+      // Null where the product does not say, like the three below: a
+      // product that lists no fiber is not 0 g of it.
+      fiberG: stated(value(nutriments[`fiber_${suffix}`])),
       // Null where the product does not say; sodium from salt when only salt
       // is listed (nutrients.js).
       ...CoachNutrients.fromOpenFoodFacts(nutriments, suffix),
@@ -145,7 +148,7 @@ function parseFoodProduct(product) {
     per: per100 ? 'g' : 'serving',
     unit: per100
       ? { calories: values.calories / 100, proteinG: values.proteinG / 100,
-          fatG: values.fatG / 100, carbsG: values.carbsG / 100, fiberG: values.fiberG / 100,
+          fatG: values.fatG / 100, carbsG: values.carbsG / 100, fiberG: perGram(values.fiberG),
           saturatedFatG: perGram(values.saturatedFatG), sugarG: perGram(values.sugarG),
           sodiumMg: perGram(values.sodiumMg) }
       : values,
@@ -170,8 +173,8 @@ async function searchPackagedFoods(query) {
 }
 
 /** What a quantity of one hit contributes. Grams, or servings when that is all
- *  the source publishes. Saturated fat, sugar and sodium are null when the
- *  source did not record them, so a caller can tell a gap from a zero. */
+ *  the source publishes. Fiber, saturated fat, sugar and sodium are null when
+ *  the source did not record them, so a caller can tell a gap from a zero. */
 function foodContribution(hit, quantity) {
   const detail = (v) => (v == null ? null : v * quantity);
   return {
@@ -179,7 +182,7 @@ function foodContribution(hit, quantity) {
     proteinG: hit.unit.proteinG * quantity,
     fatG: hit.unit.fatG * quantity,
     carbsG: hit.unit.carbsG * quantity,
-    fiberG: hit.unit.fiberG * quantity,
+    fiberG: detail(hit.unit.fiberG),
     saturatedFatG: detail(hit.unit.saturatedFatG),
     sugarG: detail(hit.unit.sugarG),
     sodiumMg: detail(hit.unit.sodiumMg),

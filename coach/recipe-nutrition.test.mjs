@@ -33,7 +33,7 @@ test('unknown keys from another app survive too', () => {
 test('the form wins for the keys it shows', () => {
   const saved = mergeNutrition([100, null, null, null, null], imported);
   assert.equal(saved.proteinG, 0);
-  assert.equal(saved.fiberG, 0);
+  assert.equal('fiberG' in saved, false, 'a blank fiber field is unknown, not 0 g');
 });
 
 test('a blank form still means no nutrition', () => {
@@ -42,7 +42,7 @@ test('a blank form still means no nutrition', () => {
 
 test('a new recipe has no extras to carry', () => {
   assert.deepEqual(mergeNutrition([200, 10, 20, 5, null], null),
-    { calories: 200, proteinG: 10, carbsG: 20, fatG: 5, fiberG: 0 });
+    { calories: 200, proteinG: 10, carbsG: 20, fatG: 5 });
 });
 
 test('the existing object is not mutated', () => {
@@ -77,7 +77,7 @@ test('other unknown keys still ride along when the three are shown', () => {
 test('only sodium entered keeps the sodium, with placeholder macros', () => {
   const saved = mergeNutrition([null, null, null, null, null], null,
     { saturatedFatG: null, sugarG: null, sodiumMg: 480 });
-  assert.deepEqual(saved, { calories: 0, proteinG: 0, carbsG: 0, fatG: 0, fiberG: 0, sodiumMg: 480 });
+  assert.deepEqual(saved, { calories: 0, proteinG: 0, carbsG: 0, fatG: 0, sodiumMg: 480 });
   assert.equal(hasMacros(saved), false);
 });
 
@@ -116,7 +116,7 @@ test('u is never sent as zeros', () => {
   assert.deepEqual(sodiumOnly.ux, [null, null, 480]);
   assert.equal('u' in planRecipe(recipe(null), row), false);
   assert.deepEqual(planRecipe(recipe({ calories: 200, proteinG: 10, carbsG: 20, fatG: 5 }), row).u, [200, 10, 20, 5, 0],
-    'a missing fibre is sent as 0 beside real macros, as before');
+    'a missing fiber is sent as 0 beside real macros, as before');
 });
 
 // ---- the estimated mark: Coach iPhone's two lines ----

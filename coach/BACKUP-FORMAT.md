@@ -111,7 +111,12 @@ ingredient: every client runs the same parser, so a reader may reparse it and
 treat `item`/`qty`/`unit`/`grams` as a cache. `ingredients[]` is in the order
 the recipe lists them. `nutritionPerServing` is **per serving and never
 pre-scaled**, and `null` means unknown — never write zeros for macros nobody
-entered. `totalWeightGrams` is the whole finished dish, in grams whatever the
+entered. Inside it, `fiberG` is **omitted (or `null`) when unknown**, never
+written as `0`: a recipe can know its calories and not its fiber. A reader
+takes an absent or `null` `fiberG` as unknown, not 0 g, and keeps a `0` as a
+stated zero — files written before this carry `0` for a blank fiber field,
+and nobody can say now which of those were unknown. The same holds for a
+planned meal's `snapshotNutrition`. `totalWeightGrams` is the whole finished dish, in grams whatever the
 screen showed; absent or `null` means not weighed.
 
 **`plan[]`** — planned meals: `id`, `recipeId`, `recipeName`, `date`

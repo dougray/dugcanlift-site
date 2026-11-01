@@ -20,6 +20,14 @@
  * Coach iOS and Coach Android write, and nutrients.js `hasMacros` is false for
  * it, so the editor reopens them blank and a plan link sends no `u`.
  *
+ * Fiber is the fifth form field and follows the three, not the four: blank
+ * saves no `fiberG` key at all -- unknown, never 0 g -- and a typed 0 is a
+ * figure and saved as 0. Coach iPhone's `NutritionFacts.fiberG` is optional
+ * for the same reason, and Coach Android holds it the same way. Every recipe
+ * an earlier build saved carries `fiberG: 0` for a blank field; nobody can
+ * tell now which of those were unknown, so a stored zero reopens as 0 and
+ * stays 0 (`storedFiber`).
+ *
  * Kept as its own script so node tests it (recipe-nutrition.test.mjs).
  */
 (function (global) {
@@ -27,6 +35,10 @@
 
   var FORM_KEYS = ['calories', 'proteinG', 'carbsG', 'fatG', 'fiberG'];
   var DETAIL_KEYS = ['saturatedFatG', 'sugarG', 'sodiumMg'];
+  // The four that are always numbers on a recipe with nutrition: zeros when
+  // not entered, the shape every build writes. Fiber is the fifth form key
+  // and may be absent.
+  var MACRO_KEYS = FORM_KEYS.slice(0, 4);
 
   var known = function (v) { return typeof v === 'number' && isFinite(v) && v >= 0; };
 
@@ -40,9 +52,11 @@
     var anyDetail = shown && DETAIL_KEYS.some(function (k) { return known(details[k]); });
     if (typed.every(function (v) { return v === null; }) && !anyDetail) return null;
     var result = {};
-    FORM_KEYS.forEach(function (key, i) {
+    MACRO_KEYS.forEach(function (key, i) {
       result[key] = typed[i] || 0;
     });
+    // Blank fiber is unknown: no key, never a measured 0 g.
+    if (known(typed[4])) result.fiberG = typed[4];
     if (existing && typeof existing === 'object' && !Array.isArray(existing)) {
       Object.keys(existing).forEach(function (key) {
         if (FORM_KEYS.indexOf(key) !== -1) return;
@@ -68,6 +82,16 @@
     });
   }
 
+  /** The fiber the recipe editor opens with: the stored figure when the
+   *  recipe has macros and states one (0 included -- a stored zero stays a
+   *  zero), null otherwise, so unknown fiber reopens blank. A recipe holding
+   *  only saturated fat, sugar or sodium has placeholder macros and reopens
+   *  blank, as its four macros do. */
+  function storedFiber(n) {
+    if (!hasMacros(n)) return null;
+    return known(n.fiberG) ? n.fiberG : null;
+  }
+
   /**
    * PLAN-FORMAT's inline recipe: n, s, u, ux, i, t.
    *
@@ -77,6 +101,10 @@
    * decimal and sodium whole (half-up), only trailing nulls trimmed, omitted
    * when none is known. `row` is CoachNutrients.row, passed in so this file
    * stays loadable on its own.
+   *
+   * `u[4]` is 0 for unknown fiber. `u` is five plain numbers, and the iPhone
+   * decoders reject a null in it and drop the whole plan; Coach iPhone writes
+   * `fiberG ?? 0` and Coach Android `fiberG ?: 0.0` for the same reason.
    */
   function planRecipe(r, row) {
     var n = r.nutritionPerServing;
@@ -131,6 +159,7 @@
     cardMacroLine: cardMacroLine,
     estimatedNote: estimatedNote,
     hasMacros: hasMacros,
+    storedFiber: storedFiber,
     planRecipe: planRecipe,
     FORM_KEYS: FORM_KEYS,
     DETAIL_KEYS: DETAIL_KEYS,
