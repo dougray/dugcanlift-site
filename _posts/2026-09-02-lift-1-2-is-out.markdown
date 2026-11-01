@@ -34,7 +34,7 @@ Because the beta isn't finished, and a store is the wrong place to run one.
 
 Right now, when something's broken, I fix it and push, and the [web app](/lift/) has it that day. Put the same thing behind Play review and App Store review and that loop stretches to days, sometimes a week, with a queue in the middle that doesn't care that eleven people are hitting the same bug. There's a version of me that would rather have the badge on the page. That version ships slower.
 
-So the plan hasn't changed: **finish the beta through the PWA.** Get the moving parts actually working — the log, the backups, the plans travelling between Coach and the app, COOK's macros landing where they should — and then submit to Apple and Google once there's nothing left that I already know is wrong.
+So the plan hasn't changed: **finish the beta through the PWA.** Get the moving parts actually working — the log, the backups, the plans traveling between Coach and the app, COOK's macros landing where they should — and then submit to Apple and Google once there's nothing left that I already know is wrong.
 
 Not before. And no date, because I've been wrong about dates in public twice now and I'd rather not go for three.
 

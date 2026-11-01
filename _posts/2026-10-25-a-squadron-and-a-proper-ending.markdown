@@ -13,13 +13,13 @@ easy, so it got tougher, but now you can fly with a whole squadron.
 
 The wingman used to be a little rust-red gyrocopter, and you could only have one. Now it's a
 small pirate airship, a copy of your own, and the Sky Market sells up to four. They fly in
-formation behind you, two close above and below and two further back, each in its own colours
+formation behind you, two close above and below and two further back, each in its own colors
 (red, navy, black and gold) and each firing its own cannons. Every one costs more than the last,
 so a full squadron is something you save up for.
 
 <figure style="margin:1.5rem 0;">
   <img src="/assets/images/blog/2026-10-25-squadron-update/squadron.jpg" alt="Cloud Dancer: the cream-and-wood pirate airship flying over a painted sea with four smaller pirate airships in formation around it, in red, navy, black and gold, all firing cannonballs ahead" style="width:100%;height:auto;border-radius:10px;">
-  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The full squadron: four wingmen, four colours.</figcaption>
+  <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The full squadron: four wingmen, four colors.</figcaption>
 </figure>
 
 ## Cloud Dancer: tougher seas
