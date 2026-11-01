@@ -645,6 +645,8 @@ canvas.route {
 #review-close { float: right; }
 
 
+/* Importing training from another app's CSV (workout-csv.js). */
+.csvsource { font-weight: 600; margin-bottom: 4px; }
 /* ---------------- progress ---------------- */
 
 /* Your year: a column a week, a square a day. The grid scrolls inside its card
