@@ -38,11 +38,11 @@ what you did on it.
 
 It is a **week**, Monday to Sunday, rather than a mark on today, for that same
 reason: the days you cannot reach are the ones worth seeing mid-week. The arrows
-read the week either side. A lift done on another machine is paired and labelled
+read the week either side. A lift done on another machine is paired and labeled
 `Asked Barbell · logged Smith machine`. Sets are counted, never matched one to
 one, because if you did three of four the app cannot say which one you dropped.
 
-**You are not being graded.** No score, no percentage, no streak, no colour on a
+**You are not being graded.** No score, no percentage, no streak, no color on a
 day nothing was logged against, nothing carried from one week to the next. The
 words are `logged` and `not logged`, the same ones your coach reads, never
 "missed" or "skipped". Under every card:
@@ -141,11 +141,11 @@ Four smaller things turned up on the way:
 - **LIFT's week arrows were `‹` and `›` and nothing else**, so their accessible
   name was a quotation mark. They are "Previous booked week" and "Next booked
   week", and an arrow with nowhere to go says so rather than only looking
-  greyed out.
+  grayed out.
 - **A day row said it could be pressed, but not whether it was open** — the
   card drew that only by whether more lines followed it — or that opening a day
   Train can show also moves Train there. Both are stated now.
-- **Coach's By day / By lift chips showed which was selected in colour alone.**
+- **Coach's By day / By lift chips showed which was selected in color alone.**
 
 Nothing on screen changed: not a string, not a pixel. And nothing is given
 emphasis aloud that it does not have on the page. `not logged` is as flat
