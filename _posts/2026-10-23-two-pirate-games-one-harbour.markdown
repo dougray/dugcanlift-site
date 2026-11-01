@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Two Pirate Games, One Harbour"
+title:  "Two Pirate Games, One Harbor"
 date:   2026-10-23 14:00:00 -0500
 ---
 
 [reefrunner.us](https://reefrunner.us/) used to be one game's front door. It is
-now a harbour with two ships tied up in it: **Reef Runner**, the cartoon sailing
+now a harbor with two ships tied up in it: **Reef Runner**, the cartoon sailing
 game that has lived there since September, and **Jolly Rogue**, a brand-new
 pixel-art run-and-gun. Pick one, press Set Sail, and you are playing. Both are
 free, both run in the browser, and both now have native apps on the way to
@@ -44,7 +44,7 @@ Jolly Rogue is a side-scrolling run-and-gun in the spirit of the old arcade
 classics, with a pirate on foot instead of a soldier. You run right through an
 endless voyage across four areas: Palm Tree Island, a merchant ship's deck, the
 hold below it and a pirate ship. Each area belongs to a rival crew with its own
-colours, and each ends with a boss: the Big Guy, the Captain, Cucumber and the
+colors, and each ends with a boss: the Big Guy, the Captain, Cucumber and the
 Whale.
 
 <figure style="margin:1.5rem 0;">
@@ -62,7 +62,7 @@ Whale.
   with an extra life for every boss and for every 100 gold you grab in a run.
 
 <figure style="margin:1.5rem 0;">
-  <img src="/assets/images/blog/2026-10-23/jolly-rogue-2-boss.jpg" alt="Jolly Rogue boss fight on the merchant ship's deck: a big pirate captain in a pink coat and skull hat with his arms raised, a health bar labelled THE CAPTAIN along the bottom, and small sailing ships on the sea behind" style="width:100%;height:auto;border-radius:10px;">
+  <img src="/assets/images/blog/2026-10-23/jolly-rogue-2-boss.jpg" alt="Jolly Rogue boss fight on the merchant ship's deck: a big pirate captain in a pink coat and skull hat with his arms raised, a health bar labeled THE CAPTAIN along the bottom, and small sailing ships on the sea behind" style="width:100%;height:auto;border-radius:10px;">
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">The Captain, waiting at the end of the merchant ship. Every boss warns you before it strikes.</figcaption>
 </figure>
 

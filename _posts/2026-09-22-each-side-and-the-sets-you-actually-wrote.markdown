@@ -41,7 +41,7 @@ row, and the header counts each side against what was asked.
   <figcaption style="font-size:0.9rem;opacity:0.75;margin-top:0.4rem;">Targets per side, counted as you log. Do more than was asked and it says so rather than hiding it.</figcaption>
 </figure>
 
-Nothing about the maths changed. Your progression chart, the gap between your
+Nothing about the math changed. Your progression chart, the gap between your
 sides and your volume all still read what you logged, not what was planned.
 And an older copy of LIFT reads a new plan perfectly well — it just shows the
 sets without the sides, which is the right way to not understand something.
