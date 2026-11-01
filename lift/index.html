@@ -49,6 +49,30 @@
   <div class="card" id="today-training"></div>
   </div>
 
+  <!-- Weigh-ins are the `weights` map backups and Send to Coach already carry.
+       Photos are not: see progress.js. -->
+  <div class="panel">
+  <h2>Body weight</h2>
+  <div class="card" id="body-weight">
+    <p id="bw-summary"></p>
+    <canvas id="bw-chart" height="150" role="img" aria-label="Body weight over the last 90 days"></canvas>
+    <div id="bw-form" class="hidden">
+      <label for="bw-weight">Weight (lb)</label>
+      <input type="number" id="bw-weight" inputmode="decimal" step="any">
+      <p class="muted small">One weigh-in a day: logging again today replaces today's.</p>
+      <label for="bw-goal">Goal (lb), optional</label>
+      <input type="number" id="bw-goal" inputmode="decimal" step="any">
+      <p class="muted small">Drawn as a line on the chart. Leave it blank for none.</p>
+      <button class="wide" id="bw-save">Save</button>
+      <button class="wide ghost" id="bw-cancel">Cancel</button>
+    </div>
+    <div class="row" id="bw-actions">
+      <button class="ghost" id="bw-log">Log weight</button>
+      <button class="ghost" id="bw-photos">Photos</button>
+    </div>
+  </div>
+  </div>
+
   <div class="panel">
   <h2>Fuel so far today</h2>
   <div class="card" id="today-fuel"></div>
@@ -138,6 +162,27 @@
     <button class="wide ghost" id="backup-load">Restore from a backup file</button>
     <input type="file" id="backup-file" accept="application/json,.json" class="hidden">
     <p class="muted" id="backup-note"></p>
+    <!-- Training history in from another app, and out as a spreadsheet: files
+         you pick and keep, read and written here (workout-csv.js). -->
+    <button class="wide ghost" id="csv-import">Import from Strong, Hevy or FitNotes</button>
+    <input type="file" id="csv-file" accept=".csv,text/csv,text/plain" class="hidden">
+    <button class="wide ghost" id="csv-export">Export training as a spreadsheet (CSV)</button>
+    <div id="csv-review" class="card hidden">
+      <strong>Import training</strong>
+      <p id="csv-source" class="csvsource"></p>
+      <p id="csv-holds"></p>
+      <div id="csv-unit" class="hidden">
+        <label>Weights in this file are in</label>
+        <div class="chips" id="csv-unit-chips"></div>
+        <p class="muted small">This Strong file doesn't say. It is whichever unit Strong was
+          showing when you exported it.</p>
+      </div>
+      <p class="muted small">Days you already have training on in LIFT are left exactly as
+        they are, so importing the same file twice adds nothing the second time.</p>
+      <button class="wide" id="csv-do-import">Import</button>
+      <button class="wide ghost" id="csv-cancel">Cancel</button>
+    </div>
+    <p class="muted" id="csv-note" role="status"></p>
     <button class="wide ghost" id="watch-scan-open">Scan from watch</button>
     <div id="watch-scan" class="card hidden">
       <strong>Scan from watch</strong>
@@ -165,14 +210,17 @@
   <div id="cook-recipes">
     <div class="actions" id="cook-actions">
       <button class="wide" id="recipe-new">New recipe</button>
-      <button class="wide ghost" id="rc-open">Browse the catalogue</button>
+      <button class="wide ghost" id="rc-open">Browse the catalog</button>
       <button class="wide ghost" id="rp-open">Paste a recipe</button>
       <button class="wide ghost" id="rb-open">Send recipes from your browser</button>
     </div>
 
     <!-- What a "Send to LIFT" link said when it could not be read or carried no
          recipe (recipe-link.js). Nothing is filled in when this shows. -->
-    <p class="card hidden" id="rl-note" role="status"></p>
+    <div class="card hidden" id="rl-note" role="status">
+      <strong>Couldn't read that recipe</strong>
+      <p class="muted" id="rl-note-text"></p>
+    </div>
 
     <!-- Send recipes from your browser: the kit's "Send to LIFT" bookmarklet,
          bookmarklets.json's liftWeb. On a recipe page it reads the page's
@@ -220,12 +268,12 @@
     <!-- The bundled recipe catalogue (recipe-catalog.js, recipes.json), LIFT
          iPhone's RecipeCatalogView. Nothing is in the library until Add. -->
     <div id="rc-panel" class="hidden">
-      <h2 id="rc-title">Recipe catalogue</h2>
+      <h2 id="rc-title">Recipe catalog</h2>
       <div id="rc-browse">
         <input type="text" id="rc-query" inputmode="search" autocomplete="off"
-          placeholder="Search 600+ recipes" aria-label="Search the recipe catalogue">
+          placeholder="Search 600+ recipes" aria-label="Search the recipe catalog">
         <div id="rc-list" aria-live="polite"></div>
-        <button class="ghost" id="rc-credits-toggle" aria-expanded="false">Credits and licences</button>
+        <button class="ghost" id="rc-credits-toggle" aria-expanded="false">Credits and licenses</button>
         <div id="rc-credits" class="card hidden"></div>
         <button class="wide ghost" id="rc-done">Done</button>
       </div>
@@ -280,7 +328,7 @@
       <div><label for="r-f">Fat g</label><input type="number" id="r-f" inputmode="decimal"></div>
     </div>
     <div class="row">
-      <div><label for="r-fib">Fibre g</label><input type="number" id="r-fib" inputmode="decimal"></div>
+      <div><label for="r-fib">Fiber g</label><input type="number" id="r-fib" inputmode="decimal"></div>
     </div>
     <details class="more" id="r-more">
       <summary id="r-more-summary">More nutrients</summary>
@@ -490,6 +538,13 @@
   <div class="col">
   <h2>Outdoor</h2>
   <div id="outdoor-section"></div>
+
+  <!-- Counting, never grading: see progress.js. -->
+  <h2>Muscles this week</h2>
+  <div class="card" id="muscles-week"></div>
+
+  <h2>Your year</h2>
+  <div class="card" id="your-year"></div>
   </div>
   </div>
 </section>
@@ -524,6 +579,42 @@
   <button class="wide ghost" id="review-delete">Delete</button>
 </div>
 
+<!-- Progress photos. Kept in this browser only: never in a backup file, never
+     sent to a coach (progress.js). -->
+<div id="photos" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="photos-title">
+  <div class="overlayhead">
+    <div class="big" id="photos-title" tabindex="-1">Progress photos</div>
+    <button class="ghost" id="photos-done">Done</button>
+  </div>
+  <button class="wide" id="photos-add">Add photo</button>
+  <input type="file" id="photos-file" accept="image/*" class="hidden">
+  <p class="muted" id="photos-status" role="status"></p>
+  <button class="wide ghost hidden" id="photos-compare"></button>
+  <div class="photogrid" id="photos-grid"></div>
+  <p class="muted">Photos stay in this browser, on this device, in LIFT's own storage.
+    They are not in backup files and never go to a coach. Clearing this site's data
+    deletes them.</p>
+</div>
+
+<!-- Two photos one over the other, with a handle to slide between them. -->
+<div id="compare" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="compare-title">
+  <div class="overlayhead">
+    <div class="big" id="compare-title" tabindex="-1">Compare</div>
+    <button class="ghost" id="compare-done">Done</button>
+  </div>
+  <div class="compare" id="compare-frame">
+    <img id="compare-after" alt="">
+    <img id="compare-before" alt="">
+    <div class="compare-line" id="compare-line"></div>
+  </div>
+  <input type="range" id="compare-split" min="0" max="100" step="1" value="50"
+    aria-label="Before and after">
+  <div class="compare-pickers">
+    <label>Before <select id="compare-before-pick"></select></label>
+    <label>After <select id="compare-after-pick"></select></label>
+  </div>
+</div>
+
 <script src="nutrients.js"></script>
 <script src="foods.js"></script>
 <script src="food-amount.js"></script>
@@ -536,6 +627,8 @@
 <script src="set-types.js"></script>
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
+<script src="workout-csv.js"></script>
+<script src="progress.js"></script>
 <script src="road-food.js"></script>
 <script src="recipe-import.js"></script>
 <script src="recipe-link.js"></script>

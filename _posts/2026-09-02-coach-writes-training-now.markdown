@@ -22,7 +22,7 @@ One link carries the meals and the training together. Sending from Cook or from 
 
 ## You can send one thing now
 
-You don't have to book a day to hand something over. Every recipe and every workout has a **Send** button. That sends just that — a recipe to keep, or a programme to run when they like — and it lands in their app as something reusable instead of something scheduled. Starting a saved workout doesn't use it up.
+You don't have to book a day to hand something over. Every recipe and every workout has a **Send** button. That sends just that — a recipe to keep, or a program to run when they like — and it lands in their app as something reusable instead of something scheduled. Starting a saved workout doesn't use it up.
 
 Turns out "here's the plan" and "here's a thing you own now" are different sentences, and the app should be able to say both.
 
@@ -38,7 +38,7 @@ So both apps now ship with two databases, and they work with no signal at all:
 
 Both files live on your device. The food database is 634 KB, so it doesn't download until the first time you actually use it — no reason to spend that on someone who only tracks training.
 
-Open Food Facts is still there for branded stuff and barcodes. It's better at a tub of yoghurt; USDA is better at a chicken breast. There's a toggle.
+Open Food Facts is still there for branded stuff and barcodes. It's better at a tub of yogurt; USDA is better at a chicken breast. There's a toggle.
 
 ## Importing a recipe, and what it can't do
 
@@ -50,7 +50,7 @@ There is no open recipe database that carries nutrition. I looked properly. The 
 
 Which means it only prices what it can actually weigh. Grams, kilos, ounces, pounds — fine. "2 tbsp olive oil" and "a handful of spinach" are not weights, and turning them into weights means inventing a density and handing you a confident wrong number.
 
-So it doesn't. It tells you. Import a chilli with seventeen ingredients and it'll say it costed two of them and the total is short. Look the rest up in the same box, or type the macros in yourself. A gap you can see beats a total you can't trust.
+So it doesn't. It tells you. Import a chili with seventeen ingredients and it'll say it costed two of them and the total is short. Look the rest up in the same box, or type the macros in yourself. A gap you can see beats a total you can't trust.
 
 ## What I'd check if you're already using it
 
