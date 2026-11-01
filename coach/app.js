@@ -1402,10 +1402,10 @@ function renderSessions(client, unit) {
       block.appendChild(el('h3', null, 'Food'));
       const t = day.foodTotals;
       block.appendChild(el('div', 'setline',
-        `${num(t.calories)} kcal · ${t.proteinG}p / ${t.fatG}f / ${t.carbsG}c / ${t.fiberG} fibre`));
+        `${num(t.calories)} kcal · ${t.proteinG}p / ${t.fatG}f / ${t.carbsG}c / ${t.fiberG} fiber`));
       nutrientLines(block);
       block.appendChild(el('p', 'muted',
-        'Daily totals only — ask them to switch on itemised food in LIFT if you want the detail.'));
+        'Daily totals only — ask them to switch on itemized food in LIFT if you want the detail.'));
       body.appendChild(block);
     }
 
@@ -3571,6 +3571,12 @@ function renderTrainPlan() {
     : 'Build a workout first — the week is scheduled from them.';
   $('#tplan-send-card').classList.toggle('hidden', !workouts.length);
 
+  // Paper, for the client who wants it printed: shown when this client has
+  // something booked in the week on screen, a removed workout included.
+  const week = cookWeek();
+  $('#tplan-print').classList.toggle('hidden', !sessions.some(
+    (k) => k.clientId === trainClientId && week.includes(k.date)));
+
   const wrap = $('#tplan-days');
   wrap.innerHTML = '';
   if (!workouts.length) return;
@@ -3738,6 +3744,38 @@ $('#tplan-mail').onclick = async () => {
   if (!link) { alert('Nothing planned for this client yet.'); return; }
   mailPlan(trainClientId, link);
 };
+
+/* The week on screen, on paper: printout.js's lines in a container only print
+ * shows, then the browser's own print dialog, which offers every printer and
+ * Save as PDF. The document title is the file name that dialog suggests.
+ *
+ * Not a send: nothing is recorded, because a printout is not a plan the
+ * client's app received. */
+function printWeek(clientId) {
+  const client = clients.find((c) => c.id === clientId);
+  const week = cookWeek();
+  const days = CoachPrintout.days(week, clientId, sessions, workouts, exerciseSummary);
+  const clientName = client ? client.name : '';
+  const lines = CoachPrintout.lines(clientName, week[0], settings.name, days,
+    (key) => CoachPrintout.dayTitle(key));
+
+  const page = $('#printout');
+  page.innerHTML = '';
+  lines.forEach((line) => page.appendChild(cookEl('p', 'print-' + line.style, line.text)));
+
+  const title = document.title;
+  const done = () => {
+    document.body.classList.remove('printing');
+    document.title = title;
+    page.innerHTML = '';
+  };
+  window.addEventListener('afterprint', done, { once: true });
+  document.title = CoachPrintout.fileName(clientName, week[0]).replace(/\.pdf$/, '');
+  document.body.classList.add('printing');
+  window.print();
+}
+
+$('#tplan-print').onclick = () => printWeek(trainClientId);
 
 /* ---------------- ingredient lookup ----------------
  *
@@ -3967,7 +4005,7 @@ $('#rp-go').onclick = () => {
 
   const advice = {
     labelled: 'Split on the headings in the text — check it read them right.',
-    inferred: 'The text labelled one section and this worked out the rest, so check the division.',
+    inferred: 'The text labeled one section and this worked out the rest, so check the division.',
     unsorted: 'The text had no headings, so everything landed in Ingredients — cut any method steps out and paste them into Method.',
   }[parsed.split];
 
@@ -4047,7 +4085,7 @@ $('#rc-query').addEventListener('input', () => {
 });
 
 function showCatalogueList() {
-  $('#rc-title').textContent = 'Recipe catalogue';
+  $('#rc-title').textContent = 'Recipe catalog';
   $('#rc-browse').classList.remove('hidden');
   $('#rc-detail').classList.add('hidden');
 }
@@ -4060,7 +4098,7 @@ function renderCatalogueList() {
 
   if (!catalogue) {
     if (catalogueError) {
-      note.textContent = 'The recipe catalogue could not be opened. It is part of the '
+      note.textContent = 'The recipe catalog could not be opened. It is part of the '
         + 'app, so this is a connection that dropped before it was kept on this device '
         + `(${catalogueError.message}).`;
       const retry = cookEl('button', 'ghost wide', 'Try again');
@@ -4071,7 +4109,7 @@ function renderCatalogueList() {
       };
       list.appendChild(retry);
     } else {
-      note.textContent = 'Opening the catalogue…';
+      note.textContent = 'Opening the catalog…';
     }
     return;
   }

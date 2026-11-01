@@ -45,7 +45,7 @@
   /** The file's recipes, or a thrown error when it is not a catalogue. Rows
    *  without an id or a name are dropped rather than drawn as blanks. */
   function fromFile(raw) {
-    if (!raw || !Array.isArray(raw.recipes)) throw new Error('not a recipe catalogue');
+    if (!raw || !Array.isArray(raw.recipes)) throw new Error('not a recipe catalog');
     return raw.recipes.filter(function (r) {
       return r && typeof r.id === 'string' && typeof r.name === 'string';
     }).map(function (r) {

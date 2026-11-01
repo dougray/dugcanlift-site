@@ -15,7 +15,7 @@ Except it didn't even do that reliably. **Bodybuilding and Powerlifting were byt
 Focus now decides three things beyond which fields it shows you:
 
 - **What a new set starts at.** Ten reps under Bodybuilding, five under Powerlifting. A hypertrophy block and a strength block are different training, and now they start differently.
-- **Which number summarises a session.** Volume for bodybuilding. `top 245 x 5` for powerlifting. Working time for CrossFit. Distance and time for Hyrox and endurance.
+- **Which number summarizes a session.** Volume for bodybuilding. `top 245 x 5` for powerlifting. Working time for CrossFit. Distance and time for Hyrox and endurance.
 - **What the progression chart plots.** This was the worst of it. The chart always drew top weight and estimated 1RM, whatever you'd logged — so an endurance user got two dashes and a flat line for a feature that was, in principle, for them.
 
 Every one of those falls back to a plain set count when a session holds nothing of that kind, so an endurance focus over a weights-only day reads "2 sets" rather than "2 sets — 0 m". A zero you never logged is worse than no number at all.
@@ -45,7 +45,7 @@ That second one is the kind of bug that doesn't crash anything and just quietly 
 
 **The iPhone apps were letterboxed** — black bands top and bottom, using neither the full height of the screen nor the space around the notch. That's what iOS does to an app with no launch screen declared, and both had a build setting that looked like it declared one but doesn't when the app supplies its own Info.plist. One line each.
 
-**The native apps didn't look like the browser version.** The palette they share had drifted: card surfaces were a cool grey where the web and Android use a warm brown. One wrong token, every card, both iPhone apps. The Android side had been right all along, which is exactly why Android looked closer to the web than the iPhone did.
+**The native apps didn't look like the browser version.** The palette they share had drifted: card surfaces were a cool gray where the web and Android use a warm brown. One wrong token, every card, both iPhone apps. The Android side had been right all along, which is exactly why Android looked closer to the web than the iPhone did.
 
 ## Getting them
 

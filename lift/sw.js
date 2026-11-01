@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v58';
+const CACHE = 'lift-v62';
 
 const SHELL = [
   '/lift/',
@@ -26,6 +26,8 @@ const SHELL = [
   '/lift/set-types.js',
   '/lift/plan-log.js',
   '/lift/outdoor.js',
+  '/lift/workout-csv.js',
+  '/lift/progress.js',
   '/lift/road-food.js',
   '/lift/recipe-import.js',
   '/lift/recipe-link.js',
