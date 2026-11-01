@@ -13,7 +13,7 @@ const KEY = { goal: 'lift.goal', food: 'lift.food', workouts: 'lift.workouts', s
               training: 'lift.training', templates: 'lift.templates',
               routines: 'lift.routines', outdoor: 'lift.outdoor', recording: 'lift.recording',
               perSide: 'lift.perSide', roadRecent: 'lift.roadRecent',
-              roadPicks: 'lift.roadPicks' };
+              roadPicks: 'lift.roadPicks', bodyWeightGoal: 'lift.bodyWeightGoalLb' };
 
 function load(key, fallback) {
   try {
@@ -656,6 +656,7 @@ function renderHome() {
   statline(wt, 'Total sets', String(weekSessions.reduce((t, s) => t + sessionSets(s), 0)));
 
   renderSteps();
+  renderBodyWeight();
   renderProgress();
   renderWeekFuel(week);
 }
@@ -917,6 +918,417 @@ function renderWeekFuel(week) {
 }
 
 $('#open-calc').onclick = () => showTab('calc');
+
+/* ---------------- progress: body weight, photos, muscles, your year ----------------
+ *
+ * LIFT iOS's Home -> Body weight and Train -> Muscles this week and Your year
+ * (lift-ios #60), in the same words. The rules are progress.js, which node
+ * tests; this is the drawing. Counting, never grading. */
+
+/* The reader's first day of the week, as the iPhone takes it from the reader's
+ * calendar. Where the browser cannot say (Firefox has no week info), Monday. */
+const firstWeekday = (() => {
+  try {
+    const loc = new Intl.Locale(navigator.language || 'en-US');
+    const info = typeof loc.getWeekInfo === 'function' ? loc.getWeekInfo() : loc.weekInfo;
+    if (info && info.firstDay >= 1 && info.firstDay <= 7) return info.firstDay % 7;
+  } catch (e) { /* fall through */ }
+  return 1;
+})();
+
+/* The goal is a preference about this screen, not a weigh-in: its own key,
+ * not in the backup, as iOS keeps it in UserDefaults. Pounds, like `weights`. */
+const bodyWeightGoal = () => {
+  const v = Number(load(KEY.bodyWeightGoal, 0));
+  return isFinite(v) && v > 0 ? v : 0;
+};
+
+function renderBodyWeight() {
+  const pts = LiftProgress.bodyWeight.points(weights, shiftDate(todayKey(), -90));
+  const goalLb = bodyWeightGoal();
+  const line = LiftProgress.bodyWeight.summary(pts, goalLb);
+  const summary = $('#bw-summary');
+  summary.textContent = line || 'No weigh-ins in the last 90 days.';
+  summary.className = line ? '' : 'muted';
+  const canvas = $('#bw-chart');
+  canvas.classList.toggle('hidden', pts.length < 2);
+  if (pts.length > 1) requestAnimationFrame(() => drawWeightChart(canvas, pts, goalLb));
+}
+
+/* The last 90 days as a line on a time axis, the scale fitted to the weights
+ * rather than starting at zero, and the goal as a dashed line when one is set.
+ * drawChart cannot do this: it spaces points evenly and starts at zero, where
+ * a 5 lb change in 190 is a flat line. */
+function drawWeightChart(canvas, pts, goalLb) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth;
+  canvas.drawnWidth = w;
+  canvas.redraw = () => drawWeightChart(canvas, pts, goalLb);
+  if (!canvas.dataset.h) canvas.dataset.h = canvas.getAttribute('height') || '150';
+  const h = parseInt(canvas.dataset.h, 10);
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  const values = pts.map((p) => p.lb).concat(goalLb > 0 ? [goalLb] : []);
+  let lo = Math.min(...values);
+  let hi = Math.max(...values);
+  const margin = Math.max((hi - lo) * 0.1, 1);
+  lo -= margin;
+  hi += margin;
+  const day = (key) => {
+    const [y, m, d] = key.split('-').map(Number);
+    return Date.UTC(y, m - 1, d) / 86400000;
+  };
+  const first = day(pts[0].key);
+  const span = Math.max(day(pts[pts.length - 1].key) - first, 1);
+
+  ctx.font = '12px -apple-system, sans-serif';
+  const label = (v) => LiftProgress.bodyWeight.numberText(Math.round(v));
+  const left = Math.ceil(Math.max(ctx.measureText(label(hi)).width, ctx.measureText(label(lo)).width)) + 8;
+  const top = 8;
+  const bottom = h - 20;
+  const right = w - 6;
+  const x = (key) => left + ((day(key) - first) / span) * (right - left);
+  const y = (v) => bottom - ((v - lo) / (hi - lo)) * (bottom - top);
+
+  const muted = LiftAppearance.cssColor('var(--muted)');
+  ctx.strokeStyle = LiftAppearance.cssColor('var(--rule)');
+  ctx.lineWidth = 1;
+  [lo, (lo + hi) / 2, hi].forEach((v) => {
+    ctx.beginPath();
+    ctx.moveTo(left, y(v));
+    ctx.lineTo(right, y(v));
+    ctx.stroke();
+  });
+  ctx.fillStyle = muted;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(label(hi), 0, y(hi));
+  ctx.fillText(label(lo), 0, y(lo));
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(shortLabel(pts[0].key), left, h - 4);
+  const lastLabel = shortLabel(pts[pts.length - 1].key);
+  ctx.fillText(lastLabel, right - ctx.measureText(lastLabel).width, h - 4);
+
+  if (goalLb > 0) {
+    ctx.save();
+    ctx.strokeStyle = muted;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(left, y(goalLb));
+    ctx.lineTo(right, y(goalLb));
+    ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = muted;
+    ctx.font = '11px -apple-system, sans-serif';
+    ctx.fillText('Goal', left + 2, y(goalLb) - 4);
+  }
+
+  const accent = LiftAppearance.cssColor('var(--accent)');
+  ctx.strokeStyle = accent;
+  ctx.fillStyle = accent;
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  pts.forEach((p, i) => (i ? ctx.lineTo(x(p.key), y(p.lb)) : ctx.moveTo(x(p.key), y(p.lb))));
+  ctx.stroke();
+  pts.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(x(p.key), y(p.lb), 3, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+const bwOneDecimal = (v) => String(Math.round(v * 10) / 10);
+
+function showWeightForm(open) {
+  $('#bw-form').classList.toggle('hidden', !open);
+  $('#bw-actions').classList.toggle('hidden', open);
+  if (!open) return;
+  $('#bw-weight').value = '';
+  const goalLb = bodyWeightGoal();
+  $('#bw-goal').value = goalLb > 0 ? bwOneDecimal(goalLb) : '';
+  $('#bw-weight').focus();
+}
+
+$('#bw-log').onclick = () => showWeightForm(true);
+$('#bw-cancel').onclick = () => showWeightForm(false);
+$('#bw-save').onclick = () => {
+  // One weigh-in a day: logging again today replaces today's.
+  const weight = LiftProgress.bodyWeight.typed($('#bw-weight').value);
+  if (weight) {
+    weights[todayKey()] = weight;
+    save(KEY.weights, weights);
+  }
+  // Blank is no goal, as iOS stores 0 for none.
+  const goalLb = LiftProgress.bodyWeight.typed($('#bw-goal').value);
+  if (goalLb) save(KEY.bodyWeightGoal, goalLb);
+  else { try { localStorage.removeItem(KEY.bodyWeightGoal); } catch (e) { /* nothing kept */ } }
+  showWeightForm(false);
+  render();
+};
+
+/* ---- progress photos ----
+ *
+ * In this browser's IndexedDB (progress.js), never in localStorage, a backup
+ * or a coach's link. Picked with a plain file input, which on a phone also
+ * offers the camera; the page itself asks for no camera permission. Each is
+ * re-encoded by drawing it onto a canvas, which keeps the picture and leaves
+ * every byte of its metadata behind, location included. */
+const photoStore = (() => {
+  try { return window.indexedDB ? LiftProgress.photos.store(window.indexedDB) : null; } catch (e) { return null; }
+})();
+let photoList = [];
+const photoUrls = new Map();
+let comparing = null;
+
+const photoDay = (p) => LiftProgress.photos.day(p.dayKey);
+
+async function refreshPhotos() {
+  try {
+    photoList = photoStore ? await photoStore.list() : [];
+  } catch (e) {
+    photoList = [];
+  }
+  const keep = new Set(photoList.map((p) => p.id));
+  photoUrls.forEach((url, id) => {
+    if (!keep.has(id)) { URL.revokeObjectURL(url); photoUrls.delete(id); }
+  });
+  photoList.forEach((p) => { if (!photoUrls.has(p.id)) photoUrls.set(p.id, URL.createObjectURL(p.blob)); });
+  renderPhotos();
+}
+
+function renderPhotos() {
+  $('#photos-status').textContent = photoStore ? '' : "This browser can't keep photos.";
+  $('#photos-add').disabled = !photoStore;
+  const compare = $('#photos-compare');
+  if (photoList.length >= 2) {
+    const first = photoList[0];
+    const last = photoList[photoList.length - 1];
+    compare.textContent = `Compare ${photoDay(first)} with ${photoDay(last)}`;
+    compare.onclick = () => openCompare(first.id, last.id);
+    compare.classList.remove('hidden');
+  } else {
+    compare.classList.add('hidden');
+  }
+  const grid = $('#photos-grid');
+  grid.innerHTML = '';
+  photoList.forEach((p) => {
+    const cell = el('figure', 'photo');
+    const img = el('img');
+    img.src = photoUrls.get(p.id);
+    img.alt = `Photo from ${photoDay(p)}`;
+    cell.appendChild(img);
+    cell.appendChild(el('figcaption', 'muted small', photoDay(p)));
+    // A button rather than iOS's long-press menu: a browser has no menu of
+    // its own to put it in, and a long press there means "save image".
+    const del = el('button', 'ghost small', 'Delete');
+    del.setAttribute('aria-label', `Delete the photo from ${photoDay(p)}`);
+    del.onclick = async () => {
+      if (!confirm("Delete this photo?\n\nIt is only in this browser, so this can't be undone.")) return;
+      try { await photoStore.remove(p.id); } catch (e) { /* listed again below */ }
+      await refreshPhotos();
+    };
+    cell.appendChild(del);
+    grid.appendChild(cell);
+  });
+}
+
+/** A picture file as a JPEG no longer than 2048 px on its long side. */
+async function reencodePhoto(file) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = new Image();
+    img.src = url;
+    await img.decode();
+    // naturalWidth and drawImage both follow the file's own orientation.
+    const size = LiftProgress.photos.scaledSize(img.naturalWidth, img.naturalHeight);
+    if (!size.width || !size.height) throw new Error('no picture');
+    const canvas = document.createElement('canvas');
+    canvas.width = size.width;
+    canvas.height = size.height;
+    canvas.getContext('2d').drawImage(img, 0, 0, size.width, size.height);
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.8));
+    if (!blob) throw new Error('not encoded');
+    return blob;
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+function openPhotos() {
+  openModal($('#photos'), $('#photos-title'));
+  refreshPhotos();
+}
+
+function closePhotos() {
+  closeModal($('#photos'));
+  photoUrls.forEach((url) => URL.revokeObjectURL(url));
+  photoUrls.clear();
+  photoList = [];
+  $('#photos-grid').innerHTML = '';
+}
+
+$('#bw-photos').onclick = openPhotos;
+$('#photos-done').onclick = closePhotos;
+$('#photos-add').onclick = () => $('#photos-file').click();
+$('#photos-file').onchange = async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file || !photoStore) return;
+  try {
+    await photoStore.add(await reencodePhoto(file), todayKey(), uid());
+  } catch (err) {
+    alert("That photo couldn't be added.");
+  }
+  await refreshPhotos();
+};
+
+function openCompare(beforeId, afterId) {
+  comparing = { before: beforeId, after: afterId };
+  $('#compare-split').value = '50';
+  openModal($('#compare'), $('#compare-title'));
+  renderCompare();
+}
+
+function renderCompare() {
+  if (!comparing) return;
+  ['before', 'after'].forEach((side) => {
+    const pick = $(`#compare-${side}-pick`);
+    pick.innerHTML = '';
+    photoList.forEach((p) => {
+      const option = el('option', null, photoDay(p));
+      option.value = p.id;
+      pick.appendChild(option);
+    });
+    pick.value = comparing[side];
+    pick.onchange = () => { comparing[side] = pick.value; renderCompare(); };
+    const photo = photoList.find((p) => p.id === comparing[side]);
+    const img = $(`#compare-${side}`);
+    img.src = photo ? photoUrls.get(photo.id) : '';
+    img.alt = photo ? `${side === 'before' ? 'Before' : 'After'}: ${photoDay(photo)}` : '';
+  });
+  showSplit();
+}
+
+function showSplit() {
+  const split = Number($('#compare-split').value);
+  // The before photo covers the left `split` percent; the after shows beside it.
+  $('#compare-before').style.clipPath = `inset(0 ${100 - split}% 0 0)`;
+  $('#compare-line').style.left = `calc(${split}% - 1px)`;
+  $('#compare-split').setAttribute('aria-valuetext', `${split} percent before`);
+}
+
+$('#compare-split').addEventListener('input', showSplit);
+(() => {
+  const frame = $('#compare-frame');
+  const follow = (ev) => {
+    const box = frame.getBoundingClientRect();
+    const f = Math.min(1, Math.max(0, (ev.clientX - box.left) / Math.max(box.width, 1)));
+    $('#compare-split').value = String(Math.round(f * 100));
+    showSplit();
+  };
+  frame.addEventListener('pointerdown', (ev) => {
+    frame.setPointerCapture(ev.pointerId);
+    follow(ev);
+  });
+  frame.addEventListener('pointermove', (ev) => {
+    if (frame.hasPointerCapture(ev.pointerId)) follow(ev);
+  });
+})();
+$('#compare-done').onclick = () => { comparing = null; closeModal($('#compare')); };
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.key !== 'Escape') return;
+  if (!$('#compare').classList.contains('hidden')) { ev.preventDefault(); $('#compare-done').click(); }
+  else if (!$('#photos').classList.contains('hidden')) { ev.preventDefault(); closePhotos(); }
+});
+
+/* ---- muscles this week ---- */
+
+let muscleIndex = null;
+
+function renderMusclesWeek() {
+  const card = $('#muscles-week');
+  if (!exerciseLibrary && !libraryError) {
+    // The library is the fallback that places a routine's exercises; counting
+    // before it arrives would call them unplaced for a moment.
+    card.innerHTML = '';
+    card.appendChild(el('p', 'muted', 'Loading the exercise library...'));
+    loadExerciseLibrary().then(() => { if (currentTab === 'train') renderMusclesWeek(); });
+    return;
+  }
+  if (!muscleIndex || muscleIndex.from !== exerciseLibrary) {
+    const lookup = LiftProgress.muscles.lookup(exerciseLibrary || []);
+    muscleIndex = { from: exerciseLibrary, lookup, all: LiftProgress.muscles.all(lookup) };
+  }
+  const result = LiftProgress.muscles.tally(
+    LiftProgress.muscles.loggedThisWeek(workouts, todayKey(), firstWeekday),
+    muscleIndex.lookup, muscleIndex.all);
+
+  card.innerHTML = '';
+  if (!result.trained.length) {
+    card.appendChild(el('p', 'muted', 'No working sets yet this week.'));
+  } else {
+    const most = result.trained[0].sets || 1;
+    result.trained.forEach((row) => {
+      const line = el('div', 'musclerow');
+      line.appendChild(el('span', 'musclename', titleCase(row.muscle)));
+      const track = el('span', 'muscletrack');
+      track.setAttribute('aria-hidden', 'true');
+      const fill = el('span', 'musclefill');
+      fill.style.width = `max(4px, ${(row.sets / most) * 100}%)`;
+      track.appendChild(fill);
+      line.appendChild(track);
+      const count = el('span', 'musclecount muted', String(row.sets));
+      count.setAttribute('aria-label', row.sets === 1 ? '1 set' : `${row.sets} sets`);
+      line.appendChild(count);
+      card.appendChild(line);
+    });
+  }
+  if (result.untrained.length && result.trained.length) {
+    card.appendChild(el('p', 'muted', 'No sets yet: ' + result.untrained.map(titleCase).join(', ')));
+  }
+  if (result.unplacedSets > 0) {
+    card.appendChild(el('p', 'muted', LiftProgress.muscles.unplacedText(result.unplacedSets)));
+  }
+}
+
+/* ---- your year ---- */
+
+function renderYear() {
+  const card = $('#your-year');
+  card.innerHTML = '';
+  const today = todayKey();
+  const counts = LiftProgress.year.setsByDay(workouts);
+  const weeks = LiftProgress.year.weeks(counts, today, 53, firstWeekday);
+  const total = LiftProgress.year.trainingDays(counts, today);
+  card.appendChild(el('p', 'muted', LiftProgress.year.text(total)));
+
+  const scroller = el('div', 'yearscroll');
+  const grid = el('div', 'yeargrid');
+  grid.setAttribute('role', 'img');
+  grid.setAttribute('aria-label', `Training days over the last year: ${total} ${total === 1 ? 'day' : 'days'}`);
+  weeks.forEach((week) => week.forEach((d) => {
+    grid.appendChild(el('i', d.isFuture ? 'sq future' : `sq l${d.level}`));
+  }));
+  scroller.appendChild(grid);
+  card.appendChild(scroller);
+
+  const key = el('div', 'yearkey muted small');
+  key.setAttribute('aria-hidden', 'true');
+  key.appendChild(el('span', null, 'Fewer sets'));
+  [0, 1, 2, 3].forEach((l) => key.appendChild(el('i', `sq l${l}`)));
+  key.appendChild(el('span', null, 'More'));
+  card.appendChild(key);
+  // Today is at the right-hand end; start there.
+  requestAnimationFrame(() => { scroller.scrollLeft = scroller.scrollWidth; });
+}
+
 
 /* ---------------- calculator ---------------- */
 
@@ -2636,6 +3048,8 @@ function renderTrain() {
   renderPlanWeek();
   renderRoutines();
   renderOutdoor();
+  renderMusclesWeek();
+  renderYear();
 
   const f = currentFocus();
   const out = $('#session-list');
