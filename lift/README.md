@@ -184,7 +184,10 @@ the count: **`setKinds`**, by position, `[null, null, "drop"]` for two straight
 sets and then a drop. Index 0 is always null, trailing nulls are trimmed, it is
 never longer than `targetSets`, and it is omitted when every set is straight,
 so a routine without kinds is stored and backed up byte for byte as before.
-Read leniently (`coach/BACKUP-FORMAT.md`). Starting the routine puts each kind
+The exercise's targets line then names them by number, from 1: "4 x 8 · 185
+lb · set 3 drop, set 4 rest-pause" (`routineSetKindsLine`) -- LIFT for
+Android's words, separators and numbering, the same on every LIFT build, and
+no clause at all when every set is straight. Read leniently (`coach/BACKUP-FORMAT.md`). Starting the routine puts each kind
 on the set laid out at that position, so the row reads "70 x 12 drop", and
 saving a workout as a routine keeps them -- except for a lift logged a side at
 a time, where a position is two sets. LIFT for Android stores the same field
@@ -288,6 +291,15 @@ pair, a link the bookmarklet itself wrote and what it decodes to; the port is
 checked against them under node's own `DecompressionStream`. Never regenerate
 them. `recipe-link.js` and `bookmarklets.json` are in `SHELL`, so **bump
 `CACHE` when either changes.**
+
+`parseIngredient` in `app.js` is one of four copies of the ingredient parser --
+Coach web's `coach/parser.js` and the iOS and Android kits are the others -- and
+all four must read the same line the same way. `fixtures/ingredient-lines.json`
+is `dugcanlift-kit/data/ingredient-lines.json`, the case table every one of them
+is tested against, written by hand from the rules in that repo's
+`data/README.md`; `ingredient-parser.test.mjs` runs it and checks the copy
+against `ingredient-lines.sha256`. Change a rule there first, then all four
+parsers, and copy both files over together; never edit them here.
 
 ## Watch import (`watch-scan.js`)
 
@@ -402,3 +414,67 @@ the plan was sent is not a broken row, and it reappears if the item does.
 
 Shown, never targeted, like saturated fat and the imbalance figure: a label in
 words, no colour, no score, and nothing anywhere about what you ate instead.
+
+## Training as CSV (`workout-csv.js`)
+
+Home -> Your data -> "Import from Strong, Hevy or FitNotes" and "Export
+training as a spreadsheet (CSV)". A port of LIFT iOS's `WorkoutCSV` (lift-ios
+#63), in the same words; `workout-csv.test.mjs` ports `WorkoutCSVTests` against
+the iPhone's own fixtures, `fixtures/csv-*.csv`, copied byte for byte. **Never
+regenerate them here.**
+
+**None of the three apps publishes its export format**, so the reader is strict:
+a file it can't place is refused, never half-read. Strong's semicolon layout says
+`Weight (kg)`; its comma layout names no unit, so the import panel asks and builds
+nothing until it is answered. `W` is a warm-up, `D` and `F` working sets, `Note`
+and `Rest Timer` rows not sets. Hevy says its unit in the header; FitNotes on every
+row, and its category becomes `primaryMuscle` on the exercise (except Cardio),
+which Muscles this week reads. Numbers are digits and a point only; times carry no
+zone and are read as local.
+
+**Pounds on the way in**, because every weight LIFT web stores is pounds: a pound
+figure is kept exactly, a kilogram one converted (`2.2046226218`) to two
+decimals. **Blank stays blank**: a column a set did not use -- empty, or the 0
+these apps write there -- is not recorded. **A day LIFT already has training on
+is left alone and counted**, never merged into, which also makes a second import
+of the same file add nothing. Two workouts on one day become one.
+
+The export is built in the browser and saved as a file: one row per set, always
+in kilograms (the file is the same shape on every build), with blanks left
+blank. Nothing is sent anywhere.
+## Progress: your year, muscles this week, body weight, photos (`progress.js`)
+
+A port of LIFT iOS's `ProgressRules.swift` and `ProgressPhotoStore` (lift-ios
+#60), in the same words; `progress.test.mjs` ports their tests case for case.
+**Counting, never grading**: an empty week is a column of empty squares, and
+"No sets yet" lists muscles with nothing said about them.
+
+- **Your year** (Train) is every day of the last 53 weeks as a square, its
+  level from that day's working sets in fixed steps (1-9, 10-19, 20 or more),
+  so a day reads the same next month. A warmup is not a working set; a drop or
+  rest-pause set is. Days after today draw as nothing, never as rest days. The
+  week starts on the reader's first weekday (`Intl.Locale` week info), Monday
+  where the browser cannot say.
+- **Muscles this week** (Train) counts working sets per primary muscle over the
+  calendar week holding today. The muscle comes from the logged exercise if it
+  carries one, then from `exercises.json` by name and equipment, then by name
+  alone -- the key is case-blind, because LIFT web stores the library's
+  "barbell" as "Barbell". What can't be placed is counted and said, never
+  guessed. A list with bars, not a body drawing: a drawing needs artwork LIFT
+  can license.
+- **Body weight** (Home) is the `weights` map -- one weigh-in a day, in pounds
+  -- that the calculator already wrote and backups and Send to Coach already
+  carry, so logging again today replaces today's. The chart is the last 90 days
+  on a time axis, fitted to the weights rather than starting at zero. The goal
+  is `lift.bodyWeightGoalLb`, a preference like `lift.perSide`, not in the
+  backup; none is no key.
+- **Progress photos** (Home -> Body weight -> Photos) are in this browser's
+  IndexedDB (`lift-photos`), **never in localStorage, never in a backup file,
+  never in a link to a coach**: a photo is megabytes, and a backup that quietly
+  grew by a gigabyte of pictures is one nobody can move. Picked with a plain
+  `<input type="file" accept="image/*">`, which on a phone also offers the
+  camera; the page asks for no permission. Each is redrawn onto a canvas at no
+  more than 2048 px on its long side and kept as a JPEG, which leaves every
+  byte of the original's metadata behind, location included. The screen says
+  in its own words that photos stay in this browser. A before/after view lays
+  one over the other with a slider.

@@ -45,7 +45,7 @@
   /* Reads recipes.json. Rows without an id or a name are dropped rather than
    * shown as blanks; everything else is kept as the file has it. */
   function parse(raw) {
-    if (!raw || !Array.isArray(raw.recipes)) throw new Error('not a recipe catalogue');
+    if (!raw || !Array.isArray(raw.recipes)) throw new Error('not a recipe catalog');
     return raw.recipes.filter(function (r) {
       return r && typeof r.id === 'string' && text(r.name);
     }).map(function (r) {
