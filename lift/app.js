@@ -3337,12 +3337,17 @@ function routineRow(routine, button) {
   return row;
 }
 
-/* "3 x 10", "3 sets", "1 set · 45s": what a routine exercise lays out. */
+/* "3 x 10", "3 sets", "1 set · 45s": what a routine exercise lays out --
+ * then its drop and rest-pause sets, by number: "4 x 8 · 185 lb · set 3 drop,
+ * set 4 rest-pause" (LiftSetTypes.routineSetKindsLine, LIFT for Android's
+ * words). */
 function routineTargets(e) {
   const count = Math.max(e.targetSets || 0, 1);
   const parts = [e.targetReps != null ? `${count} x ${e.targetReps}` : `${count} ${count === 1 ? 'set' : 'sets'}`];
   if (e.targetWeightLb != null) parts.push(`${e.targetWeightLb} lb`);
   if (e.targetDurationSec != null) parts.push(formatSet({ durationSec: e.targetDurationSec }));
+  const kinds = LiftSetTypes.routineSetKindsLine(e);
+  if (kinds) parts.push(kinds);
   return parts.join(' \u00b7 ');
 }
 
@@ -4997,7 +5002,7 @@ $('#rp-go').onclick = () => {
 
   const advice = {
     labelled: 'Split on the headings in the text — check it read them right.',
-    inferred: 'The text labelled one section and this worked out the rest, so check the division.',
+    inferred: 'The text labeled one section and this worked out the rest, so check the division.',
     unsorted: 'The text had no headings, so everything landed in Ingredients — cut any method steps out and paste them into Method.',
   }[parsed.split];
 
@@ -5080,9 +5085,8 @@ async function receiveRecipeLink() {
   showTab('cook');
 
   if (!recipe) {
-    const note = $('#rl-note');
-    note.textContent = link ? RECIPE_LINK_NO_RECIPE : RECIPE_LINK_UNREADABLE;
-    note.classList.remove('hidden');
+    $('#rl-note-text').textContent = link ? RECIPE_LINK_NO_RECIPE : RECIPE_LINK_UNREADABLE;
+    $('#rl-note').classList.remove('hidden');
     return;
   }
 
@@ -5219,7 +5223,7 @@ function openRecipeCatalog() {
   catalogSelected = null;
   $('#rc-query').value = '';
   $('#rc-credits').classList.add('hidden');
-  $('#rc-credits-toggle').textContent = 'Credits and licences';
+  $('#rc-credits-toggle').textContent = 'Credits and licenses';
   $('#rc-credits-toggle').setAttribute('aria-expanded', 'false');
   renderRecipeCatalog();
   $('#rc-query').focus();
@@ -5239,7 +5243,7 @@ function catalogCard() {
 
 function renderRecipeCatalog() {
   const detail = !!catalogSelected;
-  $('#rc-title').textContent = detail ? 'Add recipe' : 'Recipe catalogue';
+  $('#rc-title').textContent = detail ? 'Add recipe' : 'Recipe catalog';
   $('#rc-browse').classList.toggle('hidden', detail);
   $('#rc-detail').classList.toggle('hidden', !detail);
   if (detail) renderCatalogDetail(catalogSelected);
@@ -5253,7 +5257,7 @@ function renderCatalogList() {
 
   if (catalogError && !catalogRecipes) {
     const card = catalogCard();
-    card.appendChild(el('p', 'muted', 'The recipe catalogue could not be opened.'));
+    card.appendChild(el('p', 'muted', 'The recipe catalog could not be opened.'));
     list.appendChild(card);
     return;
   }
@@ -5419,7 +5423,7 @@ $('#rc-query').addEventListener('input', () => {
 $('#rc-credits-toggle').onclick = () => {
   const box = $('#rc-credits');
   const open = box.classList.toggle('hidden') === false;
-  $('#rc-credits-toggle').textContent = open ? 'Hide credits' : 'Credits and licences';
+  $('#rc-credits-toggle').textContent = open ? 'Hide credits' : 'Credits and licenses';
   $('#rc-credits-toggle').setAttribute('aria-expanded', String(open));
 };
 
