@@ -2923,12 +2923,17 @@ function routineRow(routine, button) {
   return row;
 }
 
-/* "3 x 10", "3 sets", "1 set · 45s": what a routine exercise lays out. */
+/* "3 x 10", "3 sets", "1 set · 45s": what a routine exercise lays out --
+ * then its drop and rest-pause sets, by number: "4 x 8 · 185 lb · set 3 drop,
+ * set 4 rest-pause" (LiftSetTypes.routineSetKindsLine, LIFT for Android's
+ * words). */
 function routineTargets(e) {
   const count = Math.max(e.targetSets || 0, 1);
   const parts = [e.targetReps != null ? `${count} x ${e.targetReps}` : `${count} ${count === 1 ? 'set' : 'sets'}`];
   if (e.targetWeightLb != null) parts.push(`${e.targetWeightLb} lb`);
   if (e.targetDurationSec != null) parts.push(formatSet({ durationSec: e.targetDurationSec }));
+  const kinds = LiftSetTypes.routineSetKindsLine(e);
+  if (kinds) parts.push(kinds);
   return parts.join(' \u00b7 ');
 }
 
