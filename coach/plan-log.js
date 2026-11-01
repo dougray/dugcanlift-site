@@ -728,7 +728,7 @@
    * for an entry the client's app recorded with no slot.
    */
   function foodContext(food) {
-    if (food.state === 'totals') return 'Food logged that day, not itemised';
+    if (food.state === 'totals') return 'Food logged that day, not itemized';
     if (food.state === 'none') return 'No food logged that day';
     var loose = food.items.filter(function (e) { return !e.meal; }).length;
     return plural(food.items.length, 'food', 'foods') + ' logged that day'
