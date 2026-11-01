@@ -600,7 +600,7 @@ test('a client who sent totals and not items gets no slot verdict at all', () =>
   // a fact Coach does not have.
   const r = runMeals([recipe('Beef Chilli')], [meal('2026-10-12', DINNER, 0)],
     { '2026-10-12': totalsOnly });
-  assert.equal(day(r, 0).foodContext, 'Food logged that day, not itemised');
+  assert.equal(day(r, 0).foodContext, 'Food logged that day, not itemized');
   assert.equal(day(r, 0).meals[0].logged, null);
   assert.equal(PlanLog.lines(r).join(' ').includes('Nothing logged'), false);
 });
