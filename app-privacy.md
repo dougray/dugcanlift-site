@@ -63,8 +63,9 @@ Health Connect or Apple Health.
   background ("Allow all the time") location. GPS starts when you start a
   recording and stops when you stop it. A recording carries on if your phone
   locks or you switch apps because it runs as a foreground service, shown as
-  the ongoing "Recording your route" notification — which is what the
-  notifications permission is for.
+  the ongoing "Recording your route" notification. That is one of the two
+  things the notifications permission is for; the other is the rest timer
+  (see Notifications, below).
 - **iPhone** asks for location only while you use the app, and never for
   "Always". A recording you start keeps going with the phone locked in your
   pocket, and iOS shows that LIFT is using your location while it does. GPS
@@ -134,14 +135,22 @@ you choose to send.
   them: those remembered foods stay on your phone. LIFT doesn't send them
   anywhere; they go into a backup file only when you save one.
 
-## Notifications (iPhone)
+## Notifications
 
-The iPhone app asks to send notifications the first time a rest between sets
-starts in a live session, and uses them for one thing: telling you the rest is
-over, including with your phone locked. The notification is scheduled on the
-phone, for a time on the phone; nothing is sent to or from anywhere. Say no and
-the rest timer still counts down on screen and on the lock screen; only the
-alert at the end is missing.
+- **iPhone** asks to send notifications the first time a rest between sets
+  starts in a live session, and uses them for one thing: telling you the rest
+  is over, including with your phone locked. The notification is scheduled on
+  the phone, for a time on the phone; nothing is sent to or from anywhere. Say
+  no and the rest timer still counts down on screen and on the lock screen;
+  only the alert at the end is missing.
+- **Android** never asks for notifications for the rest timer. If you have
+  already allowed them, for recording a route, a rest between sets in a live
+  session shows its countdown as an ongoing notification, and a second one
+  says the rest is over when LIFT is not on screen. Both are made on the phone,
+  for a time on the phone; nothing is sent to or from anywhere. If you have not
+  allowed notifications, the countdown still runs on screen.
+- **The web app** never asks to send notifications. When a rest ends, the page
+  says so and, where the browser allows it, vibrates the phone.
 
 ## Progress photos (iPhone)
 
