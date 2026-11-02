@@ -778,6 +778,148 @@ button.roadchain .muted { margin: 2px 0 0; }
 .roadtraytext .muted { margin: 0 0 2px; }
 .roadtray button { padding: 10px 18px; }
 
+/* ---------------- live session ----------------
+   live-session.js and plates.js. The done tick sits between a set and its x;
+   the rest banner is fixed to the foot of the window, above the home
+   indicator, and main makes room for it while it is up. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.card.live { box-shadow: inset 0 0 0 1px var(--accent); }
+
+.liverow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+.liverow button { min-height: 44px; }
+.livelabel { color: var(--accent-text); font-weight: 600; font-size: 15px; }
+.livelabel::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 1px;
+}
+
+.entry .tick {
+  flex: 0 0 auto;
+  background: none;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.entry .tick::before {
+  content: '';
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+}
+.entry .tick.on::before {
+  content: '\2713';
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.entry .tick:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 50%; }
+
+.plateline { color: var(--muted); font-size: 14px; margin-top: 2px; overflow-wrap: anywhere; }
+
+.restbanner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 672px) {
+  .restbanner { bottom: 12px; border: 1px solid var(--rule); border-radius: 12px; padding-bottom: 10px; }
+}
+.restbanner.over { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.restwords { flex: 1; min-width: 0; }
+.resthead { font-size: 14px; color: var(--muted); }
+.restbanner.over .resthead { color: var(--on-accent); }
+.restclock { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.restnext {
+  font-size: 17px;
+  font-weight: 700;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.restbuttons { display: flex; gap: 4px; flex: 0 0 auto; }
+.restbtn {
+  background: none;
+  color: var(--accent-text);
+  padding: 8px 6px;
+  min-width: 44px;
+  min-height: 44px;
+  font-variant-numeric: tabular-nums;
+}
+.restbanner.over .restbtn { color: var(--on-accent); }
+.restbtn:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; }
+body.resting main { padding-bottom: 140px; }
+
+/* Rest between sets, and a plate's pairs: a label, its value, and - / +. */
+.stepperrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+}
+.stepperlabel { flex: 1; min-width: 0; }
+.steppervalue { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+button.stepbtn { padding: 0; min-width: 44px; min-height: 44px; font-size: 20px; line-height: 1; }
+.plates .platehead { font-size: 13px; letter-spacing: 1.2px; color: var(--muted); margin: 12px 0 4px; font-weight: 600; }
+label.platerow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  min-height: 52px;
+  font-size: inherit;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--text);
+}
+.plateinput { display: flex; align-items: center; gap: 6px; }
+.plateinput input[type=number] { width: 88px; padding: 8px 10px; text-align: right; }
+.plateinput .muted { margin: 0; }
+
 /* ---------------- large screens ----------------
  *
  * Everything above is the phone, and nothing below changes it: every rule here
