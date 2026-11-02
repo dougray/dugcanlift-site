@@ -116,6 +116,8 @@ no map service involved.
   finish recording one.
 
 **The web app and Wear OS** do not use Health Connect or Apple Health at all.
+The Wear OS watch's heart rate comes from its own sensor, as described under
+The watch apps.
 The web app's steps are the numbers you type in.
 
 Health data LIFT reads stays on your device and is never used for advertising.
@@ -275,9 +277,29 @@ connection, and the iPhone sends the watch your recent foods so they are quick
 to pick. The watch app makes no network requests of its own. It can also show
 your food log as QR codes for the web app to scan.
 
-**Wear OS.** Asks for no permissions and makes no network requests. Food you
-log is kept on the watch and shown as QR codes when you choose to export it;
-the LIFT web app reads them with the camera, as described above.
+**Wear OS.** Makes no network requests: the watch app has no internet
+permission at all.
+
+- **Food** you log is kept on the watch and shown as QR codes when you choose to
+  export it; the LIFT web app reads them with the camera, as described above.
+- **LIFT Link** pairs the watch with LIFT for Android, if you choose to, from
+  the Watch card on the phone's Home screen. The two then talk directly over an
+  encrypted Bluetooth connection, with no server, no account and nothing else:
+  the day's workout goes to the watch (exercises, sets, target weights and your
+  last numbers for each), and sessions you finish on the watch come back into
+  your log on the phone. For this, both ask for the Nearby devices (Bluetooth)
+  permission. The watch never searches for other devices; it only waits for
+  your phone. The phone searches once, for LIFT's own watch app, to pair, and
+  that search is declared never to be used to work out where you are. On
+  Android 11 and older, Android itself requires location permission for any
+  Bluetooth search; LIFT asks for nothing new there, because route recording
+  already uses that permission.
+- **Heart rate** is read from the watch's own sensor during a session you run
+  on the watch, to show it on screen. It is not saved and not sent to the
+  phone. The watch asks for the Body sensors permission, or Heart rate on Wear
+  OS 6 and later; say no and the session runs without it.
+- **Vibrate** is the buzz at the end of a rest. Android grants it when you
+  install; it asks you nothing.
 
 ## Analytics, advertising, and tracking
 
