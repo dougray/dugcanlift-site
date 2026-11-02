@@ -108,9 +108,10 @@ no map service involved.
 **Apple Watch.**
 
 - *Reads:* your heart rate and active energy, only while a strength session is
-  running on the watch, to show your heart rate there. When the session ends,
-  its average and highest heart rate are passed to LIFT on your paired iPhone,
-  where they stay.
+  running on the watch, to show your heart rate there. The watch also keeps
+  the highest heart rate around each set, with the set. When the session ends,
+  those figures and the session's average and highest heart rate are passed to
+  LIFT on your paired iPhone with the session, where they stay.
 - *Writes:* a strength session, as a workout, when you finish it on the watch;
   an outdoor activity, as a workout with its distance and route, when you
   finish recording one.
@@ -295,8 +296,9 @@ permission at all.
   Bluetooth search; LIFT asks for nothing new there, because route recording
   already uses that permission.
 - **Heart rate** is read from the watch's own sensor during a session you run
-  on the watch, to show it on screen. It is not saved and not sent to the
-  phone. The watch asks for the Body sensors permission, or Heart rate on Wear
+  on the watch, to show it on screen. The watch keeps only the highest heart
+  rate around each set and the session's average and highest, and if you use
+  LIFT Link they go to LIFT on your phone with the session. The watch asks for the Body sensors permission, or Heart rate on Wear
   OS 6 and later; say no and the session runs without it.
 - **Vibrate** is the buzz at the end of a rest. Android grants it when you
   install; it asks you nothing.
