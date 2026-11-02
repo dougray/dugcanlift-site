@@ -195,6 +195,81 @@ under the same spelling. Nothing reaches the coach: SHARE-FORMAT carries no set
 type. `set-types.js` is in `sw.js`'s `SHELL`, so **bump `CACHE` when it
 changes.**
 
+## Live session (`live-session.js`, `plates.js`)
+
+A port of LIFT iPhone's live session tools (dugcanlift-lift-ios#58, and its
+`SessionRest` for set types), rule for rule and string for string. A live
+session is a **mode of a workout on Train**, not a page of its own:
+
+- **Start live session** at the foot of a workout dated today. The card is
+  outlined while it is live and says **Live session**, with **End**. A day log
+  is complete without ever starting one. One workout is live at a time.
+- **Each set gets a done tick.** Ticking starts a rest of **Rest between
+  sets** (Home → Training settings; 90 seconds unless changed, 30 to 300 in
+  steps of 15, iOS's stepper). No plan format carries a rest, so the setting is
+  the only length there is. The next tick starts a fresh rest; unticking or
+  deleting the set that started it takes it back; End ends it.
+- **The rest follows the round** (`LiftLiveSession.after`, iOS's
+  `SessionRest.after`): round by round across a superset or circuit, skipping a
+  member that has run out. Inside a round, a tick starts no rest and the banner
+  says "Next: Seated Cable Rows"; the round's last tick starts the full rest.
+  Otherwise the next set not ticked decides: a drop set is no rest and "Drop
+  set next", rest-pause is 15 seconds (fixed). A tick with no rest ends a rest
+  still running.
+- **The banner** sits at the foot of Train: "Rest" and the time left, with
+  −15 / +15 / Skip; then **Rest over** and "Back to Barbell Squat (barbell)",
+  in the accent, with Done, and the phone vibrates (`navigator.vibrate`, where
+  the browser has it). "Rest over" goes by itself two minutes later.
+- **Plate math** (`plates.js`, iOS's `PlateMath`): under each set of a lift on
+  a barbell, EZ bar, trap bar or Smith machine, "Per side: 45 · 25", or "Your
+  plates make 225 lb, 2 short. Per side: 45 · 45" when the rack cannot make it
+  exactly. The fewest plates, then the heaviest, from what is owned -- not
+  greedy. **Plates and bars** in Training settings holds the bar weights and
+  the pairs of each plate, with "Reset to a standard gym".
+- **The screen stays on** while a session is live (**Keep the screen on**, on
+  by default), through the same Screen Wake Lock `holdScreenOn` takes for an
+  outdoor recording. One lock serves both and is let go only when neither
+  wants it (`syncScreenHold`); it is taken back on `visibilitychange`, and a
+  session nobody ended stops holding it eight hours after it started.
+
+**Time is an end time.** A rest is stored as `{ startedAt, endsAt }` under
+`lift.rest`, and every figure on screen is worked out from `endsAt` and the
+clock; the one-second interval only redraws. So a tab brought back from the
+background, or reloaded, reads right on its first frame, and a rest over for
+more than two minutes is dropped on the way back rather than greeting someone
+the next morning.
+
+What differs from iPhone, because this build's platform and data do:
+
+- **No notification and no lock screen.** No permission is asked and nothing is
+  pushed: the countdown is on the page, and the vibration and the banner are
+  the alert. The banner shows on Train, where iOS's is; the vibration comes
+  on whichever tab is up, as iOS's alert sound does inside the app.
+- **The tick is not on the set.** iOS's tick is the set's own `completedAt`,
+  which it keeps in its backup's `ext` block. This build's backup, CSV and Send
+  to Coach write a set field by field and have no such field, so the ticks are
+  kept beside the log, under `lift.liveSession`, and go when the session ends.
+  Ticking writes nothing to the set: the set is in the log already, exactly as
+  Add set or a routine put it there. **Backups, CSV and Send to Coach are
+  unchanged.**
+- **Pounds only.** This build weighs in pounds (`weightLb`, no unit setting),
+  so it keeps the pound rack alone, under `lift.plateSetup.pounds`, in the
+  sizes stamped on the plates. iOS's kilogram rack is in `plates.js` so the
+  tests are iOS's tests, and is not reached from the screen.
+- **A session is a workout, not a day.** This build can hold two workouts on a
+  day, so the live one is named by its id. iOS records `liveEndedAt` on the day
+  and offers no second start; nothing about a session is recorded here, so an
+  ended workout can be started again.
+
+`lift.restSeconds`, `lift.keepScreenOn`, `lift.plateSetup.pounds`,
+`lift.liveSession` and `lift.rest` are preferences and screen state about this
+device, like `lift.perSide`, and none is in the backup. Shown, never graded:
+nothing counts ticks, compares sessions or says how a rest was used.
+`live-session.test.mjs` and `plates.test.mjs` are iOS's `RestTimerTests`,
+`SessionRestTests`, `PlateMathTests` and the rest setting's tests, case for
+case. Both files are in `sw.js`'s `SHELL`, so **bump `CACHE` when either
+changes.**
+
 ## Recipes from elsewhere (`recipe-import.js`, `recipe-link.js`, `recipe-catalog.js`, `recipes.json`)
 
 Cook → Recipes has three ways in beside **New recipe**: **Browse the
