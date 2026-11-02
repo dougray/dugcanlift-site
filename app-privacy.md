@@ -152,14 +152,25 @@ you choose to send.
 - **The web app** never asks to send notifications. When a rest ends, the page
   says so and, where the browser allows it, vibrates the phone.
 
-## Progress photos (iPhone)
+## Progress photos
 
-You can keep progress photos in the iPhone app. You choose each one in the
-system photo picker, which shows LIFT only the picture you pick and gives it no
-access to the rest of your library. LIFT saves a smaller copy in its own
-storage on your phone, without the original's location data. Progress photos
-are never uploaded, never included in a backup file, and never sent to a
-coach. Deleting a photo in LIFT, or deleting LIFT, removes them.
+You can keep progress photos in LIFT on iPhone, Android and the web. In every
+build, LIFT saves a smaller copy of each photo you choose, without the
+original's location data or any other metadata. Progress photos are never
+uploaded, never included in a backup file, and never sent to a coach. Deleting
+a photo in LIFT, or deleting LIFT, removes them.
+
+- **iPhone** uses the system photo picker, which shows LIFT only the picture
+  you pick and gives it no access to the rest of your library. The copies are
+  kept in LIFT's own storage on your phone, and left out of iCloud and computer
+  backups of the phone.
+- **Android** uses the system photo picker too, which needs no permission. The
+  copies are kept in LIFT's private storage on your phone, which Android's
+  cloud backup leaves out. A direct phone-to-phone transfer when you set up a
+  new handset carries them, as it carries the rest of your log.
+- **The web app** uses your browser's file picker, which on a phone may also
+  offer the camera. The page asks for no permission. The copies are kept in
+  your browser's storage on this device; clearing the site's data erases them.
 
 ## What leaves your device
 
@@ -201,11 +212,17 @@ no access to their logs.
 **The iPhone app** searches a food database built into the app, so a food search
 there sends nothing at all.
 
-### Importing a recipe from Safari (iPhone)
+### Importing a recipe from a web page
 
-Share a recipe page from Safari to LIFT and Safari hands over the recipe it
-already has on screen. LIFT reads it on the phone. It makes no request of its
-own, so the site sees nothing from LIFT.
+Two ways bring a recipe from a website into LIFT, and in both the browser hands
+over the recipe it already has on screen. LIFT reads it on your device and
+makes no request of its own, so the site sees nothing from LIFT.
+
+- **Share from Safari (iPhone):** share a recipe page to LIFT.
+- **Send recipes from your browser (iPhone, Android and the web):** a bookmark
+  you save once. Tapped on a recipe page, it reads the recipe the page already
+  contains and opens LIFT with it inside the link. You check the recipe before
+  anything is saved.
 
 ### Send to Coach
 
@@ -239,13 +256,16 @@ it, it can show where you go, so treat the file with the same care as the log.
   includes the app's data, and never leaves hardware you own.
 - **iPhone** has no iCloud sync of its own. If your iPhone itself is backed up
   to iCloud or a computer, iOS includes app data in that backup as it does for
-  every app, under Apple's terms.
+  every app, under Apple's terms, except progress photos, which LIFT leaves
+  out.
 - **The web app** keeps everything in your browser, which does not sync it
   anywhere. Clearing site data erases it, so keep a backup file.
-- **The iPhone app** can also export your training as a spreadsheet (a CSV
-  file) and import a training history exported from Strong, Hevy or FitNotes.
-  Both are files you choose and handle yourself: LIFT reads an import on the
-  phone and writes an export only where you save or send it.
+- **Every LIFT app** (iPhone, Android and the web) can also export your
+  training as a spreadsheet (a CSV file) and import a training history
+  exported from Strong, Hevy or FitNotes. Both are files you choose and handle
+  yourself, through the system's own file picker (no storage permission on
+  Android): LIFT reads an import on your device and writes an export only where
+  you save or send it.
 
 ## The watch apps
 
