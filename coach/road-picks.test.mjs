@@ -99,7 +99,7 @@ test('nothing is filtered against this app\'s own copy of the file on the way ou
 /* ---------------- against the bundled file ---------------- */
 
 test('the bundled file carries each chain\'s own document date, where its document states one', () => {
-  // Coach shows no staleness of its own - it never reads either date - but the
+  // Coach says both dates on a place card and warns about neither, but the
   // file is the same bytes LIFT reads, and LIFT warns from `publishedOn`. A
   // copy that lost the field here would be a copy that had drifted.
   const by = (id) => DATA.chains.find((c) => c.id === id);
@@ -112,6 +112,83 @@ test('the bundled file carries each chain\'s own document date, where its docume
   for (const c of DATA.chains) {
     assert.match(c.checkedOn, /^\d{4}-\d{2}-\d{2}$/, `${c.id} checkedOn`);
     if ('publishedOn' in c) assert.match(c.publishedOn, /^\d{4}-\d{2}(-\d{2})?$/, `${c.id} publishedOn`);
+  }
+});
+
+/* ---------------- a place card's dates ----------------
+ *
+ * Coach iPhone's `RoadFoodDates`, word for word. The locale is pinned here only
+ * so a string can be asserted; the page passes none and gets the reader's. */
+
+test('a place card says when its chart was published and when it was checked', () => {
+  assert.equal(R.dateLine({ publishedOn: '2022-11', checkedOn: '2026-09-20' }, 'en-US'),
+    'Published Nov 2022 · checked Sep 20, 2026');
+  assert.equal(R.dateLine({ publishedOn: '2021-03-29', checkedOn: '2026-09-23' }, 'en-US'),
+    'Published Mar 29, 2021 · checked Sep 23, 2026');
+});
+
+test('a document that names only a month is printed only to the month', () => {
+  assert.equal(R.documentText('2022-11', 'en-US'), 'Nov 2022');
+  assert.equal(R.documentText('2024-10', 'en-US'), 'Oct 2024');
+  // No day is invented: not "Nov 1, 2022".
+  assert.doesNotMatch(R.documentText('2022-11', 'en-US'), /\b1\b/);
+});
+
+test('a chain whose document states no date says only when it was checked', () => {
+  assert.equal(R.dateLine({ checkedOn: '2026-09-20' }, 'en-US'), 'Checked Sep 20, 2026');
+  assert.equal(R.dateLine({ publishedOn: '2022-11' }, 'en-US'), 'Published Nov 2022');
+  assert.equal(R.dateLine({}, 'en-US'), '');
+  assert.equal(R.dateLine(null, 'en-US'), '');
+});
+
+test('a value that is not YYYY-MM-DD or YYYY-MM is left out with its clause, never "Invalid Date"', () => {
+  const junk = ['', 'soon', '2022', '2022-1', '2022-13', '2022-00', '22-11-01', '2026-02-31',
+    '2026-09-20T00:00:00Z', 'Nov 2022', '2026/09/20', 20260920, null, undefined, {}];
+  for (const value of junk) {
+    assert.equal(R.documentText(value, 'en-US'), null, `publishedOn ${JSON.stringify(value)}`);
+    assert.equal(R.dayText(value, 'en-US'), null, `checkedOn ${JSON.stringify(value)}`);
+    assert.equal(R.dateLine({ publishedOn: value, checkedOn: '2026-09-20' }, 'en-US'),
+      'Checked Sep 20, 2026');
+    assert.equal(R.dateLine({ publishedOn: '2022-11', checkedOn: value }, 'en-US'),
+      'Published Nov 2022');
+  }
+  // A checked date is a whole day; a month alone is not one.
+  assert.equal(R.dayText('2026-09', 'en-US'), null);
+  // Surrounding space is forgiven, as Coach iPhone forgives it.
+  assert.equal(R.dayText(' 2026-09-20 ', 'en-US'), 'Sep 20, 2026');
+});
+
+test('a day key is a local calendar day, not UTC midnight', (t) => {
+  // Parsed as an instant, "2026-09-20" is the 19th anywhere west of Greenwich,
+  // and CI runs in UTC, where the bug would not show. So both sides of it.
+  const before = process.env.TZ;
+  t.after(() => { if (before === undefined) delete process.env.TZ; else process.env.TZ = before; });
+  for (const zone of ['America/Los_Angeles', 'Pacific/Kiritimati', 'UTC']) {
+    process.env.TZ = zone;
+    assert.equal(R.dayText('2026-09-20', 'en-US'), 'Sep 20, 2026', zone);
+    assert.equal(R.documentText('2026-09', 'en-US'), 'Sep 2026', zone);
+  }
+});
+
+test('the date is written in the reader\'s locale', () => {
+  // Compared with the runtime's own formatting rather than a literal, so a
+  // newer ICU spelling "Sept" differently does not fail a correct build.
+  const day = { year: 'numeric', month: 'short', day: 'numeric' };
+  const month = { year: 'numeric', month: 'short' };
+  for (const locale of ['en-GB', 'de-DE', 'ja-JP']) {
+    const checked = new Date(2026, 8, 20).toLocaleDateString(locale, day);
+    const published = new Date(2022, 10, 1).toLocaleDateString(locale, month);
+    assert.equal(R.dateLine({ publishedOn: '2022-11', checkedOn: '2026-09-20' }, locale),
+      `Published ${published} · checked ${checked}`, locale);
+  }
+  assert.notEqual(R.dayText('2026-09-20', 'de-DE'), R.dayText('2026-09-20', 'en-US'));
+});
+
+test('nothing on a place card warns: the line is two dates and no judgment', () => {
+  for (const c of DATA.chains) {
+    const line = R.dateLine(c, 'en-US');
+    assert.ok(line, `${c.id} has a date to say`);
+    assert.doesNotMatch(line, /Invalid|old|stale|out of date|warn|may have changed/i, c.id);
   }
 });
 

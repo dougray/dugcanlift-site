@@ -401,7 +401,10 @@ function drawChart(canvas, series, labels) {
   // the attribute every time would multiply it by the pixel ratio on every
   // redraw, and the chart would march off the bottom of its own canvas.
   if (!canvas.dataset.h) canvas.dataset.h = canvas.getAttribute('height') || '150';
-  const h = parseInt(canvas.dataset.h, 10);
+  // The dates get a band of their own under the plot, so the plot keeps the
+  // height the markup gave it.
+  const axisH = 18;
+  const h = parseInt(canvas.dataset.h, 10) + axisH;
   canvas.width = w * dpr;
   canvas.height = h * dpr;
   canvas.style.height = h + 'px';
@@ -425,7 +428,7 @@ function drawChart(canvas, series, labels) {
   const range = Math.max(max - floor, 1e-6);
 
   const pad = 16;
-  const plotH = h - pad;
+  const plotH = h - axisH - pad;
   const stepX = w / (labels.length - 1);
 
   ctx.strokeStyle = LiftAppearance.cssColor('var(--rule)');
@@ -468,6 +471,18 @@ function drawChart(canvas, series, labels) {
   ctx.fillStyle = LiftAppearance.cssColor('var(--muted)');
   ctx.font = '12px -apple-system, sans-serif';
   ctx.fillText(num(max), 0, 11);
+
+  // A few dates under the plot, each under its own point, in the reader's
+  // locale (chart-dates.js chooses them and makes sure none collide).
+  ctx.font = '11px -apple-system, sans-serif';
+  ctx.textBaseline = 'bottom';
+  CoachChartDates.ticks(labels, w, { measure: (t) => ctx.measureText(t).width })
+    .forEach((t) => {
+      ctx.textAlign = t.align;
+      ctx.fillText(t.text, t.x, h - 2);
+    });
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
 }
 
 function legend(node, series) {
@@ -2875,7 +2890,8 @@ function renderCookRoad() {
   body.appendChild(head);
 
   roadData.chains.forEach((chain) => {
-    body.appendChild(roadPlaceCard(chain.id, chain.name, chain.items || [], ids));
+    body.appendChild(roadPlaceCard(chain.id, chain.name, chain.items || [], ids, false,
+      CoachRoadPicks.dateLine(chain)));
   });
   if (roadData.snacks.length) {
     const snacks = roadData.snacks.slice().sort((a, b) =>
@@ -2887,13 +2903,17 @@ function renderCookRoad() {
 
 /* One place: a fold with its items, each a tick. Folded by default -- eight
  * chains and twenty-two snacks is a scroll nobody asked for. */
-function roadPlaceCard(placeId, name, items, ids, showCategory) {
+function roadPlaceCard(placeId, name, items, ids, showCategory, dates) {
   const card = cookEl('details', 'card roadplace');
   card.open = !!roadOpenPlaces[placeId];
   card.ontoggle = () => { roadOpenPlaces[placeId] = card.open; };
 
   const head = document.createElement('summary');
-  head.appendChild(cookEl('span', null, name));
+  // The chain's two dates under its name: when its chart says it was written,
+  // and when someone read it. Said, never warned about -- see road-picks.js.
+  const title = cookEl('span', 'roadplacename', name);
+  if (dates) title.appendChild(cookEl('span', 'muted roadplacedates', dates));
+  head.appendChild(title);
   const picked = CoachRoadPicks.countIn(ids, items);
   head.appendChild(cookEl('span', 'muted',
     picked ? `${picked} of ${items.length} picked` : `${items.length} items`));

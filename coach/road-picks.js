@@ -137,6 +137,83 @@
       + placeCount + (placeCount === 1 ? ' place' : ' places');
   }
 
+  /* ---------------- how old a place's numbers are ---------------- */
+
+  /*
+   * A chain carries two dates, and Coach says both. `publishedOn` is the date
+   * the chain's own document states about itself -- Burger King's chart says
+   * "NOVEMBER 2022" -- and `checkedOn` is the day a person read it. A chain
+   * whose document states no date has no `publishedOn`, and its card says only
+   * when it was checked.
+   *
+   * Written the way a person writes a date, in the reader's own locale --
+   * "Sep 20, 2026", and "Nov 2022" for a document that names only a month, so
+   * no day is invented for the reader (LIFT web's `roadDocDate`, LIFT
+   * Android's `publishedLabel`, Coach iPhone's `RoadFoodDates`). A value that
+   * is not `YYYY-MM-DD` or `YYYY-MM` reads as no date and its clause is left
+   * out; LIFT web prints "Invalid Date" there, which is its bug, not a shape
+   * to copy.
+   *
+   * Coach does not warn. LIFT does, from the same field, and no Coach build
+   * says anything about staleness: this line gains a clause in all three or
+   * in none.
+   */
+
+  /** { year, month, day|null } for "YYYY-MM-DD" or "YYYY-MM", else null. */
+  function parseDate(key) {
+    if (typeof key !== 'string') return null;
+    var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(key.trim());
+    if (!m) return null;
+    var year = Number(m[1]);
+    var month = Number(m[2]);
+    if (month < 1 || month > 12) return null;
+    if (m[3] === undefined) return { year: year, month: month, day: null };
+    var day = Number(m[3]);
+    // Local calendar day, built with the local constructor: a day key is a
+    // day, not an instant, and "2026-09-20" parsed as UTC is the 19th in
+    // America. A day the month does not have (Feb 31) is not a date.
+    var date = new Date(year, month - 1, day);
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+    return { year: year, month: month, day: day };
+  }
+
+  function dateText(parts, locale) {
+    if (parts.day === null) {
+      return new Date(parts.year, parts.month - 1, 1)
+        .toLocaleDateString(locale, { year: 'numeric', month: 'short' });
+    }
+    return new Date(parts.year, parts.month - 1, parts.day)
+      .toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  /** "Sep 20, 2026" for a `YYYY-MM-DD`, or null. The day someone read a
+   *  chart is always a whole day, so a month alone is not one. */
+  function dayText(key, locale) {
+    var parts = parseDate(key);
+    return parts && parts.day !== null ? dateText(parts, locale) : null;
+  }
+
+  /** A document's own date, no more precise than it was written: "Mar 29,
+   *  2021" for a chart that gives a day, "Nov 2022" for one that names only a
+   *  month. Null when it is neither shape. */
+  function documentText(key, locale) {
+    var parts = parseDate(key);
+    return parts ? dateText(parts, locale) : null;
+  }
+
+  /** The line under a place's name: "Published Nov 2022 · checked Sep 20,
+   *  2026", either clause alone, or '' when the chain has no readable date.
+   *  `locale` is for the tests; the page passes nothing and gets the
+   *  reader's. */
+  function dateLine(chain, locale) {
+    var published = documentText(chain && chain.publishedOn, locale);
+    var checked = dayText(chain && chain.checkedOn, locale);
+    if (published && checked) return 'Published ' + published + ' · checked ' + checked;
+    if (published) return 'Published ' + published;
+    if (checked) return 'Checked ' + checked;
+    return '';
+  }
+
   global.CoachRoadPicks = {
     normalise: normalise,
     wire: wire,
@@ -148,5 +225,8 @@
     toggle: toggle,
     toggleAll: toggleAll,
     summary: summary,
+    dayText: dayText,
+    documentText: documentText,
+    dateLine: dateLine,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

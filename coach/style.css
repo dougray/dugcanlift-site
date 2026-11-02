@@ -822,6 +822,11 @@ canvas.route {
 
 .roadplace > summary .muted { font-weight: 400; font-size: 14px; }
 
+/* "Published Nov 2022 · checked Sep 20, 2026", on its own line under the
+ * chain's name, the count staying at the right. */
+.roadplace > summary .roadplacedates { display: block; margin-top: 2px; }
+.roadplace > summary > .muted { flex: 0 0 auto; }
+
 .roadplace > .chips { margin-top: 12px; }
 
 /* The whole row is the label, so the tap target is the item, not the box. */
