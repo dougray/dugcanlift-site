@@ -83,11 +83,11 @@ hide_title: true
   <p><a href="https://github.com/dougray/dugcanlift-lift-ios">iOS source on GitHub</a></p>
 
   <h2>On a watch</h2>
-  <p>There are two watch apps — one for Wear OS, one for Apple Watch. Both do the same narrow job: log food on the watch itself, with no phone anywhere near it, and hand the log back to LIFT afterwards.</p>
+  <p>There are two watch apps — one for Wear OS, one for Apple Watch. Both log food on the watch itself, with no phone anywhere near it, and hand the log back to LIFT afterwards. Both also take a workout from the phone, run it set by set, and send the finished session back.</p>
   <p>The food library is bundled inside the app — the same 7,793 USDA records the web version searches — so a watch that has never been paired to anything still has something to log from. Search it, set an amount, pick a meal. The watch keeps what you log: the most recent 200 entries, however old they are.</p>
   <p>Getting it off the watch is the blunt part. The watch draws your log as a QR code — several of them, one after another, if you've logged a lot — and you scan them with <strong>Scan from watch</strong> in the <a href="{{ '/lift/' | relative_url }}">web version</a>. The camera reads the screen and that's the entire transfer; nothing is uploaded. Afterwards you clear the log on the watch yourself, behind a confirmation. The watch has no way of knowing whether a scan actually worked, and a clear that happened automatically would throw the log away every time one didn't.</p>
-  <p>On Wear OS that QR code is the only way off, deliberately. The Wearable Data Layer — the normal way a Wear watch talks to its phone — needs Google Play Services on both ends, and LIFT for Android carries none. Rather than add it, the watch app does without a phone entirely: it asks for no internet permission at all, so it could not send your log anywhere even if something in it wanted to. You search by voice or the watch keyboard, whichever your watch offers, and set the amount on the rotating bezel or crown in grams or ounces.</p>
-  <p>The Apple Watch app has been around longer and does more, because watchOS lets it: sets logged during a workout with a rest timer, and runs and hikes recorded with GPS and written to Apple Health. It also syncs to LIFT on a paired iPhone — the native iOS build, not the web version — but it installs and runs on its own, and the QR export is what a watch with no phone behind it uses.</p>
+  <p>On Wear OS that QR code is the only way the food log gets off, deliberately. The Wearable Data Layer — the normal way a Wear watch talks to its phone — needs Google Play Services on both ends, and LIFT for Android carries none. Rather than add it, the watch talks to LIFT for Android 1.17 or later over LIFT Link, a direct, encrypted Bluetooth connection between the two, paired by checking the same six-digit code on both screens. The phone sends the day's workout; the finished session comes back. Food doesn't cross it. The watch still asks for no internet permission at all, so it could not send your log to the internet even if something in it wanted to. You search by voice or the watch keyboard, whichever your watch offers, and set the amount on the rotating bezel or crown in grams or ounces.</p>
+  <p>The Apple Watch app has been around longer and does more, because watchOS lets it: runs and hikes recorded with GPS, and workouts written to Apple Health. It also syncs to LIFT on a paired iPhone, food included — the native iOS build, not the web version — but it installs and runs on its own, and the QR export is what a watch with no phone behind it uses.</p>
 
   <figure class="shots">
     <img src="{{ '/assets/images/watch/watch-home.webp' | relative_url }}" alt="The LIFT watch app's main screen on an Apple Watch, listing Focus, Start Workout and Start Run" width="416" height="496" class="shot shot--watch" decoding="async" loading="lazy">
@@ -130,19 +130,39 @@ hide_title: true
           <td class="yes">&#10003;</td>
         </tr>
         <tr>
-          <td>Getting the log off</td>
+          <td>Getting the food log off</td>
           <td>QR, or iPhone sync</td>
           <td>QR only</td>
         </tr>
         <tr>
+          <td>Workout sent from the phone</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
           <td>Sets during a workout</td>
           <td class="yes">&#10003;</td>
-          <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Finished workout back to the phone</td>
+          <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Rest timer</td>
           <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Heart rate during a workout</td>
+          <td class="yes">&#10003;</td>
+          <td>On screen only</td>
+        </tr>
+        <tr>
+          <td>Left and right for each-side lifts</td>
           <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Runs and hikes on GPS</td>
@@ -157,7 +177,7 @@ hide_title: true
       </tbody>
     </table>
   </div>
-  <p class="calc-sub">Every dash in the Wear OS column is the same decision: that app logs food and exports it, and asks for nothing to do it &mdash; no internet permission, no Play Services, no pairing. The Apple Watch app has been going longer and watchOS hands it more to work with.</p>
+  <p class="calc-sub">The Wear OS app records no runs and writes to no health app, and its heart rate is on the screen during a session and nowhere else. It talks to the phone only over LIFT Link, Bluetooth straight to LIFT for Android, with no internet permission and no Play Services; pairing is optional, and without it the watch logs food and exports it exactly as before. The Apple Watch app has been going longer and watchOS hands it more to work with; it doesn&rsquo;t mark left and right.</p>
 
   <h2>The three LIFTs, side by side</h2>
   <p class="calc-sub">The table above is the watches. This one is LIFT itself: the three places you can run it, and what each one can actually do. It's the same log and the same calculator in all three &mdash; what differs is what the platform lets the app read, and what you're allowed to install.</p>
