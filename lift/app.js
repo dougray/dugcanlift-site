@@ -540,11 +540,12 @@ document.querySelectorAll('#tabs button').forEach((b) => {
 
 /* ---------------- home ---------------- */
 
-/* Training settings on Home, beside Appearance: whether LIFT suggests the next
- * weight (progression.js), and My equipment (my-equipment.js). Each is its own
- * localStorage key and neither is in the backup -- preferences about this
- * device's screen, like lift.perSide. LIFT iOS keeps both in Settings ->
- * Training, under the same words. */
+/* Training settings on Home, beside Appearance: the rest a live session's tick
+ * starts and whether it keeps the screen on (live-session.js), whether LIFT
+ * suggests the next weight (progression.js), Plates and bars (plates.js), and
+ * My equipment (my-equipment.js). Each is its own localStorage key and none is
+ * in the backup -- preferences about this device's screen, like lift.perSide.
+ * LIFT iOS keeps them all in Settings -> Training, under the same words. */
 let equipmentListOpen = false;
 
 function switchRow(text, on, onChange) {
@@ -558,16 +559,128 @@ function switchRow(text, on, onChange) {
   return row;
 }
 
+/* "Rest between sets": a stepper, as iOS's is -- 30 seconds to 5 minutes in
+ * steps of 15. The value is what a tick in a live session starts. */
+function restStepperRow() {
+  const row = el('div', 'stepperrow');
+  const seconds = LiftLiveSession.restSeconds(localStorage);
+  const label = el('span', 'stepperlabel', 'Rest between sets');
+  label.id = 'rest-seconds-label';
+  row.appendChild(label);
+  const value = el('span', 'steppervalue', LiftLiveSession.clock(seconds || 0));
+  value.setAttribute('aria-live', 'polite');
+  row.appendChild(value);
+  const step = (by, text, name, disabled) => {
+    const b = el('button', 'ghost stepbtn', text);
+    b.type = 'button';
+    b.setAttribute('aria-label', name);
+    b.disabled = disabled;
+    b.onclick = () => {
+      LiftLiveSession.setRestSeconds((seconds || LiftLiveSession.DEFAULT_REST_SECONDS) + by, localStorage);
+      renderTrainingSettings();
+      const again = $('#training-settings').querySelector(`[aria-label="${name}"]`);
+      if (again && !again.disabled) again.focus({ preventScroll: true });
+    };
+    return b;
+  };
+  const s = seconds || 0;
+  row.appendChild(step(-LiftLiveSession.REST_STEP, '\u2212', 'Rest between sets, fifteen seconds less',
+    s <= LiftLiveSession.REST_MIN));
+  row.appendChild(step(LiftLiveSession.REST_STEP, '+', 'Rest between sets, fifteen seconds more',
+    s >= LiftLiveSession.REST_MAX));
+  return row;
+}
+
+/* Plates and bars: what each bar weighs and which plates are on the rack, in
+ * pounds, the one unit this build weighs in (plates.js). iOS's Settings ->
+ * Training -> Plates and bars, under the same words. */
+let platesOpen = false;
+
+function platesPanel() {
+  const setup = LiftPlates.load('lb', localStorage);
+  const list = el('details', 'equipment plates');
+  list.open = platesOpen;
+  list.ontoggle = () => { platesOpen = list.open; };
+  list.appendChild(el('summary', null, 'Plates and bars'));
+
+  list.appendChild(el('h3', 'platehead', 'Bars'));
+  LiftPlates.BARS.forEach((bar) => {
+    const row = el('label', 'platerow');
+    row.appendChild(el('span', null, bar.displayName));
+    const box = el('span', 'plateinput');
+    const input = el('input');
+    input.type = 'number';
+    input.inputMode = 'decimal';
+    input.min = '0';
+    input.step = 'any';
+    input.value = LiftPlates.text(LiftPlates.barWeight(setup, bar.id));
+    input.setAttribute('aria-label', `${bar.displayName} weight, lb`);
+    input.onchange = () => {
+      const fresh = LiftPlates.load('lb', localStorage);
+      LiftPlates.setBar(fresh, bar.id, parseFloat(input.value) || 0);
+      LiftPlates.save(fresh, 'lb', localStorage);
+      input.value = LiftPlates.text(LiftPlates.barWeight(fresh, bar.id));
+      if (currentTab === 'train') render();
+    };
+    box.appendChild(input);
+    box.appendChild(el('span', 'muted', 'lb'));
+    row.appendChild(box);
+    list.appendChild(row);
+  });
+  list.appendChild(el('p', 'muted', 'What the bar weighs on its own. Smith machine bars vary; check yours.'));
+
+  list.appendChild(el('h3', 'platehead', 'Plates'));
+  setup.plates.forEach((plate) => {
+    const row = el('div', 'stepperrow');
+    const name = `${LiftPlates.text(plate.weight)} lb`;
+    row.appendChild(el('span', 'stepperlabel', name));
+    row.appendChild(el('span', 'steppervalue',
+      plate.pairs === 0 ? 'None' : `${plate.pairs} pair${plate.pairs === 1 ? '' : 's'}`));
+    [[-1, '\u2212', 'one pair fewer'], [1, '+', 'one pair more']].forEach(([by, text, words]) => {
+      const b = el('button', 'ghost stepbtn', text);
+      b.type = 'button';
+      const label = `${name}, ${words}`;
+      b.setAttribute('aria-label', label);
+      b.disabled = by < 0 ? plate.pairs <= 0 : plate.pairs >= LiftPlates.MOST_PAIRS;
+      b.onclick = () => {
+        const fresh = LiftPlates.load('lb', localStorage);
+        LiftPlates.setPairs(fresh, LiftPlates.pairsOf(fresh, plate.weight) + by, plate.weight);
+        LiftPlates.save(fresh, 'lb', localStorage);
+        renderTrainingSettings();
+        const again = $('#training-settings').querySelector(`[aria-label="${label}"]`);
+        if (again && !again.disabled) again.focus({ preventScroll: true });
+      };
+      row.appendChild(b);
+    });
+    list.appendChild(row);
+  });
+  list.appendChild(el('p', 'muted', "Pairs, because a plate goes on each end. When your plates can't make "
+    + "a set's weight exactly, LIFT shows the closest load under it."));
+  const reset = el('button', 'ghost wide', 'Reset to a standard gym');
+  reset.onclick = () => {
+    LiftPlates.save(LiftPlates.standard('lb'), 'lb', localStorage);
+    renderTrainingSettings();
+  };
+  list.appendChild(reset);
+  return list;
+}
+
 function renderTrainingSettings() {
   const card = $('#training-settings');
   card.innerHTML = '';
+  card.appendChild(restStepperRow());
+  card.appendChild(switchRow('Keep the screen on', LiftLiveSession.screenEnabled(localStorage),
+    (on) => { LiftLiveSession.setScreenEnabled(on, localStorage); syncScreenHold(); }));
   card.appendChild(switchRow('Suggest the next weight', LiftProgression.enabled(localStorage),
     (on) => LiftProgression.setEnabled(on, localStorage)));
   card.appendChild(el('p', 'muted',
-    'My equipment narrows exercise search to what you have. For an exercise from one of your own '
+    'In a live session, tick a set done to start your rest. While a live session is running, the '
+    + "screen doesn't lock. Plates and bars work out what to load for a set on a bar. "
+    + 'My equipment narrows exercise search to what you have. For an exercise from one of your own '
     + 'routines, LIFT suggests the next weight from your last session: up a step when every set '
     + "reached its reps, the same again when one didn't, and a little lighter after two short "
     + 'sessions in a row.'));
+  card.appendChild(platesPanel());
 
   const notOwned = LiftEquipment.load(localStorage);
   const list = el('details', 'equipment');
@@ -3054,9 +3167,14 @@ function renderTrain() {
   const f = currentFocus();
   const out = $('#session-list');
   out.innerHTML = '';
+  forgetMissingLiveSession();
+  // The pound rack, read once a render: "Per side: 45 · 25" under a bar set.
+  const rack = LiftPlates.load('lb', localStorage);
 
   sessionsFor(trainDate).forEach((session) => {
     const card = el('div', 'card');
+    const live = isLive(session);
+    if (live) card.classList.add('live');
 
     const nameInput = el('input');
     nameInput.type = 'text';
@@ -3095,12 +3213,22 @@ function renderTrain() {
       (ex.sets || []).forEach((st, i) => {
         const row = el('div', 'entry');
         // "drop" or "rest-pause" when the plan or routine asked for one.
-        row.appendChild(el('div', null,
-          `${i + 1}.  ${formatSet(st)}${kindSuffix(LiftSetTypes.kindAt(ex.sets, i))}`));
+        const text = el('div', null,
+          `${i + 1}.  ${formatSet(st)}${kindSuffix(LiftSetTypes.kindAt(ex.sets, i))}`);
+        // What to load, for a lift on a bar: plates.js, LIFT iOS's PlateLine.
+        const plates = f.weight ? LiftPlates.setLine(ex.name, ex.equipment, st.weightLb, rack) : null;
+        if (plates) {
+          const line = el('div', 'plateline', plates);
+          line.setAttribute('aria-label', plates.split(' \u00b7 ').join(', '));
+          text.appendChild(line);
+        }
+        row.appendChild(text);
+        if (live) row.appendChild(doneTick(session, ex, st, i));
         const x = el('button', 'x', '\u00d7');
         x.onclick = () => {
           ex.sets = ex.sets.filter((s) => s.id !== st.id);
           save(KEY.workouts, workouts);
+          untick(st.id);
           render();
         };
         row.appendChild(x);
@@ -3153,6 +3281,9 @@ function renderTrain() {
     addEx.onclick = () => openExercisePicker(session);
     card.appendChild(addEx);
 
+    const control = liveSessionControl(session, live);
+    if (control) card.appendChild(control);
+
     if ((session.exercises || []).length) {
       const keep = el('button', 'ghost wide', 'Save as routine');
       keep.onclick = () => saveAsRoutine(session);
@@ -3164,6 +3295,7 @@ function renderTrain() {
       if (!confirm('Delete this workout?')) return;
       workouts = workouts.filter((w) => w.id !== session.id);
       save(KEY.workouts, workouts);
+      if (isLive(session)) endLiveSession();
       render();
     };
     card.appendChild(del);
@@ -3171,6 +3303,208 @@ function renderTrain() {
     out.appendChild(card);
   });
 }
+
+/* ---------------- live session ----------------
+ *
+ * The "training now" mode of a workout, from LIFT iOS: a done tick on each
+ * set, the rest a tick starts, a countdown at the foot of Train, and the
+ * screen kept on. The rules and their tests are live-session.js; this is the
+ * screen. The ticks are kept beside the log under lift.liveSession, never on a
+ * set, so a backup, the CSV and Send to Coach are what they were. */
+let liveSession = LiftLiveSession.readLive(localStorage);
+const restTimer = new LiftLiveSession.RestTimer(localStorage);
+restTimer.restore(Date.now());
+
+const isLive = (session) => !!liveSession && liveSession.sessionId === session.id;
+
+/* A live workout deleted, or replaced by a restore, takes its session along. */
+function forgetMissingLiveSession() {
+  if (liveSession && !workouts.some((w) => w.id === liveSession.sessionId)) endLiveSession();
+}
+
+function startLiveSession(session) {
+  if (liveSession) restTimer.sessionEnded();
+  liveSession = LiftLiveSession.start(session.id, Date.now());
+  LiftLiveSession.writeLive(liveSession, localStorage);
+  syncScreenHold();
+}
+
+function endLiveSession() {
+  liveSession = null;
+  LiftLiveSession.writeLive(null, localStorage);
+  restTimer.sessionEnded();
+  syncScreenHold();
+  renderRestBanner();
+}
+
+/* A set gone from the log is a set no longer ticked, and its rest goes too. */
+function untick(setId) {
+  restTimer.setUndone(setId);
+  if (liveSession && LiftLiveSession.isDone(liveSession, setId)) {
+    liveSession = LiftLiveSession.withTick(liveSession, setId, false);
+    LiftLiveSession.writeLive(liveSession, localStorage);
+  }
+}
+
+/* Done, during a live session. Ticking starts the rest the day decides
+ * (LiftLiveSession.after: a superset round, a drop set or rest-pause next);
+ * unticking takes back the rest this set started, and only that one. */
+function doneTick(session, ex, st, index) {
+  const done = LiftLiveSession.isDone(liveSession, st.id);
+  const b = el('button', 'tick' + (done ? ' on' : ''));
+  b.type = 'button';
+  b.setAttribute('aria-label', `Set ${index + 1} done`);
+  b.setAttribute('aria-pressed', String(done));
+  if (!done) b.title = 'Starts your rest';
+  b.onclick = () => {
+    if (!liveSession) return;
+    liveSession = LiftLiveSession.withTick(liveSession, st.id, !done);
+    LiftLiveSession.writeLive(liveSession, localStorage);
+    if (!done) {
+      const decision = LiftLiveSession.after(st.id,
+        LiftLiveSession.exercisesOf(session, liveSession.done), LiftLiveSession.restSeconds(localStorage));
+      restTimer.apply(st.id, decision, LiftLiveSession.restName(ex), Date.now());
+    } else {
+      restTimer.setUndone(st.id);
+    }
+    render();
+    const again = document.querySelector(`#session-list .tick[data-set="${st.id}"]`);
+    if (again) again.focus({ preventScroll: true });
+  };
+  b.dataset.set = st.id;
+  return b;
+}
+
+/* Optional, as on iOS: a day log is complete without ever starting this. It
+ * is offered on a workout today; once live, the workout says so, with End. */
+function liveSessionControl(session, live) {
+  if (live) {
+    const row = el('div', 'liverow');
+    row.appendChild(el('span', 'livelabel', 'Live session'));
+    const end = el('button', 'ghost', 'End');
+    end.type = 'button';
+    end.onclick = () => { endLiveSession(); render(); };
+    row.appendChild(end);
+    return row;
+  }
+  if (session.date !== todayKey()) return null;
+  const start = el('button', 'ghost wide', 'Start live session');
+  start.onclick = () => { startLiveSession(session); render(); };
+  return start;
+}
+
+/* The rest at the foot of Train while one is running: the time left, fifteen
+ * seconds either way, and Skip. Once it is over it says so, plainly, and the
+ * phone vibrates where the browser can -- there is no notification, on
+ * purpose. A tick that starts no rest shows what comes next here instead
+ * ("Next: Seated Cable Rows", "Drop set next"), until the next tick or Done.
+ *
+ * Every figure is worked out from the rest's end time and the clock, so a tab
+ * brought back from the background reads right on its first frame. The
+ * one-second interval only redraws; it keeps no count of its own. */
+let restInterval = null;
+let restBannerKey = '';
+// A rest already over when the page loads was over before anyone was here.
+let vibratedFor = restTimer.current && LiftLiveSession.isOver(restTimer.current, Date.now())
+  ? restTimer.current.endsAt : null;
+
+function restButton(text, label, onClick) {
+  const b = el('button', 'restbtn', text);
+  b.type = 'button';
+  b.setAttribute('aria-label', label);
+  b.onclick = onClick;
+  return b;
+}
+
+function renderRestBanner() {
+  const banner = $('#rest-banner');
+  const now = Date.now();
+  restTimer.restore(now);
+  const rest = restTimer.current;
+  const cue = restTimer.cue;
+  const showing = currentTab === 'train' && (rest || cue);
+  if (!(rest || cue)) {
+    clearInterval(restInterval);
+    restInterval = null;
+  } else if (rest && !restInterval) {
+    restInterval = setInterval(renderRestBanner, 1000);
+  }
+  // The phone vibrates on whichever screen is up, once, as iOS taps it; the
+  // words wait on Train, where iOS's banner is.
+  const over = rest ? LiftLiveSession.isOver(rest, now) : false;
+  if (over && vibratedFor !== rest.endsAt) {
+    vibratedFor = rest.endsAt;
+    if (document.visibilityState === 'visible' && navigator.vibrate) {
+      try { navigator.vibrate([200, 100, 200]); } catch (e) { /* not on this device */ }
+    }
+  }
+  document.body.classList.toggle('resting', !!showing);
+  if (!showing) {
+    banner.classList.add('hidden');
+    banner.innerHTML = '';
+    restBannerKey = '';
+    $('#rest-say').textContent = '';
+    return;
+  }
+  banner.classList.remove('hidden');
+
+  const key = rest ? `rest|${rest.startedAt}|${rest.setId}|${over}` : `cue|${cue.setId}|${cue.text}`;
+  banner.classList.toggle('over', over);
+  if (key === restBannerKey) {
+    const clockText = banner.querySelector('.restclock');
+    if (clockText && rest) clockText.textContent = LiftLiveSession.clock(LiftLiveSession.remaining(rest, now));
+    return;
+  }
+  const hadFocus = banner.contains(document.activeElement);
+  restBannerKey = key;
+  banner.innerHTML = '';
+
+  const words = el('div', 'restwords');
+  let announce;
+  if (rest) {
+    words.appendChild(el('div', 'resthead', over ? 'Rest over' : 'Rest'));
+    if (over) {
+      const next = rest.exerciseName ? `Back to ${rest.exerciseName}` : 'Next set';
+      words.appendChild(el('div', 'restnext', next));
+      announce = `Rest over. ${next}`;
+    } else {
+      words.appendChild(el('div', 'restclock', LiftLiveSession.clock(LiftLiveSession.remaining(rest, now))));
+    }
+  } else {
+    words.appendChild(el('div', 'resthead', 'No rest'));
+    words.appendChild(el('div', 'restnext', cue.text));
+    announce = `No rest. ${cue.text}`;
+  }
+  banner.appendChild(words);
+
+  const buttons = el('div', 'restbuttons');
+  if (rest && !over) {
+    buttons.appendChild(restButton('\u221215', 'Fifteen seconds less', () => {
+      restTimer.adjust(-LiftLiveSession.STEP_SECONDS, Date.now());
+      restBannerKey = '';
+      renderRestBanner();
+    }));
+    buttons.appendChild(restButton('+15', 'Fifteen seconds more', () => {
+      restTimer.adjust(LiftLiveSession.STEP_SECONDS, Date.now());
+      restBannerKey = '';
+      renderRestBanner();
+    }));
+  }
+  const last = rest && !over ? ['Skip', 'Skip rest'] : ['Done', 'Done'];
+  buttons.appendChild(restButton(last[0], last[1], () => { restTimer.skip(); renderRestBanner(); }));
+  banner.appendChild(buttons);
+
+  // Said once when it changes, never once a second: the clock is not in it.
+  $('#rest-say').textContent = announce || '';
+  if (hadFocus) {
+    const target = banner.querySelector('.restbtn');
+    if (target) target.focus({ preventScroll: true });
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') renderRestBanner();
+});
 
 function lastPerformed(ex, currentSession) {
   const key = matchKey(ex.name, ex.equipment);
@@ -3772,8 +4106,34 @@ async function holdScreenOn() {
 
 document.addEventListener('visibilitychange', () => {
   // A wake lock is released whenever the page is hidden; take it back.
-  if (recording && document.visibilityState === 'visible') holdScreenOn();
+  if ((recording || liveHoldsScreen()) && document.visibilityState === 'visible') holdScreenOn();
 });
+
+/* The screen stays on during a live session too (Keep the screen on, in
+ * Training settings, on by default), and stops holding eight hours after the
+ * session started, ended or not -- LiftLiveSession.holdsScreenOn, LIFT iOS's
+ * LiveSessionScreen. A screen held awake never hides the page, so nothing else
+ * would ask again: the cutoff is waited for. One lock serves both a recording
+ * and a session, and is let go only when neither wants it. */
+let screenCutoff = null;
+
+function liveHoldsScreen() {
+  return !!liveSession && LiftLiveSession.holdsScreenOn([liveSession.startedAt],
+    LiftLiveSession.screenEnabled(localStorage), Date.now());
+}
+
+function syncScreenHold() {
+  clearTimeout(screenCutoff);
+  screenCutoff = null;
+  if (recording || liveHoldsScreen()) {
+    holdScreenOn();
+  } else if (wakeLock) {
+    wakeLock.release().catch(() => {});
+    wakeLock = null;
+  }
+  const cutoff = liveSession ? LiftLiveSession.nextCutoff([liveSession.startedAt], Date.now()) : null;
+  if (cutoff != null) screenCutoff = setTimeout(syncScreenHold, Math.min(cutoff - Date.now() + 50, 2 ** 31 - 1));
+}
 
 function startRecording(type) {
   if (recording) { showRecording(); return; }
@@ -3885,8 +4245,8 @@ function stopWatching() {
   geoWatch = null;
   clearInterval(recordTimer);
   recordTimer = null;
-  if (wakeLock) wakeLock.release().catch(() => {});
-  wakeLock = null;
+  // Let go of the screen, unless a live session still wants it.
+  syncScreenHold();
   closeModal($('#recording'));
 }
 
@@ -4282,6 +4642,7 @@ function render() {
   else if (currentTab === 'cook') renderCook();
   else if (currentTab === 'train') renderTrain();
   else if (currentTab === 'road') renderRoad();
+  renderRestBanner();
 }
 
 /* ---------------- backup ---------------- */
@@ -4583,6 +4944,8 @@ if ('ResizeObserver' in window) {
 }
 
 render();
+// A live session from before a reload holds the screen again.
+syncScreenHold();
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
