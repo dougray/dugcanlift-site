@@ -12,3 +12,10 @@ CLAUDE.md
 # Claude Code worktrees and subagent-driven-development scratch
 .claude/worktrees/
 .superpowers/
+
+# Secrets: never commit env files (examples and templates stay tracked)
+.env
+.env.*
+*.env
+!.env.example
+!.env.template
