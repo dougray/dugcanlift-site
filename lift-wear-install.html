@@ -33,13 +33,13 @@ hide_title: true
     <li>Tap <strong>Build number</strong> seven times. The watch tells you you&rsquo;re a developer now</li>
     <li>Go back to <strong>Settings</strong>. There&rsquo;s a <strong>Developer options</strong> entry that wasn&rsquo;t there before &mdash; open it</li>
     <li>Turn on <strong>ADB debugging</strong></li>
-    <li>Turn on <strong>Debug over Wi-Fi</strong>. Give it a few seconds and it shows an address like <code>192.0.2.42:5555</code> &mdash; write that down</li>
+    <li>Turn on <strong>Debug over Wi-Fi</strong>. Give it a few seconds and it shows an address like <code>192.0.2.23:5555</code> &mdash; write that down</li>
   </ol>
   <p class="calc-sub">Put the watch on its charger for the rest of this. A watch that dozes off drops the connection mid-install.</p>
 
   <h2>On the computer</h2>
   <p class="calc-sub">Replace the address with whatever your watch showed you, and the path with wherever the file downloaded.</p>
-  <pre><code>adb connect 192.0.2.42:5555
+  <pre><code>adb connect 192.0.2.23:5555
 adb install ~/Downloads/lift-wear.apk</code></pre>
   <p class="calc-sub">After <code>adb connect</code>, the watch asks <strong>Allow debugging?</strong> &mdash; tap the checkmark. If you miss it the install fails with <code>device unauthorized</code>; run <code>adb connect</code> again and watch the screen this time.</p>
   <p class="calc-sub">A successful install prints <code>Success</code>. LIFT is now in the watch&rsquo;s app list, alongside everything else.</p>

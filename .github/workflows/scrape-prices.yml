@@ -36,7 +36,7 @@ jobs:
       # empty value skips the alert, so the bot keeps running without them.
       TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
       TS_OAUTH_SECRET: ${{ secrets.TS_OAUTH_SECRET }}
-      NTFY_URL: https://ntfy.example.ts.net/homelab
+      NTFY_URL: ${{ secrets.NTFY_URL }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -91,7 +91,7 @@ jobs:
       # something is wrong: a row without a price, a scraper crash, or a push
       # that did not land.
       - name: Join the tailnet
-        if: always() && env.TS_OAUTH_CLIENT_ID != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
+        if: always() && env.TS_OAUTH_CLIENT_ID != '' && env.NTFY_URL != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ env.TS_OAUTH_CLIENT_ID }}
@@ -99,7 +99,7 @@ jobs:
           tags: tag:ci
 
       - name: Alert via ntfy
-        if: always() && env.TS_OAUTH_CLIENT_ID != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
+        if: always() && env.TS_OAUTH_CLIENT_ID != '' && env.NTFY_URL != '' && (steps.scrape.outcome != 'success' || steps.commit.outcome != 'success' || steps.scrape.outputs.unpriced != '0')
         env:
           SCRAPE: ${{ steps.scrape.outcome }}
           COMMIT: ${{ steps.commit.outcome }}
