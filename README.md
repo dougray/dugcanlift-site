@@ -13,8 +13,8 @@ there are no accounts and no servers holding your data.
 
 | | | |
 |---|---|---|
-| **LIFT** | training and nutrition tracker | [iOS](https://github.com/dougray/dugcanlift-lift-ios) · [Android](https://github.com/dougray/dugcanlift-lift) — AGPL-3.0 |
-| **COACH** | trainer dashboard, live at [/coach](https://www.dugcanlift.com/coach/) | [dugcanlift-coach](https://github.com/dougray/dugcanlift-coach) — AGPL-3.0 |
+| **LIFT** | training and nutrition tracker | [iOS](https://github.com/dougray/dugcanlift-lift-ios) · [Android](https://github.com/dougray/dugcanlift-lift) — Apache-2.0 |
+| **COACH** | trainer dashboard, live at [/coach](https://www.dugcanlift.com/coach/) | [dugcanlift-coach](https://github.com/dougray/dugcanlift-coach) — Apache-2.0 |
 
 ### About the `coach/` directory
 
@@ -54,7 +54,7 @@ Push to the default branch to deploy. There is no deploy script.
 This repository holds three different kinds of thing, and they are not all
 covered by the same terms.
 
-**Code — [MIT](LICENSE).** The macro calculator, `scripts/`, the SCSS, the
+**Code — [Apache 2.0](LICENSE).** The macro calculator, `scripts/`, the SCSS, the
 layouts and includes. Take it, change it, ship it. The calculator in particular
 is open so anyone can check that its Mifflin-St Jeor implementation matches what
 the apps compute.
@@ -63,8 +63,8 @@ the apps compute.
 and the other prose pages. Quote and link freely; ask before republishing whole.
 
 **Brand — all rights reserved.** The DUGCANLIFT name, the logo, and the icons in
-`assets/images/`. The MIT grant above covers code only and grants no trademark
-rights.
+`assets/images/`. The Apache License above covers code only and, per its section 6,
+grants no trademark rights.
 
-`coach/` is not covered by any of the above — it is AGPL-3.0, under its own
+`coach/` is not covered by any of the above — it is Apache-2.0, under its own
 repository's license.
