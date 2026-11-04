@@ -19,11 +19,53 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-// The web fonts are requested from <head> (_includes/head.html) with a
-// preconnect, not by an @import here: an @import is only found after this
-// whole stylesheet has downloaded, which put two extra round trips in front
-// of the first paint on every page.
+/* Oswald 700 and JetBrains Mono 400, self-hosted the same way (Oswald v57,
+   JetBrains Mono v24); SIL OFL 1.1, see /assets/fonts/OFL-oswald.txt and
+   OFL-jetbrains-mono.txt. Oswald 600 in the rules below is drawn with 700. */
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// Every font is served from this site, so there is no third-party request
+// (and no extra DNS and TLS round trip) in front of the first paint. The
+// latin files the first screen needs are preloaded from _includes/head.html.
 @import "minima";
+
+// The built pages give every image its width and height (see
+// _plugins/responsive_images.rb) so the browser reserves the space; this keeps
+// the shape when max-width scales an image down.
+img {
+  height: auto;
+}
 
 :root {
   --dcl-bg: #1c1b19;
@@ -674,6 +716,11 @@ input:focus, select:focus, textarea:focus {
 
 .tool-card .post-arrow {
   margin-top: 0.25rem;
+}
+
+// An odd card out on the last row spans both columns instead of leaving a hole.
+.tool-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 600px) {

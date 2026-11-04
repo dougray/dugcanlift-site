@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Writes a .webp next to every JPEG and PNG in assets/images that a page shows.
+#
+#   script/webp          # only images without a .webp yet
+#   script/webp --all    # redo every one
+#
+# _plugins/responsive_images.rb serves the .webp through a <picture> wherever
+# one sits next to the original, so the originals stay as the fallback (and
+# as what share cards point at). A .webp that doesn't save at least 10% is
+# deleted, so the page keeps the original. Needs cwebp (brew install webp);
+# the generated files are committed, so the Pages build doesn't need it.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+all=${1:-}
+made=0 kept=0
+while IFS= read -r -d '' src; do
+  case "$src" in
+    */social/*|*/favicon*|*/apple-touch-icon*|*/android-chrome*) continue ;;
+  esac
+  out="${src%.*}.webp"
+  [[ -f "$out" && "$all" != "--all" ]] && continue
+  case "$src" in
+    *.png) cwebp -quiet -q 85 -m 6 -alpha_q 100 "$src" -o "$out" ;;
+    *)     cwebp -quiet -q 80 -m 6 "$src" -o "$out" ;;
+  esac
+  before=$(stat -f%z "$src") after=$(stat -f%z "$out")
+  if (( after * 10 > before * 9 )); then rm "$out"; else made=$((made + 1)); kept=$((kept + before - after)); fi
+done < <(find assets/images -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) -print0)
+echo "webp: $made written, $((kept / 1024)) KB saved"
