@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01T11:54:18.700331+00:00",
+  "last_updated": "2026-11-04T13:04:45.907592+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -87,8 +87,8 @@
       "category": "Protein",
       "url": "https://dietryin.co/products/post-iso",
       "servings": 25,
-      "price": 55.99,
-      "cost_per_serving": 2.24,
+      "price": 54.99,
+      "cost_per_serving": 2.2,
       "error": null
     },
     {
@@ -147,8 +147,8 @@
       "category": "Protein",
       "url": "https://www.bulksupplements.com/products/hydrolyzed-whey-protein-isolate-powder",
       "servings": 33,
-      "price": 62.97,
-      "cost_per_serving": 1.908,
+      "price": 81.97,
+      "cost_per_serving": 2.484,
       "error": null
     },
     {
