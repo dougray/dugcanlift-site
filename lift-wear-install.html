@@ -8,7 +8,7 @@ hide_title: true
 <div class="calc">
   <p class="hero-eyebrow">beta test</p>
   <h1 class="calc-title">LIFT on Wear OS</h1>
-  <p class="calc-sub">A food log that runs on the watch itself. Search the bundled USDA library, set an amount, pick a meal &mdash; with no phone anywhere near you and no network connection of any kind. When you want the log back in LIFT, the watch draws it as a QR code and you scan it with the web version.</p>
+  <p class="calc-sub">LIFT on the watch itself. Log food from the bundled USDA library, and work through a training session set by set, with a rest timer and your heart rate on the screen. Pair it with LIFT for Android and the phone sends the day&rsquo;s workout to your wrist, and the sessions you finish go back into your log on the phone. Pairing is optional: with no phone at all the watch still logs food, with no network connection of any kind, and draws the food log as a QR code you scan with the web version.</p>
 
   <div class="card card--accent">
     <p class="calc-sub"><strong>This one is genuinely awkward to install, and there is no way around it.</strong>
@@ -24,7 +24,7 @@ hide_title: true
     <li>A watch running <strong>Wear OS 3 or newer</strong> &mdash; Pixel Watch, Galaxy Watch 4 and up, TicWatch Pro 5. Wear OS 2 watches can&rsquo;t run it</li>
     <li>A computer with <strong>adb</strong> on it. It comes in <a href="https://developer.android.com/tools/releases/platform-tools">Android platform-tools</a>, a single download from Google &mdash; no Android Studio needed</li>
     <li>The watch and the computer on the <strong>same Wi-Fi network</strong></li>
-    <li><a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest/download/lift-wear.apk">LIFT for Wear OS (.apk)</a> &mdash; 20 MB, most of which is the food library. It comes from the <a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest">latest Wear OS release on GitHub</a>, alongside a <a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest/download/SHA256SUMS">SHA-256 checksum</a></li>
+    <li><a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest/download/lift-wear.apk">LIFT for Wear OS (.apk)</a> &mdash; about 25 MB. It comes from the <a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest">latest Wear OS release on GitHub</a>, alongside a <a href="https://github.com/dougray/dugcanlift-lift-watch/releases/latest/download/SHA256SUMS">SHA-256 checksum</a></li>
   </ul>
 
   <h2>On the watch</h2>
@@ -46,7 +46,23 @@ adb install ~/Downloads/lift-wear.apk</code></pre>
   <p class="calc-sub">When you&rsquo;re done, turn <strong>ADB debugging</strong> and <strong>Debug over Wi-Fi</strong> back off. Nothing about LIFT needs them; they were only how the file got across.</p>
 
   <h2>Using it</h2>
-  <p class="calc-sub">The watch app has two things on its home screen: <strong>Log food</strong> and <strong>Export logged foods</strong>. Search by voice or the watch keyboard, whichever your watch offers, then set the amount on the rotating bezel or crown in grams or ounces and pick a meal.</p>
+  <p class="calc-sub">The home screen lists <strong>Start workout</strong>, <strong>Log food</strong>, <strong>Export logged foods</strong> and <strong>Phone</strong>. When your phone has sent a workout, it sits at the top under its own name, with how many exercises and sets it has. A workout you haven&rsquo;t finished shows as <strong>Resume workout</strong> instead, even if the app was closed in between.</p>
+  <p class="calc-sub"><strong>Food.</strong> Search by voice or the watch keyboard, whichever your watch offers, then set the amount on the rotating bezel or crown in grams or ounces and pick a meal. The watch says <strong>Logged</strong> once it has it.</p>
+  <p class="calc-sub"><strong>A workout.</strong> Each set shows what you were asked to do in the biggest digits on the screen, last time&rsquo;s numbers when the phone sent them, and your heart rate once the watch has a reading. <strong>Log set</strong> fills in from the prescription; change whatever you actually did. Rest starts by itself when you log a set, and the watch buzzes when it runs out. A lift done one side at a time counts each side, so &ldquo;3 &times; 8 each side&rdquo; is six sets, and the set line says which side is next: <code>3/6 &middot; L</code>. Supersets and circuits go round by round, one set of each exercise before any rest, with the group shown over the name (&ldquo;Superset A &middot; A1&rdquo;); there&rsquo;s no rest before a drop set and fifteen seconds before a rest-pause set. A target with no weight shows no weight, and a set logged without one reaches the phone without one, not as a zero. <strong>Start workout</strong> with nothing sent is the same screens with no prescription.</p>
+  <p class="calc-sub">The first time you open it, the watch asks to read your heart rate. Say no and everything else works the same; there&rsquo;s just no heart rate on the screen. The watch keeps only the highest heart rate around each set, shown under the set as &ldquo;max 142 bpm&rdquo;, and the session&rsquo;s average and highest. Those go to LIFT on your phone with the session and nowhere else; the rest of your heart rate is shown during the session and not saved.</p>
+  <p class="calc-sub"><strong>Finish workout</strong> ends the session. It goes to the phone if one is paired and connected, and otherwise waits on the watch and goes the next time the two connect. It stays on the watch until the phone says it has it. With no phone paired, a finished workout waits on the watch until you pair one: the QR export carries food only.</p>
+
+  <h2>Pair with your phone</h2>
+  <p class="calc-sub">This needs <a href="{{ '/lift/install/' | relative_url }}">LIFT for Android</a> <strong>1.17 or later</strong> on the phone. Skip it and the watch works on its own, as above.</p>
+  <ol>
+    <li>On the watch, open LIFT, tap <strong>Phone</strong>, then <strong>Pair with phone</strong>. Allow Bluetooth when it asks</li>
+    <li>On the phone, open LIFT and find the <strong>Watch</strong> card on Home. Tap <strong>Pair with my watch</strong>, and allow Bluetooth when Android asks (it calls it <strong>Nearby devices</strong>)</li>
+    <li>Your watch appears on the phone by name. Tap it, then accept the Bluetooth pairing request on both</li>
+    <li>Both screens show the same <strong>six-digit number</strong>. If they match, tap <strong>Yes, it matches</strong> on the phone and <strong>Yes, pair</strong> on the watch. If they don&rsquo;t, you&rsquo;re pairing a different watch &mdash; tap <strong>No</strong> on either and the pairing ends there</li>
+  </ol>
+  <p class="calc-sub">After that they reconnect by themselves whenever LIFT is open on the watch. With LIFT closed, the watch&rsquo;s side of the link is off.</p>
+  <p class="calc-sub">To send a workout, use the Watch card on the phone: <strong>Send today&rsquo;s workout</strong> when a routine is scheduled for today, or send any routine from the list under it. On the watch, <strong>Get today&rsquo;s plan</strong> asks the phone for whatever is scheduled today.</p>
+  <p class="calc-sub">What crosses the link, and nothing else. From the phone: the workout&rsquo;s name, its exercises and notes, the sets with their target weight, reps and RPE, and your last numbers for each exercise. From the watch: each set as you log it, and the finished session, which goes into your log, each with the highest heart rate around each set and the session&rsquo;s average and highest. Your food log doesn&rsquo;t cross it &mdash; that still comes back by QR &mdash; and neither does the rest of your heart rate.</p>
 
   <h2>Getting the log back</h2>
   <ol>
@@ -59,12 +75,14 @@ adb install ~/Downloads/lift-wear.apk</code></pre>
   <p class="calc-sub">Nothing clears on its own. The watch has no way of knowing whether a scan actually worked, and clearing automatically would throw the log away every time one didn&rsquo;t &mdash; which is also why the destructive tap is behind two confirmations and the safe one isn&rsquo;t behind any.</p>
 
   <h2>Why it works this way</h2>
-  <p class="calc-sub">The normal way a Wear watch talks to its phone is the Wearable Data Layer, and that needs Google Play Services running on both ends. LIFT for Android carries none. Rather than pull Play Services in, the watch app does without a phone entirely &mdash; <strong>it asks for no internet permission at all</strong>, so it could not send your log anywhere even if something in it wanted to. The QR code is the whole transport, and it&rsquo;s a picture of a screen.</p>
-  <p class="calc-sub">The food library is bundled inside the app rather than looked up &mdash; the same 7,793 USDA records the web version searches. That&rsquo;s most of the 20 MB, and it&rsquo;s why a watch that has never been paired to anything still has something to log from.</p>
+  <p class="calc-sub">The normal way a Wear watch talks to its phone is the Wearable Data Layer, and that needs Google Play Services running on both ends. LIFT for Android carries none. Rather than pull Play Services in, the two talk over <strong>LIFT Link</strong>: a direct Bluetooth connection between your phone and your watch, encrypted, with no server in the middle. The watch still <strong>asks for no internet permission at all</strong>, so it could not send your log to the internet even if something in it wanted to. Bluetooth reaches the phone you paired and nothing else.</p>
+  <p class="calc-sub">Without a phone, the QR code is the transport for food, and it&rsquo;s a picture of a screen.</p>
+  <p class="calc-sub">The food library is bundled inside the app rather than looked up &mdash; the same 7,793 USDA records the web version searches, well under 1 MB of the download. It&rsquo;s why a watch that has never been paired to anything still has something to log from.</p>
   <p class="calc-sub">The watch keeps the most recent 200 entries, however old they are, and exports every one of them.</p>
 
   <h2>Is it the same app as on Apple Watch?</h2>
-  <p class="calc-sub">Same job, less of it. Both log food standalone and export by QR. The Apple Watch app has been around longer and also records sets with a rest timer, runs and hikes on GPS, and writes to Apple Health &mdash; none of which the Wear app does. See the <a href="{{ '/app/' | relative_url }}">full comparison</a>.</p>
+  <p class="calc-sub">Mostly the same job, over different plumbing. Both log food from the bundled library with no phone and export it by QR, and both take a workout from the phone and run it with last time&rsquo;s numbers, a rest timer and your heart rate, then send the finished session back. The Apple Watch app talks to LIFT for iPhone; this one talks to LIFT for Android.</p>
+  <p class="calc-sub">The Apple Watch app also records runs and hikes on GPS, saves workouts to Apple Health, and sends food logged from your recent foods to the iPhone. The Wear app does none of those: it records no runs, writes to no health app, and its food log leaves only by QR. The Wear app shows left and right for a lift done one side at a time, and supersets, drop sets and rest-pause sets, which the Apple Watch app doesn&rsquo;t yet. See the <a href="{{ '/app/' | relative_url }}">full comparison</a>.</p>
 
   <div class="card">
     <p class="calc-sub">Something broken, or a step above that didn&rsquo;t match what your watch said? <a href="{{ '/feedback/' | relative_url }}">Tell me about it</a> &mdash; watch menus vary by manufacturer and I&rsquo;ve only got so many watches.</p>
