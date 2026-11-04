@@ -1,0 +1,27 @@
+{%- comment -%}
+minima's default layout, plus a "Skip to content" link and an id on <main> for
+it to land on. Keyboard and screen-reader users otherwise tab through the whole
+header nav on every page.
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    {%- include header.html -%}
+
+    <main class="page-content" id="main-content" tabindex="-1" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>

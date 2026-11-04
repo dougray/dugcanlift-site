@@ -19,11 +19,53 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-// The web fonts are requested from <head> (_includes/head.html) with a
-// preconnect, not by an @import here: an @import is only found after this
-// whole stylesheet has downloaded, which put two extra round trips in front
-// of the first paint on every page.
+/* Oswald 700 and JetBrains Mono 400, self-hosted the same way (Oswald v57,
+   JetBrains Mono v24); SIL OFL 1.1, see /assets/fonts/OFL-oswald.txt and
+   OFL-jetbrains-mono.txt. Oswald 600 in the rules below is drawn with 700. */
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// Every font is served from this site, so there is no third-party request
+// (and no extra DNS and TLS round trip) in front of the first paint. The
+// latin files the first screen needs are preloaded from _includes/head.html.
 @import "minima";
+
+// The built pages give every image its width and height (see
+// _plugins/responsive_images.rb) so the browser reserves the space; this keeps
+// the shape when max-width scales an image down.
+img {
+  height: auto;
+}
 
 :root {
   --dcl-bg: #1c1b19;
@@ -86,6 +128,21 @@
   }
 }
 
+// "Skip to content": first thing a keyboard reaches, shown only when focused.
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--dcl-accent);
+  color: var(--dcl-on-accent) !important;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.skip-link:focus { top: 0.75rem; }
+
 body {
   background: var(--dcl-bg);
   color: var(--dcl-text);
@@ -96,6 +153,21 @@ body {
 // link keeps the sage instead.
 a, a:visited { color: var(--dcl-accent-2-text); }
 a:hover { color: var(--dcl-accent-text); }
+
+// A link inside running text needs more than its colour to stand out (the
+// sage is 2.56:1 against the body text, under the 3:1 that would do), so it
+// is underlined too.
+.post-content p a,
+.post-content li a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+// minima draws the date in $grey-color, 4.48:1 on this background: just under
+// AA. The muted token is 6.31:1.
+.post-meta {
+  color: var(--dcl-muted);
+}
 
 .site-header, .site-footer {
   background: var(--dcl-surface);
@@ -185,6 +257,9 @@ a:hover { color: var(--dcl-accent-text); }
   // Every bar the same length: they are a plate motif, not a chart, and
   // lengths that differed read as quantities they never measured.
   width: 100%;
+  // The padding and the 6px plate edge sit inside that 100%; without this the
+  // bars ran past the right edge and phones clipped the numbers off.
+  box-sizing: border-box;
   animation: plate-in 0.5s ease-out backwards;
 }
 .plate-row:nth-child(1) { animation-delay: 0.05s; }
@@ -250,7 +325,16 @@ a:hover { color: var(--dcl-accent-text); }
   flex-shrink: 0;
 }
 
-.post-title { flex: 1; font-size: 1.05rem; }
+// Scoped to the home page's post list: unscoped, this also shrank the <h1> of
+// every post and page (minima gives those .post-title too) below their own <h2>s.
+.post-link .post-title { flex: 1; font-size: 1.05rem; }
+
+.post-header .post-title {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  font-weight: 700;
+}
 .post-arrow { color: var(--dcl-muted); }
 
 // Callout blocks. `.card` is defined in the LIFT and Coach PWA stylesheets but
@@ -435,11 +519,12 @@ pre code {
     padding-bottom: 5px;
   }
   .site-nav .page-link { padding: 10px; }
-}
 
-.site-nav .trigger {
-  background: var(--dcl-surface);
-  border: 1px solid var(--dcl-rule);
+  // The open phone menu's box. Outside this query it framed the desktop links.
+  .site-nav .trigger {
+    background: var(--dcl-surface);
+    border: 1px solid var(--dcl-rule);
+  }
 }
 
 .site-nav .trigger .page-link {
@@ -646,6 +731,11 @@ input:focus, select:focus, textarea:focus {
 
 .tool-card .post-arrow {
   margin-top: 0.25rem;
+}
+
+// An odd card out on the last row spans both columns instead of leaving a hole.
+.tool-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 600px) {

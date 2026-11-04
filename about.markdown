@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+description: "Told in 2024 to pick out an electric wheelchair, I chose to train instead. This is that story, and why I build free fitness tools."
 permalink: /about/
 ---
 
