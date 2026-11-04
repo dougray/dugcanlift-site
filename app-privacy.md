@@ -63,8 +63,9 @@ Health Connect or Apple Health.
   background ("Allow all the time") location. GPS starts when you start a
   recording and stops when you stop it. A recording carries on if your phone
   locks or you switch apps because it runs as a foreground service, shown as
-  the ongoing "Recording your route" notification — which is what the
-  notifications permission is for.
+  the ongoing "Recording your route" notification. That is one of the two
+  things the notifications permission is for; the other is the rest timer
+  (see Notifications, below).
 - **iPhone** asks for location only while you use the app, and never for
   "Always". A recording you start keeps going with the phone locked in your
   pocket, and iOS shows that LIFT is using your location while it does. GPS
@@ -115,6 +116,8 @@ no map service involved.
   finish recording one.
 
 **The web app and Wear OS** do not use Health Connect or Apple Health at all.
+The Wear OS watch's heart rate comes from its own sensor, as described under
+The watch apps.
 The web app's steps are the numbers you type in.
 
 Health data LIFT reads stays on your device and is never used for advertising.
@@ -134,23 +137,42 @@ you choose to send.
   them: those remembered foods stay on your phone. LIFT doesn't send them
   anywhere; they go into a backup file only when you save one.
 
-## Notifications (iPhone)
+## Notifications
 
-The iPhone app asks to send notifications the first time a rest between sets
-starts in a live session, and uses them for one thing: telling you the rest is
-over, including with your phone locked. The notification is scheduled on the
-phone, for a time on the phone; nothing is sent to or from anywhere. Say no and
-the rest timer still counts down on screen and on the lock screen; only the
-alert at the end is missing.
+- **iPhone** asks to send notifications the first time a rest between sets
+  starts in a live session, and uses them for one thing: telling you the rest
+  is over, including with your phone locked. The notification is scheduled on
+  the phone, for a time on the phone; nothing is sent to or from anywhere. Say
+  no and the rest timer still counts down on screen and on the lock screen;
+  only the alert at the end is missing.
+- **Android** never asks for notifications for the rest timer. If you have
+  already allowed them, for recording a route, a rest between sets in a live
+  session shows its countdown as an ongoing notification, and a second one
+  says the rest is over when LIFT is not on screen. Both are made on the phone,
+  for a time on the phone; nothing is sent to or from anywhere. If you have not
+  allowed notifications, the countdown still runs on screen.
+- **The web app** never asks to send notifications. When a rest ends, the page
+  says so and, where the browser allows it, vibrates the phone.
 
-## Progress photos (iPhone)
+## Progress photos
 
-You can keep progress photos in the iPhone app. You choose each one in the
-system photo picker, which shows LIFT only the picture you pick and gives it no
-access to the rest of your library. LIFT saves a smaller copy in its own
-storage on your phone, without the original's location data. Progress photos
-are never uploaded, never included in a backup file, and never sent to a
-coach. Deleting a photo in LIFT, or deleting LIFT, removes them.
+You can keep progress photos in LIFT on iPhone, Android and the web. In every
+build, LIFT saves a smaller copy of each photo you choose, without the
+original's location data or any other metadata. Progress photos are never
+uploaded, never included in a backup file, and never sent to a coach. Deleting
+a photo in LIFT, or deleting LIFT, removes them.
+
+- **iPhone** uses the system photo picker, which shows LIFT only the picture
+  you pick and gives it no access to the rest of your library. The copies are
+  kept in LIFT's own storage on your phone, and left out of iCloud and computer
+  backups of the phone.
+- **Android** uses the system photo picker too, which needs no permission. The
+  copies are kept in LIFT's private storage on your phone, which Android's
+  cloud backup leaves out. A direct phone-to-phone transfer when you set up a
+  new handset carries them, as it carries the rest of your log.
+- **The web app** uses your browser's file picker, which on a phone may also
+  offer the camera. The page asks for no permission. The copies are kept in
+  your browser's storage on this device; clearing the site's data erases them.
 
 ## What leaves your device
 
@@ -192,11 +214,17 @@ no access to their logs.
 **The iPhone app** searches a food database built into the app, so a food search
 there sends nothing at all.
 
-### Importing a recipe from Safari (iPhone)
+### Importing a recipe from a web page
 
-Share a recipe page from Safari to LIFT and Safari hands over the recipe it
-already has on screen. LIFT reads it on the phone. It makes no request of its
-own, so the site sees nothing from LIFT.
+Two ways bring a recipe from a website into LIFT, and in both the browser hands
+over the recipe it already has on screen. LIFT reads it on your device and
+makes no request of its own, so the site sees nothing from LIFT.
+
+- **Share from Safari (iPhone):** share a recipe page to LIFT.
+- **Send recipes from your browser (iPhone, Android and the web):** a bookmark
+  you save once. Tapped on a recipe page, it reads the recipe the page already
+  contains and opens LIFT with it inside the link. You check the recipe before
+  anything is saved.
 
 ### Send to Coach
 
@@ -230,13 +258,16 @@ it, it can show where you go, so treat the file with the same care as the log.
   includes the app's data, and never leaves hardware you own.
 - **iPhone** has no iCloud sync of its own. If your iPhone itself is backed up
   to iCloud or a computer, iOS includes app data in that backup as it does for
-  every app, under Apple's terms.
+  every app, under Apple's terms, except progress photos, which LIFT leaves
+  out.
 - **The web app** keeps everything in your browser, which does not sync it
   anywhere. Clearing site data erases it, so keep a backup file.
-- **The iPhone app** can also export your training as a spreadsheet (a CSV
-  file) and import a training history exported from Strong, Hevy or FitNotes.
-  Both are files you choose and handle yourself: LIFT reads an import on the
-  phone and writes an export only where you save or send it.
+- **Every LIFT app** (iPhone, Android and the web) can also export your
+  training as a spreadsheet (a CSV file) and import a training history
+  exported from Strong, Hevy or FitNotes. Both are files you choose and handle
+  yourself, through the system's own file picker (no storage permission on
+  Android): LIFT reads an import on your device and writes an export only where
+  you save or send it.
 
 ## The watch apps
 
@@ -246,9 +277,29 @@ connection, and the iPhone sends the watch your recent foods so they are quick
 to pick. The watch app makes no network requests of its own. It can also show
 your food log as QR codes for the web app to scan.
 
-**Wear OS.** Asks for no permissions and makes no network requests. Food you
-log is kept on the watch and shown as QR codes when you choose to export it;
-the LIFT web app reads them with the camera, as described above.
+**Wear OS.** Makes no network requests: the watch app has no internet
+permission at all.
+
+- **Food** you log is kept on the watch and shown as QR codes when you choose to
+  export it; the LIFT web app reads them with the camera, as described above.
+- **LIFT Link** pairs the watch with LIFT for Android, if you choose to, from
+  the Watch card on the phone's Home screen. The two then talk directly over an
+  encrypted Bluetooth connection, with no server, no account and nothing else:
+  the day's workout goes to the watch (exercises, sets, target weights and your
+  last numbers for each), and sessions you finish on the watch come back into
+  your log on the phone. For this, both ask for the Nearby devices (Bluetooth)
+  permission. The watch never searches for other devices; it only waits for
+  your phone. The phone searches once, for LIFT's own watch app, to pair, and
+  that search is declared never to be used to work out where you are. On
+  Android 11 and older, Android itself requires location permission for any
+  Bluetooth search; LIFT asks for nothing new there, because route recording
+  already uses that permission.
+- **Heart rate** is read from the watch's own sensor during a session you run
+  on the watch, to show it on screen. It is not saved and not sent to the
+  phone. The watch asks for the Body sensors permission, or Heart rate on Wear
+  OS 6 and later; say no and the session runs without it.
+- **Vibrate** is the buzz at the end of a rest. Android grants it when you
+  install; it asks you nothing.
 
 ## Analytics, advertising, and tracking
 
