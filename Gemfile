@@ -47,3 +47,9 @@ gem "wdm", "~> 0.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # Lock `http_parser.rb` to v0.6.x on JRuby: newer versions have no Java
 # counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+
+# Checks the built site, not part of it: script/check runs it locally and the
+# Pages workflow runs it on every build, before anything is published.
+group :test do
+  gem "html-proofer", "~> 5.0"
+end

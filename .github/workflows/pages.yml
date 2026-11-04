@@ -11,7 +11,7 @@
 # The point of that is only kept if the two stay the same: `bundle exec jekyll
 # build` below is what `script/jekyll build` runs locally, against the same
 # Gemfile.lock. Do not let this file grow a step that a local build does not
-# have.
+# have. The same goes for the checks: script/check runs them locally.
 name: Pages
 
 on:
@@ -51,6 +51,17 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build
+
+      # The built site is checked before anything is uploaded, so a broken
+      # internal link or an accessibility regression stops the deploy rather
+      # than shipping. script/check --no-build is exactly what runs locally
+      # after script/check's own build; see that script for what it checks.
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: "24"
+
+      - name: Check links, accessibility and SEO
+        run: script/check --no-build
 
       # On a pull request the build above is the whole point: it says the site
       # still compiles before anything is published. Only main uploads.

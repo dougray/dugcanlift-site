@@ -154,6 +154,21 @@ body {
 a, a:visited { color: var(--dcl-accent-2-text); }
 a:hover { color: var(--dcl-accent-text); }
 
+// A link inside running text needs more than its colour to stand out (the
+// sage is 2.56:1 against the body text, under the 3:1 that would do), so it
+// is underlined too.
+.post-content p a,
+.post-content li a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+// minima draws the date in $grey-color, 4.48:1 on this background: just under
+// AA. The muted token is 6.31:1.
+.post-meta {
+  color: var(--dcl-muted);
+}
+
 .site-header, .site-footer {
   background: var(--dcl-surface);
   border-color: var(--dcl-rule) !important;

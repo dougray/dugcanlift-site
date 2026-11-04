@@ -134,3 +134,9 @@ exclude:
   - coach/recipe-import-test.html
   - coach/fixtures/
   - coach/*.test.mjs
+  # Tooling for this repo, not pages. CLAUDE.md is gitignored, so only a
+  # local build would have published it.
+  - script/
+  - CLAUDE.md
+  - lighthouserc.json
+  - .lighthouseci/

@@ -19,3 +19,4 @@ CLAUDE.md
 *.env
 !.env.example
 !.env.template
+.lighthouseci/

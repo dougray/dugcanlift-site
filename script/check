@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Checks the built site the way the Pages workflow does, before you push.
+#
+#   script/check            # builds first, then checks
+#   script/check --no-build # checks the _site you already have
+#
+# 1. html-proofer: every link, image and anchor that points inside this site
+#    resolves. Other sites aren't fetched, so a run never fails because
+#    somebody else's server is down. --allow-missing-href is for the app
+#    pages (LIFT, Coach) whose links get their targets from JavaScript after
+#    the page loads; images filled in that way carry data-proofer-ignore.
+# 2. Lighthouse CI (lighthouserc.json): a sample of pages must score at least
+#    0.95 for accessibility and 0.9 for best practices and SEO. Performance
+#    below 0.85 is a warning only, since a shared CI machine's speed varies.
+#    Reports land in .lighthouseci/. Needs Chrome and Node.
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+export LANG=${LANG:-C.UTF-8} LC_ALL=${LC_ALL:-${LANG:-C.UTF-8}}
+case "$LC_ALL" in *UTF-8*|*utf8*) ;; *) export LC_ALL=C.UTF-8 ;; esac
+
+if [[ "${1:-}" != "--no-build" ]]; then
+  JEKYLL_ENV=production script/jekyll build
+fi
+
+bundle=(bundle)
+command -v rbenv >/dev/null 2>&1 && bundle=(rbenv exec bundle)
+"${bundle[@]}" exec htmlproofer _site --disable-external --no-enforce-https --allow-missing-href
+
+if [[ -z "${CHROME_PATH:-}" && -x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ]]; then
+  export CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+fi
+npx --yes @lhci/cli@0.15.1 autorun

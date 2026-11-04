@@ -57,7 +57,7 @@ Your home and any other private places you mark are always cut out first.
 
 <figure style="margin:1.5rem 0;">
   <img src="/assets/images/blog/2026-11-04-pocket-nomad-everywhere/android-6-map.jpg" alt="A demo map on Android: lines of colored coverage dots and larger ping dots radiating from a repeater, with mesh radios marked and legends for signal strength, ping results and radio types" style="width:100%;max-width:420px;height:auto;border-radius:10px;display:block;margin:0 auto;">
-  <figcaption style="text-align:center;font-size:.9em;color:#828282;">Demo data: coverage dots, ping results and mesh radios on the Android map.</figcaption>
+  <figcaption style="text-align:center;font-size:.9em;color:var(--dcl-muted);">Demo data: coverage dots, ping results and mesh radios on the Android map.</figcaption>
 </figure>
 
 ## The guides got a second look
