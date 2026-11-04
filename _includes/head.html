@@ -5,12 +5,20 @@ downloading; requested here with a preconnect, the font CSS and files start
 alongside the stylesheet. Weights are the ones the stylesheet uses: Oswald 600
 is drawn with 700, and nothing sets JetBrains Mono bold, so Oswald 500 and
 Mono 600 are no longer fetched.
+
+theme-color tints the phone browser's bar to the page background, and the
+icons (already in assets/images) were never linked, so browsers fell back to
+favicon.ico and iOS to a screenshot of the page.
 {%- endcomment -%}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#1c1b19">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/images/favicon-32x32.png" | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/images/favicon-16x16.png" | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ "/assets/images/apple-touch-icon.png" | relative_url }}">
   {%- seo -%}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

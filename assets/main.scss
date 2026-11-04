@@ -86,6 +86,21 @@
   }
 }
 
+// "Skip to content": first thing a keyboard reaches, shown only when focused.
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--dcl-accent);
+  color: var(--dcl-on-accent) !important;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.skip-link:focus { top: 0.75rem; }
+
 body {
   background: var(--dcl-bg);
   color: var(--dcl-text);
@@ -185,6 +200,9 @@ a:hover { color: var(--dcl-accent-text); }
   // Every bar the same length: they are a plate motif, not a chart, and
   // lengths that differed read as quantities they never measured.
   width: 100%;
+  // The padding and the 6px plate edge sit inside that 100%; without this the
+  // bars ran past the right edge and phones clipped the numbers off.
+  box-sizing: border-box;
   animation: plate-in 0.5s ease-out backwards;
 }
 .plate-row:nth-child(1) { animation-delay: 0.05s; }
@@ -250,7 +268,16 @@ a:hover { color: var(--dcl-accent-text); }
   flex-shrink: 0;
 }
 
-.post-title { flex: 1; font-size: 1.05rem; }
+// Scoped to the home page's post list: unscoped, this also shrank the <h1> of
+// every post and page (minima gives those .post-title too) below their own <h2>s.
+.post-link .post-title { flex: 1; font-size: 1.05rem; }
+
+.post-header .post-title {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  font-weight: 700;
+}
 .post-arrow { color: var(--dcl-muted); }
 
 // Callout blocks. `.card` is defined in the LIFT and Coach PWA stylesheets but
@@ -435,11 +462,12 @@ pre code {
     padding-bottom: 5px;
   }
   .site-nav .page-link { padding: 10px; }
-}
 
-.site-nav .trigger {
-  background: var(--dcl-surface);
-  border: 1px solid var(--dcl-rule);
+  // The open phone menu's box. Outside this query it framed the desktop links.
+  .site-nav .trigger {
+    background: var(--dcl-surface);
+    border: 1px solid var(--dcl-rule);
+  }
 }
 
 .site-nav .trigger .page-link {

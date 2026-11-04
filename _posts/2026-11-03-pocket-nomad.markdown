@@ -1,5 +1,6 @@
 ---
 layout: post
+image: /assets/images/blog/2026-11-03-pocket-nomad/banner.jpg
 title:  "Pocket Nomad: a Survival Kit That Works With No Signal"
 date:   2026-11-03 23:30:00 -0600
 ---

@@ -1,5 +1,6 @@
 ---
 layout: post
+image: /assets/images/blog/2026-11-03-pocket-nomad/banner.jpg
 title:  "Pocket Nomad Is Now on Android and the Web"
 date:   2026-11-04 12:00:00 -0600
 ---

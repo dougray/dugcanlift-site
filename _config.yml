@@ -51,6 +51,31 @@ sass:
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+
+# Link previews (jekyll-seo-tag, via minima). Every page gets the site card
+# unless its front matter names its own `image:`; large cards show it full width.
+twitter:
+  card: summary_large_image
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/social/dugcanlift-card.png
+  # App source, data and format notes in these folders; not pages anyone searches for.
+  # Globs, because a bare "coach" also matches coach-install.html at the root.
+  - scope:
+      path: "coach/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "lift/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "cook/**"
+    values:
+      sitemap: false
 
 # Jekyll skips dot-directories by default. assetlinks.json (Android App Links'
 # Digital Asset Links verification, for LIFT and Coach) must be served from

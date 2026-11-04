@@ -21,6 +21,7 @@ gem "minima", "~> 2.5"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap", "~> 1.4"
   # Both of these are on by default under GitHub's builder and cannot be
   # switched off there, so they were shaping this site's output without
   # appearing in _config.yml. Listed explicitly now that the build is ours:
