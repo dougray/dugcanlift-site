@@ -1,0 +1,14 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+description: Every post, newest first. Training, the LIFT apps, Pocket Nomad and the Plunder Bay games, written as they get built.
+---
+
+<p class="home-lede">Every post, newest first: training, the LIFT apps, Pocket Nomad and the Plunder Bay games, written as they get built.</p>
+
+<div class="post-cards">
+  {%- for post in site.posts -%}
+    {%- include post-card.html post=post -%}
+  {%- endfor -%}
+</div>

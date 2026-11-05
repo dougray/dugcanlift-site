@@ -67,7 +67,36 @@ img {
   height: auto;
 }
 
+// Light (parchment and red, the LIFT apps' palette) is the base; dark applies
+// under [data-theme="dark"], set by the switch in the header before the page
+// paints (_includes/head.html). Values mirror the LIFT web app's light theme
+// (lift/style.css), which mirrors LiftCore.Theme on iOS; every text pairing
+// passes WCAG AA. In light the accent passes as text too, so --dcl-accent-text
+// is the same value; the yellow highlight would not, so light uses a deep gold.
 :root {
+  --dcl-bg: #f4efe7;
+  --dcl-surface: #fffcf7;
+  --dcl-text: #26221e;
+  --dcl-muted: #665e52;
+  --dcl-accent: #b23c25;
+  --dcl-accent-2: #56664f;
+  --dcl-accent-2-text: #56664f;
+  --dcl-rule: #dcd3c5;
+  --dcl-accent-text: #b23c25;
+  --dcl-accent-hover: #93301c;
+  --dcl-on-accent: #fffaf3;
+  --dcl-control-border: #8c8172;
+  --dcl-hairline: rgba(0, 0, 0, 0.08);
+  --dcl-highlight: #8a5a00;
+  --dcl-code-string: #6f6230;
+  // A light card needs a hairline a dark one never had: parchment and
+  // near-white are too close in brightness to separate on their own.
+  --dcl-card-border: #dcd3c5;
+  --dcl-panel: #ece4d7;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
   --dcl-bg: #1c1b19;
   --dcl-surface: #242220;
   --dcl-text: #ede7dd;
@@ -92,6 +121,8 @@ img {
   --dcl-hairline: rgba(255, 255, 255, 0.08);
   --dcl-highlight: #f0b429;
   --dcl-code-string: #b8a97a;
+  --dcl-card-border: #34312c;
+  --dcl-panel: #211f1c;
   // Native popups and scrollbars draw dark to match, not light on a dark page.
   color-scheme: dark;
 }
@@ -822,4 +853,274 @@ input:focus, select:focus, textarea:focus {
   .feature-table td:first-child {
     padding-left: 0.7rem;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Header: the light/dark switch in the top-right corner. The header row is a
+// flex row so the switch sits at the far right on every width, after the nav
+// (minima floated both; a float order puts the last one on the left).
+// ---------------------------------------------------------------------------
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.site-header .site-title { float: none; margin-right: auto; }
+.site-header .site-nav { float: none; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--dcl-control-border);
+  background: transparent;
+  color: var(--dcl-text);
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--dcl-accent-text); color: var(--dcl-accent-text); }
+.theme-icon { display: block; }
+.theme-icon--sun { display: none; }
+:root[data-theme="dark"] .theme-icon--sun { display: block; }
+:root[data-theme="dark"] .theme-icon--moon { display: none; }
+
+@media screen and (max-width: 600px) {
+  // minima pins the nav to the corner on phones; in the flex row it sits
+  // beside the switch instead, and its open menu drops down below.
+  .site-header .site-nav {
+    position: relative;
+    top: auto;
+    right: auto;
+    background: transparent;
+    border: 0;
+  }
+  .nav-js .site-nav .nav-toggle[aria-expanded="true"] ~ .trigger {
+    position: absolute;
+    right: 0;
+    top: 52px;
+    min-width: 200px;
+    z-index: 20;
+    text-align: right;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Home page (_layouts/home.html) and the blog's post cards (/blog/).
+// ---------------------------------------------------------------------------
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; text-decoration: none; }
+.btn--ghost {
+  background: transparent;
+  color: var(--dcl-text) !important;
+  border: 2px solid var(--dcl-control-border);
+}
+.btn--ghost:hover { background: transparent; border-color: var(--dcl-accent-text); color: var(--dcl-accent-text) !important; }
+
+.home-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dcl-muted);
+  margin: 0 0 0.5rem;
+}
+.home-kicker--accent { color: var(--dcl-accent-text); }
+.home-title, .home-h2, .home-h3, .app-card-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  color: var(--dcl-text);
+  margin: 0;
+}
+.home-title { font-size: clamp(2.6rem, 6vw, 4.6rem); }
+.home-h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: 1.5rem; }
+.home-h3 { font-size: 1.8rem; }
+.home-lede { font-size: 1.2rem; color: var(--dcl-muted); max-width: 36em; margin: 0 0 1.5rem; }
+.home-note { color: var(--dcl-muted); margin: 1.25rem 0 0; }
+
+.home-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0 3.5rem;
+}
+.home-hero-text { flex: 1 1 26rem; min-width: 0; }
+.home-hero .home-title { margin-bottom: 1.25rem; }
+.home-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+.home-stats { display: flex; flex-wrap: wrap; gap: 2rem; margin: 0; }
+.home-stats div { display: flex; flex-direction: column-reverse; }
+.home-stats dd { margin: 0; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 2.1rem; line-height: 1; color: var(--dcl-text); }
+.home-stats dt { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dcl-muted); margin-top: 0.3rem; }
+
+.phone {
+  display: block;
+  border-radius: 26px;
+  border: 6px solid #1b1714;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+}
+.phone img { display: block; width: 100%; }
+
+.home-collage { position: relative; flex: 0 1 30rem; height: 34rem; min-width: 18rem; max-width: 30rem; margin: 0 auto; }
+.home-collage .phone { position: absolute; width: 40%; }
+.home-collage .phone--left { left: 0; top: 4rem; transform: rotate(-6deg); }
+.home-collage .phone--right { right: 0; top: 4rem; transform: rotate(6deg); }
+.home-collage .phone--front { left: 27%; top: 0; width: 46%; z-index: 1; }
+
+.home-section { padding: 3.5rem 0; border-top: 1px solid var(--dcl-rule); }
+.home-section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.home-more, .app-links a { font-weight: 700; color: var(--dcl-accent-text) !important; text-decoration: none; }
+.home-more:hover, .app-links a:hover { text-decoration: underline; }
+
+.app-card {
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-card-border);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.app-card--wide { flex-direction: row; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.app-card-text { flex: 1 1 24rem; min-width: 0; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.app-card-title { font-size: 2rem; }
+.app-card-desc { margin: 0; color: var(--dcl-muted); }
+.app-icons, .app-heading { display: flex; align-items: center; gap: 0.85rem; }
+.app-icons img, .app-heading img, .game-icons img, .beta-links img { border-radius: 22%; display: block; }
+.app-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: auto 0 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--dcl-control-border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dcl-text);
+  background: var(--dcl-panel);
+}
+.chip--on { border-color: var(--dcl-accent-text); color: var(--dcl-accent-text); }
+
+.app-card-shots {
+  flex: 1 1 22rem;
+  min-width: 0;
+  background: var(--dcl-panel);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2rem 1.5rem 0;
+  max-height: 27rem;
+  overflow: hidden;
+}
+.app-card-shots .phone, .app-card-art--nomad .phone { width: 11.5rem; flex: none; }
+.phone--low { margin-top: 2rem; }
+
+.app-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; }
+.app-card-art { height: 18rem; overflow: hidden; position: relative; }
+.app-card-art--nomad { background: #120d08; display: flex; justify-content: center; gap: 1.1rem; padding: 1.75rem 1rem 0; }
+.app-card-art--nomad .phone { border-color: #2a1f15; width: 10rem; }
+.app-card-banner { width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-icons { position: absolute; left: 1.25rem; bottom: 1.1rem; display: flex; gap: 0.6rem; }
+.game-icons img { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); }
+
+.home-beta {
+  background: var(--dcl-panel);
+  border: 1px solid var(--dcl-card-border);
+  border-radius: 22px;
+  padding: 3rem 2rem;
+  margin: 1rem 0 2rem;
+}
+.beta-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.beta-steps li {
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-card-border);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.beta-steps span:last-child { color: var(--dcl-muted); font-size: 0.95rem; }
+.beta-step-n { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 2.2rem; line-height: 1; color: var(--dcl-accent-text); }
+.beta-links { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem; list-style: none; margin: 0; padding: 0; }
+.beta-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.1rem 0.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--dcl-card-border);
+  background: var(--dcl-surface);
+  text-decoration: none;
+  color: var(--dcl-text) !important;
+  text-align: center;
+  height: 100%;
+}
+.beta-links a:hover { border-color: var(--dcl-accent-text); }
+.beta-links strong { line-height: 1.2; }
+.beta-links span { font-size: 0.82rem; font-weight: 700; color: var(--dcl-accent-text); }
+
+.tool-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.tool-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--dcl-card-border);
+  background: var(--dcl-surface);
+  text-decoration: none;
+  color: var(--dcl-text) !important;
+}
+.tool-row:hover { border-color: var(--dcl-control-border); }
+.tool-row svg { color: var(--dcl-accent-text); flex: none; }
+.tool-row > span:nth-of-type(1) { flex: 1; }
+.tool-row strong { display: block; }
+.tool-row > span span { color: var(--dcl-muted); font-size: 0.95rem; }
+.tool-row-arrow { color: var(--dcl-accent-text); font-weight: 700; }
+
+.post-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.post-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dcl-surface);
+  border: 1px solid var(--dcl-card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--dcl-text) !important;
+}
+.post-card-img { display: block; height: 11rem; overflow: hidden; background: var(--dcl-panel); }
+.post-card-img img, .post-card-img picture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.post-card-body { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 1.2rem 1.25rem; }
+.post-card-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.post-card-date { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dcl-muted); }
+.post-card-title { font-weight: 700; font-size: 1.12rem; line-height: 1.3; }
+.post-card:hover .post-card-title { color: var(--dcl-accent-text); }
+
+.home-feedback { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem; }
+.home-feedback p { margin: 0.4rem 0 0; color: var(--dcl-muted); }
+
+@media screen and (max-width: 900px) {
+  .app-pair, .tool-rows, .post-cards, .beta-steps { grid-template-columns: minmax(0, 1fr); }
+  .beta-links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .home-collage { height: 26rem; flex-basis: 100%; max-width: 24rem; }
+}
+@media screen and (max-width: 600px) {
+  .home-hero { padding: 2.5rem 0 2rem; gap: 2rem; }
+  .home-collage { height: 21rem; max-width: 20rem; }
+  .beta-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-beta { padding: 2rem 1.1rem; }
+  .app-card-text { padding: 1.5rem; }
+  .app-card-shots .phone { width: 9rem; }
 }
