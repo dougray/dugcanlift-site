@@ -2,7 +2,7 @@
 layout: post
 image: /assets/images/blog/2026-11-03-pocket-nomad/banner.jpg
 title:  "Pocket Nomad: What My First Test Drive Taught Me"
-date:   2026-11-05 09:30:00 -0600
+date:   2026-11-05 08:30:00 -0600
 ---
 
 Last time I said real radios were next on my list for **[Pocket Nomad](https://www.pocketnomad.us/)**,
