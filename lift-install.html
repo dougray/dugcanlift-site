@@ -10,17 +10,17 @@ hide_title: true
   <p class="hero-eyebrow">beta test</p>
   <h1 class="calc-title">Join The Test</h1>
   <p class="calc-sub">LIFT is early, and it's built better with real people actually using it — not just me. Install it, use it the way you'd normally track food and training, and tell me what breaks, what's confusing, or what you wish it did. That feedback goes straight into what gets built next.</p>
-  <p class="calc-sub">Nothing's on the App Store or Play Store yet, and that's on purpose for now — the beta is running through the browser so fixes reach you the same day instead of waiting on a store review. The versions below are what people are actually testing. The native apps go to Apple and Google once the thing is solid. No account, no password, nothing to download from anywhere sketchy.</p>
+  <p class="calc-sub">On iPhone and iPad the beta is the real LIFT app, through Apple's TestFlight: the same app that's headed for the App Store, before it gets there. On Android, the web version and the full app are both below. No account, no password, nothing to download from anywhere sketchy.</p>
 
   <h2>On iPhone or iPad</h2>
-  <p class="calc-sub">This only works in <strong>Safari</strong> — if you normally use Chrome, open Safari instead just for this one step.</p>
+  <p class="calc-sub">The official beta runs through <strong>TestFlight</strong>, Apple's free app for testing apps before they reach the App Store.</p>
   <ol>
-    <li>Open Safari and go to <strong>dugcanlift.com/lift</strong></li>
-    <li>Tap the <strong>Share</strong> button — the square with an arrow pointing up, at the bottom of the screen (top of the screen on iPad)</li>
-    <li>Scroll down the list that pops up and tap <strong>Add to Home Screen</strong></li>
-    <li>Tap <strong>Add</strong> in the top right corner</li>
+    <li>Install <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> from the App Store</li>
+    <li>On the same iPhone or iPad, tap <a href="https://testflight.apple.com/join/DmADy3JM">Join the LIFT beta</a></li>
+    <li>Tap <strong>Accept</strong>, then <strong>Install</strong></li>
   </ol>
-  <p class="calc-sub">A LIFT icon now shows up on your home screen. Tap it like any other app from now on.</p>
+  <p class="btn-row"><a class="btn" href="https://testflight.apple.com/join/DmADy3JM">Join the LIFT beta on TestFlight</a></p>
+  <p class="calc-sub">LIFT then sits on your home screen like any other app, and TestFlight keeps it up to date. Found something? Take a screenshot and TestFlight offers to send it as beta feedback.</p>
 
   <h2>On Android — quick test</h2>
   <p class="calc-sub">The fastest way to try it out, no download and nothing to allow. This is a lighter version — manual entry only, no automatic step tracking.</p>
@@ -63,14 +63,15 @@ hide_title: true
   <p class="calc-sub">There&rsquo;s a watch app too. It logs food on the watch itself, with no phone anywhere near it, and paired with this app (1.17 or later) it takes the day&rsquo;s workout to your wrist and sends the finished session back. It installs by sideload rather than by tapping a link, because Wear OS has no route onto a watch except the Play Store and LIFT isn&rsquo;t there yet. You&rsquo;ll need a computer and about five minutes: <a href="{{ '/lift/wear-install/' | relative_url }}">the steps are here</a>.</p>
 
   <h2>What's different between versions</h2>
-  <p class="calc-sub">The web app and the full Android app share the same training tracker — focus modes, equipment tracking, routines, progression charts, all of it. The gap is just two things the web app can't reach on its own: your phone's camera and its step counter.</p>
+  <p class="calc-sub">The web app and the full apps share the same training tracker — focus modes, equipment tracking, routines, progression charts, all of it. The gap is just two things the web app can't reach on its own: your phone's camera and its step counter. The iPhone app, in beta on TestFlight, has both.</p>
   <div class="feature-table-wrap">
     <table class="feature-table">
       <thead>
         <tr>
           <th>Feature</th>
-          <th>Web app (iPhone &amp; Android)</th>
+          <th>Web app (Android &amp; computers)</th>
           <th>Full app (Android)</th>
+          <th>iPhone app (TestFlight)</th>
         </tr>
       </thead>
       <tbody>
@@ -78,9 +79,11 @@ hide_title: true
           <td>Macro &amp; calorie calculator</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Food search &amp; logging</td>
+          <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
         </tr>
@@ -88,19 +91,23 @@ hide_title: true
           <td>Barcode lookup (type the number)</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Barcode scanning (camera)</td>
           <td class="no">&#8212;</td>
+          <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Automatic step tracking</td>
           <td class="no">&#8212;</td>
           <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Full training tracker</td>
+          <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
         </tr>
@@ -108,9 +115,11 @@ hide_title: true
           <td>Works offline</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
+          <td class="yes">&#10003;</td>
         </tr>
         <tr>
           <td>Data stays on your device</td>
+          <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
           <td class="yes">&#10003;</td>
         </tr>
@@ -145,8 +154,8 @@ hide_title: true
     since — and because it carries your id with it, a coach sees the same person
     afterwards rather than a stranger appearing in their roster.</p>
 
-  <h2>Why isn't this in the App Store?</h2>
-  <p class="calc-sub">It's early and I'd rather get it in front of real testers now than wait months on a store review process. Installing it this way is the same app, just skipping the store — your data stays on your device either way, and there's nothing to buy or sign up for.</p>
+  <h2>Why isn't this in the App Store yet?</h2>
+  <p class="calc-sub">It's on its way. The iPhone app is in Apple's TestFlight beta first so real testers can shake it out before the store release, and the Android app installs directly until it reaches Google Play. It's the same app either way: your data stays on your device, and there's nothing to buy or sign up for.</p>
 
   <h2>Make your voice heard</h2>
   <p class="calc-sub">This is the whole point of testing early — your feedback actually shapes what gets built next. Something confusing, broken, missing, or just annoying? I want to hear about it, even the small stuff.</p>
