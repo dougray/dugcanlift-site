@@ -1,0 +1,30 @@
+{%- comment -%}
+One blog post as a card: picture, topic, date and title. Used by the home
+page's latest posts and by /blog/. The picture is the first image in the post,
+else the post's own `image:`, else the site icon. The site-wide share card
+(_config.yml's default `image:`) is never used: it is the same on every post. The topic comes
+from the title, since posts carry no tags: these are the products the blog
+covers.
+{%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign card_img = nil -%}
+{%- assign parts = p.content | split: 'src="' -%}
+{%- if parts.size > 1 -%}{%- assign card_img = parts[1] | split: '"' | first -%}{%- endif -%}
+{%- unless card_img -%}
+  {%- unless p.image contains '/social/' -%}{%- assign card_img = p.image -%}{%- endunless -%}
+{%- endunless -%}
+{%- unless card_img -%}{%- assign card_img = '/assets/images/icon-512.png' -%}{%- endunless -%}
+{%- assign t = p.title | downcase -%}
+{%- if t contains 'nomad' -%}{%- assign topic = 'Pocket Nomad' -%}
+{%- elsif t contains 'jolly' or t contains 'cloud dancer' or t contains 'plunder' or t contains 'pirate' or t contains 'airship' or t contains 'reef runner' or t contains 'harbor' -%}{%- assign topic = 'Games' -%}
+{%- elsif t contains 'gym bro' -%}{%- assign topic = 'Gym Bro' -%}
+{%- elsif t contains 'cook' or t contains 'recipe' or t contains 'meal' -%}{%- assign topic = 'Cook' -%}
+{%- else -%}{%- assign topic = 'LIFT' -%}
+{%- endif -%}
+<a class="post-card" href="{{ p.url | relative_url }}">
+  <span class="post-card-img"><img src="{{ card_img | relative_url }}" alt="" loading="lazy"></span>
+  <span class="post-card-body">
+    <span class="post-card-meta"><span class="chip chip--on">{{ topic }}</span><span class="post-card-date">{{ p.date | date: "%b %d, %Y" }}</span></span>
+    <span class="post-card-title">{{ p.title | escape }}</span>
+  </span>
+</a>

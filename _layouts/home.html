@@ -1,82 +1,149 @@
 ---
 layout: default
 ---
+{%- comment -%}
+The home page: what the site makes (apps), the official beta, the free tools,
+then the blog. Pictures are real app screens and icons from assets/images/home.
+Styles are the `.home-` rules at the end of assets/main.scss.
+{%- endcomment -%}
 
-<section class="hero">
-  <p class="hero-eyebrow">Blood, Sweat &amp; Supplements</p>
-  <h1 class="hero-title">Dug-Can-Lift.</h1>
-  <p class="hero-sub">Training splits, meal plans, and whatever else I'm building.</p>
-
-  <div class="plate-stats">
-    <div class="plate-row">
-      <span class="plate-label">Posts</span>
-      <span class="plate-value">{{ site.posts.size }}</span>
+<section class="home-hero">
+  <div class="home-hero-text">
+    <p class="home-kicker">Free apps · No ads · No accounts</p>
+    <h1 class="home-title">Apps for lifting, eating, surviving and playing.</h1>
+    <p class="home-lede">Built by a lifter who codes. Everything runs on your phone, keeps your data there, and costs nothing.</p>
+    <div class="home-actions">
+      <a class="btn" href="#beta">Join the official beta</a>
+      <a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">Read the blog</a>
     </div>
-    <div class="plate-row">
-      <span class="plate-label">Since</span>
-      <span class="plate-value">2024</span>
-    </div>
-    <div class="plate-row">
-      <span class="plate-label">Status</span>
-      <span class="plate-value">Building</span>
-    </div>
+    <dl class="home-stats">
+      <div><dt>Apps</dt><dd>6</dd></div>
+      <div><dt>Ads</dt><dd>0</dd></div>
+      <div><dt>Accounts</dt><dd>0</dd></div>
+      <div><dt>Posts</dt><dd>{{ site.posts.size }}</dd></div>
+    </dl>
+  </div>
+  <div class="home-collage" aria-hidden="true">
+    <span class="phone phone--left"><img src="{{ '/assets/images/home/nomad-1.jpg' | relative_url }}" alt=""></span>
+    <span class="phone phone--right"><img src="{{ '/assets/images/home/rr-shot.jpg' | relative_url }}" alt=""></span>
+    <span class="phone phone--front"><img src="{{ '/assets/images/home/lift-home.jpg' | relative_url }}" alt=""></span>
   </div>
 </section>
 
-<section class="tools-callout">
-  <h2 class="section-label">Free Tools</h2>
-  <hr class="chalk-rule">
-  <div class="tools-grid">
-    <a href="{{ '/calculator/' | relative_url }}" class="tool-card">
-      <span class="tool-title">Macro Calculator</span>
-      <span class="tool-desc">Calculate your daily calories, protein, fat, carbs, and fiber targets.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="{{ '/prices/' | relative_url }}" class="tool-card">
-      <span class="tool-title">Price Tracker</span>
-      <span class="tool-desc">Live prices on protein, creatine, and more — straight from the brand.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="{{ '/lift/' | relative_url }}" class="tool-card">
-      <span class="tool-title">LIFT</span>
-      <span class="tool-desc">Track your food and training in the browser. Works on any phone, no account needed.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="{{ '/coach/' | relative_url }}" class="tool-card">
-      <span class="tool-title">LIFT Coach</span>
-      <span class="tool-desc">For trainers: collate the logs your clients send from LIFT. No account, no server.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="{{ '/app/' | relative_url }}" class="tool-card">
-      <span class="tool-title">LIFT for Android</span>
-      <span class="tool-desc">The full app — barcode scanning, workout logging, progress charts. Free and open source.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="https://www.pocketnomad.us/" class="tool-card">
-      <span class="tool-title">Pocket Nomad</span>
-      <span class="tool-desc">A survival kit for your phone that works with no signal: first aid, maps and mesh radio texting. iPhone, Android and web.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
-    <a href="{{ '/feedback/' | relative_url }}" class="tool-card">
-      <span class="tool-title">Bugs &amp; Ideas</span>
-      <span class="tool-desc">Something broken, or something missing? This writes the email for you — nothing is sent from the page.</span>
-      <span class="post-arrow">&rarr;</span>
-    </a>
+<section class="home-section" id="apps">
+  <p class="home-kicker">The apps</p>
+  <h2 class="home-h2">Three families, one rule: your data stays yours.</h2>
+
+  <article class="app-card app-card--wide">
+    <div class="app-card-text">
+      <div class="app-icons">
+        <img src="{{ '/assets/images/home/lift-icon.png' | relative_url }}" alt="LIFT app icon" width="64" height="64">
+        <img src="{{ '/assets/images/home/coach-icon.png' | relative_url }}" alt="LIFT Coach app icon" width="64" height="64">
+      </div>
+      <h3 class="app-card-title">LIFT + LIFT Coach</h3>
+      <p class="app-card-desc">One log for what you eat and what you lift: macros, workouts with a lock-screen rest timer, runs and hikes, and Road Food for eating on the road. Trainers get LIFT Coach: clients send their log, you send back their week.</p>
+      <ul class="chips" aria-label="Platforms">
+        <li class="chip chip--on">iPhone beta</li><li class="chip">Android</li><li class="chip">Apple Watch</li><li class="chip">Wear OS</li><li class="chip">Web</li>
+      </ul>
+      <p class="app-links"><a href="{{ '/app/' | relative_url }}">Get LIFT &rarr;</a> <a href="{{ '/coach/install/' | relative_url }}">LIFT Coach for trainers &rarr;</a></p>
+    </div>
+    <div class="app-card-shots" aria-hidden="true">
+      <span class="phone"><img src="{{ '/assets/images/home/lift-home.jpg' | relative_url }}" alt=""></span>
+      <span class="phone phone--low"><img src="{{ '/assets/images/home/coach-client.jpg' | relative_url }}" alt=""></span>
+    </div>
+  </article>
+
+  <div class="app-pair">
+    <article class="app-card">
+      <div class="app-card-art app-card-art--nomad" aria-hidden="true">
+        <span class="phone"><img src="{{ '/assets/images/home/nomad-1.jpg' | relative_url }}" alt=""></span>
+        <span class="phone phone--low"><img src="{{ '/assets/images/home/nomad-2.jpg' | relative_url }}" alt=""></span>
+      </div>
+      <div class="app-card-text">
+        <div class="app-heading">
+          <img src="{{ '/assets/images/home/nomad-icon.png' | relative_url }}" alt="Pocket Nomad app icon" width="56" height="56">
+          <h3 class="app-card-title">Pocket Nomad</h3>
+        </div>
+        <p class="app-card-desc">A free survival kit that works with no signal: first aid, water and shelter guides, offline maps, and mesh radio texting.</p>
+        <ul class="chips" aria-label="Platforms"><li class="chip chip--on">iPhone beta</li><li class="chip">Android</li><li class="chip">Web</li></ul>
+        <p class="app-links"><a href="https://www.pocketnomad.us/">Visit pocketnomad.us &rarr;</a></p>
+      </div>
+    </article>
+
+    <article class="app-card">
+      <div class="app-card-art app-card-art--games" aria-hidden="true">
+        <img class="app-card-banner" src="{{ '/assets/images/home/harbour.jpg' | relative_url }}" alt="">
+        <span class="game-icons">
+          <img src="{{ '/assets/images/home/rr-icon.png' | relative_url }}" alt="" width="54" height="54">
+          <img src="{{ '/assets/images/home/jr-icon.png' | relative_url }}" alt="" width="54" height="54">
+          <img src="{{ '/assets/images/home/cd-icon.png' | relative_url }}" alt="" width="54" height="54">
+        </span>
+      </div>
+      <div class="app-card-text">
+        <h3 class="app-card-title">Plunder Bay games</h3>
+        <p class="app-card-desc">Three free pirate games: Reef Runner, Jolly Rogue and Cloud Dancer. No ads, no tracking, play offline with touch, a controller or the Siri Remote.</p>
+        <ul class="chips" aria-label="Platforms"><li class="chip chip--on">iPhone beta</li><li class="chip chip--on">Apple TV beta</li><li class="chip">Android test</li><li class="chip">Play in browser</li></ul>
+        <p class="app-links"><a href="https://reefrunner.us/">Play at reefrunner.us &rarr;</a></p>
+      </div>
+    </article>
   </div>
 </section>
 
-<section class="latest">
-  <h2 class="section-label">Latest</h2>
-  <hr class="chalk-rule">
-  <ul class="post-list">
-    {% for post in site.posts limit:10 %}
-    <li class="post-row">
-      <a class="post-link" href="{{ post.url | relative_url }}">
-        <span class="post-date">{{ post.date | date: "%b %d" }}</span>
-        <span class="post-title">{{ post.title }}</span>
-        <span class="post-arrow">&rarr;</span>
-      </a>
-    </li>
-    {% endfor %}
+<section class="home-section home-beta" id="beta">
+  <p class="home-kicker home-kicker--accent">Official beta · now open</p>
+  <h2 class="home-h2">Help shape the apps before launch.</h2>
+  <p class="home-lede">The iPhone and Apple TV betas run through Apple's free TestFlight app. Use them like you normally would and tell us what breaks.</p>
+  <ol class="beta-steps">
+    <li><span class="beta-step-n">1</span><strong>Get TestFlight</strong><span>Apple's free app, from the App Store.</span></li>
+    <li><span class="beta-step-n">2</span><strong>Open an invite</strong><span>Pick the app below on your iPhone or iPad.</span></li>
+    <li><span class="beta-step-n">3</span><strong>Install and report</strong><span>Screenshot anything odd and tap Share Beta Feedback.</span></li>
+  </ol>
+  <ul class="beta-links">
+    <li><a href="https://testflight.apple.com/join/DmADy3JM"><img src="{{ '/assets/images/home/lift-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>LIFT</strong><span>Join on TestFlight</span></a></li>
+    <li><a href="https://testflight.apple.com/join/ccNTFhvZ"><img src="{{ '/assets/images/home/coach-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>LIFT Coach</strong><span>Join on TestFlight</span></a></li>
+    <li><a href="https://testflight.apple.com/join/YS1wHEHv"><img src="{{ '/assets/images/home/nomad-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>Pocket Nomad</strong><span>Join on TestFlight</span></a></li>
+    <li><a href="https://testflight.apple.com/join/yEwfWzbc"><img src="{{ '/assets/images/home/rr-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>Reef Runner</strong><span>Join on TestFlight</span></a></li>
+    <li><a href="https://testflight.apple.com/join/Ynyfr7bS"><img src="{{ '/assets/images/home/jr-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>Jolly Rogue</strong><span>Join on TestFlight</span></a></li>
+    <li><a href="https://testflight.apple.com/join/rZFkVMvg"><img src="{{ '/assets/images/home/cd-icon.png' | relative_url }}" alt="" width="56" height="56"><strong>Cloud Dancer</strong><span>Join on TestFlight</span></a></li>
   </ul>
+  <p class="home-note">On Android or a computer? Each app's page has its Google Play test or web version.</p>
+</section>
+
+<section class="home-section" id="tools">
+  <p class="home-kicker">Free tools</p>
+  <div class="tool-rows">
+    <a class="tool-row" href="{{ '/calculator/' | relative_url }}">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg>
+      <span><strong>Macro calculator</strong><span>Daily calories, protein, fat, carbs and fiber.</span></span>
+      <span class="tool-row-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="tool-row" href="{{ '/prices/' | relative_url }}">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+      <span><strong>Supplement price tracker</strong><span>Live prices on protein, creatine and more.</span></span>
+      <span class="tool-row-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="home-section" id="blog">
+  <div class="home-section-head">
+    <div>
+      <p class="home-kicker">From the blog</p>
+      <h2 class="home-h2">What I'm building, as I build it.</h2>
+    </div>
+    <a class="home-more" href="{{ '/blog/' | relative_url }}">All {{ site.posts.size }} posts &rarr;</a>
+  </div>
+  <div class="post-cards">
+    {%- for post in site.posts limit:6 -%}
+      {%- include post-card.html post=post -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="home-section home-feedback">
+  <div>
+    <h2 class="home-h3">Something broken, or something missing?</h2>
+    <p>This writes the email for you. Nothing is sent from the page.</p>
+  </div>
+  <a class="btn btn--ghost" href="{{ '/feedback/' | relative_url }}">Report a bug or idea</a>
 </section>

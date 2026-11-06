@@ -8,13 +8,27 @@ handshake to two more hosts on every first visit.
 theme-color tints the phone browser's bar to the page background, and the
 icons (already in assets/images) were never linked, so browsers fell back to
 favicon.ico and iOS to a screenshot of the page.
+
+Light is the default palette; a visitor who picks dark with the switch in the
+header gets it on every page. The few lines before the stylesheet apply that
+choice before anything paints, so a dark visit never flashes parchment.
 {%- endcomment -%}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#1c1b19">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4efe7">
+  <script>
+  (function () {
+    var theme = null;
+    try { theme = localStorage.getItem('dcl-theme'); } catch (e) { /* storage blocked: light */ }
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1c1b19');
+    }
+  })();
+  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/images/favicon-32x32.png" | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/images/favicon-16x16.png" | relative_url }}">
   <link rel="apple-touch-icon" href="{{ "/assets/images/apple-touch-icon.png" | relative_url }}">
