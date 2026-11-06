@@ -1866,6 +1866,133 @@
       ]
     },
     {
+      "id": "jimmyjohns",
+      "name": "Jimmy John's",
+      "kind": "sandwiches",
+      "publishedOn": "2026-11-02",
+      "checkedOn": "2026-11-05",
+      "source": "https://www.jimmyjohns.com/",
+      "items": [
+        {
+          "id": "jimmyjohns-slim-4-turkey-8-inch",
+          "name": "Slim 4 - Turkey (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 410,
+          "proteinG": 27,
+          "fatG": 3.5,
+          "carbsG": 65,
+          "fiberG": 3,
+          "saturatedFatG": 0.5,
+          "sugarG": 1,
+          "sodiumMg": 1230
+        },
+        {
+          "id": "jimmyjohns-slim-1-ham-provolone-8-inch",
+          "name": "Slim 1 - Ham & Provolone (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 530,
+          "proteinG": 33,
+          "fatG": 13,
+          "carbsG": 68,
+          "fiberG": 3,
+          "saturatedFatG": 7,
+          "sugarG": 2,
+          "sodiumMg": 1640
+        },
+        {
+          "id": "jimmyjohns-4-turkey-tom-8-inch",
+          "name": "#4 Turkey Tom (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 470,
+          "proteinG": 24,
+          "fatG": 20,
+          "carbsG": 47,
+          "fiberG": 3,
+          "saturatedFatG": 3,
+          "sugarG": 4,
+          "sodiumMg": 1160
+        },
+        {
+          "id": "jimmyjohns-2-big-john-8-inch",
+          "name": "#2 Big John (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 500,
+          "proteinG": 26,
+          "fatG": 23,
+          "carbsG": 46,
+          "fiberG": 3,
+          "saturatedFatG": 4,
+          "sugarG": 3,
+          "sodiumMg": 1110
+        },
+        {
+          "id": "jimmyjohns-5-vito-8-inch",
+          "name": "#5 Vito (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 550,
+          "proteinG": 33,
+          "fatG": 24,
+          "carbsG": 51,
+          "fiberG": 4,
+          "saturatedFatG": 11,
+          "sugarG": 5,
+          "sodiumMg": 1880
+        },
+        {
+          "id": "jimmyjohns-14-bootlegger-club-8-inch",
+          "name": "#14 Bootlegger Club (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 680,
+          "proteinG": 44,
+          "fatG": 25,
+          "carbsG": 69,
+          "fiberG": 4,
+          "saturatedFatG": 4.5,
+          "sugarG": 4,
+          "sodiumMg": 1880
+        },
+        {
+          "id": "jimmyjohns-10-hunters-club-8-inch",
+          "name": "#10 Hunter's Club (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 820,
+          "proteinG": 55,
+          "fatG": 36,
+          "carbsG": 70,
+          "fiberG": 4,
+          "saturatedFatG": 11,
+          "sugarG": 3,
+          "sodiumMg": 2120
+        },
+        {
+          "id": "jimmyjohns-8-billy-club-8-inch",
+          "name": "#8 Billy Club (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 810,
+          "proteinG": 50,
+          "fatG": 34,
+          "carbsG": 72,
+          "fiberG": 4,
+          "saturatedFatG": 10,
+          "sugarG": 5,
+          "sodiumMg": 2350
+        },
+        {
+          "id": "jimmyjohns-jj-gargantuan-8-inch",
+          "name": "The J.J. Gargantuan (8\")",
+          "serving": "1 8-inch sandwich",
+          "kcal": 1070,
+          "proteinG": 79,
+          "fatG": 48,
+          "carbsG": 78,
+          "fiberG": 4,
+          "saturatedFatG": 15,
+          "sugarG": 7,
+          "sodiumMg": 3960
+        }
+      ]
+    },
+    {
       "id": "starbucks",
       "name": "Starbucks",
       "kind": "coffee",
@@ -2942,6 +3069,177 @@
             "wheat",
             "soy",
             "sesame"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caseys",
+      "name": "Casey's",
+      "kind": "gas-station-kitchen",
+      "publishedOn": "2026-11-04",
+      "checkedOn": "2026-11-05",
+      "source": "https://store.caseys.com/media/cms/Nutrition-and-Ingredients.pdf",
+      "allergenSource": "https://store.caseys.com/media/cms/Nutrition-and-Ingredients.pdf",
+      "items": [
+        {
+          "id": "caseys-chicken-tenders-4-ct",
+          "name": "Chicken Tenders (4 ct)",
+          "serving": "4 tenders (dip cups listed separately)",
+          "kcal": 440,
+          "proteinG": 36,
+          "fatG": 16,
+          "carbsG": 36,
+          "fiberG": 2,
+          "saturatedFatG": 2,
+          "sugarG": 0,
+          "sodiumMg": 1880,
+          "allergens": [
+            "wheat"
+          ]
+        },
+        {
+          "id": "caseys-breaded-pork-sandwich",
+          "name": "Breaded Pork Sandwich",
+          "serving": "1 sandwich",
+          "kcal": 570,
+          "proteinG": 44,
+          "fatG": 8,
+          "carbsG": 79,
+          "fiberG": 2,
+          "saturatedFatG": 2,
+          "sugarG": 4,
+          "sodiumMg": 420,
+          "allergens": [
+            "milk",
+            "wheat",
+            "soy"
+          ]
+        },
+        {
+          "id": "caseys-crispy-chicken-sandwich",
+          "name": "Crispy Chicken Sandwich",
+          "serving": "1 sandwich",
+          "kcal": 410,
+          "proteinG": 26,
+          "fatG": 12,
+          "carbsG": 50,
+          "fiberG": 2,
+          "saturatedFatG": 1.5,
+          "sugarG": 5,
+          "sodiumMg": 1500,
+          "allergens": [
+            "wheat"
+          ]
+        },
+        {
+          "id": "caseys-spicy-chicken-sandwich",
+          "name": "Spicy Chicken Sandwich",
+          "serving": "1 sandwich",
+          "kcal": 420,
+          "proteinG": 27,
+          "fatG": 12,
+          "carbsG": 50,
+          "fiberG": 2,
+          "saturatedFatG": 2,
+          "sugarG": 5,
+          "sodiumMg": 1810,
+          "allergens": [
+            "wheat"
+          ]
+        },
+        {
+          "id": "caseys-quarter-lb-cheeseburger",
+          "name": "1/4 Lb Cheeseburger",
+          "serving": "1 sandwich",
+          "kcal": 480,
+          "proteinG": 25,
+          "fatG": 28,
+          "carbsG": 31,
+          "fiberG": 1,
+          "saturatedFatG": 11,
+          "sugarG": 5,
+          "sodiumMg": 790,
+          "allergens": [
+            "milk",
+            "wheat",
+            "soy"
+          ]
+        },
+        {
+          "id": "caseys-kings-hawaiian-ham-swiss-sliders-3",
+          "name": "King's Hawaiian Ham & Swiss Sliders (3)",
+          "serving": "1 container of 3 sliders",
+          "kcal": 490,
+          "proteinG": 34,
+          "fatG": 18,
+          "carbsG": 51,
+          "fiberG": 0,
+          "saturatedFatG": 9,
+          "sugarG": 19,
+          "sodiumMg": 1670,
+          "allergens": [
+            "milk",
+            "egg",
+            "wheat",
+            "soy"
+          ]
+        },
+        {
+          "id": "caseys-kings-hawaiian-turkey-cheddar-sliders-3",
+          "name": "King's Hawaiian Turkey & Cheddar Sliders (3)",
+          "serving": "1 container of 3 sliders",
+          "kcal": 520,
+          "proteinG": 35,
+          "fatG": 17,
+          "carbsG": 50,
+          "fiberG": 1,
+          "saturatedFatG": 8,
+          "sugarG": 18,
+          "sodiumMg": 1200,
+          "allergens": [
+            "milk",
+            "egg",
+            "wheat",
+            "soy"
+          ]
+        },
+        {
+          "id": "caseys-bacon-egg-cheese-croissant",
+          "name": "Bacon, Egg, Cheese Croissant",
+          "serving": "1 sandwich",
+          "kcal": 350,
+          "proteinG": 15,
+          "fatG": 20,
+          "carbsG": 26,
+          "fiberG": 1,
+          "saturatedFatG": 8,
+          "sugarG": 4,
+          "sodiumMg": 770,
+          "allergens": [
+            "milk",
+            "egg",
+            "wheat",
+            "soy"
+          ]
+        },
+        {
+          "id": "caseys-bacon-egg-cheese-biscuit",
+          "name": "Bacon, Egg, Cheese Biscuit",
+          "serving": "1 sandwich",
+          "kcal": 410,
+          "proteinG": 16,
+          "fatG": 24,
+          "carbsG": 31,
+          "fiberG": 1,
+          "saturatedFatG": 12,
+          "sugarG": 4,
+          "sodiumMg": 1270,
+          "allergens": [
+            "milk",
+            "egg",
+            "wheat",
+            "soy"
           ]
         }
       ]
