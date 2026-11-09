@@ -1,0 +1,135 @@
+# Security checks every change has to pass: committed secrets, homelab or
+# personal identifiers, known-vulnerable dependencies and CodeQL. Same file
+# in every repo; only the CodeQL language list differs.
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "23 9 * * 1"   # Mondays, so new advisories surface without a push
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITLEAKS_VERSION: "8.30.1"
+  GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+  OSV_VERSION: "2.7.1"
+  OSV_SHA256: "fb7dab19a8bd9bbe5c3189f09d4b7ee1820c9553a23bac202648a56efd2f6ee8"
+
+jobs:
+  secrets:
+    name: Secrets (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks
+        run: |
+          curl -fsSL -o gl.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gl.tgz" | sha256sum -c -
+          tar -xzf gl.tgz gitleaks && rm gl.tgz
+      - name: Scan
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # A pull request is checked commit by commit; everything else scans
+          # the whole history. A checked false positive goes in .gitleaksignore.
+          if [ -n "$BASE" ]; then range="$BASE..$HEAD"; else range="--all"; fi
+          ./gitleaks git --redact --no-banner --log-opts="$range" .
+
+  identifiers:
+    name: Homelab and personal identifiers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Scan
+        env:
+          DENYLIST: ${{ secrets.IDENTIFIER_DENYLIST }}
+        run: |
+          # The patterns are a secret: they name the things that must not
+          # appear, so they are never printed. Hits show file and line only.
+          if [ -z "$DENYLIST" ]; then echo "::error::IDENTIFIER_DENYLIST secret is not set"; exit 1; fi
+          printf '%s\n' "$DENYLIST" | grep -v '^#' | grep . > "$RUNNER_TEMP/deny"
+          hits=$(git grep -I -n -E -f "$RUNNER_TEMP/deny" HEAD -- . ':!.gitleaks.toml' | cut -d: -f2,3 || true)
+          if [ -n "$hits" ]; then
+            echo "Identifier found at (file:line):"; printf '%s\n' "$hits"
+            exit 1
+          fi
+          echo "No identifiers."
+
+  dependencies:
+    name: Vulnerable dependencies (osv-scanner)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install osv-scanner
+        run: |
+          curl -fsSL -o osv-scanner "https://github.com/google/osv-scanner/releases/download/v${OSV_VERSION}/osv-scanner_linux_amd64"
+          echo "${OSV_SHA256}  osv-scanner" | sha256sum -c -
+          chmod +x osv-scanner
+      - name: Scan
+        run: |
+          # Fails on high or critical (CVSS >= 7); lower ones are listed only.
+          # Accept a checked advisory in osv-scanner.toml with a reason.
+          set +e
+          ./osv-scanner scan source -r --format json . > osv.json
+          rc=$?
+          set -e
+          if [ "$rc" -ne 0 ] && [ "$rc" -ne 1 ]; then
+            if [ "$rc" -eq 128 ]; then echo "No dependency files."; exit 0; fi
+            echo "::error::osv-scanner failed ($rc)"; exit "$rc"
+          fi
+          jq -r '.results[]? | .source.path as $p | .packages[] | . as $pk | ($pk.groups // [])[]
+                 | "\((.max_severity // "0") | tonumber? // 0)\t\($pk.package.name)@\($pk.package.version)\t\(.aliases[0])\t\($p)"' osv.json \
+            | sort -rn > found.tsv
+          if [ -s found.tsv ]; then echo "CVSS  package  advisory  file"; cat found.tsv; fi
+          if awk -F'\t' '$1 >= 7 { bad=1 } END { exit !bad }' found.tsv; then
+            echo "::error::high or critical vulnerability in a dependency"; exit 1
+          fi
+
+  codeql:
+    name: CodeQL (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: javascript-typescript
+            build-mode: none
+          - language: python
+            build-mode: none
+          - language: actions
+            build-mode: none
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Kotlin is only seen when it compiles, so java-kotlin builds with the
+      # repo's own Gradle wrapper; everything else is analysed from source.
+      - if: matrix.language == 'java-kotlin'
+        uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          queries: security-extended
+      - if: matrix.build-mode == 'manual'
+        working-directory: ${{ matrix.gradle-dir }}
+        run: ./gradlew --no-daemon assembleDebug
+      - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          category: /language:${{ matrix.language }}
