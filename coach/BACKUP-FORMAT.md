@@ -65,6 +65,22 @@ and `eachSide: true` — what the header counts the sets against. Informational:
 a reader that does not know them ignores them and loses only the "L 1/3"
 target, never a set.
 
+**Heart rate, from a watch.** A set logged on a watch may carry `maxBpm`, the
+highest heart rate the watch measured around it, and a workout may carry
+`averageBpm` and `maxBpm` for the whole watch session. Each is a whole number
+above zero and is **omitted when not recorded**: never `0`, never `null` written
+for an unknown. A reader takes only a positive number and treats anything else
+as not recorded, rather than failing the import. LIFT for Android writes them
+for a session from its Wear watch, and LIFT iPhone for one from its Apple
+Watch. Shown and never graded, and a phone-led session has none.
+
+An iPhone workout is a day, and a day can hold two watch sessions. It writes
+the common pair only when the day holds exactly one; with two or more it leaves
+the common fields off and keeps each session's pair in `ext.ios.workouts` under
+`heartRate`, a list of `{averageBpm, maxBpm}`. A merged average no watch
+measured is never written. A file written before any of this restores
+unchanged.
+
 **`routines[]`** — saved templates: `id`, `name`, `folder`, `createdAt` (epoch
 ms), and `exercises[]` of `id`, `name`, `equipment`, `targetSets`, `targetReps`,
 `targetWeightLb`, `targetRpe`, `targetDurationSec`, `targetDistanceMeters`,
@@ -311,7 +327,8 @@ planned meal: `plannedFor` (epoch ms). iOS's own `createdAt` is written as the
 common `importedAt` rather than duplicated here. `ext.ios` also carries, per
 food entry: `brand`, `servingUnit`,
 `servingGrams`, `sugarG`, `sodiumMg`, `foodRefID`, `healthKitUUID`. Per workout
-day: `focus`, `liveStartedAt`, `liveEndedAt`, `healthKitUUID`. Per exercise:
+day: `focus`, `liveStartedAt`, `liveEndedAt`, `healthKitUUID`, and `heartRate`
+when the day holds two or more watch sessions (above). Per exercise:
 `exerciseRefID`, `primaryMuscle`, `orderIndex`. Per set: `orderIndex`,
 `isWarmup`, `completedAt`. Plus `measurements[]`, which is richer than the flat
 `weights` map the common shape uses.
