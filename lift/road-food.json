@@ -563,8 +563,8 @@
       "id": "culvers",
       "name": "Culver's",
       "kind": "burgers",
-      "publishedOn": "2026-10-16",
-      "checkedOn": "2026-10-28",
+      "publishedOn": "2026-11-09",
+      "checkedOn": "2026-11-10",
       "source": "https://www.culvers.com/nutrition-and-allergen-guide",
       "allergenSource": "https://www.culvers.com/nutrition-and-allergen-guide",
       "allergensCovered": [
@@ -1143,8 +1143,8 @@
       "id": "popeyes",
       "name": "Popeyes",
       "kind": "chicken",
-      "publishedOn": "2026-09",
-      "checkedOn": "2026-10-28",
+      "publishedOn": "2026-11",
+      "checkedOn": "2026-11-10",
       "source": "https://plk-use1-prod.sites.rbictg.com/nutrition/PLK_Nutrition.pdf",
       "allergenSource": "https://plk-use1-prod.sites.rbictg.com/nutrition/Popeyes_US_Allergen.pdf",
       "allergensCovered": [
@@ -1269,8 +1269,8 @@
       "id": "tacobell",
       "name": "Taco Bell",
       "kind": "mexican",
-      "publishedOn": "2026-10-26",
-      "checkedOn": "2026-10-28",
+      "publishedOn": "2026-11-10",
+      "checkedOn": "2026-11-10",
       "source": "https://www.tacobell.com/nutrition/info",
       "items": [
         {
@@ -2459,8 +2459,8 @@
       "id": "sheetz",
       "name": "Sheetz",
       "kind": "gas-station-kitchen",
-      "publishedOn": "2026-10-23",
-      "checkedOn": "2026-10-28",
+      "publishedOn": "2026-11-09",
+      "checkedOn": "2026-11-10",
       "source": "https://www.sheetz.com/nutrition",
       "items": [
         {
