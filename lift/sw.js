@@ -4,7 +4,19 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v64';
+const CACHE = 'lift-v65';
+
+// Street maps (map/, dugcanlift-kit's map files). The tiles a person downloads
+// live in their own cache, 'lift-map-tiles', which this file never writes: it
+// is the one cache an app update must leave alone, because the tiles cannot
+// be fetched again without the person asking for them (see cachesToDelete).
+const MAP_CACHE_PREFIX = 'lift-map-';
+
+// Noto Sans Regular's glyph ranges, 0-255 to 65280-65535. A map asks for the
+// ranges its labels need, and offline it can ask for any of them; 251 are
+// empty files, so the whole set costs a few requests' worth of bytes.
+const MAP_GLYPHS = Array.from({ length: 256 }, (_, i) =>
+  `/lift/map/fonts/Noto%20Sans%20Regular/${i * 256}-${i * 256 + 255}.pbf`);
 
 const SHELL = [
   '/lift/',
@@ -37,6 +49,14 @@ const SHELL = [
   '/lift/recipe-catalog.js',
   '/lift/splits.json',
   '/lift/jsqr.js',
+  '/lift/map/map.js',
+  '/lift/map/maplibre-gl.js',
+  '/lift/map/maplibre-gl.css',
+  '/lift/map/style-light.json',
+  '/lift/map/style-dark.json',
+  '/lift/map/LICENSE-maplibre.txt',
+  '/lift/map/fonts/OFL.txt',
+  ...MAP_GLYPHS,
   '/lift/watch-scan.js',
   '/lift/exercises.json',
   '/lift/manifest.webmanifest',
@@ -52,11 +72,17 @@ self.addEventListener('install', (event) => {
   );
 });
 
+/* The caches an update deletes: every old shell, and nothing the person
+ * downloaded. */
+function cachesToDelete(keys, current) {
+  return keys.filter((k) => k !== current && !k.startsWith(MAP_CACHE_PREFIX));
+}
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
       .then((keys) => Promise.all(
-        keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))
+        cachesToDelete(keys, CACHE).map((k) => caches.delete(k))
       ))
       .then(() => self.clients.claim())
   );
