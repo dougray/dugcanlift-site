@@ -137,14 +137,21 @@
     return out;
   }
 
-  /** Typical OpenFreeMap tile size by zoom; real areas vary by half either way. */
+  /**
+   * Typical stored OpenFreeMap tile size by zoom (decompressed bytes, as the app
+   * keeps them), measured 2026-11-12 over real tiles and rounded to the nearest
+   * 5,000: the mean of a dense city (Manhattan) and a mid-size one (Denver), so
+   * the estimate leans slightly high for the places people run rather than low.
+   * Rural figures sit far below and live in tile-size-sample.json as evidence.
+   * Identical in the Swift and Kotlin kits.
+   */
+  var TYPICAL_BYTES = [
+    85000, 200000, 980000, 400000, 320000, // z0-4
+    320000, 200000, 180000, 150000, 135000, // z5-9
+    70000, 100000, 115000, 95000, 155000 // z10-14
+  ];
   function typicalBytes(z) {
-    if (z <= 5) return 250000;
-    if (z <= 8) return 120000;
-    if (z <= 10) return 30000;
-    if (z <= 12) return 40000;
-    if (z === 13) return 25000;
-    return 15000;
+    return TYPICAL_BYTES[Math.min(Math.max(z, 0), TYPICAL_BYTES.length - 1)];
   }
 
   /** The smallest box holding every point ([lat, lon, ...] or {latitude, longitude}); null for none. */

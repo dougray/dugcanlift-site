@@ -56,6 +56,14 @@ test('the manifest carries all 256 glyph ranges, the empty ones too', () => {
     Array.from({ length: 256 }, (_, i) => `${i * 256}-${i * 256 + 255}.pbf`).sort());
 });
 
+test('the tile-size fixture rides along as evidence, pinned and never loaded', () => {
+  const m = manifest();
+  assert.ok(m.has('tile-size-sample.json'), 'listed in the kit\'s manifest');
+  assert.ok(existsSync(`${MAP}tile-size-sample.json`));
+  assert.ok(!readFileSync('lift/sw.js', 'utf8').includes('tile-size-sample'), 'not cached: nothing asks for it');
+  assert.ok(!readFileSync(`${MAP}map.js`, 'utf8').includes("'tile-size-sample"), 'map.js only names it in a comment');
+});
+
 // MARK: - The service worker
 
 /** sw.js as the browser runs it: its functions and constants, and the listeners it registered. */

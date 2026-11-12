@@ -563,11 +563,12 @@ fonts and library from this site. The one request is the download the person
 starts in Home -> Maps, to OpenFreeMap, from `map.js`'s marked download section
 and nowhere else.
 
-**`lift/map/` is dugcanlift-kit's `map/` folder, copied byte for byte** -- the
+**`lift/map/` is dugcanlift-kit's `map/` folder at tag 1.18.1, copied byte for byte** -- the
 kit's `web/` files (`map.js`, `maplibre-gl.js`, `maplibre-gl.css`,
 `LICENSE-maplibre.txt`, `VENDOR.md`) flattened into `lift/map/`, where `map.js`
 looks for its stylesheet, styles and fonts, beside `style-light.json`,
-`style-dark.json`, `fonts/` (all 256 glyph ranges, 251 of them empty files: a
+`style-dark.json`, `tile-size-sample.json` (the measured tile sizes behind
+`typicalBytes`, evidence only: nothing loads it), `fonts/` (all 256 glyph ranges, 251 of them empty files: a
 map may ask for any) and `map-files.sha256`. `map.test.mjs` hashes every file
 against the manifest, so a file edited here, or a copy taken without the
 manifest, fails. **Never edit a file in `lift/map/`**, and never re-write the

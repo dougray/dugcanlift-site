@@ -4,7 +4,7 @@
  * shell file changes, or browsers will keep serving the old one.
  */
 
-const CACHE = 'lift-v65';
+const CACHE = 'lift-v66';
 
 // Street maps (map/, dugcanlift-kit's map files). Two caches here are not the
 // shell's, and an app update must leave both alone:
