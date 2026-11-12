@@ -11,7 +11,7 @@ hide_title: true
 Apple Watch app, the Wear OS watch app, and the web app at
 [dugcanlift.com/lift](/lift/)
 
-Last updated: 28 October 2026
+Last updated: 12 November 2026
 
 Coach, the app a trainer uses to read what you send, has
 [its own privacy policy](/coach/privacy/).
@@ -24,6 +24,8 @@ unless you do something that sends it:
 
 - **Food search** sends the words you typed, or a barcode number, to Open Food
   Facts (Android and web).
+- **Downloading streets for a map** asks OpenFreeMap for the streets in an area
+  you chose, when you tap Download. Nothing is sent while you look at a map.
 - **Send to Coach** puts your log into an email that you address and send
   yourself.
 - **A backup file** goes wherever you choose to save it.
@@ -48,16 +50,21 @@ uploaded.
   route recorded for each one (latitude, longitude, altitude, time and
   accuracy for each point)
 - Your coach's name and email address, if you add them
+- The streets you downloaded for maps (see Street maps, below)
 
 On iPhone, LIFT's home-screen widget reads the same data from a storage area
 shared only between the app and its widget.
 
 ## Location: recording runs, walks and hikes
 
-LIFT uses your location for one thing — recording the route of a run, walk or
-hike you started. It does not track you at any other time, and the route stays
-on your device unless you send it (see Send to Coach below) or save it to
-Health Connect or Apple Health.
+LIFT uses your location to record the route of a run, walk or hike you started.
+It does not track you at any other time, and the route stays on your device
+unless you send it (see Send to Coach below) or save it to Health Connect or
+Apple Health.
+
+There is one other use, and it only happens when you tap: **Download streets
+around here** uses your position to choose which area of streets to download
+(see Street maps, below).
 
 - **Android** asks for precise location while you use the app, and never for
   background ("Allow all the time") location. GPS starts when you start a
@@ -79,8 +86,39 @@ Health Connect or Apple Health.
   browser's storage so a reload doesn't lose it.
 - **Wear OS** does not use location.
 
-Route maps are drawn on the device itself on Android, iPhone and the web, with
-no map service involved.
+## Street maps
+
+A run, walk or hike is drawn over a street map. The map is drawn on your device,
+from streets you downloaded. Looking at a map, whether in the recording screen,
+a summary or the Train tab, makes no request to anyone. If you have not
+downloaded streets for the place, the route is drawn as a line on its own.
+
+- **Downloading is your choice.** You pick an area and tap Download. Before
+  anything is sent, LIFT says what it will download, where from ("OpenStreetMap
+  data from OpenFreeMap"), what that service learns ("which area you asked
+  for, once") and about how large it is. A 10 km area is about 35 MB; larger
+  areas are much larger. What is sent is described under Street map downloads,
+  below.
+- **Where the streets are kept.** On iPhone and Android, in LIFT's own storage on
+  your phone. On the web, in your browser's storage for dugcanlift.com. You can
+  update or delete an area at any time; nothing updates on its own.
+- **Backups.** Downloaded streets are not in a backup file, because you can
+  download them again. On Android they are also left out of Android's backup
+  and of phone-to-phone transfer.
+- **Your position.** On iPhone and Android, **Download streets around here** uses
+  the last position the phone already has, and only if you have already allowed
+  LIFT to use your location. It never asks for permission itself. On the web it
+  reads your location only when you tap that button, and your browser asks
+  first. The position is not stored for this and is not sent as a point: only
+  the area chosen from it is asked for. You can also download streets around
+  the start of your last run instead.
+- **The map software.** Maps are drawn with MapLibre, open-source software. On
+  the web, it and the fonts it needs are served from dugcanlift.com and kept in
+  your browser, like the rest of the app; none comes from another company's
+  server. The Apple Watch and Wear OS apps draw no map.
+- **Credits.** Maps show "© OpenStreetMap contributors" (the data is open, under
+  the Open Database License), with OpenFreeMap, MapLibre and Noto Sans credited
+  beside it.
 
 ## Health Connect and Apple Health
 
@@ -215,6 +253,33 @@ no access to their logs.
 **The iPhone app** searches a food database built into the app, so a food search
 there sends nothing at all.
 
+### Street map downloads
+
+When you tap Download for an area, LIFT asks `https://tiles.openfreemap.org`
+for the map streets in that area. OpenFreeMap is a free service built on
+OpenStreetMap data. It is not a server we run: the request goes there directly,
+never to dugcanlift.com. It is the only time maps make a request, and it
+happens only because you tapped Download.
+
+What OpenFreeMap can see: **the area you asked for**, as a list of map tiles;
+for Download streets around here, that is a place known to about a kilometer,
+and for the start of your last run, the area around where that run began; and
+**your IP address**, as with any request on the internet. A browser also adds
+its usual details to a request, such as which browser it is. On iPhone and
+Android the app names itself `LIFT-maps/1` and sends nothing else about you.
+There is no key, no account, no cookie and no identifier in the request.
+
+What is **not** sent: your runs, your routes, your heart rate, your log, your
+goal, or your position as a point. Nothing is sent to us at all. We never learn
+which areas you download or that you downloaded one.
+
+On Android, LIFT already holds the internet permission for food search (above);
+the download is the second thing it is used for.
+
+OpenFreeMap has its own privacy policy, at <https://openfreemap.org/privacy/>,
+which covers what it logs and how long it keeps it. We have no affiliation with
+them and no access to their logs.
+
 ### Importing a recipe from a web page
 
 Two ways bring a recipe from a website into LIFT, and in both the browser hands
@@ -256,7 +321,8 @@ it, it can show where you go, so treat the file with the same care as the log.
 
 - **Android** turns off Android's Auto Backup, so nothing is copied to Google
   Drive. Direct phone-to-phone transfer when you set up a new handset still
-  includes the app's data, and never leaves hardware you own.
+  includes the app's data, except downloaded map streets, and never leaves
+  hardware you own.
 - **iPhone** has no iCloud sync of its own. If your iPhone itself is backed up
   to iCloud or a computer, iOS includes app data in that backup as it does for
   every app, under Apple's terms, except progress photos, which LIFT leaves
@@ -317,9 +383,12 @@ anyone.
 
 Uninstalling the app, or clearing the web app's site data, removes all of it.
 Nothing is held anywhere else, so there is no account to close and no deletion
-request to make. Copies you made yourself — a backup file, an email to your
-coach, activities saved to Health Connect or Apple Health — are yours to delete
-where you put them.
+request to make. Downloaded map streets can also be deleted one area at a time.
+Copies you made yourself — a backup file, an email to your coach, activities
+saved to Health Connect or Apple Health — are yours to delete where you put
+them. OpenFreeMap, which answers a map download, is a separate service (see
+Street map downloads, above); what it does with a request is under its own
+policy.
 
 ## Changes
 
