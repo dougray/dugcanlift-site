@@ -58,33 +58,111 @@ test('the manifest carries all 256 glyph ranges, the empty ones too', () => {
 
 // MARK: - The service worker
 
-/** sw.js as the browser runs it, with nothing to listen to: its functions and constants. */
-function serviceWorker() {
-  const sandbox = { self: { addEventListener() {}, location: { origin: 'https://example.test' } } };
+/** sw.js as the browser runs it: its functions and constants, and the listeners it registered. */
+function serviceWorker(extra = {}) {
+  const listeners = {};
+  const sandbox = {
+    self: { addEventListener(type, fn) { listeners[type] = fn; }, location: { origin: 'https://example.test' } },
+    URL, Response, ...extra,
+  };
   vm.createContext(sandbox);
-  vm.runInContext(readFileSync('lift/sw.js', 'utf8') + '\nthis.__sw = { CACHE, SHELL, cachesToDelete };', sandbox);
-  return sandbox.__sw;
+  vm.runInContext(readFileSync('lift/sw.js', 'utf8')
+    + '\nthis.__sw = { CACHE, SHELL, cachesToDelete, MAP_ASSETS };', sandbox);
+  return { ...sandbox.__sw, listeners };
 }
 
+/** The engine's sha256 as VENDOR.md pins it, which names the map-owned asset cache. */
+const enginePin = () =>
+  /^\| `maplibre-gl\.js` \| `[^`]+` \| `([0-9a-f]{64})` \|$/m.exec(readFileSync(`${MAP}VENDOR.md`, 'utf8'))[1];
+
 test('the map tile cache survives an app update', () => {
-  const { cachesToDelete } = serviceWorker();
+  const { cachesToDelete, MAP_ASSETS } = serviceWorker();
   assert.deepEqual(cachesToDelete(['lift-v64', 'lift-v65', 'lift-map-tiles'], 'lift-v65'), ['lift-v64']);
-  // Any key under the map prefix is kept, whatever the area index calls it.
-  assert.deepEqual(cachesToDelete(['lift-v1', 'lift-map-anything', 'other'], 'lift-v2'), ['lift-v1', 'other']);
+  assert.deepEqual(cachesToDelete(['lift-v1', 'lift-map-tiles', MAP_ASSETS], 'lift-v2'), ['lift-v1']);
   assert.deepEqual(cachesToDelete([], 'lift-v2'), []);
 });
 
-test('the shell holds every map file the app needs offline, and each exists', () => {
+test('an update deletes LIFT\'s own old shells and nothing that is Coach\'s', () => {
+  // Cache Storage is per origin and www.dugcanlift.com serves /lift/ and /coach/:
+  // Coach's streets and Coach's shell are not this worker's to delete.
+  const { cachesToDelete, MAP_ASSETS } = serviceWorker();
+  const keys = ['lift-v64', 'lift-v65', 'lift-map-tiles', MAP_ASSETS, 'coach-v44', 'coach-map-tiles',
+    'coach-map-assets-0a1b2c3d', 'other'];
+  assert.deepEqual(cachesToDelete(keys, 'lift-v65'), ['lift-v64']);
+});
+
+test('the map-owned asset cache is named for the engine\'s hash, and an old one is pruned', () => {
+  const { cachesToDelete, MAP_ASSETS } = serviceWorker();
+  assert.equal(MAP_ASSETS, `lift-map-assets-${enginePin().slice(0, 8)}`);
+  assert.deepEqual(cachesToDelete(['lift-v65', 'lift-map-assets-deadbeef', MAP_ASSETS, 'lift-map-tiles'], 'lift-v65'),
+    ['lift-map-assets-deadbeef']);
+});
+
+test('the shell holds the small map files and not the engine or the glyph ranges', () => {
   const { SHELL } = serviceWorker();
   for (const path of SHELL) {
     if (path === '/lift/') continue;
     assert.ok(existsSync(`lift${decodeURI(path).slice('/lift'.length)}`), `${path} is in the shell but not on disk`);
   }
   const inShell = new Set(SHELL.map((p) => decodeURI(p)));
-  for (const kitPath of manifest().keys()) {
-    if (kitPath === 'web/VENDOR.md') continue; // a note for people, never requested
-    assert.ok(inShell.has(`/lift/${here(kitPath).slice('lift/'.length)}`), `${here(kitPath)} is not cached for offline`);
+  for (const f of ['map.js', 'maplibre-gl.css', 'style-light.json', 'style-dark.json', 'LICENSE-maplibre.txt', 'fonts/OFL.txt']) {
+    assert.ok(inShell.has(`/lift/map/${f}`), `${f} is cached with the shell`);
   }
+  assert.ok(!SHELL.some((p) => p.includes('maplibre-gl.js')), 'the 1 MB engine is cached on first use');
+  assert.ok(!SHELL.some((p) => p.endsWith('.pbf')), 'glyph ranges are cached on first use');
+});
+
+/** A Cache Storage with just open() and match(), and a log of what was put where. */
+function fakeCaches() {
+  const stores = new Map();
+  const store = (name) => { if (!stores.has(name)) stores.set(name, new Map()); return stores.get(name); };
+  return {
+    stores,
+    open: async (name) => ({
+      match: async (req) => store(name).get(typeof req === 'string' ? req : req.url)?.clone(),
+      put: async (req, res) => { store(name).set(typeof req === 'string' ? req : req.url, res); },
+    }),
+    match: async (req) => {
+      for (const m of stores.values()) { const hit = m.get(typeof req === 'string' ? req : req.url); if (hit) return hit.clone(); }
+      return undefined;
+    },
+  };
+}
+
+/** Sends a GET to the worker's fetch listener and resolves to what it answered, or undefined if it let it go. */
+async function ask(listener, url) {
+  let answer;
+  listener({ request: { url, method: 'GET' }, respondWith(p) { answer = p; } });
+  return answer && await answer;
+}
+
+test('the engine and the glyphs are cached on first use, in the map-owned cache, offline after', async () => {
+  const caches = fakeCaches();
+  let network = 0;
+  let offline = false;
+  const fetch = async () => { network += 1; if (offline) throw new TypeError('offline'); return new Response('x', { status: 200 }); };
+  const { listeners, MAP_ASSETS, CACHE } = serviceWorker({ caches, fetch });
+  const engine = 'https://example.test/lift/map/maplibre-gl.js';
+  const glyph = 'https://example.test/lift/map/fonts/Noto%20Sans%20Regular/0-255.pbf';
+
+  assert.equal((await ask(listeners.fetch, engine)).status, 200);
+  assert.equal((await ask(listeners.fetch, glyph)).status, 200);
+  assert.equal(network, 2);
+  assert.deepEqual([...caches.stores.keys()], [MAP_ASSETS], 'both went to the map-owned cache and nowhere else');
+  assert.ok(!caches.stores.has(CACHE));
+
+  offline = true;
+  assert.equal(await (await ask(listeners.fetch, engine)).text(), 'x', 'kept for offline');
+  assert.equal(network, 2, 'a kept file is not asked for again');
+  const missing = await ask(listeners.fetch, 'https://example.test/lift/map/fonts/Noto%20Sans%20Regular/256-511.pbf');
+  assert.equal(missing.status, 404, 'a miss while offline is a 404, never the shell page');
+});
+
+test('a map file in the shell is answered by the shell, not the asset cache', async () => {
+  const caches = fakeCaches();
+  await (await caches.open('lift-v65')).put('https://example.test/lift/map/map.js', new Response('shell copy'));
+  const { listeners } = serviceWorker({ caches, fetch: async () => { throw new Error('no network'); } });
+  assert.equal(await (await ask(listeners.fetch, 'https://example.test/lift/map/map.js')).text(), 'shell copy');
 });
 
 test('the cache name moved, so an installed copy takes the new shell', () => {

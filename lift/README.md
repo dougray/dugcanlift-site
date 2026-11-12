@@ -577,7 +577,7 @@ files.
 
 - **MapLibre GL JS 5.24.0** is a classic script (6.x is ES modules only, which
   needs a dynamic `import(`). It is 1 MB (275 KB gzipped), so it is **not a
-  startup script**: `app.js` adds the tag the first time a route is drawn with a
+  startup script** and not in the install bundle: `app.js` adds the tag the first time a route is drawn with a
   finished area in the store (`loadMapEngine`), and until it arrives, and for
   good with no WebGL, the route is the plain line. `map.js` (38 KB) is the only
   map script in `index.html`. The library's worker is built from a Blob inside
@@ -589,14 +589,23 @@ files.
   is exempt **by its pinned hash**, from `VENDOR.md`, and nothing else in the
   folder is: any other script there fails `map.test.mjs`. That is also why the
   credits links to OpenFreeMap and OpenStreetMap are written in `index.html`.
-- **The tile cache survives updates.** Tiles are in the Cache Storage cache
-  `lift-map-tiles`, which `sw.js` never writes. `cachesToDelete` is what an
-  update deletes -- every old shell and no key starting `lift-map-` -- and
-  `map.test.mjs` calls it. The area index is `lift.mapAreas` in localStorage,
-  and neither it nor a tile is in a backup: a backup file of streets is not a
-  file anyone can move. Bump `CACHE` for any change to `map/`; the map files,
-  the two styles and all 256 glyph ranges are in `SHELL`, so a map opens with
-  no signal.
+- **What an update keeps.** Tiles are in the Cache Storage cache
+  `lift-map-tiles`, which `sw.js` never writes. The engine and the glyph ranges
+  (1 MB and up to 256 small files) are **not in `SHELL`**: one 404 there would
+  fail the whole install, and every install would pay for files most people
+  never use. `sw.js` serves `/lift/map/*` that is not in the shell cache-first
+  from a map-owned cache, `lift-map-assets-<first 8 hex of the engine's
+  sha256>`, filled the first time a map asks and kept across shell bumps; a
+  miss while offline is a 404, never the shell page. A new engine is a new
+  cache name, and `cachesToDelete` prunes the old one. `SHELL` holds `map.js`,
+  the css, the two styles and the licence texts. **Cache Storage is per
+  origin and www.dugcanlift.com also serves `/coach/`**, so an update deletes
+  only `lift-` caches (old shells and old asset caches): never `lift-map-tiles`,
+  never anything of Coach's. `map.test.mjs` runs all of it through the real
+  `sw.js`. The area index is `lift.mapAreas` in localStorage; neither it nor a
+  tile is in a backup. Bump `CACHE` for any change to the shell's map files, and
+  update `MAP_ASSETS` in `sw.js` when the engine changes (the test says if they
+  disagree).
 - **Home -> Maps** lists the areas (size, date) with **Update** and **Delete**,
   an unfinished one with **Try again**, and **Download streets around here**
   (the browser asks where you are only on that tap) and **...around your last

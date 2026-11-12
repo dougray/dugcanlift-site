@@ -6,17 +6,23 @@
 
 const CACHE = 'lift-v65';
 
-// Street maps (map/, dugcanlift-kit's map files). The tiles a person downloads
-// live in their own cache, 'lift-map-tiles', which this file never writes: it
-// is the one cache an app update must leave alone, because the tiles cannot
-// be fetched again without the person asking for them (see cachesToDelete).
+// Street maps (map/, dugcanlift-kit's map files). Two caches here are not the
+// shell's, and an app update must leave both alone:
+//
+//  - 'lift-map-tiles' holds the streets a person downloaded. This file never
+//    writes it, and the tiles cannot be fetched again without the person asking.
+//  - the map-owned asset cache holds what is large and optional: the 1 MB
+//    engine and Noto Sans's glyph ranges (map/maplibre-gl.js, map/fonts/*.pbf).
+//    They are not in SHELL, where one 404 would fail the whole install and
+//    every install would pay for them: they are kept the first time a map
+//    asks, and survive shell bumps. The cache is named for the first 8 hex of
+//    the engine's sha256 (VENDOR.md), so a new engine starts a new cache and
+//    the old one is pruned (cachesToDelete). map.test.mjs pins the name.
+//
+// Cache Storage is per origin, and www.dugcanlift.com serves /coach/ too, so an
+// update deletes only this app's own old shells: nothing that is not lift-.
 const MAP_CACHE_PREFIX = 'lift-map-';
-
-// Noto Sans Regular's glyph ranges, 0-255 to 65280-65535. A map asks for the
-// ranges its labels need, and offline it can ask for any of them; 251 are
-// empty files, so the whole set costs a few requests' worth of bytes.
-const MAP_GLYPHS = Array.from({ length: 256 }, (_, i) =>
-  `/lift/map/fonts/Noto%20Sans%20Regular/${i * 256}-${i * 256 + 255}.pbf`);
+const MAP_ASSETS = 'lift-map-assets-45a9b07a';
 
 const SHELL = [
   '/lift/',
@@ -50,13 +56,11 @@ const SHELL = [
   '/lift/splits.json',
   '/lift/jsqr.js',
   '/lift/map/map.js',
-  '/lift/map/maplibre-gl.js',
   '/lift/map/maplibre-gl.css',
   '/lift/map/style-light.json',
   '/lift/map/style-dark.json',
   '/lift/map/LICENSE-maplibre.txt',
   '/lift/map/fonts/OFL.txt',
-  ...MAP_GLYPHS,
   '/lift/watch-scan.js',
   '/lift/exercises.json',
   '/lift/manifest.webmanifest',
@@ -72,10 +76,12 @@ self.addEventListener('install', (event) => {
   );
 });
 
-/* The caches an update deletes: every old shell, and nothing the person
- * downloaded. */
+/* The caches an update deletes: this app's own old shells, and the asset
+ * caches of an engine no longer in use. Never the tiles, never the current
+ * asset cache, and never a key that is not this app's (Coach's, for one). */
 function cachesToDelete(keys, current) {
-  return keys.filter((k) => k !== current && !k.startsWith(MAP_CACHE_PREFIX));
+  return keys.filter((k) => k.startsWith('lift-') && k !== current && (
+    k.startsWith('lift-map-assets-') ? k !== MAP_ASSETS : !k.startsWith(MAP_CACHE_PREFIX)));
 }
 
 self.addEventListener('activate', (event) => {
@@ -115,6 +121,21 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       }))
+    );
+    return;
+  }
+
+  // The engine and the glyph ranges: kept on first use, in the map-owned cache,
+  // and a miss while offline is a 404, never the shell page (a script or a
+  // font answered with HTML is worse than no answer).
+  if (url.pathname.startsWith('/lift/map/') && !SHELL.includes(url.pathname)) {
+    event.respondWith(
+      caches.open(MAP_ASSETS)
+        .then((cache) => cache.match(event.request).then((hit) => hit || fetch(event.request).then((response) => {
+          if (response.ok) cache.put(event.request, response.clone());
+          return response;
+        })))
+        .catch(() => new Response('', { status: 404 }))
     );
     return;
   }
