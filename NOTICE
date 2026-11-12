@@ -4,3 +4,18 @@ Copyright 2026 DugCanLift
 The code is licensed under the Apache License, Version 2.0 (see LICENSE).
 The writing and the brand (name, logo, icons) are not covered by it; see
 the License section of README.md.
+
+LIFT's street maps (lift/map/) are drawn from files the person downloads.
+
+  Street data
+    (c) OpenStreetMap contributors. Open Database License (ODbL) 1.0 --
+    https://www.openstreetmap.org/copyright
+    Vector tiles from OpenFreeMap -- https://openfreemap.org
+
+  lift/map/maplibre-gl.js, maplibre-gl.css
+    MapLibre GL JS 5.24.0. BSD 3-Clause License; the text is
+    lift/map/LICENSE-maplibre.txt.
+
+  lift/map/fonts/
+    Noto Sans Regular glyphs. SIL Open Font License 1.1; the text is
+    lift/map/fonts/OFL.txt.

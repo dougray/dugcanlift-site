@@ -1,0 +1,142 @@
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import vm from 'node:vm';
+
+// Street maps in LIFT web. The map module, MapLibre GL JS, the styles and the
+// glyphs are dugcanlift-kit's map/ folder, copied here byte for byte (the web/
+// folder's files flattened into lift/map/, where map.js looks for its
+// stylesheet, styles and fonts). They are pinned the way road-food.json is.
+
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const MAP = 'lift/map/';
+
+/** The kit's manifest, "<sha256>  <path>" per line, as { 'web/map.js': hash, ... }. */
+function manifest() {
+  const rows = readFileSync(`${MAP}map-files.sha256`, 'utf8').trim().split('\n');
+  return new Map(rows.map((line) => {
+    assert.match(line, /^[0-9a-f]{64} {2}\S/, `a manifest line: ${line}`);
+    return [line.slice(66), line.slice(0, 64)];
+  }));
+}
+
+/** The manifest names the kit's layout; the web/ files sit one level up here. */
+const here = (kitPath) => MAP + kitPath.replace(/^web\//, '');
+
+function walk(dir) {
+  return readdirSync(dir).flatMap((n) => {
+    const p = `${dir}${n}`;
+    return statSync(p).isDirectory() ? walk(`${p}/`) : [p];
+  });
+}
+
+test('the map files are the kit\'s, byte for byte', () => {
+  const m = manifest();
+  assert.ok(m.size > 260, 'the manifest lists the styles, the 256 glyph ranges and the web files');
+  for (const [kitPath, hash] of m) {
+    assert.ok(existsSync(here(kitPath)), `${here(kitPath)} is missing`);
+    assert.equal(sha256(readFileSync(here(kitPath))), hash,
+      `${here(kitPath)} does not match map-files.sha256.\n` +
+      'Copy dugcanlift-kit\'s map/ over together (web/ files flattened into lift/map/) with its\n' +
+      'map-files.sha256. Never edit a file here, and never re-write the checksum by hand:\n' +
+      'node map/write-checksum.mjs in the kit writes it, and the other apps pin the same one.');
+  }
+  // Nothing else rides along in the folder: every file is listed.
+  const listed = new Set([...m.keys()].map(here));
+  listed.add(`${MAP}map-files.sha256`);
+  const stray = walk(MAP).filter((f) => !listed.has(f) && !f.endsWith('/.DS_Store'));
+  assert.deepEqual(stray, [], 'files in lift/map/ that map-files.sha256 does not list');
+});
+
+test('the manifest carries all 256 glyph ranges, the empty ones too', () => {
+  const fonts = [...manifest().keys()].filter((k) => k.startsWith('fonts/Noto Sans Regular/') && k.endsWith('.pbf'));
+  assert.equal(fonts.length, 256);
+  assert.deepEqual(fonts.map((f) => f.replace(/^.*\//, '')).sort(),
+    Array.from({ length: 256 }, (_, i) => `${i * 256}-${i * 256 + 255}.pbf`).sort());
+});
+
+// MARK: - The service worker
+
+/** sw.js as the browser runs it, with nothing to listen to: its functions and constants. */
+function serviceWorker() {
+  const sandbox = { self: { addEventListener() {}, location: { origin: 'https://example.test' } } };
+  vm.createContext(sandbox);
+  vm.runInContext(readFileSync('lift/sw.js', 'utf8') + '\nthis.__sw = { CACHE, SHELL, cachesToDelete };', sandbox);
+  return sandbox.__sw;
+}
+
+test('the map tile cache survives an app update', () => {
+  const { cachesToDelete } = serviceWorker();
+  assert.deepEqual(cachesToDelete(['lift-v64', 'lift-v65', 'lift-map-tiles'], 'lift-v65'), ['lift-v64']);
+  // Any key under the map prefix is kept, whatever the area index calls it.
+  assert.deepEqual(cachesToDelete(['lift-v1', 'lift-map-anything', 'other'], 'lift-v2'), ['lift-v1', 'other']);
+  assert.deepEqual(cachesToDelete([], 'lift-v2'), []);
+});
+
+test('the shell holds every map file the app needs offline, and each exists', () => {
+  const { SHELL } = serviceWorker();
+  for (const path of SHELL) {
+    if (path === '/lift/') continue;
+    assert.ok(existsSync(`lift${decodeURI(path).slice('/lift'.length)}`), `${path} is in the shell but not on disk`);
+  }
+  const inShell = new Set(SHELL.map((p) => decodeURI(p)));
+  for (const kitPath of manifest().keys()) {
+    if (kitPath === 'web/VENDOR.md') continue; // a note for people, never requested
+    assert.ok(inShell.has(`/lift/${here(kitPath).slice('lift/'.length)}`), `${here(kitPath)} is not cached for offline`);
+  }
+});
+
+test('the cache name moved, so an installed copy takes the new shell', () => {
+  const { CACHE } = serviceWorker();
+  const n = Number(/^lift-v(\d+)$/.exec(CACHE)?.[1]);
+  assert.ok(n > 64, `CACHE is ${CACHE}; it was lift-v64 before maps`);
+});
+
+// MARK: - Only map.js reaches beyond dugcanlift.com
+
+const BEYOND = ['openfreemap', 'fetch(\'http', 'fetch("http', 'fetch(`http'];
+
+test('only map.js reaches beyond dugcanlift.com', () => {
+  const own = readdirSync('lift').filter((f) => f.endsWith('.js') && f !== 'jsqr.js');
+  assert.ok(own.includes('app.js') && own.includes('sw.js'));
+  for (const f of own) {
+    const text = readFileSync(`lift/${f}`, 'utf8').toLowerCase();
+    for (const needle of BEYOND) assert.ok(!text.includes(needle), `lift/${f} contains ${needle}`);
+  }
+  // The map folder: map.js is the one file that names the tile server, and the
+  // vendored library is exempt by its pinned hash and nothing else. Any other
+  // script there is checked like the app's own.
+  const vendor = readFileSync(`${MAP}VENDOR.md`, 'utf8');
+  const pinned = /^\| `maplibre-gl\.js` \| `[^`]+` \| `([0-9a-f]{64})` \|$/m.exec(vendor)?.[1];
+  assert.ok(pinned, 'VENDOR.md pins maplibre-gl.js');
+  for (const f of readdirSync(MAP).filter((n) => n.endsWith('.js'))) {
+    const bytes = readFileSync(MAP + f);
+    if (f === 'maplibre-gl.js') {
+      assert.equal(sha256(bytes), pinned, 'the vendored library is the pinned release');
+    } else if (f !== 'map.js') {
+      assert.fail(`lift/map/${f} is a script nobody vetted`);
+    }
+  }
+  // The street download's address appears in map.js and nowhere in app.js, so a
+  // second place that could ask for tiles cannot appear unnoticed.
+  assert.ok(readFileSync(`${MAP}map.js`, 'utf8').toLowerCase().includes('tiles.openfreemap.org'));
+});
+
+// MARK: - Wiring
+
+test('the page loads map.js before app.js, and MapLibre only when a map is first drawn', () => {
+  const html = readFileSync('lift/index.html', 'utf8');
+  const order = [...html.matchAll(/<script src="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(order.indexOf('map/map.js') > -1, 'index.html loads map/map.js');
+  assert.ok(order.indexOf('map/map.js') < order.indexOf('app.js'), 'map.js comes before app.js');
+  assert.ok(!order.includes('map/maplibre-gl.js'), 'the 1 MB engine is not a startup script');
+  const app = readFileSync('lift/app.js', 'utf8');
+  assert.ok(app.includes("'map/maplibre-gl.js'"), 'app.js loads the engine on first need');
+  assert.match(app, /LiftMap\.configure\(\{\s*cachePrefix: 'lift-map-',\s*storageKey: 'lift\.mapAreas',\s*base: '\/lift\/map\/'/);
+});
+
+test('area tiles and the area index stay out of backups', () => {
+  const backup = readFileSync('lift/backup.js', 'utf8');
+  assert.ok(!/mapAreas|liftmap|lift-map/i.test(backup));
+});
