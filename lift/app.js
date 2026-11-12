@@ -4297,9 +4297,23 @@ function drawRoute(canvas, route, aspect, emptyText) {
   dot(pts[pts.length - 1], 6, accent);
 }
 
+/* The Last route card's box, kept across renders. render() runs after every
+ * tap on this tab, and a map torn down and made again shows a blank frame while
+ * its style loads. The box (and the map inside it) is carried into the rebuilt
+ * card when it holds the same route; a different route, or none, lets it go. */
+let lastRouteBox = null;
+let lastRouteKey = '';
+
+/* A cheap fingerprint of a route: how many points, and where it starts and ends. */
+const routeKey = (route) => (route && route.length ? `${route.length}|${route[0]}|${route[route.length - 1]}` : '');
+
 function renderOutdoor() {
   const wrap = $('#outdoor-section');
-  routeViews.forEach((held, box) => { if (!box.isConnected || wrap.contains(box)) dropRoute(box); });
+  const last = LiftOutdoor.lastRoute(outdoor);
+  const keep = last && lastRouteBox && routeViews.has(lastRouteBox) && routeKey(last.route) === lastRouteKey
+    ? lastRouteBox : null;
+  routeViews.forEach((held, box) => { if (box !== keep && (!box.isConnected || wrap.contains(box))) dropRoute(box); });
+  if (!keep) lastRouteBox = null;
   wrap.innerHTML = '';
   const unit = distanceUnit();
   let drawRouteAfter = null;
@@ -4338,11 +4352,12 @@ function renderOutdoor() {
   wrap.appendChild(card);
 
   // The newest route, whatever day Train is showing.
-  const last = LiftOutdoor.lastRoute(outdoor);
   if (last) {
     const lastCard = el('button', 'card linkcard');
     lastCard.appendChild(el('strong', 'cardtitle', 'Last route'));
-    const canvas = el('div', 'routebox');
+    const canvas = keep || el('div', 'routebox');
+    lastRouteBox = canvas;
+    lastRouteKey = routeKey(last.route);
     lastCard.appendChild(canvas);
     const line = el('div', 'routeline');
     line.appendChild(el('span', null, outdoorLabel(last.activityType)));
