@@ -181,14 +181,18 @@ test('the cache name moved, so an installed copy takes the new shell', () => {
 
 // MARK: - Only map.js reaches beyond dugcanlift.com
 
-const BEYOND = ['openfreemap', 'fetch(\'http', 'fetch("http', 'fetch(`http'];
+// Patterns, not substrings: the tile server's name, and a fetch of an absolute address.
+const BEYOND = [/openfreemap/i, /fetch\(\s*['"`]https?:/i];
+
+/** Every http(s) address written in a script, lower-cased, up to a quote, backtick, backslash or space. */
+const urlsIn = (text) => text.toLowerCase().match(/https?:\/\/[^'"`\\\s)]+/g) ?? [];
 
 test('only map.js reaches beyond dugcanlift.com', () => {
   const own = readdirSync('lift').filter((f) => f.endsWith('.js') && f !== 'jsqr.js');
   assert.ok(own.includes('app.js') && own.includes('sw.js'));
   for (const f of own) {
     const text = readFileSync(`lift/${f}`, 'utf8').toLowerCase();
-    for (const needle of BEYOND) assert.ok(!text.includes(needle), `lift/${f} contains ${needle}`);
+    for (const pattern of BEYOND) assert.ok(!pattern.test(text), `lift/${f} matches ${pattern}`);
   }
   // The map folder: map.js is the one file that names the tile server, and the
   // vendored library is exempt by its pinned hash and nothing else. Any other
@@ -206,7 +210,16 @@ test('only map.js reaches beyond dugcanlift.com', () => {
   }
   // The street download's address appears in map.js and nowhere in app.js, so a
   // second place that could ask for tiles cannot appear unnoticed.
-  assert.ok(readFileSync(`${MAP}map.js`, 'utf8').toLowerCase().includes('tiles.openfreemap.org'));
+  // Every address map.js writes is parsed and its host compared, never searched
+  // for as text: https on the tile server, or on this site.
+  const found = urlsIn(readFileSync(`${MAP}map.js`, 'utf8'));
+  const hosts = found.map((u) => new URL(u));
+  assert.ok(hosts.some((u) => u.host === 'tiles.openfreemap.org'), 'map.js names the tile server');
+  for (const u of hosts) {
+    assert.equal(u.protocol, 'https:', `${u.href} is not https`);
+    assert.ok(u.host === 'tiles.openfreemap.org' || u.host === 'www.dugcanlift.com',
+      `map.js names ${u.host}, which is neither the tile server nor this site`);
+  }
 });
 
 // MARK: - Wiring
