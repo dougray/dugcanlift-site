@@ -224,3 +224,54 @@ test('the fixture link decodes to the same parts', async () => {
   assert.deepEqual(payload.lr, shareExpected.lr);
   assert.deepEqual(payload.d.flatMap((d) => d.o), shareExpected.o);
 });
+
+// MARK: - The numbers of a run still recording
+
+// LiveRunStats on LIFT iOS and Android, case for case: the card on Train and
+// the full recording screen both read this, so they cannot disagree.
+const liveStart = t0;
+// 1000 m of latitude on the haversine sphere.
+const degreesFor = (meters) => meters / 6371000 * 180 / Math.PI;
+const fixAt = (meters, seconds) => [degreesFor(meters), 0, null, seconds, 5];
+
+test('liveStats: nothing recorded yet reads 0:00, no distance and no pace', () => {
+  const s = O.liveStats([], liveStart, liveStart);
+  assert.deepEqual(s, { elapsedMs: 0, distanceMeters: 0, paceSecondsPerMeter: null });
+  assert.equal(O.durationText(s.elapsedMs), '0:00');
+});
+
+test('liveStats: a clock before the start is zero, never negative', () => {
+  const s = O.liveStats([], liveStart, liveStart - 5000);
+  assert.equal(s.elapsedMs, 0);
+  assert.equal(O.liveStats([], liveStart, NaN).elapsedMs, 0);
+  assert.equal(O.liveStats([], undefined, liveStart).elapsedMs, 0);
+});
+
+test('liveStats: pace is elapsed over distance', () => {
+  const s = O.liveStats([fixAt(0, 0), fixAt(1000, 300)], liveStart, liveStart + 300000);
+  assert.equal(s.elapsedMs, 300000);
+  assert.ok(Math.abs(s.distanceMeters - 1000) < 0.01);
+  assert.ok(Math.abs(s.paceSecondsPerMeter - 0.3) < 0.001);
+});
+
+test('liveStats: no pace under ten meters', () => {
+  const s = O.liveStats([fixAt(0, 0), fixAt(9, 30)], liveStart, liveStart + 60000);
+  assert.equal(s.paceSecondsPerMeter, null);
+  assert.notEqual(O.liveStats([fixAt(0, 0), fixAt(10.5, 30)], liveStart, liveStart + 60000).paceSecondsPerMeter, null);
+});
+
+test('liveStats: no pace at the instant of the start, even with distance', () => {
+  const s = O.liveStats([fixAt(0, 0), fixAt(50, 0)], liveStart, liveStart);
+  assert.equal(s.paceSecondsPerMeter, null);
+});
+
+test('liveStats: the text both screens share', () => {
+  const s = { elapsedMs: 3725000, distanceMeters: 1609.344, paceSecondsPerMeter: 0.3 };
+  assert.equal(O.durationText(s.elapsedMs), '1:02:05');
+  assert.equal(O.distanceText(s.distanceMeters, 'miles'), '1.00 mi');
+  assert.equal(O.paceText(s.paceSecondsPerMeter, 'miles'), '8:03 /mi');
+});
+
+test('the route view says Waiting for GPS… while it has under two points', () => {
+  assert.equal(O.WAITING_FOR_GPS, 'Waiting for GPS…');
+});
