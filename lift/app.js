@@ -4022,9 +4022,15 @@ function renderOutdoor() {
   LiftOutdoor.TYPES.forEach((type) => {
     const b = el('button', null, type.label);
     b.onclick = () => startRecording(type.key);
+    // One run at a time: while one records, the card below is that run.
+    if (recording) b.disabled = true;
     buttons.appendChild(b);
   });
   card.appendChild(buttons);
+  if (recording) {
+    card.appendChild(el('p', 'muted',
+      `A ${outdoorLabel(recording.activityType).toLowerCase()} is recording. Open it or finish it before you start another.`));
+  }
 
   if (!navigator.geolocation) {
     card.appendChild(el('p', 'muted', "This browser can't read your location, so it can't record a route."));
@@ -4040,9 +4046,13 @@ function renderOutdoor() {
   });
   wrap.appendChild(card);
 
-  // The newest route, whatever day Train is showing.
+  // A run in progress stands in the place of the newest route; after Finish the
+  // card is Last route again.
+  liveCard = null;
   const last = LiftOutdoor.lastRoute(outdoor);
-  if (last) {
+  if (recording) {
+    wrap.appendChild(buildLiveCard());
+  } else if (last) {
     const lastCard = el('button', 'card linkcard');
     lastCard.appendChild(el('strong', 'cardtitle', 'Last route'));
     const canvas = el('canvas', 'route');
@@ -4082,6 +4092,51 @@ function renderOutdoor() {
   wrap.appendChild(bestsCard);
 
   if (drawRouteAfter) drawRouteAfter();
+  // The live card is measured and filled once every card is in, like the map.
+  if (recording) updateRecording();
+}
+
+/* The run in progress, as a card on Train. It reads LiftOutdoor.liveStats, the
+ * same numbers the recording screen shows, and always offers Open and Finish:
+ * the run is the card, the overlay is only one way to look at it. */
+let liveCard = null;
+
+function buildLiveCard() {
+  const card = el('div', 'card');
+  card.appendChild(el('strong', 'cardtitle', `Recording \u00b7 ${outdoorLabel(recording.activityType)}`));
+  const canvas = el('canvas', 'route');
+  card.appendChild(canvas);
+
+  const grid = el('div', 'stats');
+  const cells = ['Time', 'Distance', 'Pace'].map((label) => {
+    const cell = el('div');
+    cell.appendChild(el('div', 'muted small', label));
+    const value = el('div', 'stat');
+    cell.appendChild(value);
+    grid.appendChild(cell);
+    return value;
+  });
+  card.appendChild(grid);
+
+  // Room for what a later change adds to a live run (heart rate among it).
+  card.appendChild(el('div', 'liveextras'));
+
+  const status = el('p', 'muted small');
+  status.setAttribute('aria-live', 'polite');
+  card.appendChild(status);
+
+  const row = el('div', 'row');
+  const open = el('button', 'ghost', 'Open');
+  open.onclick = openRecording;
+  const finish = el('button', null, 'Finish');
+  finish.onclick = finishRecording;
+  row.appendChild(open);
+  row.appendChild(finish);
+  card.appendChild(row);
+  card.appendChild(el('p', 'muted small', 'LIFT records only while this page is on screen.'));
+
+  liveCard = { canvas, time: cells[0], distance: cells[1], pace: cells[2], status };
+  return card;
 }
 
 /* ---- recording ---- */
@@ -4135,11 +4190,30 @@ function syncScreenHold() {
   if (cutoff != null) screenCutoff = setTimeout(syncScreenHold, Math.min(cutoff - Date.now() + 50, 2 ** 31 - 1));
 }
 
+/* A run ends only on Finish or Discard. Closing the screen (Back to LIFT),
+ * switching tabs, going to light or dark, none of those touch the watch, the
+ * timer or the wake lock: the run is the card on Train. */
 function startRecording(type) {
-  if (recording) { showRecording(); return; }
+  if (recording) return false;   // one run at a time
   recording = { id: uid(), activityType: type, startedAtEpochMs: Date.now(), route: [] };
   save(KEY.recording, recording);
+  beginWatching();
+  renderOutdoor();
   showRecording();
+  return true;
+}
+
+/* Starts reading GPS and ticking, once. Idempotent: reopening the screen or
+ * resuming after a reload never makes a second tracker. */
+function beginWatching() {
+  holdScreenOn();
+  if (geoWatch === null && navigator.geolocation) {
+    gpsProblem = '';
+    lastFixAt = 0;
+    geoWatch = navigator.geolocation.watchPosition(onFix, onFixError,
+      { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
+  }
+  if (recordTimer === null) recordTimer = setInterval(updateRecording, 1000);
 }
 
 /* The recording and review screens cover the app. Marked aria-modal and with
@@ -4186,18 +4260,20 @@ function showRecording() {
   $('#rec-title').textContent = outdoorLabel(recording.activityType);
   openModal($('#recording'), $('#rec-title'));
   $('#rec-finish').textContent = `Finish ${outdoorLabel(recording.activityType).toLowerCase()}`;
-  gpsProblem = '';
-  lastFixAt = 0;
-  holdScreenOn();
-
-  if (geoWatch === null && navigator.geolocation) {
-    geoWatch = navigator.geolocation.watchPosition(onFix, onFixError,
-      { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
-  }
-  clearInterval(recordTimer);
-  recordTimer = setInterval(updateRecording, 1000);
+  $('#rec-canvas').liveLen = null;
   updateRecording();
 }
+
+function openRecording() {
+  if (recording) showRecording();
+}
+
+/* Back to LIFT. Hides the screen and nothing else. */
+function closeRecording() {
+  closeModal($('#recording'));
+  renderOutdoor();
+}
+$('#rec-close').onclick = closeRecording;
 
 function onFix(position) {
   if (!recording) return;
@@ -4221,25 +4297,48 @@ function onFixError(error) {
   updateRecording();
 }
 
-function updateRecording() {
-  if (!recording) return;
-  const elapsed = Date.now() - recording.startedAtEpochMs;
-  const metres = LiftOutdoor.totalDistanceMeters(recording.route);
-  const unit = distanceUnit();
-  $('#rec-time').textContent = LiftOutdoor.durationText(elapsed);
-  $('#rec-distance').textContent = LiftOutdoor.distanceText(metres, unit);
-  $('#rec-pace').textContent = metres >= 100
-    ? LiftOutdoor.paceText((elapsed / 1000) / metres, unit) : '—';
-
-  let status = gpsProblem;
-  if (!status && !recording.route.length) status = 'Waiting for GPS...';
-  if (!status && lastFixAt && Date.now() - lastFixAt > 20000) {
-    status = 'No GPS update for a while. Keep LIFT open on screen.';
-  }
-  $('#rec-status').textContent = status;
-  drawRoute($('#rec-canvas'), recording.route, 1, 'Waiting for GPS...');
+/* What the status line says, apart from the route view's own "waiting" text. */
+function recordingProblem() {
+  if (gpsProblem) return gpsProblem;
+  if (lastFixAt && Date.now() - lastFixAt > 20000) return 'No GPS update for a while. Keep LIFT open on screen.';
+  return '';
 }
 
+/* Draws the live route when it has changed, and only on a canvas that is on
+ * screen at a width. */
+function drawLive(canvas, aspect) {
+  if (!canvas || !canvas.isConnected) return;
+  if (!canvas.clientWidth && !(canvas.parentElement && canvas.parentElement.clientWidth)) return;
+  if (canvas.liveLen === recording.route.length && canvas.redraw) return;
+  canvas.liveLen = recording.route.length;
+  drawRoute(canvas, recording.route, aspect, LiftOutdoor.WAITING_FOR_GPS);
+}
+
+function updateRecording() {
+  if (!recording) return;
+  const stats = LiftOutdoor.liveStats(recording.route, recording.startedAtEpochMs, Date.now());
+  const unit = distanceUnit();
+  const time = LiftOutdoor.durationText(stats.elapsedMs);
+  const distance = LiftOutdoor.distanceText(stats.distanceMeters, unit);
+  const pace = stats.paceSecondsPerMeter != null ? LiftOutdoor.paceText(stats.paceSecondsPerMeter, unit) : '\u2014';
+  const problem = recordingProblem();
+
+  $('#rec-time').textContent = time;
+  $('#rec-distance').textContent = distance;
+  $('#rec-pace').textContent = pace;
+  $('#rec-status').textContent = problem || (recording.route.length ? '' : LiftOutdoor.WAITING_FOR_GPS);
+  if (!$('#recording').classList.contains('hidden')) drawLive($('#rec-canvas'), 1);
+
+  if (liveCard && liveCard.time.isConnected) {
+    liveCard.time.textContent = time;
+    liveCard.distance.textContent = distance;
+    liveCard.pace.textContent = pace;
+    liveCard.status.textContent = problem;
+    drawLive(liveCard.canvas, 2);
+  }
+}
+
+/* Called by Finish and Discard, and nothing else. */
 function stopWatching() {
   if (geoWatch !== null && navigator.geolocation) navigator.geolocation.clearWatch(geoWatch);
   geoWatch = null;
@@ -4250,10 +4349,24 @@ function stopWatching() {
   closeModal($('#recording'));
 }
 
-$('#rec-finish').onclick = () => {
-  if (!recording) return;
+/* A write that says whether it landed. save() alerts and carries on, which
+ * would lose a run: Finish must keep recording when the activity cannot be
+ * stored. */
+function saveChecked(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/* Finish, from the screen or the card. Saves once: with nothing recording it
+ * does nothing, so a second tap is silently ignored. */
+function finishRecording() {
+  if (!recording) return null;
   const route = recording.route;
-  if (route.length < 2 && !confirm('No route was recorded. Save the time anyway?')) return;
+  if (route.length < 2 && !confirm('No route was recorded. Save the time anyway?')) return null;
   const activity = {
     id: recording.id,
     activityType: recording.activityType,
@@ -4263,15 +4376,20 @@ $('#rec-finish').onclick = () => {
     elevationGainMeters: Math.round(LiftOutdoor.elevationGainMeters(route) * 10) / 10,
     route,
   };
+  if (!saveChecked(KEY.outdoor, outdoor.concat([activity]))) {
+    alert(`Could not save this ${outdoorLabel(recording.activityType).toLowerCase()}. It is still recording and the route so far is kept. Try Finish again.`);
+    return null;
+  }
   outdoor.push(activity);
-  save(KEY.outdoor, outdoor);
   recording = null;
   localStorage.removeItem(KEY.recording);
   stopWatching();
   trainDate = dateKey(new Date(activity.startedAtEpochMs));
   render();
   openReview(activity.id);
-};
+  return activity;
+}
+$('#rec-finish').onclick = finishRecording;
 
 $('#rec-discard').onclick = () => {
   if (!recording || !confirm('Discard this recording? The route so far is lost.')) return;
@@ -4320,14 +4438,21 @@ $('#review-delete').onclick = () => {
 };
 
 // A recording survives a reload: pick it back up, and keep adding to the route.
+// It comes back as the card on Train, not the overlay: nobody asked for a
+// screen over whatever tab they reloaded on.
 if (recording && recording.id && Array.isArray(recording.route)) {
-  showRecording();
+  beginWatching();
+  renderOutdoor();
 } else {
   recording = null;
 }
 
 LiftAppearance.onChange(() => {
-  if (recording) updateRecording();
+  if (recording) {
+    $('#rec-canvas').liveLen = null;
+    if (liveCard) liveCard.canvas.liveLen = null;
+    updateRecording();
+  }
   if (reviewingId) openReview(reviewingId);
 });
 
