@@ -4027,10 +4027,6 @@ function renderOutdoor() {
     buttons.appendChild(b);
   });
   card.appendChild(buttons);
-  if (recording) {
-    card.appendChild(el('p', 'muted',
-      `A ${outdoorLabel(recording.activityType).toLowerCase()} is recording. Open it or finish it before you start another.`));
-  }
 
   if (!navigator.geolocation) {
     card.appendChild(el('p', 'muted', "This browser can't read your location, so it can't record a route."));
@@ -4135,7 +4131,7 @@ function buildLiveCard() {
   card.appendChild(row);
   card.appendChild(el('p', 'muted small', 'LIFT records only while this page is on screen.'));
 
-  liveCard = { canvas, time: cells[0], distance: cells[1], pace: cells[2], status };
+  liveCard = { canvas, time: cells[0], distance: cells[1], pace: cells[2], status, open };
   return card;
 }
 
@@ -4272,6 +4268,10 @@ function openRecording() {
 function closeRecording() {
   closeModal($('#recording'));
   renderOutdoor();
+  // closeModal returns focus to the opener, but the re-render just replaced it; the card's Open
+  // button is its successor, so focus does not fall to the page body.
+  const open = liveCard && liveCard.open;
+  if (open && open.isConnected && open.offsetParent !== null) open.focus({ preventScroll: true });
 }
 $('#rec-close').onclick = closeRecording;
 
@@ -4293,7 +4293,7 @@ function onFix(position) {
 function onFixError(error) {
   gpsProblem = error.code === 1
     ? 'Location is turned off for this site. Allow it in your browser settings to record a route.'
-    : 'Looking for GPS...';
+    : 'Looking for GPS\u2026';
   updateRecording();
 }
 

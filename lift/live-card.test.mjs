@@ -37,6 +37,8 @@ const T0 = 1_800_000_000_000;
 
 // MARK: - A page just big enough to draw on
 
+const focusLog = [];
+
 class FakeEl {
   constructor(tag, root = false) {
     this.tag = tag;
@@ -70,7 +72,7 @@ class FakeEl {
   set innerHTML(v) { this.children.forEach((c) => { c.parentElement = null; }); this.children = []; this.own = ''; }
   appendChild(c) { c.parentElement = this; this.children.push(c); return c; }
   setAttribute(k, v) { this.attrs[k] = v; }
-  focus() {}
+  focus() { focusLog.push(this); }
   get isConnected() { let n = this; while (n.parentElement) n = n.parentElement; return n.root; }
   get offsetParent() { return this.isConnected ? {} : null; }
   all() { return this.children.flatMap((c) => [c, ...c.all()]); }
@@ -82,6 +84,7 @@ class FakeEl {
 }
 
 function harness({ stored = {}, confirmAnswer = true } = {}) {
+  focusLog.length = 0;
   const storage = new Map(Object.entries(stored).map(([k, v]) => [k, JSON.stringify(v)]));
   const failWrites = new Set();
   const localStorage = {
@@ -186,6 +189,7 @@ function harness({ stored = {}, confirmAnswer = true } = {}) {
     overlayOpen: () => !nodes['#recording'].classes.has('hidden'),
     reviewOpen: () => !nodes['#review'].classes.has('hidden'),
     watchers, cleared, alerts, confirms, storage, failWrites, state,
+    focused: () => focusLog[focusLog.length - 1] || null,
     activeTimers: () => intervals.size,
     wake: () => ({ requested: wakeLocks, released: wakeReleased }),
     appearanceChanged: () => appearance(),
@@ -256,6 +260,30 @@ test('Back to LIFT is on the overlay and closes it without ending the run', () =
   assert.match(html, /<button[^>]*id="rec-close"[^>]*>Back to LIFT<\/button>/);
   const wired = appSource.includes("$('#rec-close').onclick = closeRecording");
   assert.ok(wired, 'Back to LIFT calls closeRecording');
+});
+
+test('Back to LIFT puts focus on the card\'s Open button, not the page body', () => {
+  const h = harness();
+  h.renderOutdoor();
+  h.startRecording('RUN');
+  h.closeRecording();
+  const open = h.section.button('Open');
+  assert.ok(open, 'the live card is drawn');
+  assert.equal(h.focused(), open, 'the re-rendered Open button, not the detached opener');
+});
+
+test('a GPS error reads Looking for GPS\u2026 with the ellipsis character', () => {
+  const h = harness();
+  h.startRecording('RUN');
+  h.watchers[0].err({ code: 2 });
+  assert.equal(h.node('#rec-status').textContent, 'Looking for GPS\u2026');
+});
+
+test('the card does not add a sentence of its own about which run records', () => {
+  const h = harness();
+  h.startRecording('RUN');
+  h.closeRecording();
+  assert.ok(!/is recording\. Open it/.test(h.sectionText()));
 });
 
 test('the card and the overlay reopen each other without a second watch', () => {
