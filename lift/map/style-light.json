@@ -1,0 +1,35 @@
+{
+  "version": 8,
+  "name": "LIFT streets",
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "{{TILES}}"
+    }
+  },
+  "glyphs": "{{GLYPHS}}",
+  "layers": [
+    {"id":"background","type":"background","paint":{"background-color":"#F4EFE7"}},
+    {"id":"landuse","type":"fill","source":"openmaptiles","source-layer":"landuse","filter":["in","class","residential","suburb","neighbourhood","commercial","industrial","retail","cemetery","school","hospital"],"paint":{"fill-color":"#EDE6DA","fill-opacity":0.6}},
+    {"id":"landcover-wood","type":"fill","source":"openmaptiles","source-layer":"landcover","filter":["in","class","wood","grass","farmland"],"paint":{"fill-color":"#E6E8DA"}},
+    {"id":"park","type":"fill","source":"openmaptiles","source-layer":"park","paint":{"fill-color":"#E3E7D5"}},
+    {"id":"water","type":"fill","source":"openmaptiles","source-layer":"water","paint":{"fill-color":"#D5DBD6"}},
+    {"id":"waterway","type":"line","source":"openmaptiles","source-layer":"waterway","minzoom":10,"paint":{"line-color":"#D5DBD6","line-width":{"stops":[[10,0.4],[16,2]]}}},
+    {"id":"building","type":"fill","source":"openmaptiles","source-layer":"building","minzoom":15,"paint":{"fill-color":"#E8E0D3"}},
+    {"id":"road-minor-casing","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":13,"filter":["all",["in","class","minor","service","track"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#DCD3C5","line-width":{"stops":[[13,0.8],[16,3.2],[19,4.8]]}}},
+    {"id":"road-major-casing","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":6,"filter":["all",["in","class","motorway","trunk","primary","secondary","tertiary"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#DCD3C5","line-width":{"stops":[[6,0.6],[12,2.2],[16,4],[19,4.8]]}}},
+    {"id":"road-path","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":14,"filter":["all",["in","class","path"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#B7AC9B","line-width":{"stops":[[14,0.5],[18,1.2]]},"line-dasharray":[2,2]}},
+    {"id":"road-service","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":14,"filter":["all",["in","class","service","track"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#FFFCF7","line-width":{"stops":[[14,0.4],[16,1.2],[19,3]]}}},
+    {"id":"road-minor","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":12,"filter":["all",["in","class","minor"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#FFFCF7","line-width":{"stops":[[12,0.4],[16,2],[19,4]]}}},
+    {"id":"road-tertiary","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":10,"filter":["all",["in","class","tertiary"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#FBF7EF","line-width":{"stops":[[10,0.4],[14,1.6],[19,4]]}}},
+    {"id":"road-secondary","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":8,"filter":["all",["in","class","secondary","primary"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#FBF7EF","line-width":{"stops":[[8,0.5],[14,2],[19,4]]}}},
+    {"id":"road-trunk","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":6,"filter":["all",["in","class","motorway","trunk"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#FBF7EF","line-width":{"stops":[[6,0.6],[12,2],[19,4]]}}},
+    {"id":"rail","type":"line","source":"openmaptiles","source-layer":"transportation","minzoom":12,"filter":["all",["in","class","rail","transit"]],"layout":{"line-cap":"round","line-join":"round"},"paint":{"line-color":"#CFC5B5","line-width":{"stops":[[12,0.4],[18,1]]}}},
+    {"id":"boundary","type":"line","source":"openmaptiles","source-layer":"boundary","maxzoom":10,"filter":["<=","admin_level",4],"paint":{"line-color":"#BFB4A3","line-width":0.8,"line-dasharray":[3,2]}},
+    {"id":"street-names","type":"symbol","source":"openmaptiles","source-layer":"transportation_name","minzoom":14,"filter":["has","name"],"layout":{"text-field":["coalesce",["get","name:latin"],["get","name"]],"text-font":["Noto Sans Regular"],"text-size":{"stops":[[14,10],[18,13]]},"symbol-placement":"line","text-max-angle":30},"paint":{"text-color":"#665E52","text-halo-color":"#F4EFE7","text-halo-width":1.2}},
+    {"id":"highway-names","type":"symbol","source":"openmaptiles","source-layer":"transportation_name","minzoom":11,"filter":["in","class","motorway","trunk","primary"],"layout":{"text-field":["coalesce",["get","name:latin"],["get","name"]],"text-font":["Noto Sans Regular"],"text-size":{"stops":[[10,10],[16,12]]},"symbol-placement":"line"},"paint":{"text-color":"#665E52","text-halo-color":"#F4EFE7","text-halo-width":1.2}},
+    {"id":"place-village","type":"symbol","source":"openmaptiles","source-layer":"place","minzoom":10,"filter":["==","class","village"],"layout":{"text-field":["coalesce",["get","name:latin"],["get","name"]],"text-font":["Noto Sans Regular"],"text-size":{"stops":[[10,11],[14,14]]},"text-max-width":8},"paint":{"text-color":"#4E473D","text-halo-color":"#F4EFE7","text-halo-width":1.2}},
+    {"id":"place-town","type":"symbol","source":"openmaptiles","source-layer":"place","minzoom":8,"filter":["==","class","town"],"layout":{"text-field":["coalesce",["get","name:latin"],["get","name"]],"text-font":["Noto Sans Regular"],"text-size":{"stops":[[8,12],[14,16]]},"text-max-width":8},"paint":{"text-color":"#4E473D","text-halo-color":"#F4EFE7","text-halo-width":1.2}},
+    {"id":"place-city","type":"symbol","source":"openmaptiles","source-layer":"place","minzoom":4,"filter":["==","class","city"],"layout":{"text-field":["coalesce",["get","name:latin"],["get","name"]],"text-font":["Noto Sans Regular"],"text-size":{"stops":[[4,12],[12,20]]},"text-max-width":8},"paint":{"text-color":"#4E473D","text-halo-color":"#F4EFE7","text-halo-width":1.2}}
+  ]
+}

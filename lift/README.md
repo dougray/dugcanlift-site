@@ -553,3 +553,65 @@ A port of LIFT iOS's `ProgressRules.swift` and `ProgressPhotoStore` (lift-ios
   byte of the original's metadata behind, location included. The screen says
   in its own words that photos stay in this browser. A before/after view lays
   one over the other with a slider.
+
+## Street maps (`map/`)
+
+A run's route is drawn over streets when the person has downloaded the streets
+around it, and as the plain canvas line otherwise. Nothing is asked of any
+server while a map is on screen: tiles come from Cache Storage, and the styles,
+fonts and library from this site. The one request is the download the person
+starts in Home -> Maps, to OpenFreeMap, from `map.js`'s marked download section
+and nowhere else.
+
+**`lift/map/` is dugcanlift-kit's `map/` folder at tag 1.18.1, copied byte for byte** -- the
+kit's `web/` files (`map.js`, `maplibre-gl.js`, `maplibre-gl.css`,
+`LICENSE-maplibre.txt`, `VENDOR.md`) flattened into `lift/map/`, where `map.js`
+looks for its stylesheet, styles and fonts, beside `style-light.json`,
+`style-dark.json`, `tile-size-sample.json` (the measured tile sizes behind
+`typicalBytes`, evidence only: nothing loads it), `fonts/` (all 256 glyph ranges, 251 of them empty files: a
+map may ask for any) and `map-files.sha256`. `map.test.mjs` hashes every file
+against the manifest, so a file edited here, or a copy taken without the
+manifest, fails. **Never edit a file in `lift/map/`**, and never re-write the
+manifest by hand: change it in the kit, run `node map/write-checksum.mjs`
+there, and copy the folder over with the manifest. Coach web carries the same
+files.
+
+- **MapLibre GL JS 5.24.0** is a classic script (6.x is ES modules only, which
+  needs a dynamic `import(`). It is 1 MB (275 KB gzipped), so it is **not a
+  startup script** and not in the install bundle: `app.js` adds the tag the first time a route is drawn with a
+  finished area in the store (`loadMapEngine`), and until it arrives, and for
+  good with no WebGL, the route is the plain line. `map.js` (38 KB) is the only
+  map script in `index.html`. The library's worker is built from a Blob inside
+  it, so it requests nothing; if a Content-Security-Policy is ever added it
+  needs `worker-src blob:`.
+- **The no-network rule**: no `lift/*.js` other than `jsqr.js` may contain
+  `openfreemap` or a `fetch(` of an absolute address. `lift/map/map.js` may, and
+  the vendored `maplibre-gl.js` (which contains `fetch(` and `XMLHttpRequest`)
+  is exempt **by its pinned hash**, from `VENDOR.md`, and nothing else in the
+  folder is: any other script there fails `map.test.mjs`. That is also why the
+  credits links to OpenFreeMap and OpenStreetMap are written in `index.html`.
+- **What an update keeps.** Tiles are in the Cache Storage cache
+  `lift-map-tiles`, which `sw.js` never writes. The engine and the glyph ranges
+  (1 MB and up to 256 small files) are **not in `SHELL`**: one 404 there would
+  fail the whole install, and every install would pay for files most people
+  never use. `sw.js` serves `/lift/map/*` that is not in the shell cache-first
+  from a map-owned cache, `lift-map-assets-<first 8 hex of the engine's
+  sha256>`, filled the first time a map asks and kept across shell bumps; a
+  miss while offline is a 404, never the shell page. A new engine is a new
+  cache name, and `cachesToDelete` prunes the old one. `SHELL` holds `map.js`,
+  the css, the two styles and the licence texts. **Cache Storage is per
+  origin and www.dugcanlift.com also serves `/coach/`**, so an update deletes
+  only `lift-` caches (old shells and old asset caches): never `lift-map-tiles`,
+  never anything of Coach's. `map.test.mjs` runs all of it through the real
+  `sw.js`. The area index is `lift.mapAreas` in localStorage; neither it nor a
+  tile is in a backup. Bump `CACHE` for any change to the shell's map files, and
+  update `MAP_ASSETS` in `sw.js` when the engine changes (the test says if they
+  disagree).
+- **Home -> Maps** lists the areas (size, date) with **Update** and **Delete**,
+  an unfinished one with **Try again**, and **Download streets around here**
+  (the browser asks where you are only on that tap) and **...around your last
+  run**. The words are `LiftMap.copy`'s, LIFT iPhone's. Update downloads the
+  area again and removes the old one only once the new one has finished.
+- **Licenses** are under Maps -> Credits and licenses: OpenStreetMap (ODbL
+  1.0), OpenFreeMap, MapLibre GL JS (BSD-3-Clause, `map/LICENSE-maplibre.txt`)
+  and Noto Sans (OFL 1.1, `map/fonts/OFL.txt`); `NOTICE` carries them too.
