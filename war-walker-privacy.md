@@ -9,7 +9,7 @@ hide_title: true
 
 **WarWalker** (`com.warwalking.app`)
 
-Last updated: 12 August 2026
+Last updated: 14 November 2026
 
 ## The short version
 
@@ -45,7 +45,7 @@ phone until you delete a walk, clear app data, or uninstall the app.
 
 ## What gets uploaded to WiGLE
 
-When you stop a walk, WarWalker builds a standard `WigleWifi-1.4` CSV file —
+When you stop a walk, WarWalker builds a standard `WigleWifi-1.6` CSV file —
 each row is one detected Wi-Fi or Bluetooth network, its signal strength,
 and the GPS coordinates where it was seen — and uploads it directly from
 your phone to `https://api.wigle.net/api/v2/file/upload`, using the WiGLE
@@ -76,15 +76,20 @@ data leaves your device — WarWalker has no fallback server of its own.
 - **Nearby devices (Bluetooth scan/connect)** — used to detect BLE
   beacons during a walk, geotagged the same way as Wi-Fi networks.
 - **Wi-Fi state** — used to read nearby access points during a scan.
-- **Internet / network state** — used solely to talk to `api.wigle.net`.
+- **Internet / network state** — used to talk to `api.wigle.net` and to load
+  map tiles from OpenFreeMap (`tiles.openfreemap.org`, OpenStreetMap data).
+  Map tile requests show which map area you are looking at, the same as any
+  web map; nothing else about you or your walks is sent.
 - **Notifications** — used to show the ongoing-scan notification required
   while the foreground location service is running.
-- **Health Connect (steps, distance, active calories — read-only)** — read
-  once when a walk ends, as an anti-cheat check against the step count
-  WarWalker already tracked live via the phone's on-device step sensor.
-  WarWalker cannot write to Health Connect, and none of this is uploaded
-  anywhere; it's only used to compute the step count stored locally for
-  that walk (see above).
+- **Health Connect (steps, distance, active calories, and optionally heart
+  rate — read-only)** — steps are read once when a walk ends, as an
+  anti-cheat check against the step count WarWalker already tracked live via
+  the phone's on-device step sensor. If you also allow heart rate, the heart
+  rate recorded during the walk is used on the phone for training analysis
+  (heart-rate zones and training load); declining it never affects a walk or
+  its points. WarWalker cannot write to Health Connect, and none of this is
+  uploaded anywhere; it stays in the walk's local record on your phone.
 
 ## Analytics, advertising, and tracking
 
