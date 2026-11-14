@@ -149,6 +149,32 @@
     return (meters / unitMeters(unit)).toFixed(2) + ' ' + unitLabel(unit);
   }
 
+  // MARK: - A run still recording
+
+  /** Under this far a pace is GPS noise, not a speed (LiveRunStats on iOS and Android). */
+  var MINIMUM_LIVE_PACE_DISTANCE_METERS = 10;
+
+  /** What the route view says while it has under two points. */
+  var WAITING_FOR_GPS = 'Waiting for GPS\u2026';
+
+  /**
+   * The numbers of a run that has not finished: the one place the Train card
+   * and the recording screen both read them from, so they cannot disagree.
+   * Nothing here is NaN or negative: a run with no fix yet is 0 ms, 0 m and no
+   * pace, and so is a clock set back before the start.
+   */
+  function liveStats(route, startedAtEpochMs, nowEpochMs) {
+    var elapsedMs = Number.isFinite(startedAtEpochMs) && Number.isFinite(nowEpochMs)
+      ? Math.max(0, nowEpochMs - startedAtEpochMs) : 0;
+    var distanceMeters = totalDistanceMeters(route);
+    return {
+      elapsedMs: elapsedMs,
+      distanceMeters: distanceMeters,
+      paceSecondsPerMeter: distanceMeters >= MINIMUM_LIVE_PACE_DISTANCE_METERS && elapsedMs > 0
+        ? (elapsedMs / 1000) / distanceMeters : null,
+    };
+  }
+
   // MARK: - Drawing
 
   /**
@@ -315,6 +341,9 @@
     TYPES: TYPES,
     MAX_ACCURACY_METERS: MAX_ACCURACY_METERS,
     MINIMUM_PACE_DISTANCE_METERS: MINIMUM_PACE_DISTANCE_METERS,
+    MINIMUM_LIVE_PACE_DISTANCE_METERS: MINIMUM_LIVE_PACE_DISTANCE_METERS,
+    WAITING_FOR_GPS: WAITING_FOR_GPS,
+    liveStats: liveStats,
     acceptFix: acceptFix,
     haversineMeters: haversineMeters,
     totalDistanceMeters: totalDistanceMeters,

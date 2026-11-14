@@ -642,7 +642,7 @@ canvas.route {
            calc(env(safe-area-inset-bottom) + 24px) calc(env(safe-area-inset-left) + 16px);
 }
 .overlay .stat { font-size: 22px; }
-#review-close { float: right; }
+#review-close, #rec-close { float: right; }
 
 
 /* Importing training from another app's CSV (workout-csv.js). */
