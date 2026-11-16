@@ -709,6 +709,7 @@ function renderHome() {
   renderCoach();
   renderBackupNote();
   renderTrainingSettings();
+  renderHeartRateSettings();
   const today = todayKey();
   const eaten = totals(entriesFor(today));
 
@@ -4114,8 +4115,11 @@ function buildLiveCard() {
   });
   card.appendChild(grid);
 
-  // Room for what a later change adds to a live run (heart rate among it).
-  card.appendChild(el('div', 'liveextras'));
+  // Heart rate, when a device is connected and has spoken in the last ten
+  // seconds; empty otherwise. Kept in the handle so the once-a-second update
+  // can hide a number that has gone stale with nothing else changing.
+  const extras = el('div', 'liveextras');
+  card.appendChild(extras);
 
   const status = el('p', 'muted small');
   status.setAttribute('aria-live', 'polite');
@@ -4131,7 +4135,7 @@ function buildLiveCard() {
   card.appendChild(row);
   card.appendChild(el('p', 'muted small', 'LIFT records only while this page is on screen.'));
 
-  liveCard = { canvas, time: cells[0], distance: cells[1], pace: cells[2], status, open };
+  liveCard = { canvas, time: cells[0], distance: cells[1], pace: cells[2], status, extras, open };
   return card;
 }
 
@@ -4143,6 +4147,121 @@ let wakeLock = null;
 let recordTimer = null;
 let lastFixAt = 0;
 let gpsProblem = '';
+
+/* ---- heart rate ----
+ * A Bluetooth device the person chooses (heart-rate.js). Web Bluetooth opens
+ * its chooser only from a tap, so the only thing here that asks is the
+ * "Connect heart rate" button on the recording screen: nothing connects on load
+ * or on a reload, and a reload mid-run drops the connection for good (the card
+ * shows no number until the person taps again).
+ *
+ * One source a run: a device that drops is reconnected by heart-rate.js, the
+ * same device, and a tap after it gives up goes back to that device -- never to
+ * a chooser. The readings live in memory only; a run keeps their average, their
+ * max and the device's name, and never a reading a second. Tracked and shown,
+ * never targeted. */
+let hr = null;          // { handle, name, state, readings, last } while a device is in use
+let hrMessage = '';     // why the last attempt did not connect, when it did not
+
+const heartRateOff = () => LiftHeartRate.setting(localStorage) === 'off';
+const heartRateOffered = () => !!recording && LiftHeartRate.available() && !heartRateOff();
+
+function heartRateStatus() {
+  if (hr && hr.state === 'reconnecting') return 'Reconnecting heart rate\u2026';
+  if (hr && hr.state === 'lost') return 'Heart rate disconnected.';
+  return hr ? '' : hrMessage;
+}
+
+/* The number, and under it, small, where it came from. Device names come from
+ * the device, so they go in as text and are cut short by the stylesheet, never
+ * by slicing the data. Empty while there is no fresh reading. */
+function drawHeartRate(slot) {
+  slot.innerHTML = '';
+  const bpm = hr && hr.last ? LiftHeartRate.shown(hr.last, Date.now()) : null;
+  if (bpm == null) return;
+  slot.appendChild(el('div', 'stat', `${bpm} bpm`));
+  slot.appendChild(el('div', 'muted small hrsource', `from ${hr.name || LiftHeartRate.UNNAMED}`));
+}
+
+/* Called every second with the rest of the live numbers, so a stale number
+ * goes away by itself, on the card and on the recording screen alike. */
+function refreshHeartRate() {
+  drawHeartRate($('#rec-hr'));
+  if (liveCard && liveCard.extras && liveCard.extras.isConnected) drawHeartRate(liveCard.extras);
+  const offered = heartRateOffered() && (!hr || hr.state === 'lost');
+  $('#rec-hr-connect').classList[offered ? 'remove' : 'add']('hidden');
+  $('#rec-hr-status').textContent = heartRateStatus();
+}
+
+function connectHeartRate() {
+  if (!heartRateOffered()) return;
+  if (hr) {
+    // It dropped and gave up: the same device again, never another.
+    if (hr.state === 'lost' && hr.handle) hr.handle.retry();
+    return;
+  }
+  const mine = { handle: null, name: '', state: 'connecting', readings: [], last: null };
+  hr = mine;
+  hrMessage = '';
+  refreshHeartRate();
+  // requestDevice is called inside this tap, as the browser requires.
+  LiftHeartRate.connect((bpm) => {
+    if (hr !== mine) return;
+    mine.readings.push(bpm);
+    mine.last = { bpm, at: Date.now() };
+    refreshHeartRate();
+  }, {
+    onState: (state) => {
+      if (hr !== mine) return;
+      mine.state = state;
+      refreshHeartRate();
+    },
+  }).then((handle) => {
+    if (hr !== mine) { handle.disconnect(); return; }   // finished, discarded or switched off meanwhile
+    mine.handle = handle;
+    mine.name = handle.name;
+    mine.state = 'connected';
+    refreshHeartRate();
+  }, (error) => {
+    if (hr !== mine) return;
+    hr = null;
+    // Closing the chooser is an answer, not an error.
+    if (!error || error.name !== 'NotFoundError') hrMessage = "Couldn't connect to that device.";
+    refreshHeartRate();
+  });
+}
+$('#rec-hr-connect').onclick = connectHeartRate;
+
+/* Lets go of the device and forgets the readings. Finish and Discard only;
+ * Back to LIFT keeps the run, so it keeps this. */
+function stopHeartRate() {
+  const old = hr;
+  hr = null;
+  hrMessage = '';
+  if (old && old.handle) old.handle.disconnect();
+  refreshHeartRate();   // no number left on a screen that is about to be reused
+}
+
+/* What the run keeps: the average, the max and the device's name, or nothing. */
+function heartRateOfRun() {
+  const rate = hr ? LiftHeartRate.summary(hr.readings) : null;
+  return rate ? { averageBpm: rate.averageBpm, maxBpm: rate.maxBpm, heartRateSource: hr.name || LiftHeartRate.UNNAMED } : null;
+}
+
+/* Home -> Heart rate: Automatic or Off. No device list on the web: the browser
+ * asks the person to choose a device each time. Off lets go of a device that
+ * is connected and keeps nothing of the run's readings. */
+function renderHeartRateSettings() {
+  chips($('#heart-rate-mode'),
+    [{ label: 'Automatic', v: 'automatic' }, { label: 'Off', v: 'off' }],
+    (i) => i.v === LiftHeartRate.setting(localStorage),
+    (i) => {
+      LiftHeartRate.setSetting(i.v, localStorage);
+      if (i.v === 'off') stopHeartRate();
+      renderHeartRateSettings();
+      if (recording) refreshHeartRate();
+    });
+}
 
 async function holdScreenOn() {
   try {
@@ -4336,6 +4455,7 @@ function updateRecording() {
     liveCard.status.textContent = problem;
     drawLive(liveCard.canvas, 2);
   }
+  refreshHeartRate();
 }
 
 /* Called by Finish and Discard, and nothing else. */
@@ -4344,6 +4464,7 @@ function stopWatching() {
   geoWatch = null;
   clearInterval(recordTimer);
   recordTimer = null;
+  stopHeartRate();
   // Let go of the screen, unless a live session still wants it.
   syncScreenHold();
   closeModal($('#recording'));
@@ -4375,6 +4496,7 @@ function finishRecording() {
     distanceMeters: Math.round(LiftOutdoor.totalDistanceMeters(route) * 10) / 10,
     elevationGainMeters: Math.round(LiftOutdoor.elevationGainMeters(route) * 10) / 10,
     route,
+    ...heartRateOfRun(),
   };
   if (!saveChecked(KEY.outdoor, outdoor.concat([activity]))) {
     alert(`Could not save this ${outdoorLabel(recording.activityType).toLowerCase()}. It is still recording and the route so far is kept. Try Finish again.`);
@@ -4422,6 +4544,13 @@ function openReview(id) {
     ['Pace', outdoorPace(a)],
   ]);
   statGrid(stats, [['Climb', climb], ['GPS points', String((a.route || []).length)], ['', '']]);
+  const rateLine = LiftHeartRate.line(a.averageBpm, a.maxBpm);
+  if (rateLine) {
+    const rate = el('div');
+    rate.appendChild(el('div', 'stat', rateLine));
+    if (a.heartRateSource) rate.appendChild(el('div', 'muted small hrsource', `from ${a.heartRateSource}`));
+    stats.appendChild(rate);
+  }
   window.scrollTo(0, 0);
   drawRoute($('#review-canvas'), a.route, 1);
 }
