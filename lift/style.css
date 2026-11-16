@@ -644,6 +644,10 @@ canvas.route {
 .overlay .stat { font-size: 22px; }
 #review-close, #rec-close { float: right; }
 
+/* A heart rate device names itself, in any length. The page cuts it short here
+ * rather than slicing the name. */
+.hrsource { margin: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 
 /* Importing training from another app's CSV (workout-csv.js). */
 .csvsource { font-weight: 600; margin-bottom: 4px; }

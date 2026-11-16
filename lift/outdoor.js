@@ -202,8 +202,19 @@
 
   // MARK: - Backup, in Android's field names
 
+  /** A heart rate figure as a file may spell it: a positive whole number, or
+   *  nothing. 142.0 is 142; 141.5, 0, "168", true and 1e300 are no figure. */
+  function wholeBpm(v) {
+    return typeof v === 'number' && Number.isSafeInteger(v) && v > 0 ? v : null;
+  }
+
+  /** A device name, or nothing: only a non-blank string. */
+  function sourceName(v) {
+    return typeof v === 'string' && v.trim() ? v : null;
+  }
+
   function toBackup(a) {
-    return {
+    var out = {
       id: a.id,
       activityType: a.activityType,
       startedAtEpochMs: a.startedAtEpochMs,
@@ -218,6 +229,11 @@
         };
       }),
     };
+    // Heart rate: the three things a run keeps, each left out when unknown.
+    if (wholeBpm(a.averageBpm) != null) out.averageBpm = a.averageBpm;
+    if (wholeBpm(a.maxBpm) != null) out.maxBpm = a.maxBpm;
+    if (sourceName(a.heartRateSource) != null) out.heartRateSource = a.heartRateSource;
+    return out;
   }
 
   /** Null for anything that is not a finished activity of a known type. */
@@ -231,7 +247,7 @@
           Number.isFinite(p.recordedAtEpochMs) ? round((p.recordedAtEpochMs - o.startedAtEpochMs) / 1000, 1) : 0,
           Number.isFinite(p.horizontalAccuracyMeters) ? p.horizontalAccuracyMeters : 0];
       });
-    return {
+    var run = {
       id: String(o.id),
       activityType: o.activityType,
       startedAtEpochMs: o.startedAtEpochMs,
@@ -240,6 +256,12 @@
       elevationGainMeters: Number.isFinite(o.elevationGainMeters) ? o.elevationGainMeters : elevationGainMeters(route),
       route: route,
     };
+    // Read leniently: anything that is not a figure or a name is nothing, and
+    // never fails the run it came with.
+    if (wholeBpm(o.averageBpm) != null) run.averageBpm = o.averageBpm;
+    if (wholeBpm(o.maxBpm) != null) run.maxBpm = o.maxBpm;
+    if (sourceName(o.heartRateSource) != null) run.heartRateSource = o.heartRateSource;
+    return run;
   }
 
   // MARK: - Sending to a coach (SHARE-FORMAT.md, "Outdoor")

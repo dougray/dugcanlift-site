@@ -275,3 +275,70 @@ test('liveStats: the text both screens share', () => {
 test('the route view says Waiting for GPS… while it has under two points', () => {
   assert.equal(O.WAITING_FOR_GPS, 'Waiting for GPS…');
 });
+
+// MARK: - Heart rate in a backup
+
+const withHeartRate = (extra) => ({
+  ...activity('RUN', { meters: 5000, seconds: 1800, points: 3 }), ...extra,
+});
+
+test('a run keeps three heart rate figures through a backup, under the names every build uses', () => {
+  const a = withHeartRate({ averageBpm: 141, maxBpm: 168, heartRateSource: 'Polar H10' });
+  const out = O.toBackup(a);
+  assert.equal(out.averageBpm, 141);
+  assert.equal(out.maxBpm, 168);
+  assert.equal(out.heartRateSource, 'Polar H10');
+  assert.deepEqual(O.fromBackup(JSON.parse(JSON.stringify(out))), a);
+});
+
+test('a run without heart rate writes none of the three keys, not nulls', () => {
+  const out = O.toBackup(activity('RUN', { meters: 5000, seconds: 1800 }));
+  ['averageBpm', 'maxBpm', 'heartRateSource'].forEach((k) => assert.ok(!(k in out), k));
+  const text = JSON.stringify(out);
+  assert.ok(!text.includes('Bpm') && !text.includes('heartRate'));
+});
+
+test('a key that is null or missing is left out whichever of the three it is', () => {
+  const out = O.toBackup(withHeartRate({ averageBpm: 141, maxBpm: null, heartRateSource: undefined }));
+  assert.equal(out.averageBpm, 141);
+  assert.ok(!('maxBpm' in out));
+  assert.ok(!('heartRateSource' in out));
+});
+
+test('a backup written before heart rate restores with none of the three', () => {
+  const restored = O.fromBackup(JSON.parse(JSON.stringify(O.toBackup(activity('RUN', { meters: 5000, seconds: 1800 })))));
+  ['averageBpm', 'maxBpm', 'heartRateSource'].forEach((k) => assert.ok(!(k in restored), k));
+});
+
+test('a figure that is not a whole positive number restores as nothing, never throws', () => {
+  const base = JSON.parse(JSON.stringify(O.toBackup(activity('RUN', { meters: 5000, seconds: 1800 }))));
+  const read = (patch) => O.fromBackup({ ...base, ...patch });
+  [141.5, '168', true, false, 1e300, 0, -5, NaN, Infinity, null, {}, [], [141]].forEach((junk) => {
+    const run = read({ averageBpm: junk, maxBpm: junk });
+    assert.ok(run, `still a run for ${String(junk)}`);
+    assert.ok(!('averageBpm' in run), `averageBpm ${String(junk)}`);
+    assert.ok(!('maxBpm' in run), `maxBpm ${String(junk)}`);
+  });
+  assert.equal(read({ averageBpm: 142.0 }).averageBpm, 142, '142.0 is 142');
+});
+
+test('a source that is not a name restores as nothing', () => {
+  const base = JSON.parse(JSON.stringify(O.toBackup(activity('RUN', { meters: 5000, seconds: 1800 }))));
+  [7, true, null, '', '   ', {}, []].forEach((junk) => {
+    assert.ok(!('heartRateSource' in O.fromBackup({ ...base, heartRateSource: junk })), String(junk));
+  });
+  assert.equal(O.fromBackup({ ...base, heartRateSource: 'Wahoo TICKR' }).heartRateSource, 'Wahoo TICKR');
+});
+
+test('the average and the max of a run are not tied together on restore', () => {
+  const base = JSON.parse(JSON.stringify(O.toBackup(activity('RUN', { meters: 5000, seconds: 1800 }))));
+  const run = O.fromBackup({ ...base, averageBpm: 150, maxBpm: 'high' });
+  assert.equal(run.averageBpm, 150);
+  assert.ok(!('maxBpm' in run));
+});
+
+test('the share link never carries heart rate', () => {
+  const day = O.shareDay([withHeartRate({ averageBpm: 141, maxBpm: 168, heartRateSource: 'Polar H10' })]);
+  assert.equal(JSON.stringify(day).includes('141'), false);
+  assert.equal(day[0].length, 4, 'the tuple is unchanged');
+});

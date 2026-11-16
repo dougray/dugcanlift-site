@@ -153,6 +153,14 @@
   </div>
 
   <div class="panel">
+  <h2>Heart rate</h2>
+  <div class="card">
+    <div class="chips" id="heart-rate-mode" role="group" aria-label="Heart rate"></div>
+    <p class="muted">Chrome and Edge can read a Bluetooth heart rate device. The browser asks you to choose it each time.</p>
+  </div>
+  </div>
+
+  <div class="panel">
   <h2>Your data</h2>
   <div class="card">
     <p class="muted">Everything you log lives in this browser and nowhere else.
@@ -568,6 +576,12 @@
     <div><div class="muted small">Pace</div><div class="stat" id="rec-pace"></div></div>
   </div>
   <p class="muted" id="rec-status" aria-live="polite"></p>
+  <!-- Heart rate (heart-rate.js): the number and its device when a reading is
+       fresh; the button only where the browser has Web Bluetooth and the
+       setting is not Off. Its tap is the one that opens the browser's chooser. -->
+  <div id="rec-hr"></div>
+  <p class="muted small" id="rec-hr-status" aria-live="polite"></p>
+  <button class="wide ghost hidden" id="rec-hr-connect">Connect heart rate</button>
   <button class="wide" id="rec-finish">Finish</button>
   <button class="wide ghost" id="rec-discard">Discard</button>
   <p class="muted small">Back to LIFT closes this screen and the run goes on: it is the card on Train
@@ -635,6 +649,7 @@
 <script src="live-session.js"></script>
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
+<script src="heart-rate.js"></script>
 <script src="workout-csv.js"></script>
 <script src="progress.js"></script>
 <script src="road-food.js"></script>
