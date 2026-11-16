@@ -4,6 +4,8 @@ title:  "Find My Gym Bro: the Private Beta Waitlist Is Open"
 date:   2026-10-25 17:00:00 -0500
 ---
 
+*Update, November 2026: no one has signed up yet, so I'm not building this out until there's interest. The prototype and this post stay up for anyone who wants to try it.*
+
 Training alone gets old. You can follow a great program, hit your macros and log every set in
 LIFT, and still miss the thing that keeps most of us showing up: someone who expects you there,
 notices when you hit a PR, and talks a little trash when you skip leg day.
