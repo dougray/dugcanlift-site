@@ -124,9 +124,15 @@ downloaded streets for the place, the route is drawn as a line on its own.
 
 **Android — Health Connect.**
 
-- *Reads:* your step count only — today's total for the dashboard, and daily
+- *Reads:* your step count — today's total for the dashboard, and daily
   totals for the weeks you send to a coach. It asks for permission to read
-  history older than 30 days so those weeks are complete.
+  history older than 30 days so those weeks are complete. It also reads
+  **heart rate and VO2 max**, only to show them on a run you recorded: heart
+  rate for that run's time span, when no strap or watch supplied it live, and
+  your newest VO2 max estimate on or before the run's end. LIFT keeps the run's
+  average and highest heart rate and the name of where they came from; it
+  keeps no heart rate readings. Heart rate and VO2 max have their own
+  permissions, and you can say no to them and still use everything else.
 - *Writes:* a finished run, walk or hike, as an exercise session with its GPS
   route, distance and elevation gain — **only when you tap Export to Health
   Connect** on that activity. Nothing else is ever written, and write
@@ -134,8 +140,13 @@ downloaded streets for the place, the route is drawn as a line on its own.
 
 **iPhone — Apple Health.**
 
-- *Reads:* your step count (today's, and daily totals for Send to Coach) and
-  your latest bodyweight, shown in Settings. Nothing else.
+- *Reads:* your step count (today's, and daily totals for Send to Coach), your
+  latest bodyweight, shown in Settings, and **heart rate and VO2 max**, only
+  to show them on a run you recorded: heart rate for that run's time span,
+  when no strap or watch supplied it live, and your newest VO2 max estimate on
+  or before the run's end. LIFT keeps the run's average and highest heart rate
+  and the name of where they came from; it keeps no heart rate readings.
+  Nothing else.
 - *Writes:*
   - Strength sessions, as workouts, once you have connected Apple Health — when
     you end a live session, when you connect, or when you tap Sync now. A day
@@ -146,7 +157,10 @@ downloaded streets for the place, the route is drawn as a line on its own.
 **Apple Watch.**
 
 - *Reads:* your heart rate and active energy, only while a strength session is
-  running on the watch, to show your heart rate there. The watch also keeps
+  running on the watch, to show your heart rate there. If you choose the watch
+  as your heart rate source for a run you start on your iPhone, it also reads
+  your heart rate during that run and sends each reading to LIFT on the
+  iPhone; the watch saves nothing of that run itself. The watch also keeps
   the highest heart rate around each set, with the set. When the session ends,
   those figures and the session's average and highest heart rate are passed to
   LIFT on your paired iPhone with the session, where they stay.
@@ -162,6 +176,31 @@ The web app's steps are the numbers you type in.
 Health data LIFT reads stays on your device and is never used for advertising.
 It leaves only as the step and bodyweight numbers inside a Send to Coach email
 you choose to send.
+
+## Heart rate devices
+
+LIFT can show your heart rate during a run from a Bluetooth heart rate strap
+or band **you add yourself**, from your watch, or afterward from Apple Health
+or Health Connect. You choose which in Settings, under Heart rate: Automatic
+(a device you added if it's nearby, then your watch), or Off.
+
+- **Bluetooth heart rate devices (Android, iPhone, and Chrome or Edge on the
+  web).** On Android and iPhone you add a device from a list of nearby devices
+  that announce the standard heart rate service, and LIFT stores that device's
+  identifier and name on your phone so it can find it again. LIFT connects
+  only to a device you added, never to anyone else's, and only during a run
+  with the Heart rate setting on. On iPhone it asks for Bluetooth permission
+  and on Android for Nearby devices; on Android 11 and older, Android itself
+  requires location permission for any Bluetooth search, which route
+  recording already asks for. The web app uses your browser's own picker and
+  asks you to choose a device each time; it stores nothing about the device.
+- **What is kept.** During a run the numbers are held in memory to show the
+  live number and work out the run's average and highest. When the run ends
+  LIFT keeps the average, the highest, and the name of the device they came
+  from, with the run. It keeps no heart rate readings.
+- **Where it goes.** Nowhere. Heart rate readings and these figures stay on
+  your phone and in your own backup file; they are not part of what Send to
+  Coach sends, and nothing is sent to LIFT's developer or to a server.
 
 ## Camera
 
@@ -354,7 +393,10 @@ permission at all.
   encrypted Bluetooth connection, with no server, no account and nothing else:
   the day's workout goes to the watch (exercises, sets, target weights and your
   last numbers for each), and sessions you finish on the watch come back into
-  your log on the phone. For this, both ask for the Nearby devices (Bluetooth)
+  your log on the phone. If you choose the watch as your heart rate source for
+  a phone run, the phone also asks the watch to start and stop measuring (and
+  asks again about once a minute while the run lasts), and the watch sends the
+  heart rate readings back over the same connection. For this, both ask for the Nearby devices (Bluetooth)
   permission. The watch never searches for other devices; it only waits for
   your phone. The phone searches once, for LIFT's own watch app, to pair, and
   that search is declared never to be used to work out where you are. On
