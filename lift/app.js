@@ -705,10 +705,227 @@ function renderTrainingSettings() {
   card.appendChild(list);
 }
 
+/* ---------------- maps ----------------
+ *
+ * Home -> Maps: the street areas downloaded for route maps (map/map.js), and
+ * the ways to download one. iOS's Settings -> Maps (MapsSection and
+ * StreetsSheet) under the same words, which are LiftMap.copy's. Nothing is
+ * asked of any server until Download is pressed in the sheet below, and
+ * nothing updates on its own. Where the person is is read only when they press
+ * "Download streets around here".
+ *
+ * The sheet is inline, not a dialog. Its state lives here rather than in the
+ * DOM because render() rebuilds Home: a download keeps running, and the next
+ * render shows its progress. Update downloads the same area again as a new
+ * area and deletes the old one only once the new one has finished, so a
+ * failed update leaves the streets the person had. Cancel removes an area the
+ * sheet began; one from the list that did not finish stays, to try again. */
+const mapCopy = LiftMap.copy;
+let mapSheet = null;
+let mapLocating = false;
+let mapNote = '';
+let mapProgress = null;
+
+function mapAreaRow(area, unfinished) {
+  const row = el('div', 'maparea');
+  const text = el('div');
+  text.appendChild(el('div', null, area.name));
+  text.appendChild(el('div', 'muted small', unfinished ? mapCopy.notFinished : LiftMap.detailLine(area)));
+  row.appendChild(text);
+  const act = (label, fn) => {
+    const b = el('button', 'ghost', label);
+    b.type = 'button';
+    b.setAttribute('aria-label', `${label} ${area.name}`);
+    b.onclick = fn;
+    row.appendChild(b);
+  };
+  if (unfinished) {
+    act(mapCopy.tryAgain, () => openMapSheet({ mode: 'resume', name: area.name, plan: LiftMap.replan(area), areaId: area.id }));
+  } else {
+    act(mapCopy.update, () => openMapSheet({ mode: 'update', name: area.name, plan: LiftMap.replan(area), replacing: area.id }));
+  }
+  act(mapCopy.delete, () => {
+    if (!confirm(`${LiftMap.deleteTitle(area.name)}\n${mapCopy.deleteMessage}`)) return;
+    LiftMap.deleteArea(area.id).then(renderMaps, renderMaps);
+  });
+  return row;
+}
+
+function openMapSheet({ mode, name, plan, areaId = null, replacing = null }) {
+  mapSheet = { mode, name, plan, areaId, replacing, phase: mode === 'resume' ? 'failed' : 'ready', done: 0, total: 0, abort: null };
+  renderMaps();
+  const focus = $('#maps-section').querySelector('.mapsheet button:not(.ghost), .mapsheet button');
+  if (focus) focus.focus({ preventScroll: true });
+}
+
+function offerAround(lat, lon) {
+  openMapSheet({ mode: 'new', name: LiftMap.nameAround(lat, lon), plan: LiftMap.plan(lat, lon, LiftMap.startingKm) });
+}
+
+function aroundHere() {
+  if (mapLocating || !navigator.geolocation) return;
+  mapLocating = true;
+  mapNote = '';
+  renderMaps();
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      mapLocating = false;
+      offerAround(position.coords.latitude, position.coords.longitude);
+    },
+    (error) => {
+      mapLocating = false;
+      mapNote = error.code === 1
+        ? 'Location is turned off for this site. Allow it in your browser settings to download streets around here.'
+        : "Couldn't find where you are.";
+      renderMaps();
+    },
+    { enableHighAccuracy: false, timeout: 20000, maximumAge: 60000 });
+}
+
+function mapProgressPaint() {
+  const s = mapSheet;
+  if (!s || !mapProgress || !mapProgress.isConnected) return;
+  mapProgress.max = Math.max(s.total, 1);
+  mapProgress.value = s.done;
+}
+
+function startMapDownload() {
+  const s = mapSheet;
+  if (!s || s.phase === 'downloading' || s.phase === 'cancelling') return;
+  s.phase = 'downloading';
+  s.done = 0;
+  s.total = s.plan.tiles.length;
+  s.abort = new AbortController();
+  const progress = (done, total) => { s.done = done; s.total = total; mapProgressPaint(); };
+  const run = s.areaId
+    ? LiftMap.resume(s.areaId, s.plan, progress, { signal: s.abort.signal, deleteOnCancel: s.mode !== 'resume' })
+    : LiftMap.download(s.plan, s.name, progress, { signal: s.abort.signal });
+  renderMaps();
+  run.then(() => {
+    if (mapSheet !== s) return;
+    mapSheet = null;
+    const after = () => { renderMaps(); refreshRoutes(); };
+    // The update's old area goes only now, with the new one safely in.
+    (s.replacing ? LiftMap.deleteArea(s.replacing) : Promise.resolve()).then(after, after);
+  }, (error) => {
+    if (mapSheet !== s) return;
+    if (error && error.code === 'cancelled') { mapSheet = null; renderMaps(); return; }
+    if (error && error.areaId) s.areaId = error.areaId;
+    s.phase = 'failed';
+    renderMaps();
+  });
+}
+
+function cancelMapSheet() {
+  const s = mapSheet;
+  if (!s || s.phase === 'cancelling') return;
+  if (s.phase === 'downloading') {
+    // The download stops, waits for what is in flight, and removes the area it
+    // began; the sheet closes when that is done.
+    s.phase = 'cancelling';
+    s.abort.abort();
+    renderMaps();
+    return;
+  }
+  // Ready, or failed and waiting on Try again. An area this sheet began goes.
+  const began = s.areaId && s.mode !== 'resume' ? s.areaId : null;
+  mapSheet = null;
+  (began ? LiftMap.deleteArea(began) : Promise.resolve()).then(renderMaps, renderMaps);
+}
+
+function mapSheetCard(card) {
+  const s = mapSheet;
+  const box = el('div', 'mapsheet');
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', mapCopy.title);
+  box.appendChild(el('strong', 'cardtitle', mapCopy.title));
+  box.appendChild(el('p', null, s.name));
+  const busy = s.phase === 'downloading' || s.phase === 'cancelling';
+  if (s.mode === 'new' && s.plan.detailKm !== 0) {
+    box.appendChild(el('label', null, mapCopy.streetsWithin));
+    const radius = el('div', 'chips');
+    radius.id = 'maps-radius';
+    box.appendChild(radius);
+    chips(radius, LiftMap.detailChoices.map((km) => ({ label: LiftMap.radiusText(km), km })),
+      (i) => i.km === s.plan.detailKm,
+      (i) => { if (!busy && !s.areaId) { s.plan = LiftMap.plan(s.plan.latitude, s.plan.longitude, i.km); renderMaps(); } });
+    // Fixed once the area is begun: a retry fills the area it was.
+    if (busy || s.areaId) radius.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+  }
+  box.appendChild(el('p', null, LiftMap.sizeText(s.plan.estimatedBytes)));
+  box.appendChild(el('p', 'muted small', mapCopy.source));
+  box.appendChild(el('p', 'muted small', mapCopy.serverLearns));
+
+  if (busy) {
+    mapProgress = el('progress');
+    mapProgress.setAttribute('aria-label', mapCopy.downloading);
+    box.appendChild(el('p', 'muted', mapCopy.downloading));
+    box.appendChild(mapProgress);
+    mapProgressPaint();
+  } else if (s.phase === 'failed') {
+    box.appendChild(el('p', null, mapCopy.failure)).setAttribute('role', 'alert');
+  }
+
+  const row = el('div', 'row');
+  const cancel = el('button', 'ghost', mapCopy.cancel);
+  cancel.type = 'button';
+  cancel.disabled = s.phase === 'cancelling';
+  cancel.onclick = cancelMapSheet;
+  row.appendChild(cancel);
+  if (!busy) {
+    const go = el('button', null, s.phase === 'failed' ? mapCopy.tryAgain : mapCopy.download);
+    go.type = 'button';
+    go.onclick = startMapDownload;
+    row.appendChild(go);
+  }
+  box.appendChild(row);
+  card.appendChild(box);
+}
+
+function renderMaps() {
+  const card = $('#maps-section');
+  if (!card) return;
+  mapProgress = null;
+  card.innerHTML = '';
+
+  if (mapSheet) {
+    mapSheetCard(card);
+    return;
+  }
+
+  const finished = LiftMap.areas();
+  const unfinished = LiftMap.unfinishedAreas();
+  finished.forEach((area) => card.appendChild(mapAreaRow(area, false)));
+  unfinished.forEach((area) => card.appendChild(mapAreaRow(area, true)));
+  if (!finished.length && !unfinished.length) card.appendChild(el('p', 'muted', mapCopy.noStreets));
+
+  if (navigator.geolocation) {
+    const here = el('button', 'wide ghost', mapLocating ? 'Finding where you are…' : mapCopy.aroundHere);
+    here.type = 'button';
+    here.disabled = mapLocating;
+    here.onclick = aroundHere;
+    card.appendChild(here);
+  }
+  const last = LiftOutdoor.lastRoute(outdoor);
+  if (last && last.route && last.route.length) {
+    const start = last.route[0];
+    const near = el('button', 'wide ghost', mapCopy.aroundLastRun);
+    near.type = 'button';
+    near.onclick = () => offerAround(start[0], start[1]);
+    card.appendChild(near);
+  }
+  if (mapNote) card.appendChild(el('p', 'muted', mapNote)).setAttribute('role', 'status');
+  card.appendChild(el('p', 'muted', mapCopy.mapsFooter));
+}
+
+// An area finished or went, here or in another tab.
+window.addEventListener('liftmap:changed', () => { if (!mapSheet) renderMaps(); });
+
 function renderHome() {
   renderCoach();
   renderBackupNote();
   renderTrainingSettings();
+  renderMaps();
   const today = todayKey();
   const eaten = totals(entriesFor(today));
 
@@ -3930,10 +4147,89 @@ function renderRoutines() {
  * route, so the recording screen asks for a wake lock to keep the screen on,
  * and tells you when the signal has gone quiet.
  *
- * The route is a line on a plain canvas rather than a street map. A map means
- * sending your location to a tile server on every run, and this app sends
- * nothing anywhere you did not ask it to.
+ * The route is a line on a plain canvas, unless the person has downloaded the
+ * streets around it (Maps, on Home): then it is drawn over them, by
+ * map/map.js. A map that fetched tiles as it was looked at would send your
+ * location to a tile server on every run, and this app sends nothing anywhere
+ * you did not ask it to. So a map is drawn only from saved streets, never
+ * asks for one, and the only request is the download the person starts.
  */
+
+LiftMap.configure({
+  cachePrefix: 'lift-map-',
+  storageKey: 'lift.mapAreas',
+  base: '/lift/map/',
+});
+
+/* MapLibre GL JS is 1 MB, so it is not a startup script: it is fetched from
+ * this site (and kept by the service worker) the first time a route is drawn
+ * with a downloaded area in the store. Until it arrives, and for good where
+ * there is no WebGL, the route is the plain line. */
+let mapEngineLoading = null;
+let mapEngineFailed = false;
+
+function loadMapEngine() {
+  if (window.maplibregl) return Promise.resolve();
+  if (mapEngineFailed) return Promise.reject(new Error('map engine'));
+  if (!mapEngineLoading) {
+    mapEngineLoading = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'map/maplibre-gl.js';
+      script.onload = resolve;
+      script.onerror = () => { script.remove(); mapEngineLoading = null; mapEngineFailed = true; reject(new Error('map engine')); };
+      document.head.appendChild(script);
+    });
+  }
+  return mapEngineLoading;
+}
+
+/* Each box a route is drawn into, with its view and the route last given it. */
+const routeViews = new Map();
+
+/* The plain line, in a canvas of its own inside the box. */
+function plainRoute(box, route, aspect, emptyText) {
+  const canvas = el('canvas', 'route');
+  box.appendChild(canvas);
+  drawRoute(canvas, route, aspect, emptyText);
+}
+
+/* Draws a route into a box: over the downloaded streets that cover it, else
+ * the plain line (drawRoute). Called again as a recording grows, which moves
+ * the map only when the route's bounds change. */
+function showRoute(box, route, aspect, emptyText) {
+  const dark = LiftAppearance.resolved() === 'dark';
+  const held = routeViews.get(box);
+  if (held) {
+    held.route = route;
+    held.view.update(route, { dark });
+  } else {
+    const entry = { route, view: null };
+    entry.view = LiftMap.mount(box, route, {
+      aspect,
+      dark,
+      fallback: (container, points) => plainRoute(container, points, aspect, emptyText),
+    });
+    routeViews.set(box, entry);
+  }
+  if (!window.maplibregl && route && route.length >= 2 && LiftMap.areas().length) refreshRoutes();
+}
+
+/* Lets go of a box's map (its WebGL context), as a screen closes. */
+function dropRoute(box) {
+  const held = routeViews.get(box);
+  if (!held) return;
+  held.view.destroy();
+  routeViews.delete(box);
+}
+
+/* Every route on screen decides again: the engine has arrived, or an area has
+ * finished or gone. */
+function refreshRoutes() {
+  loadMapEngine().then(() => {
+    const dark = LiftAppearance.resolved() === 'dark';
+    routeViews.forEach((held) => held.view.update(held.route, { dark }));
+  }, () => { /* no engine: the plain line stays */ });
+}
 
 const outdoorLabel = (type) => (LiftOutdoor.TYPES.find((t) => t.key === type) || { label: 'Outdoor' }).label;
 const outdoorOn = (day) => outdoor
@@ -4001,8 +4297,23 @@ function drawRoute(canvas, route, aspect, emptyText) {
   dot(pts[pts.length - 1], 6, accent);
 }
 
+/* The Last route card's box, kept across renders. render() runs after every
+ * tap on this tab, and a map torn down and made again shows a blank frame while
+ * its style loads. The box (and the map inside it) is carried into the rebuilt
+ * card when it holds the same route; a different route, or none, lets it go. */
+let lastRouteBox = null;
+let lastRouteKey = '';
+
+/* A cheap fingerprint of a route: how many points, and where it starts and ends. */
+const routeKey = (route) => (route && route.length ? `${route.length}|${route[0]}|${route[route.length - 1]}` : '');
+
 function renderOutdoor() {
   const wrap = $('#outdoor-section');
+  const last = LiftOutdoor.lastRoute(outdoor);
+  const keep = last && lastRouteBox && routeViews.has(lastRouteBox) && routeKey(last.route) === lastRouteKey
+    ? lastRouteBox : null;
+  routeViews.forEach((held, box) => { if (box !== keep && (!box.isConnected || wrap.contains(box))) dropRoute(box); });
+  if (!keep) lastRouteBox = null;
   wrap.innerHTML = '';
   const unit = distanceUnit();
   let drawRouteAfter = null;
@@ -4041,11 +4352,12 @@ function renderOutdoor() {
   wrap.appendChild(card);
 
   // The newest route, whatever day Train is showing.
-  const last = LiftOutdoor.lastRoute(outdoor);
   if (last) {
     const lastCard = el('button', 'card linkcard');
     lastCard.appendChild(el('strong', 'cardtitle', 'Last route'));
-    const canvas = el('canvas', 'route');
+    const canvas = keep || el('div', 'routebox');
+    lastRouteBox = canvas;
+    lastRouteKey = routeKey(last.route);
     lastCard.appendChild(canvas);
     const line = el('div', 'routeline');
     line.appendChild(el('span', null, outdoorLabel(last.activityType)));
@@ -4061,7 +4373,7 @@ function renderOutdoor() {
     // Drawn once every outdoor card is in: on a wide screen the cards share a
     // grid, and the route card is only full width until its neighbours arrive.
     // Measured any earlier, the map is drawn for a card twice its final width.
-    drawRouteAfter = () => drawRoute(canvas, last.route, 2);
+    drawRouteAfter = () => showRoute(canvas, last.route, 2);
   }
 
   const bestsCard = el('div', 'card');
@@ -4237,7 +4549,7 @@ function updateRecording() {
     status = 'No GPS update for a while. Keep LIFT open on screen.';
   }
   $('#rec-status').textContent = status;
-  drawRoute($('#rec-canvas'), recording.route, 1, 'Waiting for GPS...');
+  showRoute($('#rec-canvas'), recording.route, 1, 'Waiting for GPS...');
 }
 
 function stopWatching() {
@@ -4247,6 +4559,7 @@ function stopWatching() {
   recordTimer = null;
   // Let go of the screen, unless a live session still wants it.
   syncScreenHold();
+  dropRoute($('#rec-canvas'));
   closeModal($('#recording'));
 }
 
@@ -4305,16 +4618,17 @@ function openReview(id) {
   ]);
   statGrid(stats, [['Climb', climb], ['GPS points', String((a.route || []).length)], ['', '']]);
   window.scrollTo(0, 0);
-  drawRoute($('#review-canvas'), a.route, 1);
+  showRoute($('#review-canvas'), a.route, 1);
 }
 
-$('#review-close').onclick = () => { reviewingId = null; closeModal($('#review')); };
+$('#review-close').onclick = () => { reviewingId = null; dropRoute($('#review-canvas')); closeModal($('#review')); };
 $('#review-delete').onclick = () => {
   const a = outdoor.find((x) => x.id === reviewingId);
   if (!a || !confirm(`Delete this ${outdoorLabel(a.activityType).toLowerCase()}? It can't be undone.`)) return;
   outdoor = outdoor.filter((x) => x.id !== reviewingId);
   save(KEY.outdoor, outdoor);
   reviewingId = null;
+  dropRoute($('#review-canvas'));
   closeModal($('#review'));
   render();
 };
