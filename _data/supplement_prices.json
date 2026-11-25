@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-24T15:58:53.373704+00:00",
+  "last_updated": "2026-11-25T15:45:04.256423+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -68,7 +68,7 @@
       "url": "https://v1nutra.com/products/v1-protein",
       "servings": 25,
       "price": null,
-      "error": "price not found (no meta tag, no selector match; HTTP 200, 122847 bytes, title='V1 NUTRA')"
+      "error": "price not found (no meta tag, no selector match; HTTP 200, 122824 bytes, title='V1 NUTRA')"
     },
     {
       "name": "50/50 Formula X Protein Blend (2lb)",
