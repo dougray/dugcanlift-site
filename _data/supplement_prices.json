@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26T15:26:35.891609+00:00",
+  "last_updated": "2026-11-27T15:14:15.872211+00:00",
   "products": [
     {
       "name": "Gold Standard 100% Whey (2lb)",
@@ -57,8 +57,9 @@
       "category": "Protein",
       "url": "https://likeaprosupplements.com/products/whey-isolate",
       "servings": 30,
-      "price": null,
-      "error": "price not found (no meta tag, no selector match; HTTP 200, 189302 bytes, title='Like A Pro Supplements &ndash; Stay Tuned...')"
+      "price": 54.99,
+      "cost_per_serving": 1.833,
+      "error": null
     },
     {
       "name": "V1 Protein (Mint Cookie)",
