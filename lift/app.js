@@ -4162,6 +4162,7 @@ let gpsProblem = '';
  * never targeted. */
 let hr = null;          // { handle, name, state, readings, last } while a device is in use
 let hrMessage = '';     // why the last attempt did not connect, when it did not
+let hrAsked = null;     // the attempt hrMessage would describe; cleared when a run lets go
 
 const heartRateOff = () => LiftHeartRate.setting(localStorage) === 'off';
 const heartRateOffered = () => !!recording && LiftHeartRate.available() && !heartRateOff();
@@ -4225,9 +4226,16 @@ function connectHeartRate() {
   }, (error) => {
     if (hr !== mine) return;
     hr = null;
-    // Closing the chooser is an answer, not an error.
-    if (!error || error.name !== 'NotFoundError') hrMessage = "Couldn't connect to that device.";
+    hrAsked = mine;
     refreshHeartRate();
+    // Closing the chooser is an answer, not an error. Chrome reports a radio
+    // that is off with the same NotFoundError, so that one is told apart.
+    LiftHeartRate.refusal(error).then((why) => {
+      if (hrAsked !== mine || hr) return;   // another tap, Finish or Discard meanwhile
+      if (why === 'off') hrMessage = LiftHeartRate.BLUETOOTH_OFF;
+      else if (why === 'failed') hrMessage = "Couldn't connect to that device.";
+      refreshHeartRate();
+    });
   });
 }
 $('#rec-hr-connect').onclick = connectHeartRate;
@@ -4237,6 +4245,7 @@ $('#rec-hr-connect').onclick = connectHeartRate;
 function stopHeartRate() {
   const old = hr;
   hr = null;
+  hrAsked = null;
   hrMessage = '';
   if (old && old.handle) old.handle.disconnect();
   refreshHeartRate();   // no number left on a screen that is about to be reused

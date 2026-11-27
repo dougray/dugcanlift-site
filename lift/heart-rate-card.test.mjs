@@ -21,7 +21,7 @@ import { appSource, KEY, T0, harness } from './live-harness.mjs';
 const HR_KEY = 'lift.heartRate';
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 
-function fakeBluetooth({ name = 'Polar H10', chooser = null } = {}) {
+function fakeBluetooth({ name = 'Polar H10', chooser = null, availability } = {}) {
   const log = { requestDevice: [], connects: 0, disconnects: 0, started: 0, stopped: 0 };
   const charListeners = new Set();
   const devListeners = new Set();
@@ -57,6 +57,8 @@ function fakeBluetooth({ name = 'Polar H10', chooser = null } = {}) {
       return chooser ? chooser() : Promise.resolve(device);
     },
   };
+  // Chrome and Edge have getAvailability; leave `availability` out for a browser without it.
+  if (availability !== undefined) bluetooth.getAvailability = async () => availability;
   return {
     bluetooth, log, device, state,
     notify(bpm) {
@@ -300,6 +302,74 @@ test('closing the chooser says nothing and leaves the button; a failed connectio
   assert.equal(h2.node('#rec-hr-status').textContent, '', 'and a good second try clears it');
 });
 
+// MARK: - Bluetooth off
+
+const BT_OFF = 'Bluetooth is turned off. Turn it on to look for heart rate devices.';
+const notFound = (message) => Object.assign(new Error(message), { name: 'NotFoundError' });
+
+/** A run started, the button tapped, and the chooser answering with `error`. */
+async function refused(error, availability) {
+  const bt = fakeBluetooth({ chooser: () => Promise.reject(error), availability });
+  const h = harness({ bluetooth: bt.bluetooth });
+  h.startRecording('RUN');
+  h.node('#rec-hr-connect').onclick();
+  await tick();
+  return { h, bt, status: h.node('#rec-hr-status').textContent };
+}
+
+test('Chrome\'s "adapter not available" says Bluetooth is off, in a line, and leaves the button', async () => {
+  const { h, status } = await refused(notFound('Bluetooth adapter not available.'), false);
+  assert.equal(status, BT_OFF);
+  assert.equal(hidden(h), false, 'the person turns it on and taps again');
+  assert.deepEqual(h.alerts, [], 'a status line, not an alert');
+});
+
+test('an unclear NotFoundError with the radio off says so; with it on, nothing', async () => {
+  assert.equal((await refused(notFound('No devices found.'), false)).status, BT_OFF);
+  assert.equal((await refused(notFound('No devices found.'), true)).status, '');
+  assert.equal((await refused(notFound('No devices found.'), undefined)).status, '', 'a browser without getAvailability');
+});
+
+test('closing the chooser stays silent even when getAvailability says false', async () => {
+  const { h, status } = await refused(notFound('User cancelled the requestDevice() chooser.'), false);
+  assert.equal(status, '');
+  assert.equal(hidden(h), false);
+});
+
+test('the off line goes when the next tap connects', async () => {
+  let fail = true;
+  const bt = fakeBluetooth({ availability: false });
+  const chooser = bt.bluetooth.requestDevice;
+  bt.bluetooth.requestDevice = (o) => (fail ? Promise.reject(notFound('Bluetooth adapter not available.')) : chooser(o));
+  const h = harness({ bluetooth: bt.bluetooth });
+  h.startRecording('RUN');
+  h.node('#rec-hr-connect').onclick();
+  await tick();
+  assert.equal(h.node('#rec-hr-status').textContent, BT_OFF);
+  fail = false;
+  h.node('#rec-hr-connect').onclick();
+  await tick();
+  assert.equal(h.node('#rec-hr-status').textContent, '');
+  bt.notify(130);
+  h.advance(0);
+  assert.equal(overlayText(h), '130 bpmfrom Polar H10');
+});
+
+test('an answer about the radio that arrives after Discard is not shown on the next run', async () => {
+  let answer;
+  const bt = fakeBluetooth({ chooser: () => Promise.reject(notFound('No devices found.')) });
+  bt.bluetooth.getAvailability = () => new Promise((r) => { answer = r; });
+  const h = harness({ bluetooth: bt.bluetooth });
+  h.startRecording('RUN');
+  h.node('#rec-hr-connect').onclick();
+  await tick();
+  h.node('#rec-discard').onclick();
+  h.startRecording('WALK');
+  answer(false);
+  await tick();
+  assert.equal(h.node('#rec-hr-status').textContent, '');
+});
+
 // MARK: - Letting go
 
 test('closing the screen keeps the device and the readings', async () => {
@@ -521,5 +591,5 @@ test('the page loads heart-rate.js before app.js, and the service worker caches 
   assert.ok(hrAt < html.indexOf('<script src="app.js"></script>'));
   const sw = readFileSync('lift/sw.js', 'utf8');
   assert.ok(sw.includes("'/lift/heart-rate.js'"));
-  assert.match(sw, /const CACHE = 'lift-v66';/);
+  assert.match(sw, /const CACHE = 'lift-v67';/);
 });

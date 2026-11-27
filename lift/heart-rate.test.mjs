@@ -447,6 +447,73 @@ test('disconnect while a reconnect is mid-flight lets go of the connection it ma
   assert.equal(p.timerCount(), 0);
 });
 
+// MARK: - refusal(error)
+
+// Chrome rejects requestDevice with NotFoundError for a closed chooser, for no
+// devices found and for an adapter that is off. These are its messages.
+const notFound = (message) => Object.assign(new Error(message), { name: 'NotFoundError' });
+const CHROME_CANCEL = 'User cancelled the requestDevice() chooser.';
+const CHROME_ADAPTER = 'Bluetooth adapter not available.';
+const CHROME_NO_LE = 'Bluetooth Low Energy not available.';
+
+/** The module against a navigator whose getAvailability answers `available`
+ *  (true, false, 'throws', 'rejects', or undefined for a browser without it). */
+function withAvailability(available) {
+  const bluetooth = { requestDevice() {} };
+  const calls = { n: 0 };
+  if (available !== undefined) {
+    bluetooth.getAvailability = () => {
+      calls.n += 1;
+      if (available === 'throws') throw new Error('no');
+      if (available === 'rejects') return Promise.reject(new Error('no'));
+      return Promise.resolve(available);
+    };
+  }
+  return { H: load({ navigator: { bluetooth } }), calls };
+}
+
+test('closing the chooser is a cancel, even with the radio off', async () => {
+  for (const available of [true, false, undefined]) {
+    const { H, calls } = withAvailability(available);
+    assert.equal(await H.refusal(notFound(CHROME_CANCEL)), 'cancelled', String(available));
+    assert.equal(calls.n, 0, 'the message settles it');
+  }
+});
+
+test('Chrome\'s adapter messages are the radio off, without asking', async () => {
+  for (const message of [CHROME_ADAPTER, CHROME_NO_LE]) {
+    const { H, calls } = withAvailability(true);
+    assert.equal(await H.refusal(notFound(message)), 'off', message);
+    assert.equal(calls.n, 0);
+  }
+  assert.equal(await withAvailability(undefined).H.refusal(notFound(CHROME_ADAPTER)), 'off');
+});
+
+test('a NotFoundError that names neither asks getAvailability', async () => {
+  for (const message of ['No devices found.', '', 'Something else']) {
+    assert.equal(await withAvailability(false).H.refusal(notFound(message)), 'off', message);
+    assert.equal(await withAvailability(true).H.refusal(notFound(message)), 'cancelled', message);
+  }
+});
+
+test('without getAvailability, or when it fails, an unclear NotFoundError stays silent', async () => {
+  for (const available of [undefined, 'throws', 'rejects']) {
+    assert.equal(await withAvailability(available).H.refusal(notFound('No devices found.')), 'cancelled', String(available));
+  }
+  const bare = load({});
+  assert.equal(await bare.refusal(notFound('No devices found.')), 'cancelled', 'no navigator at all');
+});
+
+test('any other error is a failed connection, whatever the radio says', async () => {
+  for (const error of [new Error('out of range'), Object.assign(new Error('x'), { name: 'NetworkError' }), null, undefined]) {
+    assert.equal(await withAvailability(false).H.refusal(error), 'failed');
+  }
+});
+
+test('the radio-off line is the iPhone\'s and Android\'s, word for word', () => {
+  assert.equal(H.BLUETOOTH_OFF, 'Bluetooth is turned off. Turn it on to look for heart rate devices.');
+});
+
 // MARK: - Nothing here can reach the network
 
 test('nothing here can reach the network', () => {

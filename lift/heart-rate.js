@@ -259,11 +259,48 @@
     });
   }
 
+  // MARK: - Why nothing connected
+
+  /** What the screen says when the radio is off, in the iPhone's and Android's
+   *  words for a powered-off adapter. */
+  var BLUETOOTH_OFF = 'Bluetooth is turned off. Turn it on to look for heart rate devices.';
+
+  /** Chrome's words for an adapter that is off or missing, which it reports
+   *  with the same `NotFoundError` as a closed chooser. */
+  var OFF_MESSAGE = /adapter not available|low energy not available|bluetooth is (turned )?off|powered off/i;
+
+  /**
+   * Why `connect` rejected, for the screen: `'cancelled'` (the person closed
+   * the chooser, or nothing more can be said -- an answer, not an error, so
+   * nothing is shown), `'off'` (the radio is off or unavailable) or
+   * `'failed'` (a device was chosen and did not connect).
+   *
+   * Chrome uses `NotFoundError` for a closed chooser, for no devices found and
+   * for an adapter that is off. A message that names cancelling is a cancel
+   * whatever else is true; one that names the adapter is off; otherwise
+   * `navigator.bluetooth.getAvailability()`, where the browser has it, says
+   * whether there is a radio to use. Resolves, never rejects.
+   */
+  function refusal(error) {
+    if (!error || error.name !== 'NotFoundError') return Promise.resolve('failed');
+    var message = typeof error.message === 'string' ? error.message : '';
+    if (/cancel/i.test(message)) return Promise.resolve('cancelled');
+    if (OFF_MESSAGE.test(message)) return Promise.resolve('off');
+    var bt = global.navigator && global.navigator.bluetooth;
+    if (!bt || typeof bt.getAvailability !== 'function') return Promise.resolve('cancelled');
+    var asked;
+    try { asked = bt.getAvailability(); } catch (e) { return Promise.resolve('cancelled'); }
+    return Promise.resolve(asked).then(function (yes) {
+      return yes === false ? 'off' : 'cancelled';
+    }, function () { return 'cancelled'; });
+  }
+
   global.LiftHeartRate = {
     STALE_AFTER_MS: STALE_AFTER_MS,
     RECONNECT_DELAYS_MS: RECONNECT_DELAYS_MS,
     SETTING_KEY: SETTING_KEY,
     UNNAMED: UNNAMED,
+    BLUETOOTH_OFF: BLUETOOTH_OFF,
     bpm: bpm,
     shown: shown,
     summary: summary,
@@ -273,5 +310,6 @@
     setSetting: setSetting,
     reconnectDelay: reconnectDelay,
     connect: connect,
+    refusal: refusal,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
