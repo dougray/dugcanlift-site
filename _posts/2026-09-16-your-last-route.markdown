@@ -4,6 +4,8 @@ title:  "Your Last Route, Light Mode, and Ten Starter Routines"
 date:   2026-09-16 13:00:00 -0500
 ---
 
+*Update, November 2026: How a route is shown has changed since this post, so the map paragraph under "Sending it to your coach" is out of date. Coach on iPhone no longer uses Apple Maps. On iPhone and Android, LIFT and Coach now draw a route over a street map when you've downloaded the streets for that area, and as a plain line when you haven't. The streets come from OpenFreeMap, once, when you pick an area and tap Download. That request tells OpenFreeMap which area you asked for (for a coach, roughly where that client runs) and your IP address, as any download does. After that the map is drawn on your device, and looking at it sends nothing to anyone.*
+
 Two days of work, and most of it came out of using the apps rather than planning them. Here's what changed in LIFT and Coach, what it's for, and where you can have it today.
 
 ## Light mode
