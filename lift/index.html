@@ -152,6 +152,30 @@
   <div class="card" id="training-settings"></div>
   </div>
 
+  <!-- Street maps (map/map.js, dugcanlift-kit's map files). Streets come from
+       areas the person downloads here; nothing is asked of any server while
+       a map is on screen. -->
+  <div class="panel">
+  <h2>Maps</h2>
+  <div class="card">
+    <div id="maps-section"></div>
+    <!-- What a map is made from, and the terms it is used under. The licence
+         texts are files in map/, cached for offline by sw.js. -->
+    <details class="equipment mapcredits">
+      <summary>Credits and licenses</summary>
+      <p class="muted">Street data &copy; OpenStreetMap contributors, available under the
+        Open Database License (ODbL) 1.0.
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">openstreetmap.org/copyright</a></p>
+      <p class="muted">Vector tiles from OpenFreeMap.
+        <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">openfreemap.org</a></p>
+      <p class="muted">Maps are drawn with MapLibre GL JS, under the BSD 3-Clause License.
+        <a href="map/LICENSE-maplibre.txt" target="_blank" rel="noopener">License text</a></p>
+      <p class="muted">Street names are set in Noto Sans, under the SIL Open Font License 1.1.
+        <a href="map/fonts/OFL.txt" target="_blank" rel="noopener">License text</a></p>
+    </details>
+  </div>
+  </div>
+
   <div class="panel">
   <h2>Your data</h2>
   <div class="card">
@@ -560,7 +584,7 @@
 <div id="recording" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rec-title">
   <p class="muted">Recording</p>
   <div class="big" id="rec-title" tabindex="-1"></div>
-  <canvas id="rec-canvas" class="route"></canvas>
+  <div id="rec-canvas" class="routebox"></div>
   <div class="stats">
     <div><div class="muted small">Time</div><div class="stat" id="rec-time">0:00</div></div>
     <div><div class="muted small">Distance</div><div class="stat" id="rec-distance"></div></div>
@@ -578,7 +602,7 @@
   <button class="ghost" id="review-close">Done</button>
   <div class="big" id="review-title" tabindex="-1"></div>
   <p class="muted" id="review-date"></p>
-  <canvas id="review-canvas" class="route"></canvas>
+  <div id="review-canvas" class="routebox"></div>
   <div id="review-stats"></div>
   <button class="wide ghost" id="review-delete">Delete</button>
 </div>
@@ -633,6 +657,7 @@
 <script src="live-session.js"></script>
 <script src="plan-log.js"></script>
 <script src="outdoor.js"></script>
+<script src="map/map.js"></script>
 <script src="workout-csv.js"></script>
 <script src="progress.js"></script>
 <script src="road-food.js"></script>

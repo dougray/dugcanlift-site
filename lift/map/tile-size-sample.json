@@ -1,0 +1,530 @@
+{
+ "note": "Stored size of real street-map tiles at each zoom, for calibrating typicalBytes. meanBytes and p75Bytes are decompressed bytes, as the app stores a tile (fetch arrayBuffer); the wire figures are the gzip bodies as served. Tiles are the kit plan selection for a 10 km detail area (z11-14) plus its 100 km wide layer (z0-10), at most 20 evenly spaced tiles per zoom. A 404 or 204 counts as 0 bytes. typicalBytes is the mean of the urban and mid-city means, rounded to the nearest 5,000; rural is evidence only.",
+ "date": "2026-11-12",
+ "areas": {
+  "urban": {
+   "name": "Manhattan",
+   "latitude": 40.758,
+   "longitude": -73.9855
+  },
+  "mid": {
+   "name": "Denver",
+   "latitude": 39.7392,
+   "longitude": -104.9903
+  },
+  "rural": {
+   "name": "Western South Dakota",
+   "latitude": 44,
+   "longitude": -103
+  }
+ },
+ "realDownloads": [
+  {
+   "what": "LIFT web, Denver 10 km detail area, 273 tiles",
+   "measuredBytes": 30000000,
+   "plannedEstimateBefore": 8110000
+  },
+  {
+   "what": "Coach web, route-sized Austin area, 95 tiles",
+   "measuredBytes": 9200000,
+   "plannedEstimateBefore": 5300000
+  }
+ ],
+ "samples": [
+  {
+   "area": "urban",
+   "zoom": 0,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 83533,
+   "p75Bytes": 83533,
+   "meanWireBytes": 49036,
+   "p75WireBytes": 49036,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 1,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 202078,
+   "p75Bytes": 202078,
+   "meanWireBytes": 111086,
+   "p75WireBytes": 111086,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 2,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 1300711,
+   "p75Bytes": 1300711,
+   "meanWireBytes": 602769,
+   "p75WireBytes": 602769,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 3,
+   "tilesInPlan": 2,
+   "tilesSampled": 2,
+   "meanBytes": 409624,
+   "p75Bytes": 473544,
+   "meanWireBytes": 221040,
+   "p75WireBytes": 251675,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 4,
+   "tilesInPlan": 2,
+   "tilesSampled": 2,
+   "meanBytes": 303585,
+   "p75Bytes": 339209,
+   "meanWireBytes": 175465,
+   "p75WireBytes": 193275,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 5,
+   "tilesInPlan": 2,
+   "tilesSampled": 2,
+   "meanBytes": 242569,
+   "p75Bytes": 261367,
+   "meanWireBytes": 144886,
+   "p75WireBytes": 158224,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 6,
+   "tilesInPlan": 4,
+   "tilesSampled": 4,
+   "meanBytes": 202480,
+   "p75Bytes": 248190,
+   "meanWireBytes": 127334,
+   "p75WireBytes": 158446,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 7,
+   "tilesInPlan": 4,
+   "tilesSampled": 4,
+   "meanBytes": 207373,
+   "p75Bytes": 252035,
+   "meanWireBytes": 139713,
+   "p75WireBytes": 170992,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 8,
+   "tilesInPlan": 9,
+   "tilesSampled": 9,
+   "meanBytes": 166721,
+   "p75Bytes": 226150,
+   "meanWireBytes": 114665,
+   "p75WireBytes": 154924,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 9,
+   "tilesInPlan": 20,
+   "tilesSampled": 20,
+   "meanBytes": 182082,
+   "p75Bytes": 247295,
+   "meanWireBytes": 124135,
+   "p75WireBytes": 168262,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 10,
+   "tilesInPlan": 56,
+   "tilesSampled": 20,
+   "meanBytes": 101606,
+   "p75Bytes": 151291,
+   "meanWireBytes": 68114,
+   "p75WireBytes": 102201,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 11,
+   "tilesInPlan": 6,
+   "tilesSampled": 6,
+   "meanBytes": 128518,
+   "p75Bytes": 146993,
+   "meanWireBytes": 87683,
+   "p75WireBytes": 100433,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 12,
+   "tilesInPlan": 16,
+   "tilesSampled": 16,
+   "meanBytes": 142452,
+   "p75Bytes": 177498,
+   "meanWireBytes": 81959,
+   "p75WireBytes": 97629,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 13,
+   "tilesInPlan": 49,
+   "tilesSampled": 20,
+   "meanBytes": 110121,
+   "p75Bytes": 143726,
+   "meanWireBytes": 73250,
+   "p75WireBytes": 92821,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "urban",
+   "zoom": 14,
+   "tilesInPlan": 144,
+   "tilesSampled": 20,
+   "meanBytes": 196034,
+   "p75Bytes": 281118,
+   "meanWireBytes": 118795,
+   "p75WireBytes": 171127,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 0,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 83533,
+   "p75Bytes": 83533,
+   "meanWireBytes": 49036,
+   "p75WireBytes": 49036,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 1,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 202078,
+   "p75Bytes": 202078,
+   "meanWireBytes": 111086,
+   "p75WireBytes": 111086,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 2,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 660967,
+   "p75Bytes": 660967,
+   "meanWireBytes": 323400,
+   "p75WireBytes": 323400,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 3,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 390009,
+   "p75Bytes": 390009,
+   "meanWireBytes": 203600,
+   "p75WireBytes": 203600,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 4,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 338452,
+   "p75Bytes": 338452,
+   "meanWireBytes": 193677,
+   "p75WireBytes": 193677,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 5,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 394700,
+   "p75Bytes": 394700,
+   "meanWireBytes": 220583,
+   "p75WireBytes": 220583,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 6,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 195494,
+   "p75Bytes": 195494,
+   "meanWireBytes": 113859,
+   "p75WireBytes": 113859,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 7,
+   "tilesInPlan": 2,
+   "tilesSampled": 2,
+   "meanBytes": 151490,
+   "p75Bytes": 199237,
+   "meanWireBytes": 101661,
+   "p75WireBytes": 133853,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 8,
+   "tilesInPlan": 6,
+   "tilesSampled": 6,
+   "meanBytes": 131190,
+   "p75Bytes": 143197,
+   "meanWireBytes": 87139,
+   "p75WireBytes": 97744,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 9,
+   "tilesInPlan": 16,
+   "tilesSampled": 16,
+   "meanBytes": 87597,
+   "p75Bytes": 94862,
+   "meanWireBytes": 59592,
+   "p75WireBytes": 65937,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 10,
+   "tilesInPlan": 49,
+   "tilesSampled": 20,
+   "meanBytes": 40869,
+   "p75Bytes": 47416,
+   "meanWireBytes": 29356,
+   "p75WireBytes": 36188,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 11,
+   "tilesInPlan": 4,
+   "tilesSampled": 4,
+   "meanBytes": 67152,
+   "p75Bytes": 74162,
+   "meanWireBytes": 50024,
+   "p75WireBytes": 55231,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 12,
+   "tilesInPlan": 9,
+   "tilesSampled": 9,
+   "meanBytes": 91666,
+   "p75Bytes": 95902,
+   "meanWireBytes": 55089,
+   "p75WireBytes": 58000,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 13,
+   "tilesInPlan": 36,
+   "tilesSampled": 20,
+   "meanBytes": 82600,
+   "p75Bytes": 97441,
+   "meanWireBytes": 56437,
+   "p75WireBytes": 67540,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "mid",
+   "zoom": 14,
+   "tilesInPlan": 144,
+   "tilesSampled": 20,
+   "meanBytes": 115094,
+   "p75Bytes": 140966,
+   "meanWireBytes": 71886,
+   "p75WireBytes": 88873,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 0,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 83533,
+   "p75Bytes": 83533,
+   "meanWireBytes": 49036,
+   "p75WireBytes": 49036,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 1,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 202078,
+   "p75Bytes": 202078,
+   "meanWireBytes": 111086,
+   "p75WireBytes": 111086,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 2,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 660967,
+   "p75Bytes": 660967,
+   "meanWireBytes": 323400,
+   "p75WireBytes": 323400,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 3,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 278271,
+   "p75Bytes": 278271,
+   "meanWireBytes": 154165,
+   "p75WireBytes": 154165,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 4,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 269513,
+   "p75Bytes": 269513,
+   "meanWireBytes": 154559,
+   "p75WireBytes": 154559,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 5,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 324963,
+   "p75Bytes": 324963,
+   "meanWireBytes": 174594,
+   "p75WireBytes": 174594,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 6,
+   "tilesInPlan": 1,
+   "tilesSampled": 1,
+   "meanBytes": 156830,
+   "p75Bytes": 156830,
+   "meanWireBytes": 89159,
+   "p75WireBytes": 89159,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 7,
+   "tilesInPlan": 2,
+   "tilesSampled": 2,
+   "meanBytes": 85362,
+   "p75Bytes": 93778,
+   "meanWireBytes": 52962,
+   "p75WireBytes": 58340,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 8,
+   "tilesInPlan": 6,
+   "tilesSampled": 6,
+   "meanBytes": 49241,
+   "p75Bytes": 56223,
+   "meanWireBytes": 31394,
+   "p75WireBytes": 34166,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 9,
+   "tilesInPlan": 20,
+   "tilesSampled": 20,
+   "meanBytes": 21328,
+   "p75Bytes": 23995,
+   "meanWireBytes": 14261,
+   "p75WireBytes": 16013,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 10,
+   "tilesInPlan": 64,
+   "tilesSampled": 20,
+   "meanBytes": 7786,
+   "p75Bytes": 9098,
+   "meanWireBytes": 5408,
+   "p75WireBytes": 6170,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 11,
+   "tilesInPlan": 6,
+   "tilesSampled": 6,
+   "meanBytes": 6699,
+   "p75Bytes": 12855,
+   "meanWireBytes": 4888,
+   "p75WireBytes": 9394,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 12,
+   "tilesInPlan": 16,
+   "tilesSampled": 16,
+   "meanBytes": 5746,
+   "p75Bytes": 4463,
+   "meanWireBytes": 4077,
+   "p75WireBytes": 3327,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 13,
+   "tilesInPlan": 49,
+   "tilesSampled": 20,
+   "meanBytes": 2781,
+   "p75Bytes": 2515,
+   "meanWireBytes": 2067,
+   "p75WireBytes": 2021,
+   "date": "2026-11-12"
+  },
+  {
+   "area": "rural",
+   "zoom": 14,
+   "tilesInPlan": 169,
+   "tilesSampled": 20,
+   "meanBytes": 1464,
+   "p75Bytes": 854,
+   "meanWireBytes": 1088,
+   "p75WireBytes": 688,
+   "date": "2026-11-12"
+  }
+ ]
+}
